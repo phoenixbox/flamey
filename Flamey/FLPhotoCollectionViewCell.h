@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FLPhotoCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 
 @end

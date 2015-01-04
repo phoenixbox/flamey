@@ -70,7 +70,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    FLPhotoCollectionViewCell *cell = (FLPhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
+    FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
     if ([self._selectedPhotos count] > 0) {
         [self removeEmptyCollectionMessage];
@@ -79,7 +79,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
         // set cell state - unedited / edited
     }
 
-    [cell setBackgroundColor:[UIColor redColor]];
+//    [cell setBackgroundColor:[UIColor redColor]];
 
 //    [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFit];
     return cell;
