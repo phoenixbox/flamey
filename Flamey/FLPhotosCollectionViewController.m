@@ -16,6 +16,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 // Convert to a store
 @property (nonatomic, copy) NSMutableArray *_selectedPhotos;
 @property (nonatomic, strong) UICollectionView *_collectionView;
+@property (nonatomic, strong) UIScrollView *_scrollView;
 
 @end
 
@@ -25,11 +26,26 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self renderScrollView];
+    [self resetScrollContentSize];
     [self buildPhotoCollection];
 }
 
+- (void)renderScrollView {
+    self._scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    self._scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    self._scrollView.delegate = self;
+
+    [self.view addSubview:self._scrollView];
+}
+
+- (void)resetScrollContentSize {
+    float yCoord = CGRectGetMaxY(self.view.frame);
+    [self._scrollView setContentSize:CGSizeMake(self.view.frame.size.width,yCoord+50)];
+}
+
 - (void)buildPhotoCollection {
-    self._collectionView = [[UICollectionView alloc]initWithFrame:self.scrollView.bounds collectionViewLayout:[self buildCollectionViewCellLayout]];
+    self._collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[self buildCollectionViewCellLayout]];
 
     [self._collectionView registerClass:[FLPhotoCollectionViewCell class] forCellWithReuseIdentifier:kPhotoCellIdentifier];
     [self._collectionView setBackgroundColor:[UIColor whiteColor]];
@@ -38,15 +54,16 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     [self._collectionView setDelegate:self];
     [self._collectionView setDataSource:self];
 
-    [self.scrollView addSubview:self._collectionView];
+    [self._scrollView addSubview:self._collectionView];
 
 }
 
 - (UICollectionViewFlowLayout *)buildCollectionViewCellLayout {
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-    flowLayout.minimumLineSpacing = 5.0f;
-    flowLayout.minimumInteritemSpacing = 5.0f;
-    flowLayout.itemSize = CGSizeMake(102.5f,102.5f);
+    flowLayout.minimumLineSpacing = 2.5f;
+    flowLayout.minimumInteritemSpacing = 2.5f;
+    CGFloat cellSize = (self.view.frame.size.width - 5)/3;
+    flowLayout.itemSize = CGSizeMake(cellSize,cellSize);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.sectionInset = UIEdgeInsetsMake(2.5f, 0.0f, 2.5f, 0.0f);
 
@@ -64,7 +81,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     if(count > 0) {
         return [self._selectedPhotos count];
     } else {
-        return 1;
+        return 20;
     }
 }
 
@@ -75,11 +92,15 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     if ([self._selectedPhotos count] > 0) {
         [self removeEmptyCollectionMessage];
 
+
+
 //        NSObject *photo = [self._selectedPhotos objectAtIndex:[indexPath row]];
         // set cell state - unedited / edited
     }
 
-//    [cell setBackgroundColor:[UIColor redColor]];
+    [cell.editButton setTitle:@"EDIT" forState:UIControlStateNormal];
+
+    [cell setBackgroundColor:[UIColor blueColor]];
 
 //    [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFit];
     return cell;

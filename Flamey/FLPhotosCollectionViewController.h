@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@interface FLPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @end
 

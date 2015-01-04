@@ -21,6 +21,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" red="1" green="0.40587128709999998" blue="0.42953196319999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="Nkr-lU-aAF" secondAttribute="centerY" id="kEl-Sj-CeR"/>
                 <constraint firstAttribute="centerX" secondItem="Nkr-lU-aAF" secondAttribute="centerX" constant="-0.5" id="wjY-qo-3C4"/>
