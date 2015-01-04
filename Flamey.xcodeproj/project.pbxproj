@@ -16,12 +16,10 @@
 		CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3B7D0C1A58374B005F6402 /* Images.xcassets */; };
 		CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB3B7D0E1A58374B005F6402 /* LaunchScreen.xib */; };
 		CB3B7D1C1A58374B005F6402 /* FlameyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D1B1A58374B005F6402 /* FlameyTests.m */; };
-		CB3B7D2C1A585EE6005F6402 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3B7D261A585EC5005F6402 /* Bolts.framework */; };
-		CB3B7D2D1A585EE6005F6402 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3B7D271A585EC5005F6402 /* FacebookSDK.framework */; };
-		CB3B7D2E1A585EE6005F6402 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3B7D281A585EC5005F6402 /* FBAudienceNetwork.framework */; };
 		CB3B7D321A5860C7005F6402 /* FLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */; };
 		CB3B7D351A586674005F6402 /* FLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D341A586674005F6402 /* FLSettings.m */; };
 		CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */; };
+		CBFBFE8C1A588BCD006657CD /* FLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFBFE8B1A588BCD006657CD /* FLTabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,18 +49,20 @@
 		CB3B7D151A58374B005F6402 /* FlameyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlameyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7D1A1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3B7D1B1A58374B005F6402 /* FlameyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlameyTests.m; sourceTree = "<group>"; };
-		CB3B7D261A585EC5005F6402 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		CB3B7D271A585EC5005F6402 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		CB3B7D281A585EC5005F6402 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
-		CB3B7D291A585EC5005F6402 /* FBAudienceNetwork.README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FBAudienceNetwork.README.txt; sourceTree = "<group>"; };
-		CB3B7D2A1A585EC5005F6402 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		CB3B7D2B1A585EC5005F6402 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		CB3B7D301A5860C7005F6402 /* FLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginViewController.h; sourceTree = "<group>"; };
 		CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginViewController.m; sourceTree = "<group>"; };
 		CB3B7D331A586674005F6402 /* FLSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSettings.h; sourceTree = "<group>"; };
 		CB3B7D341A586674005F6402 /* FLSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSettings.m; sourceTree = "<group>"; };
 		CB3B7D361A5867F7005F6402 /* FLErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrorHandler.h; sourceTree = "<group>"; };
 		CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorHandler.m; sourceTree = "<group>"; };
+		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		CBFBFE841A58826B006657CD /* FBAudienceNetwork.README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FBAudienceNetwork.README.txt; sourceTree = "<group>"; };
+		CBFBFE851A58826B006657CD /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		CBFBFE861A58826B006657CD /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		CBFBFE8A1A588BCD006657CD /* FLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTabBarViewController.h; sourceTree = "<group>"; };
+		CBFBFE8B1A588BCD006657CD /* FLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTabBarViewController.m; sourceTree = "<group>"; };
 		FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Flamey.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,9 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3B7D2C1A585EE6005F6402 /* Bolts.framework in Frameworks */,
-				CB3B7D2D1A585EE6005F6402 /* FacebookSDK.framework in Frameworks */,
-				CB3B7D2E1A585EE6005F6402 /* FBAudienceNetwork.framework in Frameworks */,
 				72FF89A7FAD04AAEA02678DF /* libPods-Flamey.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +88,7 @@
 		8653CABC8D15495390A3E34D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBFBFE801A58826B006657CD /* FacebookSDK */,
 				FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */,
 			);
 			name = Frameworks;
@@ -99,7 +97,8 @@
 		CB3B7CF01A58374B005F6402 = {
 			isa = PBXGroup;
 			children = (
-				CB3B7D251A585EC5005F6402 /* FacebookSDK */,
+				CBFBFE8A1A588BCD006657CD /* FLTabBarViewController.h */,
+				CBFBFE8B1A588BCD006657CD /* FLTabBarViewController.m */,
 				CB3B7CFB1A58374B005F6402 /* Flamey */,
 				CB3B7D181A58374B005F6402 /* FlameyTests */,
 				CB3B7CFA1A58374B005F6402 /* Products */,
@@ -165,20 +164,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CB3B7D251A585EC5005F6402 /* FacebookSDK */ = {
-			isa = PBXGroup;
-			children = (
-				CB3B7D261A585EC5005F6402 /* Bolts.framework */,
-				CB3B7D271A585EC5005F6402 /* FacebookSDK.framework */,
-				CB3B7D281A585EC5005F6402 /* FBAudienceNetwork.framework */,
-				CB3B7D291A585EC5005F6402 /* FBAudienceNetwork.README.txt */,
-				CB3B7D2A1A585EC5005F6402 /* LICENSE */,
-				CB3B7D2B1A585EC5005F6402 /* README.txt */,
-			);
-			name = FacebookSDK;
-			path = ../../FacebookSDK;
-			sourceTree = "<group>";
-		};
 		CB3B7D2F1A5860A5005F6402 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +171,20 @@
 				CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		CBFBFE801A58826B006657CD /* FacebookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				CBFBFE811A58826B006657CD /* Bolts.framework */,
+				CBFBFE821A58826B006657CD /* FacebookSDK.framework */,
+				CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */,
+				CBFBFE841A58826B006657CD /* FBAudienceNetwork.README.txt */,
+				CBFBFE851A58826B006657CD /* LICENSE */,
+				CBFBFE861A58826B006657CD /* README.txt */,
+			);
+			name = FacebookSDK;
+			path = ../../../../../../Documents/FacebookSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBFBFE8C1A588BCD006657CD /* FLTabBarViewController.m in Sources */,
 				CB3B7D081A58374B005F6402 /* FLSettingsViewController.m in Sources */,
 				CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */,
 				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
@@ -454,9 +454,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/shanerogers/projects/ios/tinder/tnder-ember/FacebookSDK",
+					/Users/shanerogers/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Flamey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -469,9 +470,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/shanerogers/projects/ios/tinder/tnder-ember/FacebookSDK",
+					/Users/shanerogers/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Flamey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -3,6 +3,7 @@
 
 target "Flamey" do
 pod 'AFNetworking', '~> 2.5'
+pod 'Facebook-iOS-SDK', '~> 3.21'
 end
 
 target "FlameyTests" do

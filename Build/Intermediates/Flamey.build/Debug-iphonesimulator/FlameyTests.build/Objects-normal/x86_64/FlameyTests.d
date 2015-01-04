@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/shanerogers/projects/ios/tinder/tnder-ember/flamey/Flamey/FlameyTests/FlameyTests.m \
+  /Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/FlameyTests/FlameyTests.m \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestSuiteRun.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestSuite.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestProbe.h \

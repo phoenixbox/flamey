@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/shanerogers/projects/ios/tinder/tnder-ember/flamey/Flamey/Pods/AFNetworking/AFNetworking/AFNetworkReachabilityManager.m \
-  /Users/shanerogers/projects/ios/tinder/tnder-ember/flamey/Flamey/Pods/AFNetworking/AFNetworking/AFNetworkReachabilityManager.h
+  /Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Pods/AFNetworking/AFNetworking/AFNetworkReachabilityManager.m \
+  /Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Pods/AFNetworking/AFNetworking/AFNetworkReachabilityManager.h

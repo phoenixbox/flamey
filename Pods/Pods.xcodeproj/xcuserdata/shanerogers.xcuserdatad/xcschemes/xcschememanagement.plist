@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Flamey-Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Flamey-Facebook-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flamey.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>AA38C87294F04C80A8A0C9D7</key>
+		<key>23AA58335C5840D5A7787C9B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD604694580C4B348915E81C</key>
+		<key>470D3DE77EF94816A159D95F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BD82FFC9FE54CF9ADDAFB35</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6F883E520FEC40AFA0CA176D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

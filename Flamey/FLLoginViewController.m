@@ -25,17 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    self.loginView.readPermissions = @[@"public_profile", @"user_friends"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.loginView.readPermissions = @[@"public_profile", @"user_friends"];
 
     FLSettings *settings = [FLSettings defaultSettings];
     if (_viewDidAppear) {
         _viewIsVisible = YES;
 
-        // reset
         settings.shouldSkipLogin = NO;
     } else {
         [FBSession openActiveSessionWithAllowLoginUI:NO];
@@ -70,10 +68,11 @@
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
-
+    NSLog(@"loginViewFetchedUserInfo");
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    NSLog(@"loginViewShowingLoggedInUser");
     if (_viewIsVisible) {
         [self performSegueWithIdentifier:@"loggedIn" sender:loginView];
     }
