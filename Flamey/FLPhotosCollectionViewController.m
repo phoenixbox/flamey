@@ -32,7 +32,10 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)renderScrollView {
-    self._scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    float height = self.view.frame.size.height - 60 - self.navigationController.navigationBar.frame.size.height;
+    CGRect scrollFrame = CGRectMake(0.0f,60.0f,self.view.frame.size.width, height);
+    
+    self._scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
     self._scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     self._scrollView.delegate = self;
 
