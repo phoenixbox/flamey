@@ -1,6 +1,5 @@
 dependencies: \
   /Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLAppDelegate.m \
-  /Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLAppDelegate.h \
   /Users/shanerogers/Documents/FacebookSDK/FacebookSDK.framework/Headers/FacebookSDK.h \
   /Users/shanerogers/Documents/FacebookSDK/FacebookSDK.framework/Headers/FBAccessTokenData.h \
   /Users/shanerogers/Documents/FacebookSDK/FacebookSDK.framework/Headers/FBSession.h \
@@ -47,4 +46,5 @@ dependencies: \
   /Users/shanerogers/Documents/FacebookSDK/FacebookSDK.framework/Headers/FBTaggableFriendPickerViewController.h \
   /Users/shanerogers/Documents/FacebookSDK/FacebookSDK.framework/Headers/FBUserSettingsViewController.h \
   /Users/shanerogers/Documents/FacebookSDK/FacebookSDK.framework/Headers/NSError+FBError.h \
+  /Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLAppDelegate.h \
   /Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLErrorHandler.h

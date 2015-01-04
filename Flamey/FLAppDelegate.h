@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import <FacebookSDK/FacebookSDK.h>
-
-@interface FLAppDelegate : UIResponder <UIApplicationDelegate, FBLoginViewDelegate>
+@interface FLAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 
 @end
 

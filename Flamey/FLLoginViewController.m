@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.loginView.readPermissions = @[@"public_profile", @"user_friends"];
+    self.loginView.readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos", @"publish_actions"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -67,15 +67,22 @@
     FLErrorHandler(error);
 }
 
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
-    NSLog(@"loginViewFetchedUserInfo");
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
+{
+    // Retrieve required user details and persist to external server
+    NSString *title = [NSString stringWithFormat:@"continue as %@", [user name]];
 }
 
-- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    NSLog(@"loginViewShowingLoggedInUser");
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView
+{
     if (_viewIsVisible) {
         [self performSegueWithIdentifier:@"loggedIn" sender:loginView];
     }
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView
+{
+    NSLog(@"User is not logged in");
 }
 
 /*

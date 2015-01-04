@@ -19,7 +19,8 @@
 		CB3B7D321A5860C7005F6402 /* FLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */; };
 		CB3B7D351A586674005F6402 /* FLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D341A586674005F6402 /* FLSettings.m */; };
 		CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */; };
-		CBFBFE8C1A588BCD006657CD /* FLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFBFE8B1A588BCD006657CD /* FLTabBarViewController.m */; };
+		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
+		CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,14 +56,15 @@
 		CB3B7D341A586674005F6402 /* FLSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSettings.m; sourceTree = "<group>"; };
 		CB3B7D361A5867F7005F6402 /* FLErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrorHandler.h; sourceTree = "<group>"; };
 		CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorHandler.m; sourceTree = "<group>"; };
+		CBFB80D41A59B3E8001982A6 /* FLPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		CBFBFE841A58826B006657CD /* FBAudienceNetwork.README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FBAudienceNetwork.README.txt; sourceTree = "<group>"; };
 		CBFBFE851A58826B006657CD /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CBFBFE861A58826B006657CD /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		CBFBFE8A1A588BCD006657CD /* FLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTabBarViewController.h; sourceTree = "<group>"; };
-		CBFBFE8B1A588BCD006657CD /* FLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTabBarViewController.m; sourceTree = "<group>"; };
 		FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Flamey.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,8 +99,6 @@
 		CB3B7CF01A58374B005F6402 = {
 			isa = PBXGroup;
 			children = (
-				CBFBFE8A1A588BCD006657CD /* FLTabBarViewController.h */,
-				CBFBFE8B1A588BCD006657CD /* FLTabBarViewController.m */,
 				CB3B7CFB1A58374B005F6402 /* Flamey */,
 				CB3B7D181A58374B005F6402 /* FlameyTests */,
 				CB3B7CFA1A58374B005F6402 /* Products */,
@@ -119,11 +119,10 @@
 		CB3B7CFB1A58374B005F6402 /* Flamey */ = {
 			isa = PBXGroup;
 			children = (
+				CBFB80D31A59B399001982A6 /* PhotoCollection */,
 				CB3B7D2F1A5860A5005F6402 /* Login */,
 				CB3B7D001A58374B005F6402 /* FLAppDelegate.h */,
 				CB3B7D011A58374B005F6402 /* FLAppDelegate.m */,
-				CB3B7D031A58374B005F6402 /* FLPhotosCollectionViewController.h */,
-				CB3B7D041A58374B005F6402 /* FLPhotosCollectionViewController.m */,
 				CB3B7D061A58374B005F6402 /* FLSettingsViewController.h */,
 				CB3B7D071A58374B005F6402 /* FLSettingsViewController.m */,
 				CB3B7D091A58374B005F6402 /* Main.storyboard */,
@@ -171,6 +170,18 @@
 				CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		CBFB80D31A59B399001982A6 /* PhotoCollection */ = {
+			isa = PBXGroup;
+			children = (
+				CB3B7D031A58374B005F6402 /* FLPhotosCollectionViewController.h */,
+				CB3B7D041A58374B005F6402 /* FLPhotosCollectionViewController.m */,
+				CBFB80D41A59B3E8001982A6 /* FLPhotoCollectionViewCell.h */,
+				CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */,
+				CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */,
+			);
+			name = PhotoCollection;
 			sourceTree = "<group>";
 		};
 		CBFBFE801A58826B006657CD /* FacebookSDK */ = {
@@ -270,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB3B7D0B1A58374B005F6402 /* Main.storyboard in Resources */,
+				CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */,
 				CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */,
 				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
 			);
@@ -322,8 +334,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBFBFE8C1A588BCD006657CD /* FLTabBarViewController.m in Sources */,
 				CB3B7D081A58374B005F6402 /* FLSettingsViewController.m in Sources */,
+				CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */,
 				CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */,
 				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
 				CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */,

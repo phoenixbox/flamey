@@ -14,28 +14,49 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="Photos" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <rect key="frame" x="132" y="280" width="113" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcs-d9-3DX">
+                                <rect key="frame" x="0.0" y="60" width="600" height="491"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flamey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvj-xz-Qus">
+                                <rect key="frame" x="272" y="35" width="56" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
-                            <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstItem="Xvj-xz-Qus" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="15" id="07s-eY-HZr"/>
+                            <constraint firstItem="dcs-d9-3DX" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="OQy-yN-cZs"/>
+                            <constraint firstItem="dcs-d9-3DX" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Qiy-W3-smx"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="dcs-d9-3DX" secondAttribute="bottom" id="VUx-WP-yP3"/>
+                            <constraint firstItem="dcs-d9-3DX" firstAttribute="top" secondItem="Xvj-xz-Qus" secondAttribute="bottom" constant="5" id="WEo-3T-r2N"/>
+                            <constraint firstItem="dcs-d9-3DX" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="40" id="bKI-6Q-iP0"/>
+                            <constraint firstItem="Xvj-xz-Qus" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="15" id="c8g-ky-dpR"/>
+                            <constraint firstAttribute="centerX" secondItem="Xvj-xz-Qus" secondAttribute="centerX" id="kg0-6s-icQ"/>
+                            <constraint firstAttribute="centerY" secondItem="Xvj-xz-Qus" secondAttribute="centerY" constant="237" id="rcb-M3-a9K"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="07s-eY-HZr"/>
+                                <exclude reference="rcb-M3-a9K"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="scrollView" destination="dcs-d9-3DX" id="fjq-DD-PvW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="750" y="-266"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -94,6 +115,9 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELJ-hF-zqU" customClass="FBLoginView">
                                 <rect key="frame" x="200" y="490" width="200" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UaG-CF-jMv" id="f3E-HD-zQg"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.4058712870895772" blue="0.42953196323775189" alpha="1" colorSpace="calibratedRGB"/>
