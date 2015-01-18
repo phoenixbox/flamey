@@ -9,6 +9,8 @@
 #import "FLPhotosCollectionViewController.h"
 #import "FLPhotoCollectionViewCell.h"
 
+#import "FLFacebookAlbumTableViewController.h"
+
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 @interface FLPhotosCollectionViewController ()
@@ -95,14 +97,14 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     if ([self._selectedPhotos count] > 0) {
         [self removeEmptyCollectionMessage];
 
-
+        // Populate cells -
 
 //        NSObject *photo = [self._selectedPhotos objectAtIndex:[indexPath row]];
         // set cell state - unedited / edited
     }
 
+    // Placeholdeer cells -
     [cell.editButton setTitle:@"EDIT" forState:UIControlStateNormal];
-
     [cell setBackgroundColor:[UIColor blueColor]];
 
 //    [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFit];
@@ -112,16 +114,17 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected cell %lu", [indexPath row]);
 
+    // if its the add new photos button then trigger collection picker
+    [FLFacebookAlbumTableViewController showWithDelegate:self];
+    // else trigger image editor
+}
 
-//    // Create the image editor controller
-//    FLImageEditorController *imageEditorController = [[FLImageEditorController alloc] init];
-//    // Retrieve the right model
-//    FLPhoto *selectedPhoto = [self._selectedPhotos objectAtIndex:[indexPath row]];
-//    // Set that model on the instantiated controller
-//    [imageEditorController setViewWithImage:selectedPhoto];
 
-// Push that controller on the navigation controlller
-//    [[self navigationController] pushViewController:imageEditorController animated:YES];
+#pragma RFFacebookProtocol
+
+-(void)faceBookViewController:(id)controller didSelectPhoto:(UIImage *)image
+{
+    NSLog(@"Callback");
 }
 
 

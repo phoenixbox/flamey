@@ -60,3 +60,15 @@
 #define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 21
 #define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 1
 
+// ObjectiveSugar
+#define COCOAPODS_POD_AVAILABLE_ObjectiveSugar
+#define COCOAPODS_VERSION_MAJOR_ObjectiveSugar 1
+#define COCOAPODS_VERSION_MINOR_ObjectiveSugar 1
+#define COCOAPODS_VERSION_PATCH_ObjectiveSugar 0
+
+// RTFacebookAlbum
+#define COCOAPODS_POD_AVAILABLE_RTFacebookAlbum
+#define COCOAPODS_VERSION_MAJOR_RTFacebookAlbum 1
+#define COCOAPODS_VERSION_MINOR_RTFacebookAlbum 3
+#define COCOAPODS_VERSION_PATCH_RTFacebookAlbum 0
+

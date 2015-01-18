@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RTFacebookAlbumViewController.h"
 
-@interface FLPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
+@interface FLPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, RTFacebookViewDelegate>
 
 @end
 
