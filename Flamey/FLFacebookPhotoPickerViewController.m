@@ -6,17 +6,18 @@
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
-#import "FLFacebookPhotoCollectionViewController.h"
+#import "FLFacebookPhotoPickerViewController.h"
 #import "FLFacebookPhotoCollectionViewCell.h"
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface FLFacebookPhotoCollectionViewController ()
+@interface FLFacebookPhotoPickerViewController ()
 
 @property (strong) NSMutableArray* datasource;
+@property (strong) UICollectionView* collectionView;
 
 @end
 
-@implementation FLFacebookPhotoCollectionViewController
+@implementation FLFacebookPhotoPickerViewController
 
 static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 
@@ -28,10 +29,6 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 
     [self configureCollectionView];
     [self sendRequest];
-
-    // Unsure of collection view presence out of the box?
-    [self.view addSubview:self.collectionView];
-    // Do any additional setup after loading the view.
 }
 
 - (void)configureCollectionView {
@@ -44,14 +41,14 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
     CGFloat width = (CGRectGetWidth(self.view.bounds)-(eachLineCount+1)*inset)/eachLineCount;
     flowLayout.itemSize = CGSizeMake(width, width);
 
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
-
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    self.collectionView.alwaysBounceVertical = YES;
-    self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    [self.collectionView registerClass:[FLFacebookPhotoCollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
+    _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    _collectionView.alwaysBounceVertical = YES;
+    _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    _collectionView.backgroundColor = [UIColor whiteColor];
+    [_collectionView registerClass:[FLFacebookPhotoCollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
+    [self.view addSubview:_collectionView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,7 +70,7 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
                 NSString* source = [innerDict objectForKey:@"source"];
                 [_datasource addObject:source];
             }
-            [self.collectionView reloadData];
+            [_collectionView reloadData];
         }];
     } else {
         // If fetching straight up data
@@ -88,7 +85,7 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
                                       NSString* source = [innerDict objectForKey:@"source"];
                                       [_datasource addObject:source];
                                   }
-                                  [self.collectionView reloadData];
+                                  [_collectionView reloadData];
                                   
                                   
                               }];
@@ -119,7 +116,6 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"cell";
     UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
 
     UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.contentView.frame.size.width, cell.contentView.frame.size.height)];

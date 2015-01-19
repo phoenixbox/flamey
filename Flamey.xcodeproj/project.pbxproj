@@ -20,7 +20,7 @@
 		CB3B7D351A586674005F6402 /* FLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D341A586674005F6402 /* FLSettings.m */; };
 		CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */; };
 		CB6F8CFC1A6B478F00429133 /* FLFacebookAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8CFB1A6B478F00429133 /* FLFacebookAlbumTableViewController.m */; };
-		CB6F8CFF1A6B538000429133 /* FLFacebookPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8CFE1A6B538000429133 /* FLFacebookPhotoCollectionViewController.m */; };
+		CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8CFE1A6B538000429133 /* FLFacebookPhotoPickerViewController.m */; };
 		CB6F8D021A6B670400429133 /* FLFacebookPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8D011A6B670400429133 /* FLFacebookPhotoCollectionViewCell.m */; };
 		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
 		CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */; };
@@ -61,8 +61,8 @@
 		CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorHandler.m; sourceTree = "<group>"; };
 		CB6F8CFA1A6B478F00429133 /* FLFacebookAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookAlbumTableViewController.h; sourceTree = "<group>"; };
 		CB6F8CFB1A6B478F00429133 /* FLFacebookAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookAlbumTableViewController.m; sourceTree = "<group>"; };
-		CB6F8CFD1A6B538000429133 /* FLFacebookPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoCollectionViewController.h; sourceTree = "<group>"; };
-		CB6F8CFE1A6B538000429133 /* FLFacebookPhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoCollectionViewController.m; sourceTree = "<group>"; };
+		CB6F8CFD1A6B538000429133 /* FLFacebookPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoPickerViewController.h; sourceTree = "<group>"; };
+		CB6F8CFE1A6B538000429133 /* FLFacebookPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoPickerViewController.m; sourceTree = "<group>"; };
 		CB6F8D001A6B670400429133 /* FLFacebookPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		CB6F8D011A6B670400429133 /* FLFacebookPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		CBFB80D41A59B3E8001982A6 /* FLPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -191,8 +191,8 @@
 				CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */,
 				CB6F8CFA1A6B478F00429133 /* FLFacebookAlbumTableViewController.h */,
 				CB6F8CFB1A6B478F00429133 /* FLFacebookAlbumTableViewController.m */,
-				CB6F8CFD1A6B538000429133 /* FLFacebookPhotoCollectionViewController.h */,
-				CB6F8CFE1A6B538000429133 /* FLFacebookPhotoCollectionViewController.m */,
+				CB6F8CFD1A6B538000429133 /* FLFacebookPhotoPickerViewController.h */,
+				CB6F8CFE1A6B538000429133 /* FLFacebookPhotoPickerViewController.m */,
 				CB6F8D001A6B670400429133 /* FLFacebookPhotoCollectionViewCell.h */,
 				CB6F8D011A6B670400429133 /* FLFacebookPhotoCollectionViewCell.m */,
 			);
@@ -354,7 +354,7 @@
 				CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */,
 				CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */,
 				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
-				CB6F8CFF1A6B538000429133 /* FLFacebookPhotoCollectionViewController.m in Sources */,
+				CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */,
 				CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */,
 				CB3B7D051A58374B005F6402 /* FLPhotosCollectionViewController.m in Sources */,
 				CB3B7CFF1A58374B005F6402 /* main.m in Sources */,

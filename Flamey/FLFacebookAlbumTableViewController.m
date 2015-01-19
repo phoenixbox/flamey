@@ -7,7 +7,7 @@
 //
 
 #import "FLFacebookAlbumTableViewController.h"
-#import "FLFacebookPhotoCollectionViewController.h"
+#import "FLFacebookPhotoPickerViewController.h"
 
 @interface FLFacebookAlbumTableViewController ()
 
@@ -204,7 +204,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FLFacebookPhotoCollectionViewController* vc = [[FLFacebookPhotoCollectionViewController alloc] init];
+    FLFacebookPhotoPickerViewController* vc = [[FLFacebookPhotoPickerViewController alloc] init];
 
     @try {
         vc.albumId = [[_datasource objectAtIndex:indexPath.row] objectForKey:@"id"];

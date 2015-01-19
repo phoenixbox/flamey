@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLFacebookPhotoCollectionViewController : UICollectionViewController
+@interface FLFacebookPhotoPickerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong) NSString* albumId;
 
