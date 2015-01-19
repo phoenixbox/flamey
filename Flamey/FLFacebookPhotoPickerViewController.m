@@ -10,6 +10,9 @@
 #import "FLFacebookPhotoCollectionViewCell.h"
 #import <FacebookSDK/FacebookSDK.h>
 
+#import "FLPhotoStore.h"
+#import "FLPhoto.h"
+
 @interface FLFacebookPhotoPickerViewController ()
 
 @property (strong) NSMutableArray* datasource;
@@ -58,39 +61,41 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 }
 
 -(void)sendRequest {
+    // TODO: Update to a less brittle interface
     if(_albumId){
         NSString* graphPath = [NSString stringWithFormat:@"/%@?fields=photos", _albumId];
 
-        [FBRequestConnection startWithGraphPath:graphPath parameters:nil HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-            NSDictionary* resultDict = (NSDictionary*)result;
+        [FBRequestConnection startWithGraphPath:graphPath
+                                     parameters:nil
+                                     HTTPMethod:@"GET"
+                              completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
 
-            NSDictionary* dict  = [resultDict objectForKey:@"photos"];
-            NSArray* array = [dict objectForKey:@"data"];
-            for (NSDictionary* innerDict in array) {
-                NSString* source = [innerDict objectForKey:@"source"];
-                [_datasource addObject:source];
-            }
-            [_collectionView reloadData];
+                                  NSDictionary* resultDict = (NSDictionary*)result;
+                                  NSDictionary* dict  = [resultDict objectForKey:@"photos"];
+                                  NSArray* array = [dict objectForKey:@"data"];
+
+                                  [self addImagesToDataSource:array];
         }];
     } else {
-        // If fetching straight up data
-
         [FBRequestConnection startWithGraphPath:@"/me/photos"
                                      parameters:nil
                                      HTTPMethod:@"GET"
                               completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+
                                   NSDictionary* resultDict = (NSDictionary*)result;
                                   NSArray* array = [resultDict objectForKey:@"data"];
-                                  for (NSDictionary* innerDict in array) {
-                                      NSString* source = [innerDict objectForKey:@"source"];
-                                      [_datasource addObject:source];
-                                  }
-                                  [_collectionView reloadData];
-                                  
-                                  
+                                  [self addImagesToDataSource:array];
                               }];
-        
     }
+}
+
+- (void)addImagesToDataSource:(NSArray *)images {
+    for (NSDictionary* innerDict in images) {
+        NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[innerDict objectForKey:@"id"], @"id" , [innerDict objectForKey:@"source"], @"URL", nil];
+
+        [_datasource addObject:dict];
+    }
+    [_collectionView reloadData];
 }
 
 /*
@@ -125,7 +130,9 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
     [cell.contentView addSubview:imageView];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:_datasource[indexPath.row]]];
+        NSString *url = [_datasource[indexPath.row] objectForKey:@"URL"];
+
+        NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         UIImage* img = [UIImage imageWithData:imgData];
         dispatch_async(dispatch_get_main_queue(), ^{
             [imageView setImage:img];
@@ -137,6 +144,11 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *selectedPhoto = _datasource[indexPath.row];
+
+    FLPhoto *photo = [[FLPhoto alloc] initWithDictionary:selectedPhoto error:nil];
+    [[FLPhotoStore sharedStore] addUniquePhoto:photo];
+
     NSLog(@"Selected collection image");
 //    if (_delegate) {
 //        UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];

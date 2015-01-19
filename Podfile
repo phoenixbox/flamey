@@ -6,9 +6,9 @@ pod 'AFNetworking', '~> 2.5'
 pod 'Facebook-iOS-SDK', '~> 3.21'
 pod 'RTFacebookAlbum', '~> 1.3'
 pod 'ObjectiveSugar', '~> 1.1'
+pod 'JSONModel', '~> 1.0'
 end
 
 target "FlameyTests" do
 
 end
-

@@ -178,6 +178,7 @@
         NSLog(@"DONE SON");
     }
 
+    // TODO: fix this
     NSString *fileLocation = @"https://scontent-a.xx.fbcdn.net/hphotos-frc3/v/t1.0-9/s180x540/540122_10201999230921979_69170153_n.jpg?oh=b2eb9bed9e421b0b5a88649ba01642e9&oe=553216DA";
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{

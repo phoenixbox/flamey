@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Flamey-JSONModel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flamey-ObjectiveSugar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>56096C2767674A3BB6420C95</key>
+		<key>176E269057364C1C8F72D5D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BE1EE4F038B422BA04F1185</key>
+		<key>3B66208686C447819C41E24A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6A0F1FD9FFC54A1BACD56639</key>
+		<key>6E65F7CD71DD4F04A9F88C85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B9243E0D33AE44C299BA6567</key>
+		<key>7CF28E05D09E41F38C257479</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CB0EA2FA5F7341D1BB5B4AC7</key>
+		<key>81D93F8E8D364A62ADB0CB51</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D31C6FA94A434B838506727B</key>
+		<key>D1BACFC467244B3098F88EB1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E673A5A971014E3DA5DC1D36</key>
 		<dict>
 			<key>primary</key>
 			<true/>
