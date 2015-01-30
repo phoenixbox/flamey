@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Flamey-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flamey.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>176E269057364C1C8F72D5D0</key>
+		<key>32088FAB63C443EF853D9238</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B66208686C447819C41E24A</key>
+		<key>40FD10387F714E7FB8D42B3F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E65F7CD71DD4F04A9F88C85</key>
+		<key>4ACD136C38AC424188E03F00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CF28E05D09E41F38C257479</key>
+		<key>7729086109104E1FB68F9957</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>81D93F8E8D364A62ADB0CB51</key>
+		<key>835FD0513AD64AA083EE9D9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1BACFC467244B3098F88EB1</key>
+		<key>B430DF95D90C41768113A742</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E673A5A971014E3DA5DC1D36</key>
+		<key>F54A5DF0BD4E4EE1BD1634B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE8A935617354FCB8D84261F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

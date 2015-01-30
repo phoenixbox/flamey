@@ -71,6 +71,7 @@
 {
     // Retrieve required user details and persist to external server
     NSString *title = [NSString stringWithFormat:@"continue as %@", [user name]];
+    NSLog(@"%@", title);
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView

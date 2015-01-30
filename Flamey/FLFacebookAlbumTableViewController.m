@@ -37,14 +37,15 @@
     [top presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)doneSelected:(id)paramSender {
-    NSLog(@"Take the selected collection and inject them into the Selected Store");
+- (void)doneSelectingPhotos:(id)paramSender {
+    NSLog(@"Inject selections into store/pass completion block back");
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneSelected:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneSelectingPhotos:)];
 
     self.title = @"Albums";
     NSArray* permissions = [NSArray arrayWithObjects:@"user_friends", @"user_photos", nil];

@@ -9,6 +9,7 @@
 #import "FLFacebookPhotoPickerViewController.h"
 #import "FLFacebookPhotoCollectionViewCell.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #import "FLPhotoStore.h"
 #import "FLPhoto.h"
@@ -121,23 +122,14 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    FLFacebookPhotoCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
 
-    UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.contentView.frame.size.width, cell.contentView.frame.size.height)];
-    imageView.tag = 100;
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    imageView.clipsToBounds = YES;
-    [cell.contentView addSubview:imageView];
+    [cell setFrame:CGRectMake(0,0,cell.contentView.frame.size.width,cell.contentView.frame.size.height)];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.imageView.clipsToBounds = YES;
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSString *url = [_datasource[indexPath.row] objectForKey:@"URL"];
-
-        NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-        UIImage* img = [UIImage imageWithData:imgData];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [imageView setImage:img];
-        });
-    });
+    NSString *remoteURL = [_datasource[indexPath.row] objectForKey:@"URL"];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:remoteURL] placeholderImage:nil];
 
     return cell;
 }
