@@ -7,10 +7,12 @@
 //
 
 #import "FLFacebookPhotoPickerViewController.h"
-#import "FLFacebookPhotoCollectionViewCell.h"
+
 #import <FacebookSDK/FacebookSDK.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "FLPhotoCollectionViewCell.h"
+
+#import "FLFacebookPhotoCollectionViewCell.h"
 
 #import "FLPhotoStore.h"
 #import "FLPhoto.h"
@@ -19,12 +21,13 @@
 
 @property (strong) NSMutableArray* datasource;
 @property (strong) UICollectionView* collectionView;
+@property (nonatomic, assign) CGFloat cellSize;
 
 @end
 
 @implementation FLFacebookPhotoPickerViewController
 
-static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
+static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 
 - (void)viewDidLoad
 {
@@ -37,11 +40,12 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 }
 
 - (void)buildPhotoCollection {
-    _collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[self buildCollectionViewCellLayout]];
+    _collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:[self buildCollectionViewCellLayout]];
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLFacebookPhotoCollectionViewCell class])
+                                bundle:[NSBundle mainBundle]];
+    [_collectionView registerNib:nib forCellWithReuseIdentifier:kCollectionViewCellIdentifier];
 
     _collectionView.backgroundColor = [UIColor whiteColor];
-    [_collectionView registerClass:[FLFacebookPhotoCollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
-
     // Custom cell here identifier here
     [_collectionView setDelegate:self];
     [_collectionView setDataSource:self];
@@ -52,35 +56,14 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 - (UICollectionViewFlowLayout *)buildCollectionViewCellLayout {
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
     flowLayout.minimumLineSpacing = 2.5f;
-    flowLayout.minimumInteritemSpacing = 2.5f;
-    CGFloat cellSize = (self.view.frame.size.width - 5)/3;
-    flowLayout.itemSize = CGSizeMake(cellSize,cellSize);
+    flowLayout.minimumInteritemSpacing = 2.0f;
+    self.cellSize = (self.view.frame.size.width - 10)/3;
+    flowLayout.itemSize = CGSizeMake(self.cellSize,self.cellSize);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.sectionInset = UIEdgeInsetsMake(2.5f, 0.0f, 2.5f, 0.0f);
+    flowLayout.sectionInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
 
     return flowLayout;
 }
-
-//- (void)configureCollectionView {
-//    CGFloat const inset = 0;
-//    CGFloat const eachLineCount = 4.0;
-//    UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc] init];
-//    flowLayout.minimumInteritemSpacing = inset;
-//    flowLayout.minimumLineSpacing = inset;
-//    flowLayout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset);
-//    CGFloat width = (CGRectGetWidth(self.view.bounds)-(eachLineCount+1)*inset)/eachLineCount;
-//    flowLayout.itemSize = CGSizeMake(width, width);
-//
-//    _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
-//    _collectionView.delegate = self;
-//    _collectionView.dataSource = self;
-//    _collectionView.allowsMultipleSelection = YES;
-//    _collectionView.alwaysBounceVertical = YES;
-////    _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-//    _collectionView.backgroundColor = [UIColor whiteColor];
-//    [_collectionView registerClass:[FLFacebookPhotoCollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
-//    [self.view addSubview:_collectionView];
-//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -149,28 +132,24 @@ static NSString * const cellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.imageView.clipsToBounds = YES;
-    [cell.imageView setUserInteractionEnabled:YES];
-
+    FLFacebookPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCellIdentifier
+                                                                                        forIndexPath:indexPath];
     NSString *remoteURL = [_datasource[indexPath.row] objectForKey:@"URL"];
-
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:remoteURL] placeholderImage:nil];
+    cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFit;
+    [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:remoteURL] placeholderImage:nil];
 
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"%ld", (long)[indexPath row]);
     NSDictionary *selectedPhoto = _datasource[indexPath.row];
 
     FLPhoto *photo = [[FLPhoto alloc] initWithDictionary:selectedPhoto error:nil];
     [[FLPhotoStore sharedStore] addUniquePhoto:photo];
 
-    NSLog(@"Selected collection image");
-    [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
+//    [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
 //    if (_delegate) {
 //        UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
 //        UIImageView* imageView = (UIImageView*)[cell viewWithTag:100];
