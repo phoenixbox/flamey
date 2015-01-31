@@ -17,6 +17,8 @@
 #import "FLPhotoStore.h"
 #import "FLPhoto.h"
 
+#import "CollectionViewHelpers.h"
+
 @interface FLFacebookPhotoPickerViewController ()
 
 @property (strong) NSMutableArray* datasource;
@@ -40,30 +42,32 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 }
 
 - (void)buildPhotoCollection {
-    _collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:[self buildCollectionViewCellLayout]];
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLFacebookPhotoCollectionViewCell class])
-                                bundle:[NSBundle mainBundle]];
-    [_collectionView registerNib:nib forCellWithReuseIdentifier:kCollectionViewCellIdentifier];
-
-    _collectionView.backgroundColor = [UIColor whiteColor];
-    // Custom cell here identifier here
+    // Initialize the colletion to the required frame with its delegates
+    _collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:self.view.frame.size.width]];
     [_collectionView setDelegate:self];
     [_collectionView setDataSource:self];
 
+    // Fetch the nib by the class name
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLFacebookPhotoCollectionViewCell class])
+                                bundle:[NSBundle mainBundle]];
+    // Register the nib
+    [_collectionView registerNib:nib forCellWithReuseIdentifier:kCollectionViewCellIdentifier];
+
+    _collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_collectionView];
 }
 
-- (UICollectionViewFlowLayout *)buildCollectionViewCellLayout {
-    UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-    flowLayout.minimumLineSpacing = 2.5f;
-    flowLayout.minimumInteritemSpacing = 2.0f;
-    self.cellSize = (self.view.frame.size.width - 10)/3;
-    flowLayout.itemSize = CGSizeMake(self.cellSize,self.cellSize);
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.sectionInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
-
-    return flowLayout;
-}
+//- (UICollectionViewFlowLayout *)buildCollectionViewCellLayout {
+//    UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
+//    flowLayout.minimumLineSpacing = 2.5f;
+//    flowLayout.minimumInteritemSpacing = 2.5f;
+//    CGFloat cellSize = (self.view.frame.size.width - 5)/3;
+//    flowLayout.itemSize = CGSizeMake(cellSize,cellSize);
+//    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    flowLayout.sectionInset = UIEdgeInsetsMake(2.5f, 0.0f, 2.5f, 0.0f);
+//
+//    return flowLayout;
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -135,7 +139,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     FLFacebookPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCellIdentifier
                                                                                         forIndexPath:indexPath];
     NSString *remoteURL = [_datasource[indexPath.row] objectForKey:@"URL"];
-    cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFit;
+    cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
     [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:remoteURL] placeholderImage:nil];
 
     return cell;
@@ -149,13 +153,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     FLPhoto *photo = [[FLPhoto alloc] initWithDictionary:selectedPhoto error:nil];
     [[FLPhotoStore sharedStore] addUniquePhoto:photo];
 
-//    [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
-//    if (_delegate) {
-//        UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
-//        UIImageView* imageView = (UIImageView*)[cell viewWithTag:100];
-//        [_delegate faceBookViewController:self didSelectPhoto:imageView.image];
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//    }
+    NSLog(@"Store image count %@", [FLPhotoStore sharedStore]);
 }
 
 

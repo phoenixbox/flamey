@@ -11,6 +11,9 @@
 
 #import "FLFacebookAlbumTableViewController.h"
 
+// Helpers
+#import "CollectionViewHelpers.h"
+
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 @interface FLPhotosCollectionViewController ()
@@ -50,7 +53,8 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)buildPhotoCollection {
-    self._collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[self buildCollectionViewCellLayout]];
+    CGRect viewFrame = self.view.frame;
+    self._collectionView = [[UICollectionView alloc]initWithFrame:viewFrame collectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
 
     [self._collectionView registerClass:[FLPhotoCollectionViewCell class] forCellWithReuseIdentifier:kPhotoCellIdentifier];
     [self._collectionView setBackgroundColor:[UIColor whiteColor]];
@@ -61,18 +65,6 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
     [self._scrollView addSubview:self._collectionView];
 
-}
-
-- (UICollectionViewFlowLayout *)buildCollectionViewCellLayout {
-    UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-    flowLayout.minimumLineSpacing = 2.5f;
-    flowLayout.minimumInteritemSpacing = 2.5f;
-    CGFloat cellSize = (self.view.frame.size.width - 5)/3;
-    flowLayout.itemSize = CGSizeMake(cellSize,cellSize);
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.sectionInset = UIEdgeInsetsMake(2.5f, 0.0f, 2.5f, 0.0f);
-
-    return flowLayout;
 }
 
 #pragma UICollectionView Protocol Methods
