@@ -179,28 +179,6 @@
         NSLog(@"DONE SON");
     }
 
-    // TODO: fix this
-    NSString *fileLocation = @"https://scontent-a.xx.fbcdn.net/hphotos-frc3/v/t1.0-9/s180x540/540122_10201999230921979_69170153_n.jpg?oh=b2eb9bed9e421b0b5a88649ba01642e9&oe=553216DA";
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSURL *url = [NSURL URLWithString:fileLocation];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        UIImage* img = [UIImage imageWithData:data];
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [cell.imageView setImage: img];
-            [cell.imageView setContentMode:UIViewContentModeScaleAspectFill];
-
-            CGSize itemSize = CGSizeMake(80, 80);
-            UIGraphicsBeginImageContext(itemSize);
-            CGRect imageRect = CGRectMake(0, 0, itemSize.width, itemSize.height);
-            [cell.imageView drawRect:imageRect];
-            [cell.imageView setImage:UIGraphicsGetImageFromCurrentImageContext()];
-            UIGraphicsEndImageContext();
-        });
-
-    });
-
     return cell;
 }
 
@@ -215,7 +193,6 @@
     @catch (NSException *exception) {
         vc.albumId = false;
         vc.title = @"Photos of me";
-
     }
     @finally {
         NSLog(@"DID SELECT");

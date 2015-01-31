@@ -26,6 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.loginView.readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos", @"publish_actions"];
+    [self.flameyLogo setText:@"Persistence"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

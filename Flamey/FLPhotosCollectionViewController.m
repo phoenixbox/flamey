@@ -112,7 +112,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Selected cell %lu", [indexPath row]);
+    NSLog(@"Selected cell %lu", (long)[indexPath row]);
 
     // if its the add new photos button then trigger collection picker
     [FLFacebookAlbumTableViewController showWithDelegate:self];

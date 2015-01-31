@@ -11,6 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 @interface FLLoginViewController : UIViewController <FBLoginViewDelegate>
+@property (strong, nonatomic) IBOutlet UILabel *flameyLogo;
 @property (strong, nonatomic) IBOutlet FBLoginView *loginView;
 
 @end

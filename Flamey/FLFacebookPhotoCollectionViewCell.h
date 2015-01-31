@@ -19,8 +19,8 @@
 @interface FLFacebookPhotoCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) FLFacebookPhotoSelectedNumberView *numberView;
+//@property (nonatomic, strong) FLFacebookPhotoSelectedNumberView *numberView;
 
-- (void)bounce;
+//- (void)bounce;
 
 @end

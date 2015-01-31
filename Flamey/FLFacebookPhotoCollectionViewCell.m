@@ -67,40 +67,39 @@
         self.imageView.tag = 100;
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         self.imageView.clipsToBounds = YES;
-
         [self.contentView addSubview:self.imageView];
 
-        self.numberView = [[FLFacebookPhotoSelectedNumberView alloc] initWithFrame:self.bounds];
+//        self.numberView = [[FLFacebookPhotoSelectedNumberView alloc] initWithFrame:self.bounds];
     }
     return self;
 }
 
-- (void)setSelected:(BOOL)selected {
-    if (selected) {
-        [self.contentView addSubview:self.numberView];
-    } else {
-        [self.numberView removeFromSuperview];
-    }
+//- (void)setSelected:(BOOL)selected {
+//    if (selected) {
+//        [self.contentView addSubview:self.numberView];
+//    } else {
+//        [self.numberView removeFromSuperview];
+//    }
+//
+//    [super setSelected:selected];
+//}
 
-    [super setSelected:selected];
-}
+//- (void)prepareForReuse {
+//    self.numberView.index = 5;
+//
+//    [super prepareForReuse];
+//}
 
-- (void)prepareForReuse {
-    self.numberView.index = 5;
-
-    [super prepareForReuse];
-}
-
-- (void)bounce {
-    self.transform = CGAffineTransformMakeScale(0.97, 0.97);
-    [UIView animateWithDuration:0.8
-                          delay:0.0
-         usingSpringWithDamping:0.3
-          initialSpringVelocity:1
-                        options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         self.transform = CGAffineTransformIdentity;
-                     } completion:nil];
-}
+//- (void)bounce {
+//    self.transform = CGAffineTransformMakeScale(0.97, 0.97);
+//    [UIView animateWithDuration:0.8
+//                          delay:0.0
+//         usingSpringWithDamping:0.3
+//          initialSpringVelocity:1
+//                        options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction
+//                     animations:^{
+//                         self.transform = CGAffineTransformIdentity;
+//                     } completion:nil];
+//}
 
 @end
