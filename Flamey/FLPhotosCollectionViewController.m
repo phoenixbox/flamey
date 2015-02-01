@@ -84,7 +84,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSUInteger count = [[FLPhotoStore sharedStore].allPhotos count];
-    NSLog(@"*************** Sections ***************");
+
     if(count > 0) {
         [self removeEmptyCollectionMessage];
         return count;
@@ -111,7 +111,6 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"*************** Reload Data ***************");
     [_collectionView reloadData];
 }
 
@@ -123,7 +122,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)removeEmptyCollectionMessage {
-    [_collectionView.backgroundView removeFromSuperview];
+    _collectionView.backgroundView = nil;
 }
 
 - (void)renderEmptyMessage {

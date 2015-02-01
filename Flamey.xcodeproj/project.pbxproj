@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		72FF89A7FAD04AAEA02678DF /* libPods-Flamey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */; };
+		CB2EBE6E1A7DCB6800D76528 /* FLImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */; };
+		CB2EBE6F1A7DCB6800D76528 /* FLImageFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2EBE6D1A7DCB6800D76528 /* FLImageFilterViewController.xib */; };
 		CB3B7CFF1A58374B005F6402 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7CFE1A58374B005F6402 /* main.m */; };
 		CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D011A58374B005F6402 /* FLAppDelegate.m */; };
 		CB3B7D051A58374B005F6402 /* FLPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D041A58374B005F6402 /* FLPhotosCollectionViewController.m */; };
@@ -43,6 +45,9 @@
 
 /* Begin PBXFileReference section */
 		24CDF4E95656486EAD0CF8C1 /* Pods-Flamey.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.xcconfig"; path = "Pods/Pods-Flamey.xcconfig"; sourceTree = "<group>"; };
+		CB2EBE6B1A7DCB6800D76528 /* FLImageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageFilterViewController.h; sourceTree = "<group>"; };
+		CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageFilterViewController.m; sourceTree = "<group>"; };
+		CB2EBE6D1A7DCB6800D76528 /* FLImageFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLImageFilterViewController.xib; sourceTree = "<group>"; };
 		CB3B7CF91A58374B005F6402 /* Flamey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7CFD1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3B7CFE1A58374B005F6402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,6 +124,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB2EBE6A1A7DCB2300D76528 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				CB2EBE6B1A7DCB6800D76528 /* FLImageFilterViewController.h */,
+				CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */,
+				CB2EBE6D1A7DCB6800D76528 /* FLImageFilterViewController.xib */,
+			);
+			name = Filters;
+			sourceTree = "<group>";
+		};
 		CB3B7CF01A58374B005F6402 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +157,7 @@
 		CB3B7CFB1A58374B005F6402 /* Flamey */ = {
 			isa = PBXGroup;
 			children = (
+				CB2EBE6A1A7DCB2300D76528 /* Filters */,
 				CBEC72F51A7D492800F8D0AE /* Helpers */,
 				CB6CFF251A6C852800ACD39A /* Models */,
 				CB6F8D051A6C837200429133 /* Stores */,
@@ -394,6 +410,7 @@
 				CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */,
 				CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */,
 				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
+				CB2EBE6F1A7DCB6800D76528 /* FLImageFilterViewController.xib in Resources */,
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +464,7 @@
 			files = (
 				CB6CFF281A6C858C00ACD39A /* FLPhoto.m in Sources */,
 				CB3B7D081A58374B005F6402 /* FLSettingsViewController.m in Sources */,
+				CB2EBE6E1A7DCB6800D76528 /* FLImageFilterViewController.m in Sources */,
 				CB6F8CFC1A6B478F00429133 /* FLFacebookAlbumTableViewController.m in Sources */,
 				CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */,
 				CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */,
