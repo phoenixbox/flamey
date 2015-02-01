@@ -12,6 +12,7 @@
 		CB2EBE6F1A7DCB6800D76528 /* FLImageFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2EBE6D1A7DCB6800D76528 /* FLImageFilterViewController.xib */; };
 		CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */; };
 		CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */; };
+		CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */; };
 		CB3B7CFF1A58374B005F6402 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7CFE1A58374B005F6402 /* main.m */; };
 		CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D011A58374B005F6402 /* FLAppDelegate.m */; };
 		CB3B7D051A58374B005F6402 /* FLPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D041A58374B005F6402 /* FLPhotosCollectionViewController.m */; };
@@ -53,6 +54,8 @@
 		CB2EBE701A7DCE0E00D76528 /* FLFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterTableViewCell.h; sourceTree = "<group>"; };
 		CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFilterTableViewCell.m; sourceTree = "<group>"; };
 		CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFilterTableViewCell.xib; sourceTree = "<group>"; };
+		CB2EBE751A7DCED900D76528 /* FLFilterSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterSlider.h; sourceTree = "<group>"; };
+		CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFilterSlider.m; sourceTree = "<group>"; };
 		CB3B7CF91A58374B005F6402 /* Flamey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7CFD1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3B7CFE1A58374B005F6402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				CB2EBE701A7DCE0E00D76528 /* FLFilterTableViewCell.h */,
 				CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */,
 				CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */,
+				CB2EBE751A7DCED900D76528 /* FLFilterSlider.h */,
+				CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -479,6 +484,7 @@
 				CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */,
 				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
 				CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */,
+				CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */,
 				CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */,
 				CB3B7D051A58374B005F6402 /* FLPhotosCollectionViewController.m in Sources */,
 				CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */,
