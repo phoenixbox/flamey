@@ -13,4 +13,6 @@
 
 + (UICollectionViewFlowLayout *)buildLayoutWithWidth:(CGFloat)width;
 
++ (void)renderEmptyMessage:(NSString *)message forCollectionView:(UICollectionView *)view;
+
 @end

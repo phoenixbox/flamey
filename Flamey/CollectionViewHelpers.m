@@ -23,4 +23,19 @@
     return flowLayout;
 }
 
++ (void)renderEmptyMessage:(NSString *)message forCollectionView:(UICollectionView *)view {
+    UILabel *messageLabel = [[UILabel alloc] init];
+
+    NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:message attributes:@{NSFontAttributeName: [UIFont fontWithName:nil size:14.0]}];
+    [messageLabel setAttributedText:attrText];
+
+    messageLabel.textColor = [UIColor blackColor];
+    messageLabel.numberOfLines = 0;
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    [messageLabel sizeToFit];
+
+    messageLabel.center = view.center;
+    view.backgroundView = messageLabel;
+}
+
 @end

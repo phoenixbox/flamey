@@ -8,6 +8,7 @@ pod 'RTFacebookAlbum', '~> 1.3'
 pod 'ObjectiveSugar', '~> 1.1'
 pod 'JSONModel', '~> 1.0'
 pod 'SDWebImage', '~> 3.7'
+pod 'FontAwesomeKit/FontAwesome', '~> 2.1.7'
 end
 
 target "FlameyTests" do

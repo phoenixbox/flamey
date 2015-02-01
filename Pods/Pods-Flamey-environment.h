@@ -60,6 +60,18 @@
 #define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 21
 #define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 1
 
+// FontAwesomeKit/Core
+#define COCOAPODS_POD_AVAILABLE_FontAwesomeKit_Core
+#define COCOAPODS_VERSION_MAJOR_FontAwesomeKit_Core 2
+#define COCOAPODS_VERSION_MINOR_FontAwesomeKit_Core 1
+#define COCOAPODS_VERSION_PATCH_FontAwesomeKit_Core 8
+
+// FontAwesomeKit/FontAwesome
+#define COCOAPODS_POD_AVAILABLE_FontAwesomeKit_FontAwesome
+#define COCOAPODS_VERSION_MAJOR_FontAwesomeKit_FontAwesome 2
+#define COCOAPODS_VERSION_MINOR_FontAwesomeKit_FontAwesome 1
+#define COCOAPODS_VERSION_PATCH_FontAwesomeKit_FontAwesome 8
+
 // JSONModel
 #define COCOAPODS_POD_AVAILABLE_JSONModel
 #define COCOAPODS_VERSION_MAJOR_JSONModel 1

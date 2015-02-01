@@ -57,18 +57,6 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     [self.view addSubview:_collectionView];
 }
 
-//- (UICollectionViewFlowLayout *)buildCollectionViewCellLayout {
-//    UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-//    flowLayout.minimumLineSpacing = 2.5f;
-//    flowLayout.minimumInteritemSpacing = 2.5f;
-//    CGFloat cellSize = (self.view.frame.size.width - 5)/3;
-//    flowLayout.itemSize = CGSizeMake(cellSize,cellSize);
-//    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-//    flowLayout.sectionInset = UIEdgeInsetsMake(2.5f, 0.0f, 2.5f, 0.0f);
-//
-//    return flowLayout;
-//}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -129,6 +117,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     return 1;
 }
 
+// RESTART: Easy have add button and empty well message
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return _datasource.count;

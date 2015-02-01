@@ -10,6 +10,7 @@
 #import "RTFacebookAlbumViewController.h"
 
 @interface FLPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, RTFacebookViewDelegate>
+- (IBAction)showAlbums:(id)sender;
 
 @end
 

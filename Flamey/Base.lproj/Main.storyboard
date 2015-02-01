@@ -14,33 +14,36 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Flamey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvj-xz-Qus">
-                                <rect key="frame" x="272" y="35" width="56" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9w-rd-Qmh">
+                                <rect key="frame" x="0.0" y="10" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Flamey" id="e4K-Kp-1gx">
+                                        <barButtonItem key="rightBarButtonItem" title="Add" id="ELw-Il-Pax" userLabel="Add">
+                                            <connections>
+                                                <action selector="showAlbums:" destination="9pv-A4-QxB" id="dmA-vy-EgY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xvj-xz-Qus" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="15" id="MH9-4y-LUJ"/>
-                            <constraint firstItem="Xvj-xz-Qus" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="15" id="NrV-1o-68c"/>
-                            <constraint firstAttribute="centerX" secondItem="Xvj-xz-Qus" secondAttribute="centerX" id="kg0-6s-icQ"/>
-                            <constraint firstAttribute="centerY" secondItem="Xvj-xz-Qus" secondAttribute="centerY" constant="237" id="rcb-M3-a9K"/>
+                            <constraint firstItem="d9w-rd-Qmh" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="10" id="Vb1-SE-9md"/>
+                            <constraint firstItem="d9w-rd-Qmh" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="fF8-3c-l9f"/>
+                            <constraint firstAttribute="trailing" secondItem="d9w-rd-Qmh" secondAttribute="trailing" id="gtJ-Tx-f41"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="rcb-M3-a9K"/>
-                            </mask>
-                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="navBar" destination="d9w-rd-Qmh" id="0pw-G6-E6h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,7 +58,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
@@ -159,6 +162,7 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

@@ -23,6 +23,9 @@ PODS:
   - Bolts (1.1.3)
   - Facebook-iOS-SDK (3.21.1):
     - Bolts (~> 1.0)
+  - FontAwesomeKit/Core (2.1.8)
+  - FontAwesomeKit/FontAwesome (2.1.8):
+    - FontAwesomeKit/Core
   - JSONModel (1.0.1)
   - ObjectiveSugar (1.1.0)
   - RTFacebookAlbum (1.3):
@@ -34,6 +37,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - Facebook-iOS-SDK (~> 3.21)
+  - FontAwesomeKit/FontAwesome (~> 2.1.7)
   - JSONModel (~> 1.0)
   - ObjectiveSugar (~> 1.1)
   - RTFacebookAlbum (~> 1.3)
@@ -43,6 +47,7 @@ SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Facebook-iOS-SDK: 18c26e86ab25c17854a2ee2a8f60562099c6600f
+  FontAwesomeKit: a2edea3111dab107b4cc43b85881b404eb063385
   JSONModel: 634100aaacbd89811bc8a03da209356e5989c569
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   RTFacebookAlbum: c1195f248fe0b30d9d5123b11ed32cfe6cd3917b

@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Flamey-FontAwesomeKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flamey-JSONModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>32088FAB63C443EF853D9238</key>
+		<key>17E88DB90EF1411DBF978D3C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40FD10387F714E7FB8D42B3F</key>
+		<key>4B308F96FA934F01A7D57672</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4ACD136C38AC424188E03F00</key>
+		<key>4F0D05A1520F44B7ACF2CC3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7729086109104E1FB68F9957</key>
+		<key>51AAF58CD06041DE8BE62C44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>835FD0513AD64AA083EE9D9F</key>
+		<key>73F891FC64014F23810FCCAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B430DF95D90C41768113A742</key>
+		<key>7D1E4443AD9544A9BEC39BC8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F54A5DF0BD4E4EE1BD1634B4</key>
+		<key>CF249CC0F16C406B827866F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE8A935617354FCB8D84261F</key>
+		<key>F2B6648114DF4A569F4FD047</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD8584FA76D841A7BF5E0B58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
