@@ -13,6 +13,9 @@
 		CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */; };
 		CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */; };
 		CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */; };
+		CB2EBE7B1A7DD98100D76528 /* FLToolsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE7A1A7DD98100D76528 /* FLToolsStore.m */; };
+		CB2EBE7F1A7DDA7E00D76528 /* FLLateralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE7D1A7DDA7E00D76528 /* FLLateralTableViewCell.m */; };
+		CB2EBE801A7DDA7E00D76528 /* FLLateralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2EBE7E1A7DDA7E00D76528 /* FLLateralTableViewCell.xib */; };
 		CB3B7CFF1A58374B005F6402 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7CFE1A58374B005F6402 /* main.m */; };
 		CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D011A58374B005F6402 /* FLAppDelegate.m */; };
 		CB3B7D051A58374B005F6402 /* FLPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D041A58374B005F6402 /* FLPhotosCollectionViewController.m */; };
@@ -57,6 +60,13 @@
 		CB2EBE751A7DCED900D76528 /* FLFilterSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterSlider.h; sourceTree = "<group>"; };
 		CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFilterSlider.m; sourceTree = "<group>"; };
 		CB2EBE781A7DD93600D76528 /* FilterHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterHelpers.h; sourceTree = "<group>"; };
+		CB2EBE791A7DD98100D76528 /* FLToolsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLToolsStore.h; sourceTree = "<group>"; };
+		CB2EBE7A1A7DD98100D76528 /* FLToolsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLToolsStore.m; sourceTree = "<group>"; };
+		CB2EBE7C1A7DDA7E00D76528 /* FLLateralTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLateralTableViewCell.h; sourceTree = "<group>"; };
+		CB2EBE7D1A7DDA7E00D76528 /* FLLateralTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLateralTableViewCell.m; sourceTree = "<group>"; };
+		CB2EBE7E1A7DDA7E00D76528 /* FLLateralTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLLateralTableViewCell.xib; sourceTree = "<group>"; };
+		CB2EBE811A7DDB5400D76528 /* FLStyleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLStyleConstants.h; sourceTree = "<group>"; };
+		CB2EBE821A7DDB9400D76528 /* FLComponentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLComponentConstants.h; sourceTree = "<group>"; };
 		CB3B7CF91A58374B005F6402 /* Flamey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7CFD1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3B7CFE1A58374B005F6402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -144,6 +154,9 @@
 				CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */,
 				CB2EBE751A7DCED900D76528 /* FLFilterSlider.h */,
 				CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */,
+				CB2EBE7C1A7DDA7E00D76528 /* FLLateralTableViewCell.h */,
+				CB2EBE7D1A7DDA7E00D76528 /* FLLateralTableViewCell.m */,
+				CB2EBE7E1A7DDA7E00D76528 /* FLLateralTableViewCell.xib */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -240,6 +253,8 @@
 			children = (
 				CB6F8D061A6C83B700429133 /* FLPhotoStore.h */,
 				CB6F8D071A6C83B700429133 /* FLPhotoStore.m */,
+				CB2EBE791A7DD98100D76528 /* FLToolsStore.h */,
+				CB2EBE7A1A7DD98100D76528 /* FLToolsStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -252,6 +267,8 @@
 				CB4268C51A7D596900745A9F /* FLViewHelpers.h */,
 				CB4268C61A7D596900745A9F /* FLViewHelpers.m */,
 				CB2EBE781A7DD93600D76528 /* FilterHelpers.h */,
+				CB2EBE811A7DDB5400D76528 /* FLStyleConstants.h */,
+				CB2EBE821A7DDB9400D76528 /* FLComponentConstants.h */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -426,6 +443,7 @@
 				CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */,
 				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
 				CB2EBE6F1A7DCB6800D76528 /* FLImageFilterViewController.xib in Resources */,
+				CB2EBE801A7DDA7E00D76528 /* FLLateralTableViewCell.xib in Resources */,
 				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
 			);
@@ -484,6 +502,7 @@
 				CB6F8CFC1A6B478F00429133 /* FLFacebookAlbumTableViewController.m in Sources */,
 				CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */,
 				CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */,
+				CB2EBE7B1A7DD98100D76528 /* FLToolsStore.m in Sources */,
 				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
 				CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */,
 				CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */,
@@ -494,6 +513,7 @@
 				CB3B7CFF1A58374B005F6402 /* main.m in Sources */,
 				CB4268C71A7D596A00745A9F /* FLViewHelpers.m in Sources */,
 				CB3B7D321A5860C7005F6402 /* FLLoginViewController.m in Sources */,
+				CB2EBE7F1A7DDA7E00D76528 /* FLLateralTableViewCell.m in Sources */,
 				CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */,
 				CB6F8D081A6C83B700429133 /* FLPhotoStore.m in Sources */,
 			);
