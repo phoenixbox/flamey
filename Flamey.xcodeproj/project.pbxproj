@@ -56,6 +56,7 @@
 		CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFilterTableViewCell.xib; sourceTree = "<group>"; };
 		CB2EBE751A7DCED900D76528 /* FLFilterSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterSlider.h; sourceTree = "<group>"; };
 		CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFilterSlider.m; sourceTree = "<group>"; };
+		CB2EBE781A7DD93600D76528 /* FilterHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterHelpers.h; sourceTree = "<group>"; };
 		CB3B7CF91A58374B005F6402 /* Flamey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7CFD1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3B7CFE1A58374B005F6402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -250,6 +251,7 @@
 				CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */,
 				CB4268C51A7D596900745A9F /* FLViewHelpers.h */,
 				CB4268C61A7D596900745A9F /* FLViewHelpers.m */,
+				CB2EBE781A7DD93600D76528 /* FilterHelpers.h */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
