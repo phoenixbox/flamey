@@ -12,14 +12,23 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="152" height="148"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pfL-Q1-o53">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pfL-Q1-o53">
                         <rect key="frame" x="0.0" y="0.0" width="152" height="148"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="pfL-Q1-o53" secondAttribute="trailing" id="8bC-0c-8YQ"/>
+                <constraint firstAttribute="bottom" secondItem="pfL-Q1-o53" secondAttribute="bottom" id="C9L-ge-tEA"/>
+                <constraint firstItem="pfL-Q1-o53" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oSx-hG-3As"/>
+                <constraint firstItem="pfL-Q1-o53" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uDI-eN-tUL"/>
+            </constraints>
             <size key="customSize" width="152" height="148"/>
+            <connections>
+                <outlet property="imageViewBackgroundImage" destination="pfL-Q1-o53" id="sOK-Kl-kdw"/>
+            </connections>
             <point key="canvasLocation" x="836" y="536"/>
         </collectionViewCell>
     </objects>

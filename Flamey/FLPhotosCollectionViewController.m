@@ -17,6 +17,9 @@
 // Data layer
 #import "FLPhotoStore.h"
 
+// Pods
+#import <SDWebImage/UIImageView+WebCache.h>
+
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 @interface FLPhotosCollectionViewController ()
@@ -40,18 +43,6 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     [self buildPhotoCollection];
 }
 
-//- (void)addNavigationItems {
-//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(showAlbumPicker:)];
-//    NSDictionary* barButtonItemAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Georgia" size:20.0f],
-//                                              NSForegroundColorAttributeName:[UIColor colorWithRed:141.0/255.0 green:209.0/255.0 blue:205.0/255.0 alpha:1.0]
-//      };
-//
-//    [barButton setTitleTextAttributes:barButtonItemAttributes forState:UIControlStateNormal];
-//    barButton.title = @"Add";
-//    [_navBar setRightBarButtonItems:@[]];
-//    [self.navigationController.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
-//}
-
 - (void)renderScrollView {
     float height = self.view.frame.size.height - 60 - self.navigationController.navigationBar.frame.size.height;
     CGRect scrollFrame = CGRectMake(0.0f,60.0f,self.view.frame.size.width, height);
@@ -70,14 +61,18 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 - (void)buildPhotoCollection {
     CGRect viewFrame = self.view.frame;
-    _collectionView = [[UICollectionView alloc]initWithFrame:viewFrame collectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
-
-    [_collectionView registerClass:[FLPhotoCollectionViewCell class] forCellWithReuseIdentifier:kPhotoCellIdentifier];
-    [_collectionView setBackgroundColor:[UIColor whiteColor]];
-
+    _collectionView = [[UICollectionView alloc]initWithFrame:viewFrame
+                                        collectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
     // Custom cell here identifier here
     [_collectionView setDelegate:self];
     [_collectionView setDataSource:self];
+
+    // Fetch the nib by the class name
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLPhotoCollectionViewCell class])
+                                bundle:[NSBundle mainBundle]];
+    // Register the nib
+    [_collectionView registerNib:nib forCellWithReuseIdentifier:kPhotoCellIdentifier];
+    [_collectionView setBackgroundColor:[UIColor whiteColor]];
 
     [self._scrollView addSubview:_collectionView];
 
@@ -89,7 +84,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSUInteger count = [[FLPhotoStore sharedStore].allPhotos count];
-
+    NSLog(@"*************** Sections ***************");
     if(count > 0) {
         [self removeEmptyCollectionMessage];
         return count;
@@ -103,18 +98,22 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
     FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
-    [cell.editButton setTitle:@"EDIT" forState:UIControlStateNormal];
-    [cell setBackgroundColor:[UIColor blueColor]];
+    FLPhoto *photo = [[FLPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
+
+    cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
+    [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:nil];
 
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected cell %lu", (long)[indexPath row]);
-
-    // Trigger image editor
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"*************** Reload Data ***************");
+    [_collectionView reloadData];
+}
 
 #pragma RFFacebookProtocol
 

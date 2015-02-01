@@ -20,10 +20,10 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="bKm-Gz-T2V" secondAttribute="trailing" id="1hT-OH-Veu"/>
-                <constraint firstAttribute="bottom" secondItem="bKm-Gz-T2V" secondAttribute="bottom" id="JV2-i2-Cbt"/>
-                <constraint firstItem="bKm-Gz-T2V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fxA-hS-qwb"/>
-                <constraint firstItem="bKm-Gz-T2V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nTu-hI-F8K"/>
+                <constraint firstItem="bKm-Gz-T2V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4eX-on-a6a"/>
+                <constraint firstAttribute="trailing" secondItem="bKm-Gz-T2V" secondAttribute="trailing" id="9ff-OH-ORD"/>
+                <constraint firstItem="bKm-Gz-T2V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aLt-fb-HqS"/>
+                <constraint firstAttribute="bottom" secondItem="bKm-Gz-T2V" secondAttribute="bottom" id="cYb-4d-kQY"/>
             </constraints>
             <connections>
                 <outlet property="imageViewBackgroundImage" destination="bKm-Gz-T2V" id="mxT-pa-pRH"/>

@@ -39,6 +39,7 @@
 
 - (void)doneSelectingPhotos:(id)paramSender {
     NSLog(@"Inject selections into store/pass completion block back");
+
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

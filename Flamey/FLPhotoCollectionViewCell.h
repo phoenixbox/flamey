@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FLPhotoCollectionViewCell : UICollectionViewCell
-@property (strong, nonatomic) UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UIButton *editButton;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewBackgroundImage;
+
 
 @end
