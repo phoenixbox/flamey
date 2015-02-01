@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FontAwesomeKit/FAKFontAwesome.h"
 
 @interface FLViewHelpers : NSObject
+
++ (NSMutableAttributedString *)createIcon:(FAKFontAwesome *)icon withColor:(UIColor *)color;
 
 @end
