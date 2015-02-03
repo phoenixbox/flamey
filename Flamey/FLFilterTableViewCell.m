@@ -46,9 +46,9 @@
 }
 
 - (void)setCellLabel:(NSString *)copy {
-    [TAGViewHelpers formatLabel:_filterLabel withCopy:copy andFontFamily:nil];
+    [FLViewHelpers formatLabel:_filterLabel withCopy:copy andFontFamily:nil];
     [self rotateElement:_filterLabel];
-    [TAGViewHelpers sizeLabelToFit:_filterLabel numberOfLines:1];
+    [FLViewHelpers sizeLabelToFit:_filterLabel numberOfLines:1];
 }
 
 - (void)setCellImage:(UIImage *)image {
@@ -62,19 +62,13 @@
 
 - (void)setOverlayImage:(NSString *)labelName {
     UILabel *overlayLabel = [UILabel new];
-    [overlayLabel setAttributedText:[TAGViewHelpers attributeText:labelName forFontSize:25.0f andFontFamily:@"WalkwaySemiBold"]];
-    [TAGViewHelpers sizeLabelToFit:overlayLabel numberOfLines:1];
+    [overlayLabel setAttributedText:[FLViewHelpers attributeText:labelName forFontSize:25.0f andFontFamily:@"WalkwaySemiBold"]];
+    [FLViewHelpers sizeLabelToFit:overlayLabel numberOfLines:1];
     [self rotateElement:overlayLabel];
     [overlayLabel setCenter:self.filterImageContainer.center];
     [overlayLabel setTextColor:[UIColor whiteColor]];
     [self.contentView addSubview:overlayLabel];
 
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

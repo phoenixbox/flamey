@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-#import "FLPhotosCollectionViewController.h"
+#import "FLSelectedPhotosCollectionViewController.h"
 
 @protocol FLPhotosCollectionViewController;
 

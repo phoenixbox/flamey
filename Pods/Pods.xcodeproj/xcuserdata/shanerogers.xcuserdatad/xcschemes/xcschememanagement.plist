@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Flamey-GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flamey-JSONModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>17E88DB90EF1411DBF978D3C</key>
+		<key>01A9232CC3B242D9A3161831</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B308F96FA934F01A7D57672</key>
+		<key>0DDAF54104774C5F9A9A2078</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4F0D05A1520F44B7ACF2CC3B</key>
+		<key>0F473ABAA2834B1893224BFB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>51AAF58CD06041DE8BE62C44</key>
+		<key>165C7763B3734D6E8D35BBDE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73F891FC64014F23810FCCAC</key>
+		<key>46E6FA4212B34B07AE819840</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D1E4443AD9544A9BEC39BC8</key>
+		<key>6136E092B5EC423DAA0ABB2F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF249CC0F16C406B827866F4</key>
+		<key>8D5ABC5DBA014A73828C0105</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F2B6648114DF4A569F4FD047</key>
+		<key>8E16A3C49FE440E0842500C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FD8584FA76D841A7BF5E0B58</key>
+		<key>A4860C4B1F624CBCA57211D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E22147E9A5D84B0A9D36F3DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

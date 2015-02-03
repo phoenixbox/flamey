@@ -1,16 +1,10 @@
 //
-//  FirstViewController.m
+//  FLSelectedPhotosCollectionViewController.m
 //  Flamey
 //
 //  Created by Shane Rogers on 1/3/15.
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
-
-#import "FLPhotosCollectionViewController.h"
-#import "FLPhotoCollectionViewCell.h"
-
-#import "FLFacebookAlbumTableViewController.h"
-
 // Helpers
 #import "CollectionViewHelpers.h"
 
@@ -20,9 +14,15 @@
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
 
+// Components
+#import "FLSelectedPhotosCollectionViewController.h"
+#import "FLPhotoCollectionViewCell.h"
+#import "FLFacebookAlbumTableViewController.h"
+#import "FLImageFilterViewController.h"
+
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
-@interface FLPhotosCollectionViewController ()
+@interface FLSelectedPhotosCollectionViewController ()
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIScrollView *_scrollView;
@@ -30,7 +30,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 @end
 
-@implementation FLPhotosCollectionViewController
+@implementation FLSelectedPhotosCollectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,6 +107,15 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
+    FLPhoto *selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
+
+    FLImageFilterViewController *filterView = [FLImageFilterViewController new];
+
+    [filterView.photo sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
+    [self presentViewController:filterView animated:YES completion:nil];
+
     NSLog(@"Selected cell %lu", (long)[indexPath row]);
 }
 

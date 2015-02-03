@@ -28,22 +28,6 @@
 NSString *const kFiltersTable = @"filtersTable";
 NSString *const kToolsTable = @"toolsTable";
 
-
-@implementation FLImageFilterViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-@end
-
-
 @interface FLImageFilterViewController ()
 
 @property (nonatomic, strong) UITableView *_lateralTable;
@@ -96,10 +80,10 @@ NSString *const kToolsTable = @"toolsTable";
     if (_postImage) {
         [self.filterImageView setImage:_postImage];
 
-        TAGFiltersStore *filterStore = [TAGFiltersStore sharedStore];
+        FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
         [filterStore generateFiltersForImage:_postImage];
 
-        TAGToolsStore *toolStore = [TAGToolsStore sharedStore];
+        FLToolsStore *toolStore = [FLToolsStore sharedStore];
         [toolStore generateToolOptions];
 
         [self addFilterImageViewEventHandlers];
@@ -158,7 +142,7 @@ NSString *const kToolsTable = @"toolsTable";
     [self._lateralTable setTransform:rotate];
     // VIP: Must set the frame again on the table after rotation
     [self._lateralTable setFrame:piecesRect];
-    [self._lateralTable registerClass:[UITableViewCell class] forCellReuseIdentifier:kTAGFilterTableViewCellIdentifier];
+    [self._lateralTable registerClass:[UITableViewCell class] forCellReuseIdentifier:kFLFilterTableViewCellIdentifier];
     self._lateralTable.delegate = self;
     self._lateralTable.dataSource = self;
     self._lateralTable.alwaysBounceVertical = NO;
@@ -179,11 +163,11 @@ NSString *const kToolsTable = @"toolsTable";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([self isFiltersTable]) {
-        TAGFiltersStore *filterStore = [TAGFiltersStore sharedStore];
+        FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
 
         return [[filterStore allFilters] count];
     } else if ([self isToolsTable]) {
-        TAGToolsStore *toolStore = [TAGToolsStore sharedStore];
+        FLToolsStore *toolStore = [FLToolsStore sharedStore];
 
         return [[toolStore allTools] count];
     }
@@ -191,12 +175,12 @@ NSString *const kToolsTable = @"toolsTable";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TAGFiltersStore *filterStore = [TAGFiltersStore sharedStore];
-    TAGToolsStore *toolStore = [TAGToolsStore sharedStore];
+    FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
+    FLToolsStore *toolStore = [FLToolsStore sharedStore];
 
     // Load the custom xib
-    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kTAGFilterTableViewCellIdentifier owner:nil options:nil];
-    TAGFilterTableViewCell *cell = [nibContents lastObject];
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kFLFilterTableViewCellIdentifier owner:nil options:nil];
+    FLFilterTableViewCell *cell = [nibContents lastObject];
 
     if([tableView isEqual:self._lateralTable]){
 
@@ -244,11 +228,11 @@ NSString *const kToolsTable = @"toolsTable";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TAGFilterTableViewCell *cell = (TAGFilterTableViewCell *)[self._lateralTable cellForRowAtIndexPath:indexPath];
+    FLFilterTableViewCell *cell = (FLFilterTableViewCell *)[self._lateralTable cellForRowAtIndexPath:indexPath];
     [cell.selectionIndicator setHidden:NO];
 
     if ([self isFiltersTable]) {
-        TAGFiltersStore *filterStore = [TAGFiltersStore sharedStore];
+        FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
         NSDictionary *targetFilter = [filterStore.allFilters objectAtIndex:[indexPath row]];
 
         _filterImageView.image = [targetFilter objectForKey:@"filteredImage"];
@@ -258,7 +242,7 @@ NSString *const kToolsTable = @"toolsTable";
 
         filterType = (ARTToolType)indexPath.row;
 
-        [TAGToolsStore setupSlider:self.slider forFilterType:(ARTToolType)indexPath.row];
+        [FLToolsStore setupSlider:self.slider forFilterType:(ARTToolType)indexPath.row];
 
         float lastValue = [[self._sliderValues objectForKey:[NSNumber numberWithInt:filterType]] floatValue];
 
@@ -271,7 +255,7 @@ NSString *const kToolsTable = @"toolsTable";
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TAGFilterTableViewCell *cell = (TAGFilterTableViewCell *)[self._lateralTable cellForRowAtIndexPath:indexPath];
+    FLFilterTableViewCell *cell = (FLFilterTableViewCell *)[self._lateralTable cellForRowAtIndexPath:indexPath];
 
     [cell.selectionIndicator setHidden:YES];
 }

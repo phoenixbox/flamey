@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FLFilterSliderView.h"
+#import "FLFilterSlider.h"
 #import "FLFilterHelpers.h"
 #import "FLToolsStore.h"
 
@@ -15,9 +15,7 @@
     ARTToolType filterType;
 }
 
-@end
-
-@property (strong, nonatomic) UIImage *postImage;
+@property (strong, nonatomic) UIImageView *photo;
 
 // HEADER
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
@@ -46,3 +44,5 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 - (IBAction)saveAdjustment:(id)sender;
 @property (strong, nonatomic) IBOutlet UISlider *slider;
+
+@end
