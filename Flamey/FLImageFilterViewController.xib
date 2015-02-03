@@ -6,7 +6,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLImageFilterViewController">
             <connections>
+                <outlet property="backButton" destination="2iC-v0-Qgi" id="CH3-Y5-gSf"/>
+                <outlet property="cancelAdjustmentButton" destination="6Dj-fW-cPb" id="rLM-pW-MIa"/>
+                <outlet property="filterImageView" destination="eAP-qs-xad" id="8Sv-KJ-ZDQ"/>
+                <outlet property="headerLabel" destination="J72-bd-FIc" id="fDq-pA-c4F"/>
+                <outlet property="headerView" destination="QPm-hr-Zeu" id="6JQ-c8-mb2"/>
                 <outlet property="photoImageView" destination="eAP-qs-xad" id="Mf8-dp-KPS"/>
+                <outlet property="saveAdjustmentButton" destination="Wz6-CI-EcW" id="jQK-PV-ypL"/>
+                <outlet property="saveImageButton" destination="nVX-bc-2Vb" id="jYq-mj-7ss"/>
+                <outlet property="slider" destination="aEu-kz-fMO" id="wAd-aQ-R2M"/>
+                <outlet property="sliderView" destination="Yte-rm-PT7" id="CNd-B5-ZSK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPm-hr-Zeu">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPm-hr-Zeu" userLabel="HeaderView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTERS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J72-bd-FIc">
@@ -30,6 +39,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="saveImage:" destination="-1" eventType="touchUpInside" id="Z09-Me-gEQ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iC-v0-Qgi">
                             <rect key="frame" x="30" y="25" width="44" height="30"/>
@@ -37,6 +49,9 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="goBack:" destination="-1" eventType="touchUpInside" id="3v0-I3-yPq"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,6 +76,9 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="cancelAdjustment:" destination="-1" eventType="touchUpInside" id="Alk-HY-IpM"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wz6-CI-EcW">
                             <rect key="frame" x="519" y="129" width="41" height="30"/>
@@ -68,9 +86,15 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="saveAdjustment:" destination="-1" eventType="touchUpInside" id="FcZ-jr-ZRZ"/>
+                            </connections>
                         </button>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aEu-kz-fMO">
                             <rect key="frame" x="107" y="40" width="386" height="31"/>
+                            <connections>
+                                <action selector="sliding:" destination="-1" eventType="valueChanged" id="nrr-jW-8OP"/>
+                            </connections>
                         </slider>
                     </subviews>
                     <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>

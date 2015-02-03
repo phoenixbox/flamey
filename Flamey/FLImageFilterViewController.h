@@ -18,11 +18,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
 // HEADER
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 - (IBAction)goBack:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *headerLabel;
-@property (strong, nonatomic) IBOutlet UIButton *nextButton;
-- (IBAction)goNext:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *saveImageButton;
+- (IBAction)saveImage:(id)sender;
 
 // IMAGE VIEW
 @property (strong, nonatomic) IBOutlet UIImageView *filterImageView;
@@ -39,9 +40,9 @@
 // SLIDER
 @property (strong, nonatomic) IBOutlet UIView *sliderView;
 - (IBAction)sliding:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+@property (strong, nonatomic) IBOutlet UIButton *cancelAdjustmentButton;
 - (IBAction)cancelAdjustment:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+@property (strong, nonatomic) IBOutlet UIButton *saveAdjustmentButton;
 - (IBAction)saveAdjustment:(id)sender;
 @property (strong, nonatomic) IBOutlet UISlider *slider;
 

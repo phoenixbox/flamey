@@ -279,7 +279,7 @@ NSString *const kToolsTable = @"toolsTable";
     //    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)goNext:(id)sender {
+- (IBAction)saveImage:(id)sender {
     NSLog(@"goNext");
 }
 
