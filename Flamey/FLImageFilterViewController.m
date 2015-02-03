@@ -77,11 +77,9 @@ NSString *const kToolsTable = @"toolsTable";
 
     [self hideAndLowerSliderView];
 
-    if (_postImage) {
-        [self.filterImageView setImage:_postImage];
-
+    if (_photoImageView.image) {
         FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
-        [filterStore generateFiltersForImage:_postImage];
+        [filterStore generateFiltersForImage:_photoImageView.image];
 
         FLToolsStore *toolStore = [FLToolsStore sharedStore];
         [toolStore generateToolOptions];
@@ -108,7 +106,7 @@ NSString *const kToolsTable = @"toolsTable";
         // Cache the last stateful image
         self._cachedImage = [self.filterImageView image];
         // Show the original
-        [self.filterImageView setImage:_postImage];
+        [self.filterImageView setImage:_photoImageView.image];
     } else if (state == UIGestureRecognizerStateCancelled || state == UIGestureRecognizerStateFailed || state == UIGestureRecognizerStateEnded) {
         // Reset the imageView with the cached image
         [self.filterImageView setImage:self._cachedImage];

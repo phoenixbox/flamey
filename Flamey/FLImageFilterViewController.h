@@ -15,7 +15,7 @@
     ARTToolType filterType;
 }
 
-@property (strong, nonatomic) UIImageView *photo;
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
 // HEADER
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
