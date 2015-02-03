@@ -24,30 +24,32 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAVE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyG-rA-ft3">
-                            <rect key="frame" x="527" y="29" width="43" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BACK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTs-vj-0aS">
-                            <rect key="frame" x="30" y="29" width="47" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVX-bc-2Vb">
+                            <rect key="frame" x="520" y="25" width="50" height="30"/>
+                            <state key="normal" title="SAVE">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iC-v0-Qgi">
+                            <rect key="frame" x="30" y="25" width="44" height="30"/>
+                            <state key="normal" title="BACK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="nVX-bc-2Vb" firstAttribute="leading" secondItem="QPm-hr-Zeu" secondAttribute="leading" constant="520" id="0IE-Vd-oCI"/>
+                        <constraint firstAttribute="trailing" secondItem="2iC-v0-Qgi" secondAttribute="trailing" constant="526" id="4LF-mo-gd8"/>
+                        <constraint firstAttribute="trailing" secondItem="nVX-bc-2Vb" secondAttribute="trailing" constant="30" id="ABv-mH-DkP"/>
+                        <constraint firstAttribute="bottom" secondItem="2iC-v0-Qgi" secondAttribute="bottom" constant="5" id="DiS-OE-y4G"/>
                         <constraint firstItem="J72-bd-FIc" firstAttribute="leading" secondItem="QPm-hr-Zeu" secondAttribute="leading" constant="267" id="U1p-kN-eYd"/>
-                        <constraint firstAttribute="bottom" secondItem="zyG-rA-ft3" secondAttribute="bottom" constant="10" id="ddG-YT-8yI"/>
-                        <constraint firstAttribute="bottom" secondItem="BTs-vj-0aS" secondAttribute="bottom" constant="10" id="f51-co-c7l"/>
-                        <constraint firstAttribute="trailing" secondItem="zyG-rA-ft3" secondAttribute="trailing" constant="30" id="gbn-uL-bTD"/>
+                        <constraint firstItem="2iC-v0-Qgi" firstAttribute="leading" secondItem="QPm-hr-Zeu" secondAttribute="leading" constant="30" id="h3s-3r-Vgc"/>
                         <constraint firstAttribute="bottom" secondItem="J72-bd-FIc" secondAttribute="bottom" constant="10" id="lb1-dP-6Al"/>
-                        <constraint firstItem="BTs-vj-0aS" firstAttribute="leading" secondItem="QPm-hr-Zeu" secondAttribute="leading" constant="30" id="vQT-Ac-fzG"/>
-                        <constraint firstItem="zyG-rA-ft3" firstAttribute="leading" secondItem="QPm-hr-Zeu" secondAttribute="leading" constant="527" id="vpr-L8-EL0"/>
+                        <constraint firstAttribute="bottom" secondItem="nVX-bc-2Vb" secondAttribute="bottom" constant="5" id="lxd-ys-fpo"/>
                         <constraint firstAttribute="trailing" secondItem="J72-bd-FIc" secondAttribute="trailing" constant="267" id="wF7-W2-9zg"/>
-                        <constraint firstAttribute="trailing" secondItem="BTs-vj-0aS" secondAttribute="trailing" constant="523" id="x2q-2D-S6w"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-rm-PT7" userLabel="SliderView">
