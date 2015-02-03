@@ -6,9 +6,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLImageFilterViewController">
             <connections>
+                <outlet property="adjustmentsButton" destination="XGS-I2-dqh" id="jzL-r1-BAg"/>
+                <outlet property="adjustmentsView" destination="cKZ-NE-Trm" id="9fo-ei-aTf"/>
                 <outlet property="backButton" destination="2iC-v0-Qgi" id="CH3-Y5-gSf"/>
+                <outlet property="brightnessButton" destination="xiX-9K-ZKI" id="sGg-bF-Zng"/>
                 <outlet property="cancelAdjustmentButton" destination="6Dj-fW-cPb" id="rLM-pW-MIa"/>
                 <outlet property="filterImageView" destination="eAP-qs-xad" id="8Sv-KJ-ZDQ"/>
+                <outlet property="filtersButton" destination="6CM-D1-H2Z" id="hr6-kQ-QgX"/>
                 <outlet property="headerLabel" destination="J72-bd-FIc" id="fDq-pA-c4F"/>
                 <outlet property="headerView" destination="QPm-hr-Zeu" id="6JQ-c8-mb2"/>
                 <outlet property="photoImageView" destination="eAP-qs-xad" id="Mf8-dp-KPS"/>
@@ -24,9 +28,55 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKZ-NE-Trm">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKZ-NE-Trm" userLabel="AjdustmentsView">
                     <rect key="frame" x="0.0" y="418" width="600" height="182"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGS-I2-dqh" userLabel="ADJUST">
+                            <rect key="frame" x="511" y="20" width="59" height="30"/>
+                            <state key="normal" title="ADJUST">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="revealTools:" destination="-1" eventType="touchUpInside" id="xkV-Eh-VbA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiX-9K-ZKI">
+                            <rect key="frame" x="30" y="20" width="50" height="30"/>
+                            <state key="normal" title="BRIGHT">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="revealBrightness:" destination="-1" eventType="touchUpInside" id="uq0-A1-PKf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6CM-D1-H2Z">
+                            <rect key="frame" x="277" y="20" width="46" height="30"/>
+                            <state key="normal" title="FILTERS">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="revealFilters:" destination="-1" eventType="touchUpInside" id="D4y-3H-Wh2"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="XGS-I2-dqh" firstAttribute="leading" secondItem="cKZ-NE-Trm" secondAttribute="leading" constant="511" id="0yX-S2-bUn"/>
+                        <constraint firstItem="6CM-D1-H2Z" firstAttribute="leading" secondItem="cKZ-NE-Trm" secondAttribute="leading" constant="277" id="Kvt-iT-DXI"/>
+                        <constraint firstItem="6CM-D1-H2Z" firstAttribute="top" secondItem="cKZ-NE-Trm" secondAttribute="top" constant="20" id="Lii-27-vCR"/>
+                        <constraint firstAttribute="trailing" secondItem="6CM-D1-H2Z" secondAttribute="trailing" constant="277" id="QOg-Hf-FXR"/>
+                        <constraint firstAttribute="trailing" secondItem="xiX-9K-ZKI" secondAttribute="trailing" constant="277" id="Srs-NI-0kB"/>
+                        <constraint firstItem="xiX-9K-ZKI" firstAttribute="leading" secondItem="cKZ-NE-Trm" secondAttribute="leading" constant="30" id="aAP-1V-wa3"/>
+                        <constraint firstItem="XGS-I2-dqh" firstAttribute="top" secondItem="cKZ-NE-Trm" secondAttribute="top" constant="20" id="moY-vn-ClA"/>
+                        <constraint firstAttribute="trailing" secondItem="xiX-9K-ZKI" secondAttribute="trailing" constant="520" id="tdD-UR-4Lt"/>
+                        <constraint firstItem="xiX-9K-ZKI" firstAttribute="top" secondItem="cKZ-NE-Trm" secondAttribute="top" constant="20" id="wCZ-ur-hXE"/>
+                        <constraint firstAttribute="trailing" secondItem="XGS-I2-dqh" secondAttribute="trailing" constant="30" id="zQh-oh-xr7"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Srs-NI-0kB"/>
+                        </mask>
+                    </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPm-hr-Zeu" userLabel="HeaderView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
