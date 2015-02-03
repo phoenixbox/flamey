@@ -24,6 +24,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKZ-NE-Trm">
+                    <rect key="frame" x="0.0" y="418" width="600" height="182"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPm-hr-Zeu" userLabel="HeaderView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                     <subviews>
@@ -124,15 +128,20 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="eAP-qs-xad" secondAttribute="bottom" constant="182" id="6dl-a0-ll2"/>
+                <constraint firstItem="cKZ-NE-Trm" firstAttribute="width" secondItem="Yte-rm-PT7" secondAttribute="width" id="8MQ-fJ-akk"/>
+                <constraint firstItem="cKZ-NE-Trm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EhB-5y-Hr4"/>
                 <constraint firstItem="QPm-hr-Zeu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hq9-7q-MHf"/>
                 <constraint firstItem="eAP-qs-xad" firstAttribute="top" secondItem="QPm-hr-Zeu" secondAttribute="bottom" id="InD-hG-5IX"/>
                 <constraint firstAttribute="bottom" secondItem="Yte-rm-PT7" secondAttribute="bottom" id="R3N-2m-Yg9"/>
                 <constraint firstItem="eAP-qs-xad" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SRq-QO-8Cp"/>
                 <constraint firstItem="Yte-rm-PT7" firstAttribute="top" secondItem="eAP-qs-xad" secondAttribute="bottom" id="Spy-Ay-zhU"/>
                 <constraint firstAttribute="bottom" secondItem="QPm-hr-Zeu" secondAttribute="bottom" constant="540" id="U8O-zJ-SOO"/>
+                <constraint firstAttribute="bottom" secondItem="cKZ-NE-Trm" secondAttribute="bottom" id="Xoe-vC-qN7"/>
+                <constraint firstItem="cKZ-NE-Trm" firstAttribute="top" secondItem="Yte-rm-PT7" secondAttribute="top" id="ZMl-f1-rrf"/>
                 <constraint firstAttribute="trailing" secondItem="QPm-hr-Zeu" secondAttribute="trailing" id="gx8-QN-zHm"/>
                 <constraint firstAttribute="trailing" secondItem="eAP-qs-xad" secondAttribute="trailing" id="iAy-09-JSx"/>
                 <constraint firstAttribute="trailing" secondItem="Yte-rm-PT7" secondAttribute="trailing" id="jee-Fr-wey"/>
+                <constraint firstAttribute="trailing" secondItem="cKZ-NE-Trm" secondAttribute="trailing" id="kWb-pn-pCT"/>
                 <constraint firstItem="QPm-hr-Zeu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="o5Y-xz-pny"/>
                 <constraint firstItem="Yte-rm-PT7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ySb-hW-Nhy"/>
             </constraints>
