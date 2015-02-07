@@ -23,10 +23,7 @@
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 @interface FLSelectedPhotosCollectionViewController ()
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-//@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UIScrollView *_scrollView;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @end
@@ -41,31 +38,16 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     [self updateCollection];
 }
 
-- (void)renderScrollView {
-    float height = self.view.frame.size.height - 60 - self.navigationController.navigationBar.frame.size.height;
-    CGRect scrollFrame = CGRectMake(0.0f,60.0f,self.view.frame.size.width, height);
-    
-    self._scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
-    self._scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    self._scrollView.delegate = self;
-
-    [self.view addSubview:self._scrollView];
-}
-
-- (void)resetScrollContentSize {
-    float yCoord = CGRectGetMaxY(self.view.frame);
-    [self._scrollView setContentSize:CGSizeMake(self.view.frame.size.width,yCoord+50)];
-}
 
 - (void)updateCollection {
     CGRect viewFrame = self.view.frame;
-    [_collectionView setCollectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
+    [_selectionCollection setCollectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
 
     // Fetch the nib by the class name
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLPhotoCollectionViewCell class])
                                 bundle:[NSBundle mainBundle]];
     // Register the nib
-    [_collectionView registerNib:nib forCellWithReuseIdentifier:kPhotoCellIdentifier];
+    [_selectionCollection registerNib:nib forCellWithReuseIdentifier:kPhotoCellIdentifier];
 }
 
 #pragma UICollectionView Protocol Methods
