@@ -17,24 +17,13 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
-// HEADER
-@property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (strong, nonatomic) IBOutlet UIButton *backButton;
-- (IBAction)goBack:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *headerLabel;
-@property (strong, nonatomic) IBOutlet UIButton *saveImageButton;
-- (IBAction)saveImage:(id)sender;
-
-// IMAGE VIEW
-@property (strong, nonatomic) IBOutlet UIImageView *filterImageView;
-
 // ADJUSTMENTS
 @property (strong, nonatomic) IBOutlet UIView *adjustmentsView;
 @property (strong, nonatomic) IBOutlet UIButton *filtersButton;
 - (IBAction)revealFilters:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *brightnessButton;
 - (IBAction)revealBrightness:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *adjustmentsButton;
+@property (strong, nonatomic) IBOutlet UIButton *toolsButton;
 - (IBAction)revealTools:(id)sender;
 
 // SLIDER
