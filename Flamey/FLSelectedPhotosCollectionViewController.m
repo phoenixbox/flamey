@@ -23,8 +23,9 @@
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
 @interface FLSelectedPhotosCollectionViewController ()
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic, strong) UICollectionView *collectionView;
+//@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIScrollView *_scrollView;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 
@@ -37,10 +38,7 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.translucent = NO;
-//    [self addNavigationItems];
-    [self renderScrollView];
-    [self resetScrollContentSize];
-    [self buildPhotoCollection];
+    [self updateCollection];
 }
 
 - (void)renderScrollView {
@@ -59,23 +57,15 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     [self._scrollView setContentSize:CGSizeMake(self.view.frame.size.width,yCoord+50)];
 }
 
-- (void)buildPhotoCollection {
+- (void)updateCollection {
     CGRect viewFrame = self.view.frame;
-    _collectionView = [[UICollectionView alloc]initWithFrame:viewFrame
-                                        collectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
-    // Custom cell here identifier here
-    [_collectionView setDelegate:self];
-    [_collectionView setDataSource:self];
+    [_collectionView setCollectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
 
     // Fetch the nib by the class name
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLPhotoCollectionViewCell class])
                                 bundle:[NSBundle mainBundle]];
     // Register the nib
     [_collectionView registerNib:nib forCellWithReuseIdentifier:kPhotoCellIdentifier];
-    [_collectionView setBackgroundColor:[UIColor whiteColor]];
-
-    [self._scrollView addSubview:_collectionView];
-
 }
 
 #pragma UICollectionView Protocol Methods
@@ -95,7 +85,6 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
     FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
     FLPhoto *photo = [[FLPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
@@ -113,14 +102,14 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 
     FLImageFilterViewController *filterView = [FLImageFilterViewController new];
 
-    [filterView.photo sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
+    [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
     [self presentViewController:filterView animated:YES completion:nil];
 
     NSLog(@"Selected cell %lu", (long)[indexPath row]);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [_collectionView reloadData];
+    [_selectionCollection reloadData];
 }
 
 #pragma RFFacebookProtocol
@@ -131,11 +120,11 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)removeEmptyCollectionMessage {
-    _collectionView.backgroundView = nil;
+    _selectionCollection.backgroundView = nil;
 }
 
 - (void)renderEmptyMessage {
-    [CollectionViewHelpers renderEmptyMessage:@"Tap \"Add\" to select some of your Facebook photos to edit" forCollectionView:_collectionView];
+    [CollectionViewHelpers renderEmptyMessage:@"Tap \"Add\" to select some of your Facebook photos to edit" forCollectionView:_selectionCollection];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -143,7 +132,4 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)showAlbums:(id)sender {
-    [FLFacebookAlbumTableViewController showWithDelegate:self];
-}
 @end

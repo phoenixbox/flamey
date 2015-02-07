@@ -221,8 +221,8 @@ NSString *const kToolsTable = @"toolsTable";
 
 // NOTE: Auto select the first cell so we can trigger removal of the selection indicator on first alternate row selection
 - (void)viewWillAppear:(BOOL)animated {
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-    [self._lateralTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+//    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+//    [self._lateralTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

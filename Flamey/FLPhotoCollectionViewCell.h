@@ -12,5 +12,4 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBackgroundImage;
 
-
 @end

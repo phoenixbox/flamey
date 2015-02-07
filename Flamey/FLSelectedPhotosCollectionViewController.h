@@ -11,7 +11,7 @@
 
 @interface FLSelectedPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, RTFacebookViewDelegate>
 
-- (IBAction)showAlbums:(id)sender;
+@property (weak, nonatomic) IBOutlet UICollectionView *selectionCollection;
 
 @end
 

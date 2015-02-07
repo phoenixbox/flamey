@@ -22,6 +22,7 @@
 
 +(void)showWithDelegate:(id<FLPhotosCollectionViewController>)delegate
 {
+    // Not hit with the interface builder
     FLFacebookAlbumTableViewController* albumTableView = [[FLFacebookAlbumTableViewController alloc] initWithStyle:UITableViewStylePlain];
     UIViewController* top = [UIApplication sharedApplication].keyWindow.rootViewController;
 
@@ -206,6 +207,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+    NSLog(@"Required for an unwinding segue");
 }
 
 /*

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		72FF89A7FAD04AAEA02678DF /* libPods-Flamey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */; };
+		CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2A90B71A812027005AFB08 /* FLFilterViewHeader.xib */; };
 		CB2EBE6E1A7DCB6800D76528 /* FLImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */; };
 		CB2EBE6F1A7DCB6800D76528 /* FLImageFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2EBE6D1A7DCB6800D76528 /* FLImageFilterViewController.xib */; };
 		CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		24CDF4E95656486EAD0CF8C1 /* Pods-Flamey.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.xcconfig"; path = "Pods/Pods-Flamey.xcconfig"; sourceTree = "<group>"; };
+		CB2A90B71A812027005AFB08 /* FLFilterViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFilterViewHeader.xib; sourceTree = "<group>"; };
 		CB2EBE6B1A7DCB6800D76528 /* FLImageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageFilterViewController.h; sourceTree = "<group>"; };
 		CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageFilterViewController.m; sourceTree = "<group>"; };
 		CB2EBE6D1A7DCB6800D76528 /* FLImageFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLImageFilterViewController.xib; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				CB2EBE7C1A7DDA7E00D76528 /* FLLateralTableViewCell.h */,
 				CB2EBE7D1A7DDA7E00D76528 /* FLLateralTableViewCell.m */,
 				CB2EBE7E1A7DDA7E00D76528 /* FLLateralTableViewCell.xib */,
+				CB2A90B71A812027005AFB08 /* FLFilterViewHeader.xib */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				CB2EBE801A7DDA7E00D76528 /* FLLateralTableViewCell.xib in Resources */,
 				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
+				CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

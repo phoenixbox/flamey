@@ -5,49 +5,183 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--SelectionCollection-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FLSelectedPhotosCollectionViewController" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" userLabel="SelectionCollection" customClass="FLSelectedPhotosCollectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9w-rd-Qmh">
-                                <rect key="frame" x="0.0" y="10" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Flamey" id="e4K-Kp-1gx">
                                         <barButtonItem key="rightBarButtonItem" title="Add" id="ELw-Il-Pax" userLabel="Add">
                                             <connections>
                                                 <action selector="showAlbums:" destination="9pv-A4-QxB" id="dmA-vy-EgY"/>
+                                                <segue destination="VUx-Ch-lCa" kind="presentation" id="dj5-24-0YJ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M1N-X6-jms">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n7C-9j-zRP">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FLPhotoCollectionViewCell" id="K2K-b9-MXA">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="ZSt-PL-uFa"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="AeU-Ei-czL"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="d9w-rd-Qmh" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="10" id="Vb1-SE-9md"/>
+                            <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="ByE-gA-X6G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M1N-X6-jms" secondAttribute="trailing" constant="-16" id="SY2-MK-IMk"/>
+                            <constraint firstItem="d9w-rd-Qmh" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Vb1-SE-9md"/>
+                            <constraint firstItem="M1N-X6-jms" firstAttribute="top" secondItem="d9w-rd-Qmh" secondAttribute="bottom" id="X5k-Br-40O"/>
                             <constraint firstItem="d9w-rd-Qmh" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="fF8-3c-l9f"/>
+                            <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="fSb-8V-mx5"/>
                             <constraint firstAttribute="trailing" secondItem="d9w-rd-Qmh" secondAttribute="trailing" id="gtJ-Tx-f41"/>
+                            <constraint firstItem="M1N-X6-jms" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailing" id="pXB-UA-88o"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="M1N-X6-jms" secondAttribute="bottom" id="rMC-0C-KWb"/>
+                            <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="vZt-kD-HRh"/>
+                            <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="xDG-cn-Bcd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ByE-gA-X6G"/>
+                                <exclude reference="fSb-8V-mx5"/>
+                                <exclude reference="pXB-UA-88o"/>
+                                <exclude reference="vZt-kD-HRh"/>
+                            </mask>
+                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="collectionView" destination="M1N-X6-jms" id="STf-a0-dMB"/>
                         <outlet property="navBar" destination="d9w-rd-Qmh" id="0pw-G6-E6h"/>
+                        <outlet property="selectionCollection" destination="M1N-X6-jms" id="Eu2-Yy-h6r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-266"/>
+            <point key="canvasLocation" x="855.5" y="-266.5"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="LSc-9l-IaP">
+            <objects>
+                <tableViewController id="bxD-8Z-llg" customClass="FLFacebookAlbumTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zTw-S6-SVe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="bxD-8Z-llg" id="0vL-iE-D3L"/>
+                            <outlet property="delegate" destination="bxD-8Z-llg" id="zit-Yq-XeP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="KpD-nT-L3N">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="JR4-ew-QuD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S7x-5g-HPH">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xPq-lg-bB7" kind="unwind" unwindAction="prepareForUnwind:" id="vi2-2A-NEi"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="albumTable" destination="zTw-S6-SVe" id="dfq-tW-3cb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V5J-Vi-mLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xPq-lg-bB7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1821.5" y="-266.5"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="qhl-sP-Vxt">
+            <objects>
+                <viewController id="yS5-X9-jY8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QDO-6C-ioE"/>
+                        <viewControllerLayoutGuide type="bottom" id="ecW-1J-7nY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aJa-4t-Xvo">
+                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Md2-NA-le4">
+                                <rect key="frame" x="166" y="314" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="aoy-j2-Wzh">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="LBl-EM-Tn7">
+                            <connections>
+                                <segue destination="BqU-OX-sun" kind="unwind" unwindAction="prepareForUnwind:" id="jpk-ls-aMS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VC4-EC-64h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="BqU-OX-sun" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2387.5" y="-266.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="O4A-Q2-lOJ">
+            <objects>
+                <navigationController id="VUx-Ch-lCa" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gtk-Ve-KSR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bxD-8Z-llg" kind="relationship" relationship="rootViewController" id="deN-LZ-rL3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CZ8-K9-WDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1336.5" y="-266.5"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -113,7 +247,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="mMx-Yg-WLr" firstAttribute="centerX" secondItem="ELJ-hF-zqU" secondAttribute="centerX" id="6fh-c0-aDC"/>
                                     <constraint firstAttribute="bottom" secondItem="ELJ-hF-zqU" secondAttribute="bottom" constant="400" id="Bim-SI-zOH"/>

@@ -13,7 +13,8 @@
 
 @protocol FLPhotosCollectionViewController;
 
-@interface FLFacebookAlbumTableViewController : UITableViewController <UIAlertViewDelegate>
+@interface FLFacebookAlbumTableViewController : UITableViewController <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *albumTable;
 
 +(void)showWithDelegate:(id<FLPhotosCollectionViewController>)delegate;
 
