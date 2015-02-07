@@ -77,17 +77,27 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
+//    FLPhoto *selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
+//
+//    FLImageFilterViewController *filterView = [FLImageFilterViewController new];
+//
+//    [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
+//    [self presentViewController:filterView animated:YES completion:nil];
 
-    FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
-    FLPhoto *selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
+//    NSLog(@"Selected cell %lu", (long)[indexPath row]);
+//}
 
-    FLImageFilterViewController *filterView = [FLImageFilterViewController new];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"pushToImageEditor"]) {
+        NSIndexPath *indexPath = [[_selectionCollection indexPathsForSelectedItems] lastObject];
+        FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
+        FLPhoto *selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
 
-    [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
-    [self presentViewController:filterView animated:YES completion:nil];
-
-    NSLog(@"Selected cell %lu", (long)[indexPath row]);
+        FLImageFilterViewController *filterView = segue.destinationViewController;
+        [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
