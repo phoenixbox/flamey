@@ -7,6 +7,7 @@
 //
 // Helpers
 #import "CollectionViewHelpers.h"
+#import <UIKit/UIKit.h>
 
 // Data layer
 #import "FLPhotoStore.h"
@@ -77,7 +78,8 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     return cell;
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
 //    FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
 //    FLPhoto *selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
 //
@@ -86,8 +88,10 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 //    [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
 //    [self presentViewController:filterView animated:YES completion:nil];
 
-//    NSLog(@"Selected cell %lu", (long)[indexPath row]);
-//}
+    [self performSegueWithIdentifier:@"pushToImageEditor" sender:self];
+
+    NSLog(@"Selected cell %lu", (long)[indexPath row]);
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"pushToImageEditor"]) {
@@ -95,8 +99,8 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
         FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
         FLPhoto *selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
 
-        FLImageFilterViewController *filterView = segue.destinationViewController;
-        [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
+//        FLImageFilterViewController *filterView = segue.destinationViewController;
+//        [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
     }
 }
 

@@ -94,9 +94,9 @@ NSString *const kToolsTable = @"toolsTable";
     self.imageViewLongPress.allowableMovement = 100.0f;
     self.imageViewLongPress.minimumPressDuration = 0.075; /* Add this gesture recognizer to our view */
 
-    [self.filterImageView addGestureRecognizer:self.imageViewLongPress];
+    [_photoImageView addGestureRecognizer:self.imageViewLongPress];
     // NOTE: Must set interaction true so that the gesture can be triggered. Dont have to have selector on the filter ImageView
-    self.filterImageView.userInteractionEnabled = YES;
+    _photoImageView.userInteractionEnabled = YES;
 }
 
 - (void)toggleOriginalImage:(UIGestureRecognizer *)recognizer {
@@ -104,12 +104,12 @@ NSString *const kToolsTable = @"toolsTable";
 
     if (state == UIGestureRecognizerStateBegan) {
         // Cache the last stateful image
-        self._cachedImage = [self.filterImageView image];
+        self._cachedImage = [_photoImageView image];
         // Show the original
-        [self.filterImageView setImage:_photoImageView.image];
+        [_photoImageView setImage:_photoImageView.image];
     } else if (state == UIGestureRecognizerStateCancelled || state == UIGestureRecognizerStateFailed || state == UIGestureRecognizerStateEnded) {
         // Reset the imageView with the cached image
-        [self.filterImageView setImage:self._cachedImage];
+        [_photoImageView setImage:self._cachedImage];
     }
 }
 
@@ -233,10 +233,10 @@ NSString *const kToolsTable = @"toolsTable";
         FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
         NSDictionary *targetFilter = [filterStore.allFilters objectAtIndex:[indexPath row]];
 
-        _filterImageView.image = [targetFilter objectForKey:@"filteredImage"];
+        _photoImageView.image = [targetFilter objectForKey:@"filteredImage"];
     } else if ([self isToolsTable]) {
         // Update the cached image
-        self._cachedImage = [self.filterImageView image];
+        self._cachedImage = [_photoImageView image];
 
         filterType = (ARTToolType)indexPath.row;
 
@@ -367,7 +367,7 @@ NSString *const kToolsTable = @"toolsTable";
     [self.filter useNextFrameForImageCapture];
     [stillImageSource processImage];
 
-    _filterImageView.image = [self.filter imageFromCurrentFramebuffer];;
+    _photoImageView.image = [self.filter imageFromCurrentFramebuffer];;
 }
 
 - (IBAction)cancelAdjustment:(id)sender {
