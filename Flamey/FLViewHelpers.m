@@ -24,7 +24,7 @@
 
 + (void)formatLabel:(UILabel *)label withCopy:(NSString *)copy andFontFamily:(NSString *)fontFamily {
     if (!fontFamily) {
-        fontFamily = @"WalkwaySemiBold";
+        fontFamily = @"AvenirNext-UltraLight";
     }
 
     [label setAttributedText:[self attributeText:copy forFontSize:10.0f andFontFamily:fontFamily]];

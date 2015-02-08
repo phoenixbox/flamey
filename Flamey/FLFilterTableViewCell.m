@@ -62,13 +62,12 @@
 
 - (void)setOverlayImage:(NSString *)labelName {
     UILabel *overlayLabel = [UILabel new];
-    [overlayLabel setAttributedText:[FLViewHelpers attributeText:labelName forFontSize:25.0f andFontFamily:@"WalkwaySemiBold"]];
+    [overlayLabel setAttributedText:[FLViewHelpers attributeText:labelName forFontSize:25.0f andFontFamily:@"AvenirNext-UltraLight"]];
     [FLViewHelpers sizeLabelToFit:overlayLabel numberOfLines:1];
     [self rotateElement:overlayLabel];
     [overlayLabel setCenter:self.filterImageContainer.center];
     [overlayLabel setTextColor:[UIColor whiteColor]];
     [self.contentView addSubview:overlayLabel];
-
 }
 
 @end

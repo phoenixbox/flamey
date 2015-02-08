@@ -26,7 +26,7 @@
 + (void)renderEmptyMessage:(NSString *)message forCollectionView:(UICollectionView *)view {
     UILabel *messageLabel = [[UILabel alloc] init];
 
-    NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:message attributes:@{NSFontAttributeName: [UIFont fontWithName:nil size:14.0]}];
+    NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:message attributes:@{NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-UltraLight" size:14.0]}];
     [messageLabel setAttributedText:attrText];
 
     messageLabel.textColor = [UIColor blackColor];

@@ -54,7 +54,7 @@ NSString *const kToolsTable = @"toolsTable";
     if (self) {
         self._currentTableType = kFiltersTable;
 
-        self._cellDimension = 60.0f;
+        self._cellDimension = 100.0f;
 
         self._sliderValues = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                               nil, [NSNumber numberWithInt: ART_ADJUST],
@@ -85,9 +85,9 @@ NSString *const kToolsTable = @"toolsTable";
         _originalImage = image;
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
-            [filterStore generateFiltersForImage:_originalImage];
         });
+        FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
+        [filterStore generateFiltersForImage:_originalImage];
 
         FLToolsStore *toolStore = [FLToolsStore sharedStore];
         [toolStore generateToolOptions];
@@ -225,7 +225,8 @@ NSString *const kToolsTable = @"toolsTable";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.view.frame.size.width/4.5;
+    return self._cellDimension;
+//    return self.view.frame.size.width/4.5;
 }
 
 // NOTE: Auto select the first cell so we can trigger removal of the selection indicator on first alternate row selection
