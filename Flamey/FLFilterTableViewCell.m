@@ -58,7 +58,7 @@
 }
 
 - (void)setOverlayImage:(NSString *)labelName {
-    [_overlayLabel setAttributedText:[FLViewHelpers attributeText:labelName forFontSize:25.0f andFontFamily:@"AvenirNext-UltraLight"]];
+    [_overlayLabel setAttributedText:[FLViewHelpers attributeText:labelName forFontSize:25.0f andFontFamily:@"Avenir-Medium"]];
     [FLViewHelpers sizeLabelToFit:_overlayLabel numberOfLines:1];
     [self rotateElement:_overlayLabel];
     [_overlayLabel setTextColor:[UIColor whiteColor]];
