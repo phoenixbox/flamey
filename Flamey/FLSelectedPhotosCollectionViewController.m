@@ -79,15 +79,6 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-//    FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
-//    FLPhoto *selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
-//
-//    FLImageFilterViewController *filterView = [FLImageFilterViewController new];
-//
-//    [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
-//    [self presentViewController:filterView animated:YES completion:nil];
-
     [self performSegueWithIdentifier:@"pushToImageEditor" sender:self];
 
     NSLog(@"Selected cell %lu", (long)[indexPath row]);
@@ -97,11 +88,18 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
     if ([segue.identifier isEqualToString:@"pushToImageEditor"]) {
         NSIndexPath *indexPath = [[_selectionCollection indexPathsForSelectedItems] lastObject];
         FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
-        FLPhoto *selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
 
-//        FLImageFilterViewController *filterView = segue.destinationViewController;
-//        [filterView.photoImageView sd_setImageWithURL:[NSURL URLWithString:selectedPhoto.URL] placeholderImage:nil];
+//      Retrieve the target view cotnroller
+        UINavigationController *vc = segue.destinationViewController;
+//      Retrieve its child view controller
+        FLImageFilterViewController *filterView =[vc.viewControllers objectAtIndex:0];
+//      Attribute it
+        filterView.selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
     }
+}
+
+- (IBAction)unwindToSelection:(UIStoryboardSegue *)unwindSegue
+{
 }
 
 - (void)viewWillAppear:(BOOL)animated {

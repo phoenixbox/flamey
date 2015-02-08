@@ -8,6 +8,9 @@
 
 #import "FLImageFilterViewController.h"
 
+// Pods
+#import <SDWebImage/UIImageView+WebCache.h>
+
 // Components
 #import "FLLateralTableViewCell.h"
 #import "FLFilterTableViewCell.h"
@@ -34,6 +37,7 @@ NSString *const kToolsTable = @"toolsTable";
 @property (nonatomic, assign) float _cellDimension;
 @property (nonatomic, strong) UILongPressGestureRecognizer *imageViewLongPress;
 @property (nonatomic, strong) UIImage *_cachedImage;
+@property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, strong) NSString *_currentTableType;
 @property (nonatomic, strong) NSString *_selectedToolType;
 @property (nonatomic, strong) NSMutableDictionary *_sliderValues;
@@ -77,15 +81,20 @@ NSString *const kToolsTable = @"toolsTable";
 
     [self hideAndLowerSliderView];
 
-    if (_photoImageView.image) {
-        FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
-        [filterStore generateFiltersForImage:_photoImageView.image];
+    [_photoImageView sd_setImageWithURL:[NSURL URLWithString:self.selectedPhoto.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        NSLog(@"Photo image view present");
+        _originalImage = image;
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
+            [filterStore generateFiltersForImage:_originalImage];
+        });
 
         FLToolsStore *toolStore = [FLToolsStore sharedStore];
         [toolStore generateToolOptions];
 
         [self addFilterImageViewEventHandlers];
-    }
+    }];
 }
 
 - (void)addFilterImageViewEventHandlers {
@@ -368,6 +377,10 @@ NSString *const kToolsTable = @"toolsTable";
     [stillImageSource processImage];
 
     _photoImageView.image = [self.filter imageFromCurrentFramebuffer];;
+}
+
+-(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+    NSLog(@"Required for an unwinding segue");
 }
 
 - (IBAction)cancelAdjustment:(id)sender {

@@ -10,6 +10,7 @@
 #import "FLFilterSlider.h"
 #import "FLFilterHelpers.h"
 #import "FLToolsStore.h"
+#import "FLPhoto.h"
 
 @interface FLImageFilterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     ARTToolType filterType;
@@ -34,5 +35,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveAdjustmentButton;
 - (IBAction)saveAdjustment:(id)sender;
 @property (strong, nonatomic) IBOutlet UISlider *slider;
+
+@property (nonatomic, strong) FLPhoto *selectedPhoto;
 
 @end
