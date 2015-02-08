@@ -132,9 +132,7 @@ NSString *const kToolsTable = @"toolsTable";
 
 - (void)toggleTableViewCellsTo:(NSString *)identifier {
     self._currentTableType = identifier;
-    _lateralTable = nil;
-
-    [self renderLateralTable];
+    [_lateralTable reloadData];
 }
 
 - (void)renderLateralTable {
@@ -390,6 +388,7 @@ NSString *const kToolsTable = @"toolsTable";
 - (IBAction)cancelAdjustment:(id)sender {
     NSLog(@"cancelAdjustment");
     [self.sliderView setHidden:YES];
+    [_lateralTable setHidden:NO];
 }
 
 - (IBAction)saveAdjustment:(id)sender {
