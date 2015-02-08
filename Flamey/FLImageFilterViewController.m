@@ -195,6 +195,7 @@ NSString *const kToolsTable = @"toolsTable";
         if ([self isFiltersTable]) {
             NSDictionary *attributes = [[filterStore allFilters] objectAtIndex:[indexPath row]];
 
+            [cell.overlayLabel setHidden:NO];
             [cell setCellImage:[attributes objectForKey:@"blurredImage"]];
             [cell setOverlayImage:[attributes objectForKey:@"overlay"]];
             [cell setCellLabel:[attributes objectForKey:@"filterName"]];
@@ -203,7 +204,7 @@ NSString *const kToolsTable = @"toolsTable";
             NSDictionary *attributes = [[toolStore allTools] objectAtIndex:[indexPath row]];
 
             NSString *toolType = [attributes objectForKey:@"toolName"];
-
+            [cell.overlayLabel setHidden:YES];
             [cell setCellImage:[attributes objectForKey:@"toolIcon"]];
             [cell setCellLabel:toolType];
         }
