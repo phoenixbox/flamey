@@ -31,7 +31,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="2w5-nd-uQO" userLabel="BlurredImage" customClass="UIImageView">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2w5-nd-uQO" userLabel="BlurredImage" customClass="UIImageView">
                         <rect key="frame" x="55" y="10" width="23" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="2w5-nd-uQO" secondAttribute="height" multiplier="1:1" id="pSD-R3-bhp"/>
