@@ -20,10 +20,13 @@
 
 // ADJUSTMENTS
 @property (strong, nonatomic) IBOutlet UIView *adjustmentsView;
+
 @property (strong, nonatomic) IBOutlet UIButton *filtersButton;
 - (IBAction)revealFilters:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIButton *brightnessButton;
 - (IBAction)revealBrightness:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIButton *toolsButton;
 - (IBAction)revealTools:(id)sender;
 
