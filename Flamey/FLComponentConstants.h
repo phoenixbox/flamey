@@ -20,8 +20,6 @@
 
 #define kProfileTableRowHeight 102.5f
 
-#define kFLLateralTableViewCellIdentifier @"FLLateralTableViewCell"
-
 // Filters
 #define kFLFilterTableViewCellIdentifier @"FLFilterTableViewCell"
 #define kFLToolTableViewCellIdentifier @"FLToolTableViewCell"

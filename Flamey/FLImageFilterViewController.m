@@ -12,7 +12,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 // Components
-#import "FLLateralTableViewCell.h"
 #import "FLFilterTableViewCell.h"
 
 // Constants
