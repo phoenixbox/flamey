@@ -39,8 +39,6 @@
 }
 
 - (void)doneSelectingPhotos:(id)paramSender {
-    NSLog(@"Inject selections into store/pass completion block back");
-
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -120,7 +118,7 @@
                                                                HTTPMethod:@"GET"
                                                         completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                                                             count++;
-                                                            NSLog(@"INDEX: %@", [NSNumber numberWithInt:i]);
+
                                                             NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:i], @"index" , connection.urlResponse.URL, @"URL", nil];
 
                                                             [_albumCoverArray addObject:dict];
@@ -178,7 +176,6 @@
 
     }
     @finally {
-        NSLog(@"DONE SON");
     }
 
     return cell;
@@ -197,7 +194,6 @@
         vc.title = @"Photos of me";
     }
     @finally {
-        NSLog(@"DID SELECT");
     }
     
 //    vc.delegate = _delegate;

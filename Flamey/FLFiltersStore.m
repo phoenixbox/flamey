@@ -119,7 +119,7 @@
 - (UIImage *)filteredImage:(UIImage *)image withFilter:(NSString *)filename {
     GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:image];
     GPUImagePicture *lookupImageSource = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:filename]];
-    NSLog(@"%@", filename);
+
     GPUImageLookupFilter *lookupFilter = [[GPUImageLookupFilter alloc] init];
 
     [stillImageSource addTarget:lookupFilter];

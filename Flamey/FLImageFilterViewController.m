@@ -32,8 +32,8 @@ NSString *const kToolsTable = @"toolsTable";
 
 @interface FLImageFilterViewController ()
 
-@property (nonatomic, strong) UITableView *_lateralTable;
-@property (nonatomic, assign) float _cellDimension;
+@property (nonatomic, strong) UITableView *lateralTable;
+@property (nonatomic, assign) float _cellWidth;
 @property (nonatomic, strong) UILongPressGestureRecognizer *imageViewLongPress;
 @property (nonatomic, strong) UIImage *_cachedImage;
 @property (nonatomic, strong) UIImage *originalImage;
@@ -73,7 +73,7 @@ NSString *const kToolsTable = @"toolsTable";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self._cellDimension = self.view.frame.size.width * 0.25;
+    self._cellWidth = self.view.frame.size.width * 0.25;
 
     [self renderLateralTable];
 
@@ -132,35 +132,36 @@ NSString *const kToolsTable = @"toolsTable";
 
 - (void)toggleTableViewCellsTo:(NSString *)identifier {
     self._currentTableType = identifier;
-    self._lateralTable = nil;
+    _lateralTable = nil;
 
     [self renderLateralTable];
 }
 
 - (void)renderLateralTable {
-    self._lateralTable = [UITableView new];
+    _lateralTable = [UITableView new];
+    CGFloat tableY = CGRectGetMaxY(self.view.frame) * 0.8;
+    CGRect piecesRect = CGRectMake(0.0f,
+                                   tableY,
+                                   CGRectGetMaxX(self.view.frame),
+                                   CGRectGetMaxY(self.view.frame) * 0.2);
 
-    CGFloat tableWidth = CGRectGetMaxY(self.view.frame) - (_adjustmentsView.frame.size.height * 0.5);
-
-    CGRect piecesRect = CGRectMake(0.0f, tableWidth, CGRectGetMaxX(self.view.frame), _adjustmentsView.frame.size.height * 0.5);
-
-    self._lateralTable = [[UITableView alloc] initWithFrame:piecesRect];
+    _lateralTable = [[UITableView alloc] initWithFrame:piecesRect];
     CGAffineTransform rotate = CGAffineTransformMakeRotation(-M_PI_2);
-    [self._lateralTable setTransform:rotate];
+    [_lateralTable setTransform:rotate];
     // VIP: Must set the frame again on the table after rotation
-    [self._lateralTable setFrame:piecesRect];
-    [self._lateralTable registerClass:[UITableViewCell class] forCellReuseIdentifier:kFLFilterTableViewCellIdentifier];
-    self._lateralTable.delegate = self;
-    self._lateralTable.dataSource = self;
-    self._lateralTable.alwaysBounceVertical = NO;
-    self._lateralTable.scrollEnabled = YES;
-    self._lateralTable.showsVerticalScrollIndicator = NO;
-    self._lateralTable.separatorInset = UIEdgeInsetsMake(0, 3, 0, 3);
-    [self._lateralTable setSeparatorColor:[UIColor clearColor]];
+    [_lateralTable setFrame:piecesRect];
+    [_lateralTable registerClass:[UITableViewCell class] forCellReuseIdentifier:kFLFilterTableViewCellIdentifier];
+    _lateralTable.delegate = self;
+    _lateralTable.dataSource = self;
+    _lateralTable.alwaysBounceVertical = NO;
+    _lateralTable.scrollEnabled = YES;
+    _lateralTable.showsVerticalScrollIndicator = NO;
+    _lateralTable.separatorInset = UIEdgeInsetsMake(0, 3, 0, 3);
+    [_lateralTable setSeparatorColor:[UIColor clearColor]];
 
-    [self._lateralTable setBackgroundColor:[UIColor grayColor]];
+    [_lateralTable setBackgroundColor:[UIColor grayColor]];
 
-    [self.view addSubview:self._lateralTable];
+    [self.view addSubview:_lateralTable];
 }
 
 #pragma UITableViewDelgate
@@ -189,7 +190,7 @@ NSString *const kToolsTable = @"toolsTable";
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kFLFilterTableViewCellIdentifier owner:nil options:nil];
     FLFilterTableViewCell *cell = [nibContents lastObject];
 
-    if([tableView isEqual:self._lateralTable]){
+    if([tableView isEqual:_lateralTable]){
 
         if ([self isFiltersTable]) {
             NSDictionary *attributes = [[filterStore allFilters] objectAtIndex:[indexPath row]];
@@ -226,18 +227,18 @@ NSString *const kToolsTable = @"toolsTable";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self._cellDimension;
+    return self._cellWidth;
 //    return self.view.frame.size.width/4.5;
 }
 
 // NOTE: Auto select the first cell so we can trigger removal of the selection indicator on first alternate row selection
 - (void)viewWillAppear:(BOOL)animated {
 //    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-//    [self._lateralTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+//    [_lateralTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FLFilterTableViewCell *cell = (FLFilterTableViewCell *)[self._lateralTable cellForRowAtIndexPath:indexPath];
+    FLFilterTableViewCell *cell = (FLFilterTableViewCell *)[_lateralTable cellForRowAtIndexPath:indexPath];
     [cell.selectionIndicator setHidden:NO];
 
     if ([self isFiltersTable]) {
@@ -260,11 +261,12 @@ NSString *const kToolsTable = @"toolsTable";
         }
 
         [self showAndRaiseSliderView];
+        [_lateralTable setHidden:YES];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FLFilterTableViewCell *cell = (FLFilterTableViewCell *)[self._lateralTable cellForRowAtIndexPath:indexPath];
+    FLFilterTableViewCell *cell = (FLFilterTableViewCell *)[_lateralTable cellForRowAtIndexPath:indexPath];
 
     [cell.selectionIndicator setHidden:YES];
 }
