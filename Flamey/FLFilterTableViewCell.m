@@ -48,7 +48,6 @@
 - (void)setCellLabel:(NSString *)copy {
     [FLViewHelpers formatLabel:_filterLabel withCopy:copy andFontFamily:nil];
     [self rotateElement:_filterLabel];
-//    [FLViewHelpers sizeLabelToFit:_filterLabel numberOfLines:1];
 }
 
 - (void)setCellImage:(UIImage *)image {

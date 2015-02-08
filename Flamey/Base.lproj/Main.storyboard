@@ -206,7 +206,7 @@
                                             <constraint firstAttribute="trailing" secondItem="voT-eE-cZm" secondAttribute="trailing" constant="165" id="ZlK-cr-60r"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z7U-63-4Wi">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z7U-63-4Wi" userLabel="SelectedImage">
                                         <rect key="frame" x="0.0" y="65" width="375" height="375"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="z7U-63-4Wi" secondAttribute="height" multiplier="1:1" id="4bo-3O-Srg"/>
