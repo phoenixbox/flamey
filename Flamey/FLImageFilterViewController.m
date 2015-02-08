@@ -48,12 +48,13 @@ NSString *const kToolsTable = @"toolsTable";
 
 @implementation FLImageFilterViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-
+    self = [super initWithCoder:coder];
     if (self) {
         self._currentTableType = kFiltersTable;
+
+        self._cellDimension = 60.0f;
 
         self._sliderValues = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                               nil, [NSNumber numberWithInt: ART_ADJUST],
@@ -68,7 +69,6 @@ NSString *const kToolsTable = @"toolsTable";
                               nil, [NSNumber numberWithInt: ART_SHARPEN], nil];
 
     }
-
     return self;
 }
 
@@ -76,7 +76,6 @@ NSString *const kToolsTable = @"toolsTable";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self._cellDimension = CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(_adjustmentsView.frame);
     [self renderLateralTable];
 
     [self hideAndLowerSliderView];
@@ -141,8 +140,9 @@ NSString *const kToolsTable = @"toolsTable";
 
 - (void)renderLateralTable {
     self._lateralTable = [UITableView new];
+    CGFloat viewHeight = CGRectGetMaxY(self.view.frame);
 
-    CGRect piecesRect = CGRectMake(0.0f, CGRectGetMaxY(_adjustmentsView.frame), CGRectGetMaxX(self.view.frame), self._cellDimension);
+    CGRect piecesRect = CGRectMake(0.0f, viewHeight - self._cellDimension, CGRectGetMaxX(self.view.frame), self._cellDimension);
 
     self._lateralTable = [[UITableView alloc] initWithFrame:piecesRect];
     CGAffineTransform rotate = CGAffineTransformMakeRotation(-M_PI_2);
@@ -158,7 +158,7 @@ NSString *const kToolsTable = @"toolsTable";
     self._lateralTable.separatorInset = UIEdgeInsetsMake(0, 3, 0, 3);
     [self._lateralTable setSeparatorColor:[UIColor clearColor]];
 
-    [self._lateralTable setBackgroundColor:[UIColor whiteColor]];
+    [self._lateralTable setBackgroundColor:[UIColor grayColor]];
 
     [self.view addSubview:self._lateralTable];
 }

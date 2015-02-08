@@ -347,7 +347,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="adjustmentsView" destination="Q6P-hE-OYA" id="frP-d3-Lga"/>
+                        <outlet property="adjustmentsView" destination="Q6P-hE-OYA" id="XUq-1s-Y7Q"/>
                         <outlet property="brightnessButton" destination="voT-eE-cZm" id="EQ4-7w-q8s"/>
                         <outlet property="cancelAdjustmentButton" destination="WYR-Um-wLZ" id="Hmy-RF-J8b"/>
                         <outlet property="filtersButton" destination="2Sr-1U-ghK" id="tGo-8r-hgw"/>
