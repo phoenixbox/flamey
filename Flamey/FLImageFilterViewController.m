@@ -54,8 +54,6 @@ NSString *const kToolsTable = @"toolsTable";
     if (self) {
         self._currentTableType = kFiltersTable;
 
-        self._cellDimension = 100.0f;
-
         self._sliderValues = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                               nil, [NSNumber numberWithInt: ART_ADJUST],
                               nil, [NSNumber numberWithInt: ART_BRIGHTNESS],
@@ -76,6 +74,8 @@ NSString *const kToolsTable = @"toolsTable";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self._cellDimension = self.view.frame.size.width * 0.25;
+
     [self renderLateralTable];
 
     [self hideAndLowerSliderView];
@@ -140,9 +140,10 @@ NSString *const kToolsTable = @"toolsTable";
 
 - (void)renderLateralTable {
     self._lateralTable = [UITableView new];
-    CGFloat viewHeight = CGRectGetMaxY(self.view.frame);
 
-    CGRect piecesRect = CGRectMake(0.0f, viewHeight - self._cellDimension, CGRectGetMaxX(self.view.frame), self._cellDimension);
+    CGFloat tableWidth = CGRectGetMaxY(self.view.frame) - (_adjustmentsView.frame.size.height * 0.5);
+
+    CGRect piecesRect = CGRectMake(0.0f, tableWidth, CGRectGetMaxX(self.view.frame), _adjustmentsView.frame.size.height * 0.5);
 
     self._lateralTable = [[UITableView alloc] initWithFrame:piecesRect];
     CGAffineTransform rotate = CGAffineTransformMakeRotation(-M_PI_2);

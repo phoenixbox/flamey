@@ -52,11 +52,8 @@
 }
 
 - (void)setCellImage:(UIImage *)image {
-    UIGraphicsBeginImageContextWithOptions(_filterImageView.frame.size, NO, image.scale);
-    [image drawInRect:_filterImageView.bounds];
-    UIImage* redrawn = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    [_filterImageView setBackgroundColor:[UIColor colorWithPatternImage:redrawn]];
+    [_filterImageView setImage:image];
+
     [self rotateElement:_filterImageView];
 }
 
