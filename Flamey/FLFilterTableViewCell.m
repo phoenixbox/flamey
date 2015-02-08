@@ -52,12 +52,12 @@
 }
 
 - (void)setCellImage:(UIImage *)image {
-    UIGraphicsBeginImageContextWithOptions(self.filterImageContainer.frame.size, NO, image.scale);
-    [image drawInRect:self.filterImageContainer.bounds];
+    UIGraphicsBeginImageContextWithOptions(_filterImageView.frame.size, NO, image.scale);
+    [image drawInRect:_filterImageView.bounds];
     UIImage* redrawn = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    [self.filterImageContainer setBackgroundColor:[UIColor colorWithPatternImage:redrawn]];
-    [self rotateElement:self.filterImageContainer];
+    [_filterImageView setBackgroundColor:[UIColor colorWithPatternImage:redrawn]];
+    [self rotateElement:_filterImageView];
 }
 
 - (void)setOverlayImage:(NSString *)labelName {
@@ -65,7 +65,7 @@
     [overlayLabel setAttributedText:[FLViewHelpers attributeText:labelName forFontSize:25.0f andFontFamily:@"AvenirNext-UltraLight"]];
     [FLViewHelpers sizeLabelToFit:overlayLabel numberOfLines:1];
     [self rotateElement:overlayLabel];
-    [overlayLabel setCenter:self.filterImageContainer.center];
+    [overlayLabel setCenter:_filterImageView.center];
     [overlayLabel setTextColor:[UIColor whiteColor]];
     [self.contentView addSubview:overlayLabel];
 }

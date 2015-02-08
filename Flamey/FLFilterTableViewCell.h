@@ -17,7 +17,7 @@
 @property (nonatomic, assign) float cellDimension;
 @property (strong, nonatomic) UIImage *filteredImage;
 
-@property (strong, nonatomic) IBOutlet UIView *filterImageContainer;
+@property (strong, nonatomic) IBOutlet UIView *filterImageView;
 
 @property (strong, nonatomic) IBOutlet UIView *selectionIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *filterLabel;
