@@ -38,15 +38,23 @@
                             <constraint firstAttribute="width" secondItem="2w5-nd-uQO" secondAttribute="height" multiplier="1:1" id="pSD-R3-bhp"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7F-gS-CvT" userLabel="OverlayLabel">
+                        <rect key="frame" x="36" y="11" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yvb-kq-lVg" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="6gF-N0-jJi"/>
                     <constraint firstAttribute="bottomMargin" secondItem="2w5-nd-uQO" secondAttribute="bottom" constant="2" id="ABx-8R-Tv9"/>
+                    <constraint firstItem="d7F-gS-CvT" firstAttribute="centerY" secondItem="2w5-nd-uQO" secondAttribute="centerY" id="F5f-uk-HOE"/>
                     <constraint firstItem="jr2-UZ-JqH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="GC2-vv-MxN"/>
                     <constraint firstItem="jr2-UZ-JqH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="GEo-Ck-ebK"/>
                     <constraint firstItem="2w5-nd-uQO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="RBO-G6-OfO"/>
                     <constraint firstItem="2w5-nd-uQO" firstAttribute="leading" secondItem="yvb-kq-lVg" secondAttribute="trailing" constant="5" id="YCZ-sG-OVW"/>
                     <constraint firstItem="yvb-kq-lVg" firstAttribute="leading" secondItem="jr2-UZ-JqH" secondAttribute="trailing" constant="5" id="Zbn-XS-4nn"/>
+                    <constraint firstItem="d7F-gS-CvT" firstAttribute="centerX" secondItem="2w5-nd-uQO" secondAttribute="centerX" id="bTd-bF-9pH"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jr2-UZ-JqH" secondAttribute="bottom" constant="2" id="nlu-A0-84D"/>
                     <constraint firstItem="yvb-kq-lVg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="og2-ki-510"/>
                 </constraints>
@@ -54,6 +62,7 @@
             <connections>
                 <outlet property="filterImageView" destination="2w5-nd-uQO" id="G3d-il-6tn"/>
                 <outlet property="filterLabel" destination="yvb-kq-lVg" id="nb2-0d-WlF"/>
+                <outlet property="overlayLabel" destination="d7F-gS-CvT" id="NKh-PX-dwh"/>
                 <outlet property="selectionIndicator" destination="jr2-UZ-JqH" id="62r-4j-jMX"/>
             </connections>
         </tableViewCell>

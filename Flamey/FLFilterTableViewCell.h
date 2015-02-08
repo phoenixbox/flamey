@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UIImage *filteredImage;
 
 @property (strong, nonatomic) IBOutlet UIImageView *filterImageView;
+@property (weak, nonatomic) IBOutlet UILabel *overlayLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *selectionIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *filterLabel;
