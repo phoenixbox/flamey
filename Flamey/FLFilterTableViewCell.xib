@@ -22,32 +22,34 @@
                             <constraint firstAttribute="width" constant="2" id="WPk-Gj-jLP"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvb-kq-lVg" userLabel="filterLabel">
-                        <rect key="frame" x="20" y="8" width="20" height="27"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvb-kq-lVg" userLabel="filterLabel">
+                        <rect key="frame" x="20" y="0.0" width="30" height="43"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="5Pg-7r-eK1"/>
+                            <constraint firstAttribute="width" constant="30" id="5Pg-7r-eK1"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="2w5-nd-uQO" userLabel="BlurredImage" customClass="UIImageView">
-                        <rect key="frame" x="45" y="10" width="23" height="23"/>
+                        <rect key="frame" x="55" y="10" width="23" height="23"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="2w5-nd-uQO" secondAttribute="height" multiplier="1:1" id="pSD-R3-bhp"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7F-gS-CvT" userLabel="OverlayLabel">
-                        <rect key="frame" x="36" y="11" width="42" height="21"/>
+                        <rect key="frame" x="46" y="11" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="yvb-kq-lVg" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="6gF-N0-jJi"/>
+                    <constraint firstItem="yvb-kq-lVg" firstAttribute="centerY" secondItem="2w5-nd-uQO" secondAttribute="centerY" id="0MD-wy-NxY"/>
+                    <constraint firstItem="yvb-kq-lVg" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" id="6gF-N0-jJi"/>
                     <constraint firstAttribute="bottomMargin" secondItem="2w5-nd-uQO" secondAttribute="bottom" constant="2" id="ABx-8R-Tv9"/>
+                    <constraint firstItem="yvb-kq-lVg" firstAttribute="height" secondItem="2w5-nd-uQO" secondAttribute="height" id="CmP-Wg-qhc"/>
                     <constraint firstItem="d7F-gS-CvT" firstAttribute="centerY" secondItem="2w5-nd-uQO" secondAttribute="centerY" id="F5f-uk-HOE"/>
                     <constraint firstItem="jr2-UZ-JqH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="GC2-vv-MxN"/>
                     <constraint firstItem="jr2-UZ-JqH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="GEo-Ck-ebK"/>
@@ -56,8 +58,13 @@
                     <constraint firstItem="yvb-kq-lVg" firstAttribute="leading" secondItem="jr2-UZ-JqH" secondAttribute="trailing" constant="5" id="Zbn-XS-4nn"/>
                     <constraint firstItem="d7F-gS-CvT" firstAttribute="centerX" secondItem="2w5-nd-uQO" secondAttribute="centerX" id="bTd-bF-9pH"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jr2-UZ-JqH" secondAttribute="bottom" constant="2" id="nlu-A0-84D"/>
-                    <constraint firstItem="yvb-kq-lVg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="og2-ki-510"/>
+                    <constraint firstItem="yvb-kq-lVg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="og2-ki-510"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="CmP-Wg-qhc"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="filterImageView" destination="2w5-nd-uQO" id="G3d-il-6tn"/>
