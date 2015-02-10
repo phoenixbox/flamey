@@ -38,6 +38,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveAdjustmentButton;
 - (IBAction)saveAdjustment:(id)sender;
 @property (strong, nonatomic) IBOutlet UISlider *slider;
+@property (weak, nonatomic) IBOutlet UIImageView *selectedFilterImage;
+@property (weak, nonatomic) IBOutlet UILabel *selectedFilterName;
 
 @property (nonatomic, strong) FLPhoto *selectedPhoto;
 

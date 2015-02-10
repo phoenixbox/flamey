@@ -1,4 +1,4 @@
-//
+  //
 //  FLImageFilterViewController.m
 //  Flamey
 //
@@ -245,6 +245,7 @@ NSString *const kToolsTable = @"toolsTable";
         _photoImageView.image = [targetFilter objectForKey:@"filteredImage"];
     } else if ([self isToolsTable]) {
         // Update the cached image
+        FLToolsStore *toolStore = [FLToolsStore sharedStore];
         self._cachedImage = [_photoImageView image];
 
         filterType = (ARTToolType)indexPath.row;
@@ -256,6 +257,11 @@ NSString *const kToolsTable = @"toolsTable";
         if (lastValue != 0) { // If last value is nil
             [self.slider setValue:lastValue];
         }
+
+        NSDictionary *attributes = [[toolStore allTools] objectAtIndex:[indexPath row]];
+
+        [_selectedFilterImage setImage:[attributes objectForKey:@"toolIcon"]];
+        [_selectedFilterName setText:[attributes objectForKey:@"toolName"]];
 
         [self showAndRaiseSliderView];
         [_lateralTable setHidden:YES];
