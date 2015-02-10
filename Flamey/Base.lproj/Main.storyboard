@@ -164,7 +164,7 @@
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGH-da-nyk" userLabel="Content">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6P-hE-OYA" userLabel="AjdustmentsView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6P-hE-OYA" userLabel="AjdustmentsView">
                                         <rect key="frame" x="0.0" y="440" width="375" height="227"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcQ-iN-l9y">
@@ -197,10 +197,10 @@
                                                     <action selector="revealFilters:" destination="rnT-34-xS8" eventType="touchUpInside" id="ygI-vt-Pf0"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40a-0B-wcp" userLabel="SliderView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="40a-0B-wcp" userLabel="SliderView">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-Um-wLZ">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-Um-wLZ">
                                                         <rect key="frame" x="60" y="163" width="60" height="30"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                         <state key="normal" title="CANCEL">
@@ -211,7 +211,7 @@
                                                             <action selector="cancelAdjustment:" destination="rnT-34-xS8" eventType="touchUpInside" id="Qib-b4-G7k"/>
                                                         </connections>
                                                     </button>
-                                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bDY-UZ-H3q">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bDY-UZ-H3q">
                                                         <rect key="frame" x="38" y="24" width="299" height="31"/>
                                                         <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                                             <rect key="frame" x="38" y="24" width="299" height="424"/>
@@ -220,7 +220,7 @@
                                                             <action selector="sliding:" destination="rnT-34-xS8" eventType="valueChanged" id="uXu-Lr-CtK"/>
                                                         </connections>
                                                     </slider>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YH8-48-aLn" userLabel="SelectedFilterImage">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YH8-48-aLn" userLabel="SelectedFilterImage">
                                                         <rect key="frame" x="40" y="77" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="m7J-ju-BnM"/>
@@ -276,7 +276,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="WYR-Um-wLZ" secondAttribute="trailing" constant="507" id="4nt-x8-IJ9"/>
                                                     <constraint firstAttribute="bottom" secondItem="7b7-mq-fNQ" secondAttribute="bottom" constant="34" id="5NK-dY-qZu"/>
                                                     <constraint firstItem="7b7-mq-fNQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WYR-Um-wLZ" secondAttribute="trailing" constant="167" id="61k-Zn-cO2"/>
-                                                    <constraint firstItem="Jpf-li-3eG" firstAttribute="top" secondItem="bDY-UZ-H3q" secondAttribute="bottom" constant="5" id="7Zy-bV-78o"/>
+                                                    <constraint firstItem="Jpf-li-3eG" firstAttribute="top" secondItem="bDY-UZ-H3q" secondAttribute="bottom" constant="23" id="7Zy-bV-78o"/>
                                                     <constraint firstItem="HtV-hN-mwz" firstAttribute="top" secondItem="bDY-UZ-H3q" secondAttribute="bottom" constant="23" id="AIN-aF-Lew"/>
                                                     <constraint firstItem="SJD-8M-cbm" firstAttribute="leading" secondItem="40a-0B-wcp" secondAttribute="leading" constant="166" id="AWA-wK-mdk"/>
                                                     <constraint firstItem="7b7-mq-fNQ" firstAttribute="leading" secondItem="40a-0B-wcp" secondAttribute="leading" constant="315" id="AdY-Vd-EPb"/>
@@ -290,7 +290,7 @@
                                                     <constraint firstItem="YH8-48-aLn" firstAttribute="leading" secondItem="40a-0B-wcp" secondAttribute="leading" constant="146" id="Qzh-X9-hIk"/>
                                                     <constraint firstAttribute="trailing" secondItem="HtV-hN-mwz" secondAttribute="trailing" constant="40" id="UXi-7L-UQE"/>
                                                     <constraint firstItem="YH8-48-aLn" firstAttribute="leading" secondItem="40a-0B-wcp" secondAttribute="leading" constant="40" id="Uhf-bk-E0e"/>
-                                                    <constraint firstItem="YH8-48-aLn" firstAttribute="top" secondItem="bDY-UZ-H3q" secondAttribute="bottom" constant="24" id="V3r-f2-25l"/>
+                                                    <constraint firstItem="YH8-48-aLn" firstAttribute="top" secondItem="bDY-UZ-H3q" secondAttribute="bottom" constant="23" id="V3r-f2-25l"/>
                                                     <constraint firstAttribute="bottom" secondItem="WYR-Um-wLZ" secondAttribute="bottom" constant="66" id="XmP-ki-obH"/>
                                                     <constraint firstItem="7b7-mq-fNQ" firstAttribute="top" secondItem="SJD-8M-cbm" secondAttribute="bottom" constant="20" id="Yby-OF-mce"/>
                                                     <constraint firstItem="bDY-UZ-H3q" firstAttribute="leading" secondItem="40a-0B-wcp" secondAttribute="leading" constant="40" id="ZYB-I9-Dmq"/>
@@ -304,7 +304,7 @@
                                                     <constraint firstItem="7b7-mq-fNQ" firstAttribute="centerY" secondItem="WYR-Um-wLZ" secondAttribute="centerY" id="kfg-aY-oYZ"/>
                                                     <constraint firstItem="WYR-Um-wLZ" firstAttribute="top" secondItem="SJD-8M-cbm" secondAttribute="bottom" constant="20" id="l7S-3m-g3D"/>
                                                     <constraint firstAttribute="trailing" secondItem="7b7-mq-fNQ" secondAttribute="trailing" constant="40" id="ldp-UV-mwn"/>
-                                                    <constraint firstAttribute="centerY" secondItem="bDY-UZ-H3q" secondAttribute="centerY" constant="66" id="mDr-gr-bUt"/>
+                                                    <constraint firstAttribute="centerY" secondItem="bDY-UZ-H3q" secondAttribute="centerY" constant="74.5" id="mDr-gr-bUt"/>
                                                     <constraint firstItem="SJD-8M-cbm" firstAttribute="centerX" secondItem="YH8-48-aLn" secondAttribute="centerX" constant="1" id="oX6-Sb-wdA"/>
                                                     <constraint firstItem="7b7-mq-fNQ" firstAttribute="top" secondItem="SJD-8M-cbm" secondAttribute="bottom" constant="17" id="qJC-M7-BzP"/>
                                                     <constraint firstItem="SJD-8M-cbm" firstAttribute="leading" secondItem="YH8-48-aLn" secondAttribute="trailing" constant="10" id="rl8-jX-FST"/>
