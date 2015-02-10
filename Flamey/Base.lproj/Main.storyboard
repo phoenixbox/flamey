@@ -228,20 +228,20 @@
                                                             <constraint firstAttribute="width" secondItem="YH8-48-aLn" secondAttribute="height" multiplier="1:1" id="uwA-E2-wBl"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJD-8M-cbm" userLabel="FilterTitle">
-                                                        <rect key="frame" x="40" y="116" width="42" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FilterName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJD-8M-cbm" userLabel="FilterTitle">
+                                                        <rect key="frame" x="35" y="131" width="51" height="12"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jpf-li-3eG" userLabel="Separator">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpf-li-3eG" userLabel="Separator">
                                                         <rect key="frame" x="90" y="77" width="1" height="55"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="1" id="9ip-A8-dAw"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtV-hN-mwz">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtV-hN-mwz">
                                                         <rect key="frame" x="99" y="77" width="236" height="55"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="236" id="7mi-H4-6Mn"/>
@@ -251,6 +251,11 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="7mi-H4-6Mn"/>
+                                                            </mask>
+                                                        </variation>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7b7-mq-fNQ">
                                                         <rect key="frame" x="287" y="163" width="48" height="30"/>
@@ -268,7 +273,8 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="HtV-hN-mwz" firstAttribute="leading" secondItem="Jpf-li-3eG" secondAttribute="trailing" constant="10" id="0RC-Tv-hu3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="WYR-Um-wLZ" secondAttribute="bottom" constant="34" id="0Q2-ux-aKv"/>
+                                                    <constraint firstItem="HtV-hN-mwz" firstAttribute="leading" secondItem="Jpf-li-3eG" secondAttribute="trailing" constant="8" id="0RC-Tv-hu3"/>
                                                     <constraint firstAttribute="trailing" secondItem="YH8-48-aLn" secondAttribute="trailing" constant="149" id="0lT-cP-DoS"/>
                                                     <constraint firstAttribute="trailing" secondItem="bDY-UZ-H3q" secondAttribute="trailing" constant="40" id="1h0-6d-WVf"/>
                                                     <constraint firstItem="7b7-mq-fNQ" firstAttribute="centerY" secondItem="WYR-Um-wLZ" secondAttribute="centerY" id="4Ag-Yj-b6N"/>
@@ -298,8 +304,9 @@
                                                     <constraint firstAttribute="bottom" secondItem="SJD-8M-cbm" secondAttribute="bottom" constant="25" id="aru-jo-sRM"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7b7-mq-fNQ" secondAttribute="trailing" constant="40" id="cvN-nV-VQV"/>
                                                     <constraint firstItem="SJD-8M-cbm" firstAttribute="top" secondItem="YH8-48-aLn" secondAttribute="top" id="d3I-Mn-fMy"/>
+                                                    <constraint firstItem="Jpf-li-3eG" firstAttribute="bottom" secondItem="SJD-8M-cbm" secondAttribute="bottom" constant="-11" id="do5-w8-SHE"/>
                                                     <constraint firstAttribute="bottom" secondItem="7b7-mq-fNQ" secondAttribute="bottom" constant="66" id="ex4-pN-yJ0"/>
-                                                    <constraint firstItem="SJD-8M-cbm" firstAttribute="top" secondItem="YH8-48-aLn" secondAttribute="bottom" constant="5" id="hjA-P0-KhA"/>
+                                                    <constraint firstItem="SJD-8M-cbm" firstAttribute="top" secondItem="YH8-48-aLn" secondAttribute="bottom" constant="14" id="hjA-P0-KhA"/>
                                                     <constraint firstAttribute="centerX" secondItem="YH8-48-aLn" secondAttribute="centerX" constant="1.5" id="hla-Z2-9zk"/>
                                                     <constraint firstItem="7b7-mq-fNQ" firstAttribute="centerY" secondItem="WYR-Um-wLZ" secondAttribute="centerY" id="kfg-aY-oYZ"/>
                                                     <constraint firstItem="WYR-Um-wLZ" firstAttribute="top" secondItem="SJD-8M-cbm" secondAttribute="bottom" constant="20" id="l7S-3m-g3D"/>
@@ -327,6 +334,7 @@
                                                         <exclude reference="rl8-jX-FST"/>
                                                         <exclude reference="4nt-x8-IJ9"/>
                                                         <exclude reference="Gr5-9V-M6q"/>
+                                                        <exclude reference="OTD-Jt-ONf"/>
                                                         <exclude reference="XmP-ki-obH"/>
                                                         <exclude reference="uj0-SZ-OMI"/>
                                                         <exclude reference="4Ag-Yj-b6N"/>
