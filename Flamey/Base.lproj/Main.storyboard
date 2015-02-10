@@ -235,7 +235,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpf-li-3eG" userLabel="Separator">
-                                                        <rect key="frame" x="90" y="77" width="1" height="55"/>
+                                                        <rect key="frame" x="90" y="77" width="1" height="66"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="1" id="9ip-A8-dAw"/>
@@ -304,7 +304,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="SJD-8M-cbm" secondAttribute="bottom" constant="25" id="aru-jo-sRM"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7b7-mq-fNQ" secondAttribute="trailing" constant="40" id="cvN-nV-VQV"/>
                                                     <constraint firstItem="SJD-8M-cbm" firstAttribute="top" secondItem="YH8-48-aLn" secondAttribute="top" id="d3I-Mn-fMy"/>
-                                                    <constraint firstItem="Jpf-li-3eG" firstAttribute="bottom" secondItem="SJD-8M-cbm" secondAttribute="bottom" constant="-11" id="do5-w8-SHE"/>
+                                                    <constraint firstItem="Jpf-li-3eG" firstAttribute="bottom" secondItem="SJD-8M-cbm" secondAttribute="bottom" id="do5-w8-SHE"/>
                                                     <constraint firstAttribute="bottom" secondItem="7b7-mq-fNQ" secondAttribute="bottom" constant="66" id="ex4-pN-yJ0"/>
                                                     <constraint firstItem="SJD-8M-cbm" firstAttribute="top" secondItem="YH8-48-aLn" secondAttribute="bottom" constant="14" id="hjA-P0-KhA"/>
                                                     <constraint firstAttribute="centerX" secondItem="YH8-48-aLn" secondAttribute="centerX" constant="1.5" id="hla-Z2-9zk"/>
