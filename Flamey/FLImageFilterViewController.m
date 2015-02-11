@@ -40,6 +40,7 @@ NSString *const kToolsTable = @"toolsTable";
 @property (nonatomic, strong) NSString *_currentTableType;
 @property (nonatomic, strong) NSString *_selectedToolType;
 @property (nonatomic, strong) NSMutableDictionary *_sliderValues;
+@property (nonatomic, strong) UITapGestureRecognizer *imageViewTap;
 
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *filter;
 
@@ -64,10 +65,78 @@ NSString *const kToolsTable = @"toolsTable";
                               nil, [NSNumber numberWithInt: ART_WARMTH],
                               nil, [NSNumber numberWithInt: ART_TILTSHIFT],
                               nil, [NSNumber numberWithInt: ART_SHARPEN], nil];
-
     }
     return self;
 }
+
+- (void)addTapGestureRecogniserToImageView {
+    NSLog(@"SETTING");
+    self.imageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                action:@selector(setFlameIcon:)];
+    self.imageViewTap.numberOfTouchesRequired = 1;
+    self.imageViewTap.numberOfTapsRequired = 1;
+
+    [_photoImageView addGestureRecognizer:self.imageViewTap];
+    // NOTE: Must set interaction true so that the gesture can be triggered. Dont have to have selector on the filter ImageView
+    _photoImageView.userInteractionEnabled = YES;
+}
+
+- (void)setFlameIcon:(UIGestureRecognizer *)gr {
+    NSLog(@"Recognized tap");
+
+    // Base Image
+    GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:_photoImageView.image];
+
+    // Flame Image
+    CGPoint point = [gr locationInView:_photoImageView];
+    UIImage *overlayImage = [self createFlame:_photoImageView.frame.size atTouchPoint:point];
+    GPUImagePicture *flameyGPUImage = [[GPUImagePicture alloc] initWithImage:overlayImage];
+
+    // 2. Set up the filter chain
+    GPUImageAlphaBlendFilter * alphaBlendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+    alphaBlendFilter.mix = 1.0;
+
+    [inputGPUImage addTarget:alphaBlendFilter atTextureLocation:0];
+    [flameyGPUImage addTarget:alphaBlendFilter atTextureLocation:1];
+
+    [alphaBlendFilter useNextFrameForImageCapture];
+    [inputGPUImage processImage];
+    [flameyGPUImage processImage];
+
+    UIImage *processedImage = [alphaBlendFilter imageFromCurrentFramebuffer];
+
+    [_photoImageView setImage:processedImage];
+}
+
+- (UIImage *)createFlame:(CGSize)inputSize atTouchPoint:(CGPoint)touchPoint {
+    UIImage * ghostImage = [UIImage imageNamed:@"ghost.png"];
+
+    CGFloat flameyIconAspectRatio = ghostImage.size.width / ghostImage.size.height;
+
+    NSInteger targetFlameyWidth = inputSize.width * 0.25;
+    CGSize flameSize = CGSizeMake(targetFlameyWidth, targetFlameyWidth / flameyIconAspectRatio);
+
+    CGRect flameRect = {touchPoint, flameSize};
+
+    UIGraphicsBeginImageContext(inputSize);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGRect inputRect = {CGPointZero, inputSize};
+    CGContextClearRect(context, inputRect);
+
+    CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
+    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-inputSize.height);
+    CGContextConcatCTM(context, flipThenShift);
+    CGRect transformedGhostRect = CGRectApplyAffineTransform(flameRect, flipThenShift);
+
+    CGContextDrawImage(context, transformedGhostRect, [ghostImage CGImage]);
+
+    UIImage *flameyIcon = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return flameyIcon;
+}
+
 
 - (void)viewDidLoad
 {
@@ -78,6 +147,8 @@ NSString *const kToolsTable = @"toolsTable";
     [self renderLateralTable];
 
     [self hideAndLowerSliderView];
+    
+    [self addTapGestureRecogniserToImageView];
 
     [_photoImageView sd_setImageWithURL:[NSURL URLWithString:self.selectedPhoto.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         NSLog(@"Photo image view present");
@@ -91,17 +162,17 @@ NSString *const kToolsTable = @"toolsTable";
         FLToolsStore *toolStore = [FLToolsStore sharedStore];
         [toolStore generateToolOptions];
 
-        [self addFilterImageViewEventHandlers];
+//        [self addFilterImageViewEventHandlers];
     }];
 }
 
 - (void)addFilterImageViewEventHandlers {
-    self.imageViewLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(toggleOriginalImage:)];
-    self.imageViewLongPress.numberOfTouchesRequired = 1;
-    self.imageViewLongPress.allowableMovement = 100.0f;
-    self.imageViewLongPress.minimumPressDuration = 0.075; /* Add this gesture recognizer to our view */
+    _imageViewLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(toggleOriginalImage:)];
+    _imageViewLongPress.numberOfTouchesRequired = 1;
+    _imageViewLongPress.allowableMovement = 100.0f;
+    _imageViewLongPress.minimumPressDuration = 0.075; /* Add this gesture recognizer to our view */
 
-    [_photoImageView addGestureRecognizer:self.imageViewLongPress];
+    [_photoImageView addGestureRecognizer:_imageViewLongPress];
     // NOTE: Must set interaction true so that the gesture can be triggered. Dont have to have selector on the filter ImageView
     _photoImageView.userInteractionEnabled = YES;
 }
