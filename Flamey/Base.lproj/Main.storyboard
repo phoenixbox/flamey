@@ -142,12 +142,69 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="rnT-34-xS8" kind="relationship" relationship="rootViewController" id="vvp-oD-gvY"/>
+                        <segue destination="8ig-Pf-cmu" kind="relationship" relationship="rootViewController" id="dmP-5w-jtg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jL-NX-zAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1487.5" y="-1043.5"/>
+            <point key="canvasLocation" x="1361.5" y="-1047.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JfP-Rz-lRq">
+            <objects>
+                <viewController id="8ig-Pf-cmu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e9q-cD-Hda"/>
+                        <viewControllerLayoutGuide type="bottom" id="45S-Jz-boW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F8O-fK-6OB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaI-Hz-zpg" userLabel="Content">
+                                <rect key="frame" x="0.0" y="64" width="359" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-V1-1Dc" userLabel="SelectedImage">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="200:189" id="HtF-Fb-9bf"/>
+                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="1:1" id="KeH-EW-BN5"/>
+                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="1:1" id="kbZ-7H-8Zb"/>
+                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="1:1" id="klM-Lt-VKU"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="HtF-Fb-9bf"/>
+                                                <exclude reference="KeH-EW-BN5"/>
+                                                <exclude reference="kbZ-7H-8Zb"/>
+                                                <exclude reference="klM-Lt-VKU"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="HtF-Fb-9bf"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LaI-Hz-zpg" firstAttribute="leading" secondItem="F8O-fK-6OB" secondAttribute="leading" id="5zs-ZM-xwl"/>
+                            <constraint firstItem="45S-Jz-boW" firstAttribute="top" secondItem="LaI-Hz-zpg" secondAttribute="bottom" id="tM4-am-SW6"/>
+                            <constraint firstItem="LaI-Hz-zpg" firstAttribute="top" secondItem="e9q-cD-Hda" secondAttribute="bottom" id="yRy-rI-ZdW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LaI-Hz-zpg" secondAttribute="trailing" id="zL6-QP-kam"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z9O-5X-RKR"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c2d-iE-ej1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852.5" y="-1047.5"/>
         </scene>
         <!--Image Filter View Controller-->
         <scene sceneID="O5n-Uw-4OY">
@@ -496,7 +553,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggh-Tb-IJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="PoB-mG-lQL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2031.5" y="-1027.5"/>
+            <point key="canvasLocation" x="2377.5" y="-1043.5"/>
         </scene>
         <!--Title-->
         <scene sceneID="qhl-sP-Vxt">
