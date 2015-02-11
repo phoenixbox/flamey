@@ -33,13 +33,13 @@ NSString *const kToolsTable = @"toolsTable";
 @interface FLImageFilterViewController ()
 
 @property (nonatomic, strong) UITableView *lateralTable;
-@property (nonatomic, assign) float _cellWidth;
+@property (nonatomic, assign) float cellWidth;
 @property (nonatomic, strong) UILongPressGestureRecognizer *imageViewLongPress;
-@property (nonatomic, strong) UIImage *_cachedImage;
-@property (nonatomic, strong) UIImage *originalImage;
-@property (nonatomic, strong) NSString *_currentTableType;
-@property (nonatomic, strong) NSString *_selectedToolType;
-@property (nonatomic, strong) NSMutableDictionary *_sliderValues;
+@property (nonatomic, strong) UIImage *facebookImage;
+@property (nonatomic, strong) UIImage *cachedImage;
+@property (nonatomic, strong) NSString *currentTableType;
+@property (nonatomic, strong) NSString *selectedToolType;
+@property (nonatomic, strong) NSMutableDictionary *sliderValues;
 @property (nonatomic, strong) UITapGestureRecognizer *imageViewTap;
 
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *filter;
@@ -52,9 +52,9 @@ NSString *const kToolsTable = @"toolsTable";
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self._currentTableType = kFiltersTable;
+        _currentTableType = kFiltersTable;
 
-        self._sliderValues = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+        _sliderValues = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                               nil, [NSNumber numberWithInt: ART_ADJUST],
                               nil, [NSNumber numberWithInt: ART_BRIGHTNESS],
                               nil, [NSNumber numberWithInt: ART_CONTRAST],
@@ -85,7 +85,7 @@ NSString *const kToolsTable = @"toolsTable";
     NSLog(@"Recognized tap");
 
     // Base Image
-    GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:_photoImageView.image];
+    GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:_facebookImage];
 
     // Flame Image
     CGPoint point = [gr locationInView:_photoImageView];
@@ -145,27 +145,25 @@ NSString *const kToolsTable = @"toolsTable";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self._cellWidth = self.view.frame.size.width * 0.25;
+    _cellWidth = self.view.frame.size.width * 0.25;
 
     [self renderLateralTable];
 
     [self hideAndLowerSliderView];
-    
-    [self addTapGestureRecogniserToImageView];
 
     [_photoImageView sd_setImageWithURL:[NSURL URLWithString:self.selectedPhoto.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         NSLog(@"Photo image view present");
-        _originalImage = image;
+        _facebookImage = image;
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         });
         FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
-        [filterStore generateFiltersForImage:_originalImage];
+        [filterStore generateFiltersForImage:_facebookImage];
 
         FLToolsStore *toolStore = [FLToolsStore sharedStore];
         [toolStore generateToolOptions];
 
-//        [self addFilterImageViewEventHandlers];
+        [self addTapGestureRecogniserToImageView];
     }];
 }
 
@@ -185,12 +183,12 @@ NSString *const kToolsTable = @"toolsTable";
 
     if (state == UIGestureRecognizerStateBegan) {
         // Cache the last stateful image
-        self._cachedImage = [_photoImageView image];
+        _cachedImage = [_photoImageView image];
         // Show the original
         [_photoImageView setImage:_photoImageView.image];
     } else if (state == UIGestureRecognizerStateCancelled || state == UIGestureRecognizerStateFailed || state == UIGestureRecognizerStateEnded) {
         // Reset the imageView with the cached image
-        [_photoImageView setImage:self._cachedImage];
+        [_photoImageView setImage:_cachedImage];
     }
 }
 
@@ -205,7 +203,7 @@ NSString *const kToolsTable = @"toolsTable";
 }
 
 - (void)toggleTableViewCellsTo:(NSString *)identifier {
-    self._currentTableType = identifier;
+    _currentTableType = identifier;
     [_lateralTable reloadData];
 }
 
@@ -291,15 +289,15 @@ NSString *const kToolsTable = @"toolsTable";
 }
 
 - (BOOL)isFiltersTable {
-    return [self._currentTableType isEqual:kFiltersTable];
+    return [_currentTableType isEqual:kFiltersTable];
 }
 
 - (BOOL)isToolsTable {
-    return [self._currentTableType isEqual:kToolsTable];
+    return [_currentTableType isEqual:kToolsTable];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self._cellWidth;
+    return _cellWidth;
 }
 
 // NOTE: Auto select the first cell so we can trigger removal of the selection indicator on first alternate row selection
@@ -320,13 +318,13 @@ NSString *const kToolsTable = @"toolsTable";
     } else if ([self isToolsTable]) {
         // Update the cached image
         FLToolsStore *toolStore = [FLToolsStore sharedStore];
-        self._cachedImage = [_photoImageView image];
+        _facebookImage = [_photoImageView image];
 
         filterType = (ARTToolType)indexPath.row;
 
         [FLToolsStore setupSlider:self.slider forFilterType:(ARTToolType)indexPath.row];
 
-        float lastValue = [[self._sliderValues objectForKey:[NSNumber numberWithInt:filterType]] floatValue];
+        float lastValue = [[_sliderValues objectForKey:[NSNumber numberWithInt:filterType]] floatValue];
 
         if (lastValue != 0) { // If last value is nil
             [self.slider setValue:lastValue];
@@ -395,10 +393,10 @@ NSString *const kToolsTable = @"toolsTable";
 
 - (IBAction)sliding:(id)sender {
     float sliderValue = (float)[(UISlider *)sender value];
-    [self._sliderValues setObject:[NSNumber numberWithFloat:sliderValue] forKey:[NSNumber numberWithInt:filterType]];
+    [_sliderValues setObject:[NSNumber numberWithFloat:sliderValue] forKey:[NSNumber numberWithInt:filterType]];
 
     // Note: initialize the source with a cached instance of the image :)
-    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:self._cachedImage];
+    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:_facebookImage];
 
     switch (filterType)
     {
