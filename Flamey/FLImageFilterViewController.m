@@ -113,10 +113,13 @@ NSString *const kToolsTable = @"toolsTable";
 
     CGFloat flameyIconAspectRatio = ghostImage.size.width / ghostImage.size.height;
 
-    NSInteger targetFlameyWidth = inputSize.width * 0.25;
+    NSInteger targetFlameyWidth = inputSize.width * 0.2;
     CGSize flameSize = CGSizeMake(targetFlameyWidth, targetFlameyWidth / flameyIconAspectRatio);
 
-    CGRect flameRect = {touchPoint, flameSize};
+    // TODO: This is an incorrect way to adjust for touch recognition offset
+    CGPoint newPoint = CGPointMake(touchPoint.x * 0.85, touchPoint.y * 0.85);
+
+    CGRect flameRect = {newPoint, flameSize};
 
     UIGraphicsBeginImageContext(inputSize);
     CGContextRef context = UIGraphicsGetCurrentContext();
