@@ -155,8 +155,6 @@ NSString *const kToolsTable = @"toolsTable";
         NSLog(@"Photo image view present");
         _facebookImage = image;
 
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        });
         FLFiltersStore *filterStore = [FLFiltersStore sharedStore];
         [filterStore generateFiltersForImage:_facebookImage];
 

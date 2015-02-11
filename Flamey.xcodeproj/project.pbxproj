@@ -33,6 +33,7 @@
 		CB7EF47D1A807BA20084666E /* FLFiltersStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7EF47C1A807BA20084666E /* FLFiltersStore.m */; };
 		CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA10D9F1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m */; };
 		CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA10DA01A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib */; };
+		CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */; };
 		CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */; };
 		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
 		CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */; };
@@ -108,6 +109,8 @@
 		CBA10D9E1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		CBA10D9F1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		CBA10DA01A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFacebookPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageAnnotationViewController.h; sourceTree = "<group>"; };
+		CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageAnnotationViewController.m; sourceTree = "<group>"; };
 		CBEC72F61A7D494100F8D0AE /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
 		CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHelpers.m; sourceTree = "<group>"; };
 		CBFB80D41A59B3E8001982A6 /* FLPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -205,6 +208,7 @@
 				CB3B7D0E1A58374B005F6402 /* LaunchScreen.xib */,
 				CB3B7CFC1A58374B005F6402 /* Supporting Files */,
 				CBF5B6521A7CA2B5000F07AF /* Utils */,
+				CBD126BD1A8BCF0C00BED835 /* AnnotateImage */,
 			);
 			path = Flamey;
 			sourceTree = "<group>";
@@ -288,6 +292,15 @@
 				CB7EF49D1A8087120084666E /* Walkway_UltraBold.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		CBD126BD1A8BCF0C00BED835 /* AnnotateImage */ = {
+			isa = PBXGroup;
+			children = (
+				CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */,
+				CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */,
+			);
+			name = AnnotateImage;
 			sourceTree = "<group>";
 		};
 		CBEC72F51A7D492800F8D0AE /* Helpers */ = {
@@ -541,6 +554,7 @@
 				CB3B7D051A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m in Sources */,
 				CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */,
 				CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */,
+				CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */,
 				CB3B7CFF1A58374B005F6402 /* main.m in Sources */,
 				CB4268C71A7D596A00745A9F /* FLViewHelpers.m in Sources */,
 				CB3B7D321A5860C7005F6402 /* FLLoginViewController.m in Sources */,

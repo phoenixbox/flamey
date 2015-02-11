@@ -19,9 +19,10 @@
 #import "FLSelectedPhotosCollectionViewController.h"
 #import "FLPhotoCollectionViewCell.h"
 #import "FLFacebookAlbumTableViewController.h"
-#import "FLImageFilterViewController.h"
+#import "FLImageAnnotationViewController.h"
 
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
+NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 
 @interface FLSelectedPhotosCollectionViewController ()
 
@@ -79,22 +80,22 @@ NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"pushToImageEditor" sender:self];
+    [self performSegueWithIdentifier:kSeguePushToImageAnnotation sender:self];
 
-    NSLog(@"Selected cell %lu", (long)[indexPath row]);
+    NSLog(@"Push to image annotation with cell %lu", (long)[indexPath row]);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"pushToImageEditor"]) {
+    if ([segue.identifier isEqualToString:kSeguePushToImageAnnotation]) {
         NSIndexPath *indexPath = [[_selectionCollection indexPathsForSelectedItems] lastObject];
         FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
 
 //      Retrieve the target view cotnroller
         UINavigationController *vc = segue.destinationViewController;
 //      Retrieve its child view controller
-        FLImageFilterViewController *filterView =[vc.viewControllers objectAtIndex:0];
+        FLImageAnnotationViewController *annotationView =[vc.viewControllers objectAtIndex:0];
 //      Attribute it
-        filterView.selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
+        annotationView.selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
     }
 }
 

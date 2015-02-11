@@ -49,7 +49,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="BBU-LQ-VMu" kind="show" identifier="pushToImageEditor" id="hmg-AQ-wec"/>
+                                            <segue destination="BBU-LQ-VMu" kind="show" identifier="pushToImageAnnotation" id="hmg-AQ-wec"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -131,7 +131,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5J-Vi-mLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xPq-lg-bB7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1972.5" y="-266.5"/>
+            <point key="canvasLocation" x="1846.5" y="309.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bGR-cR-iqI">
@@ -147,12 +147,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jL-NX-zAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361.5" y="-1047.5"/>
+            <point key="canvasLocation" x="1361.5" y="-430.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Image Annotation View Controller-->
         <scene sceneID="JfP-Rz-lRq">
             <objects>
-                <viewController id="8ig-Pf-cmu" sceneMemberID="viewController">
+                <viewController id="8ig-Pf-cmu" customClass="FLImageAnnotationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e9q-cD-Hda"/>
                         <viewControllerLayoutGuide type="bottom" id="45S-Jz-boW"/>
@@ -162,32 +162,70 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaI-Hz-zpg" userLabel="Content">
-                                <rect key="frame" x="0.0" y="64" width="359" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-V1-1Dc" userLabel="SelectedImage">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWj-rh-Z8x" userLabel="ButtonSection">
+                                        <rect key="frame" x="0.0" y="375" width="375" height="228"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krm-Lt-YHn" userLabel="Add Filters">
+                                                <rect key="frame" x="40" y="110" width="295" height="40"/>
+                                                <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="vsr-ja-hZO"/>
+                                                </constraints>
+                                                <state key="normal" title="Add Filters">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="rnT-34-xS8" kind="show" identifier="addFilters" id="70R-lh-bLR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njH-a0-ONB" userLabel="Save">
+                                                <rect key="frame" x="40" y="40" width="295" height="40"/>
+                                                <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="vau-yC-b3j"/>
+                                                </constraints>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="7EC-1Y-9bh" kind="custom" identifier="saveAnnotatedImages" customClass="BlurryModalSegue" id="KWo-LN-Qpy"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="200:189" id="HtF-Fb-9bf"/>
-                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="1:1" id="KeH-EW-BN5"/>
-                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="1:1" id="kbZ-7H-8Zb"/>
-                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="1:1" id="klM-Lt-VKU"/>
+                                            <constraint firstItem="njH-a0-ONB" firstAttribute="leading" secondItem="UWj-rh-Z8x" secondAttribute="leading" constant="40" id="82i-FF-oEE"/>
+                                            <constraint firstItem="njH-a0-ONB" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="40" id="BTq-tN-k1N"/>
+                                            <constraint firstItem="krm-Lt-YHn" firstAttribute="leading" secondItem="UWj-rh-Z8x" secondAttribute="leading" constant="40" id="Dd5-ah-yL1"/>
+                                            <constraint firstAttribute="centerX" secondItem="njH-a0-ONB" secondAttribute="centerX" id="Q7c-rk-CdO"/>
+                                            <constraint firstAttribute="centerX" secondItem="krm-Lt-YHn" secondAttribute="centerX" id="Rza-3I-yaO"/>
+                                            <constraint firstItem="krm-Lt-YHn" firstAttribute="top" secondItem="njH-a0-ONB" secondAttribute="bottom" constant="30" id="d5p-eo-GfV"/>
+                                            <constraint firstAttribute="trailing" secondItem="krm-Lt-YHn" secondAttribute="trailing" constant="40" id="eIK-oD-4M3"/>
+                                            <constraint firstAttribute="trailing" secondItem="njH-a0-ONB" secondAttribute="trailing" constant="40" id="wje-x8-1FL"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="HtF-Fb-9bf"/>
-                                                <exclude reference="KeH-EW-BN5"/>
-                                                <exclude reference="kbZ-7H-8Zb"/>
-                                                <exclude reference="klM-Lt-VKU"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="HtF-Fb-9bf"/>
-                                            </mask>
-                                        </variation>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-V1-1Dc" userLabel="SelectedImage">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="1:1" id="KeH-EW-BN5"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Uui-V1-1Dc" firstAttribute="leading" secondItem="LaI-Hz-zpg" secondAttribute="leading" id="JQn-35-gYi"/>
+                                    <constraint firstItem="UWj-rh-Z8x" firstAttribute="top" secondItem="Uui-V1-1Dc" secondAttribute="bottom" id="NSQ-be-2EA"/>
+                                    <constraint firstAttribute="bottom" secondItem="UWj-rh-Z8x" secondAttribute="bottom" id="TuX-2L-1n3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uui-V1-1Dc" secondAttribute="trailing" id="msV-oX-1kF"/>
+                                    <constraint firstItem="Uui-V1-1Dc" firstAttribute="top" secondItem="LaI-Hz-zpg" secondAttribute="top" id="sWv-13-RDp"/>
+                                    <constraint firstItem="UWj-rh-Z8x" firstAttribute="leading" secondItem="LaI-Hz-zpg" secondAttribute="leading" id="t88-RN-mc5"/>
+                                    <constraint firstAttribute="trailing" secondItem="UWj-rh-Z8x" secondAttribute="trailing" id="vG0-cf-F6l"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -195,16 +233,84 @@
                             <constraint firstItem="LaI-Hz-zpg" firstAttribute="leading" secondItem="F8O-fK-6OB" secondAttribute="leading" id="5zs-ZM-xwl"/>
                             <constraint firstItem="45S-Jz-boW" firstAttribute="top" secondItem="LaI-Hz-zpg" secondAttribute="bottom" id="tM4-am-SW6"/>
                             <constraint firstItem="LaI-Hz-zpg" firstAttribute="top" secondItem="e9q-cD-Hda" secondAttribute="bottom" id="yRy-rI-ZdW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LaI-Hz-zpg" secondAttribute="trailing" id="zL6-QP-kam"/>
+                            <constraint firstAttribute="trailing" secondItem="LaI-Hz-zpg" secondAttribute="trailing" id="zL6-QP-kam"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Z9O-5X-RKR"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="addFiltersButton" destination="krm-Lt-YHn" id="sn7-5P-fOH"/>
+                        <outlet property="photoImageView" destination="Uui-V1-1Dc" id="YVq-v4-kdJ"/>
+                        <outlet property="saveButton" destination="njH-a0-ONB" id="8xr-OX-weL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2d-iE-ej1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852.5" y="-1047.5"/>
+            <point key="canvasLocation" x="1846.5" y="-430.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="noK-Ld-A6P">
+            <objects>
+                <viewController id="7EC-1Y-9bh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BcI-f1-2ky"/>
+                        <viewControllerLayoutGuide type="bottom" id="o3r-To-XCx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9RG-N5-kKk" userLabel="Content">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvY-u3-RWS" userLabel="ActionView">
+                                <rect key="frame" x="30" y="176" width="315" height="315"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwv-u6-Jzc">
+                                        <rect key="frame" x="20" y="138" width="275" height="40"/>
+                                        <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="PAZ-rb-NR9"/>
+                                        </constraints>
+                                        <state key="normal" title="Complete">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="r2H-lK-YdF" kind="unwind" unwindAction="unwindToSelection:" id="JPx-60-Jrr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hvY-u3-RWS" secondAttribute="height" multiplier="1:1" id="D5a-D9-4Vd"/>
+                                    <constraint firstAttribute="centerY" secondItem="Qwv-u6-Jzc" secondAttribute="centerY" id="Itg-ps-eV5"/>
+                                    <constraint firstAttribute="centerX" secondItem="Qwv-u6-Jzc" secondAttribute="centerX" id="JzY-aQ-N9X"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qwv-u6-Jzc" secondAttribute="trailing" constant="20" id="w03-wM-fWT"/>
+                                    <constraint firstItem="Qwv-u6-Jzc" firstAttribute="leading" secondItem="hvY-u3-RWS" secondAttribute="leading" constant="20" id="xyl-1V-7eC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o3r-To-XCx" firstAttribute="top" secondItem="hvY-u3-RWS" secondAttribute="bottom" constant="166" id="ZJk-Yb-PUa"/>
+                            <constraint firstAttribute="centerY" secondItem="hvY-u3-RWS" secondAttribute="centerY" id="fcO-n0-eL7"/>
+                            <constraint firstAttribute="trailing" secondItem="hvY-u3-RWS" secondAttribute="trailing" constant="30" id="hzB-Oe-Be4"/>
+                            <constraint firstItem="hvY-u3-RWS" firstAttribute="top" secondItem="BcI-f1-2ky" secondAttribute="bottom" constant="150" id="l8J-s2-r3N"/>
+                            <constraint firstItem="hvY-u3-RWS" firstAttribute="leading" secondItem="9RG-N5-kKk" secondAttribute="leading" constant="30" id="uYJ-b6-GXp"/>
+                            <constraint firstAttribute="centerX" secondItem="hvY-u3-RWS" secondAttribute="centerX" id="yie-yG-Aq3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="l8J-s2-r3N"/>
+                                <exclude reference="ZJk-Yb-PUa"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cT-5h-ZES" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="r2H-lK-YdF" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2369.5" y="-1180.5"/>
         </scene>
         <!--Image Filter View Controller-->
         <scene sceneID="O5n-Uw-4OY">
@@ -553,7 +659,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggh-Tb-IJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="PoB-mG-lQL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2377.5" y="-1043.5"/>
+            <point key="canvasLocation" x="2369.5" y="-430.5"/>
         </scene>
         <!--Title-->
         <scene sceneID="qhl-sP-Vxt">
@@ -589,7 +695,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VC4-EC-64h" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="BqU-OX-sun" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2387.5" y="-266.5"/>
+            <point key="canvasLocation" x="2261.5" y="309.5"/>
         </scene>
         <!--AlbumNavController-->
         <scene sceneID="O4A-Q2-lOJ">
@@ -606,7 +712,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZ8-K9-WDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1487.5" y="-266.5"/>
+            <point key="canvasLocation" x="1361.5" y="309.5"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
