@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface FLSettingsViewController : UIViewController
+@interface FLSettingsViewController : UIViewController <FBLoginViewDelegate>
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoutButton;
+- (IBAction)logOut:(id)sender;
 
 
 @end

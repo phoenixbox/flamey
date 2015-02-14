@@ -7,6 +7,7 @@
 //
 
 #import "FLSettingsViewController.h"
+#import "FLSettings.h"
 
 @interface FLSettingsViewController ()
 
@@ -22,6 +23,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)logOut:(id)sender {
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FLSettings defaultSettings].shouldSkipLogin = NO;
+    [self performSegueWithIdentifier:@"logOut" sender:self];
 }
 
 @end

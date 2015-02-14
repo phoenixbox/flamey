@@ -249,10 +249,10 @@
             </objects>
             <point key="canvasLocation" x="1846.5" y="-430.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Facebook Upload Modal View Controller-->
         <scene sceneID="noK-Ld-A6P">
             <objects>
-                <viewController id="7EC-1Y-9bh" sceneMemberID="viewController">
+                <viewController id="7EC-1Y-9bh" customClass="FLFacebookUploadModalViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BcI-f1-2ky"/>
                         <viewControllerLayoutGuide type="bottom" id="o3r-To-XCx"/>
@@ -270,7 +270,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="PAZ-rb-NR9"/>
                                         </constraints>
-                                        <state key="normal" title="Complete">
+                                        <state key="normal" title="Not Ready">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -306,6 +306,9 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="readyButton" destination="Qwv-u6-Jzc" id="D59-Sj-Xcg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cT-5h-ZES" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="r2H-lK-YdF" userLabel="Exit" sceneMemberID="exit"/>
@@ -722,30 +725,51 @@
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW" userLabel="Content">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="123" y="280" width="131" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-79-Rx9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCH-Rl-0JH">
+                                        <rect key="frame" x="100" y="262" width="175" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logOut:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="08q-XU-0gY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="vCH-Rl-0JH" secondAttribute="centerX" id="Qiy-xC-bm0"/>
+                                    <constraint firstAttribute="centerY" secondItem="vCH-Rl-0JH" secondAttribute="centerY" id="o8t-5C-oai"/>
+                                    <constraint firstAttribute="trailing" secondItem="vCH-Rl-0JH" secondAttribute="trailing" constant="100" id="rr5-Ub-s9k"/>
+                                    <constraint firstItem="vCH-Rl-0JH" firstAttribute="leading" secondItem="up5-79-Rx9" secondAttribute="leading" constant="100" id="w8o-gn-ixq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="up5-79-Rx9" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="6vo-6e-CHd"/>
+                            <constraint firstItem="up5-79-Rx9" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="QFB-Az-9ew"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="up5-79-Rx9" secondAttribute="bottom" id="gAL-lX-etH"/>
+                            <constraint firstAttribute="trailing" secondItem="up5-79-Rx9" secondAttribute="trailing" id="hqf-3u-qxS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="o8t-5C-oai" id="H0q-QB-2u3"/>
+                        <segue destination="UaG-CF-jMv" kind="show" identifier="logOut" id="S7I-8f-S0e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855.5" y="470.5"/>
+            <point key="canvasLocation" x="855.5" y="506.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="gQL-09-ooN">
@@ -756,10 +780,10 @@
                         <viewControllerLayoutGuide type="bottom" id="epv-jB-cxr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8j7-xG-Oy2" userLabel="MainView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-e6-r0w" userLabel="Container">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-e6-r0w" userLabel="Container">
                                 <rect key="frame" x="16" y="20" width="343" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELJ-hF-zqU" customClass="FBLoginView">
@@ -823,7 +847,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVd-0J-pmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230.5" y="79.5"/>
+            <point key="canvasLocation" x="-308.5" y="234.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -844,7 +868,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222.5" y="79.5"/>
+            <point key="canvasLocation" x="470.5" y="91.5"/>
         </scene>
     </scenes>
     <resources>
