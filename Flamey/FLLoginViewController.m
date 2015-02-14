@@ -25,11 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.loginView.readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos", @"publish_actions"];
-    [self.flameyLogo setText:@"Persistence"];
+
+    [self.flameyLogo setText:@"Flamey"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
 
     FLSettings *settings = [FLSettings defaultSettings];
     if (_viewDidAppear) {
@@ -37,14 +38,15 @@
 
         settings.shouldSkipLogin = NO;
     } else {
-        [FBSession openActiveSessionWithAllowLoginUI:NO];
-        FBSession *session = [FBSession activeSession];
-
-        if (settings.shouldSkipLogin || session.isOpen) {
-            [self performSegueWithIdentifier:@"loggedIn" sender:nil];
-        } else {
-            _viewIsVisible = YES;
-        }
+        [FBSession openActiveSessionWithReadPermissions:readPermissions
+                                           allowLoginUI:YES
+                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                                          if (!error && status == FBSessionStateOpen) {
+                                              [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+                                          } else {
+                                              _viewIsVisible = YES;
+                                          }
+                                      }];
         _viewDidAppear = YES;
     }
 }
@@ -61,6 +63,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark - FBLoginViewDelegate
 
 - (void)loginView:(FBLoginView *)loginView
@@ -70,21 +73,10 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
 {
-    // Retrieve required user details and persist to external server
-    NSString *title = [NSString stringWithFormat:@"continue as %@", [user name]];
-    NSLog(@"%@", title);
-}
-
-- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView
-{
-    if (_viewIsVisible) {
-        [self performSegueWithIdentifier:@"loggedIn" sender:loginView];
-    }
-}
-
-- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView
-{
-    NSLog(@"User is not logged in");
+    // TODO:Retrieve required user details and persist to external server
+    NSLog(@"%@", [NSString stringWithFormat:@"continue as %@", [user name]]);
+    // Proceed into the app
+    [self performSegueWithIdentifier:@"loggedIn" sender:nil];
 }
 
 /*
