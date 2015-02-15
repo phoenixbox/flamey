@@ -10,7 +10,6 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "FLPhotoCollectionViewCell.h"
 
 #import "FLFacebookPhotoCollectionViewCell.h"
 
@@ -46,6 +45,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     _collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:self.view.frame.size.width]];
     [_collectionView setDelegate:self];
     [_collectionView setDataSource:self];
+    [_collectionView setAllowsMultipleSelection:YES];
 
     // Fetch the nib by the class name
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLFacebookPhotoCollectionViewCell class])
@@ -136,15 +136,25 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%ld", (long)[indexPath row]);
+    FLFacebookPhotoCollectionViewCell *cell = (FLFacebookPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+
+    [cell setSelected:YES];
     NSDictionary *selectedPhoto = _datasource[indexPath.row];
 
     FLPhoto *photo = [[FLPhoto alloc] initWithDictionary:selectedPhoto error:nil];
-    [[FLPhotoStore sharedStore] addUniquePhoto:photo];
 
-    NSLog(@"Store image count %@", [FLPhotoStore sharedStore]);
+    [[FLPhotoStore sharedStore] addUniquePhoto:photo];
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FLFacebookPhotoCollectionViewCell *cell = (FLFacebookPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+
+    [cell setSelected:NO];
+
+    NSDictionary *selectedPhoto = _datasource[indexPath.row];
+    [[FLPhotoStore sharedStore] removePhotoById:[selectedPhoto objectForKey:@"id"]];
+}
 
 #pragma mark <UICollectionViewDelegate>
 
