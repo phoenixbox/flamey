@@ -30,14 +30,43 @@
     BOOL exists = NO;
 
     for (FLPhoto* object in self.allPhotos) {
-        if ([object.id isEqualToNumber:photo.id]) {
-            NSLog(@"exists");
+
+        if (object.id == photo.id) {
             exists = YES;
         }
     }
 
     if (!exists) {
         [self.allPhotos addObject:photo];
+    }
+}
+
+- (BOOL)isPhotoPresent:(NSString *)stringId {
+    if(!self.allPhotos){
+        self.allPhotos = [NSMutableArray new];
+        return NO;
+    }
+
+    BOOL exists = NO;
+
+    for (FLPhoto* object in self.allPhotos) {
+        if([stringId floatValue] == [object.id floatValue]) {
+            exists = YES;
+        }
+    }
+
+    return exists;
+}
+
+- (void)removePhotoById:(NSString *)stringId {
+    if(!self.allPhotos){
+        self.allPhotos = [NSMutableArray new];
+    }
+
+    for (FLPhoto* object in self.allPhotos) {
+        if([stringId floatValue] == [object.id floatValue]) {
+            [self.allPhotos removeObject:object];
+        }
     }
 }
 

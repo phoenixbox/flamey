@@ -19,6 +19,10 @@
 
 - (void)addUniquePhoto:(FLPhoto *)piece;
 
+- (void)removePhotoById:(NSString *)stringId;
+
+- (BOOL)isPhotoPresent:(NSString *)stringId;
+
 - (NSMutableArray *)allPhotos;
 
 @end
