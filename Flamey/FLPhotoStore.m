@@ -7,7 +7,6 @@
 //
 
 #import "FLPhotoStore.h"
-#import <ObjectiveSugar/ObjectiveSugar.h>
 
 @implementation FLPhotoStore
 

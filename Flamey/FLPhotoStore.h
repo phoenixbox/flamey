@@ -17,7 +17,7 @@
 
 + (FLPhotoStore *)sharedStore;
 
-- (void)addUniquePhoto:(FLPhoto *)piece;
+- (void)addUniquePhoto:(FLPhoto *)photo;
 
 - (void)removePhotoById:(NSString *)stringId;
 
