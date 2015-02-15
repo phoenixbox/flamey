@@ -30,7 +30,7 @@
     BOOL exists = NO;
 
     for (FLPhoto* object in self.allPhotos) {
-        if ([object.id isEqualToNumber:photo.id]) {
+        if (object.id == photo.id) {
             NSLog(@"exists");
             exists = YES;
         }
