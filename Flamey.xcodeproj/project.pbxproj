@@ -35,6 +35,9 @@
 		CB902F9F1A8DC836003D2950 /* FLProcessedImagesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB902F9E1A8DC836003D2950 /* FLProcessedImagesStore.m */; };
 		CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA10D9F1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m */; };
 		CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA10DA01A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib */; };
+		CBA780E51A911E8500CE9D84 /* FLAnnotationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA780E31A911E8500CE9D84 /* FLAnnotationTableViewCell.m */; };
+		CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */; };
+		CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */; };
 		CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */; };
 		CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */; };
 		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
@@ -115,6 +118,11 @@
 		CBA10D9E1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		CBA10D9F1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		CBA10DA01A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFacebookPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		CBA780E21A911E8500CE9D84 /* FLAnnotationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationTableViewCell.h; sourceTree = "<group>"; };
+		CBA780E31A911E8500CE9D84 /* FLAnnotationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationTableViewCell.m; sourceTree = "<group>"; };
+		CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableViewCell.xib; sourceTree = "<group>"; };
+		CBA780E81A9123C200CE9D84 /* FLAnnotationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationStore.h; sourceTree = "<group>"; };
+		CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationStore.m; sourceTree = "<group>"; };
 		CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageAnnotationViewController.h; sourceTree = "<group>"; };
 		CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageAnnotationViewController.m; sourceTree = "<group>"; };
 		CBEC72F61A7D494100F8D0AE /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
@@ -275,6 +283,8 @@
 				CB7EF47C1A807BA20084666E /* FLFiltersStore.m */,
 				CB902F9D1A8DC836003D2950 /* FLProcessedImagesStore.h */,
 				CB902F9E1A8DC836003D2950 /* FLProcessedImagesStore.m */,
+				CBA780E81A9123C200CE9D84 /* FLAnnotationStore.h */,
+				CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -317,6 +327,9 @@
 			children = (
 				CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */,
 				CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */,
+				CBA780E21A911E8500CE9D84 /* FLAnnotationTableViewCell.h */,
+				CBA780E31A911E8500CE9D84 /* FLAnnotationTableViewCell.m */,
+				CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */,
 			);
 			name = AnnotateImage;
 			sourceTree = "<group>";
@@ -506,6 +519,7 @@
 				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
 				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
+				CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */,
 				CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +577,7 @@
 				CB7EF47D1A807BA20084666E /* FLFiltersStore.m in Sources */,
 				CB6F8CFC1A6B478F00429133 /* FLFacebookAlbumTableViewController.m in Sources */,
 				CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */,
+				CBA780E51A911E8500CE9D84 /* FLAnnotationTableViewCell.m in Sources */,
 				CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */,
 				CB902F9F1A8DC836003D2950 /* FLProcessedImagesStore.m in Sources */,
 				CB2EBE7B1A7DD98100D76528 /* FLToolsStore.m in Sources */,
@@ -580,6 +595,7 @@
 				CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */,
 				CB6F8D081A6C83B700429133 /* FLPhotoStore.m in Sources */,
 				CB902F9C1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m in Sources */,
+				CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

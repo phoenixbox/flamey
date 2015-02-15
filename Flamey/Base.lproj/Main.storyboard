@@ -208,22 +208,22 @@
                                             <constraint firstAttribute="trailing" secondItem="njH-a0-ONB" secondAttribute="trailing" constant="40" id="wje-x8-1FL"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-V1-1Dc" userLabel="SelectedImage">
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="hEU-Hn-9Jr" userLabel="TableContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Uui-V1-1Dc" secondAttribute="height" multiplier="1:1" id="KeH-EW-BN5"/>
+                                            <constraint firstAttribute="width" secondItem="hEU-Hn-9Jr" secondAttribute="height" multiplier="1:1" id="ueI-0h-0dZ"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Uui-V1-1Dc" firstAttribute="leading" secondItem="LaI-Hz-zpg" secondAttribute="leading" id="JQn-35-gYi"/>
-                                    <constraint firstItem="UWj-rh-Z8x" firstAttribute="top" secondItem="Uui-V1-1Dc" secondAttribute="bottom" id="NSQ-be-2EA"/>
+                                    <constraint firstItem="hEU-Hn-9Jr" firstAttribute="top" secondItem="LaI-Hz-zpg" secondAttribute="top" id="2k4-wF-xhA"/>
+                                    <constraint firstItem="UWj-rh-Z8x" firstAttribute="top" secondItem="hEU-Hn-9Jr" secondAttribute="bottom" id="8Aj-cH-Lfs"/>
                                     <constraint firstAttribute="bottom" secondItem="UWj-rh-Z8x" secondAttribute="bottom" id="TuX-2L-1n3"/>
-                                    <constraint firstAttribute="trailing" secondItem="Uui-V1-1Dc" secondAttribute="trailing" id="msV-oX-1kF"/>
-                                    <constraint firstItem="Uui-V1-1Dc" firstAttribute="top" secondItem="LaI-Hz-zpg" secondAttribute="top" id="sWv-13-RDp"/>
+                                    <constraint firstAttribute="trailing" secondItem="hEU-Hn-9Jr" secondAttribute="trailing" id="cQF-v0-uy9"/>
                                     <constraint firstItem="UWj-rh-Z8x" firstAttribute="leading" secondItem="LaI-Hz-zpg" secondAttribute="leading" id="t88-RN-mc5"/>
+                                    <constraint firstItem="hEU-Hn-9Jr" firstAttribute="leading" secondItem="LaI-Hz-zpg" secondAttribute="leading" id="unM-cN-6Pe"/>
                                     <constraint firstAttribute="trailing" secondItem="UWj-rh-Z8x" secondAttribute="trailing" id="vG0-cf-F6l"/>
                                 </constraints>
                             </view>
@@ -247,8 +247,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="addFiltersButton" destination="krm-Lt-YHn" id="sn7-5P-fOH"/>
-                        <outlet property="photoImageView" destination="Uui-V1-1Dc" id="YVq-v4-kdJ"/>
                         <outlet property="saveButton" destination="njH-a0-ONB" id="8xr-OX-weL"/>
+                        <outlet property="tableContainer" destination="hEU-Hn-9Jr" id="rPX-NP-26G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2d-iE-ej1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -751,7 +751,7 @@
                         <viewControllerLayoutGuide type="bottom" id="epv-jB-cxr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8j7-xG-Oy2" userLabel="MainView">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-e6-r0w" userLabel="Container">
