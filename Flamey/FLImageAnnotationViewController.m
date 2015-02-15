@@ -134,12 +134,13 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 - (void)renderLateralTable {
     CGRect tableRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.width);
     _selectedPhotosTable = [[UITableView alloc] initWithFrame:tableRect style:UITableViewStylePlain];;
-    [self.tableContainer addSubview:_selectedPhotosTable];;
+    [self.tableContainer addSubview:_selectedPhotosTable];
 
-    [self rotateElement:_selectedPhotosTable];
+    CGAffineTransform rotate = CGAffineTransformMakeRotation(-M_PI_2);
+    [_selectedPhotosTable setTransform:rotate];
 
     // VIP: Must set the frame again on the table after rotation
-//    [_selectedPhotosTable setFrame:tableRect];
+    [_selectedPhotosTable setFrame:tableRect];
 
     [_selectedPhotosTable registerClass:[UITableViewCell class] forCellReuseIdentifier:kAnnotationTableViewCellIdentifier];
     _selectedPhotosTable.delegate = self;
@@ -147,13 +148,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     _selectedPhotosTable.alwaysBounceVertical = NO;
     _selectedPhotosTable.scrollEnabled = YES;
     _selectedPhotosTable.showsVerticalScrollIndicator = NO;
-//    _selectedPhotosTable.separatorInset = UIEdgeInsetsMake(0, 3, 0, 3);
     [_selectedPhotosTable setSeparatorColor:[UIColor blackColor]];
-}
-
-- (void)rotateElement:(UIView *)element {
-    CGAffineTransform rotate = CGAffineTransformMakeRotation(M_PI);
-    [element setTransform:rotate];
 }
 
 #pragma UITableViewDelgate
@@ -180,13 +175,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 
         [cell.selectedImageViewBackground sd_setImageWithURL:[NSURL URLWithString:photo.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 
-            [self rotateElement:cell.selectedImageViewBackground];
-
-            // Have to reset frame after rotation?
-// Migrate to cell logic
-//            _facebookImage = image;
-// Need this on the cells image view
-//            [self addTapGestureRecogniserToImageView];
+            cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
         }];
     }
     return cell;
