@@ -12,7 +12,19 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    NSLog(@"Cell Initialized");
+    [_selectedView setHidden:YES];
 }
+
+- (void)setSelected:(BOOL)selected
+{
+    if (selected) {
+        [_selectedView setHidden:NO];
+    } else {
+        [_selectedView setHidden:YES];
+    }
+
+    [super setSelected:selected];
+}
+
 
 @end

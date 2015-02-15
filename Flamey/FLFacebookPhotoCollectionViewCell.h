@@ -10,5 +10,7 @@
 
 @interface FLFacebookPhotoCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBackgroundImage;
+@property (weak, nonatomic) IBOutlet UIView *selectedView;
+
 
 @end
