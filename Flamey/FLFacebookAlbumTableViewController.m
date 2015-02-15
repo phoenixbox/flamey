@@ -196,7 +196,6 @@
     @finally {
     }
     
-//    vc.delegate = _delegate;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
