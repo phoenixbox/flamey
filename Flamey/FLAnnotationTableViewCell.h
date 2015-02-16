@@ -10,5 +10,6 @@
 
 @interface FLAnnotationTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *selectedImageViewBackground;
+@property (strong, nonatomic) UIImage *facebookImage;
 
 @end
