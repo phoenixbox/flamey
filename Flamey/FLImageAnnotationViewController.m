@@ -70,6 +70,8 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     NSLog(@"Recognized tap");
     FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
     CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
+
+    NSLog(@"handleTap X Point %f, Y Point %f", annotationPoint.x, annotationPoint.y);
     [targetCell.photo setAnnotationPoint:annotationPoint];
 
     [self setFlameIconOnCell:targetCell];
@@ -80,7 +82,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:targetCell.originalImage];
 
     // Flame Image
-    UIImage *overlayImage = [self createFlame:imageView.frame.size atTouchPoint:targetCell.photo.annotationPoint];
+    UIImage *overlayImage = [self createFlame:targetCell.frame.size atTouchPoint:targetCell.photo.annotationPoint];
     GPUImagePicture *flameyGPUImage = [[GPUImagePicture alloc] initWithImage:overlayImage];
 
     // 2. Set up the filter chain
@@ -105,20 +107,33 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 }
 
 - (UIImage *)createFlame:(CGSize)inputSize atTouchPoint:(CGPoint)touchPoint {
-    UIImage * ghostImage = [UIImage imageNamed:@"ghost.png"];
+    // NOTE: Input size is changing!!
+    NSLog(@"Input Size %f %f",inputSize.height, inputSize.width);
+    NSLog(@"Touch Point %f %f",touchPoint.x, touchPoint.y);
+    // Redefinition help?
+    inputSize = CGSizeMake(320,320);
+    // Load the image
+    UIImage * heartIcon = [UIImage imageNamed:@"heartIcon.png"];
 
-    CGFloat flameyIconAspectRatio = ghostImage.size.width / ghostImage.size.height;
+//    CGFloat heartIconAspectRatio = heartIcon.size.width / heartIcon.size.height;
 
-    NSInteger targetFlameyWidth = inputSize.width * 0.2;
-    CGSize flameSize = CGSizeMake(targetFlameyWidth, targetFlameyWidth / flameyIconAspectRatio);
+//    NSInteger targetFlameyWidth = inputSize.width * 0.2;
+//    CGSize heartSize = CGSizeMake(inputSize.width, targetFlameyWidth / heartIconAspectRatio);
 
     // TODO: This is an incorrect way to adjust for touch recognition offset
-    CGPoint newPoint = CGPointMake(touchPoint.x * 0.85, touchPoint.y * 0.85);
 
-    CGRect flameRect = {newPoint, flameSize};
+    // Build the new bounding box for the icon
+    CGFloat reduction = heartIcon.size.width/2;
+    CGPoint newPoint = CGPointMake(touchPoint.x-reduction, touchPoint.y-reduction);
+
+    CGRect heartRect = {newPoint, heartIcon.size};
+
+    NSLog(@"Heart rect %f %f %f %f", heartRect.origin.x,heartRect.origin.y,heartRect.size.width, heartRect.size.height);
 
     UIGraphicsBeginImageContext(inputSize);
     CGContextRef context = UIGraphicsGetCurrentContext();
+
+
 
     CGRect inputRect = {CGPointZero, inputSize};
     CGContextClearRect(context, inputRect);
@@ -126,9 +141,9 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
     CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-inputSize.height);
     CGContextConcatCTM(context, flipThenShift);
-    CGRect transformedGhostRect = CGRectApplyAffineTransform(flameRect, flipThenShift);
+    CGRect transformedGhostRect = CGRectApplyAffineTransform(heartRect, flipThenShift);
 
-    CGContextDrawImage(context, transformedGhostRect, [ghostImage CGImage]);
+    CGContextDrawImage(context, transformedGhostRect, [heartIcon CGImage]);
 
     UIImage *flameyIcon = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -183,13 +198,22 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 
             cell.originalImage = image;
             [cell.contentView setUserInteractionEnabled:YES];
+
+            NSLog(@"BACKGROUND BEFORE %f %f",cell.selectedImageViewBackground.frame.size.height, cell.selectedImageViewBackground.frame.size.width);
             cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
-            [self addTapGestureRecogniserToCell:cell];
+            NSLog(@"BACKGROUND AFTER %f %f",cell.selectedImageViewBackground.frame.size.height, cell.selectedImageViewBackground.frame.size.width);
+            // Do I need to reset the frame to retain its size?
 
             // CGPoint is scalar so comparison to nil wont work - this does :)
             if (!CGPointEqualToPoint(photo.annotationPoint, CGPointZero)) {
+                CGPoint point = photo.annotationPoint;
+                NSLog(@"handleTap X Point %f, Y Point %f", point.x, point.y);
+
                 [self setFlameIconOnCell:cell];
             }
+
+            [self addTapGestureRecogniserToCell:cell];
+
         }];
     }
     return cell;
