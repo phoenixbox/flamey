@@ -10,4 +10,10 @@
 
 @implementation FLPhoto
 
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    if ([propertyName isEqualToString: @"annotationPoint"]) return YES;
+    return NO;
+}
+
 @end

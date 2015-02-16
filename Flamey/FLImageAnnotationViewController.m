@@ -57,7 +57,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 - (void)addTapGestureRecogniserToCell:(FLAnnotationTableViewCell *)cell {
     NSLog(@"SETTING");
     self.imageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                action:@selector(setFlameIcon:)];
+                                                                action:@selector(handleTap:)];
     self.imageViewTap.numberOfTouchesRequired = 1;
     self.imageViewTap.numberOfTapsRequired = 1;
 
@@ -66,17 +66,21 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     cell.userInteractionEnabled = YES;
 }
 
-- (void)setFlameIcon:(UIGestureRecognizer *)sender {
+- (void)handleTap:(UIGestureRecognizer *)sender {
     NSLog(@"Recognized tap");
     FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
+    CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
+    [targetCell.photo setAnnotationPoint:annotationPoint];
 
+    [self setFlameIconOnCell:targetCell];
+}
+
+-(void)setFlameIconOnCell:(FLAnnotationTableViewCell *)targetCell {
     UIImageView *imageView = targetCell.selectedImageViewBackground;
-
-    GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:targetCell.facebookImage];
+    GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:targetCell.originalImage];
 
     // Flame Image
-    CGPoint point = [sender locationInView:targetCell.selectedImageViewBackground];
-    UIImage *overlayImage = [self createFlame:imageView.frame.size atTouchPoint:point];
+    UIImage *overlayImage = [self createFlame:imageView.frame.size atTouchPoint:targetCell.photo.annotationPoint];
     GPUImagePicture *flameyGPUImage = [[GPUImagePicture alloc] initWithImage:overlayImage];
 
     // 2. Set up the filter chain
@@ -149,25 +153,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     _selectedPhotosTable.alwaysBounceVertical = NO;
     _selectedPhotosTable.scrollEnabled = YES;
     _selectedPhotosTable.showsVerticalScrollIndicator = NO;
-    [_selectedPhotosTable setSeparatorColor:[UIColor blackColor]];
-
-//    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(decrementTable:)];
-//    leftSwipe.direction = UISwipeGestureRecognizerDirectionDown;
-//    leftSwipe.numberOfTouchesRequired = 1;
-//    [_selectedPhotosTable addGestureRecognizer:leftSwipe];
-//
-//    UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(incrementTable:)];
-//    rightSwipe.direction = UISwipeGestureRecognizerDirectionUp;
-//    rightSwipe.numberOfTouchesRequired = 1;
-//    [_selectedPhotosTable addGestureRecognizer:rightSwipe];
-}
-
-- (void)decrementTable:(UIGestureRecognizer *)gr {
-    NSLog(@"Decrement Table");
-}
-
-- (void)incrementTable:(UIGestureRecognizer *)gr {
-    NSLog(@"Increment Table");
+    [_selectedPhotosTable setSeparatorColor:[UIColor clearColor]];
 }
 
 #pragma UITableViewDelgate
@@ -191,14 +177,19 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 
     if([tableView isEqual:_selectedPhotosTable]) {
         FLPhoto *photo = [[annotationStore allPhotos] objectAtIndex:[indexPath row]];
+        cell.photo = photo;
 
         [cell.selectedImageViewBackground sd_setImageWithURL:[NSURL URLWithString:photo.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 
-            cell.facebookImage = image;
-
+            cell.originalImage = image;
             [cell.contentView setUserInteractionEnabled:YES];
             cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
             [self addTapGestureRecogniserToCell:cell];
+
+            // CGPoint is scalar so comparison to nil wont work - this does :)
+            if (!CGPointEqualToPoint(photo.annotationPoint, CGPointZero)) {
+                [self setFlameIconOnCell:cell];
+            }
         }];
     }
     return cell;
