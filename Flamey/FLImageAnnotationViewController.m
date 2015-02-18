@@ -55,7 +55,6 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 }
 
 - (void)addTapGestureRecogniserToCell:(FLAnnotationTableViewCell *)cell {
-    NSLog(@"SETTING");
     self.imageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                 action:@selector(handleTap:)];
     self.imageViewTap.numberOfTouchesRequired = 1;
@@ -67,7 +66,6 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 }
 
 - (void)handleTap:(UIGestureRecognizer *)sender {
-    NSLog(@"Recognized tap");
     FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
     CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
 
@@ -82,7 +80,11 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:targetCell.originalImage];
 
     // Flame Image
-    UIImage *overlayImage = [self createFlame:targetCell.frame.size atTouchPoint:targetCell.photo.annotationPoint];
+    // NOTE: Input size is mutating on table view cell dequeue - so shim with fixed viewport width size
+//    CGSize imageAspect = [self imageSizeAfterAspectFit:targetCell.selectedImageViewBackground];
+
+    CGSize imageOverlaySize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
+    UIImage *overlayImage = [self createFlameForSize:imageOverlaySize atTouchPoint:targetCell.photo.annotationPoint];
     GPUImagePicture *flameyGPUImage = [[GPUImagePicture alloc] initWithImage:overlayImage];
 
     // 2. Set up the filter chain
@@ -106,21 +108,55 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     [imageView setImage:processedImage];
 }
 
-- (UIImage *)createFlame:(CGSize)inputSize atTouchPoint:(CGPoint)touchPoint {
-    // NOTE: Input size is changing!!
-    NSLog(@"Input Size %f %f",inputSize.height, inputSize.width);
-    NSLog(@"Touch Point %f %f",touchPoint.x, touchPoint.y);
-    // Redefinition help?
-    inputSize = CGSizeMake(320,320);
-    // Load the image
+-(CGSize)imageSizeAfterAspectFit:(UIImageView*)imgview{
+    float newwidth;
+    float newheight;
+
+    UIImage *image=imgview.image;
+
+    if (image.size.height>=image.size.width){
+        newheight=imgview.frame.size.height;
+        newwidth=(image.size.width/image.size.height)*newheight;
+
+        if(newwidth>imgview.frame.size.width){
+            float diff=imgview.frame.size.width-newwidth;
+            newheight=newheight+diff/newheight*newheight;
+            newwidth=imgview.frame.size.width;
+        }
+
+    }
+    else{
+        newwidth=imgview.frame.size.width;
+        newheight=(image.size.height/image.size.width)*newwidth;
+
+        if(newheight>imgview.frame.size.height){
+            float diff=imgview.frame.size.height-newheight;
+            newwidth=newwidth+diff/newwidth*newwidth;
+            newheight=imgview.frame.size.height;
+        }
+    }
+
+    NSLog(@"image after aspect fit: width=%f height=%f",newwidth,newheight);
+
+
+    //adapt UIImageView size to image size
+    //imgview.frame=CGRectMake(imgview.frame.origin.x+(imgview.frame.size.width-newwidth)/2,imgview.frame.origin.y+(imgview.frame.size.height-newheight)/2,newwidth,newheight);
+    
+    return CGSizeMake(newwidth, newheight);
+}
+
+- (UIImage *)createFlameForSize:(CGSize)overlaySize atTouchPoint:(CGPoint)touchPoint {
+//    NSLog(@"Input Size %f %f",overlaySize.height, overlaySize.width);
+//    NSLog(@"Touch Point %f %f",touchPoint.x, touchPoint.y);
+//  Load the image
     UIImage * heartIcon = [UIImage imageNamed:@"heartIcon.png"];
 
-//    CGFloat heartIconAspectRatio = heartIcon.size.width / heartIcon.size.height;
+//  CGFloat heartIconAspectRatio = heartIcon.size.width / heartIcon.size.height;
 
-//    NSInteger targetFlameyWidth = inputSize.width * 0.2;
-//    CGSize heartSize = CGSizeMake(inputSize.width, targetFlameyWidth / heartIconAspectRatio);
+//  NSInteger targetFlameyWidth = inputSize.width * 0.2;
+//  CGSize heartSize = CGSizeMake(inputSize.width, targetFlameyWidth / heartIconAspectRatio);
 
-    // TODO: This is an incorrect way to adjust for touch recognition offset
+//  TODO: This is an incorrect way to adjust for touch recognition offset
 
     // Build the new bounding box for the icon
     CGFloat reduction = heartIcon.size.width/2;
@@ -128,18 +164,16 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 
     CGRect heartRect = {newPoint, heartIcon.size};
 
-    NSLog(@"Heart rect %f %f %f %f", heartRect.origin.x,heartRect.origin.y,heartRect.size.width, heartRect.size.height);
+//    NSLog(@"Heart rect %f %f %f %f", heartRect.origin.x,heartRect.origin.y,heartRect.size.width, heartRect.size.height);
 
-    UIGraphicsBeginImageContext(inputSize);
+    UIGraphicsBeginImageContext(overlaySize);
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-
-
-    CGRect inputRect = {CGPointZero, inputSize};
+    CGRect inputRect = {CGPointZero, overlaySize};
     CGContextClearRect(context, inputRect);
 
     CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
-    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-inputSize.height);
+    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-overlaySize.height);
     CGContextConcatCTM(context, flipThenShift);
     CGRect transformedGhostRect = CGRectApplyAffineTransform(heartRect, flipThenShift);
 
@@ -199,9 +233,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
             cell.originalImage = image;
             [cell.contentView setUserInteractionEnabled:YES];
 
-            NSLog(@"BACKGROUND BEFORE %f %f",cell.selectedImageViewBackground.frame.size.height, cell.selectedImageViewBackground.frame.size.width);
             cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
-            NSLog(@"BACKGROUND AFTER %f %f",cell.selectedImageViewBackground.frame.size.height, cell.selectedImageViewBackground.frame.size.width);
             // Do I need to reset the frame to retain its size?
 
             // CGPoint is scalar so comparison to nil wont work - this does :)
