@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *addFiltersButton;
 @property (weak, nonatomic) IBOutlet UIView *tableContainer;
+@property (assign, nonatomic) NSInteger targetRow;
 
 @property (strong, nonatomic) FLPhoto *selectedPhoto;
 @end

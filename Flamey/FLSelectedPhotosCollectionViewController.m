@@ -96,6 +96,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
         FLImageAnnotationViewController *annotationView =[vc.viewControllers objectAtIndex:0];
 //      Attribute it
         annotationView.selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
+        annotationView.targetRow = [indexPath row];
     }
 }
 

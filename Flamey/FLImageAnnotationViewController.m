@@ -41,7 +41,16 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self renderLateralTable];
+
     [self updateAnnotationStore];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_targetRow inSection:0];
+
+    [_selectedPhotosTable scrollToRowAtIndexPath:indexPath
+                                atScrollPosition:UITableViewScrollPositionTop
+                                        animated:YES];
 }
 
 - (void)updateAnnotationStore {
