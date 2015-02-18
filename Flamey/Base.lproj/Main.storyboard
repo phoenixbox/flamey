@@ -754,12 +754,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-e6-r0w" userLabel="Container">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-e6-r0w" userLabel="Container">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELJ-hF-zqU" customClass="FBLoginView">
-                                        <rect key="frame" x="10" y="256" width="323" height="74"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELJ-hF-zqU" customClass="FBLoginView">
+                                        <rect key="frame" x="20" y="350" width="335" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Z0S-b5-EOp"/>
+                                        </constraints>
                                         <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="184" y="256" width="200" height="0.0"/>
                                         </variation>
@@ -768,7 +771,7 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flamey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMx-Yg-WLr">
-                                        <rect key="frame" x="11" y="72" width="322" height="55"/>
+                                        <rect key="frame" x="20" y="72" width="335" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -776,26 +779,27 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="mMx-Yg-WLr" firstAttribute="centerX" secondItem="ELJ-hF-zqU" secondAttribute="centerX" id="6fh-c0-aDC"/>
-                                    <constraint firstAttribute="bottom" secondItem="ELJ-hF-zqU" secondAttribute="bottom" constant="400" id="Bim-SI-zOH"/>
-                                    <constraint firstItem="ELJ-hF-zqU" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="10" id="HR9-P6-1hf"/>
+                                    <constraint firstAttribute="trailing" secondItem="mMx-Yg-WLr" secondAttribute="trailing" constant="20" id="7ra-le-DaC"/>
+                                    <constraint firstItem="ELJ-hF-zqU" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="20" id="Bns-5B-lz7"/>
+                                    <constraint firstItem="ELJ-hF-zqU" firstAttribute="top" relation="lessThanOrEqual" secondItem="OPd-e6-r0w" secondAttribute="top" priority="900" constant="350" id="CTF-dM-xb3"/>
                                     <constraint firstItem="mMx-Yg-WLr" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="11" id="Lg1-cV-9WI"/>
+                                    <constraint firstAttribute="trailing" secondItem="ELJ-hF-zqU" secondAttribute="trailing" constant="20" id="Noo-YV-UBU"/>
+                                    <constraint firstAttribute="bottom" secondItem="ELJ-hF-zqU" secondAttribute="bottom" constant="164" id="PN1-pa-neZ"/>
+                                    <constraint firstItem="mMx-Yg-WLr" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="20" id="YNl-mE-qJy"/>
                                     <constraint firstItem="mMx-Yg-WLr" firstAttribute="top" secondItem="OPd-e6-r0w" secondAttribute="top" constant="72" id="YT2-fZ-9he"/>
                                     <constraint firstAttribute="bottom" secondItem="ELJ-hF-zqU" secondAttribute="bottom" constant="250" id="aYi-fz-hHv"/>
-                                    <constraint firstAttribute="trailing" secondItem="mMx-Yg-WLr" secondAttribute="trailing" constant="10" id="cQH-Ib-hkx"/>
-                                    <constraint firstItem="ELJ-hF-zqU" firstAttribute="centerX" secondItem="OPd-e6-r0w" secondAttribute="centerX" id="efj-uc-eXu"/>
-                                    <constraint firstItem="ELJ-hF-zqU" firstAttribute="top" secondItem="OPd-e6-r0w" secondAttribute="top" constant="256" id="ovq-9C-NMJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="mMx-Yg-WLr" secondAttribute="trailing" constant="20" id="cQH-Ib-hkx"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Lg1-cV-9WI"/>
+                                        <exclude reference="cQH-Ib-hkx"/>
                                         <exclude reference="aYi-fz-hHv"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Lg1-cV-9WI"/>
-                                        <exclude reference="Bim-SI-zOH"/>
                                         <include reference="aYi-fz-hHv"/>
                                     </mask>
                                 </variation>
@@ -803,11 +807,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.4058712870895772" blue="0.42953196323775189" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="OPd-e6-r0w" firstAttribute="bottom" secondItem="epv-jB-cxr" secondAttribute="top" id="729-BH-k8w"/>
-                            <constraint firstItem="OPd-e6-r0w" firstAttribute="leading" secondItem="8j7-xG-Oy2" secondAttribute="leadingMargin" id="R6w-g0-Grz"/>
-                            <constraint firstItem="OPd-e6-r0w" firstAttribute="top" secondItem="wRa-ZK-Twh" secondAttribute="bottom" id="UD5-Gw-m5p"/>
-                            <constraint firstItem="OPd-e6-r0w" firstAttribute="trailing" secondItem="8j7-xG-Oy2" secondAttribute="trailingMargin" id="oWQ-pF-kH7"/>
+                            <constraint firstItem="OPd-e6-r0w" firstAttribute="bottom" secondItem="epv-jB-cxr" secondAttribute="top" id="KYD-rZ-4gk"/>
+                            <constraint firstItem="OPd-e6-r0w" firstAttribute="leading" secondItem="8j7-xG-Oy2" secondAttribute="leading" id="R6w-g0-Grz"/>
+                            <constraint firstItem="epv-jB-cxr" firstAttribute="top" secondItem="OPd-e6-r0w" secondAttribute="bottom" constant="-113" id="UM7-H2-Jjd"/>
+                            <constraint firstItem="OPd-e6-r0w" firstAttribute="top" secondItem="wRa-ZK-Twh" secondAttribute="bottom" id="cht-gJ-5GD"/>
+                            <constraint firstItem="OPd-e6-r0w" firstAttribute="top" secondItem="wRa-ZK-Twh" secondAttribute="bottom" constant="20" id="mII-2j-cKI"/>
+                            <constraint firstItem="OPd-e6-r0w" firstAttribute="trailing" secondItem="8j7-xG-Oy2" secondAttribute="trailing" id="oWQ-pF-kH7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mII-2j-cKI"/>
+                                <exclude reference="UM7-H2-Jjd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
