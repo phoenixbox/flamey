@@ -17,6 +17,7 @@
 
     dispatch_once(&onceToken, ^{
         settings = [[self alloc] init];
+        [settings setNeedToLogin:YES];
     });
     return settings;
 }
@@ -24,10 +25,17 @@
 #pragma mark - Properties
 
 static NSString *const kShouldSkipLoginKey = @"shouldSkipLogin";
+static NSString *const kNeedToLogin = @"needToLogin";
 
 - (BOOL)shouldSkipLogin
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kShouldSkipLoginKey];
+}
+
+
+- (BOOL)needToLogin
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kNeedToLogin];
 }
 
 - (void)setShouldSkipLogin:(BOOL)shouldSkipLogin
@@ -37,5 +45,11 @@ static NSString *const kShouldSkipLoginKey = @"shouldSkipLogin";
     [defaults synchronize];
 }
 
+- (void)setNeedToLogin:(BOOL)needToLogin
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:needToLogin forKey:kNeedToLogin];
+    [defaults synchronize];
+}
 
 @end

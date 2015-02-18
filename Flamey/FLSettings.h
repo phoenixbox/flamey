@@ -13,5 +13,6 @@
 + (instancetype)defaultSettings;
 
 @property (nonatomic, assign) BOOL shouldSkipLogin;
+@property (nonatomic, assign) BOOL needToLogin;
 
 @end

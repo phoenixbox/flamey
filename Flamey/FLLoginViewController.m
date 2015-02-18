@@ -33,7 +33,7 @@
     NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
 
     FLSettings *settings = [FLSettings defaultSettings];
-    if (_viewDidAppear) {
+    if (_viewDidAppear || settings.needToLogin) {
         _viewIsVisible = YES;
 
         settings.shouldSkipLogin = NO;

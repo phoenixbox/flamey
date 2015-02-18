@@ -28,6 +28,7 @@
 - (IBAction)logOut:(id)sender {
     [FBSession.activeSession closeAndClearTokenInformation];
     [FLSettings defaultSettings].shouldSkipLogin = NO;
+    [FLSettings defaultSettings].needToLogin = YES;
     [self performSegueWithIdentifier:@"logOut" sender:self];
 }
 
