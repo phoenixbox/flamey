@@ -32,6 +32,9 @@ static NSString * const kTOSCell = @"Terms of Service";
 static NSString * const kTOSViewController = @"FLTOSViewController";
 static NSString * const kLogoutCell = @"Logout";
 static NSString * const kDeleteAccountCell = @"Delete Account";
+static NSString * const kConfirmDeleteAccount = @"Yes";
+static NSString * const kCancelDeleteAccount = @"Not right now";
+static NSString * const kDeleteAccountActionTitle = @"Delete your account?";
 
 @implementation FLSettingsViewController
 
@@ -181,9 +184,8 @@ final sections footer view
         [self presentViewController:TOSViewController animated:YES completion:nil];
     } else if ([cellName isEqualToString:kLogoutCell]) {
         [self logOut];
-        NSLog(@"Cell name: %@", cellName);
     } else if ([cellName isEqualToString:kDeleteAccountCell]) {
-        NSLog(@"Cell name: %@", cellName);
+        [self presentAccountDeleteOptions];
     } else {
         NSLog(@"Warning: no cell found");
     }
@@ -199,6 +201,31 @@ final sections footer view
 
     [self performSegueWithIdentifier:@"logOut" sender:self];
 }
+
+- (void)presentAccountDeleteOptions {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:kDeleteAccountActionTitle
+                                  delegate:self
+                                  cancelButtonTitle:kCancelDeleteAccount
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:kConfirmDeleteAccount, nil];
+
+    [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+
+    if  ([buttonTitle isEqualToString:kConfirmDeleteAccount]) {
+        NSLog(@"Imlement account destroy"); // On successcallback logout
+        [self logOut];
+    }
+    if ([buttonTitle isEqualToString:kCancelDeleteAccount]) {
+        [actionSheet dismissWithClickedButtonIndex:[actionSheet cancelButtonIndex] animated:YES];
+        actionSheet = nil;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

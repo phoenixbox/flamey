@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface FLSettingsViewController : UIViewController <FBLoginViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface FLSettingsViewController : UIViewController <FBLoginViewDelegate, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *tableContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
