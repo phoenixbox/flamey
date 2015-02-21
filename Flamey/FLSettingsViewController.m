@@ -179,6 +179,7 @@ final sections footer view
     } else if ([cellName isEqualToString:kTOSCell]) {
         NSLog(@"Cell name: %@", cellName);
     } else if ([cellName isEqualToString:kLogoutCell]) {
+        [self logOut];
         NSLog(@"Cell name: %@", cellName);
     } else if ([cellName isEqualToString:kDeleteAccountCell]) {
         NSLog(@"Cell name: %@", cellName);
@@ -187,7 +188,7 @@ final sections footer view
     }
 }
 
-- (void)logOut:(id)paramSender {
+- (void)logOut {
     [FBSession.activeSession closeAndClearTokenInformation];
     [FLSettings defaultSettings].shouldSkipLogin = NO;
     [FLSettings defaultSettings].needToLogin = YES;
