@@ -703,7 +703,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WR9-MV-lPy" userLabel="LogoVersion">
                                 <rect key="frame" x="0.0" y="454" width="375" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rqE-HU-MwU">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rqE-HU-MwU" userLabel="Logo">
                                         <rect key="frame" x="158" y="8" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="cKI-qF-qs6"/>
@@ -711,9 +711,9 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLj-bS-h6i" userLabel="VersionNumber">
-                                        <rect key="frame" x="147" y="76" width="80" height="16"/>
+                                        <rect key="frame" x="87" y="76" width="200" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="kUU-Bo-3n1"/>
+                                            <constraint firstAttribute="width" constant="200" id="kUU-Bo-3n1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -736,25 +736,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-79-Rx9" userLabel="TableContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="454"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCH-Rl-0JH">
-                                        <rect key="frame" x="100" y="212" width="175" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Logout">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logOut:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="08q-XU-0gY"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="vCH-Rl-0JH" secondAttribute="centerX" id="Qiy-xC-bm0"/>
-                                    <constraint firstAttribute="centerY" secondItem="vCH-Rl-0JH" secondAttribute="centerY" id="o8t-5C-oai"/>
-                                    <constraint firstAttribute="trailing" secondItem="vCH-Rl-0JH" secondAttribute="trailing" constant="100" id="rr5-Ub-s9k"/>
-                                    <constraint firstItem="vCH-Rl-0JH" firstAttribute="leading" secondItem="up5-79-Rx9" secondAttribute="leading" constant="100" id="w8o-gn-ixq"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -780,7 +762,9 @@
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="logoutButton" destination="o8t-5C-oai" id="H0q-QB-2u3"/>
+                        <outlet property="logoImageView" destination="rqE-HU-MwU" id="xU3-7B-AdH"/>
+                        <outlet property="tableContainer" destination="up5-79-Rx9" id="tAK-B1-icK"/>
+                        <outlet property="versionNumber" destination="gLj-bS-h6i" id="LcH-V3-7Jf"/>
                         <segue destination="UaG-CF-jMv" kind="show" identifier="logOut" id="S7I-8f-S0e"/>
                     </connections>
                 </viewController>

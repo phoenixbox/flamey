@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface FLSettingsViewController : UIViewController <FBLoginViewDelegate>
+@interface FLSettingsViewController : UIViewController <FBLoginViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoutButton;
-- (IBAction)logOut:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *tableContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *versionNumber;
+
+- (void)logOut:(id)paramSender;
 
 
 @end
