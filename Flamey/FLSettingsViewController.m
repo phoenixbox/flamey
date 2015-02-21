@@ -24,7 +24,7 @@
 static NSString * const kSettingsCellIdentifier = @"cell";
 
 static NSString * const kContactCell = @"Contact Us";
-static NSString * const kContactViewController = @"ContactViewController";
+static NSString * const kContactViewController = @"FLContactViewController";
 static NSString * const kPrivacyCell = @"Privacy Policy";
 static NSString * const kTOSCell = @"Terms of Service";
 static NSString * const kLogoutCell = @"Logout";
@@ -165,18 +165,15 @@ final sections footer view
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Selected section>> %d",indexPath.section);
-    NSLog(@"Selected row of section >> %d",indexPath.row);
-
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *cellName = cell.textLabel.text;
 
     // Enum pattern would be better here
-
     if ([cellName isEqualToString:kContactCell]) {
         FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
+        NSLog(@"Cell name: %@", cellName);
 
-        [self.navigationController pushViewController:contactViewController animated:YES];
+        [self presentViewController:contactViewController animated:YES completion:nil];
     } else if ([cellName isEqualToString:kPrivacyCell]) {
         NSLog(@"Cell name: %@", cellName);
     } else if ([cellName isEqualToString:kTOSCell]) {
