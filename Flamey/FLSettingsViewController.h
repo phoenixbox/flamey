@@ -15,8 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *versionNumber;
 
-- (void)logOut:(id)paramSender;
-
+- (void)logOut;
 
 @end
 
