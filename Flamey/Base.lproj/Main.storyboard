@@ -702,7 +702,37 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WR9-MV-lPy" userLabel="LogoVersion">
                                 <rect key="frame" x="0.0" y="454" width="375" height="100"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rqE-HU-MwU">
+                                        <rect key="frame" x="158" y="8" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="cKI-qF-qs6"/>
+                                            <constraint firstAttribute="width" constant="60" id="iZb-oh-ZHs"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLj-bS-h6i" userLabel="VersionNumber">
+                                        <rect key="frame" x="147" y="76" width="80" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="kUU-Bo-3n1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.40587128709999998" blue="0.42953196319999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="gLj-bS-h6i" firstAttribute="top" secondItem="rqE-HU-MwU" secondAttribute="bottom" constant="8" id="Bhi-D7-it3"/>
+                                    <constraint firstAttribute="centerY" secondItem="rqE-HU-MwU" secondAttribute="centerY" id="Hy1-W2-XfU"/>
+                                    <constraint firstAttribute="centerX" secondItem="rqE-HU-MwU" secondAttribute="centerX" id="UJe-fh-RAz"/>
+                                    <constraint firstAttribute="centerX" secondItem="gLj-bS-h6i" secondAttribute="centerX" constant="0.5" id="cSo-r2-dMk"/>
+                                    <constraint firstItem="rqE-HU-MwU" firstAttribute="top" secondItem="WR9-MV-lPy" secondAttribute="top" constant="8" id="mGU-kH-MjT"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Hy1-W2-XfU"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-79-Rx9" userLabel="TableContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="454"/>
@@ -767,7 +797,7 @@
                         <viewControllerLayoutGuide type="bottom" id="epv-jB-cxr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8j7-xG-Oy2" userLabel="MainView">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-e6-r0w" userLabel="Container">
