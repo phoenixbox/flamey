@@ -9,6 +9,9 @@
 #import "FLSettingsViewController.h"
 #import "FLSettings.h"
 
+#import "FLAnnotationStore.h"
+#import "FLProcessedImagesStore.h"
+
 @interface FLSettingsViewController ()
 
 @end
@@ -29,6 +32,10 @@
     [FBSession.activeSession closeAndClearTokenInformation];
     [FLSettings defaultSettings].shouldSkipLogin = NO;
     [FLSettings defaultSettings].needToLogin = YES;
+
+    [[FLAnnotationStore sharedStore] flushStore];
+    [[FLProcessedImagesStore sharedStore] flushStore];
+
     [self performSegueWithIdentifier:@"logOut" sender:self];
 }
 

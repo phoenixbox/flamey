@@ -27,4 +27,6 @@
 
 - (NSMutableArray *)allPhotos;
 
+- (void)flushStore;
+
 @end

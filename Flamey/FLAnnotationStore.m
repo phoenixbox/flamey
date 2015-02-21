@@ -85,5 +85,8 @@
     }
 }
 
+- (void)flushStore {
+    [self.allPhotos removeAllObjects];
+}
 
 @end

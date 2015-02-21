@@ -45,5 +45,8 @@
     return self.allProcessedPhotos;
 }
 
+- (void)flushStore {
+    [self.allProcessedPhotos removeAllObjects];
+}
 
 @end
