@@ -12,6 +12,8 @@
 #import "FLAnnotationStore.h"
 #import "FLProcessedImagesStore.h"
 
+#import "FLContactViewController.h"
+
 @interface FLSettingsViewController ()
 
 @property (nonatomic, strong) UITableView *settingsTable;
@@ -20,6 +22,13 @@
 @end
 
 static NSString * const kSettingsCellIdentifier = @"cell";
+
+static NSString * const kContactCell = @"Contact Us";
+static NSString * const kContactViewController = @"ContactViewController";
+static NSString * const kPrivacyCell = @"Privacy Policy";
+static NSString * const kTOSCell = @"Terms of Service";
+static NSString * const kLogoutCell = @"Logout";
+static NSString * const kDeleteAccountCell = @"Delete Account";
 
 @implementation FLSettingsViewController
 
@@ -122,8 +131,8 @@ final sections footer view
 
 - (NSMutableArray *)buildArrayOfSections {
     NSMutableArray *personalSection = [self newSectionWithCellNames:@[@"Number of uploads: "]];
-    NSMutableArray *tosSection = [self newSectionWithCellNames:@[@"Contact Us", @"Privacy Policy", @"Terms of Service"]];
-    NSMutableArray *actionSection = [self newSectionWithCellNames:@[@"Logout", @"Delete Account"]];
+    NSMutableArray *tosSection = [self newSectionWithCellNames:@[kContactCell, kPrivacyCell, kTOSCell]];
+    NSMutableArray *actionSection = [self newSectionWithCellNames:@[kLogoutCell, kDeleteAccountCell]];
 
     // TODO: Double check this setting
     _arrayOfSections = (NSMutableArray *)@[personalSection, tosSection, actionSection];
@@ -153,6 +162,32 @@ final sections footer view
     cell.textLabel.text = sectionArray[indexPath.row];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected section>> %d",indexPath.section);
+    NSLog(@"Selected row of section >> %d",indexPath.row);
+
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellName = cell.textLabel.text;
+
+    // Enum pattern would be better here
+
+    if ([cellName isEqualToString:kContactCell]) {
+        FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
+
+        [self.navigationController pushViewController:contactViewController animated:YES];
+    } else if ([cellName isEqualToString:kPrivacyCell]) {
+        NSLog(@"Cell name: %@", cellName);
+    } else if ([cellName isEqualToString:kTOSCell]) {
+        NSLog(@"Cell name: %@", cellName);
+    } else if ([cellName isEqualToString:kLogoutCell]) {
+        NSLog(@"Cell name: %@", cellName);
+    } else if ([cellName isEqualToString:kDeleteAccountCell]) {
+        NSLog(@"Cell name: %@", cellName);
+    } else {
+        NSLog(@"Warning: no cell found");
+    }
 }
 
 - (void)logOut:(id)paramSender {
