@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 // Data layer
-#import "FLPhotoStore.h"
+#import "FLSelectedPhotoStore.h"
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -35,6 +35,8 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"Photos Count: %lu", [[FLSelectedPhotoStore sharedStore].allPhotos count]);
+
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.translucent = NO;
     [self updateCollection];
@@ -57,7 +59,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 #pragma UITableViewDelgate
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSUInteger count = [[FLPhotoStore sharedStore].allPhotos count];
+    NSUInteger count = [[FLSelectedPhotoStore sharedStore].allPhotos count];
 
     if(count > 0) {
         [self removeEmptyCollectionMessage];
@@ -71,7 +73,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
-    FLPhoto *photo = [[FLPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
+    FLPhoto *photo = [[FLSelectedPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
 
     cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
     [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:nil];
@@ -88,7 +90,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSeguePushToImageAnnotation]) {
         NSIndexPath *indexPath = [[_selectionCollection indexPathsForSelectedItems] lastObject];
-        FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
+        FLSelectedPhotoStore *photoStore = [FLSelectedPhotoStore sharedStore];
 
 //      Retrieve the target view cotnroller
         UINavigationController *vc = segue.destinationViewController;
@@ -100,8 +102,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
     }
 }
 
-- (IBAction)unwindToSelection:(UIStoryboardSegue *)unwindSegue
-{
+- (IBAction)unwindToSelection:(UIStoryboardSegue *)unwindSegue {
 }
 
 - (void)viewWillAppear:(BOOL)animated {
