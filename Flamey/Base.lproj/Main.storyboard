@@ -700,11 +700,15 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-79-Rx9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WR9-MV-lPy" userLabel="LogoVersion">
+                                <rect key="frame" x="0.0" y="454" width="375" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.40587128709999998" blue="0.42953196319999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-79-Rx9" userLabel="TableContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="454"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCH-Rl-0JH">
-                                        <rect key="frame" x="100" y="262" width="175" height="30"/>
+                                        <rect key="frame" x="100" y="212" width="175" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Logout">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -726,10 +730,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="up5-79-Rx9" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="6vo-6e-CHd"/>
+                            <constraint firstItem="WR9-MV-lPy" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="Bih-Ij-JXM"/>
+                            <constraint firstItem="WR9-MV-lPy" firstAttribute="top" secondItem="up5-79-Rx9" secondAttribute="bottom" id="J5G-uX-mEO"/>
                             <constraint firstItem="up5-79-Rx9" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="QFB-Az-9ew"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="up5-79-Rx9" secondAttribute="bottom" id="gAL-lX-etH"/>
+                            <constraint firstAttribute="trailing" secondItem="WR9-MV-lPy" secondAttribute="trailing" id="Y78-0f-goB"/>
+                            <constraint firstItem="WR9-MV-lPy" firstAttribute="centerX" secondItem="up5-79-Rx9" secondAttribute="centerX" id="fW1-Zs-KZd"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="up5-79-Rx9" secondAttribute="bottom" constant="100" id="gAL-lX-etH"/>
                             <constraint firstAttribute="trailing" secondItem="up5-79-Rx9" secondAttribute="trailing" id="hqf-3u-qxS"/>
+                            <constraint firstAttribute="bottom" secondItem="WR9-MV-lPy" secondAttribute="bottom" id="rru-5X-MNV"/>
+                            <constraint firstItem="WR9-MV-lPy" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="bottom" id="uIw-Un-2xZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fW1-Zs-KZd"/>
+                                <exclude reference="rru-5X-MNV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
