@@ -1,22 +1,22 @@
 //
-//  FLPhotoStore.m
+//  FLSelectedPhotoStore.m
 //  Flamey
 //
 //  Created by Shane Rogers on 1/18/15.
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
-#import "FLPhotoStore.h"
+#import "FLSelectedPhotoStore.h"
 
-@implementation FLPhotoStore
+@implementation FLSelectedPhotoStore
 
-+ (FLPhotoStore *)sharedStore {
-    static FLPhotoStore *photoStore = nil;
++ (FLSelectedPhotoStore *)sharedStore {
+    static FLSelectedPhotoStore *photoStore = nil;
 
     static dispatch_once_t oncePredicate;
 
     dispatch_once(&oncePredicate, ^{
-        photoStore = [[FLPhotoStore alloc] init];
+        photoStore = [[FLSelectedPhotoStore alloc] init];
     });
     return photoStore;
 }

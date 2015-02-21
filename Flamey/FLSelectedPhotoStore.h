@@ -1,5 +1,5 @@
 //
-//  FLPhotoStore.h
+//  FLSelectedPhotoStore.h
 //  Flamey
 //
 //  Created by Shane Rogers on 1/18/15.
@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "FLPhoto.h"
 
-@interface FLPhotoStore : NSObject {
+@interface FLSelectedPhotoStore : NSObject {
     NSMutableArray *photos;
 }
 
 @property (nonatomic, strong) NSMutableArray *allPhotos;
 
-+ (FLPhotoStore *)sharedStore;
++ (FLSelectedPhotoStore *)sharedStore;
 
 - (void)addUniquePhoto:(FLPhoto *)photo;
 

@@ -13,7 +13,7 @@
 
 #import "FLFacebookPhotoCollectionViewCell.h"
 
-#import "FLPhotoStore.h"
+#import "FLSelectedPhotoStore.h"
 #import "FLPhoto.h"
 
 #import "CollectionViewHelpers.h"
@@ -133,7 +133,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 
     // Has that photo been added to the store already
     NSString *facebookId = [_datasource[indexPath.row] objectForKey:@"id"];
-    if ([[FLPhotoStore sharedStore] isPhotoPresent:facebookId]) {
+    if ([[FLSelectedPhotoStore sharedStore] isPhotoPresent:facebookId]) {
         [cell setSelected:YES];
     }
 
@@ -149,17 +149,18 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 
     FLPhoto *photo = [[FLPhoto alloc] initWithDictionary:selectedPhoto error:nil];
 
-    [[FLPhotoStore sharedStore] addUniquePhoto:photo];
+    [[FLSelectedPhotoStore sharedStore] addUniquePhoto:photo];
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FLFacebookPhotoCollectionViewCell *cell = (FLFacebookPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
 
-    [cell setSelected:NO];
 
     NSDictionary *selectedPhoto = _datasource[indexPath.row];
-    [[FLPhotoStore sharedStore] removePhotoById:[selectedPhoto objectForKey:@"id"]];
+    [[FLSelectedPhotoStore sharedStore] removePhotoById:[selectedPhoto objectForKey:@"id"]];
+
+    [cell setSelected:NO];
 }
 
 #pragma mark <UICollectionViewDelegate>
