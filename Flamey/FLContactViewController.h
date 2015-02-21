@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FLContactViewController : UIViewController
+- (IBAction)back:(id)sender;
 
 @end
