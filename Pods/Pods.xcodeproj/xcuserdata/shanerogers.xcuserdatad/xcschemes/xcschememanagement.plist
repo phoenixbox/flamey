@@ -44,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Flamey-MDCSwipeToChoose.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flamey-MZAppearance.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,72 +82,77 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2607F82680B94225BBFDDF0F</key>
+		<key>006D1E5989F34ACF9E923EFF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A9CBEEEDD394F0CADBA7C2D</key>
+		<key>13B9BAECE33844E3A73F9EA0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2DFBD1AE2ED94E49906D5764</key>
+		<key>15484ECD07904796BA7A1A82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>335CFE41F6654408AC7EBA4F</key>
+		<key>60AE407493A44C5FBE36C5B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5958DCB2A11C462DB105E907</key>
+		<key>67E1443FBE2B46789E99CE9D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5A0973CA15954C4DA882D798</key>
+		<key>6B8E1552BF0C4DF095AF4A35</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>86AC468A90474BD28CAA3363</key>
+		<key>88065AC55223456987FC2BCD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DC2687709134864983D9D15</key>
+		<key>9359C25AAC19443D839498EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9489116590FC4899A6BBE02D</key>
+		<key>9BDB41551CBA40DEA9A1E44B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB63192D98674A8EA0B1BDBC</key>
+		<key>9E6B654F12C04B419389F107</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C682CF829B0048BDBFC800E1</key>
+		<key>AF1DE963183D40EBA9571F7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB86BEA33EBA49D6A42266F8</key>
+		<key>BFCFDD295C2B4D0FAB0427CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC3997F3ADB84A57B14F3B08</key>
+		<key>C34115DB53A447669220A779</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EE32119BBDF5478FAA28440D</key>
+		<key>DF50BF746F984F81962583C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E37EF0526424477E86AD6210</key>
 		<dict>
 			<key>primary</key>
 			<true/>

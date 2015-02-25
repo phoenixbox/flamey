@@ -362,7 +362,6 @@ NSString *const kToolsTable = @"toolsTable";
 - (IBAction)goBack:(id)sender {
     NSLog(@"goBack");
     [self dismissViewControllerAnimated:YES completion:nil];
-    //    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)saveImage:(id)sender {

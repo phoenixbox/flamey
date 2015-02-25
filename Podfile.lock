@@ -32,6 +32,7 @@ PODS:
   - GPUImage (0.1.6)
   - JSONModel (1.0.1)
   - KSDeferred (0.2.0)
+  - MDCSwipeToChoose (0.2.2)
   - MZAppearance (1.1.3)
   - ObjectiveSugar (1.1.0)
   - RTFacebookAlbum (1.3):
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - GPUImage (~> 0.1)
   - JSONModel (~> 1.0)
   - KSDeferred (~> 0.2)
+  - MDCSwipeToChoose
   - ObjectiveSugar (~> 1.1)
   - RTFacebookAlbum (~> 1.3)
   - SDWebImage (~> 3.7)
@@ -62,6 +64,7 @@ SPEC CHECKSUMS:
   GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
   JSONModel: 634100aaacbd89811bc8a03da209356e5989c569
   KSDeferred: 33361e3e63ebe90210ea94d7f6469c1c2b874763
+  MDCSwipeToChoose: b14f3becc0011634d2f0a37f488b768b824a643d
   MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   RTFacebookAlbum: c1195f248fe0b30d9d5123b11ed32cfe6cd3917b

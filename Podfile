@@ -12,6 +12,7 @@ pod 'FontAwesomeKit/FontAwesome', '~> 2.1.7'
 pod 'GPUImage', '~> 0.1'
 pod 'BlurryModalSegue', '~> 1.1'
 pod 'KSDeferred', '~> 0.2'
+pod 'MDCSwipeToChoose'
 end
 
 target "FlameyTests" do

@@ -27,6 +27,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 @interface FLSelectedPhotosCollectionViewController ()
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (assign, nonatomic) BOOL DEVELOPMENT_ENV;
 
 @end
 
@@ -34,6 +35,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _DEVELOPMENT_ENV = true;
     // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"Photos Count: %lu", [[FLSelectedPhotoStore sharedStore].allPhotos count]);
 
@@ -66,19 +68,33 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
         return count;
     } else {
         [self renderEmptyMessage];
-        return 0;
+        // Local development
+//        return 0;
+        return 1;
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
+    if (_DEVELOPMENT_ENV) {
+        FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
-    FLPhoto *photo = [[FLSelectedPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
+        UIImage *testImage = [UIImage imageNamed:@"test_image"];
 
-    cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
-    [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:nil];
+        cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
+        [cell.imageViewBackgroundImage setImage:testImage];
 
-    return cell;
+        return cell;
+
+    } else {
+        FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
+
+        FLPhoto *photo = [[FLSelectedPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
+
+        cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
+        [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:nil];
+        
+        return cell;
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -95,7 +111,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 //      Retrieve the target view cotnroller
         UINavigationController *vc = segue.destinationViewController;
 //      Retrieve its child view controller
-        FLImageAnnotationViewController *annotationView =[vc.viewControllers objectAtIndex:0];
+        FLImageAnnotationViewController *annotationView = [vc.viewControllers objectAtIndex:0];
 //      Attribute it
         annotationView.selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
         annotationView.targetRow = [indexPath row];

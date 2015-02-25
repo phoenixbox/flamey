@@ -30,25 +30,28 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
+//    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
 
     FLSettings *settings = [FLSettings defaultSettings];
-    if (_viewDidAppear || settings.needToLogin) {
-        _viewIsVisible = YES;
-
-        settings.shouldSkipLogin = NO;
-    } else {
-        [FBSession openActiveSessionWithReadPermissions:readPermissions
-                                           allowLoginUI:YES
-                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-                                          if (!error && status == FBSessionStateOpen) {
-                                              [self performSegueWithIdentifier:@"loggedIn" sender:nil];
-                                          } else {
-                                              _viewIsVisible = YES;
-                                          }
-                                      }];
-        _viewDidAppear = YES;
-    }
+    // Local development Login bypass
+    settings.shouldSkipLogin = NO;
+    _viewIsVisible = YES;
+    [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+//    if (_viewDidAppear || settings.needToLogin) {
+//
+//        settings.shouldSkipLogin = NO;
+//    } else {
+//        [FBSession openActiveSessionWithReadPermissions:readPermissions
+//                                           allowLoginUI:YES
+//                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+//                                          if (!error && status == FBSessionStateOpen) {
+//                                              [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+//                                          } else {
+//                                              _viewIsVisible = YES;
+//                                          }
+//                                      }];
+//        _viewDidAppear = YES;
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

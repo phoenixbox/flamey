@@ -14,9 +14,10 @@
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 
 // Data Layer
-#import "FLPhotoStore.h"
+#import "FLSelectedPhotoStore.h"
 #import "FLProcessedImagesStore.h"
 #import "FLAnnotationStore.h"
 
@@ -30,6 +31,7 @@
 
 @property (nonatomic, strong) UITapGestureRecognizer *imageViewTap;
 @property (strong, nonatomic) UITableView *selectedPhotosTable;
+@property (assign, nonatomic) BOOL DEVELOPMENT_ENV;
 
 @end
 
@@ -40,23 +42,30 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _DEVELOPMENT_ENV = true;
+
     [self renderLateralTable];
+
+    // TODO: Update filters flow
+    [_addFiltersButton setHidden:YES];
 
     [self updateAnnotationStore];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_targetRow inSection:0];
+    if(!_DEVELOPMENT_ENV) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_targetRow inSection:0];
 
-    [_selectedPhotosTable scrollToRowAtIndexPath:indexPath
-                                atScrollPosition:UITableViewScrollPositionTop
-                                        animated:YES];
+        [_selectedPhotosTable scrollToRowAtIndexPath:indexPath
+                                    atScrollPosition:UITableViewScrollPositionTop
+                                            animated:YES];
+    }
 }
 
 - (void)updateAnnotationStore {
     // Update the annotation store with any recently selected photos
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-    FLPhotoStore *photoStore = [FLPhotoStore sharedStore];
+    FLSelectedPhotoStore *photoStore = [FLSelectedPhotoStore sharedStore];
 
     for (FLPhoto* photo in photoStore.allPhotos) {
         [annotationStore addUniquePhoto:photo];
@@ -70,7 +79,8 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     self.imageViewTap.numberOfTapsRequired = 1;
 
     [cell addGestureRecognizer:self.imageViewTap];
-    // NOTE: Must set interaction true so that the gesture can be triggered. Dont have to have selector on the filter ImageView
+    // NOTE: Must set interaction true so that the gesture can be triggered
+    // Dont have to have selector on the filter ImageView
     cell.userInteractionEnabled = YES;
 }
 
@@ -195,6 +205,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 }
 
 - (void)renderLateralTable {
+    NSLog(@"Render annotation table");
     CGRect tableRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.width);
     _selectedPhotosTable = [[UITableView alloc] initWithFrame:tableRect style:UITableViewStylePlain];;
     [self.tableContainer addSubview:_selectedPhotosTable];
@@ -220,48 +231,135 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (_DEVELOPMENT_ENV) {
+        return 1;
+    } else {
+        FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
 
-    FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-
-    return [[annotationStore allPhotos] count];
+        return [[annotationStore allPhotos] count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
 
-    // Load the custom xib
+    // TODO: review this xib load pattern
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kAnnotationTableViewCellIdentifier owner:nil options:nil];
     FLAnnotationTableViewCell *cell = [nibContents lastObject];
 
     if([tableView isEqual:_selectedPhotosTable]) {
-        FLPhoto *photo = [[annotationStore allPhotos] objectAtIndex:[indexPath row]];
-        cell.photo = photo;
+        if (_DEVELOPMENT_ENV) {
+            UIImage *testImage = [UIImage imageNamed:@"test_image"];
 
-        [cell.selectedImageViewBackground sd_setImageWithURL:[NSURL URLWithString:photo.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [cell.selectedImageViewBackground setImage:testImage];
 
-            cell.originalImage = image;
+            cell.originalImage = testImage;
             [cell.contentView setUserInteractionEnabled:YES];
-
             cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
-            // Do I need to reset the frame to retain its size?
 
-            // CGPoint is scalar so comparison to nil wont work - this does :)
-            if (!CGPointEqualToPoint(photo.annotationPoint, CGPointZero)) {
-                CGPoint point = photo.annotationPoint;
-                NSLog(@"handleTap X Point %f, Y Point %f", point.x, point.y);
+            // Tinderify
+            MDCSwipeOptions *options = [MDCSwipeOptions new];
+            options.delegate = self;
+            options.onPan = ^(MDCPanState *state){
+                if (state.thresholdRatio == 1.f && state.direction == MDCSwipeDirectionRight) {
+                    FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)state.view.superview;
+                    NSIndexPath *indexPath = [tableView indexPathForCell:targetCell];
 
-                [self setFlameIconOnCell:cell];
-            }
+                    [_selectedPhotosTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
-            [self addTapGestureRecogniserToCell:cell];
+                    NSString *photoID = [NSString stringWithFormat:@"%@", cell.photo.id];
+                    [annotationStore removePhotoById:photoID];
+                }
+            };
+            [cell.contentView mdc_swipeToChooseSetup:options];
 
-        }];
+        } else {
+            FLPhoto *photo = [[annotationStore allPhotos] objectAtIndex:[indexPath row]];
+            cell.photo = photo;
+
+            [cell.selectedImageViewBackground sd_setImageWithURL:[NSURL URLWithString:photo.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+
+                cell.originalImage = image;
+                [cell.contentView setUserInteractionEnabled:YES];
+
+                cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
+                // Do I need to reset the frame to retain its size?
+
+                // CGPoint is scalar so comparison to nil wont work - this does :)
+                if (!CGPointEqualToPoint(photo.annotationPoint, CGPointZero)) {
+                    CGPoint point = photo.annotationPoint;
+                    NSLog(@"handleTap X Point %f, Y Point %f", point.x, point.y);
+
+                    [self setFlameIconOnCell:cell];
+                }
+
+                [self addTapGestureRecogniserToCell:cell];
+                // Entry point for slide to remove cell?
+            }];
+        }
     }
     return cell;
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void) setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing
+             animated:animated];
+    [_selectedPhotosTable setEditing:editing
+                            animated:animated];
+}
+
+- (void) tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+ forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        /* First remove this object from the source */
+        FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
+        [annotationStore.allPhotos removeObjectAtIndex:indexPath.row];
+        /* Then remove the associated cell from the Table View */
+        [tableView deleteRowsAtIndexPaths:@[indexPath]
+                         withRowAnimation:UITableViewRowAnimationLeft];
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.view.frame.size.width;
+}
+
+
+#pragma mark - MDCSwipeToChooseDelegate Callbacks
+
+// This is called when a user didn't fully swipe left or right.
+- (void)viewDidCancelSwipe:(UIView *)view {
+    NSLog(@"Couldn't decide, huh?");
+}
+
+// Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
+- (BOOL)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction {
+    if (direction == MDCSwipeDirectionLeft) {
+        return YES;
+    } else {
+        // Snap the view back and cancel the choice.
+        [UIView animateWithDuration:0.16 animations:^{
+            view.transform = CGAffineTransformIdentity;
+            view.center = _tableContainer.center;
+        }];
+        return NO;
+    }
+}
+
+// This is called then a user swipes the view fully left or right.
+- (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
+    if (direction == MDCSwipeDirectionLeft) {
+        NSLog(@"Photo deleted!");
+    } else {
+        NSLog(@"Photo saved!");
+    }
 }
 
 - (void)didReceiveMemoryWarning {

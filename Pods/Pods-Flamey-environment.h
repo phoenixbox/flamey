@@ -96,6 +96,12 @@
 #define COCOAPODS_VERSION_MINOR_KSDeferred 2
 #define COCOAPODS_VERSION_PATCH_KSDeferred 0
 
+// MDCSwipeToChoose
+#define COCOAPODS_POD_AVAILABLE_MDCSwipeToChoose
+#define COCOAPODS_VERSION_MAJOR_MDCSwipeToChoose 0
+#define COCOAPODS_VERSION_MINOR_MDCSwipeToChoose 2
+#define COCOAPODS_VERSION_PATCH_MDCSwipeToChoose 2
+
 // MZAppearance
 #define COCOAPODS_POD_AVAILABLE_MZAppearance
 #define COCOAPODS_VERSION_MAJOR_MZAppearance 1
