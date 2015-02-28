@@ -23,48 +23,48 @@
 }
 
 - (void)addUniquePhoto:(FLPhoto *)photo {
-    if(!self.allPhotos){
-        self.allPhotos = [NSMutableArray new];
+    if(!_photos){
+        _photos = [NSMutableArray new];
     }
 
     BOOL exists = NO;
 
-    for (FLPhoto* object in self.allPhotos) {
+    for (FLPhoto* object in _photos) {
         if (object.id == photo.id) {
             exists = YES;
         }
     }
 
     if (!exists) {
-        [self.allPhotos addObject:photo];
+        [_photos addObject:photo];
     }
 }
 
 
 - (void)addAnnotatedPhoto:(FLPhoto *)photo {
-    if(!self.allPhotos){
-        self.allPhotos = [NSMutableArray new];
+    if(!_photos){
+        _photos = [NSMutableArray new];
     }
 
     // If it already exists remove it
-    for (FLPhoto* object in self.allPhotos) {
+    for (FLPhoto* object in _photos) {
         if (object.id == photo.id) {
-            [self.allPhotos removeObject:object];
+            [_photos removeObject:object];
         }
     }
 
-    [self.allPhotos addObject:photo];
+    [_photos addObject:photo];
 }
 
 - (BOOL)isPhotoPresent:(NSString *)stringId {
-    if(!self.allPhotos){
-        self.allPhotos = [NSMutableArray new];
+    if(!_photos){
+        _photos = [NSMutableArray new];
         return NO;
     }
 
     BOOL exists = NO;
 
-    for (FLPhoto* object in self.allPhotos) {
+    for (FLPhoto* object in _photos) {
         if([stringId floatValue] == [object.id floatValue]) {
             exists = YES;
         }
@@ -74,19 +74,20 @@
 }
 
 - (void)removePhotoById:(NSString *)stringId {
-    if(!self.allPhotos){
-        self.allPhotos = [NSMutableArray new];
+    if(!_photos){
+        _photos = [NSMutableArray new];
     }
 
-    for (FLPhoto* object in self.allPhotos) {
+    for (FLPhoto* object in _photos) {
         if([stringId floatValue] == [object.id floatValue]) {
-            [self.allPhotos removeObject:object];
+            NSLog(@"Remove photo");
+            [_photos removeObject:object];
         }
     }
 }
 
 - (void)flushStore {
-    [self.allPhotos removeAllObjects];
+    [_photos removeAllObjects];
 }
 
 @end

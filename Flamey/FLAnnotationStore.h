@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "FLPhoto.h"
 
-@interface FLAnnotationStore : NSObject {
-    NSMutableArray *photos;
-}
+@interface FLAnnotationStore : NSObject
 
-@property (nonatomic, strong) NSMutableArray *allPhotos;
+@property (nonatomic, strong) NSMutableArray *photos;
 
 + (FLAnnotationStore *)sharedStore;
 
@@ -24,8 +22,6 @@
 - (void)removePhotoById:(NSString *)stringId;
 
 - (BOOL)isPhotoPresent:(NSString *)stringId;
-
-- (NSMutableArray *)allPhotos;
 
 - (void)flushStore;
 
