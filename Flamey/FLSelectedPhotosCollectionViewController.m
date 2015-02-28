@@ -35,7 +35,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _DEVELOPMENT_ENV = true;
+    _DEVELOPMENT_ENV = false;
     // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"Photos Count: %lu", [[FLSelectedPhotoStore sharedStore].allPhotos count]);
 
