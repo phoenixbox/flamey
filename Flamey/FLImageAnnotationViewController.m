@@ -14,7 +14,6 @@
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 
 // Data Layer
 #import "FLSelectedPhotoStore.h"
@@ -42,7 +41,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _DEVELOPMENT_ENV = true;
+    _DEVELOPMENT_ENV = false;
 
     [self renderLateralTable];
 
@@ -236,7 +235,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     } else {
         FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
 
-        return [[annotationStore allPhotos] count];
+        return [annotationStore.photos count];
     }
 }
 
@@ -246,9 +245,12 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     // TODO: review this xib load pattern
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kAnnotationTableViewCellIdentifier owner:nil options:nil];
     FLAnnotationTableViewCell *cell = [nibContents lastObject];
+    FLPhoto *photo = [annotationStore.photos objectAtIndex:[indexPath row]];
+    cell.photo = photo;
 
     if([tableView isEqual:_selectedPhotosTable]) {
         if (_DEVELOPMENT_ENV) {
+
             UIImage *testImage = [UIImage imageNamed:@"test_image"];
 
             [cell.selectedImageViewBackground setImage:testImage];
@@ -256,27 +258,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
             cell.originalImage = testImage;
             [cell.contentView setUserInteractionEnabled:YES];
             cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
-
-            // Tinderify
-            MDCSwipeOptions *options = [MDCSwipeOptions new];
-            options.delegate = self;
-            options.onPan = ^(MDCPanState *state){
-                if (state.thresholdRatio == 1.f && state.direction == MDCSwipeDirectionRight) {
-                    FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)state.view.superview;
-                    NSIndexPath *indexPath = [tableView indexPathForCell:targetCell];
-
-                    [_selectedPhotosTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-
-                    NSString *photoID = [NSString stringWithFormat:@"%@", cell.photo.id];
-                    [annotationStore removePhotoById:photoID];
-                }
-            };
-            [cell.contentView mdc_swipeToChooseSetup:options];
-
         } else {
-            FLPhoto *photo = [[annotationStore allPhotos] objectAtIndex:[indexPath row]];
-            cell.photo = photo;
-
             [cell.selectedImageViewBackground sd_setImageWithURL:[NSURL URLWithString:photo.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 
                 cell.originalImage = image;
@@ -301,70 +283,84 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     return cell;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
-           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleDelete;
-}
-
-- (void) setEditing:(BOOL)editing animated:(BOOL)animated{
-    [super setEditing:editing
-             animated:animated];
-    [_selectedPhotosTable setEditing:editing
-                            animated:animated];
-}
-
-- (void) tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
- forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        /* First remove this object from the source */
-        FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-        [annotationStore.allPhotos removeObjectAtIndex:indexPath.row];
-        /* Then remove the associated cell from the Table View */
-        [tableView deleteRowsAtIndexPaths:@[indexPath]
-                         withRowAnimation:UITableViewRowAnimationLeft];
-    }
-}
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+//           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return UITableViewCellEditingStyleDelete;
+//}
+//
+//- (void) setEditing:(BOOL)editing animated:(BOOL)animated{
+//    [super setEditing:editing
+//             animated:animated];
+//    [_selectedPhotosTable setEditing:editing
+//                            animated:animated];
+//}
+//
+//- (void) tableView:(UITableView *)tableView
+//commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+// forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        /* First remove this object from the source */
+//        FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
+//        [annotationStore.photos removeObjectAtIndex:indexPath.row];
+//        /* Then remove the associated cell from the Table View */
+//        [tableView deleteRowsAtIndexPaths:@[indexPath]
+//                         withRowAnimation:UITableViewRowAnimationLeft];
+//    }
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.view.frame.size.width;
 }
 
-
-#pragma mark - MDCSwipeToChooseDelegate Callbacks
-
-// This is called when a user didn't fully swipe left or right.
-- (void)viewDidCancelSwipe:(UIView *)view {
-    NSLog(@"Couldn't decide, huh?");
-}
-
-// Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
-- (BOOL)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction {
-    if (direction == MDCSwipeDirectionLeft) {
-        return YES;
-    } else {
-        // Snap the view back and cancel the choice.
-        [UIView animateWithDuration:0.16 animations:^{
-            view.transform = CGAffineTransformIdentity;
-            view.center = _tableContainer.center;
-        }];
-        return NO;
-    }
-}
-
-// This is called then a user swipes the view fully left or right.
-- (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
-    if (direction == MDCSwipeDirectionLeft) {
-        NSLog(@"Photo deleted!");
-    } else {
-        NSLog(@"Photo saved!");
-    }
-}
+//#pragma mark - MDCSwipeToChooseDelegate Callbacks
+//
+//// This is called when a user didn't fully swipe left or right.
+//- (void)viewDidCancelSwipe:(UIView *)view {
+//    NSLog(@"Couldn't decide, huh?");
+//}
+//
+//// Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
+//- (BOOL)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction {
+//    if (direction == MDCSwipeDirectionRight) {
+//        return YES;
+//    } else {
+//        // Snap the view back and cancel the choice.
+//        [UIView animateWithDuration:0.16 animations:^{
+//            view.transform = CGAffineTransformIdentity;
+//            view.center = _tableContainer.center;
+//        }];
+//        return NO;
+//    }
+//}
+//
+//// This is called then a user swipes the view fully left or right.
+//- (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
+//    if (direction == MDCSwipeDirectionRight) {
+//        NSLog(@"Photo deleted!");
+//    } else {
+//        NSLog(@"Photo saved!");
+//    }
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)removePhotoAction:(id)sender {
+    NSArray *visible       = [self.selectedPhotosTable indexPathsForVisibleRows];
+    NSIndexPath *indexpath = (NSIndexPath*)[visible objectAtIndex:0];
+
+    FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
+    [annotationStore.photos removeObjectAtIndex:indexpath.row];
+
+    [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexpath]
+                     withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+- (IBAction)keepPhoto:(id)sender {
+
+//    [self.frontCardView mdc_swipe:MDCSwipeDirectionRight];
+}
 @end

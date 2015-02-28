@@ -17,5 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIView *tableContainer;
 @property (assign, nonatomic) NSInteger targetRow;
 
+@property (weak, nonatomic) IBOutlet UIButton *removeSelectedPhoto;
+@property (weak, nonatomic) IBOutlet UIButton *keepAnnotatedPhoto;
+- (IBAction)removePhotoAction:(id)sender;
+- (IBAction)keepPhoto:(id)sender;
 @property (strong, nonatomic) FLPhoto *selectedPhoto;
 @end
