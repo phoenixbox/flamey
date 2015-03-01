@@ -253,6 +253,7 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     _selectedPhotosTable.scrollEnabled = YES;
     _selectedPhotosTable.showsVerticalScrollIndicator = NO;
     [_selectedPhotosTable setSeparatorColor:[UIColor clearColor]];
+    [_selectedPhotosTable setTransform:rotate];
 
     // Table Background View Informative or a button??
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kAnnotationTableEmptyMessageView owner:nil options:nil];
@@ -260,7 +261,10 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     [view setFrame:tableRect];
     [view setCenter:_selectedPhotosTable.center];
     [_selectedPhotosTable setBackgroundView:view];
-    [_selectedPhotosTable.backgroundView setTransform:rotate];
+    CGAffineTransform clockwiseRotate = CGAffineTransformMakeRotation(M_PI_2);
+
+    [_selectedPhotosTable.backgroundView setTransform:clockwiseRotate];
+    [_selectedPhotosTable.backgroundView setHidden:YES];
 }
 
 - (void)setTableViewEmptyMessage:(BOOL)show {
@@ -288,12 +292,6 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-
-    if ([annotationStore.photos count] == 0) {
-        [self setTableViewEmptyMessage:YES];
-    } else if ([tableView.backgroundView isHidden]) {
-        [self setTableViewEmptyMessage:YES];
-    }
 
     // TODO: review this xib load pattern
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kAnnotationTableViewCellIdentifier owner:nil options:nil];
@@ -351,6 +349,10 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
 
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
     [annotationStore.photos removeObjectAtIndex:indexpath.row];
+
+    if ([annotationStore.photos count] == 0) {
+        [_selectedPhotosTable.backgroundView setHidden:NO];
+    }
 
     [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexpath]
                                 withRowAnimation:UITableViewRowAnimationLeft];
