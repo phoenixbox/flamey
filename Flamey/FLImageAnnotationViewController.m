@@ -14,6 +14,7 @@
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 
 // Data Layer
 #import "FLSelectedPhotoStore.h"
@@ -29,6 +30,7 @@
 @interface FLImageAnnotationViewController ()
 
 @property (nonatomic, strong) UITapGestureRecognizer *imageViewTap;
+@property (nonatomic, strong) UISwipeGestureRecognizer *cellRemoveSwipe;
 @property (strong, nonatomic) UITableView *selectedPhotosTable;
 @property (assign, nonatomic) BOOL DEVELOPMENT_ENV;
 
@@ -70,6 +72,34 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
         [annotationStore addUniquePhoto:photo];
     }
 }
+
+//- (void)addDeleteSwipeGestureRecogniserToCell:(FLAnnotationTableViewCell *)cell {
+//    /* Instantiate our object */
+//    self.cellRemoveSwipe = [[UISwipeGestureRecognizer alloc]
+//                                   initWithTarget:self
+//                                   action:@selector(handleSwipe:)];
+//    /* Swipes that are performed from right to
+//     left are to be detected */
+//    self.cellRemoveSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+//    /* Just one finger needed */
+//    self.cellRemoveSwipe.numberOfTouchesRequired = 1; /* Add it to the view */
+//    [cell addGestureRecognizer:self.cellRemoveSwipe];
+//
+//    // NOTE: Must set interaction true so that the gesture can be triggered
+//    // Dont have to have selector on the filter ImageView
+//    cell.userInteractionEnabled = YES;
+//}
+//
+//
+//- (void)handleSwipe:(UIGestureRecognizer *)sender {
+//    FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
+//    CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
+//
+//    NSLog(@"handleTap X Point %f, Y Point %f", annotationPoint.x, annotationPoint.y);
+//    [targetCell.photo setAnnotationPoint:annotationPoint];
+//
+//    [self setFlameIconOnCell:targetCell];
+//}
 
 - (void)addTapGestureRecogniserToCell:(FLAnnotationTableViewCell *)cell {
     self.imageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -276,6 +306,7 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
                 }
 
                 [self addTapGestureRecogniserToCell:cell];
+//                [self addDeleteSwipeGestureRecogniserToCell:cell];
                 // Entry point for slide to remove cell?
             }];
         }
@@ -283,72 +314,17 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     return cell;
 }
 
-//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
-//           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return UITableViewCellEditingStyleDelete;
-//}
-//
-//- (void) setEditing:(BOOL)editing animated:(BOOL)animated{
-//    [super setEditing:editing
-//             animated:animated];
-//    [_selectedPhotosTable setEditing:editing
-//                            animated:animated];
-//}
-//
-//- (void) tableView:(UITableView *)tableView
-//commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-// forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        /* First remove this object from the source */
-//        FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-//        [annotationStore.photos removeObjectAtIndex:indexPath.row];
-//        /* Then remove the associated cell from the Table View */
-//        [tableView deleteRowsAtIndexPaths:@[indexPath]
-//                         withRowAnimation:UITableViewRowAnimationLeft];
-//    }
-//}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.view.frame.size.width;
 }
 
-//#pragma mark - MDCSwipeToChooseDelegate Callbacks
-//
-//// This is called when a user didn't fully swipe left or right.
-//- (void)viewDidCancelSwipe:(UIView *)view {
-//    NSLog(@"Couldn't decide, huh?");
-//}
-//
-//// Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
-//- (BOOL)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction {
-//    if (direction == MDCSwipeDirectionRight) {
-//        return YES;
-//    } else {
-//        // Snap the view back and cancel the choice.
-//        [UIView animateWithDuration:0.16 animations:^{
-//            view.transform = CGAffineTransformIdentity;
-//            view.center = _tableContainer.center;
-//        }];
-//        return NO;
-//    }
-//}
-//
-//// This is called then a user swipes the view fully left or right.
-//- (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
-//    if (direction == MDCSwipeDirectionRight) {
-//        NSLog(@"Photo deleted!");
-//    } else {
-//        NSLog(@"Photo saved!");
-//    }
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)removePhotoAction:(id)sender {
+- (void)deletePhotoFromStoreAndSlideTable {
     NSArray *visible       = [self.selectedPhotosTable indexPathsForVisibleRows];
     NSIndexPath *indexpath = (NSIndexPath*)[visible objectAtIndex:0];
 
@@ -356,7 +332,11 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     [annotationStore.photos removeObjectAtIndex:indexpath.row];
 
     [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexpath]
-                     withRowAnimation:UITableViewRowAnimationLeft];
+                                withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+- (IBAction)removePhotoAction:(id)sender {
+    [self deletePhotoFromStoreAndSlideTable];
 }
 
 - (IBAction)keepPhoto:(id)sender {
