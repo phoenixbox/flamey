@@ -195,34 +195,61 @@
                                                     <segue destination="7EC-1Y-9bh" kind="custom" identifier="saveAnnotatedImages" customClass="BlurryModalSegue" id="KWo-LN-Qpy"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOG-Ix-zoT">
+                                                <rect key="frame" x="295" y="18" width="40" height="40"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="Y7D-5G-zKq"/>
+                                                    <constraint firstAttribute="height" constant="40" id="wNq-CP-VpG"/>
+                                                    <constraint firstAttribute="width" constant="40" id="xPY-Lf-KLu"/>
+                                                </constraints>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="&gt;">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Y7D-5G-zKq"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="scrollRight:" destination="8ig-Pf-cmu" eventType="touchUpInside" id="rV4-6C-TP6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVK-8K-7YB">
+                                                <rect key="frame" x="40" y="18" width="40" height="40"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="F0E-aY-VHB"/>
+                                                    <constraint firstAttribute="width" constant="100" id="bwX-0Y-Tmh"/>
+                                                    <constraint firstAttribute="width" constant="40" id="nMA-XD-LXM"/>
+                                                </constraints>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="&lt;">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="bwX-0Y-Tmh"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="scrollLeft:" destination="8ig-Pf-cmu" eventType="touchUpInside" id="d9P-mv-jeT"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xx1-KD-fsu">
-                                                <rect key="frame" x="40" y="18" width="100" height="40"/>
+                                                <rect key="frame" x="138" y="18" width="100" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.40587128709999998" blue="0.42953196319999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="mLQ-fI-cZs"/>
                                                     <constraint firstAttribute="height" constant="40" id="uIO-DT-4dv"/>
                                                 </constraints>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button">
+                                                <state key="normal" title="Remove">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="removePhotoAction:" destination="8ig-Pf-cmu" eventType="touchUpInside" id="1fD-uV-BNd"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOG-Ix-zoT">
-                                                <rect key="frame" x="235" y="18" width="100" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.66231863839285721" blue="0.17080654647703705" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="Y7D-5G-zKq"/>
-                                                    <constraint firstAttribute="height" constant="40" id="wNq-CP-VpG"/>
-                                                </constraints>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Ok">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="keepPhoto:" destination="8ig-Pf-cmu" eventType="touchUpInside" id="upX-EO-YDu"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -231,16 +258,26 @@
                                             <constraint firstItem="njH-a0-ONB" firstAttribute="leading" secondItem="UWj-rh-Z8x" secondAttribute="leading" constant="40" id="82i-FF-oEE"/>
                                             <constraint firstItem="njH-a0-ONB" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="70" id="BTq-tN-k1N"/>
                                             <constraint firstItem="krm-Lt-YHn" firstAttribute="leading" secondItem="UWj-rh-Z8x" secondAttribute="leading" constant="40" id="Dd5-ah-yL1"/>
+                                            <constraint firstAttribute="centerX" secondItem="xx1-KD-fsu" secondAttribute="centerX" id="JM5-MM-bep"/>
                                             <constraint firstItem="xx1-KD-fsu" firstAttribute="leading" secondItem="UWj-rh-Z8x" secondAttribute="leading" constant="40" id="Pq0-2y-FcR"/>
                                             <constraint firstAttribute="centerX" secondItem="njH-a0-ONB" secondAttribute="centerX" id="Q7c-rk-CdO"/>
                                             <constraint firstItem="xx1-KD-fsu" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="18" id="QNd-gX-A7W"/>
                                             <constraint firstAttribute="centerX" secondItem="krm-Lt-YHn" secondAttribute="centerX" id="Rza-3I-yaO"/>
                                             <constraint firstItem="krm-Lt-YHn" firstAttribute="top" secondItem="njH-a0-ONB" secondAttribute="bottom" constant="30" id="d5p-eo-GfV"/>
                                             <constraint firstAttribute="trailing" secondItem="krm-Lt-YHn" secondAttribute="trailing" constant="40" id="eIK-oD-4M3"/>
+                                            <constraint firstItem="njH-a0-ONB" firstAttribute="trailing" secondItem="LOG-Ix-zoT" secondAttribute="trailing" id="hoJ-gt-nMJ"/>
+                                            <constraint firstItem="zVK-8K-7YB" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="18" id="it0-ik-Nox"/>
+                                            <constraint firstItem="njH-a0-ONB" firstAttribute="leading" secondItem="zVK-8K-7YB" secondAttribute="leading" id="pk0-0s-2gb"/>
                                             <constraint firstItem="LOG-Ix-zoT" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="18" id="qBF-ZS-ucc"/>
                                             <constraint firstAttribute="trailing" secondItem="LOG-Ix-zoT" secondAttribute="trailing" constant="40" id="w0U-jV-ykb"/>
                                             <constraint firstAttribute="trailing" secondItem="njH-a0-ONB" secondAttribute="trailing" constant="40" id="wje-x8-1FL"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Pq0-2y-FcR"/>
+                                                <exclude reference="w0U-jV-ykb"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="hEU-Hn-9Jr" userLabel="TableContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
@@ -281,9 +318,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="addFiltersButton" destination="krm-Lt-YHn" id="sn7-5P-fOH"/>
-                        <outlet property="keepAnnotatedPhoto" destination="LOG-Ix-zoT" id="WCP-Tf-c2e"/>
                         <outlet property="removeSelectedPhoto" destination="xx1-KD-fsu" id="7S0-EU-aPf"/>
                         <outlet property="saveButton" destination="njH-a0-ONB" id="8xr-OX-weL"/>
+                        <outlet property="scrollLeftButton" destination="zVK-8K-7YB" id="Efu-gD-CMu"/>
+                        <outlet property="scrollRightButton" destination="LOG-Ix-zoT" id="wnA-Un-8CR"/>
                         <outlet property="tableContainer" destination="hEU-Hn-9Jr" id="rPX-NP-26G"/>
                         <outlet property="uploadButton" destination="njH-a0-ONB" id="uHa-To-ViO"/>
                     </connections>

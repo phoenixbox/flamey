@@ -19,8 +19,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *removeSelectedPhoto;
-@property (weak, nonatomic) IBOutlet UIButton *keepAnnotatedPhoto;
+@property (weak, nonatomic) IBOutlet UIButton *scrollRightButton;
+@property (weak, nonatomic) IBOutlet UIButton *scrollLeftButton;
 - (IBAction)removePhotoAction:(id)sender;
-- (IBAction)keepPhoto:(id)sender;
+- (IBAction)scrollRight:(id)sender;
+- (IBAction)scrollLeft:(id)sender;
+
 @property (strong, nonatomic) FLPhoto *selectedPhoto;
 @end

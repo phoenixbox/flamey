@@ -397,8 +397,37 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     [self deletePhotoFromStoreAndSlideTable];
 }
 
-- (IBAction)keepPhoto:(id)sender {
+- (IBAction)scrollLeft:(id)sender {
+    NSArray *visible = [self.selectedPhotosTable indexPathsForVisibleRows];
+    NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];
+    NSInteger targetRowIndex = visibleCellIndexPath.row - 1;
+    BOOL endOfTable = targetRowIndex < 0;
 
-//    [self.frontCardView mdc_swipe:MDCSwipeDirectionRight];
+    if (endOfTable) {
+        NSLog(@"WARN: The left scroll button should be disabled");
+    } else {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:targetRowIndex inSection:0];
+        [_selectedPhotosTable scrollToRowAtIndexPath:indexPath
+                                    atScrollPosition:UITableViewScrollPositionBottom
+                                            animated:YES];
+    }
+}
+
+- (IBAction)scrollRight:(id)sender {
+    FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
+    NSArray *visible  = [self.selectedPhotosTable indexPathsForVisibleRows];
+    NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];
+    NSInteger targetRowIndex = visibleCellIndexPath.row + 1;
+    NSInteger count = [annotationStore.photos count];
+    BOOL endOfTable = targetRowIndex >= count;
+
+    if (endOfTable) {
+        NSLog(@"WARN: The right scroll button should be disabled");
+    } else {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:targetRowIndex inSection:0];
+        [_selectedPhotosTable scrollToRowAtIndexPath:indexPath
+                                    atScrollPosition:UITableViewScrollPositionTop
+                                            animated:YES];
+    }
 }
 @end
