@@ -14,7 +14,6 @@
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 
 // Data Layer
 #import "FLSelectedPhotoStore.h"
@@ -96,34 +95,6 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
         [annotationStore addUniquePhoto:photo];
     }
 }
-
-//- (void)addDeleteSwipeGestureRecogniserToCell:(FLAnnotationTableViewCell *)cell {
-//    /* Instantiate our object */
-//    self.cellRemoveSwipe = [[UISwipeGestureRecognizer alloc]
-//                                   initWithTarget:self
-//                                   action:@selector(handleSwipe:)];
-//    /* Swipes that are performed from right to
-//     left are to be detected */
-//    self.cellRemoveSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
-//    /* Just one finger needed */
-//    self.cellRemoveSwipe.numberOfTouchesRequired = 1; /* Add it to the view */
-//    [cell addGestureRecognizer:self.cellRemoveSwipe];
-//
-//    // NOTE: Must set interaction true so that the gesture can be triggered
-//    // Dont have to have selector on the filter ImageView
-//    cell.userInteractionEnabled = YES;
-//}
-//
-//
-//- (void)handleSwipe:(UIGestureRecognizer *)sender {
-//    FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
-//    CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
-//
-//    NSLog(@"handleTap X Point %f, Y Point %f", annotationPoint.x, annotationPoint.y);
-//    [targetCell.photo setAnnotationPoint:annotationPoint];
-//
-//    [self setFlameIconOnCell:targetCell];
-//}
 
 - (void)addTapGestureRecogniserToCell:(FLAnnotationTableViewCell *)cell {
     self.imageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self

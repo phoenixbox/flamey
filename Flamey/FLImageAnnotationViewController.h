@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FLPhoto.h"
-#import "MDCSwipeToChooseDelegate.h"
 
-@interface FLImageAnnotationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MDCSwipeToChooseDelegate>
+@interface FLImageAnnotationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *addFiltersButton;

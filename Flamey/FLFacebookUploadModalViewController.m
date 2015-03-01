@@ -8,12 +8,15 @@
 
 #import "FLFacebookUploadModalViewController.h"
 
-#import <FacebookSDK/FacebookSDK.h>
+// Libs
+#import <MBProgressHUD/MBProgressHUD.h>
 
 // Data Layer
 #import "FLProcessedImagesStore.h"
 
 @interface FLFacebookUploadModalViewController ()
+
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 @end
 
@@ -40,14 +43,23 @@
     FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
     UIImage *img = processedPhoto.image;
 
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_hud setCenter:self.view.center];
+    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+    _hud.labelText = @"Loading";
+
     [self performPublishAction:^{
         FBRequestConnection *connection = [[FBRequestConnection alloc] init];
         connection.errorBehavior = FBRequestConnectionErrorBehaviorReconnectSession
         | FBRequestConnectionErrorBehaviorAlertUser
         | FBRequestConnectionErrorBehaviorRetry;
 
+        [_hud show:YES];
+
         [connection addRequest:[FBRequest requestForUploadPhoto:img]
+
              completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
+                 [_hud hide:YES];
                  if (!error) {
                        [_readyButton setTitle:@"Finished" forState:UIControlStateNormal];
                        [_readyButton setUserInteractionEnabled:YES];
@@ -59,6 +71,16 @@
         [connection start];
     }];
 }
+
+- (void)requestConnection:(FBRequestConnection *)connection
+          didSendBodyData:(NSInteger)bytesWritten
+        totalBytesWritten:(NSInteger)totalBytesWritten
+totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+    float progress = totalBytesWritten/totalBytesExpectedToWrite;
+    NSLog(@"Progress Total: %f", progress);
+    _hud.progress = progress;
+}
+
 
 - (void)performPublishAction:(void(^)(void))action {
     // we defer request for permission to post to the moment of post, then we check for the permission

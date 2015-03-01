@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Flamey-CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flamey-Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,7 +49,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Flamey-MDCSwipeToChoose.xcscheme</key>
+		<key>Pods-Flamey-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -82,77 +87,82 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>006D1E5989F34ACF9E923EFF</key>
+		<key>0955F0491E71459FB8C9C8C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>13B9BAECE33844E3A73F9EA0</key>
+		<key>0B9DFC3ED1A04B1B99E6622F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15484ECD07904796BA7A1A82</key>
+		<key>1F679E1E162043728683C913</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>60AE407493A44C5FBE36C5B0</key>
+		<key>3925DBD0C2814E809A355415</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67E1443FBE2B46789E99CE9D</key>
+		<key>3F11556B36B740C48A9E0AE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B8E1552BF0C4DF095AF4A35</key>
+		<key>47CCCB9E05C446B4A65D3498</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88065AC55223456987FC2BCD</key>
+		<key>5D9C3CFE8C0E438487A201BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9359C25AAC19443D839498EB</key>
+		<key>781EBABC6F3C48718F85F81B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9BDB41551CBA40DEA9A1E44B</key>
+		<key>78D88E54D5AB4399B5169F85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E6B654F12C04B419389F107</key>
+		<key>7DFD586D30BC49BC81F00C10</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF1DE963183D40EBA9571F7C</key>
+		<key>99C27557B4D5471BBA15F946</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BFCFDD295C2B4D0FAB0427CA</key>
+		<key>9D250D2237E74A33993B7F3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C34115DB53A447669220A779</key>
+		<key>B36A5870601C43D693CFD97D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF50BF746F984F81962583C9</key>
+		<key>C164E2DAC6174E98A81772B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E37EF0526424477E86AD6210</key>
+		<key>C66DBCBF76DE49E983B69727</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE183D2F1BFC4F4C8BD3805D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

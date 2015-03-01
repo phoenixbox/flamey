@@ -24,6 +24,14 @@ PODS:
     - MZAppearance (~> 1.1.1)
     - UIImage+BlurredFrame (~> 0.0.4)
   - Bolts (1.1.3)
+  - CocoaLumberjack (2.0.0-rc2):
+    - CocoaLumberjack/Default
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (2.0.0-rc2)
+  - CocoaLumberjack/Default (2.0.0-rc2):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.0.0-rc2):
+    - CocoaLumberjack/Default
   - Facebook-iOS-SDK (3.21.1):
     - Bolts (~> 1.0)
   - FontAwesomeKit/Core (2.1.8)
@@ -32,7 +40,7 @@ PODS:
   - GPUImage (0.1.6)
   - JSONModel (1.0.1)
   - KSDeferred (0.2.0)
-  - MDCSwipeToChoose (0.2.2)
+  - MBProgressHUD (0.9)
   - MZAppearance (1.1.3)
   - ObjectiveSugar (1.1.0)
   - RTFacebookAlbum (1.3):
@@ -45,12 +53,13 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - BlurryModalSegue (~> 1.1)
+  - CocoaLumberjack
   - Facebook-iOS-SDK (~> 3.21)
   - FontAwesomeKit/FontAwesome (~> 2.1.7)
   - GPUImage (~> 0.1)
   - JSONModel (~> 1.0)
   - KSDeferred (~> 0.2)
-  - MDCSwipeToChoose
+  - MBProgressHUD (~> 0.9)
   - ObjectiveSugar (~> 1.1)
   - RTFacebookAlbum (~> 1.3)
   - SDWebImage (~> 3.7)
@@ -59,12 +68,13 @@ SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   BlurryModalSegue: 5775612771e4b6a162043a535d157b9503b0031e
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  CocoaLumberjack: 6027cd9a0665203a7df456c526e137f02cd547e1
   Facebook-iOS-SDK: 18c26e86ab25c17854a2ee2a8f60562099c6600f
   FontAwesomeKit: a2edea3111dab107b4cc43b85881b404eb063385
   GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
   JSONModel: 634100aaacbd89811bc8a03da209356e5989c569
   KSDeferred: 33361e3e63ebe90210ea94d7f6469c1c2b874763
-  MDCSwipeToChoose: b14f3becc0011634d2f0a37f488b768b824a643d
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   RTFacebookAlbum: c1195f248fe0b30d9d5123b11ed32cfe6cd3917b

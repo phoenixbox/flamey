@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface FLFacebookUploadModalViewController : UIViewController
+@interface FLFacebookUploadModalViewController : UIViewController <FBRequestConnectionDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *readyButton;
 
 @end
