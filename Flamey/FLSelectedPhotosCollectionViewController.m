@@ -119,6 +119,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 }
 
 - (IBAction)unwindToSelection:(UIStoryboardSegue *)unwindSegue {
+    [_selectionCollection reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

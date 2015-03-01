@@ -80,7 +80,7 @@
 
     for (FLPhoto* object in _photos) {
         if([stringId floatValue] == [object.id floatValue]) {
-            NSLog(@"Remove photo");
+            NSLog(@"Remove annotation photo");
             [_photos removeObject:object];
         }
     }

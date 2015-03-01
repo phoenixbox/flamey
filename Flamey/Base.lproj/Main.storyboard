@@ -285,6 +285,7 @@
                         <outlet property="removeSelectedPhoto" destination="xx1-KD-fsu" id="7S0-EU-aPf"/>
                         <outlet property="saveButton" destination="njH-a0-ONB" id="8xr-OX-weL"/>
                         <outlet property="tableContainer" destination="hEU-Hn-9Jr" id="rPX-NP-26G"/>
+                        <outlet property="uploadButton" destination="njH-a0-ONB" id="uHa-To-ViO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2d-iE-ej1" userLabel="First Responder" sceneMemberID="firstResponder"/>

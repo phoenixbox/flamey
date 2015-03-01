@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *addFiltersButton;
 @property (weak, nonatomic) IBOutlet UIView *tableContainer;
 @property (assign, nonatomic) NSInteger targetRow;
+@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *removeSelectedPhoto;
 @property (weak, nonatomic) IBOutlet UIButton *keepAnnotatedPhoto;

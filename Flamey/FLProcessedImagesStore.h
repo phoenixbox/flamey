@@ -17,6 +17,8 @@
 
 - (void)addUniquePhoto:(FLPhoto *)piece;
 
+- (void)removePhotoById:(NSString *)stringId;
+
 - (void)flushStore;
 
 @end

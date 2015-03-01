@@ -46,12 +46,35 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     // Do any additional setup after loading the view.
     _DEVELOPMENT_ENV = false;
 
+    [self updateUploadButtonState];
+
     [self renderLateralTable];
+
 
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
-
     [self updateAnnotationStore];
+}
+
+- (void)updateUploadButtonState {
+    NSUInteger count = [[FLProcessedImagesStore sharedStore].photos count];
+
+    if ( count == 0) {
+        [self setUploadInactive];
+    } else {
+        [_uploadButton setUserInteractionEnabled:YES];
+        [_uploadButton setBackgroundColor:[UIColor greenColor]];
+        [_uploadButton setAlpha:0.5];
+        NSString *buttonTitle = [NSString stringWithFormat:@"No Photos Marked %lu", (unsigned long)count];
+        [_uploadButton setTitle:buttonTitle forState:UIControlStateNormal];
+    }
+}
+
+- (void)setUploadInactive {
+    [_uploadButton setUserInteractionEnabled:NO];
+    [_uploadButton setBackgroundColor:[UIColor grayColor]];
+    [_uploadButton setAlpha:0.5];
+    [_uploadButton setTitle:@"No Photos Marked" forState:UIControlStateNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -122,6 +145,8 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     [targetCell.photo setAnnotationPoint:annotationPoint];
 
     [self setFlameIconOnCell:targetCell];
+
+    [self updateUploadButtonState];
 }
 
 -(void)setFlameIconOnCell:(FLAnnotationTableViewCell *)targetCell {
@@ -149,7 +174,10 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
 
     UIImage *processedImage = [alphaBlendFilter imageFromCurrentFramebuffer];
 
+//    annotate the new photo model with the id related to the target cell
     FLPhoto *processedPhoto = [[FLPhoto alloc] init];
+//    NSLog(@"Photo ID: %lu", (unsigned long)targetCell.photo.id);
+    processedPhoto.id = targetCell.photo.id;
     processedPhoto.image = processedImage;
     FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
     [processedImagesStore addUniquePhoto:processedPhoto];
@@ -347,8 +375,12 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     NSArray *visible       = [self.selectedPhotosTable indexPathsForVisibleRows];
     NSIndexPath *indexpath = (NSIndexPath*)[visible objectAtIndex:0];
 
+    FLAnnotationTableViewCell *cell = (FLAnnotationTableViewCell *)[_selectedPhotosTable cellForRowAtIndexPath:indexpath];
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-    [annotationStore.photos removeObjectAtIndex:indexpath.row];
+    [annotationStore.photos removeObjectAtIndex:[indexpath row]];
+
+    FLProcessedImagesStore *processedPhotoStore = [FLProcessedImagesStore sharedStore];
+    [processedPhotoStore removePhotoById:(NSString *)cell.photo.id];
 
     if ([annotationStore.photos count] == 0) {
         [_selectedPhotosTable.backgroundView setHidden:NO];
@@ -356,7 +388,43 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
 
     [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexpath]
                                 withRowAnimation:UITableViewRowAnimationLeft];
+
+    [self updateUploadButtonState];
 }
+
+//- (void)deletePhotoFromStoreAndSlideTable {
+//    FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
+//    NSLog(@"**** Count Before %lu, ", [annotationStore.photos count]);
+//    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
+//
+//    NSArray *visible       = [self.selectedPhotosTable indexPathsForVisibleRows];
+//    NSIndexPath *indexpath = (NSIndexPath*)[visible objectAtIndex:0];
+//
+//    FLAnnotationTableViewCell *cell = (FLAnnotationTableViewCell *)[_selectedPhotosTable cellForRowAtIndexPath:indexpath];
+//
+//    // Isolate problem
+////    [annotationStore removePhotoById:cell.photo.id];
+//
+//    NSLog(@"**** Count After %lu, ", [annotationStore.photos count]);
+//
+////    [_selectedPhotosTable reloadData];
+//    [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexpath]
+//                                withRowAnimation:UITableViewRowAnimationLeft];
+//
+////
+//////    NSString *photoId = [NSString stringWithFormat:@"%lu", (unsigned long) cell.photo.id];
+//
+////
+//////    [annotationStore.photos removeObjectAtIndex:indexpath.row];
+////
+////    [processedImageStore removePhotoById:(NSString *)cell.photo.id];
+//
+//    if ([annotationStore.photos count] == 0) {
+//        [_selectedPhotosTable.backgroundView setHidden:NO];
+//    }
+//
+//    [self updateUploadButtonState];
+//}
 
 - (IBAction)removePhotoAction:(id)sender {
     [self deletePhotoFromStoreAndSlideTable];

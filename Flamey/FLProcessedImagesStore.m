@@ -22,6 +22,19 @@
     return processedPhotoStore;
 }
 
+- (void)removePhotoById:(NSString *)stringId {
+    if(!_photos){
+        _photos = [NSMutableArray new];
+    }
+
+    for (FLPhoto* object in _photos) {
+        if([stringId floatValue] == [object.id floatValue]) {
+            NSLog(@"Remove processed photo");
+            [_photos removeObject:object];
+        }
+    }
+}
+
 - (void)addUniquePhoto:(FLPhoto *)photo {
     if(!_photos){
         _photos = [NSMutableArray new];

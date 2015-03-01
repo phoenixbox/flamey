@@ -17,7 +17,6 @@
 @property (nonatomic) NSNumber *id;
 @property (nonatomic, strong) NSString* URL;
 @property (nonatomic, strong) UIImage<Optional>* image;
-// Do I work?
 @property (nonatomic, assign) CGPoint annotationPoint;
 
 @end
