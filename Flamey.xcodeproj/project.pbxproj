@@ -44,6 +44,7 @@
 		CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */; };
 		CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */; };
 		CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */; };
+		CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */; };
 		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
 		CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -137,6 +138,7 @@
 		CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageAnnotationViewController.m; sourceTree = "<group>"; };
 		CBEC72F61A7D494100F8D0AE /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
 		CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHelpers.m; sourceTree = "<group>"; };
+		CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableEmptyMessageView.xib; sourceTree = "<group>"; };
 		CBFB80D41A59B3E8001982A6 /* FLPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				CBA780E21A911E8500CE9D84 /* FLAnnotationTableViewCell.h */,
 				CBA780E31A911E8500CE9D84 /* FLAnnotationTableViewCell.m */,
 				CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */,
+				CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */,
 			);
 			name = AnnotateImage;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
 				CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */,
 				CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */,
+				CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */,
 				CB1EE0711A98649300400611 /* FLContactViewController.xib in Resources */,
 				CB1EE07C1A98B56500400611 /* FLTOSViewController.xib in Resources */,
 			);

@@ -37,6 +37,7 @@
 @end
 
 static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTableViewCell";
+static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEmptyMessageView";
 
 @implementation FLImageAnnotationViewController
 
@@ -252,6 +253,22 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
     _selectedPhotosTable.scrollEnabled = YES;
     _selectedPhotosTable.showsVerticalScrollIndicator = NO;
     [_selectedPhotosTable setSeparatorColor:[UIColor clearColor]];
+
+    // Table Background View Informative or a button??
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kAnnotationTableEmptyMessageView owner:nil options:nil];
+    UIView *view = [nibContents lastObject];
+    [view setFrame:tableRect];
+    [view setCenter:_selectedPhotosTable.center];
+    [_selectedPhotosTable setBackgroundView:view];
+    [_selectedPhotosTable.backgroundView setTransform:rotate];
+}
+
+- (void)setTableViewEmptyMessage:(BOOL)show {
+    if (show) {
+        [_selectedPhotosTable.backgroundView setHidden:NO];
+    } else {
+        [_selectedPhotosTable.backgroundView setHidden:YES];
+    }
 }
 
 #pragma UITableViewDelgate
@@ -271,6 +288,12 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
+
+    if ([annotationStore.photos count] == 0) {
+        [self setTableViewEmptyMessage:YES];
+    } else if ([tableView.backgroundView isHidden]) {
+        [self setTableViewEmptyMessage:YES];
+    }
 
     // TODO: review this xib load pattern
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kAnnotationTableViewCellIdentifier owner:nil options:nil];
@@ -306,8 +329,6 @@ static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTable
                 }
 
                 [self addTapGestureRecogniserToCell:cell];
-//                [self addDeleteSwipeGestureRecogniserToCell:cell];
-                // Entry point for slide to remove cell?
             }];
         }
     }
