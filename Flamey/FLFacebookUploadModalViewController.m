@@ -37,7 +37,7 @@
 - (void)uploadPhotos {
 
     FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
-    FLPhoto *processedPhoto = processedImageStore.allProcessedPhotos.lastObject;
+    FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
     UIImage *img = processedPhoto.image;
 
     [self performPublishAction:^{

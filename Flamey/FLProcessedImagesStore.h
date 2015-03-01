@@ -9,17 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "FLPhoto.h"
 
-@interface FLProcessedImagesStore : NSObject {
-    NSMutableArray *processedPhotos;
-}
+@interface FLProcessedImagesStore : NSObject
 
-@property (nonatomic, strong) NSMutableArray *allProcessedPhotos;
+@property (nonatomic, strong) NSMutableArray *photos;
 
 + (FLProcessedImagesStore *)sharedStore;
 
 - (void)addUniquePhoto:(FLPhoto *)piece;
-
-- (NSMutableArray *)allPhotos;
 
 - (void)flushStore;
 

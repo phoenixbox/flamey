@@ -23,13 +23,13 @@
 }
 
 - (void)addUniquePhoto:(FLPhoto *)photo {
-    if(!self.allPhotos){
-        self.allProcessedPhotos = [NSMutableArray new];
+    if(!_photos){
+        _photos = [NSMutableArray new];
     }
 
     BOOL exists = NO;
 
-    for (FLPhoto* object in self.allPhotos) {
+    for (FLPhoto* object in _photos) {
         if (object.id == photo.id) {
             NSLog(@"exists");
             exists = YES;
@@ -37,16 +37,12 @@
     }
 
     if (!exists) {
-        [self.allPhotos addObject:photo];
+        [_photos addObject:photo];
     }
 }
 
-- (NSMutableArray *)allPhotos {
-    return self.allProcessedPhotos;
-}
-
 - (void)flushStore {
-    [self.allProcessedPhotos removeAllObjects];
+    [_photos removeAllObjects];
 }
 
 @end
