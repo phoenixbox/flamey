@@ -278,7 +278,7 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     _selectedPhotosTable.delegate = self;
     _selectedPhotosTable.dataSource = self;
     _selectedPhotosTable.alwaysBounceVertical = NO;
-    _selectedPhotosTable.scrollEnabled = YES;
+    _selectedPhotosTable.scrollEnabled = NO;
     _selectedPhotosTable.showsVerticalScrollIndicator = NO;
     [_selectedPhotosTable setSeparatorColor:[UIColor clearColor]];
     [_selectedPhotosTable setTransform:rotate];
@@ -392,39 +392,6 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     [self updateUploadButtonState];
 }
 
-//- (void)deletePhotoFromStoreAndSlideTable {
-//    FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-//    NSLog(@"**** Count Before %lu, ", [annotationStore.photos count]);
-//    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
-//
-//    NSArray *visible       = [self.selectedPhotosTable indexPathsForVisibleRows];
-//    NSIndexPath *indexpath = (NSIndexPath*)[visible objectAtIndex:0];
-//
-//    FLAnnotationTableViewCell *cell = (FLAnnotationTableViewCell *)[_selectedPhotosTable cellForRowAtIndexPath:indexpath];
-//
-//    // Isolate problem
-////    [annotationStore removePhotoById:cell.photo.id];
-//
-//    NSLog(@"**** Count After %lu, ", [annotationStore.photos count]);
-//
-////    [_selectedPhotosTable reloadData];
-//    [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexpath]
-//                                withRowAnimation:UITableViewRowAnimationLeft];
-//
-////
-//////    NSString *photoId = [NSString stringWithFormat:@"%lu", (unsigned long) cell.photo.id];
-//
-////
-//////    [annotationStore.photos removeObjectAtIndex:indexpath.row];
-////
-////    [processedImageStore removePhotoById:(NSString *)cell.photo.id];
-//
-//    if ([annotationStore.photos count] == 0) {
-//        [_selectedPhotosTable.backgroundView setHidden:NO];
-//    }
-//
-//    [self updateUploadButtonState];
-//}
 
 - (IBAction)removePhotoAction:(id)sender {
     [self deletePhotoFromStoreAndSlideTable];
