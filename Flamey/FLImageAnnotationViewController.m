@@ -62,9 +62,9 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
         [self setUploadInactive];
     } else {
         [_uploadButton setUserInteractionEnabled:YES];
-        [_uploadButton setBackgroundColor:[UIColor greenColor]];
+        [_uploadButton setBackgroundColor:[UIColor grayColor]];
         [_uploadButton setAlpha:0.5];
-        NSString *buttonTitle = [NSString stringWithFormat:@"Upload %lu Photos", (unsigned long)count];
+        NSString *buttonTitle = [NSString stringWithFormat:@"Upload %lu Private Photos", (unsigned long)count];
         [_uploadButton setTitle:buttonTitle forState:UIControlStateNormal];
     }
 }
