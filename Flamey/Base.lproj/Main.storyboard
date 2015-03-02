@@ -856,14 +856,14 @@
                         <viewControllerLayoutGuide type="bottom" id="epv-jB-cxr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8j7-xG-Oy2" userLabel="MainView">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-e6-r0w" userLabel="Container">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELJ-hF-zqU" userLabel="LoginButton" customClass="FBLoginView">
-                                        <rect key="frame" x="20" y="488" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="498" width="335" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Z0S-b5-EOp"/>
@@ -893,8 +893,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pqU-tO-kIT">
-                                        <rect key="frame" x="168" y="474" width="39" height="37"/>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pqU-tO-kIT">
+                                        <rect key="frame" x="168" y="451" width="39" height="37"/>
                                     </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -906,15 +906,17 @@
                                     <constraint firstItem="wOC-G0-kVY" firstAttribute="top" secondItem="mMx-Yg-WLr" secondAttribute="bottom" constant="20" id="C7K-0Y-v6T"/>
                                     <constraint firstItem="ELJ-hF-zqU" firstAttribute="top" relation="lessThanOrEqual" secondItem="OPd-e6-r0w" secondAttribute="top" priority="900" constant="350" id="CTF-dM-xb3"/>
                                     <constraint firstAttribute="trailing" secondItem="o1y-vD-6QC" secondAttribute="trailing" constant="40" id="CwU-C1-HSf"/>
+                                    <constraint firstItem="pqU-tO-kIT" firstAttribute="centerX" secondItem="o1y-vD-6QC" secondAttribute="centerX" id="GtY-Q6-T3B"/>
                                     <constraint firstItem="mMx-Yg-WLr" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="11" id="Lg1-cV-9WI"/>
                                     <constraint firstAttribute="trailing" secondItem="ELJ-hF-zqU" secondAttribute="trailing" constant="20" id="Noo-YV-UBU"/>
                                     <constraint firstAttribute="trailing" secondItem="wOC-G0-kVY" secondAttribute="trailing" constant="40" id="UE0-lS-ab3"/>
-                                    <constraint firstItem="pqU-tO-kIT" firstAttribute="top" secondItem="o1y-vD-6QC" secondAttribute="bottom" constant="10" id="Wlt-PM-dB2"/>
+                                    <constraint firstItem="pqU-tO-kIT" firstAttribute="top" secondItem="o1y-vD-6QC" secondAttribute="bottom" id="Wlt-PM-dB2"/>
                                     <constraint firstItem="mMx-Yg-WLr" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="20" id="YNl-mE-qJy"/>
                                     <constraint firstItem="mMx-Yg-WLr" firstAttribute="top" secondItem="OPd-e6-r0w" secondAttribute="top" constant="50" id="YT2-fZ-9he"/>
                                     <constraint firstAttribute="bottom" secondItem="ELJ-hF-zqU" secondAttribute="bottom" constant="250" id="aYi-fz-hHv"/>
                                     <constraint firstAttribute="trailing" secondItem="mMx-Yg-WLr" secondAttribute="trailing" constant="20" id="cQH-Ib-hkx"/>
                                     <constraint firstItem="wOC-G0-kVY" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="40" id="hIg-Cp-8nL"/>
+                                    <constraint firstItem="ELJ-hF-zqU" firstAttribute="top" secondItem="pqU-tO-kIT" secondAttribute="bottom" constant="10" id="lgB-vO-MNA"/>
                                     <constraint firstItem="o1y-vD-6QC" firstAttribute="trailing" secondItem="wOC-G0-kVY" secondAttribute="trailing" constant="-127" id="rmK-6g-gxX"/>
                                     <constraint firstItem="pqU-tO-kIT" firstAttribute="bottom" secondItem="ELJ-hF-zqU" secondAttribute="top" constant="10" id="wGL-aO-5Ih"/>
                                     <constraint firstItem="o1y-vD-6QC" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="40" id="xdN-ZS-dEw"/>
@@ -929,6 +931,7 @@
                                         <exclude reference="ya6-Wm-ema"/>
                                         <exclude reference="CTF-dM-xb3"/>
                                         <exclude reference="aYi-fz-hHv"/>
+                                        <exclude reference="wGL-aO-5Ih"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
