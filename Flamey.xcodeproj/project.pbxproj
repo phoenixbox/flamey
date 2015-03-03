@@ -30,6 +30,7 @@
 		CB3B7D351A586674005F6402 /* FLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D341A586674005F6402 /* FLSettings.m */; };
 		CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */; };
 		CB4268C71A7D596A00745A9F /* FLViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4268C61A7D596900745A9F /* FLViewHelpers.m */; };
+		CB6BC4BF1AA57720006D34EF /* FLLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BC4BE1AA57720006D34EF /* FLLoginView.m */; };
 		CB6CFF281A6C858C00ACD39A /* FLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFF271A6C858C00ACD39A /* FLPhoto.m */; };
 		CB6F8CFC1A6B478F00429133 /* FLFacebookAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8CFB1A6B478F00429133 /* FLFacebookAlbumTableViewController.m */; };
 		CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8CFE1A6B538000429133 /* FLFacebookPhotoPickerViewController.m */; };
@@ -103,6 +104,8 @@
 		CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorHandler.m; sourceTree = "<group>"; };
 		CB4268C51A7D596900745A9F /* FLViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLViewHelpers.h; sourceTree = "<group>"; };
 		CB4268C61A7D596900745A9F /* FLViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLViewHelpers.m; sourceTree = "<group>"; };
+		CB6BC4BD1AA57720006D34EF /* FLLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginView.h; sourceTree = "<group>"; };
+		CB6BC4BE1AA57720006D34EF /* FLLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginView.m; sourceTree = "<group>"; };
 		CB6CFF261A6C858C00ACD39A /* FLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhoto.h; sourceTree = "<group>"; };
 		CB6CFF271A6C858C00ACD39A /* FLPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhoto.m; sourceTree = "<group>"; };
 		CB6F8CFA1A6B478F00429133 /* FLFacebookAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookAlbumTableViewController.h; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 			children = (
 				CB3B7D301A5860C7005F6402 /* FLLoginViewController.h */,
 				CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */,
+				CB6BC4BD1AA57720006D34EF /* FLLoginView.h */,
+				CB6BC4BE1AA57720006D34EF /* FLLoginView.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -627,6 +632,7 @@
 				CB3B7D051A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m in Sources */,
 				CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */,
 				CB1EE07B1A98B56500400611 /* FLTOSViewController.m in Sources */,
+				CB6BC4BF1AA57720006D34EF /* FLLoginView.m in Sources */,
 				CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */,
 				CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */,
 				CB3B7CFF1A58374B005F6402 /* main.m in Sources */,
