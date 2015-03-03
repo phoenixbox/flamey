@@ -11,6 +11,7 @@
 
 // Data layer
 #import "FLSelectedPhotoStore.h"
+#import "FLSettings.h"
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -44,7 +45,6 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
     [self updateCollection];
 }
 
-
 - (void)updateCollection {
     CGRect viewFrame = self.view.frame;
     [_selectionCollection setCollectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
@@ -55,6 +55,11 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
     // Register the nib
     [_selectionCollection registerNib:nib forCellWithReuseIdentifier:kPhotoCellIdentifier];
 }
+
+// TODO: Allow to show the tutorial again?
+//- (void)presentTutorial {
+//    [self performSegueWithIdentifier:kSegueShowUserTutorial sender:self];
+//}
 
 #pragma UICollectionView Protocol Methods
 
@@ -108,7 +113,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
         NSIndexPath *indexPath = [[_selectionCollection indexPathsForSelectedItems] lastObject];
         FLSelectedPhotoStore *photoStore = [FLSelectedPhotoStore sharedStore];
 
-//      Retrieve the target view cotnroller
+//      Retrieve the target view controller
         UINavigationController *vc = segue.destinationViewController;
 //      Retrieve its child view controller
         FLImageAnnotationViewController *annotationView = [vc.viewControllers objectAtIndex:0];

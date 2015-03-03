@@ -181,20 +181,6 @@
                                                     <segue destination="rnT-34-xS8" kind="show" identifier="addFilters" id="70R-lh-bLR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njH-a0-ONB" userLabel="Save">
-                                                <rect key="frame" x="40" y="70" width="295" height="40"/>
-                                                <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="vau-yC-b3j"/>
-                                                </constraints>
-                                                <state key="normal" title="Upload">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="7EC-1Y-9bh" kind="custom" identifier="saveAnnotatedImages" customClass="BlurryModalSegue" id="KWo-LN-Qpy"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOG-Ix-zoT">
                                                 <rect key="frame" x="295" y="18" width="40" height="40"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -250,6 +236,20 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="removePhotoAction:" destination="8ig-Pf-cmu" eventType="touchUpInside" id="1fD-uV-BNd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njH-a0-ONB" userLabel="Save">
+                                                <rect key="frame" x="40" y="66" width="295" height="40"/>
+                                                <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="vau-yC-b3j"/>
+                                                </constraints>
+                                                <state key="normal" title="Upload">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="7EC-1Y-9bh" kind="custom" identifier="saveAnnotatedImages" customClass="BlurryModalSegue" id="KWo-LN-Qpy"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -985,11 +985,47 @@
                         <outlet property="pageControl" destination="Rqi-Ji-0th" id="xuw-HT-5Cf"/>
                         <outlet property="scrollView" destination="wOC-G0-kVY" id="9CL-r1-bKv"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="loggedIn" id="MH8-K5-Beh"/>
+                        <segue destination="Vvl-Eq-bUQ" kind="custom" identifier="showUserTutorial" customClass="BlurryModalSegue" id="ez9-ju-26a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVd-0J-pmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-308.5" y="234.5"/>
+            <point key="canvasLocation" x="-726.5" y="107.5"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="qyL-zd-8Dc">
+            <objects>
+                <viewController id="Vvl-Eq-bUQ" customClass="FLTutorialViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NaT-Q6-zwP"/>
+                        <viewControllerLayoutGuide type="bottom" id="eg1-rq-9Js"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NJc-er-iks" userLabel="Container">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WvE-sv-4h8" userLabel="Content">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WvE-sv-4h8" firstAttribute="top" secondItem="NaT-Q6-zwP" secondAttribute="bottom" id="6P4-NK-bgQ"/>
+                            <constraint firstItem="eg1-rq-9Js" firstAttribute="top" secondItem="WvE-sv-4h8" secondAttribute="bottom" id="Cqe-5I-t0f"/>
+                            <constraint firstAttribute="trailing" secondItem="WvE-sv-4h8" secondAttribute="trailing" id="WI4-rF-W1O"/>
+                            <constraint firstItem="WvE-sv-4h8" firstAttribute="leading" secondItem="NJc-er-iks" secondAttribute="leading" id="pSX-n3-cNk"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="finishTutorial" id="ilV-dO-txd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jcy-Lb-Ixq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-163" y="-740"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1017,4 +1053,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MH8-K5-Beh"/>
+    </inferredMetricsTieBreakers>
 </document>

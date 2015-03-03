@@ -16,6 +16,9 @@
 #import "FLSettings.h"
 #import "FLLoginView.h"
 
+NSString *const kSegueLoggedIn = @"loggedIn";
+NSString *const kSegueShowUserTutorial = @"showUserTutorial";
+
 @interface FLLoginViewController ()
 
 @property (nonatomic, strong) MBProgressHUD *hud;
@@ -34,10 +37,10 @@
     // Do any additional setup after loading the view.
     [self.flameyLogo setText:@"Flamey"];
 
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [_hud setCenter:self.view.center];
-    _hud.mode = MBProgressHUDModeAnnularDeterminate;
-    _hud.labelText = @"Loading";
+//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [_hud setCenter:self.view.center];
+//    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+//    _hud.labelText = @"Loading";
 
     [self _configurePhotos];
 }
@@ -112,8 +115,9 @@
 //    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
 
     FLSettings *settings = [FLSettings defaultSettings];
-    // Local development Login bypass
+    // TODO: Remove these assignments when not in development
     settings.shouldSkipLogin = NO;
+    settings.seenTutorial = NO;
     _viewIsVisible = YES;
 
 //    TODO Implement server side login persistence record
@@ -163,8 +167,16 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
     // TODO:Retrieve required user details and persist to external server
     NSLog(@"%@", [NSString stringWithFormat:@"continue as %@", [user name]]);
-    // Proceed into the app
-    [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+
+    // Show the tutorial or show the selections screen
+    FLSettings *settings = [FLSettings defaultSettings];
+    // RESTART: Implement the 4 slider screens on the tutorial screen
+    // Modal might have to be presented from the selections controller
+    if (!settings.seenTutorial) {
+        [self performSegueWithIdentifier:kSegueShowUserTutorial sender:nil];
+    } else {
+        [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
