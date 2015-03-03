@@ -26,6 +26,7 @@
 
 static NSString *const kShouldSkipLoginKey = @"shouldSkipLogin";
 static NSString *const kNeedToLogin = @"needToLogin";
+static NSString *const kSeenTutorial = @"seenTutorial";
 
 - (BOOL)shouldSkipLogin
 {
@@ -38,6 +39,8 @@ static NSString *const kNeedToLogin = @"needToLogin";
     return [[NSUserDefaults standardUserDefaults] boolForKey:kNeedToLogin];
 }
 
+#pragma Override Property Setter
+
 - (void)setShouldSkipLogin:(BOOL)shouldSkipLogin
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -49,6 +52,12 @@ static NSString *const kNeedToLogin = @"needToLogin";
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:needToLogin forKey:kNeedToLogin];
+    [defaults synchronize];
+}
+
+- (void)setSeenTutorial:(BOOL)seenTutorial {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:seenTutorial forKey:kSeenTutorial];
     [defaults synchronize];
 }
 
