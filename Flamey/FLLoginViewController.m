@@ -8,12 +8,17 @@
 
 #import "FLLoginViewController.h"
 
+// Libs
+#import <MBProgressHUD/MBProgressHUD.h>
+
 #import <FacebookSDK/FacebookSDK.h>
 #import "FLErrorHandler.h"
 #import "FLSettings.h"
 #import "FLLoginView.h"
 
 @interface FLLoginViewController ()
+
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 @end
 
@@ -28,6 +33,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.flameyLogo setText:@"Flamey"];
+
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_hud setCenter:self.view.center];
+    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+    _hud.labelText = @"Loading";
 
     [self _configurePhotos];
 }
@@ -106,6 +116,17 @@
     settings.shouldSkipLogin = NO;
     _viewIsVisible = YES;
 
+//    TODO Implement server side login persistence record
+//    void(^completionBlock)(FLUser *user, NSError *err)=^(FLUser user*, NSError *err) {
+//        if(!err){
+//             Let the server tell us if the user has seen the tutorial
+//             settings.seenTutorial = user.seenTutorial;
+//            [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+//        } else {
+//            NSLog(@"Problem with loggin in on the server");
+//        }
+//    };
+
 //    [self performSegueWithIdentifier:@"loggedIn" sender:nil];
 //    if (_viewDidAppear || settings.needToLogin) {
 //
@@ -115,7 +136,8 @@
 //                                           allowLoginUI:YES
 //                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
 //                                          if (!error && status == FBSessionStateOpen) {
-//                                              [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+//                                              [_hud show:YES];
+//                                              [FLSessionStore loginUser:session withCompletionBlock:completionBlock];
 //                                          } else {
 //                                              _viewIsVisible = YES;
 //                                          }
