@@ -14,4 +14,6 @@
 @property (strong, nonatomic) IBOutlet SwipeView *swipeView;
 @property (nonatomic, strong) NSMutableArray *items;
 
+// CONTINUE: Subclass the TutorialView and pass in a function or emit an event to trigger the segue navigation
+
 @end

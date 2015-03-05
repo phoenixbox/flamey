@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Container" customClass="FLTutorialView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leg-AO-eFW" userLabel="Content">
+                    <rect key="frame" x="20" y="50" width="335" height="567"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-vq-LsE">
+                            <rect key="frame" x="50" y="50" width="235" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="vpZ-q5-4cj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-4T-XV8">
+                            <rect key="frame" x="50" y="502" width="235" height="40"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="xjO-hy-gjn"/>
+                            </constraints>
+                            <state key="normal" title="Got It!">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="finishTutorial:" destination="iN0-l3-epB" eventType="touchUpInside" id="tbo-We-InA"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Xh-HO-Jwz">
+                            <rect key="frame" x="20" y="113" width="295" height="369"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="8Xh-HO-Jwz" firstAttribute="top" secondItem="JqK-vq-LsE" secondAttribute="bottom" constant="23" id="56F-Oz-yMH"/>
+                        <constraint firstItem="JqK-vq-LsE" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="50" id="5rg-O5-e5e"/>
+                        <constraint firstAttribute="trailing" secondItem="JqK-vq-LsE" secondAttribute="trailing" constant="50" id="Nud-0o-n3B"/>
+                        <constraint firstAttribute="trailing" secondItem="8Xh-HO-Jwz" secondAttribute="trailing" constant="20" id="OEf-ac-fTV"/>
+                        <constraint firstItem="8Xh-HO-Jwz" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="20" id="P7C-pT-aLY"/>
+                        <constraint firstAttribute="trailing" secondItem="Q3T-4T-XV8" secondAttribute="trailing" constant="50" id="S1X-kT-fmp"/>
+                        <constraint firstAttribute="bottom" secondItem="Q3T-4T-XV8" secondAttribute="bottom" constant="25" id="SbV-QI-7PO"/>
+                        <constraint firstItem="Q3T-4T-XV8" firstAttribute="top" secondItem="8Xh-HO-Jwz" secondAttribute="bottom" constant="20" id="Spe-v4-7pQ"/>
+                        <constraint firstItem="JqK-vq-LsE" firstAttribute="top" secondItem="leg-AO-eFW" secondAttribute="top" constant="50" id="p5g-EQ-hms"/>
+                        <constraint firstItem="Q3T-4T-XV8" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="50" id="zn2-7p-f7P"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="leg-AO-eFW" secondAttribute="trailing" constant="20" id="JtN-gU-mfe"/>
+                <constraint firstItem="leg-AO-eFW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="VdA-WV-pVY"/>
+                <constraint firstItem="leg-AO-eFW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ZgX-T5-KB4"/>
+                <constraint firstAttribute="bottom" secondItem="leg-AO-eFW" secondAttribute="bottom" constant="50" id="lYq-E9-YrE"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <connections>
+                <outlet property="contentView" destination="leg-AO-eFW" id="9PU-qT-gb4"/>
+                <outlet property="finishButton" destination="Q3T-4T-XV8" id="brb-6y-Mz9"/>
+                <outlet property="tutorialImageView" destination="8Xh-HO-Jwz" id="8dX-Xa-nqa"/>
+                <outlet property="tutorialTitle" destination="JqK-vq-LsE" id="TUv-Fw-Hcj"/>
+            </connections>
+        </view>
+    </objects>
+</document>

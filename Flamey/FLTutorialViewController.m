@@ -7,8 +7,9 @@
 //
 
 #import "FLTutorialViewController.h"
+#import "FLTutorialView.h"
 
-static NSString * const kTutorialFirst = @"FLTutorialFirst";
+static NSString * const kTutorialView = @"FLTutorialView";
 
 @interface FLTutorialViewController ()
 
@@ -19,6 +20,7 @@ static NSString * const kTutorialFirst = @"FLTutorialFirst";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self listenForUnwindTrigger];
     
 }
 
@@ -31,7 +33,7 @@ static NSString * const kTutorialFirst = @"FLTutorialFirst";
 
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
-    return 3;
+    return 4;
 }
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -41,13 +43,16 @@ static NSString * const kTutorialFirst = @"FLTutorialFirst";
 
         switch (index) {
             case 0:
-                viewType = kTutorialFirst;
+                viewType = kTutorialView;
                 break;
             case 1:
-                viewType = kTutorialFirst;
+                viewType = kTutorialView;
                 break;
             case 2:
-                viewType = kTutorialFirst;
+                viewType = kTutorialView;
+                break;
+            case 3:
+                viewType = kTutorialView;
                 break;
             default:
                 NSLog(@"View Type Missing For Slide View");
@@ -58,7 +63,6 @@ static NSString * const kTutorialFirst = @"FLTutorialFirst";
         view = [nibContents lastObject];
     }
 
-
     return view;
 }
 
@@ -66,6 +70,20 @@ static NSString * const kTutorialFirst = @"FLTutorialFirst";
 {
     return self.swipeView.bounds.size;
 }
+
+- (void)unwindToSelectedPhotos {
+    [self performSegueWithIdentifier:@"unwindToSelection" sender:self];
+}
+
+- (void)listenForUnwindTrigger {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(unwindToSelectedPhotos)
+                   name:kCompleteTutorial
+                 object:nil];
+}
+
 
 /*
 #pragma mark - Navigation

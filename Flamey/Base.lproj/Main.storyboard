@@ -154,11 +154,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="swipeView" destination="dnT-M4-sh8" id="ecH-U4-KkG"/>
+                        <segue destination="Fjq-Eq-1xB" kind="unwind" identifier="unwindToSelection" unwindAction="unwindToSelection:" id="KHU-sj-U4R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7q-FF-XtH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Fjq-Eq-1xB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1361.5" y="-1180.5"/>
+            <point key="canvasLocation" x="1361.5" y="-1167.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bGR-cR-iqI">

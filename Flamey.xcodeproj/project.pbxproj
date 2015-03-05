@@ -45,7 +45,8 @@
 		CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */; };
 		CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */; };
 		CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */; };
-		CBDDEF791AA81D6D00FF4E8D /* FLTutorialFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF781AA81D6D00FF4E8D /* FLTutorialFirst.xib */; };
+		CBDDEF7F1AA8242700FF4E8D /* FLTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF7E1AA8242700FF4E8D /* FLTutorialView.xib */; };
+		CBDDEF821AA825C400FF4E8D /* FLTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDDEF811AA825C400FF4E8D /* FLTutorialView.m */; };
 		CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */; };
 		CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */; };
 		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
@@ -144,7 +145,9 @@
 		CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationStore.m; sourceTree = "<group>"; };
 		CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageAnnotationViewController.h; sourceTree = "<group>"; };
 		CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageAnnotationViewController.m; sourceTree = "<group>"; };
-		CBDDEF781AA81D6D00FF4E8D /* FLTutorialFirst.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialFirst.xib; sourceTree = "<group>"; };
+		CBDDEF7E1AA8242700FF4E8D /* FLTutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialView.xib; sourceTree = "<group>"; };
+		CBDDEF801AA825C400FF4E8D /* FLTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialView.h; sourceTree = "<group>"; };
+		CBDDEF811AA825C400FF4E8D /* FLTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialView.m; sourceTree = "<group>"; };
 		CBEC72F61A7D494100F8D0AE /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
 		CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHelpers.m; sourceTree = "<group>"; };
 		CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableEmptyMessageView.xib; sourceTree = "<group>"; };
@@ -321,7 +324,9 @@
 			children = (
 				CB6BC4C11AA59467006D34EF /* FLTutorialViewController.h */,
 				CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */,
-				CBDDEF781AA81D6D00FF4E8D /* FLTutorialFirst.xib */,
+				CBDDEF7E1AA8242700FF4E8D /* FLTutorialView.xib */,
+				CBDDEF801AA825C400FF4E8D /* FLTutorialView.h */,
+				CBDDEF811AA825C400FF4E8D /* FLTutorialView.m */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -581,7 +586,7 @@
 			files = (
 				CB3B7D0B1A58374B005F6402 /* Main.storyboard in Resources */,
 				CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */,
-				CBDDEF791AA81D6D00FF4E8D /* FLTutorialFirst.xib in Resources */,
+				CBDDEF7F1AA8242700FF4E8D /* FLTutorialView.xib in Resources */,
 				CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */,
 				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
 				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
@@ -653,6 +658,7 @@
 				CB902F9F1A8DC836003D2950 /* FLProcessedImagesStore.m in Sources */,
 				CB2EBE7B1A7DD98100D76528 /* FLToolsStore.m in Sources */,
 				CB6BC4C31AA59467006D34EF /* FLTutorialViewController.m in Sources */,
+				CBDDEF821AA825C400FF4E8D /* FLTutorialView.m in Sources */,
 				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
 				CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */,
 				CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */,
