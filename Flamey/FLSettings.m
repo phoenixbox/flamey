@@ -39,6 +39,11 @@ static NSString *const kSeenTutorial = @"seenTutorial";
     return [[NSUserDefaults standardUserDefaults] boolForKey:kNeedToLogin];
 }
 
+- (BOOL)seenTutorial
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSeenTutorial];
+}
+
 #pragma Override Property Setter
 
 - (void)setShouldSkipLogin:(BOOL)shouldSkipLogin
