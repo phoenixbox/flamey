@@ -8,6 +8,8 @@
 
 #import "FLTutorialViewController.h"
 
+static NSString * const kTutorialFirst = @"FLTutorialFirst";
+
 @interface FLTutorialViewController ()
 
 @end
@@ -17,11 +19,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark SwipeView methods
+
+- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
+{
+    return 3;
+}
+
+- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    if (view == nil) {
+        NSString *viewType;
+
+        switch (index) {
+            case 0:
+                viewType = kTutorialFirst;
+                break;
+            case 1:
+                viewType = kTutorialFirst;
+                break;
+            case 2:
+                viewType = kTutorialFirst;
+                break;
+            default:
+                NSLog(@"View Type Missing For Slide View");
+                break;
+        }
+
+        NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
+        view = [nibContents lastObject];
+    }
+
+
+    return view;
+}
+
+- (CGSize)swipeViewItemSize:(SwipeView *)swipeView
+{
+    return self.swipeView.bounds.size;
 }
 
 /*

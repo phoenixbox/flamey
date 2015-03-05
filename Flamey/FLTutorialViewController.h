@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SwipeView.h>
 
-@interface FLTutorialViewController : UIViewController
+@interface FLTutorialViewController : UIViewController <SwipeViewDataSource, SwipeViewDelegate>
+
+@property (strong, nonatomic) IBOutlet SwipeView *swipeView;
+@property (nonatomic, strong) NSMutableArray *items;
 
 @end

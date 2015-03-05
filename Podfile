@@ -13,7 +13,7 @@ pod 'GPUImage', '~> 0.1'
 pod 'BlurryModalSegue', '~> 1.1'
 pod 'KSDeferred', '~> 0.2'
 pod 'MBProgressHUD', '~> 0.9'
-pod 'CocoaLumberjack'
+pod 'SwipeView', '~> 1.3'
 end
 
 target "FlameyTests" do

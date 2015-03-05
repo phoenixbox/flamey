@@ -17,7 +17,6 @@
 #import "FLLoginView.h"
 
 NSString *const kSegueLoggedIn = @"loggedIn";
-NSString *const kSegueShowUserTutorial = @"showUserTutorial";
 
 @interface FLLoginViewController ()
 
@@ -36,7 +35,9 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.flameyLogo setText:@"Flamey"];
-
+    // TODO: Remove these assignments when not in development
+    FLSettings *settings = [FLSettings defaultSettings];
+    settings.shouldSkipLogin = YES;
 //    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    [_hud setCenter:self.view.center];
 //    _hud.mode = MBProgressHUDModeAnnularDeterminate;
@@ -113,13 +114,9 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
 
 - (void)viewDidAppear:(BOOL)animated {
 //    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
-
-    FLSettings *settings = [FLSettings defaultSettings];
-    // TODO: Remove these assignments when not in development
-    settings.shouldSkipLogin = NO;
-    settings.seenTutorial = NO;
     _viewIsVisible = YES;
-
+    // TODO: Remove the hardcoded segue
+    [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
 //    TODO Implement server side login persistence record
 //    void(^completionBlock)(FLUser *user, NSError *err)=^(FLUser user*, NSError *err) {
 //        if(!err){
@@ -169,14 +166,10 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
     NSLog(@"%@", [NSString stringWithFormat:@"continue as %@", [user name]]);
 
     // Show the tutorial or show the selections screen
-    FLSettings *settings = [FLSettings defaultSettings];
     // RESTART: Implement the 4 slider screens on the tutorial screen
     // Modal might have to be presented from the selections controller
-    if (!settings.seenTutorial) {
-        [self performSegueWithIdentifier:kSegueShowUserTutorial sender:nil];
-    } else {
-        [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
-    }
+
+    [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -15,6 +15,7 @@
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "BlurryModalSegue.h"
 
 // Components
 #import "FLSelectedPhotosCollectionViewController.h"
@@ -24,6 +25,7 @@
 
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
+NSString *const kSegueShowUserTutorial = @"showUserTutorial";
 
 @interface FLSelectedPhotosCollectionViewController ()
 
@@ -39,10 +41,16 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
     _DEVELOPMENT_ENV = false;
     // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"Photos Count: %lu", [[FLSelectedPhotoStore sharedStore].allPhotos count]);
+    FLSettings *settings = [FLSettings defaultSettings];
+    settings.seenTutorial = NO;
 
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.translucent = NO;
     [self updateCollection];
+
+    if (!settings.seenTutorial) {
+        [self performSegueWithIdentifier:kSegueShowUserTutorial sender:self];
+    }
 }
 
 - (void)updateCollection {
@@ -120,6 +128,12 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 //      Attribute it
         annotationView.selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
         annotationView.targetRow = [indexPath row];
+    } else if ([segue isKindOfClass:[BlurryModalSegue class]]) {
+        BlurryModalSegue* bms = (BlurryModalSegue*)segue;
+
+        bms.backingImageBlurRadius = @(20);
+        bms.backingImageSaturationDeltaFactor = @(.45);
+        bms.backingImageTintColor = [[UIColor greenColor] colorWithAlphaComponent:.1];
     }
 }
 
@@ -130,6 +144,7 @@ NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 - (void)viewWillAppear:(BOOL)animated {
     [_selectionCollection reloadData];
 }
+
 
 #pragma RFFacebookProtocol
 

@@ -45,6 +45,7 @@
 		CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */; };
 		CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */; };
 		CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */; };
+		CBDDEF791AA81D6D00FF4E8D /* FLTutorialFirst.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF781AA81D6D00FF4E8D /* FLTutorialFirst.xib */; };
 		CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */; };
 		CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */; };
 		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
@@ -62,7 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		24CDF4E95656486EAD0CF8C1 /* Pods-Flamey.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.xcconfig"; path = "Pods/Pods-Flamey.xcconfig"; sourceTree = "<group>"; };
+		74538D7B189EE09795B7515B /* Pods-Flamey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flamey/Pods-Flamey.release.xcconfig"; sourceTree = "<group>"; };
+		B972D952EEE5CAB86BF19038 /* Pods-Flamey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flamey/Pods-Flamey.debug.xcconfig"; sourceTree = "<group>"; };
 		CB1EE06C1A98639F00400611 /* FLContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLContactViewController.h; sourceTree = "<group>"; };
 		CB1EE06D1A98639F00400611 /* FLContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLContactViewController.m; sourceTree = "<group>"; };
 		CB1EE0701A98649300400611 /* FLContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLContactViewController.xib; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationStore.m; sourceTree = "<group>"; };
 		CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageAnnotationViewController.h; sourceTree = "<group>"; };
 		CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageAnnotationViewController.m; sourceTree = "<group>"; };
+		CBDDEF781AA81D6D00FF4E8D /* FLTutorialFirst.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialFirst.xib; sourceTree = "<group>"; };
 		CBEC72F61A7D494100F8D0AE /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
 		CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHelpers.m; sourceTree = "<group>"; };
 		CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableEmptyMessageView.xib; sourceTree = "<group>"; };
@@ -176,6 +179,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		103802F0C21E42BBE560C8C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B972D952EEE5CAB86BF19038 /* Pods-Flamey.debug.xcconfig */,
+				74538D7B189EE09795B7515B /* Pods-Flamey.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8653CABC8D15495390A3E34D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,8 +238,8 @@
 				CB3B7CFB1A58374B005F6402 /* Flamey */,
 				CB3B7D181A58374B005F6402 /* FlameyTests */,
 				CB3B7CFA1A58374B005F6402 /* Products */,
-				24CDF4E95656486EAD0CF8C1 /* Pods-Flamey.xcconfig */,
 				8653CABC8D15495390A3E34D /* Frameworks */,
+				103802F0C21E42BBE560C8C2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -309,6 +321,7 @@
 			children = (
 				CB6BC4C11AA59467006D34EF /* FLTutorialViewController.h */,
 				CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */,
+				CBDDEF781AA81D6D00FF4E8D /* FLTutorialFirst.xib */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -568,6 +581,7 @@
 			files = (
 				CB3B7D0B1A58374B005F6402 /* Main.storyboard in Resources */,
 				CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */,
+				CBDDEF791AA81D6D00FF4E8D /* FLTutorialFirst.xib in Resources */,
 				CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */,
 				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
 				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
@@ -617,7 +631,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-Flamey-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flamey/Pods-Flamey-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -775,7 +789,7 @@
 		};
 		CB3B7D201A58374B005F6402 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24CDF4E95656486EAD0CF8C1 /* Pods-Flamey.xcconfig */;
+			baseConfigurationReference = B972D952EEE5CAB86BF19038 /* Pods-Flamey.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -791,7 +805,7 @@
 		};
 		CB3B7D211A58374B005F6402 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24CDF4E95656486EAD0CF8C1 /* Pods-Flamey.xcconfig */;
+			baseConfigurationReference = 74538D7B189EE09795B7515B /* Pods-Flamey.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
