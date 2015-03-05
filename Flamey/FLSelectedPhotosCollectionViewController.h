@@ -12,5 +12,7 @@
 @interface FLSelectedPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, RTFacebookViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *selectionCollection;
+@property (weak, nonatomic) IBOutlet UIButton *editPhotosButton;
+- (IBAction)editPhotos:(id)sender;
 
 @end

@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--SelectionCollection-->
+        <!--SelectedPhotosCollection-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" userLabel="SelectionCollection" customClass="FLSelectedPhotosCollectionViewController" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" userLabel="SelectedPhotosCollection" customClass="FLSelectedPhotosCollectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -32,7 +32,7 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M1N-X6-jms">
-                                <rect key="frame" x="0.0" y="44" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="450"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n7C-9j-zRP">
                                     <size key="itemSize" width="50" height="50"/>
@@ -58,6 +58,20 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="AeU-Ei-czL"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uK-Hd-PkR">
+                                <rect key="frame" x="66" y="504" width="243" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1lQ-zM-dmy"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editPhotos:" destination="9pv-A4-QxB" eventType="touchUpInside" id="q25-dC-jMX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -65,12 +79,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="M1N-X6-jms" secondAttribute="trailing" constant="-16" id="SY2-MK-IMk"/>
                             <constraint firstItem="d9w-rd-Qmh" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Vb1-SE-9md"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="top" secondItem="d9w-rd-Qmh" secondAttribute="bottom" id="X5k-Br-40O"/>
+                            <constraint firstItem="0uK-Hd-PkR" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="50" id="Z7z-UR-T2B"/>
                             <constraint firstItem="d9w-rd-Qmh" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="fF8-3c-l9f"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="fSb-8V-mx5"/>
                             <constraint firstAttribute="trailing" secondItem="d9w-rd-Qmh" secondAttribute="trailing" id="gtJ-Tx-f41"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0uK-Hd-PkR" secondAttribute="trailing" constant="50" id="lPB-tZ-tOy"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailing" id="pXB-UA-88o"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="M1N-X6-jms" secondAttribute="bottom" id="rMC-0C-KWb"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="M1N-X6-jms" secondAttribute="bottom" constant="60" id="rMC-0C-KWb"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="vZt-kD-HRh"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="0uK-Hd-PkR" secondAttribute="bottom" constant="10" id="wbs-GX-XQ3"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="xDG-cn-Bcd"/>
                         </constraints>
                         <variation key="default">
@@ -88,6 +105,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="editPhotosButton" destination="0uK-Hd-PkR" id="Cly-KX-FZq"/>
                         <outlet property="navBar" destination="d9w-rd-Qmh" id="0pw-G6-E6h"/>
                         <outlet property="selectionCollection" destination="M1N-X6-jms" id="Eu2-Yy-h6r"/>
                         <segue destination="2WU-lt-ZtJ" kind="custom" identifier="showUserTutorial" customClass="BlurryModalSegue" id="Moa-iB-Gra"/>

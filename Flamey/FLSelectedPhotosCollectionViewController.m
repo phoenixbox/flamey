@@ -48,6 +48,8 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
     self.navigationController.navigationBar.translucent = NO;
     [self updateCollection];
 
+    [self updateEditButton];
+
     if (!settings.seenTutorial) {
         [self performSegueWithIdentifier:kSegueShowUserTutorial sender:self];
     }
@@ -62,6 +64,15 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
                                 bundle:[NSBundle mainBundle]];
     // Register the nib
     [_selectionCollection registerNib:nib forCellWithReuseIdentifier:kPhotoCellIdentifier];
+}
+
+- (void)updateEditButton {
+    NSUInteger count = [[FLSelectedPhotoStore sharedStore].allPhotos count];
+    if (count == 0) {
+        [_editPhotosButton setHidden:YES];
+    } else {
+        [_editPhotosButton setHidden:NO];
+    }
 }
 
 // TODO: Allow to show the tutorial again?
@@ -143,6 +154,7 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
 
 - (void)viewWillAppear:(BOOL)animated {
     [_selectionCollection reloadData];
+    [self updateEditButton];
 }
 
 
@@ -166,4 +178,7 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)editPhotos:(id)sender {
+    [self performSegueWithIdentifier:kSeguePushToImageAnnotation sender:self];
+}
 @end
