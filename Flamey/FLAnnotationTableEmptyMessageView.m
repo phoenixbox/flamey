@@ -1,16 +1,16 @@
 //
-//  FLTutorialView.m
+//  FLAnnotationTableEmptyMessageView.m
 //  Flamey
 //
-//  Created by Shane Rogers on 3/4/15.
+//  Created by Shane Rogers on 3/7/15.
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
-#import "FLTutorialView.h"
+#import "FLAnnotationTableEmptyMessageView.h"
 
-NSString *const kCompleteTutorial = @"completeTuroial";
+NSString *const kAddMorePhotos = @"addMorePhotos";
 
-@implementation FLTutorialView
+@implementation FLAnnotationTableEmptyMessageView
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -20,8 +20,8 @@ NSString *const kCompleteTutorial = @"completeTuroial";
 }
 */
 
-- (IBAction)finishTutorial:(id)sender {
-    NSNotification *notification = [NSNotification notificationWithName:kCompleteTutorial
+- (IBAction)addPhotos:(id)sender {
+    NSNotification *notification = [NSNotification notificationWithName:kAddMorePhotos
                                                                  object:self];
 
     [[NSNotificationCenter defaultCenter] postNotification:notification];

@@ -11,6 +11,7 @@
 // Components
 #import "FLFacebookUploadModalViewController.h"
 #import "FLAnnotationTableViewCell.h"
+#import "FLAnnotationTableEmptyMessageView.h"
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -36,6 +37,8 @@
 
 static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTableViewCell";
 static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEmptyMessageView";
+// TODO: these segue identifiers should be composed to a common level of abstraction
+static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
 @implementation FLImageAnnotationViewController
 
@@ -49,6 +52,20 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
     [self updateAnnotationStore];
+    [self addAddMorePhotosListener];
+}
+
+- (void)addAddMorePhotosListener {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(addMorePhotos)
+                   name:kAddMorePhotos
+                 object:nil];
+}
+
+- (void)addMorePhotos {
+    [self performSegueWithIdentifier:kAddMorePhotosSegueIdentifier sender:self];
 }
 
 - (void)updateUploadButtonState {
@@ -377,14 +394,12 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
         NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];
         NSInteger currentRowIndex = visibleCellIndexPath.row;
 
-        if (count == 2) { // Two annotation cells remain
-            if (currentRowIndex == 0) {
-                [self disableLeftScrollButton];
-                [self enableRightScrollButton];
-            } else {
-                [self enableLeftScrollButton];
-                [self disableRightScrollButton];
-            }
+        if (currentRowIndex == 0 & count == 2) {
+            [self disableLeftScrollButton];
+            [self enableRightScrollButton];
+        } else if (currentRowIndex == count-1 & count == 2) {
+            [self enableLeftScrollButton];
+            [self disableRightScrollButton];
         } else if (currentRowIndex == 0) {
             [self disableLeftScrollButton];
         } else if (currentRowIndex == count-1) {

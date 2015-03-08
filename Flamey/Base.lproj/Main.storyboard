@@ -150,7 +150,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5J-Vi-mLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xPq-lg-bB7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1846.5" y="309.5"/>
+            <point key="canvasLocation" x="1846.5" y="395.5"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="t71-hc-FCn">
@@ -373,6 +373,7 @@
                         <outlet property="scrollRightButton" destination="LOG-Ix-zoT" id="wnA-Un-8CR"/>
                         <outlet property="tableContainer" destination="hEU-Hn-9Jr" id="rPX-NP-26G"/>
                         <outlet property="uploadButton" destination="njH-a0-ONB" id="uHa-To-ViO"/>
+                        <segue destination="VUx-Ch-lCa" kind="show" identifier="getFacebookPhotos" id="miO-BO-sYZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2d-iE-ej1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -810,7 +811,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZ8-K9-WDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361.5" y="309.5"/>
+            <point key="canvasLocation" x="1361.5" y="395.5"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -1066,4 +1067,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="miO-BO-sYZ"/>
+    </inferredMetricsTieBreakers>
 </document>
