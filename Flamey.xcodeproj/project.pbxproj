@@ -47,6 +47,8 @@
 		CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */; };
 		CBDDEF7F1AA8242700FF4E8D /* FLTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF7E1AA8242700FF4E8D /* FLTutorialView.xib */; };
 		CBDDEF821AA825C400FF4E8D /* FLTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDDEF811AA825C400FF4E8D /* FLTutorialView.m */; };
+		CBDDEF851AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDDEF841AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m */; };
+		CBDDEF871AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF861AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib */; };
 		CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */; };
 		CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */; };
 		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
@@ -148,6 +150,9 @@
 		CBDDEF7E1AA8242700FF4E8D /* FLTutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialView.xib; sourceTree = "<group>"; };
 		CBDDEF801AA825C400FF4E8D /* FLTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialView.h; sourceTree = "<group>"; };
 		CBDDEF811AA825C400FF4E8D /* FLTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialView.m; sourceTree = "<group>"; };
+		CBDDEF831AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelectionCollectionEmptyMessageView.h; sourceTree = "<group>"; };
+		CBDDEF841AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectionCollectionEmptyMessageView.m; sourceTree = "<group>"; };
+		CBDDEF861AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLSelectionCollectionEmptyMessageView.xib; sourceTree = "<group>"; };
 		CBEC72F61A7D494100F8D0AE /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
 		CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHelpers.m; sourceTree = "<group>"; };
 		CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableEmptyMessageView.xib; sourceTree = "<group>"; };
@@ -442,6 +447,9 @@
 				CB3B7D031A58374B005F6402 /* FLSelectedPhotosCollectionViewController.h */,
 				CB3B7D041A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m */,
 				CBF5B64F1A7CA26A000F07AF /* Cell */,
+				CBDDEF831AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.h */,
+				CBDDEF841AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m */,
+				CBDDEF861AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib */,
 			);
 			name = FLSelectedPhotos;
 			sourceTree = "<group>";
@@ -595,6 +603,7 @@
 				CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */,
 				CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */,
 				CB1EE0711A98649300400611 /* FLContactViewController.xib in Resources */,
+				CBDDEF871AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib in Resources */,
 				CB1EE07C1A98B56500400611 /* FLTOSViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +670,7 @@
 				CBDDEF821AA825C400FF4E8D /* FLTutorialView.m in Sources */,
 				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
 				CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */,
+				CBDDEF851AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m in Sources */,
 				CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */,
 				CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */,
 				CB3B7D051A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m in Sources */,

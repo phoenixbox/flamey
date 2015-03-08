@@ -12,13 +12,12 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bKm-Gz-T2V">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bKm-Gz-T2V" userLabel="facebookImageView">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keT-8w-zqf" userLabel="SelectedView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectedFacebookPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="S8F-H7-O8V" userLabel="selectedView">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -26,19 +25,20 @@
             <constraints>
                 <constraint firstItem="bKm-Gz-T2V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4eX-on-a6a"/>
                 <constraint firstAttribute="trailing" secondItem="bKm-Gz-T2V" secondAttribute="trailing" id="9ff-OH-ORD"/>
-                <constraint firstItem="bKm-Gz-T2V" firstAttribute="centerY" secondItem="keT-8w-zqf" secondAttribute="centerY" id="BwI-Ws-2cT"/>
-                <constraint firstItem="keT-8w-zqf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VlZ-Fb-JvH"/>
+                <constraint firstItem="S8F-H7-O8V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BN1-OK-fzS"/>
+                <constraint firstItem="S8F-H7-O8V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EC0-Ct-CG5"/>
+                <constraint firstAttribute="bottom" secondItem="S8F-H7-O8V" secondAttribute="bottom" id="Kwj-c7-nyA"/>
                 <constraint firstItem="bKm-Gz-T2V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aLt-fb-HqS"/>
-                <constraint firstItem="bKm-Gz-T2V" firstAttribute="centerX" secondItem="keT-8w-zqf" secondAttribute="centerX" id="bQB-if-prh"/>
                 <constraint firstAttribute="bottom" secondItem="bKm-Gz-T2V" secondAttribute="bottom" id="cYb-4d-kQY"/>
-                <constraint firstAttribute="bottom" secondItem="keT-8w-zqf" secondAttribute="bottom" id="fEd-76-thE"/>
-                <constraint firstAttribute="trailing" secondItem="keT-8w-zqf" secondAttribute="trailing" id="qeY-ib-AUi"/>
-                <constraint firstItem="keT-8w-zqf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="s4u-4y-IRd"/>
+                <constraint firstAttribute="trailing" secondItem="S8F-H7-O8V" secondAttribute="trailing" id="erq-Sh-JUA"/>
             </constraints>
             <connections>
                 <outlet property="imageViewBackgroundImage" destination="bKm-Gz-T2V" id="mxT-pa-pRH"/>
-                <outlet property="selectedView" destination="keT-8w-zqf" id="tFp-VV-mb4"/>
+                <outlet property="selectedView" destination="S8F-H7-O8V" id="c5c-d2-mgL"/>
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="selectedFacebookPhoto" width="120" height="120"/>
+    </resources>
 </document>
