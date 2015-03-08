@@ -62,11 +62,13 @@
         self.allPhotos = [NSMutableArray new];
     }
 
-    for (FLPhoto* object in self.allPhotos) {
+    NSMutableArray *copy = [self.allPhotos mutableCopy];
+
+    [copy enumerateObjectsUsingBlock:^(FLPhoto* object, NSUInteger index, BOOL *stop) {
         if([stringId floatValue] == [object.id floatValue]) {
             [self.allPhotos removeObject:object];
         }
-    }
+    }];
 }
 
 @end
