@@ -22,10 +22,12 @@
 #import "FLPhotoCollectionViewCell.h"
 #import "FLFacebookAlbumTableViewController.h"
 #import "FLImageAnnotationViewController.h"
+#import "FLSelectionCollectionEmptyMessageView.h"
 
 NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
 NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 NSString *const kSegueShowUserTutorial = @"showUserTutorial";
+NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEmptyMessageView";
 
 @interface FLSelectedPhotosCollectionViewController ()
 
@@ -53,6 +55,21 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
     if (!settings.seenTutorial) {
         [self performSegueWithIdentifier:kSegueShowUserTutorial sender:self];
     }
+
+    [self listenForGetFacebookPhotosNotification];
+}
+
+- (void)listenForGetFacebookPhotosNotification {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(getFacebookPhotos)
+                   name:kGetFacebookPhotos
+                 object:nil];
+}
+
+- (void)getFacebookPhotos {
+    [self performSegueWithIdentifier:kGetFacebookPhotos sender:self];
 }
 
 - (void)updateCollection {
@@ -64,6 +81,16 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
                                 bundle:[NSBundle mainBundle]];
     // Register the nib
     [_selectionCollection registerNib:nib forCellWithReuseIdentifier:kPhotoCellIdentifier];
+
+    [self setCollectionViewBackgroundView];
+}
+
+- (void)setCollectionViewBackgroundView {
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kSelectionCollectionEmptyMessageView owner:nil options:nil];
+    FLSelectionCollectionEmptyMessageView *emptyMessage = [nibContents lastObject];
+    [_selectionCollection setBackgroundView:emptyMessage];
+    // Show emoty message by default
+    [_selectionCollection.backgroundView setHidden:NO];
 }
 
 - (void)updateEditButton {
@@ -87,15 +114,13 @@ NSString *const kSegueShowUserTutorial = @"showUserTutorial";
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSUInteger count = [[FLSelectedPhotoStore sharedStore].allPhotos count];
 
-    if(count > 0) {
-        [self removeEmptyCollectionMessage];
-        return count;
+    if (count > 0) {
+        [_selectionCollection.backgroundView setHidden:YES];
     } else {
-        [self renderEmptyMessage];
-        // Local development
-//        return 0;
-        return 1;
+        [_selectionCollection.backgroundView setHidden:NO];
     }
+
+    return count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
