@@ -32,7 +32,6 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 @interface FLSelectedPhotosCollectionViewController ()
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
-@property (assign, nonatomic) BOOL DEVELOPMENT_ENV;
 
 @end
 
@@ -40,7 +39,6 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _DEVELOPMENT_ENV = false;
     // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"Photos Count: %lu", [[FLSelectedPhotoStore sharedStore].allPhotos count]);
     FLSettings *settings = [FLSettings defaultSettings];
@@ -124,26 +122,14 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (_DEVELOPMENT_ENV) {
-        FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
+    FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
-        UIImage *testImage = [UIImage imageNamed:@"test_image"];
+    FLPhoto *photo = [[FLSelectedPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
 
-        cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
-        [cell.imageViewBackgroundImage setImage:testImage];
+    cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
+    [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:nil];
 
-        return cell;
-
-    } else {
-        FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
-
-        FLPhoto *photo = [[FLSelectedPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
-
-        cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
-        [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:nil];
-        
-        return cell;
-    }
+    return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

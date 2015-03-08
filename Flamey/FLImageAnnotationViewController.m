@@ -31,7 +31,6 @@
 @property (nonatomic, strong) UITapGestureRecognizer *imageViewTap;
 @property (nonatomic, strong) UISwipeGestureRecognizer *cellRemoveSwipe;
 @property (strong, nonatomic) UITableView *selectedPhotosTable;
-@property (assign, nonatomic) BOOL DEVELOPMENT_ENV;
 
 @end
 
@@ -43,12 +42,9 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _DEVELOPMENT_ENV = false;
-
     [self updateUploadButtonState];
 
     [self renderLateralTable];
-
 
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
@@ -77,14 +73,17 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if(!_DEVELOPMENT_ENV) {
+    if (_targetRow) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_targetRow inSection:0];
 
         [_selectedPhotosTable scrollToRowAtIndexPath:indexPath
                                     atScrollPosition:UITableViewScrollPositionTop
                                             animated:YES];
+    } else {
+        [self checkToDisableNavigationArrows];
     }
 }
+
 
 - (void)updateAnnotationStore {
     // Update the annotation store with any recently selected photos
@@ -280,13 +279,7 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (_DEVELOPMENT_ENV) {
-        return 1;
-    } else {
-        FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-
-        return [annotationStore.photos count];
-    }
+    return  [[FLAnnotationStore sharedStore].photos count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -299,35 +292,24 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     cell.photo = photo;
 
     if([tableView isEqual:_selectedPhotosTable]) {
-        if (_DEVELOPMENT_ENV) {
+        [cell.selectedImageViewBackground sd_setImageWithURL:[NSURL URLWithString:photo.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 
-            UIImage *testImage = [UIImage imageNamed:@"test_image"];
-
-            [cell.selectedImageViewBackground setImage:testImage];
-
-            cell.originalImage = testImage;
+            cell.originalImage = image;
             [cell.contentView setUserInteractionEnabled:YES];
+
             cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
-        } else {
-            [cell.selectedImageViewBackground sd_setImageWithURL:[NSURL URLWithString:photo.URL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            // Do I need to reset the frame to retain its size?
 
-                cell.originalImage = image;
-                [cell.contentView setUserInteractionEnabled:YES];
+            // CGPoint is scalar so comparison to nil wont work - this does :)
+            if (!CGPointEqualToPoint(photo.annotationPoint, CGPointZero)) {
+                CGPoint point = photo.annotationPoint;
+                NSLog(@"handleTap X Point %f, Y Point %f", point.x, point.y);
 
-                cell.selectedImageViewBackground.transform = CGAffineTransformMakeRotation(M_PI_2);
-                // Do I need to reset the frame to retain its size?
+                [self setFlameIconOnCell:cell];
+            }
 
-                // CGPoint is scalar so comparison to nil wont work - this does :)
-                if (!CGPointEqualToPoint(photo.annotationPoint, CGPointZero)) {
-                    CGPoint point = photo.annotationPoint;
-                    NSLog(@"handleTap X Point %f, Y Point %f", point.x, point.y);
-
-                    [self setFlameIconOnCell:cell];
-                }
-
-                [self addTapGestureRecogniserToCell:cell];
-            }];
-        }
+            [self addTapGestureRecogniserToCell:cell];
+        }];
     }
     return cell;
 }
@@ -336,11 +318,13 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
     return self.view.frame.size.width;
 }
 
+#pragma end
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma UIScrollViewDelgate
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    [self checkToDisableNavigationArrows];
 }
+#pragma end
 
 - (void)deletePhotoFromStoreAndSlideTable {
     NSArray *visible       = [self.selectedPhotosTable indexPathsForVisibleRows];
@@ -361,8 +345,56 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
                                 withRowAnimation:UITableViewRowAnimationLeft];
 
     [self updateUploadButtonState];
+    [self checkToDisableNavigationArrows];
 }
 
+// TODO: Setup the buttons with UI for enabled and disabled state so that it can just be toggled
+- (void)disableLeftScrollButton {
+    [_scrollLeftButton setBackgroundColor:[UIColor redColor]];
+    [_scrollLeftButton setUserInteractionEnabled:NO];
+}
+
+- (void)enableLeftScrollButton {
+    [_scrollLeftButton setBackgroundColor:[UIColor lightGrayColor]];
+    [_scrollLeftButton setUserInteractionEnabled:YES];
+}
+
+- (void)disableRightScrollButton {
+    [_scrollRightButton setBackgroundColor:[UIColor redColor]];
+    [_scrollRightButton setUserInteractionEnabled:NO];
+}
+
+- (void)enableRightScrollButton {
+    [_scrollRightButton setBackgroundColor:[UIColor lightGrayColor]];
+    [_scrollRightButton setUserInteractionEnabled:YES];
+}
+
+- (void)checkToDisableNavigationArrows {
+    NSInteger count = [[FLAnnotationStore sharedStore].photos count];
+
+    if (count != 0) {
+        NSArray *visible = [self.selectedPhotosTable indexPathsForVisibleRows];
+        NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];
+        NSInteger currentRowIndex = visibleCellIndexPath.row;
+
+        if (currentRowIndex == 0 & count == 2) {
+            [self disableLeftScrollButton];
+            [self enableRightScrollButton];
+        } else if (currentRowIndex == count-1 & count == 2) {
+            [self enableLeftScrollButton];
+            [self disableRightScrollButton];
+        } else if (currentRowIndex == 0) {
+            [self disableLeftScrollButton];
+        } else if (currentRowIndex == count-1) {
+            [self disableRightScrollButton];
+        } else {
+            [self enableLeftScrollButton];
+            [self enableRightScrollButton];
+        }
+    } else {
+        NSLog(@"There are no annotations left");
+    }
+}
 
 - (IBAction)removePhotoAction:(id)sender {
     [self deletePhotoFromStoreAndSlideTable];
@@ -401,4 +433,10 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
                                             animated:YES];
     }
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 @end
