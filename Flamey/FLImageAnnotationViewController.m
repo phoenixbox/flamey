@@ -377,12 +377,14 @@ static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEm
         NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];
         NSInteger currentRowIndex = visibleCellIndexPath.row;
 
-        if (currentRowIndex == 0 & count == 2) {
-            [self disableLeftScrollButton];
-            [self enableRightScrollButton];
-        } else if (currentRowIndex == count-1 & count == 2) {
-            [self enableLeftScrollButton];
-            [self disableRightScrollButton];
+        if (count == 2) { // Two annotation cells remain
+            if (currentRowIndex == 0) {
+                [self disableLeftScrollButton];
+                [self enableRightScrollButton];
+            } else {
+                [self enableLeftScrollButton];
+                [self disableRightScrollButton];
+            }
         } else if (currentRowIndex == 0) {
             [self disableLeftScrollButton];
         } else if (currentRowIndex == count-1) {
