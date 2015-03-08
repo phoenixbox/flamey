@@ -27,12 +27,14 @@
         _photos = [NSMutableArray new];
     }
 
-    for (FLPhoto* object in _photos) {
+    NSMutableArray *copy = [_photos mutableCopy];
+
+    [copy enumerateObjectsUsingBlock:^(FLPhoto* object, NSUInteger index, BOOL *stop) {
         if([stringId floatValue] == [object.id floatValue]) {
             NSLog(@"Remove processed photo");
             [_photos removeObject:object];
         }
-    }
+    }];
 }
 
 - (void)addUniquePhoto:(FLPhoto *)photo {
@@ -55,6 +57,7 @@
 }
 
 - (void)flushStore {
+    // TODO: Not working? - follow pattern of removePhotoById?
     [_photos removeAllObjects];
 }
 

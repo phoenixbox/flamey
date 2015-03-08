@@ -78,12 +78,14 @@
         _photos = [NSMutableArray new];
     }
 
-    for (FLPhoto* object in _photos) {
+    NSMutableArray *copy = [_photos mutableCopy];
+
+    [copy enumerateObjectsUsingBlock:^(FLPhoto* object, NSUInteger index, BOOL *stop) {
         if([stringId floatValue] == [object.id floatValue]) {
             NSLog(@"Remove annotation photo");
             [_photos removeObject:object];
         }
-    }
+    }];
 }
 
 - (void)flushStore {
