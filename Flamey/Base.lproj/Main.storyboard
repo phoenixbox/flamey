@@ -215,7 +215,7 @@
                                         <rect key="frame" x="0.0" y="375" width="375" height="228"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krm-Lt-YHn" userLabel="Add Filters">
-                                                <rect key="frame" x="40" y="140" width="295" height="40"/>
+                                                <rect key="frame" x="40" y="158" width="295" height="40"/>
                                                 <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="vsr-ja-hZO"/>
@@ -285,8 +285,8 @@
                                                     <action selector="removePhotoAction:" destination="8ig-Pf-cmu" eventType="touchUpInside" id="1fD-uV-BNd"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njH-a0-ONB" userLabel="Save">
-                                                <rect key="frame" x="40" y="66" width="295" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njH-a0-ONB">
+                                                <rect key="frame" x="40" y="98" width="295" height="40"/>
                                                 <color key="backgroundColor" red="0.40408983840000001" green="0.59661473860000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="vau-yC-b3j"/>
@@ -303,15 +303,16 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="njH-a0-ONB" firstAttribute="leading" secondItem="UWj-rh-Z8x" secondAttribute="leading" constant="40" id="82i-FF-oEE"/>
-                                            <constraint firstItem="njH-a0-ONB" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="70" id="BTq-tN-k1N"/>
+                                            <constraint firstItem="njH-a0-ONB" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="90" id="BTq-tN-k1N"/>
                                             <constraint firstItem="krm-Lt-YHn" firstAttribute="leading" secondItem="UWj-rh-Z8x" secondAttribute="leading" constant="40" id="Dd5-ah-yL1"/>
                                             <constraint firstAttribute="centerX" secondItem="xx1-KD-fsu" secondAttribute="centerX" id="JM5-MM-bep"/>
                                             <constraint firstItem="xx1-KD-fsu" firstAttribute="leading" secondItem="UWj-rh-Z8x" secondAttribute="leading" constant="40" id="Pq0-2y-FcR"/>
                                             <constraint firstAttribute="centerX" secondItem="njH-a0-ONB" secondAttribute="centerX" id="Q7c-rk-CdO"/>
                                             <constraint firstItem="xx1-KD-fsu" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="18" id="QNd-gX-A7W"/>
                                             <constraint firstAttribute="centerX" secondItem="krm-Lt-YHn" secondAttribute="centerX" id="Rza-3I-yaO"/>
-                                            <constraint firstItem="krm-Lt-YHn" firstAttribute="top" secondItem="njH-a0-ONB" secondAttribute="bottom" constant="30" id="d5p-eo-GfV"/>
+                                            <constraint firstItem="krm-Lt-YHn" firstAttribute="top" secondItem="njH-a0-ONB" secondAttribute="bottom" constant="20" id="d5p-eo-GfV"/>
                                             <constraint firstAttribute="trailing" secondItem="krm-Lt-YHn" secondAttribute="trailing" constant="40" id="eIK-oD-4M3"/>
+                                            <constraint firstItem="njH-a0-ONB" firstAttribute="top" secondItem="xx1-KD-fsu" secondAttribute="bottom" constant="40" id="gs8-gc-Pbc"/>
                                             <constraint firstItem="njH-a0-ONB" firstAttribute="trailing" secondItem="LOG-Ix-zoT" secondAttribute="trailing" id="hoJ-gt-nMJ"/>
                                             <constraint firstItem="zVK-8K-7YB" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="18" id="it0-ik-Nox"/>
                                             <constraint firstItem="njH-a0-ONB" firstAttribute="leading" secondItem="zVK-8K-7YB" secondAttribute="leading" id="pk0-0s-2gb"/>
@@ -321,6 +322,7 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="BTq-tN-k1N"/>
                                                 <exclude reference="Pq0-2y-FcR"/>
                                                 <exclude reference="w0U-jV-ykb"/>
                                             </mask>
