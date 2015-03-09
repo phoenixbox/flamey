@@ -906,7 +906,7 @@
                         <viewControllerLayoutGuide type="bottom" id="epv-jB-cxr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8j7-xG-Oy2" userLabel="LoginView" customClass="FLLoginView">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPd-e6-r0w" userLabel="Container">
@@ -1068,6 +1068,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="miO-BO-sYZ"/>
+        <segue reference="dj5-24-0YJ"/>
     </inferredMetricsTieBreakers>
 </document>
