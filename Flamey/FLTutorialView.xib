@@ -37,48 +37,106 @@
                                 <action selector="finishTutorial:" destination="iN0-l3-epB" eventType="touchUpInside" id="tbo-We-InA"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="8Xh-HO-Jwz" userLabel="ImageView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrT-Dv-IvV" userLabel="interactiveContainer">
                             <rect key="frame" x="20" y="120" width="295" height="201"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Male-0-Selected" translatesAutoresizingMaskIntoConstraints="NO" id="8Xh-HO-Jwz" userLabel="ImageView">
+                                    <rect key="frame" x="0.0" y="0.0" width="295" height="201"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="295" id="bge-HK-4va"/>
+                                        <constraint firstAttribute="width" secondItem="8Xh-HO-Jwz" secondAttribute="height" multiplier="1.467:1" id="nB2-nr-awY"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="bge-HK-4va"/>
+                                            <exclude reference="nB2-nr-awY"/>
+                                        </mask>
+                                    </variation>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNY-15-kkA" userLabel="TwoButton">
+                                    <rect key="frame" x="99" y="0.0" width="98" height="201"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="LNY-15-kkA" secondAttribute="height" multiplier="1:2.05" id="Fbd-kZ-sJZ"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="selectSecondPersona:" destination="iN0-l3-epB" eventType="touchUpInside" id="y6M-Po-8f6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C91-Tp-wQT" userLabel="OneButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="98" height="201"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="C91-Tp-wQT" secondAttribute="height" multiplier="1:2.05" id="gWB-kP-zKc"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="selectFirstPersona:" destination="iN0-l3-epB" eventType="touchUpInside" id="Tz5-lf-x3P"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNG-0G-1kj" userLabel="ThreeButton">
+                                    <rect key="frame" x="197" y="0.0" width="98" height="201"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="QNG-0G-1kj" secondAttribute="height" multiplier="1:2.05" id="SK9-Qh-hqB"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="selectThirdPersona:" destination="iN0-l3-epB" eventType="touchUpInside" id="AAb-CI-egW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="295" id="bge-HK-4va"/>
-                                <constraint firstAttribute="width" secondItem="8Xh-HO-Jwz" secondAttribute="height" multiplier="1.467:1" id="nB2-nr-awY"/>
+                                <constraint firstAttribute="bottom" secondItem="LNY-15-kkA" secondAttribute="bottom" id="Al5-eC-zCx"/>
+                                <constraint firstItem="8Xh-HO-Jwz" firstAttribute="leading" secondItem="yrT-Dv-IvV" secondAttribute="leading" id="IJH-E2-Pso"/>
+                                <constraint firstAttribute="trailing" secondItem="QNG-0G-1kj" secondAttribute="trailing" id="Pcs-uu-7Dq"/>
+                                <constraint firstAttribute="bottom" secondItem="QNG-0G-1kj" secondAttribute="bottom" id="WYC-F9-De5"/>
+                                <constraint firstAttribute="bottom" secondItem="C91-Tp-wQT" secondAttribute="bottom" id="Zud-Qj-X4n"/>
+                                <constraint firstAttribute="bottom" secondItem="8Xh-HO-Jwz" secondAttribute="bottom" id="aZF-zg-ogW"/>
+                                <constraint firstAttribute="trailing" secondItem="C91-Tp-wQT" secondAttribute="trailing" constant="212" id="ai8-nt-Ghm"/>
+                                <constraint firstItem="LNY-15-kkA" firstAttribute="top" secondItem="yrT-Dv-IvV" secondAttribute="top" id="g90-tm-P0D"/>
+                                <constraint firstItem="C91-Tp-wQT" firstAttribute="top" secondItem="yrT-Dv-IvV" secondAttribute="top" id="gPB-kX-ChU"/>
+                                <constraint firstItem="8Xh-HO-Jwz" firstAttribute="top" secondItem="yrT-Dv-IvV" secondAttribute="top" id="hrW-Ni-oVF"/>
+                                <constraint firstItem="C91-Tp-wQT" firstAttribute="leading" secondItem="yrT-Dv-IvV" secondAttribute="leading" id="jSA-DA-sDF"/>
+                                <constraint firstAttribute="trailing" secondItem="8Xh-HO-Jwz" secondAttribute="trailing" id="khj-kU-hos"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C91-Tp-wQT" secondAttribute="trailing" constant="212" id="kne-Ek-fbs"/>
+                                <constraint firstItem="QNG-0G-1kj" firstAttribute="top" secondItem="yrT-Dv-IvV" secondAttribute="top" id="m1y-QC-p4d"/>
+                                <constraint firstAttribute="centerX" secondItem="LNY-15-kkA" secondAttribute="centerX" id="rLf-h2-G5U"/>
+                                <constraint firstAttribute="width" secondItem="yrT-Dv-IvV" secondAttribute="height" multiplier="1.467:1" id="wgW-NQ-PeT"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
-                                    <exclude reference="bge-HK-4va"/>
+                                    <exclude reference="ai8-nt-Ghm"/>
+                                    <exclude reference="kne-Ek-fbs"/>
                                 </mask>
                             </variation>
-                        </imageView>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="8Xh-HO-Jwz" firstAttribute="top" secondItem="JqK-vq-LsE" secondAttribute="bottom" constant="23" id="56F-Oz-yMH"/>
                         <constraint firstItem="JqK-vq-LsE" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="50" id="5rg-O5-e5e"/>
-                        <constraint firstAttribute="centerX" secondItem="8Xh-HO-Jwz" secondAttribute="centerX" id="DFa-A3-C97"/>
+                        <constraint firstAttribute="centerX" secondItem="yrT-Dv-IvV" secondAttribute="centerX" id="Mqq-r1-kRU"/>
                         <constraint firstAttribute="trailing" secondItem="JqK-vq-LsE" secondAttribute="trailing" constant="50" id="Nud-0o-n3B"/>
-                        <constraint firstAttribute="trailing" secondItem="8Xh-HO-Jwz" secondAttribute="trailing" constant="20" id="OEf-ac-fTV"/>
-                        <constraint firstItem="8Xh-HO-Jwz" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="20" id="P7C-pT-aLY"/>
                         <constraint firstAttribute="trailing" secondItem="Q3T-4T-XV8" secondAttribute="trailing" constant="50" id="S1X-kT-fmp"/>
-                        <constraint firstItem="8Xh-HO-Jwz" firstAttribute="top" secondItem="JqK-vq-LsE" secondAttribute="bottom" constant="30" id="S7t-EA-R5m"/>
                         <constraint firstAttribute="bottom" secondItem="Q3T-4T-XV8" secondAttribute="bottom" constant="25" id="SbV-QI-7PO"/>
-                        <constraint firstItem="Q3T-4T-XV8" firstAttribute="top" secondItem="8Xh-HO-Jwz" secondAttribute="bottom" constant="20" id="Spe-v4-7pQ"/>
-                        <constraint firstAttribute="centerY" secondItem="8Xh-HO-Jwz" secondAttribute="centerY" id="Z2e-Du-bFZ"/>
-                        <constraint firstAttribute="trailing" secondItem="8Xh-HO-Jwz" secondAttribute="trailing" constant="20" id="fg3-ZN-GCz"/>
-                        <constraint firstItem="8Xh-HO-Jwz" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="20" id="m5Q-CX-cKD"/>
+                        <constraint firstItem="yrT-Dv-IvV" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="20" id="Vj4-ka-xXc"/>
+                        <constraint firstAttribute="trailing" secondItem="yrT-Dv-IvV" secondAttribute="trailing" constant="20" id="lFo-76-nhA"/>
+                        <constraint firstItem="yrT-Dv-IvV" firstAttribute="top" secondItem="JqK-vq-LsE" secondAttribute="bottom" constant="30" id="oRb-jr-Jdd"/>
                         <constraint firstItem="JqK-vq-LsE" firstAttribute="top" secondItem="leg-AO-eFW" secondAttribute="top" constant="50" id="p5g-EQ-hms"/>
-                        <constraint firstAttribute="centerX" secondItem="8Xh-HO-Jwz" secondAttribute="centerX" id="wJD-V9-zhQ"/>
                         <constraint firstItem="Q3T-4T-XV8" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="50" id="zn2-7p-f7P"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="56F-Oz-yMH"/>
-                            <exclude reference="OEf-ac-fTV"/>
-                            <exclude reference="P7C-pT-aLY"/>
-                            <exclude reference="Z2e-Du-bFZ"/>
-                            <exclude reference="wJD-V9-zhQ"/>
-                            <exclude reference="Spe-v4-7pQ"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <constraints>
@@ -91,12 +149,16 @@
             <connections>
                 <outlet property="contentView" destination="leg-AO-eFW" id="9PU-qT-gb4"/>
                 <outlet property="finishButton" destination="Q3T-4T-XV8" id="brb-6y-Mz9"/>
+                <outlet property="firstPersonaButton" destination="C91-Tp-wQT" id="mrk-Hs-3h8"/>
+                <outlet property="secondPersonaButton" destination="LNY-15-kkA" id="XxE-rw-YRX"/>
+                <outlet property="thirdPersonaButton" destination="QNG-0G-1kj" id="Aw6-sn-ghV"/>
                 <outlet property="tutorialImageView" destination="8Xh-HO-Jwz" id="8dX-Xa-nqa"/>
                 <outlet property="tutorialTitle" destination="JqK-vq-LsE" id="TUv-Fw-Hcj"/>
             </connections>
+            <point key="canvasLocation" x="836.5" y="571.5"/>
         </view>
     </objects>
     <resources>
-        <image name="TwoSelected" width="620" height="445"/>
+        <image name="Male-0-Selected" width="620" height="445"/>
     </resources>
 </document>

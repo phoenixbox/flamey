@@ -16,5 +16,13 @@ extern NSString *const kCompleteTutorial;
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImageView;
 @property (weak, nonatomic) IBOutlet UIButton *finishButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *firstPersonaButton;
+- (IBAction)selectFirstPersona:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *secondPersonaButton;
+- (IBAction)selectSecondPersona:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *thirdPersonaButton;
+- (IBAction)selectThirdPersona:(id)sender;
+
+
 - (IBAction)finishTutorial:(id)sender;
 @end

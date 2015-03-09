@@ -8,7 +8,13 @@
 
 #import "FLTutorialView.h"
 
-NSString *const kCompleteTutorial = @"completeTuroial";
+NSString *const kCompleteTutorial = @"completeTutorial";
+
+// Male Image Constants
+NSString *const kMaleZeroSelected = @"Male-0-Selected";
+NSString *const kMaleOneSelected = @"Male-1-Selected";
+NSString *const kMaleTwoSelected = @"Male-2-Selected";
+NSString *const kMaleThreeSelected = @"Male-3-Selected";
 
 @implementation FLTutorialView
 
@@ -20,7 +26,29 @@ NSString *const kCompleteTutorial = @"completeTuroial";
 }
 */
 
+- (IBAction)selectFirstPersona:(id)sender {
+    NSLog(@"selectFirstPersona");
+    [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
+
+    [_finishButton setHidden:NO];
+}
+
+- (IBAction)selectSecondPersona:(id)sender {
+    NSLog(@"selectSecondPersona");
+    [_tutorialImageView setImage:[UIImage imageNamed:kMaleTwoSelected]];
+
+    [_finishButton setHidden:NO];
+}
+
+- (IBAction)selectThirdPersona:(id)sender {
+    NSLog(@"selectThirdPersona");
+    [_tutorialImageView setImage:[UIImage imageNamed:kMaleThreeSelected]];
+
+    [_finishButton setHidden:NO];
+}
+
 - (IBAction)finishTutorial:(id)sender {
+    // Update to trigger a slide to next step notification
     NSNotification *notification = [NSNotification notificationWithName:kCompleteTutorial
                                                                  object:self];
 
