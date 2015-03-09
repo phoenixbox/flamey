@@ -58,9 +58,17 @@ static NSString * const kTutorialView = @"FLTutorialView";
                 NSLog(@"View Type Missing For Slide View");
                 break;
         }
-
         NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
-        view = [nibContents lastObject];
+        FLTutorialView *tutorialView = (FLTutorialView *)[nibContents lastObject];
+
+        // TODO: Compose this specialized setup to its own function
+        tutorialView.finishButton.layer.cornerRadius = 4;
+        tutorialView.finishButton.layer.borderWidth = 2;
+        tutorialView.finishButton.layer.borderColor = [UIColor blackColor].CGColor;
+        [tutorialView.finishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [tutorialView.finishButton setHidden:YES];
+        [tutorialView setTintColor:[UIColor blackColor]];
+        view = tutorialView;
     }
 
     return view;

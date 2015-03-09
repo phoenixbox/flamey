@@ -47,7 +47,6 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
-
 /*
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.
