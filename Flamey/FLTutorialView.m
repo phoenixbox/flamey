@@ -18,14 +18,6 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 
 @implementation FLTutorialView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 - (IBAction)selectFirstPersona:(id)sender {
     NSLog(@"selectFirstPersona");
     [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
@@ -54,5 +46,14 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
+
+
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

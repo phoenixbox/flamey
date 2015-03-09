@@ -23,6 +23,6 @@ extern NSString *const kCompleteTutorial;
 @property (weak, nonatomic) IBOutlet UIButton *thirdPersonaButton;
 - (IBAction)selectThirdPersona:(id)sender;
 
-
 - (IBAction)finishTutorial:(id)sender;
+
 @end

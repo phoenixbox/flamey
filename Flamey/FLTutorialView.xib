@@ -24,7 +24,7 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-4T-XV8">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-4T-XV8">
                             <rect key="frame" x="50" y="502" width="235" height="40"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -38,10 +38,10 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrT-Dv-IvV" userLabel="interactiveContainer">
-                            <rect key="frame" x="20" y="120" width="295" height="201"/>
+                            <rect key="frame" x="5" y="120" width="325" height="221"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Male-0-Selected" translatesAutoresizingMaskIntoConstraints="NO" id="8Xh-HO-Jwz" userLabel="ImageView">
-                                    <rect key="frame" x="0.0" y="0.0" width="295" height="201"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="325" height="221"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="295" id="bge-HK-4va"/>
@@ -55,7 +55,7 @@
                                     </variation>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNY-15-kkA" userLabel="TwoButton">
-                                    <rect key="frame" x="99" y="0.0" width="98" height="201"/>
+                                    <rect key="frame" x="109" y="0.0" width="108" height="221"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="LNY-15-kkA" secondAttribute="height" multiplier="1:2.05" id="Fbd-kZ-sJZ"/>
                                     </constraints>
@@ -69,7 +69,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C91-Tp-wQT" userLabel="OneButton">
-                                    <rect key="frame" x="0.0" y="0.0" width="98" height="201"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="108" height="221"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="C91-Tp-wQT" secondAttribute="height" multiplier="1:2.05" id="gWB-kP-zKc"/>
                                     </constraints>
@@ -83,7 +83,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNG-0G-1kj" userLabel="ThreeButton">
-                                    <rect key="frame" x="197" y="0.0" width="98" height="201"/>
+                                    <rect key="frame" x="217" y="0.0" width="108" height="221"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="QNG-0G-1kj" secondAttribute="height" multiplier="1:2.05" id="SK9-Qh-hqB"/>
                                     </constraints>
@@ -131,8 +131,8 @@
                         <constraint firstAttribute="trailing" secondItem="JqK-vq-LsE" secondAttribute="trailing" constant="50" id="Nud-0o-n3B"/>
                         <constraint firstAttribute="trailing" secondItem="Q3T-4T-XV8" secondAttribute="trailing" constant="50" id="S1X-kT-fmp"/>
                         <constraint firstAttribute="bottom" secondItem="Q3T-4T-XV8" secondAttribute="bottom" constant="25" id="SbV-QI-7PO"/>
-                        <constraint firstItem="yrT-Dv-IvV" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="20" id="Vj4-ka-xXc"/>
-                        <constraint firstAttribute="trailing" secondItem="yrT-Dv-IvV" secondAttribute="trailing" constant="20" id="lFo-76-nhA"/>
+                        <constraint firstItem="yrT-Dv-IvV" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="5" id="Vj4-ka-xXc"/>
+                        <constraint firstAttribute="trailing" secondItem="yrT-Dv-IvV" secondAttribute="trailing" constant="5" id="lFo-76-nhA"/>
                         <constraint firstItem="yrT-Dv-IvV" firstAttribute="top" secondItem="JqK-vq-LsE" secondAttribute="bottom" constant="30" id="oRb-jr-Jdd"/>
                         <constraint firstItem="JqK-vq-LsE" firstAttribute="top" secondItem="leg-AO-eFW" secondAttribute="top" constant="50" id="p5g-EQ-hms"/>
                         <constraint firstItem="Q3T-4T-XV8" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="50" id="zn2-7p-f7P"/>
