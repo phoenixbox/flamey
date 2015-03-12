@@ -138,15 +138,14 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
 -(void)setFlameIconOnCell:(FLAnnotationTableViewCell *)targetCell {
     UIImageView *imageView = targetCell.selectedImageViewBackground;
+    // 1. Create the image
     GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:targetCell.originalImage];
 
     // Note the overlay image size is the same as the cell image
     CGSize imageOverlaySize = CGSizeMake(imageView.image.size.width,     imageView.image.size.height);
-    NSLog(@"ImageOverlaySize W:%f H:%f", imageOverlaySize.width, imageOverlaySize.height);
 
     // NOTE: OverlayImage must be the same size as the imageOverlaySize
     UIImage *overlayImage = [self createFlameForSize:imageOverlaySize atTouchPoint:targetCell.photo.annotationPoint];
-    NSLog(@"ResultImageSize W:%f H:%f", overlayImage.size.width, overlayImage.size.height);
 
     GPUImagePicture *flameyGPUImage = [[GPUImagePicture alloc] initWithImage:overlayImage];
 
@@ -163,9 +162,8 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     UIImage *processedImage = [alphaBlendFilter imageFromCurrentFramebuffer];
 
-//    annotate the new photo model with the id related to the target cell
+    // 3. Annotate the new photo model with the id of the target cell's photo
     FLPhoto *processedPhoto = [[FLPhoto alloc] init];
-//    NSLog(@"Photo ID: %lu", (unsigned long)targetCell.photo.id);
     processedPhoto.id = targetCell.photo.id;
     processedPhoto.image = processedImage;
     FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
@@ -174,114 +172,41 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [imageView setImage:processedImage];
 }
 
--(CGSize)imageSizeAfterAspectFit:(UIImageView*)imgview{
-    float newwidth;
-    float newheight;
+- (UIImage *)createFlameForSize:(CGSize)cellImageSize atTouchPoint:(CGPoint)touchPoint {
+    UIImage * logoImage = [UIImage imageNamed:@"logoMarker.png"];
 
-    UIImage *image=imgview.image;
+    CGPoint punt = [self generateOriginWithPoint:touchPoint forImageSize:cellImageSize];
 
-    if (image.size.height>=image.size.width){
-        newheight=imgview.frame.size.height;
-        newwidth=(image.size.width/image.size.height)*newheight;
+    CGSize annotationSize = CGSizeMake(cellImageSize.width * 0.085, cellImageSize.width * 0.085);
+    CGRect logoRect = {punt, annotationSize};
 
-        if(newwidth>imgview.frame.size.width){
-            float diff=imgview.frame.size.width-newwidth;
-            newheight=newheight+diff/newheight*newheight;
-            newwidth=imgview.frame.size.width;
-        }
-
-    }
-    else{
-        newwidth=imgview.frame.size.width;
-        newheight=(image.size.height/image.size.width)*newwidth;
-
-        if(newheight>imgview.frame.size.height){
-            float diff=imgview.frame.size.height-newheight;
-            newwidth=newwidth+diff/newwidth*newwidth;
-            newheight=imgview.frame.size.height;
-        }
-    }
-
-    NSLog(@"image after aspect fit: width=%f height=%f",newwidth,newheight);
-
-
-    //adapt UIImageView size to image size
-    //imgview.frame=CGRectMake(imgview.frame.origin.x+(imgview.frame.size.width-newwidth)/2,imgview.frame.origin.y+(imgview.frame.size.height-newheight)/2,newwidth,newheight);
-    
-    return CGSizeMake(newwidth, newheight);
-}
-
-- (UIImage *)createFlameForSize:(CGSize)overlaySize atTouchPoint:(CGPoint)touchPoint {
-//    touchPoint should be true center of where the icon is drawn
-//    overlay size is always image view height & width
-
-    // Load the image
-    UIImage * heartIcon = [UIImage imageNamed:@"logoMarker.png"];
-
-    // Build the new bounding box for the icon
-    CGFloat reduction = heartIcon.size.width/2;
-    CGPoint newPoint = CGPointMake(touchPoint.x-reduction, touchPoint.y-reduction);
-    CGSize annotationSize = CGSizeMake(30.0,30.0);
-    CGRect heartRect = {newPoint, annotationSize};
-
-    UIGraphicsBeginImageContext(overlaySize);
+    UIGraphicsBeginImageContext(cellImageSize);
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    CGRect inputRect = {CGPointZero, overlaySize};
+    CGRect inputRect = {CGPointZero, cellImageSize};
     CGContextClearRect(context, inputRect);
 
     CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
-    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-overlaySize.height);
+    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-cellImageSize.height);
     CGContextConcatCTM(context, flipThenShift);
-    CGRect transformedGhostRect = CGRectApplyAffineTransform(heartRect, flipThenShift);
+    CGRect transformedLogoRect = CGRectApplyAffineTransform(logoRect, flipThenShift);
 
-    CGContextDrawImage(context, transformedGhostRect, [heartIcon CGImage]);
+    CGContextDrawImage(context, transformedLogoRect, [logoImage CGImage]);
 
-    UIImage *flameyIcon = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage * paddedGhost = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    return flameyIcon;
+    return paddedGhost;
 }
 
+- (CGPoint)generateOriginWithPoint:(CGPoint)touchPoint forImageSize:(CGSize)imageSize {
+    float viewWidth = _tableContainer.frame.size.width; // 320
+    float viewHeight = _tableContainer.frame.size.height; // 320
 
-- (UIImage *)altCreateFlameForSize:(CGSize)overlaySize atTouchPoint:(CGPoint)touchPoint {
-//    NSLog(@"Input Size %f %f",overlaySize.height, overlaySize.width);
-//    NSLog(@"Touch Point %f %f",touchPoint.x, touchPoint.y);
-//  Load the image
-    UIImage * heartIcon = [UIImage imageNamed:@"logoMarker.png"];
+    float newX = imageSize.width/viewWidth * touchPoint.x;
+    float newY = imageSize.height/viewHeight * touchPoint.y;
 
-//  CGFloat heartIconAspectRatio = heartIcon.size.width / heartIcon.size.height;
-
-//  NSInteger targetFlameyWidth = inputSize.width * 0.2;
-//  CGSize heartSize = CGSizeMake(inputSize.width, targetFlameyWidth / heartIconAspectRatio);
-
-//  TODO: This is an incorrect way to adjust for touch recognition offset
-
-    // Build the new bounding box for the icon
-    CGFloat reduction = heartIcon.size.width/2;
-    CGPoint newPoint = CGPointMake(touchPoint.x-reduction, touchPoint.y-reduction);
-    CGSize annotationSize = CGSizeMake(40.0,40.0);
-    CGRect heartRect = {newPoint, annotationSize};
-
-//    NSLog(@"Heart rect %f %f %f %f", heartRect.origin.x,heartRect.origin.y,heartRect.size.width, heartRect.size.height);
-
-    UIGraphicsBeginImageContext(overlaySize);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
-    CGRect inputRect = {CGPointZero, overlaySize};
-    CGContextClearRect(context, inputRect);
-
-    CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
-    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-overlaySize.height);
-    CGContextConcatCTM(context, flipThenShift);
-    CGRect transformedGhostRect = CGRectApplyAffineTransform(heartRect, flipThenShift);
-
-    CGContextDrawImage(context, transformedGhostRect, [heartIcon CGImage]);
-
-    UIImage *flameyIcon = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return flameyIcon;
+    return CGPointMake(newX, newY);
 }
 
 - (void)renderLateralTable {
