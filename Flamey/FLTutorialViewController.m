@@ -7,9 +7,13 @@
 //
 
 #import "FLTutorialViewController.h"
-#import "FLTutorialView.h"
+#import "FLTutorialSolutionView.h"
+//#import "FLTutorialHowView.h"
+//#import "FLTutorialReinforceView.h"
 
-static NSString * const kTutorialView = @"FLTutorialView";
+static NSString * const kTutorialSolutionView = @"FLTutorialSolutionView";
+static NSString * const kTutorialHowView = @"FLTutorialHowView";
+static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
 
 @interface FLTutorialViewController ()
 
@@ -33,45 +37,53 @@ static NSString * const kTutorialView = @"FLTutorialView";
 
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
-    return 4;
+    return 3;
 }
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
     if (view == nil) {
         NSString *viewType;
+        UIView *newView;
 
         switch (index) {
             case 0:
-                viewType = kTutorialView;
+                newView = [self prepareTutorialSolutionView];
                 break;
             case 1:
-                viewType = kTutorialView;
+                newView = [self prepareTutorialSolutionView];
+//                viewType = kTutorialSolutionView;
                 break;
             case 2:
-                viewType = kTutorialView;
-                break;
-            case 3:
-                viewType = kTutorialView;
+                newView = [self prepareTutorialSolutionView];
+//                viewType = kTutorialSolutionView;
                 break;
             default:
                 NSLog(@"View Type Missing For Slide View");
                 break;
         }
-        NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
-        FLTutorialView *tutorialView = (FLTutorialView *)[nibContents lastObject];
 
-        // TODO: Compose this specialized setup to its own function
-        tutorialView.finishButton.layer.cornerRadius = 4;
-        tutorialView.finishButton.layer.borderWidth = 2;
-        tutorialView.finishButton.layer.borderColor = [UIColor blackColor].CGColor;
-        [tutorialView.finishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [tutorialView.finishButton setHidden:YES];
-        [tutorialView setTintColor:[UIColor blackColor]];
-        view = tutorialView;
+        view = newView;
     }
 
     return view;
+}
+
+- (FLTutorialSolutionView *)prepareTutorialSolutionView {
+    NSString *viewType;
+    viewType = kTutorialSolutionView;
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
+    FLTutorialSolutionView *tutorialView = (FLTutorialSolutionView *)[nibContents lastObject];
+
+    // TODO: Compose this specialized setup to its own function
+    tutorialView.finishButton.layer.cornerRadius = 4;
+    tutorialView.finishButton.layer.borderWidth = 2;
+    tutorialView.finishButton.layer.borderColor = [UIColor blackColor].CGColor;
+    [tutorialView.finishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [tutorialView.finishButton setHidden:YES];
+    [tutorialView setTintColor:[UIColor blackColor]];
+
+    return tutorialView;
 }
 
 - (CGSize)swipeViewItemSize:(SwipeView *)swipeView
