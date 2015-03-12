@@ -141,6 +141,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                                                                   action:@selector(moveAnnotation:)];
     [self.moveRecognizer setDelegate:self];
     [self.moveRecognizer setCancelsTouchesInView:NO];
+
     [cell addGestureRecognizer:self.moveRecognizer];
 
     // NOTE: Must set interaction true so that the gesture can be triggered
@@ -370,8 +371,15 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
 
     [self updateUploadButtonState];
     [self checkToDisableNavigationArrows];
+    [self checkToDisableRemovalButton];
 }
 
+- (void)checkToDisableRemovalButton {
+    if ([[FLAnnotationStore sharedStore].photos count] == 0) {
+        [_removeSelectedPhoto setBackgroundColor:[UIColor lightGrayColor]];
+        [_removeSelectedPhoto setUserInteractionEnabled:NO];
+    }
+}
 // TODO: Setup the buttons with UI for enabled and disabled state so that it can just be toggled
 - (void)disableLeftScrollButton {
     [_scrollLeftButton setBackgroundColor:[UIColor redColor]];
