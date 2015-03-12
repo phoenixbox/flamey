@@ -15,6 +15,7 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    // TODO : Remove this
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state

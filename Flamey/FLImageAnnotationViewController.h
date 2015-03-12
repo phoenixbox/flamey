@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FLPhoto.h"
 
-@interface FLImageAnnotationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface FLImageAnnotationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *addFiltersButton;

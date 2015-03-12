@@ -30,7 +30,7 @@
 @interface FLImageAnnotationViewController ()
 
 @property (nonatomic, strong) UITapGestureRecognizer *imageViewTap;
-@property (nonatomic, strong) UISwipeGestureRecognizer *cellRemoveSwipe;
+@property (nonatomic, strong) UIPanGestureRecognizer *moveRecognizer;
 @property (strong, nonatomic) UITableView *selectedPhotosTable;
 
 @end
@@ -112,7 +112,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     }
 }
 
-- (void)addTapGestureRecogniserToCell:(FLAnnotationTableViewCell *)cell {
+- (void)addTapGestureRecognizerToCell:(FLAnnotationTableViewCell *)cell {
     self.imageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                 action:@selector(handleTap:)];
     self.imageViewTap.numberOfTouchesRequired = 1;
@@ -136,13 +136,59 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [self updateUploadButtonState];
 }
 
--(void)setFlameIconOnCell:(FLAnnotationTableViewCell *)targetCell {
+- (void)addPanGestureRecognizerToCell:(FLAnnotationTableViewCell *)cell {
+    self.moveRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                  action:@selector(moveAnnotation:)];
+    [self.moveRecognizer setDelegate:self];
+    [self.moveRecognizer setCancelsTouchesInView:NO];
+    [cell addGestureRecognizer:self.moveRecognizer];
+
+    // NOTE: Must set interaction true so that the gesture can be triggered
+    // Dont have to have selector on the filter ImageView
+    cell.userInteractionEnabled = YES;
+}
+
+#pragma PanGesture Protocol
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
+{
+    if (gestureRecognizer == self.moveRecognizer) {
+        return YES;
+    }
+
+    return NO;
+}
+
+- (void)moveAnnotation:(UIPanGestureRecognizer *)sender {
+    FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
+    CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
+
+    if (CGPointEqualToPoint(targetCell.photo.annotationPoint, CGPointZero)) {
+        [targetCell.photo setAnnotationPoint:annotationPoint];
+    }
+
+    // When the pan recognizer changes its position...
+    if ([sender state] == UIGestureRecognizerStateChanged) {
+        // How far has the pan moved?
+        CGPoint translation = [sender translationInView:targetCell.contentView]; // right view of the cell??
+
+        annotationPoint.x += translation.y;
+        annotationPoint.y -= translation.x;
+
+        targetCell.photo.annotationPoint = annotationPoint;
+
+        // Set the new beginning and end points of the line
+        [self setFlameIconOnCell:targetCell];
+    }
+}
+
+- (void)setFlameIconOnCell:(FLAnnotationTableViewCell *)targetCell {
     UIImageView *imageView = targetCell.selectedImageViewBackground;
     // 1. Create the image
     GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:targetCell.originalImage];
 
     // Note the overlay image size is the same as the cell image
-    CGSize imageOverlaySize = CGSizeMake(imageView.image.size.width,     imageView.image.size.height);
+    CGSize imageOverlaySize = CGSizeMake(imageView.image.size.width, imageView.image.size.height);
 
     // NOTE: OverlayImage must be the same size as the imageOverlaySize
     UIImage *overlayImage = [self createFlameForSize:imageOverlaySize atTouchPoint:targetCell.photo.annotationPoint];
@@ -175,10 +221,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 - (UIImage *)createFlameForSize:(CGSize)cellImageSize atTouchPoint:(CGPoint)touchPoint {
     UIImage * logoImage = [UIImage imageNamed:@"logoMarker.png"];
 
-    CGPoint punt = [self generateOriginWithPoint:touchPoint forImageSize:cellImageSize];
+    CGPoint generatedOrigin = [self generateOriginWithPoint:touchPoint forImageSize:cellImageSize];
 
     CGSize annotationSize = CGSizeMake(cellImageSize.width * 0.085, cellImageSize.width * 0.085);
-    CGRect logoRect = {punt, annotationSize};
+    CGRect logoRect = {generatedOrigin, annotationSize};
 
     UIGraphicsBeginImageContext(cellImageSize);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -285,7 +331,8 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                 [self setFlameIconOnCell:cell];
             }
 
-            [self addTapGestureRecogniserToCell:cell];
+            [self addTapGestureRecognizerToCell:cell];
+            [self addPanGestureRecognizerToCell:cell];
         }];
     }
     return cell;
