@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		72FF89A7FAD04AAEA02678DF /* libPods-Flamey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */; };
+		CB0744981AAD6DC800DB722E /* FLTutorialHowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0744971AAD6DC800DB722E /* FLTutorialHowView.m */; };
+		CB07449C1AAD6DF100DB722E /* FLTutorialHowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB07449B1AAD6DF100DB722E /* FLTutorialHowView.xib */; };
 		CB1EE06E1A98639F00400611 /* FLContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1EE06D1A98639F00400611 /* FLContactViewController.m */; };
 		CB1EE0711A98649300400611 /* FLContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1EE0701A98649300400611 /* FLContactViewController.xib */; };
 		CB1EE07B1A98B56500400611 /* FLTOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1EE0791A98B56500400611 /* FLTOSViewController.m */; };
@@ -45,8 +47,8 @@
 		CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */; };
 		CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */; };
 		CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */; };
-		CBDDEF7F1AA8242700FF4E8D /* FLTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF7E1AA8242700FF4E8D /* FLTutorialView.xib */; };
-		CBDDEF821AA825C400FF4E8D /* FLTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDDEF811AA825C400FF4E8D /* FLTutorialView.m */; };
+		CBDDEF7F1AA8242700FF4E8D /* FLTutorialSolutionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF7E1AA8242700FF4E8D /* FLTutorialSolutionView.xib */; };
+		CBDDEF821AA825C400FF4E8D /* FLTutorialSolutionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDDEF811AA825C400FF4E8D /* FLTutorialSolutionView.m */; };
 		CBDDEF851AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDDEF841AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m */; };
 		CBDDEF871AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF861AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib */; };
 		CBDF2CAF1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDF2CAE1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.m */; };
@@ -69,6 +71,9 @@
 /* Begin PBXFileReference section */
 		74538D7B189EE09795B7515B /* Pods-Flamey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flamey/Pods-Flamey.release.xcconfig"; sourceTree = "<group>"; };
 		B972D952EEE5CAB86BF19038 /* Pods-Flamey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flamey/Pods-Flamey.debug.xcconfig"; sourceTree = "<group>"; };
+		CB0744961AAD6DC800DB722E /* FLTutorialHowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialHowView.h; sourceTree = "<group>"; };
+		CB0744971AAD6DC800DB722E /* FLTutorialHowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialHowView.m; sourceTree = "<group>"; };
+		CB07449B1AAD6DF100DB722E /* FLTutorialHowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialHowView.xib; sourceTree = "<group>"; };
 		CB1EE06C1A98639F00400611 /* FLContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLContactViewController.h; sourceTree = "<group>"; };
 		CB1EE06D1A98639F00400611 /* FLContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLContactViewController.m; sourceTree = "<group>"; };
 		CB1EE0701A98649300400611 /* FLContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLContactViewController.xib; sourceTree = "<group>"; };
@@ -148,9 +153,9 @@
 		CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationStore.m; sourceTree = "<group>"; };
 		CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageAnnotationViewController.h; sourceTree = "<group>"; };
 		CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageAnnotationViewController.m; sourceTree = "<group>"; };
-		CBDDEF7E1AA8242700FF4E8D /* FLTutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialView.xib; sourceTree = "<group>"; };
-		CBDDEF801AA825C400FF4E8D /* FLTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialView.h; sourceTree = "<group>"; };
-		CBDDEF811AA825C400FF4E8D /* FLTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialView.m; sourceTree = "<group>"; };
+		CBDDEF7E1AA8242700FF4E8D /* FLTutorialSolutionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialSolutionView.xib; sourceTree = "<group>"; };
+		CBDDEF801AA825C400FF4E8D /* FLTutorialSolutionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialSolutionView.h; sourceTree = "<group>"; };
+		CBDDEF811AA825C400FF4E8D /* FLTutorialSolutionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialSolutionView.m; sourceTree = "<group>"; };
 		CBDDEF831AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelectionCollectionEmptyMessageView.h; sourceTree = "<group>"; };
 		CBDDEF841AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectionCollectionEmptyMessageView.m; sourceTree = "<group>"; };
 		CBDDEF861AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLSelectionCollectionEmptyMessageView.xib; sourceTree = "<group>"; };
@@ -206,6 +211,20 @@
 				FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB0744991AAD6DD200DB722E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		CB07449A1AAD6DE000DB722E /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group1";
 			sourceTree = "<group>";
 		};
 		CB1EE06F1A98647A00400611 /* Contact */ = {
@@ -330,11 +349,16 @@
 		CB6BC4C01AA5943B006D34EF /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				CB07449A1AAD6DE000DB722E /* New Group1 */,
 				CB6BC4C11AA59467006D34EF /* FLTutorialViewController.h */,
 				CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */,
-				CBDDEF7E1AA8242700FF4E8D /* FLTutorialView.xib */,
-				CBDDEF801AA825C400FF4E8D /* FLTutorialView.h */,
-				CBDDEF811AA825C400FF4E8D /* FLTutorialView.m */,
+				CBDDEF7E1AA8242700FF4E8D /* FLTutorialSolutionView.xib */,
+				CB0744991AAD6DD200DB722E /* New Group */,
+				CBDDEF801AA825C400FF4E8D /* FLTutorialSolutionView.h */,
+				CBDDEF811AA825C400FF4E8D /* FLTutorialSolutionView.m */,
+				CB0744961AAD6DC800DB722E /* FLTutorialHowView.h */,
+				CB07449B1AAD6DF100DB722E /* FLTutorialHowView.xib */,
+				CB0744971AAD6DC800DB722E /* FLTutorialHowView.m */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -599,9 +623,10 @@
 			files = (
 				CB3B7D0B1A58374B005F6402 /* Main.storyboard in Resources */,
 				CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */,
-				CBDDEF7F1AA8242700FF4E8D /* FLTutorialView.xib in Resources */,
+				CBDDEF7F1AA8242700FF4E8D /* FLTutorialSolutionView.xib in Resources */,
 				CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */,
 				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
+				CB07449C1AAD6DF100DB722E /* FLTutorialHowView.xib in Resources */,
 				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
 				CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */,
@@ -661,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6CFF281A6C858C00ACD39A /* FLPhoto.m in Sources */,
+				CB0744981AAD6DC800DB722E /* FLTutorialHowView.m in Sources */,
 				CB3B7D081A58374B005F6402 /* FLSettingsViewController.m in Sources */,
 				CB2EBE6E1A7DCB6800D76528 /* FLImageFilterViewController.m in Sources */,
 				CB7EF47D1A807BA20084666E /* FLFiltersStore.m in Sources */,
@@ -672,7 +698,7 @@
 				CB902F9F1A8DC836003D2950 /* FLProcessedImagesStore.m in Sources */,
 				CB2EBE7B1A7DD98100D76528 /* FLToolsStore.m in Sources */,
 				CB6BC4C31AA59467006D34EF /* FLTutorialViewController.m in Sources */,
-				CBDDEF821AA825C400FF4E8D /* FLTutorialView.m in Sources */,
+				CBDDEF821AA825C400FF4E8D /* FLTutorialSolutionView.m in Sources */,
 				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
 				CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */,
 				CBDDEF851AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m in Sources */,

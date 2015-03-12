@@ -140,12 +140,14 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     UIImageView *imageView = targetCell.selectedImageViewBackground;
     GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:targetCell.originalImage];
 
-    // Flame Image
-    // NOTE: Input size is mutating on table view cell dequeue - so shim with fixed viewport width size
-//    CGSize imageAspect = [self imageSizeAfterAspectFit:targetCell.selectedImageViewBackground];
+    // Note the overlay image size is the same as the cell image
+    CGSize imageOverlaySize = CGSizeMake(imageView.image.size.width,     imageView.image.size.height);
+    NSLog(@"ImageOverlaySize W:%f H:%f", imageOverlaySize.width, imageOverlaySize.height);
 
-    CGSize imageOverlaySize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
+    // NOTE: OverlayImage must be the same size as the imageOverlaySize
     UIImage *overlayImage = [self createFlameForSize:imageOverlaySize atTouchPoint:targetCell.photo.annotationPoint];
+    NSLog(@"ResultImageSize W:%f H:%f", overlayImage.size.width, overlayImage.size.height);
+
     GPUImagePicture *flameyGPUImage = [[GPUImagePicture alloc] initWithImage:overlayImage];
 
     // 2. Set up the filter chain
@@ -210,10 +212,43 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (UIImage *)createFlameForSize:(CGSize)overlaySize atTouchPoint:(CGPoint)touchPoint {
+//    touchPoint should be true center of where the icon is drawn
+//    overlay size is always image view height & width
+
+    // Load the image
+    UIImage * heartIcon = [UIImage imageNamed:@"logoMarker.png"];
+
+    // Build the new bounding box for the icon
+    CGFloat reduction = heartIcon.size.width/2;
+    CGPoint newPoint = CGPointMake(touchPoint.x-reduction, touchPoint.y-reduction);
+    CGSize annotationSize = CGSizeMake(30.0,30.0);
+    CGRect heartRect = {newPoint, annotationSize};
+
+    UIGraphicsBeginImageContext(overlaySize);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGRect inputRect = {CGPointZero, overlaySize};
+    CGContextClearRect(context, inputRect);
+
+    CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
+    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-overlaySize.height);
+    CGContextConcatCTM(context, flipThenShift);
+    CGRect transformedGhostRect = CGRectApplyAffineTransform(heartRect, flipThenShift);
+
+    CGContextDrawImage(context, transformedGhostRect, [heartIcon CGImage]);
+
+    UIImage *flameyIcon = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return flameyIcon;
+}
+
+
+- (UIImage *)altCreateFlameForSize:(CGSize)overlaySize atTouchPoint:(CGPoint)touchPoint {
 //    NSLog(@"Input Size %f %f",overlaySize.height, overlaySize.width);
 //    NSLog(@"Touch Point %f %f",touchPoint.x, touchPoint.y);
 //  Load the image
-    UIImage * heartIcon = [UIImage imageNamed:@"heartIcon.png"];
+    UIImage * heartIcon = [UIImage imageNamed:@"logoMarker.png"];
 
 //  CGFloat heartIconAspectRatio = heartIcon.size.width / heartIcon.size.height;
 
@@ -225,8 +260,8 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     // Build the new bounding box for the icon
     CGFloat reduction = heartIcon.size.width/2;
     CGPoint newPoint = CGPointMake(touchPoint.x-reduction, touchPoint.y-reduction);
-
-    CGRect heartRect = {newPoint, heartIcon.size};
+    CGSize annotationSize = CGSizeMake(40.0,40.0);
+    CGRect heartRect = {newPoint, annotationSize};
 
 //    NSLog(@"Heart rect %f %f %f %f", heartRect.origin.x,heartRect.origin.y,heartRect.size.width, heartRect.size.height);
 
