@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
-#import "FLTutorialView.h"
+#import "FLTutorialSolutionView.h"
 
 NSString *const kCompleteTutorial = @"completeTutorial";
 
@@ -16,7 +16,7 @@ NSString *const kMaleOneSelected = @"Male-1-Selected";
 NSString *const kMaleTwoSelected = @"Male-2-Selected";
 NSString *const kMaleThreeSelected = @"Male-3-Selected";
 
-@implementation FLTutorialView
+@implementation FLTutorialSolutionView
 
 - (IBAction)selectFirstPersona:(id)sender {
     NSLog(@"selectFirstPersona");

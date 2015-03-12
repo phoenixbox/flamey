@@ -10,7 +10,7 @@
 
 extern NSString *const kCompleteTutorial;
 
-@interface FLTutorialView : UIView
+@interface FLTutorialSolutionView : UIView
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *tutorialTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImageView;
