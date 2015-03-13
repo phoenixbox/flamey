@@ -1045,7 +1045,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="9J4-xw-Uz9" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -1056,15 +1058,20 @@
             </objects>
             <point key="canvasLocation" x="924.5" y="107.5"/>
         </scene>
-        <!--First-->
+        <!--Photos-->
         <scene sceneID="2E2-WM-7ge">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9J4-xw-Uz9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="FrameDeselected" selectedImage="FrameSelected" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2x4-us-3nm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1077,8 +1084,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FrameDeselected" width="40" height="40"/>
+        <image name="FrameSelected" width="40" height="40"/>
         <image name="addIcon" width="40" height="40"/>
-        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
