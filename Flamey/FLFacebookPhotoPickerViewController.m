@@ -152,8 +152,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     [[FLSelectedPhotoStore sharedStore] addUniquePhoto:photo];
 }
 
--(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     FLFacebookPhotoCollectionViewCell *cell = (FLFacebookPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
 
 
