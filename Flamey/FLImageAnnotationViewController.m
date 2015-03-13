@@ -357,6 +357,10 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
     NSIndexPath *indexpath = (NSIndexPath*)[visible objectAtIndex:0];
 
     FLAnnotationTableViewCell *cell = (FLAnnotationTableViewCell *)[_selectedPhotosTable cellForRowAtIndexPath:indexpath];
+    // Remove any annotation point associated with the cells photo
+    cell.photo.annotationPoint = CGPointZero;
+
+    // Remove the photo from the annotation store
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
     [annotationStore.photos removeObjectAtIndex:[indexpath row]];
 
