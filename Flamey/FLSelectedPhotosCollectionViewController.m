@@ -96,7 +96,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kSelectionCollectionEmptyMessageView owner:nil options:nil];
     FLSelectionCollectionEmptyMessageView *emptyMessage = [nibContents lastObject];
     emptyMessage.contentView.layer.cornerRadius = 4;
-    emptyMessage.contentView.layer.borderWidth = 2;
+    emptyMessage.contentView.layer.borderWidth = 1;
     emptyMessage.contentView.layer.borderColor = [UIColor blackColor].CGColor;
     [emptyMessage.contentView setBackgroundColor:[UIColor whiteColor]];
 
