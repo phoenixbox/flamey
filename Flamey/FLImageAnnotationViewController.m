@@ -287,6 +287,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
 
     [_selectedPhotosTable.backgroundView setTransform:clockwiseRotate];
     [_selectedPhotosTable.backgroundView setHidden:YES];
+    _selectedPhotosTable.allowsSelection = NO;
 }
 
 - (void)setTableViewEmptyMessage:(BOOL)show {
