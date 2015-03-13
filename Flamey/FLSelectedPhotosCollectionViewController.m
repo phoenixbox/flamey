@@ -95,8 +95,14 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 - (void)setCollectionViewBackgroundView {
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kSelectionCollectionEmptyMessageView owner:nil options:nil];
     FLSelectionCollectionEmptyMessageView *emptyMessage = [nibContents lastObject];
+    emptyMessage.contentView.layer.cornerRadius = 4;
+    emptyMessage.contentView.layer.borderWidth = 2;
+    emptyMessage.contentView.layer.borderColor = [UIColor blackColor].CGColor;
+    [emptyMessage.contentView setBackgroundColor:[UIColor whiteColor]];
+
+    [FLViewHelpers setBaseButtonStyle:emptyMessage.getFacebookPhotosButton];
     [_selectionCollection setBackgroundView:emptyMessage];
-    // Show emoty message by default
+    // Show empty message by default
     [_selectionCollection.backgroundView setHidden:NO];
 }
 
