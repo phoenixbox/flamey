@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "FontAwesomeKit/FAKFontAwesome.h"
 
 @interface FLViewHelpers : NSObject
@@ -45,5 +46,7 @@
 + (NSMutableAttributedString *)upvoteCounterStringWithCopy:(NSString *)copy andFontSize:(CGFloat)fontSize;
 
 + (void)iconCounter:(NSString *)iconType withCopy:(NSString *)copy andFontSize:(CGFloat)fontSize;
+
++ (void)setBaseButtonStyle:(UIButton *)button;
 
 @end

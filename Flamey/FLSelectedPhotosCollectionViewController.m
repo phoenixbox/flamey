@@ -7,6 +7,7 @@
 //
 // Helpers
 #import "CollectionViewHelpers.h"
+#import "FLViewHelpers.h"
 #import <UIKit/UIKit.h>
 
 // Data layer
@@ -44,7 +45,8 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     self.navigationController.navigationBar.translucent = NO;
     [self updateCollection];
 
-    [self updateEditButton];
+    [FLViewHelpers setBaseButtonStyle:_editPhotosButton];
+    [self updateEditButtonVisibility];
 
     [self setHeaderLogo];
 
@@ -98,7 +100,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     [_selectionCollection.backgroundView setHidden:NO];
 }
 
-- (void)updateEditButton {
+- (void)updateEditButtonVisibility {
     NSUInteger count = [[FLSelectedPhotoStore sharedStore].allPhotos count];
     if (count == 0) {
         [_editPhotosButton setHidden:YES];
@@ -172,7 +174,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 
 - (void)viewWillAppear:(BOOL)animated {
     [_selectionCollection reloadData];
-    [self updateEditButton];
+    [self updateEditButtonVisibility];
 }
 
 

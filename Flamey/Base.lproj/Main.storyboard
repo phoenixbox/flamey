@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M1N-X6-jms">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="499"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="479"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n7C-9j-zRP">
                                     <size key="itemSize" width="50" height="50"/>
@@ -45,12 +45,14 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="AeU-Ei-czL"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uK-Hd-PkR">
-                                <rect key="frame" x="66" y="504" width="243" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uK-Hd-PkR">
+                                <rect key="frame" x="63" y="499" width="250" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1lQ-zM-dmy"/>
+                                    <constraint firstAttribute="width" constant="250" id="FL6-Xg-F6s"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Edit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,11 +69,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="M1N-X6-jms" secondAttribute="trailing" constant="-16" id="SY2-MK-IMk"/>
                             <constraint firstItem="0uK-Hd-PkR" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="50" id="Z7z-UR-T2B"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="fSb-8V-mx5"/>
+                            <constraint firstAttribute="centerX" secondItem="0uK-Hd-PkR" secondAttribute="centerX" id="i9Y-2B-j7e"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0uK-Hd-PkR" secondAttribute="trailing" constant="50" id="lPB-tZ-tOy"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailing" id="pXB-UA-88o"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="M1N-X6-jms" secondAttribute="bottom" constant="60" id="rMC-0C-KWb"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="vZt-kD-HRh"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="0uK-Hd-PkR" secondAttribute="bottom" constant="10" id="wbs-GX-XQ3"/>
+                            <constraint firstItem="0uK-Hd-PkR" firstAttribute="top" secondItem="M1N-X6-jms" secondAttribute="bottom" constant="20" id="wOr-bI-0nA"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="0uK-Hd-PkR" secondAttribute="bottom" constant="20" id="wbs-GX-XQ3"/>
                             <constraint firstItem="M1N-X6-jms" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="xDG-cn-Bcd"/>
                         </constraints>
                         <variation key="default">
@@ -80,6 +84,9 @@
                                 <exclude reference="fSb-8V-mx5"/>
                                 <exclude reference="pXB-UA-88o"/>
                                 <exclude reference="vZt-kD-HRh"/>
+                                <exclude reference="Z7z-UR-T2B"/>
+                                <exclude reference="lPB-tZ-tOy"/>
+                                <exclude reference="rMC-0C-KWb"/>
                             </mask>
                         </variation>
                     </view>

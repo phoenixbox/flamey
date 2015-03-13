@@ -11,6 +11,9 @@
 //#import "FLTutorialHowView.h"
 //#import "FLTutorialReinforceView.h"
 
+// Helpers
+#import "FLViewHelpers.h"
+
 static NSString * const kTutorialSolutionView = @"FLTutorialSolutionView";
 static NSString * const kTutorialHowView = @"FLTutorialHowView";
 static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
@@ -76,12 +79,8 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     FLTutorialSolutionView *tutorialView = (FLTutorialSolutionView *)[nibContents lastObject];
 
     // TODO: Compose this specialized setup to its own function
-    tutorialView.finishButton.layer.cornerRadius = 4;
-    tutorialView.finishButton.layer.borderWidth = 2;
-    tutorialView.finishButton.layer.borderColor = [UIColor blackColor].CGColor;
-    [tutorialView.finishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton];
     [tutorialView.finishButton setHidden:YES];
-    [tutorialView setTintColor:[UIColor blackColor]];
 
     return tutorialView;
 }

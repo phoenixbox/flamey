@@ -184,5 +184,13 @@
     return heartIcon;
 }
 
++ (void)setBaseButtonStyle:(UIButton *)button {
+    button.layer.cornerRadius = 4;
+    button.layer.borderWidth = 2;
+    button.layer.borderColor = [UIColor blackColor].CGColor;
+    [button setBackgroundColor:[UIColor whiteColor]];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setTintColor:[UIColor blackColor]];
+}
 
 @end
