@@ -86,7 +86,8 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lDB-7J-AgD">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="ELw-Il-Pax" userLabel="Add">
+                        <barButtonItem key="rightBarButtonItem" image="addIcon" id="ELw-Il-Pax" userLabel="Add">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="showAlbums:" destination="9pv-A4-QxB" id="dmA-vy-EgY"/>
                                 <segue destination="VUx-Ch-lCa" kind="presentation" identifier="getFacebookPhotos" id="dj5-24-0YJ"/>
@@ -1076,10 +1077,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addIcon" width="40" height="40"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dj5-24-0YJ"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
