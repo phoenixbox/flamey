@@ -31,8 +31,6 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 
 @interface FLSelectedPhotosCollectionViewController ()
 
-@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
-
 @end
 
 @implementation FLSelectedPhotosCollectionViewController
@@ -40,21 +38,30 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"Photos Count: %lu", [[FLSelectedPhotoStore sharedStore].allPhotos count]);
     FLSettings *settings = [FLSettings defaultSettings];
     settings.seenTutorial = NO;
 
-    self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.translucent = NO;
     [self updateCollection];
 
     [self updateEditButton];
+
+    [self setHeaderLogo];
 
     if (!settings.seenTutorial) {
         [self performSegueWithIdentifier:kSegueShowUserTutorial sender:self];
     }
 
     [self listenForGetFacebookPhotosNotification];
+}
+
+- (void)setHeaderLogo {
+    [[self navigationItem]setTitleView:nil];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 44.0f)];
+    logoView.contentMode = UIViewContentModeScaleAspectFit;
+    UIImage *logoImage = [UIImage imageNamed:@"newTitlebar.png"];
+    [logoView setImage:logoImage];
+    self.navigationItem.titleView = logoView;
 }
 
 - (void)listenForGetFacebookPhotosNotification {
