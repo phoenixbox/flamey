@@ -178,10 +178,11 @@
             </objects>
             <point key="canvasLocation" x="1361.5" y="-1167.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Annotation Nav View Controller-->
         <scene sceneID="bGR-cR-iqI">
             <objects>
-                <navigationController id="BBU-LQ-VMu" sceneMemberID="viewController">
+                <navigationController id="BBU-LQ-VMu" customClass="FLAnnotationNavViewController" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9xn-6E-hZH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1097,7 +1098,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dj5-24-0YJ"/>
+        <segue reference="miO-BO-sYZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
