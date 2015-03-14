@@ -907,7 +907,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "-updateAnnotationStore"
+            landmarkName = "-addTapGestureRecognizerToCell:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1093,7 +1093,7 @@
                   symbolName = "-[FLSelectedPhotoStore removePhotoById:]"
                   moduleName = "Flamey"
                   urlString = "file:///Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLSelectedPhotoStore.m"
-                  timestampString = "448057047.385988"
+                  timestampString = "448063598.978787"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -1107,7 +1107,7 @@
                   symbolName = "__40-[FLSelectedPhotoStore removePhotoById:]_block_invoke"
                   moduleName = "Flamey"
                   urlString = "file:///Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLSelectedPhotoStore.m"
-                  timestampString = "448057047.386193"
+                  timestampString = "448063598.979059"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
