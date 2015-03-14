@@ -8,7 +8,7 @@
 
 #import "FLTutorialViewController.h"
 #import "FLTutorialSolutionView.h"
-//#import "FLTutorialHowView.h"
+#import "FLTutorialHowView.h"
 //#import "FLTutorialReinforceView.h"
 
 // Helpers
@@ -81,6 +81,19 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     // TODO: Compose this specialized setup to its own function
     [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton];
     [tutorialView.finishButton setHidden:YES];
+
+    return tutorialView;
+}
+
+- (FLTutorialHowView *)prepareTutorialHowView {
+    NSString *viewType;
+    viewType = kTutorialHowView;
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
+    FLTutorialHowView *tutorialView = (FLTutorialHowView *)[nibContents lastObject];
+
+    // TODO: Compose this specialized setup to its own function
+//    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton];
+//    [tutorialView.finishButton setHidden:YES];
 
     return tutorialView;
 }

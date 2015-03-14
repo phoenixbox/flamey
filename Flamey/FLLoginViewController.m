@@ -37,7 +37,7 @@ NSString *const kSegueLoggedIn = @"loggedIn";
     [self.flameyLogo setText:@"Flamey"];
     // TODO: Remove these assignments when not in development
     FLSettings *settings = [FLSettings defaultSettings];
-    settings.shouldSkipLogin = YES;
+    settings.shouldSkipLogin = NO;
 //    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    [_hud setCenter:self.view.center];
 //    _hud.mode = MBProgressHUDModeAnnularDeterminate;
@@ -116,7 +116,7 @@ NSString *const kSegueLoggedIn = @"loggedIn";
 //    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
     _viewIsVisible = YES;
     // TODO: Remove the hardcoded segue
-    [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
+//    [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
 //    TODO Implement server side login persistence record
 //    void(^completionBlock)(FLUser *user, NSError *err)=^(FLUser user*, NSError *err) {
 //        if(!err){

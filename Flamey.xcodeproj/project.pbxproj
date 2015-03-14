@@ -219,20 +219,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CB0744991AAD6DD200DB722E /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
-		CB07449A1AAD6DE000DB722E /* New Group1 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group1";
-			sourceTree = "<group>";
-		};
 		CB1EE06F1A98647A00400611 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,11 +343,9 @@
 		CB6BC4C01AA5943B006D34EF /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				CB07449A1AAD6DE000DB722E /* New Group1 */,
 				CB6BC4C11AA59467006D34EF /* FLTutorialViewController.h */,
 				CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */,
 				CBDDEF7E1AA8242700FF4E8D /* FLTutorialSolutionView.xib */,
-				CB0744991AAD6DD200DB722E /* New Group */,
 				CBDDEF801AA825C400FF4E8D /* FLTutorialSolutionView.h */,
 				CBDDEF811AA825C400FF4E8D /* FLTutorialSolutionView.m */,
 				CB0744961AAD6DC800DB722E /* FLTutorialHowView.h */,
