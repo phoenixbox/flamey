@@ -24,6 +24,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)hidesBottomBarWhenPushed {
+    return YES;
+}
 /*
 #pragma mark - Navigation
 
