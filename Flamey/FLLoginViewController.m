@@ -52,15 +52,15 @@ NSString *const kSegueLoggedIn = @"loggedIn";
 {
     return @[
              @{
-                 @"title":@"Can't See You",
+                 @"title":@"It's hard to get noticed",
                  @"image": [UIImage imageNamed:@"LoginViewFirstScreen"]
                  },
              @{
-                 @"title":@"Stand Out",
-                 @"image": [UIImage imageNamed:@"ghost"]
+                 @"title":@"We help you stndout from the crowd!",
+                 @"image": [UIImage imageNamed:@"LoginViewSecondScreen"]
                  },
              @{
-                 @"title":@"Private",
+                 @"title":@"Let people see who you are",
                  @"image": [UIImage imageNamed:@"test_image"]
                  }
              ];
