@@ -120,7 +120,7 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
     [center addObserver:self
-               selector:@selector(unwindToSelectedPhotos)
+               selector:@selector(slideForward)
                    name:kCompleteTutorial
                  object:nil];
 }
@@ -134,6 +134,9 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
                  object:nil];
 }
 
+- (void)slideForward {
+    [_swipeView scrollByNumberOfItems:1 duration:0.5];
+}
 
 /*
 #pragma mark - Navigation
