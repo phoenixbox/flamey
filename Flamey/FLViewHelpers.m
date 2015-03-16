@@ -184,13 +184,14 @@
     return heartIcon;
 }
 
-+ (void)setBaseButtonStyle:(UIButton *)button {
++ (void)setBaseButtonStyle:(UIButton *)button withColor:(UIColor *)color {
+    // TODO Update for state variety
     button.layer.cornerRadius = 4;
     button.layer.borderWidth = 2;
-    button.layer.borderColor = [UIColor blackColor].CGColor;
+    button.layer.borderColor = color.CGColor;
     [button setBackgroundColor:[UIColor whiteColor]];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [button setTintColor:[UIColor blackColor]];
+    [button setTitleColor:color forState:UIControlStateNormal];
+    [button setTintColor:color];
 }
 
 @end

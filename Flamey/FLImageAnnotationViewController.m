@@ -27,6 +27,9 @@
 #import "GPUImageBrightnessFilter.h"
 #import "GPUImageAlphaBlendFilter.h"
 
+// Helpers
+#import "FLViewHelpers.h"
+
 @interface FLImageAnnotationViewController ()
 
 @property (nonatomic, strong) UITapGestureRecognizer *imageViewTap;
@@ -48,6 +51,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [self updateUploadButtonState];
 
     [self renderLateralTable];
+    [self updateButtonElements];
 
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
@@ -62,6 +66,11 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                selector:@selector(addMorePhotos)
                    name:kAddMorePhotos
                  object:nil];
+}
+
+- (void)updateButtonElements {
+    [FLViewHelpers setBaseButtonStyle:_removeSelectedPhoto withColor:[UIColor redColor]];
+    [_removeSelectedPhoto setContentMode:UIViewContentModeScaleAspectFit];
 }
 
 - (void)addMorePhotos {

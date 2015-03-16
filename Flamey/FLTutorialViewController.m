@@ -79,7 +79,7 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     FLTutorialSolutionView *tutorialView = (FLTutorialSolutionView *)[nibContents lastObject];
 
     // TODO: Compose this specialized setup to its own function
-    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton];
+    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton withColor:[UIColor blackColor]];
     [tutorialView.finishButton setHidden:YES];
 
     return tutorialView;
@@ -92,7 +92,7 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     FLTutorialHowView *tutorialView = (FLTutorialHowView *)[nibContents lastObject];
 
     // TODO: Compose this specialized setup to its own function
-//    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton];
+//    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton withColor:[UIColor blackColor]];
 //    [tutorialView.finishButton setHidden:YES];
 
     return tutorialView;

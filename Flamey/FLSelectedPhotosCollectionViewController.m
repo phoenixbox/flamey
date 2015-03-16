@@ -45,7 +45,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     self.navigationController.navigationBar.translucent = NO;
     [self updateCollection];
 
-    [FLViewHelpers setBaseButtonStyle:_editPhotosButton];
+    [FLViewHelpers setBaseButtonStyle:_editPhotosButton withColor:[UIColor blackColor]];
     [self updateEditButtonVisibility];
 
     [self setHeaderLogo];
@@ -100,7 +100,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     emptyMessage.contentView.layer.borderColor = [UIColor blackColor].CGColor;
     [emptyMessage.contentView setBackgroundColor:[UIColor whiteColor]];
 
-    [FLViewHelpers setBaseButtonStyle:emptyMessage.getFacebookPhotosButton];
+    [FLViewHelpers setBaseButtonStyle:emptyMessage.getFacebookPhotosButton withColor:[UIColor blackColor]];
     [_selectionCollection setBackgroundView:emptyMessage];
     // Show empty message by default
     [_selectionCollection.backgroundView setHidden:NO];

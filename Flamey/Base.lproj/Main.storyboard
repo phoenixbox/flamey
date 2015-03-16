@@ -229,14 +229,13 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOG-Ix-zoT">
                                                 <rect key="frame" x="295" y="18" width="40" height="40"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="Y7D-5G-zKq"/>
                                                     <constraint firstAttribute="height" constant="40" id="wNq-CP-VpG"/>
                                                     <constraint firstAttribute="width" constant="40" id="xPY-Lf-KLu"/>
                                                 </constraints>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="&gt;">
+                                                <state key="normal" backgroundImage="RightEnabled">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <variation key="default">
@@ -250,14 +249,13 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVK-8K-7YB">
                                                 <rect key="frame" x="40" y="18" width="40" height="40"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="F0E-aY-VHB"/>
                                                     <constraint firstAttribute="width" constant="100" id="bwX-0Y-Tmh"/>
                                                     <constraint firstAttribute="width" constant="40" id="nMA-XD-LXM"/>
                                                 </constraints>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="&lt;">
+                                                <state key="normal" backgroundImage="LeftEnabled">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <variation key="default">
@@ -277,7 +275,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="uIO-DT-4dv"/>
                                                 </constraints>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Remove">
+                                                <state key="normal" backgroundImage="Trash">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -1109,11 +1107,14 @@
     <resources>
         <image name="FrameDeselected" width="40" height="40"/>
         <image name="FrameSelected" width="40" height="40"/>
+        <image name="LeftEnabled" width="40" height="40"/>
         <image name="LogoLong" width="155" height="50"/>
+        <image name="RightEnabled" width="40" height="40"/>
+        <image name="Trash" width="40" height="40"/>
         <image name="addIcon" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dj5-24-0YJ"/>
+        <segue reference="miO-BO-sYZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

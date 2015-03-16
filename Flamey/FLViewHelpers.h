@@ -47,6 +47,6 @@
 
 + (void)iconCounter:(NSString *)iconType withCopy:(NSString *)copy andFontSize:(CGFloat)fontSize;
 
-+ (void)setBaseButtonStyle:(UIButton *)button;
++ (void)setBaseButtonStyle:(UIButton *)button withColor:(UIColor *)color;
 
 @end
