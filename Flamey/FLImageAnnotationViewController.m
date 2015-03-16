@@ -71,6 +71,15 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 - (void)updateButtonElements {
     [FLViewHelpers setBaseButtonStyle:_removeSelectedPhoto withColor:[UIColor redColor]];
     [_removeSelectedPhoto setContentMode:UIViewContentModeScaleAspectFit];
+    FAKFontAwesome *trash = [FAKFontAwesome trashOIconWithSize:18];
+    NSMutableAttributedString *trashIcon = [FLViewHelpers createIcon:trash withColor:[UIColor redColor]];
+    [FLViewHelpers formatButton:_removeSelectedPhoto forIcon:trashIcon withCopy:@"Remove  " withColor:[UIColor redColor]];
+
+    [FLViewHelpers setBaseButtonStyle:_uploadButton withColor:[UIColor blackColor]];
+    [_removeSelectedPhoto setContentMode:UIViewContentModeScaleAspectFit];
+    FAKFontAwesome *cloud = [FAKFontAwesome cloudUploadIconWithSize:18];
+    NSMutableAttributedString *cloudIcon = [FLViewHelpers createIcon:cloud withColor:[UIColor blackColor]];
+    [FLViewHelpers formatButton:_removeSelectedPhoto forIcon:cloudIcon withCopy:@"Save  " withColor:[UIColor blackColor]];
 }
 
 - (void)addMorePhotos {
