@@ -140,7 +140,6 @@
                     </variation>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="ZbK-bK-Cap" secondAttribute="bottom" constant="50" id="7gh-kZ-nK1"/>
                 <constraint firstAttribute="trailing" secondItem="ZbK-bK-Cap" secondAttribute="trailing" constant="10" id="QOU-mu-DZb"/>
