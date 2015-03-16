@@ -60,8 +60,8 @@ NSString *const kSegueLoggedIn = @"loggedIn";
                  @"image": [UIImage imageNamed:@"LoginViewSecondScreen"]
                  },
              @{
-                 @"title":@"Let people see who you are",
-                 @"image": [UIImage imageNamed:@"test_image"]
+                 @"title":@"Get noticed more - Get liked more",
+                 @"image": [UIImage imageNamed:@"LoginViewThirdScreen"]
                  }
              ];
 }
