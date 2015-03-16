@@ -54,7 +54,7 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
                 newView = [self prepareTutorialSolutionView];
                 break;
             case 1:
-                newView = [self prepareTutorialSolutionView];
+                newView = [self prepareTutorialHowView];
 //                viewType = kTutorialSolutionView;
                 break;
             case 2:
@@ -76,26 +76,35 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     NSString *viewType;
     viewType = kTutorialSolutionView;
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
-    FLTutorialSolutionView *tutorialView = (FLTutorialSolutionView *)[nibContents lastObject];
+    FLTutorialSolutionView *solutionView = (FLTutorialSolutionView *)[nibContents lastObject];
 
     // TODO: Compose this specialized setup to its own function
-    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton withColor:[UIColor blackColor]];
-    [tutorialView.finishButton setHidden:YES];
+    [FLViewHelpers setBaseButtonStyle:solutionView.finishButton withColor:[UIColor blackColor]];
+    [solutionView.finishButton setHidden:YES];
 
-    return tutorialView;
+    return solutionView;
 }
 
 - (FLTutorialHowView *)prepareTutorialHowView {
     NSString *viewType;
     viewType = kTutorialHowView;
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
-    FLTutorialHowView *tutorialView = (FLTutorialHowView *)[nibContents lastObject];
+    FLTutorialHowView *howView = (FLTutorialHowView *)[nibContents lastObject];
+
+    [FLViewHelpers setBaseButtonStyle:howView.continueButton withColor:[UIColor blackColor]];
+    [howView.continueButton setHidden:YES];
+
+    [howView.userCharacterImageView setContentMode:UIViewContentModeScaleAspectFit];
+    [howView.uploadProcessImageView setContentMode:UIViewContentModeScaleAspectFit];
+    // Rename this to dating image view context
+    [howView.thirdSectionImageView setContentMode:UIViewContentModeScaleAspectFit];
+
 
     // TODO: Compose this specialized setup to its own function
 //    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton withColor:[UIColor blackColor]];
 //    [tutorialView.finishButton setHidden:YES];
 
-    return tutorialView;
+    return howView;
 }
 
 - (CGSize)swipeViewItemSize:(SwipeView *)swipeView
@@ -113,6 +122,15 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     [center addObserver:self
                selector:@selector(unwindToSelectedPhotos)
                    name:kCompleteTutorial
+                 object:nil];
+}
+
+- (void)listenForContinueTrigger {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(slideForward)
+                   name:kContinueTutorial
                  object:nil];
 }
 

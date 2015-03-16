@@ -8,6 +8,8 @@
 
 #import "FLTutorialHowView.h"
 
+NSString *const kContinueTutorial = @"continueTutorial";
+
 @implementation FLTutorialHowView
 
 /*
@@ -18,4 +20,12 @@
 }
 */
 
+- (IBAction)continue:(id)sender {
+    // Update to trigger a slide to next step notification
+    NSNotification *notification = [NSNotification notificationWithName:kContinueTutorial
+                                                                 object:self];
+
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+
+}
 @end
