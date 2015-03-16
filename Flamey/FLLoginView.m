@@ -27,8 +27,7 @@
 
         for (UIImage *image in images) {
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-            imageView.layer.borderColor = [UIColor redColor].CGColor;
-            imageView.layer.borderWidth = 3.0f;
+            [imageView setContentMode:UIViewContentModeScaleAspectFit];
 
             [scrollView addSubview:imageView];
             [imageViews addObject:imageView];

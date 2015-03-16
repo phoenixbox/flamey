@@ -926,7 +926,6 @@
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOC-G0-kVY" userLabel="scrollView">
                                         <rect key="frame" x="0.0" y="125" width="375" height="295"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wOC-G0-kVY" secondAttribute="height" multiplier="75:59" id="3O9-Gn-BZ2"/>
                                             <constraint firstAttribute="height" constant="295" id="eUh-4L-pKg"/>

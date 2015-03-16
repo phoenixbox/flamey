@@ -53,7 +53,7 @@ NSString *const kSegueLoggedIn = @"loggedIn";
     return @[
              @{
                  @"title":@"Can't See You",
-                 @"image": [UIImage imageNamed:@"test_image"]
+                 @"image": [UIImage imageNamed:@"LoginViewFirstScreen"]
                  },
              @{
                  @"title":@"Stand Out",
