@@ -11,12 +11,17 @@
 // Libs
 #import <MBProgressHUD/MBProgressHUD.h>
 
+// Components
+#import "FLLoginSlide.h"
+
 #import <FacebookSDK/FacebookSDK.h>
 #import "FLErrorHandler.h"
 #import "FLSettings.h"
 #import "FLLoginView.h"
 
 NSString *const kSegueLoggedIn = @"loggedIn";
+NSString *const kLoginSlide = @"FLLoginSlide";
+
 
 @interface FLLoginViewController ()
 
@@ -34,7 +39,7 @@ NSString *const kSegueLoggedIn = @"loggedIn";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.flameyLogo setText:@"Flamey"];
+
     // TODO: Remove these assignments when not in development
     FLSettings *settings = [FLSettings defaultSettings];
     settings.shouldSkipLogin = NO;
@@ -43,74 +48,97 @@ NSString *const kSegueLoggedIn = @"loggedIn";
 //    _hud.mode = MBProgressHUDModeAnnularDeterminate;
 //    _hud.labelText = @"Loading";
 
-    [self _configurePhotos];
+//    [self _configurePhotos];
 }
 
-#pragma mark - Class Methods
+#pragma mark SwipeView methods
 
-+ (NSArray *)demoPhotos
+- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
-    return @[
-             @{
-                 @"title":@"It's hard to get noticed",
-                 @"image": [UIImage imageNamed:@"LoginViewFirstScreen"]
-                 },
-             @{
-                 @"title":@"We help you stndout from the crowd!",
-                 @"image": [UIImage imageNamed:@"LoginViewSecondScreen"]
-                 },
-             @{
-                 @"title":@"Get noticed more - Get liked more",
-                 @"image": [UIImage imageNamed:@"LoginViewThirdScreen"]
-                 }
-             ];
+    return 3;
+}
+
+- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    if (view == nil) {
+        NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kLoginSlide owner:nil options:nil];
+        FLLoginSlide *loginSlide = (FLLoginSlide *)[nibContents lastObject];
+
+        switch (index) {
+            case 0:
+                [loginSlide.tutorialImageView setImage:[UIImage imageNamed:@"LoginViewFirstScreen"]];
+                break;
+            case 1:
+                [loginSlide.tutorialImageView setImage:[UIImage imageNamed:@"LoginViewSecondScreen"]];
+                break;
+            case 2:
+                [loginSlide.tutorialImageView setImage:[UIImage imageNamed:@"LoginViewThirdScreen"]];
+                break;
+            default:
+                NSLog(@"View Type Missing For Slide View");
+                break;
+        }
+
+        view = loginSlide;
+    }
+    
+    return view;
+}
+
+- (CGSize)swipeViewItemSize:(SwipeView *)swipeView
+{
+    return self.swipeView.bounds.size;
+}
+
+- (void)swipeViewCurrentItemIndexDidChange:(SwipeView *)swipeView {
+    NSLog(@"Update the page control");
 }
 
 #pragma mark - Paging
 
 - (IBAction)changePage:(id)sender
 {
-    UIScrollView *scrollView = self.scrollView;
-    CGFloat x = floorf(self.pageControl.currentPage * scrollView.frame.size.width);
-    [scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
-    [self _updateViewForCurrentPage];
+//    UIScrollView *scrollView = self.scrollView;
+//    CGFloat x = floorf(self.pageControl.currentPage * scrollView.frame.size.width);
+//    [scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+//    [self _updateViewForCurrentPage];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.isDragging || scrollView.isDecelerating){
-        UIPageControl *pageControl = self.pageControl;
-        pageControl.currentPage = floorf(scrollView.contentOffset.x /
-                                         (scrollView.contentSize.width / pageControl.numberOfPages));
-        [self _updateViewForCurrentPage];
-    }
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    if (scrollView.isDragging || scrollView.isDecelerating){
+//        UIPageControl *pageControl = self.pageControl;
+//        pageControl.currentPage = floorf(scrollView.contentOffset.x /
+//                                         (scrollView.contentSize.width / pageControl.numberOfPages));
+//        [self _updateViewForCurrentPage];
+//    }
+//}
 
 #pragma mark - Helper Methods
 
-- (void)_configurePhotos
-{
-    _photos = [[self class] demoPhotos];
-    [self _updateViewForCurrentPage];
-    [self _loginView].images = [_photos valueForKeyPath:@"image"];
-}
-
-- (NSDictionary *)_currentPhoto
-{
-    return _photos[self.pageControl.currentPage];
-}
-
-- (FLLoginView *)_loginView
-{
-    UIView *view = self.view;
-    return ([view isKindOfClass:[FLLoginView class]] ? (FLLoginView *)view : nil);
-}
-
-- (void)_updateViewForCurrentPage
-{
-    NSDictionary *photo = [self _currentPhoto];
-    // Trigger the setPhoto function in the loginView
-    [self _loginView].photo = photo;
-}
+//- (void)_configurePhotos
+//{
+//    _photos = [[self class] demoPhotos];
+//    [self _updateViewForCurrentPage];
+//    [self _loginView].images = [_photos valueForKeyPath:@"image"];
+//}
+//
+//- (NSDictionary *)_currentPhoto
+//{
+//    return _photos[self.pageControl.currentPage];
+//}
+//
+//- (FLLoginView *)_loginView
+//{
+//    UIView *view = self.view;
+//    return ([view isKindOfClass:[FLLoginView class]] ? (FLLoginView *)view : nil);
+//}
+//
+//- (void)_updateViewForCurrentPage
+//{
+//    NSDictionary *photo = [self _currentPhoto];
+//    // Trigger the setPhoto function in the loginView
+//    [self _loginView].photo = photo;
+//}
 
 - (void)viewDidAppear:(BOOL)animated {
 //    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];

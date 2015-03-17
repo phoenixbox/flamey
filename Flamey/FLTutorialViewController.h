@@ -12,7 +12,7 @@
 @interface FLTutorialViewController : UIViewController <SwipeViewDataSource, SwipeViewDelegate>
 
 @property (strong, nonatomic) IBOutlet SwipeView *swipeView;
-@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray *items; // TODO: Is this used?
 
 // CONTINUE: Subclass the TutorialView and pass in a function or emit an event to trigger the segue navigation
 

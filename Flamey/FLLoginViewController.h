@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SwipeView.h>
 
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface FLLoginViewController : UIViewController <FBLoginViewDelegate, UIScrollViewDelegate>
-@property (strong, nonatomic) IBOutlet UILabel *flameyLogo;
+@interface FLLoginViewController : UIViewController <FBLoginViewDelegate, UIScrollViewDelegate, SwipeViewDataSource, SwipeViewDelegate>
 @property (strong, nonatomic) IBOutlet FBLoginView *loginView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet SwipeView *swipeView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 - (IBAction)changePage:(id)sender;
 

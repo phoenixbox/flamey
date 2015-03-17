@@ -46,7 +46,6 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
     if (view == nil) {
-        NSString *viewType;
         UIView *newView;
 
         switch (index) {
@@ -70,6 +69,11 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     }
 
     return view;
+}
+
+- (CGSize)swipeViewItemSize:(SwipeView *)swipeView
+{
+    return self.swipeView.bounds.size;
 }
 
 - (FLTutorialSolutionView *)prepareTutorialSolutionView {
@@ -105,11 +109,6 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
 //    [tutorialView.finishButton setHidden:YES];
 
     return howView;
-}
-
-- (CGSize)swipeViewItemSize:(SwipeView *)swipeView
-{
-    return self.swipeView.bounds.size;
 }
 
 - (void)unwindToSelectedPhotos {

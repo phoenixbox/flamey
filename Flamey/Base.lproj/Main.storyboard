@@ -922,27 +922,8 @@
                                             <outlet property="delegate" destination="UaG-CF-jMv" id="f3E-HD-zQg"/>
                                         </connections>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOC-G0-kVY" userLabel="scrollView">
-                                        <rect key="frame" x="0.0" y="135" width="375" height="295"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="wOC-G0-kVY" secondAttribute="height" multiplier="75:59" id="3O9-Gn-BZ2"/>
-                                            <constraint firstAttribute="height" constant="295" id="eUh-4L-pKg"/>
-                                            <constraint firstAttribute="width" constant="295" id="nxb-xG-hap"/>
-                                            <constraint firstAttribute="width" secondItem="wOC-G0-kVY" secondAttribute="height" multiplier="1:1" id="xAb-u0-Xie"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="3O9-Gn-BZ2"/>
-                                                <exclude reference="nxb-xG-hap"/>
-                                                <exclude reference="xAb-u0-Xie"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <outlet property="delegate" destination="UaG-CF-jMv" id="1UR-Q9-ehW"/>
-                                        </connections>
-                                    </scrollView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXt-Rc-Dyj" userLabel="titleLabel">
-                                        <rect key="frame" x="20" y="438" width="335" height="24"/>
+                                        <rect key="frame" x="20" y="440" width="335" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Z5o-rx-Ogs"/>
                                         </constraints>
@@ -954,8 +935,8 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rqi-Ji-0th">
-                                        <rect key="frame" x="168" y="449" width="39" height="37"/>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rqi-Ji-0th">
+                                        <rect key="frame" x="168" y="469" width="39" height="37"/>
                                         <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -977,38 +958,48 @@
                                             <constraint firstAttribute="height" constant="75" id="g2B-13-D6U"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7KO-Cm-7dw" customClass="SwipeView">
+                                        <rect key="frame" x="0.0" y="135" width="375" height="295"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="188" id="TuQ-Pq-rQu"/>
+                                            <constraint firstAttribute="width" secondItem="7KO-Cm-7dw" secondAttribute="height" multiplier="75:59" id="WO3-t3-qhP"/>
+                                            <constraint firstAttribute="height" constant="295" id="gWp-L8-DZL"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="TuQ-Pq-rQu"/>
+                                                <exclude reference="gWp-L8-DZL"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="dataSource" destination="UaG-CF-jMv" id="g23-Kc-nTf"/>
+                                            <outlet property="delegate" destination="UaG-CF-jMv" id="Diu-wU-Rvq"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="wOC-G0-kVY" secondAttribute="trailing" id="0fM-FL-e2S"/>
                                     <constraint firstAttribute="trailing" secondItem="aXt-Rc-Dyj" secondAttribute="trailing" constant="20" id="707-ZK-WSk"/>
                                     <constraint firstAttribute="centerX" secondItem="bqh-BE-QIi" secondAttribute="centerX" id="7Te-4h-5ln"/>
                                     <constraint firstItem="aXt-Rc-Dyj" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="20" id="7eu-2a-eYN"/>
-                                    <constraint firstItem="wOC-G0-kVY" firstAttribute="centerX" secondItem="aXt-Rc-Dyj" secondAttribute="centerX" id="BI2-hi-4vH"/>
                                     <constraint firstItem="ELJ-hF-zqU" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="20" id="Bns-5B-lz7"/>
                                     <constraint firstItem="ELJ-hF-zqU" firstAttribute="top" relation="lessThanOrEqual" secondItem="OPd-e6-r0w" secondAttribute="top" priority="900" constant="350" id="CTF-dM-xb3"/>
                                     <constraint firstItem="EIK-FE-eqy" firstAttribute="centerX" secondItem="bqh-BE-QIi" secondAttribute="centerX" constant="-1.5" id="HuN-JB-m6A"/>
-                                    <constraint firstItem="wOC-G0-kVY" firstAttribute="top" secondItem="EIK-FE-eqy" secondAttribute="bottom" constant="15" id="JNw-SC-X16"/>
-                                    <constraint firstAttribute="centerX" secondItem="wOC-G0-kVY" secondAttribute="centerX" id="KCH-lx-Gtw"/>
-                                    <constraint firstItem="aXt-Rc-Dyj" firstAttribute="top" secondItem="wOC-G0-kVY" secondAttribute="bottom" constant="8" id="MWe-CP-cG3"/>
                                     <constraint firstAttribute="trailing" secondItem="ELJ-hF-zqU" secondAttribute="trailing" constant="20" id="Noo-YV-UBU"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="wOC-G0-kVY" secondAttribute="trailing" constant="40" id="UE0-lS-ab3"/>
+                                    <constraint firstItem="aXt-Rc-Dyj" firstAttribute="top" secondItem="7KO-Cm-7dw" secondAttribute="bottom" constant="10" id="Rns-WV-sqb"/>
                                     <constraint firstItem="EIK-FE-eqy" firstAttribute="top" secondItem="bqh-BE-QIi" secondAttribute="bottom" constant="5" id="WBw-zM-a1R"/>
-                                    <constraint firstItem="wOC-G0-kVY" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" id="WsF-VJ-6AR"/>
                                     <constraint firstAttribute="bottom" secondItem="ELJ-hF-zqU" secondAttribute="bottom" constant="250" id="aYi-fz-hHv"/>
-                                    <constraint firstItem="wOC-G0-kVY" firstAttribute="leading" relation="lessThanOrEqual" secondItem="OPd-e6-r0w" secondAttribute="leading" constant="40" id="hIg-Cp-8nL"/>
+                                    <constraint firstItem="7KO-Cm-7dw" firstAttribute="leading" secondItem="OPd-e6-r0w" secondAttribute="leading" id="jTi-gL-p1A"/>
                                     <constraint firstItem="bqh-BE-QIi" firstAttribute="top" secondItem="OPd-e6-r0w" secondAttribute="top" constant="15" id="kZp-T8-fHy"/>
-                                    <constraint firstItem="wOC-G0-kVY" firstAttribute="top" secondItem="OPd-e6-r0w" secondAttribute="top" constant="125" id="oDH-1n-fIg"/>
+                                    <constraint firstItem="7KO-Cm-7dw" firstAttribute="top" secondItem="EIK-FE-eqy" secondAttribute="bottom" constant="15" id="lpX-9d-WVx"/>
+                                    <constraint firstAttribute="trailing" secondItem="7KO-Cm-7dw" secondAttribute="trailing" id="pia-ak-tQG"/>
                                     <constraint firstItem="Rqi-Ji-0th" firstAttribute="centerX" secondItem="aXt-Rc-Dyj" secondAttribute="centerX" id="qNr-WX-Z1n"/>
-                                    <constraint firstItem="Rqi-Ji-0th" firstAttribute="top" secondItem="aXt-Rc-Dyj" secondAttribute="bottom" id="sOu-CW-rN0"/>
+                                    <constraint firstItem="Rqi-Ji-0th" firstAttribute="top" secondItem="aXt-Rc-Dyj" secondAttribute="bottom" constant="5" id="sOu-CW-rN0"/>
                                     <constraint firstAttribute="bottom" secondItem="ELJ-hF-zqU" secondAttribute="bottom" constant="20" id="wwc-QV-Cyp"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="KCH-lx-Gtw"/>
-                                        <exclude reference="UE0-lS-ab3"/>
-                                        <exclude reference="hIg-Cp-8nL"/>
-                                        <exclude reference="oDH-1n-fIg"/>
                                         <exclude reference="CTF-dM-xb3"/>
                                         <exclude reference="aYi-fz-hHv"/>
                                     </mask>
@@ -1036,7 +1027,6 @@
                             </mask>
                         </variation>
                         <connections>
-                            <outlet property="scrollView" destination="wOC-G0-kVY" id="7JO-Ds-P8O"/>
                             <outlet property="titleLabel" destination="aXt-Rc-Dyj" id="KHh-3r-8PI"/>
                         </connections>
                     </view>
@@ -1047,7 +1037,7 @@
                     <connections>
                         <outlet property="loginView" destination="ELJ-hF-zqU" id="izb-w2-d71"/>
                         <outlet property="pageControl" destination="Rqi-Ji-0th" id="xuw-HT-5Cf"/>
-                        <outlet property="scrollView" destination="wOC-G0-kVY" id="9CL-r1-bKv"/>
+                        <outlet property="swipeView" destination="7KO-Cm-7dw" id="00R-fD-ATl"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="loggedIn" id="MH8-K5-Beh"/>
                     </connections>
                 </viewController>

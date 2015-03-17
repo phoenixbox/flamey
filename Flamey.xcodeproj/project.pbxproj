@@ -31,9 +31,11 @@
 		CB3B7D321A5860C7005F6402 /* FLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */; };
 		CB3B7D351A586674005F6402 /* FLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D341A586674005F6402 /* FLSettings.m */; };
 		CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */; };
+		CB3C344B1AB7BB83006C8C60 /* FLLoginSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3C344A1AB7BB83006C8C60 /* FLLoginSlide.m */; };
 		CB4268C71A7D596A00745A9F /* FLViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4268C61A7D596900745A9F /* FLViewHelpers.m */; };
 		CB4ABFE41AB4BF2D00ABD784 /* FLAnnotationNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABFE31AB4BF2D00ABD784 /* FLAnnotationNavViewController.m */; };
 		CB4ABFE71AB4C29D00ABD784 /* FLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABFE61AB4C29D00ABD784 /* FLTabBarViewController.m */; };
+		CB524F711AB69848000C6228 /* FLLoginSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB524F701AB69848000C6228 /* FLLoginSlide.xib */; };
 		CB6BC4BF1AA57720006D34EF /* FLLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BC4BE1AA57720006D34EF /* FLLoginView.m */; };
 		CB6BC4C31AA59467006D34EF /* FLTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */; };
 		CB6CFF281A6C858C00ACD39A /* FLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFF271A6C858C00ACD39A /* FLPhoto.m */; };
@@ -116,12 +118,15 @@
 		CB3B7D341A586674005F6402 /* FLSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSettings.m; sourceTree = "<group>"; };
 		CB3B7D361A5867F7005F6402 /* FLErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrorHandler.h; sourceTree = "<group>"; };
 		CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorHandler.m; sourceTree = "<group>"; };
+		CB3C34491AB7BB83006C8C60 /* FLLoginSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginSlide.h; sourceTree = "<group>"; };
+		CB3C344A1AB7BB83006C8C60 /* FLLoginSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginSlide.m; sourceTree = "<group>"; };
 		CB4268C51A7D596900745A9F /* FLViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLViewHelpers.h; sourceTree = "<group>"; };
 		CB4268C61A7D596900745A9F /* FLViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLViewHelpers.m; sourceTree = "<group>"; };
 		CB4ABFE21AB4BF2D00ABD784 /* FLAnnotationNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationNavViewController.h; sourceTree = "<group>"; };
 		CB4ABFE31AB4BF2D00ABD784 /* FLAnnotationNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationNavViewController.m; sourceTree = "<group>"; };
 		CB4ABFE51AB4C29D00ABD784 /* FLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTabBarViewController.h; sourceTree = "<group>"; };
 		CB4ABFE61AB4C29D00ABD784 /* FLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTabBarViewController.m; sourceTree = "<group>"; };
+		CB524F701AB69848000C6228 /* FLLoginSlide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLLoginSlide.xib; sourceTree = "<group>"; };
 		CB6BC4BD1AA57720006D34EF /* FLLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginView.h; sourceTree = "<group>"; };
 		CB6BC4BE1AA57720006D34EF /* FLLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginView.m; sourceTree = "<group>"; };
 		CB6BC4C11AA59467006D34EF /* FLTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialViewController.h; sourceTree = "<group>"; };
@@ -336,6 +341,9 @@
 				CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */,
 				CB6BC4BD1AA57720006D34EF /* FLLoginView.h */,
 				CB6BC4BE1AA57720006D34EF /* FLLoginView.m */,
+				CB524F701AB69848000C6228 /* FLLoginSlide.xib */,
+				CB3C34491AB7BB83006C8C60 /* FLLoginSlide.h */,
+				CB3C344A1AB7BB83006C8C60 /* FLLoginSlide.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -620,6 +628,7 @@
 				CBDDEF7F1AA8242700FF4E8D /* FLTutorialSolutionView.xib in Resources */,
 				CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */,
 				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
+				CB524F711AB69848000C6228 /* FLLoginSlide.xib in Resources */,
 				CB07449C1AAD6DF100DB722E /* FLTutorialHowView.xib in Resources */,
 				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
@@ -680,6 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6CFF281A6C858C00ACD39A /* FLPhoto.m in Sources */,
+				CB3C344B1AB7BB83006C8C60 /* FLLoginSlide.m in Sources */,
 				CB0744981AAD6DC800DB722E /* FLTutorialHowView.m in Sources */,
 				CB3B7D081A58374B005F6402 /* FLSettingsViewController.m in Sources */,
 				CB2EBE6E1A7DCB6800D76528 /* FLImageFilterViewController.m in Sources */,
