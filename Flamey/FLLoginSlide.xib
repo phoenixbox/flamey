@@ -13,43 +13,37 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mhQ-4p-5Th" userLabel="mainImageLayer">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXr-LM-kb0" userLabel="bottomAnimationLayer" customClass="CSAnimationView">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NXk-wZ-AeQ" userLabel="bottomAnimationImageView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NXk-wZ-AeQ" userLabel="bottomAnimationImageView">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        </imageView>
-                    </subviews>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9l-Si-LZQ" userLabel="topAnimationLayer" customClass="CSAnimationView">
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xeo-bk-KOU" userLabel="topAnimationImageView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeo-bk-KOU" userLabel="topAnimationImageView">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        </imageView>
-                    </subviews>
-                </view>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="NXk-wZ-AeQ" secondAttribute="bottom" id="0Ev-E6-Pmz"/>
+                <constraint firstItem="xeo-bk-KOU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2ek-ad-nNz"/>
                 <constraint firstItem="mhQ-4p-5Th" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Lk-re-bpc"/>
-                <constraint firstItem="E9l-Si-LZQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5U6-54-npU"/>
-                <constraint firstItem="E9l-Si-LZQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6uh-Cd-rAu"/>
-                <constraint firstAttribute="trailing" secondItem="rXr-LM-kb0" secondAttribute="trailing" id="Pzp-et-1j7"/>
-                <constraint firstItem="rXr-LM-kb0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Q7d-gS-pBC"/>
+                <constraint firstItem="NXk-wZ-AeQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="77f-cV-PGF"/>
+                <constraint firstItem="xeo-bk-KOU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9Xm-hQ-ZLH"/>
+                <constraint firstAttribute="trailing" secondItem="xeo-bk-KOU" secondAttribute="trailing" id="9cU-XP-Gbv"/>
+                <constraint firstItem="NXk-wZ-AeQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OHN-eH-xmk"/>
                 <constraint firstAttribute="bottom" secondItem="mhQ-4p-5Th" secondAttribute="bottom" id="Rd2-At-eAK"/>
                 <constraint firstAttribute="trailing" secondItem="mhQ-4p-5Th" secondAttribute="trailing" id="Was-yt-bil"/>
-                <constraint firstItem="rXr-LM-kb0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Z5x-zP-zdu"/>
-                <constraint firstAttribute="bottom" secondItem="E9l-Si-LZQ" secondAttribute="bottom" id="bdh-1M-66e"/>
+                <constraint firstAttribute="bottom" secondItem="xeo-bk-KOU" secondAttribute="bottom" id="bsI-0L-gmn"/>
                 <constraint firstItem="mhQ-4p-5Th" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="geK-tk-Rm7"/>
-                <constraint firstAttribute="trailing" secondItem="E9l-Si-LZQ" secondAttribute="trailing" id="kLR-d3-mFw"/>
-                <constraint firstAttribute="bottom" secondItem="rXr-LM-kb0" secondAttribute="bottom" id="qKC-q7-i6D"/>
+                <constraint firstItem="xeo-bk-KOU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ihH-W0-36z"/>
+                <constraint firstAttribute="trailing" secondItem="NXk-wZ-AeQ" secondAttribute="trailing" id="osr-WS-GqC"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="9Xm-hQ-ZLH"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="bottomAnimationImageView" destination="NXk-wZ-AeQ" id="udC-or-fNG"/>
-                <outlet property="bottomAnimationLayer" destination="rXr-LM-kb0" id="o8S-zZ-xT2"/>
                 <outlet property="topAnimationImageView" destination="xeo-bk-KOU" id="gJL-J9-KEa"/>
-                <outlet property="topAnimationLayer" destination="E9l-Si-LZQ" id="2SP-1T-BKS"/>
                 <outlet property="tutorialImageView" destination="mhQ-4p-5Th" id="Gg0-vz-iYf"/>
             </connections>
         </view>

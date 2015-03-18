@@ -18,20 +18,33 @@
 }
 */
 
-- (void)addAnimationLayers {
-    _bottomAnimationLayer.duration = 0.5;
-    _bottomAnimationLayer.delay    = 0;
-    _bottomAnimationLayer.type     = CSAnimationTypeSlideDown;
-
-    _topAnimationLayer.duration = 0.5;
-    _topAnimationLayer.delay    = 0;
-    _topAnimationLayer.type     = CSAnimationTypeSlideUp;
-}
-
 -(void)startAnimationLayers {
-    [UIView animateKeyframesWithDuration:2.0 delay:0.0 options:UIViewKeyframeAnimationOptionAutoreverse | UIViewKeyframeAnimationOptionRepeat animations:^{
-        [_topAnimationLayer startCanvasAnimation];
-        [_bottomAnimationLayer startCanvasAnimation];
+    float displacement = 15.0f;
+
+    CGRect frameStart = _topAnimationImageView.frame;
+
+    CGRect frame1 = CGRectMake(frameStart.origin.x,
+                               frameStart.origin.y + displacement,
+                               frameStart.size.width,
+                               frameStart.size.height);
+
+    CGRect frame2 = CGRectMake(frameStart.origin.x,
+                               frame1.origin.y - displacement,
+                               frameStart.size.width,
+                               frameStart.size.height);
+
+
+    [UIView animateKeyframesWithDuration:1.0
+                                   delay:0.0
+                                 options:UIViewKeyframeAnimationOptionAutoreverse | UIViewKeyframeAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
+            _topAnimationImageView.frame = frame1;
+            _bottomAnimationImageView.frame = frame1;
+        }];
+        [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
+            _topAnimationImageView.frame = frame2;
+            _bottomAnimationImageView.frame = frame2;
+        }];
     } completion:nil];
 }
 

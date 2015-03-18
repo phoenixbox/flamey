@@ -76,7 +76,6 @@ NSString *const kLoginSlide = @"FLLoginSlide";
         case 2:
             [loginSlide.topAnimationImageView setImage:[UIImage imageNamed:@"TopAnimationImageView"]];
             [loginSlide.bottomAnimationImageView setImage:[UIImage imageNamed:@"BottomAnimationImageView"]];
-            [loginSlide addAnimationLayers];
             [loginSlide.tutorialImageView setImage:[UIImage imageNamed:@"LoginViewThirdScreen"]];
             [loginSlide buryMainImage];
             break;
