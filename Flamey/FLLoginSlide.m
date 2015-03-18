@@ -18,4 +18,25 @@
 }
 */
 
+- (void)addAnimationLayers {
+    _bottomAnimationLayer.duration = 0.5;
+    _bottomAnimationLayer.delay    = 0;
+    _bottomAnimationLayer.type     = CSAnimationTypeSlideDown;
+
+    _topAnimationLayer.duration = 0.5;
+    _topAnimationLayer.delay    = 0;
+    _topAnimationLayer.type     = CSAnimationTypeSlideUp;
+}
+
+-(void)startAnimationLayers {
+    [UIView animateKeyframesWithDuration:2.0 delay:0.0 options:UIViewKeyframeAnimationOptionAutoreverse | UIViewKeyframeAnimationOptionRepeat animations:^{
+        [_topAnimationLayer startCanvasAnimation];
+        [_bottomAnimationLayer startCanvasAnimation];
+    } completion:nil];
+}
+
+- (void)buryMainImage {
+    [self sendSubviewToBack:_tutorialImageView];
+}
+
 @end

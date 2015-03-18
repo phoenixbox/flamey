@@ -941,6 +941,7 @@
                                         <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="changePage:" destination="UaG-CF-jMv" eventType="valueChanged" id="tth-Fd-5UM"/>
+                                            <action selector="pageControlled:" destination="UaG-CF-jMv" eventType="valueChanged" id="6K3-l1-shJ"/>
                                         </connections>
                                     </pageControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stand Out From the Crowd" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIK-FE-eqy">
@@ -960,7 +961,6 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7KO-Cm-7dw" customClass="SwipeView">
                                         <rect key="frame" x="0.0" y="135" width="375" height="295"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="188" id="TuQ-Pq-rQu"/>
                                             <constraint firstAttribute="width" secondItem="7KO-Cm-7dw" secondAttribute="height" multiplier="75:59" id="WO3-t3-qhP"/>
@@ -1026,9 +1026,6 @@
                                 <exclude reference="UM7-H2-Jjd"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outlet property="titleLabel" destination="aXt-Rc-Dyj" id="KHh-3r-8PI"/>
-                        </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="PW7-r5-G5d"/>
@@ -1038,6 +1035,7 @@
                         <outlet property="loginView" destination="ELJ-hF-zqU" id="izb-w2-d71"/>
                         <outlet property="pageControl" destination="Rqi-Ji-0th" id="xuw-HT-5Cf"/>
                         <outlet property="swipeView" destination="7KO-Cm-7dw" id="00R-fD-ATl"/>
+                        <outlet property="titleLabel" destination="aXt-Rc-Dyj" id="Cek-NW-hXR"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="loggedIn" id="MH8-K5-Beh"/>
                     </connections>
                 </viewController>

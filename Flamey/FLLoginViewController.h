@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-- (IBAction)changePage:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+- (IBAction)pageControlled:(id)sender;
 
 @end

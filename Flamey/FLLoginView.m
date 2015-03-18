@@ -42,7 +42,7 @@
 {
     if (![_photo isEqual:photo]) {
         _photo = photo;
-        _titleLabel.text = [photo objectForKey:@"title"];
+//        _titleLabel.text = [photo objectForKey:@"title"];.
     }
 }
 
