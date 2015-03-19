@@ -15,6 +15,7 @@ pod 'KSDeferred', '~> 0.2'
 pod 'MBProgressHUD', '~> 0.9'
 pod 'SwipeView', '~> 1.3'
 pod 'Canvas', '~> 0.1'
+pod 'TTTAttributedLabel', '~> 1.10.1'
 end
 
 target "FlameyTests" do
