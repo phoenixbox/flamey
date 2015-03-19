@@ -54,11 +54,9 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
                 break;
             case 1:
                 newView = [self prepareTutorialHowView];
-//                viewType = kTutorialSolutionView;
                 break;
             case 2:
                 newView = [self prepareTutorialSolutionView];
-//                viewType = kTutorialSolutionView;
                 break;
             default:
                 NSLog(@"View Type Missing For Slide View");
@@ -77,9 +75,7 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
 }
 
 - (FLTutorialSolutionView *)prepareTutorialSolutionView {
-    NSString *viewType;
-    viewType = kTutorialSolutionView;
-    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kTutorialSolutionView owner:nil options:nil];
     FLTutorialSolutionView *solutionView = (FLTutorialSolutionView *)[nibContents lastObject];
 
     // TODO: Compose this specialized setup to its own function
@@ -90,9 +86,8 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
 }
 
 - (FLTutorialHowView *)prepareTutorialHowView {
-    NSString *viewType;
-    viewType = kTutorialHowView;
-    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:viewType owner:nil options:nil];
+    
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kTutorialHowView owner:nil options:nil];
     FLTutorialHowView *howView = (FLTutorialHowView *)[nibContents lastObject];
 
     [FLViewHelpers setBaseButtonStyle:howView.continueButton withColor:[UIColor blackColor]];
@@ -103,10 +98,10 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
     // Rename this to dating image view context
     [howView.thirdSectionImageView setContentMode:UIViewContentModeScaleAspectFit];
 
-
-    // TODO: Compose this specialized setup to its own function
-//    [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton withColor:[UIColor blackColor]];
-//    [tutorialView.finishButton setHidden:YES];
+    [howView setLabelCopyAndStyles];
+//  TODO: Compose this specialized setup to its own function
+//  [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton withColor:[UIColor blackColor]];
+//  [tutorialView.finishButton setHidden:YES];
 
     return howView;
 }

@@ -195,3 +195,18 @@
 }
 
 @end
+
+// Avenir Font Family
+// **** Avenir Next
+//AvenirNext-UltraLight
+//AvenirNext-UltraLightItalic
+//AvenirNext-Bold
+//AvenirNext-BoldItalic
+//AvenirNext-DemiBold
+//AvenirNext-DemiBoldItalic
+//AvenirNext-Medium
+//AvenirNext-HeavyItalic
+//AvenirNext-Heavy
+//AvenirNext-Italic
+//AvenirNext-Regular
+//AvenirNext-MediumItalic
