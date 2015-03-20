@@ -61,6 +61,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Rochester-Regular.ttf</string>
 		<string>Walkway_UltraBold.ttf</string>
 		<string>Walkway_SemiBold.ttf</string>
 		<string>Walkway_Oblique.ttf</string>
