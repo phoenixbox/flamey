@@ -9,14 +9,14 @@
 #import "FLTutorialViewController.h"
 #import "FLTutorialSolutionView.h"
 #import "FLTutorialHowView.h"
-//#import "FLTutorialReinforceView.h"
+#import "FLTutorialResultView.h"
 
 // Helpers
 #import "FLViewHelpers.h"
 
 static NSString * const kTutorialSolutionView = @"FLTutorialSolutionView";
 static NSString * const kTutorialHowView = @"FLTutorialHowView";
-static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
+static NSString * const kTutorialResultView = @"FLTutorialResultView";
 
 @interface FLTutorialViewController ()
 
@@ -53,10 +53,10 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
                 newView = [self prepareTutorialSolutionView];
                 break;
             case 1:
-                newView = [self prepareTutorialHowView];
+                newView = [self prepareTutorialResultView];
                 break;
             case 2:
-                newView = [self prepareTutorialSolutionView];
+                newView = [self prepareTutorialResultView];
                 break;
             default:
                 NSLog(@"View Type Missing For Slide View");
@@ -104,6 +104,15 @@ static NSString * const kTutorialReinforceView = @"FLTutorialReinforceView";
 //  [tutorialView.finishButton setHidden:YES];
 
     return howView;
+}
+
+- (FLTutorialResultView *)prepareTutorialResultView {
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kTutorialResultView owner:nil options:nil];
+    FLTutorialResultView *resultView = (FLTutorialResultView *)[nibContents lastObject];
+
+    [resultView setLabels];
+
+    return resultView;
 }
 
 - (void)unwindToSelectedPhotos {

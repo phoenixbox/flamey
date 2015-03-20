@@ -56,7 +56,7 @@ NSString *const kContinueTutorial = @"continueTutorial";
 }
 
 - (void)setFirstSectionAttributedCopy:(float)fontSize {
-    NSString *copy = @"stndout makes it possible for you to mark yourself in your facebook photos";
+    NSString *copy = @"stndout more - get matched more";
 
     _firstSectionCopy.font = [UIFont fontWithName:@"AvenirNext-Regular" size:fontSize];
     _firstSectionCopy.textColor = [UIColor blackColor];
