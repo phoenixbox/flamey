@@ -31,8 +31,8 @@
                                         </mask>
                                     </variation>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNY-15-kkA" userLabel="TwoButton">
-                                    <rect key="frame" x="115" y="0.0" width="116" height="235"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNY-15-kkA" userLabel="TwoButton">
+                                    <rect key="frame" x="116" y="0.0" width="114" height="235"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="LNY-15-kkA" secondAttribute="height" multiplier="1:2.05" id="Fbd-kZ-sJZ"/>
                                     </constraints>
@@ -109,9 +109,19 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stand out from the crowd with us!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-vq-LsE">
+                            <rect key="frame" x="15" y="50" width="325" height="66"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vpZ-q5-4cj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-4T-XV8">
-                            <rect key="frame" x="50" y="502" width="255" height="40"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="20" y="507" width="315" height="40"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="xjO-hy-gjn"/>
                             </constraints>
@@ -123,16 +133,6 @@
                                 <action selector="finishTutorial:" destination="iN0-l3-epB" eventType="touchUpInside" id="tbo-We-InA"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stand out from the crowd with us!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-vq-LsE">
-                            <rect key="frame" x="15" y="50" width="325" height="66"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vpZ-q5-4cj"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -140,8 +140,8 @@
                         <constraint firstAttribute="centerX" secondItem="yrT-Dv-IvV" secondAttribute="centerX" id="Mqq-r1-kRU"/>
                         <constraint firstAttribute="trailing" secondItem="JqK-vq-LsE" secondAttribute="trailing" constant="15" id="Nud-0o-n3B"/>
                         <constraint firstAttribute="centerX" secondItem="CWR-kp-z4t" secondAttribute="centerX" constant="0.5" id="O5O-bl-H9o"/>
-                        <constraint firstAttribute="trailing" secondItem="Q3T-4T-XV8" secondAttribute="trailing" constant="50" id="S1X-kT-fmp"/>
-                        <constraint firstAttribute="bottom" secondItem="Q3T-4T-XV8" secondAttribute="bottom" constant="25" id="SbV-QI-7PO"/>
+                        <constraint firstAttribute="trailing" secondItem="Q3T-4T-XV8" secondAttribute="trailing" constant="20" id="S1X-kT-fmp"/>
+                        <constraint firstAttribute="bottom" secondItem="Q3T-4T-XV8" secondAttribute="bottom" constant="20" id="SbV-QI-7PO"/>
                         <constraint firstAttribute="trailing" secondItem="CWR-kp-z4t" secondAttribute="trailing" constant="15" id="Vba-de-e3g"/>
                         <constraint firstItem="yrT-Dv-IvV" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="5" id="Vj4-ka-xXc"/>
                         <constraint firstAttribute="trailing" secondItem="yrT-Dv-IvV" secondAttribute="trailing" constant="5" id="lFo-76-nhA"/>
@@ -149,7 +149,7 @@
                         <constraint firstItem="yrT-Dv-IvV" firstAttribute="top" secondItem="JqK-vq-LsE" secondAttribute="bottom" constant="30" id="oRb-jr-Jdd"/>
                         <constraint firstItem="JqK-vq-LsE" firstAttribute="top" secondItem="leg-AO-eFW" secondAttribute="top" constant="50" id="p5g-EQ-hms"/>
                         <constraint firstItem="CWR-kp-z4t" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="15" id="xWd-Xn-AVi"/>
-                        <constraint firstItem="Q3T-4T-XV8" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="50" id="zn2-7p-f7P"/>
+                        <constraint firstItem="Q3T-4T-XV8" firstAttribute="leading" secondItem="leg-AO-eFW" secondAttribute="leading" constant="20" id="zn2-7p-f7P"/>
                     </constraints>
                 </view>
             </subviews>
