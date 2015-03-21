@@ -8,6 +8,7 @@
 
 #import "FLTutorialResultView.h"
 #import "FLViewHelpers.h"
+#import <tgmath.h>
 
 @implementation FLTutorialResultView
 
@@ -20,18 +21,13 @@
 }
 
 - (void)setLabels {
-    float fontSize = [FLViewHelpers fontForScreenSize];
-
-    [self setMatchTitleCopy:fontSize];
-    [self setGetMatchedTitleStyle];
+    [self setMatchTitleCopy];
 }
 
-- (void)setGetMatchedTitleStyle {
-    _getMatchedTitle.font = [UIFont fontWithName:@"Rochester" size:65.0f];
-}
-
-- (void)setMatchTitleCopy:(float)fontSize {
+- (void)setMatchTitleCopy {
     NSString *copy = @"stndout more - get matched more";
+    NSDictionary *copySizes = [self copySizes];
+    float fontSize = [[copySizes objectForKey:@"matchTitleSize"] floatValue];
 
     _matchTitle.font = [UIFont fontWithName:@"AvenirNext-Regular" size:fontSize];
     _matchTitle.textColor = [UIColor blackColor];
@@ -68,6 +64,38 @@
     _secondProfile.layer.cornerRadius = _secondProfile.bounds.size.width / 2;
     _secondProfile.clipsToBounds = YES;
 }
+
+- (NSDictionary *)copySizes {
+    float matchTitleFontSize;
+    float bodycopySize;
+    float buttonCopySize;
+
+    if ([UIScreen mainScreen].bounds.size.height == 480) {
+        // iPhone 4 - 3.5
+        matchTitleFontSize = 48.0f;
+    } else if ([UIScreen mainScreen].bounds.size.height == 568) {
+        // iPhone 5 - 4in
+        matchTitleFontSize = 50.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 375) {
+        // iPhone 6 - 4.7in
+        matchTitleFontSize = 62.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 414) {
+        // iPhone 6+ - 5.5in
+        matchTitleFontSize = 74.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 768) {
+        // iPad - WARN
+        matchTitleFontSize = 80.0f;
+    }
+
+    NSDictionary *fontSizes = @{
+             @"matchTitleSize": @(matchTitleFontSize),
+             @"bodyCopySize": @(bodycopySize),
+             @"buttonCopySize": @(buttonCopySize)
+             };
+
+    return fontSizes;
+}
+
 
 
 /*

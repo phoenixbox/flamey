@@ -195,23 +195,23 @@
 }
 
 + (float)fontForScreenSize {
-    if ([UIScreen mainScreen].bounds.size.height == 480) {
-        // iPhone 4
-        return 13.0f;
-    } else if ([UIScreen mainScreen].bounds.size.height == 568) {
-        // iPhone 5
-        return 14.0f;
-    } else if ([UIScreen mainScreen].bounds.size.width == 375) {
-        // iPhone 6
-        return 16.0f;
-    } else if ([UIScreen mainScreen].bounds.size.width == 414) {
-        // iPhone 6+
-        return 18.0f;
-    } else if ([UIScreen mainScreen].bounds.size.width == 768) {
-        // iPad
-        return 18.0f;
-    }
-    NSLog(@"!WARNING! - No Screen Size Found - FLViewHelpers:fontForScreenSize");
+    // TODO: Utilize for common appwide font size when necessary
+//    if ([UIScreen mainScreen].bounds.size.height == 480) {
+//        // iPhone 4 - 3.5
+//    } else if ([UIScreen mainScreen].bounds.size.height == 568) {
+//        // iPhone 5 - 4in
+//        return 14.0f;
+//    } else if ([UIScreen mainScreen].bounds.size.width == 375) {
+//        // iPhone 6 - 4.7in
+//        return 16.0f;
+//    } else if ([UIScreen mainScreen].bounds.size.width == 414) {
+//        // iPhone 6+ - 5.5in
+//        return 18.0f;
+//    } else if ([UIScreen mainScreen].bounds.size.width == 768) {
+//        // iPad
+//        return 18.0f;
+//    }
+
     return 0;
 }
 
