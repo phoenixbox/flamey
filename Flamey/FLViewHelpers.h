@@ -49,6 +49,6 @@
 
 + (void)setBaseButtonStyle:(UIButton *)button withColor:(UIColor *)color;
 
-+ (float)fontForScreenSize;
++ (float)bodyCopyForScreenSize;
 
 @end
