@@ -18,13 +18,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="355" height="143"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stndout lets you mark yourself in your facebook photos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFw-K4-XeM" customClass="TTTAttributedLabel">
-                                    <rect key="frame" x="0.0" y="0.0" width="223" height="143"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="221" height="143"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected-Female-2" translatesAutoresizingMaskIntoConstraints="NO" id="t0l-no-Jyc">
-                                    <rect key="frame" x="228" y="10" width="107" height="123"/>
+                                    <rect key="frame" x="226" y="20" width="89" height="103"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="130" id="Mbo-l7-bik"/>
                                         <constraint firstAttribute="width" secondItem="t0l-no-Jyc" secondAttribute="height" multiplier="65:75" id="b4a-Tn-MCR"/>
@@ -37,13 +37,13 @@
                                 </imageView>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="t0l-no-Jyc" secondAttribute="bottom" constant="10" id="XaI-Uq-K0z"/>
+                                <constraint firstAttribute="bottom" secondItem="t0l-no-Jyc" secondAttribute="bottom" constant="20" id="XaI-Uq-K0z"/>
                                 <constraint firstItem="t0l-no-Jyc" firstAttribute="leading" secondItem="tFw-K4-XeM" secondAttribute="trailing" constant="5" id="Zp6-vT-vR6"/>
                                 <constraint firstAttribute="bottom" secondItem="tFw-K4-XeM" secondAttribute="bottom" id="bzm-qh-Bme"/>
-                                <constraint firstItem="t0l-no-Jyc" firstAttribute="top" secondItem="ctY-r1-Lwx" secondAttribute="top" constant="10" id="e9k-yL-lzL"/>
+                                <constraint firstItem="t0l-no-Jyc" firstAttribute="top" secondItem="ctY-r1-Lwx" secondAttribute="top" constant="20" id="e9k-yL-lzL"/>
                                 <constraint firstItem="t0l-no-Jyc" firstAttribute="height" secondItem="ctY-r1-Lwx" secondAttribute="height" id="kcc-NP-beS"/>
                                 <constraint firstItem="tFw-K4-XeM" firstAttribute="leading" secondItem="ctY-r1-Lwx" secondAttribute="leading" id="rZ6-5H-qQ7"/>
-                                <constraint firstAttribute="trailing" secondItem="t0l-no-Jyc" secondAttribute="trailing" constant="20" id="u5j-0h-aC9"/>
+                                <constraint firstAttribute="trailing" secondItem="t0l-no-Jyc" secondAttribute="trailing" constant="40" id="u5j-0h-aC9"/>
                                 <constraint firstAttribute="width" secondItem="ctY-r1-Lwx" secondAttribute="height" multiplier="670:270" id="vWH-hd-viQ"/>
                                 <constraint firstItem="tFw-K4-XeM" firstAttribute="top" secondItem="ctY-r1-Lwx" secondAttribute="top" id="wVP-3p-QR3"/>
                             </constraints>
@@ -129,6 +129,19 @@
                                 </mask>
                             </variation>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qq8-5y-eq4" userLabel="finishTutorial">
+                            <rect key="frame" x="310" y="5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="IbK-Yg-PsY"/>
+                                <constraint firstAttribute="height" constant="40" id="seQ-Lm-fsE"/>
+                            </constraints>
+                            <state key="normal" image="removeIcon">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="completeTutorial:" destination="iN0-l3-epB" eventType="touchUpInside" id="g5S-Mf-yMo"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6Z-gB-cZa">
                             <rect key="frame" x="20" y="517" width="315" height="40"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,8 +162,10 @@
                         <constraint firstAttribute="trailing" secondItem="ctY-r1-Lwx" secondAttribute="trailing" id="2qE-08-W7g"/>
                         <constraint firstAttribute="trailing" secondItem="g6Z-gB-cZa" secondAttribute="trailing" constant="20" id="38v-dC-mPl"/>
                         <constraint firstItem="ctY-r1-Lwx" firstAttribute="leading" secondItem="XXh-14-usM" secondAttribute="leading" id="QDh-C9-eot"/>
+                        <constraint firstAttribute="trailing" secondItem="qq8-5y-eq4" secondAttribute="trailing" constant="5" id="QlE-PE-RK7"/>
                         <constraint firstItem="g6Z-gB-cZa" firstAttribute="leading" secondItem="XXh-14-usM" secondAttribute="leading" constant="20" id="UHz-P4-EkZ"/>
                         <constraint firstItem="M7p-Tm-AIY" firstAttribute="top" secondItem="7Ak-Xm-pkt" secondAttribute="bottom" id="cgD-yh-3uq"/>
+                        <constraint firstItem="qq8-5y-eq4" firstAttribute="top" secondItem="XXh-14-usM" secondAttribute="top" constant="5" id="ds5-2q-8LY"/>
                         <constraint firstAttribute="bottom" secondItem="g6Z-gB-cZa" secondAttribute="bottom" constant="10" id="gry-ch-bad"/>
                         <constraint firstItem="7Ak-Xm-pkt" firstAttribute="leading" secondItem="XXh-14-usM" secondAttribute="leading" id="sKn-OT-IAC"/>
                         <constraint firstAttribute="trailing" secondItem="M7p-Tm-AIY" secondAttribute="trailing" id="sr5-pX-reP"/>
@@ -173,6 +188,7 @@
                 <outlet property="firstImageView" destination="t0l-no-Jyc" id="AEM-r5-1yZ"/>
                 <outlet property="firstSection" destination="ctY-r1-Lwx" id="8MT-ip-fDe"/>
                 <outlet property="nextButton" destination="g6Z-gB-cZa" id="XQK-bZ-rDq"/>
+                <outlet property="removeButton" destination="qq8-5y-eq4" id="6eY-l8-NtO"/>
                 <outlet property="secondCopy" destination="Rdy-ZC-Jow" id="tQE-I0-8lA"/>
                 <outlet property="secondImageView" destination="MjQ-N8-hSR" id="0Hv-6B-F9g"/>
                 <outlet property="secondSection" destination="7Ak-Xm-pkt" id="pPv-lp-4A8"/>
@@ -186,5 +202,6 @@
         <image name="DatingApps" width="1005" height="318"/>
         <image name="MaleUploadFirst" width="1005" height="348"/>
         <image name="Selected-Female-2" width="285" height="345"/>
+        <image name="removeIcon" width="40" height="40"/>
     </resources>
 </document>

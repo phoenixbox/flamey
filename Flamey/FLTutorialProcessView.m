@@ -31,6 +31,13 @@ NSString *const kCompleteProcess = @"completeProcess";
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
+- (IBAction)completeTutorial:(id)sender {
+    NSNotification *notification = [NSNotification notificationWithName:@"completeTutorial"
+                                                                 object:self];
+
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
 - (void)setContent {
     [self setFirstSectionContent];
     [self setSecondSectionContent];

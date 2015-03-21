@@ -24,6 +24,8 @@ extern NSString *const kCompleteProcess;
 @property (weak, nonatomic) IBOutlet UIImageView *thirdImageView;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 - (IBAction)next:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *removeButton;
+- (IBAction)completeTutorial:(id)sender;
 
 - (void)setContent;
 @end
