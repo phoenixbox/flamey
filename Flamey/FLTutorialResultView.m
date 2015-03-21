@@ -20,10 +20,14 @@
     return self;
 }
 
+- (IBAction)start:(id)sender {
+}
+
 - (void)setLabels {
     [self setGetMatchedTitleCopy];
     [self setMatchTitleCopy];
     [self setExplanationCopy];
+    [self setStartButtonStyleAndCopy];
 }
 
 - (void)setGetMatchedTitleCopy {
@@ -88,6 +92,15 @@
     }];
 }
 
+- (void)setStartButtonStyleAndCopy {
+    [FLViewHelpers setBaseButtonStyle:_startButton withColor:[UIColor blackColor]];
+    NSDictionary *copySizes = [self copySizes];
+    [_startButton setTitle:@"Let's Go!" forState:UIControlStateNormal];
+    float buttonCopySize = [[copySizes objectForKey:@"buttonCopySize"] floatValue];
+
+    _startButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:buttonCopySize];
+}
+
 - (void)drawRect:(CGRect)rect {
     [self setupProfileImages];
     
@@ -95,6 +108,9 @@
 }
 
 - (void)setupProfileImages {
+    _contentView.layer.cornerRadius = 10;
+    _firstProfile.clipsToBounds = YES;
+
     _firstProfile.layer.cornerRadius = _firstProfile.bounds.size.width / 2;
     _firstProfile.clipsToBounds = YES;
 
@@ -124,7 +140,7 @@
 
     float bodyCopySize = [FLViewHelpers bodyCopyForScreenSize];
     // TODO: Design Button Sizes
-    float buttonCopySize = [FLViewHelpers bodyCopyForScreenSize];
+    float buttonCopySize = [FLViewHelpers buttonCopyForScreenSize];
 
     NSDictionary *fontSizes = @{
              @"matchTitleSize": @(matchTitleFontSize),
@@ -134,7 +150,6 @@
 
     return fontSizes;
 }
-
 
 
 /*

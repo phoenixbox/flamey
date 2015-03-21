@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *secondProfile;
 
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *explanation;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+- (IBAction)start:(id)sender;
 - (void)setLabels;
 
 @end

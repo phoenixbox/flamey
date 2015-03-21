@@ -217,6 +217,29 @@
     return 0;
 }
 
++ (float)buttonCopyForScreenSize {
+    // TODO: Button Sizes should be ratios and not fixed dimensions so that the font size can scale
+    if ([UIScreen mainScreen].bounds.size.height == 480) {
+        // iPhone 4 - 3.5
+        return 15.0f;
+    } else if ([UIScreen mainScreen].bounds.size.height == 568) {
+        // iPhone 5 - 4in
+        return 16.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 375) {
+        // iPhone 6 - 4.7in
+        return 16.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 414) {
+        // iPhone 6+ - 5.5in
+        return 16.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 768) {
+        // iPad
+        NSLog(@"!WARN!: iPad not designed for");
+        return 16.0f;
+    }
+
+    return 0;
+}
+
 @end
 
 // Avenir Font Family
