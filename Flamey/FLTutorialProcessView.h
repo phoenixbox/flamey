@@ -17,6 +17,11 @@
 @property (weak, nonatomic) IBOutlet UIView *secondSection;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *secondCopy;
 @property (weak, nonatomic) IBOutlet UIImageView *secondImageView;
+@property (weak, nonatomic) IBOutlet UIView *thirdSection;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *thirdCopy;
+@property (weak, nonatomic) IBOutlet UIImageView *thirdImageView;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+- (IBAction)next:(id)sender;
 
 - (void)setContent;
 @end
