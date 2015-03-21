@@ -28,8 +28,10 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self listenForUnwindTrigger];
-    
+//    [self listenForUnwindTrigger];
+    [self listenForSolutionTrigger];
+    [self listenForContinueTrigger];
+    [self listenForProcessTrigger];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,12 +109,31 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
     [self performSegueWithIdentifier:@"unwindToSelection" sender:self];
 }
 
-- (void)listenForUnwindTrigger {
+//- (void)listenFoCompleteTrigger {
+//    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+//
+//    [center addObserver:self
+//               selector:@selector(unwindToSelectedPhotos)
+//                   name:
+//                 object:nil];
+//}
+
+- (void)listenForSolutionTrigger {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
     [center addObserver:self
                selector:@selector(slideForward)
-                   name:kCompleteTutorial
+                   name:kCompleteSolutionTutorial
+                 object:nil];
+
+}
+
+- (void)listenForProcessTrigger {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(slideForward)
+                   name:kCompleteProcess
                  object:nil];
 }
 
@@ -120,8 +141,8 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
     [center addObserver:self
-               selector:@selector(slideForward)
-                   name:kContinueTutorial
+               selector:@selector(unwindToSelectedPhotos)
+                   name:kCompleteResult
                  object:nil];
 }
 

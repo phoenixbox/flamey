@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
 
+extern NSString *const kCompleteResult;
+
 @interface FLTutorialResultView : UIView
+
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @property (weak, nonatomic) IBOutlet UILabel *getMatchedTitle;

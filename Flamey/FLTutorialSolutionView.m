@@ -8,7 +8,7 @@
 
 #import "FLTutorialSolutionView.h"
 
-NSString *const kCompleteTutorial = @"completeTutorial";
+NSString *const kCompleteSolutionTutorial = @"completeSolution";
 
 // Male Image Constants
 NSString *const kMaleZeroSelected = @"Male-0-Selected";
@@ -48,9 +48,9 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
     [_finishButton setHidden:NO];
 }
 
-- (IBAction)finishTutorial:(id)sender {
+- (IBAction)completeSolution:(id)sender {
     // Update to trigger a slide to next step notification
-    NSNotification *notification = [NSNotification notificationWithName:kCompleteTutorial
+    NSNotification *notification = [NSNotification notificationWithName:kCompleteSolutionTutorial
                                                                  object:self];
 
     [[NSNotificationCenter defaultCenter] postNotification:notification];

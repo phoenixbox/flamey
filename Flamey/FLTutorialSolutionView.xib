@@ -130,7 +130,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="finishTutorial:" destination="iN0-l3-epB" eventType="touchUpInside" id="tbo-We-InA"/>
+                                <action selector="completeSolution:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gq0-kY-sCH"/>
                             </connections>
                         </button>
                     </subviews>

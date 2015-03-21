@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
 
+extern NSString *const kCompleteProcess;
+
 @interface FLTutorialProcessView : UIView
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIView *firstSection;

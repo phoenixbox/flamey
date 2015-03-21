@@ -10,9 +10,15 @@
 #import "FLViewHelpers.h"
 #import <tgmath.h>
 
+NSString *const kCompleteResult = @"completeResult";
+
 @implementation FLTutorialResultView
 
 - (IBAction)start:(id)sender {
+    NSNotification *notification = [NSNotification notificationWithName:kCompleteResult
+                                                                 object:self];
+
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 - (void)setLabels {

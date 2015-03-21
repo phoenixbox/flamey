@@ -8,6 +8,8 @@
 
 #import "FLTutorialProcessView.h"
 
+NSString *const kCompleteProcess = @"completeProcess";
+
 // Helpers
 #import "FLViewHelpers.h"
 
@@ -23,6 +25,10 @@
 }
 
 - (IBAction)next:(id)sender {
+    NSNotification *notification = [NSNotification notificationWithName:kCompleteProcess
+                                                                 object:self];
+
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 - (void)setContent {

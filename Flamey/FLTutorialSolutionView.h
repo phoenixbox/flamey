@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const kCompleteTutorial;
+extern NSString *const kCompleteSolutionTutorial;
 
 @interface FLTutorialSolutionView : UIView
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -23,6 +23,6 @@ extern NSString *const kCompleteTutorial;
 @property (weak, nonatomic) IBOutlet UIButton *thirdPersonaButton;
 - (IBAction)selectThirdPersona:(id)sender;
 
-- (IBAction)finishTutorial:(id)sender;
+- (IBAction)completeSolution:(id)sender;
 
 @end
