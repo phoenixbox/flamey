@@ -19,6 +19,8 @@ static NSString * const kTutorialSolutionView = @"FLTutorialSolutionView";
 static NSString * const kTutorialProcessView = @"FLTutorialProcessView";
 static NSString * const kTutorialResultView = @"FLTutorialResultView";
 
+static NSString * const kCompleteTutorial = @"completeTutorial";
+
 @interface FLTutorialViewController ()
 
 @end
@@ -28,7 +30,7 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    [self listenForUnwindTrigger];
+    [self listenForCompleteTrigger];
     [self listenForSolutionTrigger];
     [self listenForContinueTrigger];
     [self listenForProcessTrigger];
@@ -78,6 +80,7 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
 - (FLTutorialSolutionView *)prepareTutorialSolutionView {
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kTutorialSolutionView owner:nil options:nil];
     FLTutorialSolutionView *solutionView = (FLTutorialSolutionView *)[nibContents lastObject];
+    [solutionView setLabels];
 
     // TODO: Compose this specialized setup to its own function
     [FLViewHelpers setBaseButtonStyle:solutionView.finishButton withColor:[UIColor blackColor]];
@@ -109,14 +112,14 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
     [self performSegueWithIdentifier:@"unwindToSelection" sender:self];
 }
 
-//- (void)listenFoCompleteTrigger {
-//    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-//
-//    [center addObserver:self
-//               selector:@selector(unwindToSelectedPhotos)
-//                   name:
-//                 object:nil];
-//}
+- (void)listenForCompleteTrigger {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(unwindToSelectedPhotos)
+                   name:kCompleteTutorial
+                 object:nil];
+}
 
 - (void)listenForSolutionTrigger {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];

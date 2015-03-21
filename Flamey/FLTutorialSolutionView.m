@@ -27,6 +27,29 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
     _contentView.clipsToBounds = YES;
 }
 
+- (void)setLabels {
+    float titleFontSize;
+    if ([UIScreen mainScreen].bounds.size.height == 480) {
+        // iPhone 4 - 3.5
+        titleFontSize = 15.0f;
+    } else if ([UIScreen mainScreen].bounds.size.height == 568) {
+        // iPhone 5 - 4in
+        titleFontSize = 16.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 375) {
+        // iPhone 6 - 4.7in
+        titleFontSize = 16.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 414) {
+        // iPhone 6+ - 5.5in
+        titleFontSize = 16.0f;
+    } else if ([UIScreen mainScreen].bounds.size.width == 768) {
+        // iPad
+        NSLog(@"!WARN!: iPad not designed for");
+        titleFontSize = 16.0f;
+    }
+
+    _tutorialTitle.font = [UIFont fontWithName:@"AvenirNext-Regular" size:titleFontSize];
+}
+
 - (IBAction)selectFirstPersona:(id)sender {
     NSLog(@"selectFirstPersona");
     [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
@@ -61,4 +84,10 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
  // An empty implementation adversely affects performance during animation.
  */
 
+- (IBAction)completeTutorial:(id)sender {
+    NSNotification *notification = [NSNotification notificationWithName:@"completeTutorial"
+                                                                 object:self];
+
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
 @end

@@ -24,5 +24,9 @@ extern NSString *const kCompleteSolutionTutorial;
 - (IBAction)selectThirdPersona:(id)sender;
 
 - (IBAction)completeSolution:(id)sender;
+- (void)setLabels;
+@property (weak, nonatomic) IBOutlet UIButton *removeButton;
+- (IBAction)completeTutorial:(id)sender;
+
 
 @end
