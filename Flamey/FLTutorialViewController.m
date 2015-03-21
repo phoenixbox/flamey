@@ -46,26 +46,24 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    if (view == nil) {
-        UIView *newView;
+    UIView *newView;
 
-        switch (index) {
-            case 0:
-                newView = [self prepareTutorialSolutionView];
-                break;
-            case 1:
-                newView = [self prepareTutorialProcessView];
-                break;
-            case 2:
-                newView = [self prepareTutorialResultView];
-                break;
-            default:
-                NSLog(@"View Type Missing For Slide View");
-                break;
-        }
-
-        view = newView;
+    switch (index) {
+        case 0:
+            newView = [self prepareTutorialSolutionView];
+            break;
+        case 1:
+            newView = [self prepareTutorialProcessView];
+            break;
+        case 2:
+            newView = [self prepareTutorialResultView];
+            break;
+        default:
+            NSLog(@"View Type Missing For Slide View");
+            break;
     }
+
+    view = newView;
 
     return view;
 }

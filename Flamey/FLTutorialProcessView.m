@@ -13,6 +13,15 @@
 
 @implementation FLTutorialProcessView
 
+// Fix the black background and the switch view init
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self) {
+        self.backgroundColor = [UIColor grayColor];
+    }
+
+    return self;
+}
+
 - (IBAction)next:(id)sender {
 }
 

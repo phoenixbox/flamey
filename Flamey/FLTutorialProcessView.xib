@@ -154,7 +154,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="XXh-14-usM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="34y-3d-gBq"/>
                 <constraint firstItem="XXh-14-usM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="BHq-OC-ZWC"/>
