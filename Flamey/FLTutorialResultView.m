@@ -23,6 +23,7 @@
 - (void)setLabels {
     [self setGetMatchedTitleCopy];
     [self setMatchTitleCopy];
+    [self setExplanationCopy];
 }
 
 - (void)setGetMatchedTitleCopy {
@@ -46,6 +47,34 @@
     // assign to the `text` property last so it can inherit other label properties.
     [_matchTitle setText:copy afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"stndout" options:NSCaseInsensitiveSearch];
+
+        // Core Text APIs use C functions without a direct bridge to UIFont. See Apple's "Core Text Programming Guide" to learn how to configure string attributes.
+        UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:bodyCopySize];
+        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+        if (font) {
+            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+            CFRelease(font);
+        }
+
+        return mutableAttributedString;
+    }];
+}
+
+- (void)setExplanationCopy {
+    NSString *copy = @"When people can see who you are\nYou are more likely to get matched\n\nSimple";
+    NSDictionary *copySizes = [self copySizes];
+
+    float bodyCopySize = [[copySizes objectForKey:@"bodyCopySize"] floatValue];
+
+    _explanation.font = [UIFont fontWithName:@"AvenirNext-Regular" size:bodyCopySize];
+    _explanation.textColor = [UIColor blackColor];
+    _explanation.lineBreakMode = NSLineBreakByWordWrapping;
+    _explanation.numberOfLines = 5;
+
+    // If you're using a simple `NSString` for your text,
+    // assign to the `text` property last so it can inherit other label properties.
+    [_explanation setText:copy afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"Simple" options:NSCaseInsensitiveSearch];
 
         // Core Text APIs use C functions without a direct bridge to UIFont. See Apple's "Core Text Programming Guide" to learn how to configure string attributes.
         UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:bodyCopySize];

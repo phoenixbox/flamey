@@ -25,8 +25,8 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="stndout more - get matched more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhc-m0-zeI" userLabel="Title" customClass="TTTAttributedLabel">
-                            <rect key="frame" x="0.0" y="122" width="355" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stndout more - get matched more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhc-m0-zeI" userLabel="Title" customClass="TTTAttributedLabel">
+                            <rect key="frame" x="0.0" y="114" width="355" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ADs-zZ-vr9"/>
                                 <constraint firstAttribute="width" secondItem="Xhc-m0-zeI" secondAttribute="height" id="Lbf-hk-xpJ"/>
@@ -40,8 +40,8 @@
                                 </mask>
                             </variation>
                         </label>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDk-MH-2TJ" userLabel="ProfileContainers">
-                            <rect key="frame" x="50" y="166" width="255" height="117"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDk-MH-2TJ" userLabel="ProfileContainers">
+                            <rect key="frame" x="50" y="158" width="255" height="117"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected-Female-3" translatesAutoresizingMaskIntoConstraints="NO" id="JUn-QT-0Ie" userLabel="SecondProfile">
                                     <rect key="frame" x="138" y="0.0" width="117" height="117"/>
@@ -93,23 +93,38 @@
                                 </mask>
                             </variation>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy2-e1-7vb" userLabel="explanationCopy" customClass="TTTAttributedLabel">
+                            <rect key="frame" x="20" y="305" width="315" height="103"/>
+                            <string key="text">When people can see who you are
+You are more likely to get matched
+ 
+Simple</string>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Xhc-m0-zeI" secondAttribute="trailing" id="3LV-BY-P2Y"/>
                         <constraint firstItem="cwt-Mz-cR8" firstAttribute="leading" secondItem="UXd-Zx-lfD" secondAttribute="leading" id="6QU-34-rXc"/>
+                        <constraint firstItem="hy2-e1-7vb" firstAttribute="leading" secondItem="UXd-Zx-lfD" secondAttribute="leading" constant="20" id="6qG-Bk-aLA"/>
                         <constraint firstAttribute="trailing" secondItem="cwt-Mz-cR8" secondAttribute="trailing" id="JiS-0D-cjp"/>
+                        <constraint firstItem="ZDk-MH-2TJ" firstAttribute="centerX" secondItem="hy2-e1-7vb" secondAttribute="centerX" id="NIP-jD-nQK"/>
                         <constraint firstItem="cwt-Mz-cR8" firstAttribute="top" secondItem="UXd-Zx-lfD" secondAttribute="top" constant="50" id="PJd-7p-RnD"/>
                         <constraint firstItem="cwt-Mz-cR8" firstAttribute="top" secondItem="Xhc-m0-zeI" secondAttribute="bottom" id="Sah-RO-cEO"/>
                         <constraint firstItem="ZDk-MH-2TJ" firstAttribute="top" secondItem="Xhc-m0-zeI" secondAttribute="bottom" constant="4" id="jV3-4o-Ro8"/>
                         <constraint firstItem="Xhc-m0-zeI" firstAttribute="leading" secondItem="UXd-Zx-lfD" secondAttribute="leading" id="jXf-6R-dn6"/>
                         <constraint firstAttribute="trailing" secondItem="ZDk-MH-2TJ" secondAttribute="trailing" constant="50" id="jqV-aS-Sic"/>
+                        <constraint firstAttribute="trailing" secondItem="hy2-e1-7vb" secondAttribute="trailing" constant="20" id="mZH-kl-XG0"/>
                         <constraint firstItem="Xhc-m0-zeI" firstAttribute="top" secondItem="cwt-Mz-cR8" secondAttribute="bottom" constant="-10" id="nhi-gP-ROh"/>
+                        <constraint firstItem="hy2-e1-7vb" firstAttribute="top" secondItem="ZDk-MH-2TJ" secondAttribute="bottom" constant="30" id="vNU-Wz-pu6"/>
                         <constraint firstItem="ZDk-MH-2TJ" firstAttribute="leading" secondItem="UXd-Zx-lfD" secondAttribute="leading" constant="50" id="zMz-an-WUd"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="Sah-RO-cEO"/>
+                            <exclude reference="NIP-jD-nQK"/>
                         </mask>
                     </variation>
                 </view>
@@ -125,13 +140,14 @@
             <connections>
                 <outlet property="ContentView" destination="UXd-Zx-lfD" id="1wt-SC-hWh"/>
                 <outlet property="contentView" destination="UXd-Zx-lfD" id="Rxj-gI-0ZX"/>
+                <outlet property="explanation" destination="hy2-e1-7vb" id="ERt-Wx-bjU"/>
                 <outlet property="firstProfile" destination="2ST-dG-vzx" id="X1N-LW-JYg"/>
                 <outlet property="getMatchedTitle" destination="cwt-Mz-cR8" id="6sf-X7-uFX"/>
                 <outlet property="matchTitle" destination="Xhc-m0-zeI" id="GQW-mu-hQc"/>
                 <outlet property="profileContainer" destination="ZDk-MH-2TJ" id="qof-w0-5R6"/>
                 <outlet property="secondProfile" destination="JUn-QT-0Ie" id="j9S-VN-SE6"/>
             </connections>
-            <point key="canvasLocation" x="221.5" y="557.5"/>
+            <point key="canvasLocation" x="333.5" y="624.5"/>
         </view>
     </objects>
     <resources>

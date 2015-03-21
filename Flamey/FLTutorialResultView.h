@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *firstProfile;
 @property (weak, nonatomic) IBOutlet UIImageView *secondProfile;
 
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *explanation;
 - (void)setLabels;
 
 @end
