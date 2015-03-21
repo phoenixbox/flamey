@@ -13,13 +13,13 @@
 
 @implementation FLTutorialProcessView
 
-// Fix the black background and the switch view init
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self) {
-        self.backgroundColor = [UIColor grayColor];
-    }
+- (void)setNeedsDisplay {
+    [self setBackgroundColor:[UIColor clearColor]];
+}
 
-    return self;
+- (void)layoutSubviews {
+    _contentView.layer.cornerRadius = 10;
+    _contentView.clipsToBounds = YES;
 }
 
 - (IBAction)next:(id)sender {
@@ -126,13 +126,6 @@
     [_nextButton setTitle:@"Awesome!" forState:UIControlStateNormal];
 
     _nextButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:buttonCopySize];
-}
-
-
-- (void)drawRect:(CGRect)rect {
-    _contentView.layer.cornerRadius = 10;
-
-    self.backgroundColor = [UIColor grayColor];
 }
 
 @end

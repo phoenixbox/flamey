@@ -1093,7 +1093,7 @@
                   symbolName = "-[FLSelectedPhotoStore removePhotoById:]"
                   moduleName = "Flamey"
                   urlString = "file:///Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLSelectedPhotoStore.m"
-                  timestampString = "448621413.509137"
+                  timestampString = "448654604.463197"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -1107,7 +1107,7 @@
                   symbolName = "__40-[FLSelectedPhotoStore removePhotoById:]_block_invoke"
                   moduleName = "Flamey"
                   urlString = "file:///Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLSelectedPhotoStore.m"
-                  timestampString = "448621413.509306"
+                  timestampString = "448654604.463483"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -1204,11 +1204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLTutorialResultView.m"
-            timestampString = "448613637.506268"
+            timestampString = "448654024.935439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "-start:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1220,11 +1220,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLTutorialResultView.m"
-            timestampString = "448613637.506268"
+            timestampString = "448654024.935439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-setMatchTitleCopy"
             landmarkType = "5">
             <Locations>
@@ -1262,16 +1262,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLTutorialResultView.m"
-            timestampString = "448607594.355226"
+            timestampString = "448654024.935439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "-initWithFrame:"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "-setLabels"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flamey/FLTutorialProcessView.m"
+            timestampString = "448654487.599803"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-layoutSubviews"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

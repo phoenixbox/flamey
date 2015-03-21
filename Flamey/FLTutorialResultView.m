@@ -12,14 +12,6 @@
 
 @implementation FLTutorialResultView
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self) {
-        self.backgroundColor = [UIColor grayColor];
-    }
-
-    return self;
-}
-
 - (IBAction)start:(id)sender {
 }
 
@@ -109,7 +101,7 @@
 
 - (void)setupProfileImages {
     _contentView.layer.cornerRadius = 10;
-    _firstProfile.clipsToBounds = YES;
+    _contentView.clipsToBounds = YES;
 
     _firstProfile.layer.cornerRadius = _firstProfile.bounds.size.width / 2;
     _firstProfile.clipsToBounds = YES;
@@ -151,13 +143,5 @@
     return fontSizes;
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

@@ -18,6 +18,15 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 
 @implementation FLTutorialSolutionView
 
+- (void)setNeedsDisplay {
+    [self setBackgroundColor:[UIColor clearColor]];
+}
+
+- (void)layoutSubviews {
+    _contentView.layer.cornerRadius = 10;
+    _contentView.clipsToBounds = YES;
+}
+
 - (IBAction)selectFirstPersona:(id)sender {
     NSLog(@"selectFirstPersona");
     [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
@@ -50,9 +59,6 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 /*
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
  */
 
 @end
