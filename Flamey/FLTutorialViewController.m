@@ -10,12 +10,13 @@
 #import "FLTutorialSolutionView.h"
 #import "FLTutorialHowView.h"
 #import "FLTutorialResultView.h"
+#import "FLTutorialProcessView.h"
 
 // Helpers
 #import "FLViewHelpers.h"
 
 static NSString * const kTutorialSolutionView = @"FLTutorialSolutionView";
-static NSString * const kTutorialHowView = @"FLTutorialHowView";
+static NSString * const kTutorialProcessView = @"FLTutorialProcessView";
 static NSString * const kTutorialResultView = @"FLTutorialResultView";
 
 @interface FLTutorialViewController ()
@@ -53,7 +54,7 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
                 newView = [self prepareTutorialSolutionView];
                 break;
             case 1:
-                newView = [self prepareTutorialResultView];
+                newView = [self prepareTutorialProcessView];
                 break;
             case 2:
                 newView = [self prepareTutorialResultView];
@@ -85,25 +86,14 @@ static NSString * const kTutorialResultView = @"FLTutorialResultView";
     return solutionView;
 }
 
-- (FLTutorialHowView *)prepareTutorialHowView {
-    
-    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kTutorialHowView owner:nil options:nil];
-    FLTutorialHowView *howView = (FLTutorialHowView *)[nibContents lastObject];
+- (FLTutorialProcessView *)prepareTutorialProcessView {
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kTutorialProcessView owner:nil options:nil];
+    FLTutorialProcessView *processView = (FLTutorialProcessView *)[nibContents lastObject];
 
-    [FLViewHelpers setBaseButtonStyle:howView.continueButton withColor:[UIColor blackColor]];
-    [howView.continueButton setHidden:YES];
+    [processView setContent];
+    // TODO: Compose this specialized setup to its own function
 
-    [howView.userCharacterImageView setContentMode:UIViewContentModeScaleAspectFit];
-    [howView.uploadProcessImageView setContentMode:UIViewContentModeScaleAspectFit];
-    // Rename this to dating image view context
-    [howView.thirdSectionImageView setContentMode:UIViewContentModeScaleAspectFit];
-
-    [howView setLabelCopyAndStyles];
-//  TODO: Compose this specialized setup to its own function
-//  [FLViewHelpers setBaseButtonStyle:tutorialView.finishButton withColor:[UIColor blackColor]];
-//  [tutorialView.finishButton setHidden:YES];
-
-    return howView;
+    return processView;
 }
 
 - (FLTutorialResultView *)prepareTutorialResultView {

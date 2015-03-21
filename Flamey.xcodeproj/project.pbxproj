@@ -36,6 +36,8 @@
 		CB4ABFE41AB4BF2D00ABD784 /* FLAnnotationNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABFE31AB4BF2D00ABD784 /* FLAnnotationNavViewController.m */; };
 		CB4ABFE71AB4C29D00ABD784 /* FLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABFE61AB4C29D00ABD784 /* FLTabBarViewController.m */; };
 		CB524F711AB69848000C6228 /* FLLoginSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB524F701AB69848000C6228 /* FLLoginSlide.xib */; };
+		CB5519651ABD547B00CD0C5E /* FLTutorialProcessView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5519641ABD547B00CD0C5E /* FLTutorialProcessView.m */; };
+		CB5519671ABD548900CD0C5E /* FLTutorialProcessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5519661ABD548900CD0C5E /* FLTutorialProcessView.xib */; };
 		CB6BC4BF1AA57720006D34EF /* FLLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BC4BE1AA57720006D34EF /* FLLoginView.m */; };
 		CB6BC4C31AA59467006D34EF /* FLTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */; };
 		CB6CFF281A6C858C00ACD39A /* FLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFF271A6C858C00ACD39A /* FLPhoto.m */; };
@@ -130,6 +132,9 @@
 		CB4ABFE51AB4C29D00ABD784 /* FLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTabBarViewController.h; sourceTree = "<group>"; };
 		CB4ABFE61AB4C29D00ABD784 /* FLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTabBarViewController.m; sourceTree = "<group>"; };
 		CB524F701AB69848000C6228 /* FLLoginSlide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLLoginSlide.xib; sourceTree = "<group>"; };
+		CB5519631ABD547B00CD0C5E /* FLTutorialProcessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialProcessView.h; sourceTree = "<group>"; };
+		CB5519641ABD547B00CD0C5E /* FLTutorialProcessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialProcessView.m; sourceTree = "<group>"; };
+		CB5519661ABD548900CD0C5E /* FLTutorialProcessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialProcessView.xib; sourceTree = "<group>"; };
 		CB6BC4BD1AA57720006D34EF /* FLLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginView.h; sourceTree = "<group>"; };
 		CB6BC4BE1AA57720006D34EF /* FLLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginView.m; sourceTree = "<group>"; };
 		CB6BC4C11AA59467006D34EF /* FLTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialViewController.h; sourceTree = "<group>"; };
@@ -369,6 +374,9 @@
 				CB9C1D101ABBCB6A002C7FF9 /* FLTutorialResultView.h */,
 				CB9C1D111ABBCB6A002C7FF9 /* FLTutorialResultView.m */,
 				CB9C1D131ABBCBA5002C7FF9 /* FLTutorialResultView.xib */,
+				CB5519631ABD547B00CD0C5E /* FLTutorialProcessView.h */,
+				CB5519641ABD547B00CD0C5E /* FLTutorialProcessView.m */,
+				CB5519661ABD548900CD0C5E /* FLTutorialProcessView.xib */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -644,6 +652,7 @@
 				CBEE45DE1ABBEE1100C42FE2 /* Rochester-Regular.ttf in Resources */,
 				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
+				CB5519671ABD548900CD0C5E /* FLTutorialProcessView.xib in Resources */,
 				CB9C1D141ABBCBA5002C7FF9 /* FLTutorialResultView.xib in Resources */,
 				CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */,
 				CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */,
@@ -723,6 +732,7 @@
 				CBDDEF851AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m in Sources */,
 				CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */,
 				CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */,
+				CB5519651ABD547B00CD0C5E /* FLTutorialProcessView.m in Sources */,
 				CBDF2CAF1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.m in Sources */,
 				CB3B7D051A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m in Sources */,
 				CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */,
