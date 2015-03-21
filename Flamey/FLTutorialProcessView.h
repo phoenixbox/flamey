@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIView *firstSection;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *firstCopy;
 @property (weak, nonatomic) IBOutlet UIImageView *firstImageView;
+@property (weak, nonatomic) IBOutlet UIView *secondSection;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *secondCopy;
+@property (weak, nonatomic) IBOutlet UIImageView *secondImageView;
 
 - (void)setContent;
 @end
