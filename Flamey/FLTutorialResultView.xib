@@ -5,7 +5,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Rochester-Regular.otf">
+        <mutableArray key="Rochester-Regular.ttf">
             <string>Rochester</string>
         </mutableArray>
     </customFonts>
@@ -73,13 +73,13 @@
                             </variation>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Matched!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwt-Mz-cR8" userLabel="matchTitle">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="91"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="92"/>
                             <fontDescription key="fontDescription" name="Rochester" family="Rochester" pointSize="70"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stndout more - get matched more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhc-m0-zeI" userLabel="Title" customClass="TTTAttributedLabel">
-                            <rect key="frame" x="0.0" y="81" width="355" height="40"/>
+                            <rect key="frame" x="0.0" y="82" width="355" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ADs-zZ-vr9"/>
                                 <constraint firstAttribute="width" secondItem="Xhc-m0-zeI" secondAttribute="height" id="Lbf-hk-xpJ"/>
@@ -101,7 +101,7 @@
                         <constraint firstAttribute="trailing" secondItem="cwt-Mz-cR8" secondAttribute="trailing" id="JiS-0D-cjp"/>
                         <constraint firstItem="cwt-Mz-cR8" firstAttribute="top" secondItem="UXd-Zx-lfD" secondAttribute="top" id="PJd-7p-RnD"/>
                         <constraint firstItem="cwt-Mz-cR8" firstAttribute="top" secondItem="Xhc-m0-zeI" secondAttribute="bottom" id="Sah-RO-cEO"/>
-                        <constraint firstItem="ZDk-MH-2TJ" firstAttribute="top" secondItem="Xhc-m0-zeI" secondAttribute="bottom" constant="5" id="jV3-4o-Ro8"/>
+                        <constraint firstItem="ZDk-MH-2TJ" firstAttribute="top" secondItem="Xhc-m0-zeI" secondAttribute="bottom" constant="4" id="jV3-4o-Ro8"/>
                         <constraint firstItem="Xhc-m0-zeI" firstAttribute="leading" secondItem="UXd-Zx-lfD" secondAttribute="leading" id="jXf-6R-dn6"/>
                         <constraint firstAttribute="trailing" secondItem="ZDk-MH-2TJ" secondAttribute="trailing" constant="50" id="jqV-aS-Sic"/>
                         <constraint firstItem="Xhc-m0-zeI" firstAttribute="top" secondItem="cwt-Mz-cR8" secondAttribute="bottom" constant="-10" id="nhi-gP-ROh"/>
@@ -114,6 +114,7 @@
                     </variation>
                 </view>
             </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="UXd-Zx-lfD" secondAttribute="trailing" constant="10" id="Sde-T2-XcD"/>
                 <constraint firstItem="UXd-Zx-lfD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="VwG-65-NYY"/>

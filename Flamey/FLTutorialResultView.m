@@ -11,27 +11,24 @@
 
 @implementation FLTutorialResultView
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self) {
+        self.backgroundColor = [UIColor grayColor];
+    }
+
+    return self;
+}
+
 - (void)setLabels {
     float fontSize = [FLViewHelpers fontForScreenSize];
 
     [self setMatchTitleCopy:fontSize];
     [self setGetMatchedTitleStyle];
-    [self setupProfiles];
 }
 
 - (void)setGetMatchedTitleStyle {
     _getMatchedTitle.font = [UIFont fontWithName:@"Rochester" size:65.0f];
 }
-
-- (void)setupProfiles {
-    // UI constraints should have these profiles the same size
-    float firstProfileWidth = _firstProfile.image.size.width;
-    _firstProfile.layer.cornerRadius = firstProfileWidth/2;
-
-    float secondProfileWidth = _secondProfile.image.size.width;
-    _secondProfile.layer.cornerRadius = secondProfileWidth/2;
-}
-
 
 - (void)setMatchTitleCopy:(float)fontSize {
     NSString *copy = @"stndout more - get matched more";
@@ -57,6 +54,22 @@
         return mutableAttributedString;
     }];
 }
+
+- (void)drawRect:(CGRect)rect {
+    [self setupProfileImages];
+    
+    self.backgroundColor = [UIColor grayColor];
+}
+
+- (void)setupProfileImages {
+    _firstProfile.layer.cornerRadius = _firstProfile.bounds.size.width / 2;
+    _firstProfile.clipsToBounds = YES;
+
+    _secondProfile.layer.cornerRadius = _secondProfile.bounds.size.width / 2;
+    _secondProfile.clipsToBounds = YES;
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
