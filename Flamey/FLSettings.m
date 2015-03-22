@@ -50,7 +50,7 @@ static NSString *const kUserKey = @"user";
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSelectedPersonaKey];
 }
 
-- (FLUser *)user
+- (FLUser *)getUser
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserKey];
 }

@@ -16,14 +16,15 @@
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *locale;
 @property (nonatomic, strong) NSString *id;
-@property (nonatomic, strong) NSString *updated_time;
-@property (nonatomic, strong) NSString *last_name;
+@property (nonatomic, strong) NSString *updatedTime;
+@property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *timezone;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *link;
 @property (nonatomic, assign) BOOL verified;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *first_name;
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString<Optional> *profileImage;
 
 - (BOOL)isMale;
 

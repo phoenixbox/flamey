@@ -8,7 +8,13 @@
 
 #import "FLTutorialResultView.h"
 #import "FLViewHelpers.h"
-#import <tgmath.h>
+
+// Pods
+#import <SDWebImage/UIImageView+WebCache.h>
+
+// Data Layer
+#import "FLSettings.h"
+#import "FLUser.h"
 
 NSString *const kCompleteResult = @"completeResult";
 
@@ -21,6 +27,9 @@ NSString *const kCompleteResult = @"completeResult";
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
+// RESTART: Switch content based on gender and sexual preference
+// Use user profile image for the image
+// Tap action on the counter image - Rotate for preference
 - (void)setLabels {
     [self setGetMatchedTitleCopy];
     [self setMatchTitleCopy];
@@ -103,6 +112,14 @@ NSString *const kCompleteResult = @"completeResult";
     [self setupProfileImages];
     
     self.backgroundColor = [UIColor grayColor];
+}
+
+- (void)layoutSubviews {
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = settings.user;
+
+    // Need a placeholder
+    [_firstProfile sd_setImageWithURL:[NSURL URLWithString:user.profileImage] placeholderImage:nil];
 }
 
 - (void)setupProfileImages {

@@ -176,10 +176,20 @@ NSString *const kLoginSlide = @"FLLoginSlide";
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:user options:NSJSONWritingPrettyPrinted error:nil];
     NSString *result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     FLUser *newUser = [[FLUser alloc] initWithString:result error:nil];
-    
-    [[FLSettings defaultSettings] setUser:newUser];
 
-    [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
+    NSString *graphPath = @"me/picture?type=large&redirect=false";
+
+    [FBRequestConnection startWithGraphPath:graphPath parameters:nil HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            NSString *profileImage = [[result objectForKey:@"data"] objectForKey:@"url"];
+            [newUser setProfileImage:profileImage];
+
+            [[FLSettings defaultSettings] setUser:newUser];
+        } else {
+            NSLog(@"FBLogin user image error: %@", error);
+        }
+        [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

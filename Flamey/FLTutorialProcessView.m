@@ -103,7 +103,7 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 
 - (NSDictionary *)imagesForSelectedPersona {
     FLSettings *settings = [FLSettings defaultSettings];
-    FLUser *user = [settings user];
+    FLUser *user = settings.user;
 
     NSString *personaImage;
     NSString *uploadImage;

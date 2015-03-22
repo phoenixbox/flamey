@@ -20,4 +20,6 @@
 @property (nonatomic, strong) NSString *selectedPersona;
 @property (nonatomic, strong) FLUser *user;
 
+- (FLUser *)getUser;
+
 @end

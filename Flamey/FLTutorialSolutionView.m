@@ -45,7 +45,7 @@ NSString *const kFemale = @"female";
 
 - (void)setSelectedPersona {
     FLSettings *settings = [FLSettings defaultSettings];
-    FLUser *user = [settings user];
+    FLUser *user = settings.user;
 
     NSString *selectedPersona = [[FLSettings defaultSettings] selectedPersona];
 
@@ -58,6 +58,7 @@ NSString *const kFemale = @"female";
             [self setFemalePersonaImages:selectedPersona];
         } else {
             NSLog(@"!WARN! Gender is not defined");
+            [self setDefaultZeroSelectedImage];
         }
     } else {
         [self setDefaultZeroSelectedImage];
@@ -66,7 +67,7 @@ NSString *const kFemale = @"female";
 
 - (void)setDefaultZeroSelectedImage {
     FLSettings *settings = [FLSettings defaultSettings];
-    FLUser *user = [settings user];
+    FLUser *user = settings.user;
 
     if (user.isMale) {
         [_tutorialImageView setImage:[UIImage imageNamed:kMaleZeroSelected]];
@@ -126,7 +127,7 @@ NSString *const kFemale = @"female";
 
 - (IBAction)selectFirstPersona:(id)sender {
     FLSettings *settings = [FLSettings defaultSettings];
-    FLUser *user = [settings user];
+    FLUser *user = settings.user;
 
     if (user.isMale) {
         [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
@@ -143,7 +144,7 @@ NSString *const kFemale = @"female";
 
 - (IBAction)selectSecondPersona:(id)sender {
     FLSettings *settings = [FLSettings defaultSettings];
-    FLUser *user = [settings user];
+    FLUser *user = settings.user;
 
     if (user.isMale) {
         [_tutorialImageView setImage:[UIImage imageNamed:kMaleTwoSelected]];
@@ -160,7 +161,7 @@ NSString *const kFemale = @"female";
 
 - (IBAction)selectThirdPersona:(id)sender {
     FLSettings *settings = [FLSettings defaultSettings];
-    FLUser *user = [settings user];
+    FLUser *user = settings.user;
 
     if (user.isMale) {
         [_tutorialImageView setImage:[UIImage imageNamed:kMaleThreeSelected]];
