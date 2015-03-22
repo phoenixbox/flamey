@@ -11,6 +11,7 @@
 
 // Data Layer
 #import "FLSettings.h"
+#import "FLUser.h"
 
 NSString *const kCompleteProcess = @"completeProcess";
 
@@ -26,6 +27,14 @@ NSString *const kMaleImageThree = @"Selected-Male-3";
 NSString *const kMaleUploadOne = @"MaleUploadOne";
 NSString *const kMaleUploadTwo = @"MaleUploadTwo";
 NSString *const kMaleUploadThree = @"MaleUploadThree";
+
+// Male
+NSString *const kFemaleImageOne = @"Selected-Female-1";
+NSString *const kFemaleImageTwo = @"Selected-Female-2";
+NSString *const kFemaleImageThree = @"Selected-Female-3";
+NSString *const kFemaleUploadOne = @"FemaleUploadOne";
+NSString *const kFemaleUploadTwo = @"FemaleUploadTwo";
+NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 
 // Helpers
 #import "FLViewHelpers.h"
@@ -93,28 +102,51 @@ NSString *const kMaleUploadThree = @"MaleUploadThree";
 }
 
 - (NSDictionary *)imagesForSelectedPersona {
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = [settings user];
+
     NSString *personaImage;
     NSString *uploadImage;
 
     NSString *selectedPersona = [[FLSettings defaultSettings] selectedPersona];
 
-    if ([selectedPersona isEqualToString:kMaleOneSelected]) {
-        personaImage = kMaleImageOne;
-        uploadImage = kMaleUploadOne;
-    } else if ([selectedPersona isEqualToString:kMaleTwoSelected]) {
-        personaImage = kMaleImageTwo;
-        uploadImage = kMaleUploadTwo;
-    } else if ([selectedPersona isEqualToString:kMaleThreeSelected]) {
-        personaImage = kMaleImageThree;
-        uploadImage = kMaleUploadThree;
+    if (user.isMale) {
+        if ([selectedPersona isEqualToString:kMaleOneSelected]) {
+            personaImage = kMaleImageOne;
+            uploadImage = kMaleUploadOne;
+        } else if ([selectedPersona isEqualToString:kMaleTwoSelected]) {
+            personaImage = kMaleImageTwo;
+            uploadImage = kMaleUploadTwo;
+        } else if ([selectedPersona isEqualToString:kMaleThreeSelected]) {
+            personaImage = kMaleImageThree;
+            uploadImage = kMaleUploadThree;
+        } else {
+            NSLog(@"!WARN! no persona set in the settings");
+            personaImage = kMaleImageOne;
+            uploadImage = kMaleUploadOne;
+        }
+    } else if (user.isFemale) {
+        if ([selectedPersona isEqualToString:kFemaleOneSelected]) {
+            personaImage = kFemaleImageOne;
+            uploadImage = kFemaleUploadOne;
+        } else if ([selectedPersona isEqualToString:kFemaleTwoSelected]) {
+            personaImage = kFemaleImageTwo;
+            uploadImage = kFemaleUploadTwo;
+        } else if ([selectedPersona isEqualToString:kFemaleThreeSelected]) {
+            personaImage = kFemaleImageThree;
+            uploadImage = kFemaleUploadThree;
+        } else {
+            NSLog(@"!WARN! no persona set in the settings");
+            personaImage = kFemaleImageOne;
+            uploadImage = kFemaleUploadOne;
+        }
     } else {
-        NSLog(@"!WARN! no persona set in the settings");
-        personaImage = kMaleImageOne;
-        uploadImage = kMaleUploadOne;
+        NSLog(@"!WARN! No gender is defined");
     }
 
     return @{ @"personaImage": personaImage, @"uploadImage": uploadImage };
 }
+
 
 - (void)setSecondSectionContent {
     NSString *copy = @"We upload these photos\n privately to facebook where\n only you can see them\nGuaranteed";

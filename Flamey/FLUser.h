@@ -25,4 +25,8 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *first_name;
 
+- (BOOL)isMale;
+
+- (BOOL)isFemale;
+
 @end

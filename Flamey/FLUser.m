@@ -18,4 +18,12 @@
     return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
 }
 
+- (BOOL)isMale {
+    return [_gender isEqualToString:@"male"];
+}
+
+- (BOOL)isFemale {
+    return [_gender isEqualToString:@"female"];
+}
+
 @end

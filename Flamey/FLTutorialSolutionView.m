@@ -7,6 +7,7 @@
 //
 
 #import "FLTutorialSolutionView.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 // Data Layer
 #import "FLSettings.h"
@@ -19,6 +20,15 @@ NSString *const kMaleOneSelected = @"Male-1-Selected";
 NSString *const kMaleTwoSelected = @"Male-2-Selected";
 NSString *const kMaleThreeSelected = @"Male-3-Selected";
 
+// Female Image Constants
+NSString *const kFemaleZeroSelected = @"Female-0-Selected";
+NSString *const kFemaleOneSelected = @"Female-1-Selected";
+NSString *const kFemaleTwoSelected = @"Female-2-Selected";
+NSString *const kFemaleThreeSelected = @"Female-3-Selected";
+
+NSString *const kMale = @"male";
+NSString *const kFemale = @"female";
+
 @implementation FLTutorialSolutionView
 
 - (void)setNeedsDisplay {
@@ -28,27 +38,66 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 - (void)layoutSubviews {
     _contentView.layer.cornerRadius = 10;
     _contentView.clipsToBounds = YES;
+    [self setDefaultZeroSelectedImage];
 
     [self setSelectedPersona];
 }
 
 - (void)setSelectedPersona {
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = [settings user];
+
     NSString *selectedPersona = [[FLSettings defaultSettings] selectedPersona];
 
     if (selectedPersona) {
         [_finishButton setHidden:NO];
 
-        if ([selectedPersona isEqualToString:kMaleOneSelected]) {
-            [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
-        } else if ([selectedPersona isEqualToString:kMaleTwoSelected]) {
-            [_tutorialImageView setImage:[UIImage imageNamed:kMaleTwoSelected]];
-        } else if ([selectedPersona isEqualToString:kMaleThreeSelected]) {
-            [_tutorialImageView setImage:[UIImage imageNamed:kMaleThreeSelected]];
+        if (user.isMale) {
+            [self setMalePersonaImages:selectedPersona];
+        } else if (user.isFemale) {
+            [self setFemalePersonaImages:selectedPersona];
         } else {
-            NSLog(@"!WARN! The set persona is not defined");
+            NSLog(@"!WARN! Gender is not defined");
         }
     } else {
+        [self setDefaultZeroSelectedImage];
+    }
+}
+
+- (void)setDefaultZeroSelectedImage {
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = [settings user];
+
+    if (user.isMale) {
         [_tutorialImageView setImage:[UIImage imageNamed:kMaleZeroSelected]];
+    } else if (user.isFemale) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kFemaleZeroSelected]];
+    } else {
+        NSLog(@"!WARN! Gender is not defined");
+    }
+}
+
+- (void)setMalePersonaImages:(NSString *)selectedPersona {
+    if ([selectedPersona isEqualToString:kMaleOneSelected]) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
+    } else if ([selectedPersona isEqualToString:kMaleTwoSelected]) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kMaleTwoSelected]];
+    } else if ([selectedPersona isEqualToString:kMaleThreeSelected]) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kMaleThreeSelected]];
+    } else {
+        NSLog(@"!WARN! The set MALE persona is not defined");
+    }
+}
+
+- (void)setFemalePersonaImages:(NSString *)selectedPersona {
+    if ([selectedPersona isEqualToString:kFemaleOneSelected]) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kFemaleOneSelected]];
+    } else if ([selectedPersona isEqualToString:kFemaleTwoSelected]) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kFemaleTwoSelected]];
+    } else if ([selectedPersona isEqualToString:kFemaleThreeSelected]) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kFemaleThreeSelected]];
+    } else {
+        NSLog(@"!WARN! The set FEMALE persona is not defined");
     }
 }
 
@@ -76,25 +125,52 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 }
 
 - (IBAction)selectFirstPersona:(id)sender {
-    NSLog(@"selectFirstPersona");
-    [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
-    [[FLSettings defaultSettings] setSelectedPersona:kMaleOneSelected];
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = [settings user];
+
+    if (user.isMale) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
+        [[FLSettings defaultSettings] setSelectedPersona:kMaleOneSelected];
+    } else if (user.isFemale) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kFemaleOneSelected]];
+        [[FLSettings defaultSettings] setSelectedPersona:kFemaleOneSelected];
+    } else {
+        NSLog(@"!WARN!: No Gender Defined");
+    }
 
     [_finishButton setHidden:NO];
 }
 
 - (IBAction)selectSecondPersona:(id)sender {
-    NSLog(@"selectSecondPersona");
-    [_tutorialImageView setImage:[UIImage imageNamed:kMaleTwoSelected]];
-    [[FLSettings defaultSettings] setSelectedPersona:kMaleTwoSelected];
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = [settings user];
+
+    if (user.isMale) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kMaleTwoSelected]];
+        [[FLSettings defaultSettings] setSelectedPersona:kMaleTwoSelected];
+    } else if (user.isFemale) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kFemaleTwoSelected]];
+        [[FLSettings defaultSettings] setSelectedPersona:kFemaleTwoSelected];
+    } else {
+        NSLog(@"!WARN!: No Gender Defined");
+    }
 
     [_finishButton setHidden:NO];
 }
 
 - (IBAction)selectThirdPersona:(id)sender {
-    NSLog(@"selectThirdPersona");
-    [_tutorialImageView setImage:[UIImage imageNamed:kMaleThreeSelected]];
-    [[FLSettings defaultSettings] setSelectedPersona:kMaleThreeSelected];
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = [settings user];
+
+    if (user.isMale) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kMaleThreeSelected]];
+        [[FLSettings defaultSettings] setSelectedPersona:kMaleThreeSelected];
+    } else if (user.isFemale) {
+        [_tutorialImageView setImage:[UIImage imageNamed:kFemaleThreeSelected]];
+        [[FLSettings defaultSettings] setSelectedPersona:kFemaleThreeSelected];
+    } else {
+        NSLog(@"!WARN!: No Gender Defined");
+    }
 
     [_finishButton setHidden:NO];
 }
