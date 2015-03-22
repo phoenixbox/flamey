@@ -13,6 +13,9 @@ extern NSString *const kCompleteSolutionTutorial;
 extern NSString *const kMaleOneSelected;
 extern NSString *const kMaleTwoSelected;
 extern NSString *const kMaleThreeSelected;
+extern NSString *const kFemaleOneSelected;
+extern NSString *const kFemaleTwoSelected;
+extern NSString *const kFemaleThreeSelected;
 
 @interface FLTutorialSolutionView : UIView
 @property (weak, nonatomic) IBOutlet UIView *contentView;

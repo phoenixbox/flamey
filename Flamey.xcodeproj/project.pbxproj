@@ -47,6 +47,7 @@
 		CB7EF47D1A807BA20084666E /* FLFiltersStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7EF47C1A807BA20084666E /* FLFiltersStore.m */; };
 		CB902F9C1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB902F9B1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m */; };
 		CB902F9F1A8DC836003D2950 /* FLProcessedImagesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB902F9E1A8DC836003D2950 /* FLProcessedImagesStore.m */; };
+		CB93248B1ABE97E800DB05D5 /* FLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CB93248A1ABE97E800DB05D5 /* FLUser.m */; };
 		CB9C1D121ABBCB6A002C7FF9 /* FLTutorialResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C1D111ABBCB6A002C7FF9 /* FLTutorialResultView.m */; };
 		CB9C1D141ABBCBA5002C7FF9 /* FLTutorialResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9C1D131ABBCBA5002C7FF9 /* FLTutorialResultView.xib */; };
 		CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA10D9F1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m */; };
@@ -162,6 +163,8 @@
 		CB902F9B1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookUploadModalViewController.m; sourceTree = "<group>"; };
 		CB902F9D1A8DC836003D2950 /* FLProcessedImagesStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLProcessedImagesStore.h; sourceTree = "<group>"; };
 		CB902F9E1A8DC836003D2950 /* FLProcessedImagesStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLProcessedImagesStore.m; sourceTree = "<group>"; };
+		CB9324891ABE97E800DB05D5 /* FLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUser.h; sourceTree = "<group>"; };
+		CB93248A1ABE97E800DB05D5 /* FLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUser.m; sourceTree = "<group>"; };
 		CB9C1D101ABBCB6A002C7FF9 /* FLTutorialResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialResultView.h; sourceTree = "<group>"; };
 		CB9C1D111ABBCB6A002C7FF9 /* FLTutorialResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialResultView.m; sourceTree = "<group>"; };
 		CB9C1D131ABBCBA5002C7FF9 /* FLTutorialResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialResultView.xib; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 			children = (
 				CB6CFF261A6C858C00ACD39A /* FLPhoto.h */,
 				CB6CFF271A6C858C00ACD39A /* FLPhoto.m */,
+				CB9324891ABE97E800DB05D5 /* FLUser.h */,
+				CB93248A1ABE97E800DB05D5 /* FLUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -747,6 +752,7 @@
 				CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */,
 				CB6F8D081A6C83B700429133 /* FLSelectedPhotoStore.m in Sources */,
 				CB902F9C1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m in Sources */,
+				CB93248B1ABE97E800DB05D5 /* FLUser.m in Sources */,
 				CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
