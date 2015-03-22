@@ -124,6 +124,13 @@ NSString *const kCompleteResult = @"completeResult";
     [_firstProfile sd_setImageWithURL:[NSURL URLWithString:user.profileImage] placeholderImage:nil];
 
     // TODO: Start second button toggle
+    [_secondProfile setAnimation:@"wobble"];
+    [_secondProfile setCurve:@"linear"];
+    [_secondProfile setDuration:1.0];
+    [_secondProfile setDamping:1.0];
+    [_secondProfile setVelocity:1];
+
+    [_secondProfile performSelector:@selector(animate) withObject:nil afterDelay:1.0];
 }
 
 - (void)setTapGestureOnMatchProfile {
@@ -150,6 +157,15 @@ NSString *const kCompleteResult = @"completeResult";
         [_secondProfile setDamping:1];
         [_secondProfile setVelocity:0.5];
         [_secondProfile animateTo];
+
+        [_firstProfile setAnimation:@"wobble"];
+        [_firstProfile setCurve:@"linear"];
+        [_firstProfile setDuration:1.0];
+        [_firstProfile setDamping:1.0];
+        [_firstProfile setVelocity:1];
+        [_firstProfile setDelay:0.7];
+        [_firstProfile setX:0.1];
+        [_firstProfile animate];
     };
 
     void(^completionBlock)(void)=^(void) {

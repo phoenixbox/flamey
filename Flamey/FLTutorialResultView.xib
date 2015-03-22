@@ -50,7 +50,7 @@
                                         <constraint firstAttribute="width" secondItem="JUn-QT-0Ie" secondAttribute="height" multiplier="1:1" id="5Ri-CW-Vuj"/>
                                     </constraints>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected-Male-2" translatesAutoresizingMaskIntoConstraints="NO" id="2ST-dG-vzx" userLabel="FirstProfile">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected-Male-2" translatesAutoresizingMaskIntoConstraints="NO" id="2ST-dG-vzx" userLabel="FirstProfile" customClass="SpringImageView" customModule="Flamey" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -158,7 +158,7 @@ Simple</string>
                 <outlet property="ContentView" destination="UXd-Zx-lfD" id="1wt-SC-hWh"/>
                 <outlet property="contentView" destination="UXd-Zx-lfD" id="Rxj-gI-0ZX"/>
                 <outlet property="explanation" destination="hy2-e1-7vb" id="ERt-Wx-bjU"/>
-                <outlet property="firstProfile" destination="2ST-dG-vzx" id="KaC-RU-c08"/>
+                <outlet property="firstProfile" destination="2ST-dG-vzx" id="Mov-qy-OQh"/>
                 <outlet property="getMatchedTitle" destination="cwt-Mz-cR8" id="6sf-X7-uFX"/>
                 <outlet property="matchTitle" destination="Xhc-m0-zeI" id="GQW-mu-hQc"/>
                 <outlet property="profileContainer" destination="ZDk-MH-2TJ" id="qof-w0-5R6"/>
