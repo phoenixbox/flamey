@@ -22,6 +22,7 @@ extern NSString *const kCompleteResult;
 @property (weak, nonatomic) IBOutlet UIView *profileContainer;
 @property (weak, nonatomic) IBOutlet SpringImageView *firstProfile;
 @property (weak, nonatomic) IBOutlet SpringImageView *secondProfile;
+@property (weak, nonatomic) IBOutlet SpringImageView *heartIcon;
 @property (nonatomic, strong) UITapGestureRecognizer *matchViewTap;
 
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *explanation;
