@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "FLUser.h"
+
 @interface FLSettings : NSObject
 
 + (instancetype)defaultSettings;
@@ -16,5 +18,6 @@
 @property (nonatomic, assign) BOOL needToLogin;
 @property (nonatomic, assign) BOOL seenTutorial;
 @property (nonatomic, strong) NSString *selectedPersona;
+@property (nonatomic, strong) FLUser *user;
 
 @end

@@ -19,6 +19,9 @@
 #import "FLSettings.h"
 #import "FLLoginView.h"
 
+// TODO: Server Persistence Data Layer
+#import "FLUser.h"
+
 NSString *const kSegueLoggedIn = @"loggedIn";
 NSString *const kLoginSlide = @"FLLoginSlide";
 
@@ -48,21 +51,15 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 //    [_hud setCenter:self.view.center];
 //    _hud.mode = MBProgressHUDModeAnnularDeterminate;
 //    _hud.labelText = @"Loading";
-
-//    [self _configurePhotos];
 }
 
 #pragma mark SwipeView methods
 
-- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
-{
+- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView {
     return 3;
 }
 
-- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
-{
-    NSLog(@"SWIPE INDEX*************** %lu", index);
-
+- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kLoginSlide owner:nil options:nil];
     FLLoginSlide *loginSlide = (FLLoginSlide *)[nibContents lastObject];
 
@@ -89,8 +86,7 @@ NSString *const kLoginSlide = @"FLLoginSlide";
     return view;
 }
 
-- (CGSize)swipeViewItemSize:(SwipeView *)swipeView
-{
+- (CGSize)swipeViewItemSize:(SwipeView *)swipeView {
     return self.swipeView.frame.size;
 }
 
@@ -123,10 +119,13 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 
 
 - (void)viewDidAppear:(BOOL)animated {
-//    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
-    _viewIsVisible = YES;
+    _viewDidAppear = YES;
+
+    FLSettings *settings = [FLSettings defaultSettings];
+    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
+//    _viewIsVisible = YES;
     // TODO: Remove the hardcoded segue
-//    [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
+
 //    TODO Implement server side login persistence record
 //    void(^completionBlock)(FLUser *user, NSError *err)=^(FLUser user*, NSError *err) {
 //        if(!err){
@@ -134,27 +133,27 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 //             settings.seenTutorial = user.seenTutorial;
 //            [self performSegueWithIdentifier:@"loggedIn" sender:nil];
 //        } else {
-//            NSLog(@"Problem with loggin in on the server");
+//            NSLog(@"Problem with logging in on the server");
 //        }
 //    };
 
-//    [self performSegueWithIdentifier:@"loggedIn" sender:nil];
-//    if (_viewDidAppear || settings.needToLogin) {
-//
-//        settings.shouldSkipLogin = NO;
-//    } else {
-//        [FBSession openActiveSessionWithReadPermissions:readPermissions
-//                                           allowLoginUI:YES
-//                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-//                                          if (!error && status == FBSessionStateOpen) {
+    if (_viewDidAppear && settings.needToLogin) {
+
+        settings.shouldSkipLogin = NO;
+    } else {
+        [FBSession openActiveSessionWithReadPermissions:readPermissions
+                                           allowLoginUI:YES
+                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                                          if (!error && status == FBSessionStateOpen) {
+                                              [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
+                                              // TODO: Future Server persistence
 //                                              [_hud show:YES];
 //                                              [FLSessionStore loginUser:session withCompletionBlock:completionBlock];
-//                                          } else {
-//                                              _viewIsVisible = YES;
-//                                          }
-//                                      }];
-//        _viewDidAppear = YES;
-//    }
+                                          } else {
+                                              _viewIsVisible = YES;
+                                          }
+                                      }];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -174,10 +173,11 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
     // TODO:Retrieve required user details and persist to external server
     NSLog(@"%@", [NSString stringWithFormat:@"continue as %@", [user name]]);
-
-    // Show the tutorial or show the selections screen
-    // RESTART: Implement the 4 slider screens on the tutorial screen
-    // Modal might have to be presented from the selections controller
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:user options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    FLUser *newUser = [[FLUser alloc] initWithString:result error:nil];
+    
+    [[FLSettings defaultSettings] setUser:newUser];
 
     [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
 }
