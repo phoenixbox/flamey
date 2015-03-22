@@ -1077,7 +1077,7 @@
                   symbolName = "-[FLSelectedPhotoStore removePhotoById:]"
                   moduleName = "Flamey"
                   urlString = "file:///Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLSelectedPhotoStore.m"
-                  timestampString = "448705757.278393"
+                  timestampString = "448757318.752533"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -1091,7 +1091,7 @@
                   symbolName = "__40-[FLSelectedPhotoStore removePhotoById:]_block_invoke"
                   moduleName = "Flamey"
                   urlString = "file:///Users/shanerogers/projects/ios/tinder/tinder-flamey/flamey/Flamey/Flamey/FLSelectedPhotoStore.m"
-                  timestampString = "448705757.278799"
+                  timestampString = "448757318.752698"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -1188,11 +1188,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLTutorialResultView.m"
-            timestampString = "448656141.526293"
+            timestampString = "448742065.197278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "-start:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1204,11 +1204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLTutorialResultView.m"
-            timestampString = "448656141.526293"
+            timestampString = "448746392.83967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "-setMatchTitleCopy"
             landmarkType = "5">
             <Locations>
@@ -1250,11 +1250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLTutorialResultView.m"
-            timestampString = "448656141.526293"
+            timestampString = "448746392.83967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "-setLabels"
             landmarkType = "5">
          </BreakpointContent>
@@ -1336,22 +1336,6 @@
             startingLineNumber = "113"
             endingLineNumber = "113"
             landmarkName = "-imagesForSelectedPersona"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "448699576.987991"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "-loginViewFetchedUserInfo:user:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1457,22 +1441,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "448699555.298623"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-loginViewFetchedUserInfo:user:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Pods/JSONModel/JSONModel/JSONModel/JSONModel.m"
             timestampString = "448699721.4464"
             startingColumnNumber = "9223372036854775807"
@@ -1512,6 +1480,38 @@
             startingLineNumber = "51"
             endingLineNumber = "51"
             landmarkName = "-setSelectedPersona"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flamey/FLLoginViewController.m"
+            timestampString = "448742257.344284"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "-loginViewFetchedUserInfo:user:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flamey/FLLoginViewController.m"
+            timestampString = "448742237.470151"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-loginViewFetchedUserInfo:user:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
