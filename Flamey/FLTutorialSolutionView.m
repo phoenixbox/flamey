@@ -28,6 +28,28 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 - (void)layoutSubviews {
     _contentView.layer.cornerRadius = 10;
     _contentView.clipsToBounds = YES;
+
+    [self setSelectedPersona];
+}
+
+- (void)setSelectedPersona {
+    NSString *selectedPersona = [[FLSettings defaultSettings] selectedPersona];
+
+    if (selectedPersona) {
+        [_finishButton setHidden:NO];
+
+        if ([selectedPersona isEqualToString:kMaleOneSelected]) {
+            [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
+        } else if ([selectedPersona isEqualToString:kMaleTwoSelected]) {
+            [_tutorialImageView setImage:[UIImage imageNamed:kMaleTwoSelected]];
+        } else if ([selectedPersona isEqualToString:kMaleThreeSelected]) {
+            [_tutorialImageView setImage:[UIImage imageNamed:kMaleThreeSelected]];
+        } else {
+            NSLog(@"!WARN! The set persona is not defined");
+        }
+    } else {
+        [_tutorialImageView setImage:[UIImage imageNamed:kMaleZeroSelected]];
+    }
 }
 
 - (void)setLabels {
