@@ -31,6 +31,8 @@ NSString *const kCompleteResult = @"completeResult";
 // Use user profile image for the image
 // Tap action on the counter image - Rotate for preference
 - (void)setLabels {
+    [self setTapGestureOnMatchProfile];
+
     [self setGetMatchedTitleCopy];
     [self setMatchTitleCopy];
     [self setExplanationCopy];
@@ -120,6 +122,48 @@ NSString *const kCompleteResult = @"completeResult";
 
     // Need a placeholder
     [_firstProfile sd_setImageWithURL:[NSURL URLWithString:user.profileImage] placeholderImage:nil];
+
+    // TODO: Start second button toggle
+}
+
+- (void)setTapGestureOnMatchProfile {
+    self.matchViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                action:@selector(flipMatch:)];
+    self.matchViewTap.numberOfTouchesRequired = 1;
+    self.matchViewTap.numberOfTapsRequired = 1;
+
+    [_secondProfile addGestureRecognizer:self.matchViewTap];
+    // NOTE: Must set interaction true so that the gesture can be triggered
+    // Dont have to have selector on the filter ImageView
+    _secondProfile.userInteractionEnabled = YES;
+}
+
+- (void)flipMatch:(UITapGestureRecognizer *)sender {
+    void(^updateImage)(void)=^(void) {
+      [_secondProfile setImage:[UIImage imageNamed:@"Selected-Male-2"]];
+
+        [_secondProfile setAnimation:@"wobble"];
+        [_secondProfile setCurve:@"easInOutQuad"];
+        [_secondProfile setDuration:0.7];
+        [_secondProfile setScaleX:1];
+        [_secondProfile setScaleY:1];
+        [_secondProfile setDamping:1];
+        [_secondProfile setVelocity:0.5];
+        [_secondProfile animateTo];
+    };
+
+    void(^completionBlock)(void)=^(void) {
+        [_secondProfile setAnimation:@"pop"];
+        [_secondProfile setCurve:@"easeIn"];
+        [_secondProfile setDuration:0.7];
+        [_secondProfile animateToNext:updateImage];
+    };
+
+    [_secondProfile setAnimation:@"flipX"];
+    [_secondProfile setCurve:@"spring"];
+    [_secondProfile setDuration:0.7];
+    [_secondProfile setRotate:1];
+    [_secondProfile animateToNext:completionBlock];
 }
 
 - (void)setupProfileImages {

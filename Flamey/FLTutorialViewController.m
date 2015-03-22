@@ -52,6 +52,7 @@ static NSString * const kCompleteTutorial = @"completeTutorial";
 {
     UIView *newView;
 
+    // Lib bug where the slides are not triggering the last view
     switch (index) {
         case 0:
             newView = [self prepareTutorialSolutionView];
