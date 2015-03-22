@@ -27,12 +27,12 @@
 static NSString *const kShouldSkipLoginKey = @"shouldSkipLogin";
 static NSString *const kNeedToLogin = @"needToLogin";
 static NSString *const kSeenTutorial = @"seenTutorial";
+static NSString *const kSelectedPersonaKey = @"selectedPersona";
 
 - (BOOL)shouldSkipLogin
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kShouldSkipLoginKey];
 }
-
 
 - (BOOL)needToLogin
 {
@@ -42,6 +42,11 @@ static NSString *const kSeenTutorial = @"seenTutorial";
 - (BOOL)seenTutorial
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kSeenTutorial];
+}
+
+- (NSString *)selectedPersona
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSelectedPersonaKey];
 }
 
 #pragma Override Property Setter
@@ -63,6 +68,12 @@ static NSString *const kSeenTutorial = @"seenTutorial";
 - (void)setSeenTutorial:(BOOL)seenTutorial {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:seenTutorial forKey:kSeenTutorial];
+    [defaults synchronize];
+}
+
+- (void)setSelectedPersona:(NSString *)selectedPersona {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:selectedPersona forKey:kSelectedPersonaKey];
     [defaults synchronize];
 }
 

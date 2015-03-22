@@ -1,5 +1,5 @@
 //
-//  FLTutorialView.h
+//  FLTutorialSolutionView.h
 //  Flamey
 //
 //  Created by Shane Rogers on 3/4/15.
@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 extern NSString *const kCompleteSolutionTutorial;
+
+extern NSString *const kMaleOneSelected;
+extern NSString *const kMaleTwoSelected;
+extern NSString *const kMaleThreeSelected;
 
 @interface FLTutorialSolutionView : UIView
 @property (weak, nonatomic) IBOutlet UIView *contentView;

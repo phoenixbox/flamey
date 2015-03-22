@@ -7,8 +7,25 @@
 //
 
 #import "FLTutorialProcessView.h"
+#import "FLTutorialSolutionView.h"
+
+// Data Layer
+#import "FLSettings.h"
 
 NSString *const kCompleteProcess = @"completeProcess";
+
+// Image Type Constants
+NSString *const kPersonaImage = @"personaImage";
+NSString *const kUploadImage = @"uploadImage";
+
+// Asset Image Consts
+// Male
+NSString *const kMaleImageOne = @"Selected-Male-1";
+NSString *const kMaleImageTwo = @"Selected-Male-2";
+NSString *const kMaleImageThree = @"Selected-Male-3";
+NSString *const kMaleUploadOne = @"MaleUploadOne";
+NSString *const kMaleUploadTwo = @"MaleUploadTwo";
+NSString *const kMaleUploadThree = @"MaleUploadThree";
 
 // Helpers
 #import "FLViewHelpers.h"
@@ -69,8 +86,34 @@ NSString *const kCompleteProcess = @"completeProcess";
     }];
 
     // Set the image view
-    [_firstImageView setImage:[UIImage imageNamed:@"Selected-Male-2"]];
+    NSDictionary *imagesForView = [self imagesForSelectedPersona];
+    NSString *imageName = [imagesForView objectForKey:kPersonaImage];
+    [_firstImageView setImage:[UIImage imageNamed:imageName]];
     [_firstImageView setContentMode:UIViewContentModeScaleAspectFit];
+}
+
+- (NSDictionary *)imagesForSelectedPersona {
+    NSString *personaImage;
+    NSString *uploadImage;
+
+    NSString *selectedPersona = [[FLSettings defaultSettings] selectedPersona];
+
+    if ([selectedPersona isEqualToString:kMaleOneSelected]) {
+        personaImage = kMaleImageOne;
+        uploadImage = kMaleUploadOne;
+    } else if ([selectedPersona isEqualToString:kMaleTwoSelected]) {
+        personaImage = kMaleImageTwo;
+        uploadImage = kMaleUploadTwo;
+    } else if ([selectedPersona isEqualToString:kMaleThreeSelected]) {
+        personaImage = kMaleImageThree;
+        uploadImage = kMaleUploadThree;
+    } else {
+        NSLog(@"!WARN! no persona set in the settings");
+        personaImage = kMaleImageOne;
+        uploadImage = kMaleUploadOne;
+    }
+
+    return @{ @"personaImage": personaImage, @"uploadImage": uploadImage };
 }
 
 - (void)setSecondSectionContent {
@@ -99,7 +142,9 @@ NSString *const kCompleteProcess = @"completeProcess";
     }];
 
     // Set the image view
-    [_secondImageView setImage:[UIImage imageNamed:@"MaleUploadFirst"]];
+    NSDictionary *imagesForView = [self imagesForSelectedPersona];
+    NSString *imageName = [imagesForView objectForKey:kUploadImage];
+    [_secondImageView setImage:[UIImage imageNamed:imageName]];
     [_secondImageView setContentMode:UIViewContentModeScaleAspectFit];
 }
 

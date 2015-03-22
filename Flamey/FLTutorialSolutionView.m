@@ -8,6 +8,9 @@
 
 #import "FLTutorialSolutionView.h"
 
+// Data Layer
+#import "FLSettings.h"
+
 NSString *const kCompleteSolutionTutorial = @"completeSolution";
 
 // Male Image Constants
@@ -53,6 +56,7 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 - (IBAction)selectFirstPersona:(id)sender {
     NSLog(@"selectFirstPersona");
     [_tutorialImageView setImage:[UIImage imageNamed:kMaleOneSelected]];
+    [[FLSettings defaultSettings] setSelectedPersona:kMaleOneSelected];
 
     [_finishButton setHidden:NO];
 }
@@ -60,6 +64,7 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 - (IBAction)selectSecondPersona:(id)sender {
     NSLog(@"selectSecondPersona");
     [_tutorialImageView setImage:[UIImage imageNamed:kMaleTwoSelected]];
+    [[FLSettings defaultSettings] setSelectedPersona:kMaleTwoSelected];
 
     [_finishButton setHidden:NO];
 }
@@ -67,6 +72,7 @@ NSString *const kMaleThreeSelected = @"Male-3-Selected";
 - (IBAction)selectThirdPersona:(id)sender {
     NSLog(@"selectThirdPersona");
     [_tutorialImageView setImage:[UIImage imageNamed:kMaleThreeSelected]];
+    [[FLSettings defaultSettings] setSelectedPersona:kMaleThreeSelected];
 
     [_finishButton setHidden:NO];
 }
