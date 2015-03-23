@@ -15,6 +15,9 @@
 // Helpers
 #import "FLViewHelpers.h"
 
+// Data Layer
+#import "FLSettings.h"
+
 static NSString * const kTutorialSolutionView = @"FLTutorialSolutionView";
 static NSString * const kTutorialProcessView = @"FLTutorialProcessView";
 static NSString * const kTutorialResultView = @"FLTutorialResultView";
@@ -110,6 +113,9 @@ static NSString * const kCompleteTutorial = @"completeTutorial";
 }
 
 - (void)unwindToSelectedPhotos {
+    FLSettings *settings = [FLSettings defaultSettings];
+    [settings setSeenTutorial:YES];
+
     [self performSegueWithIdentifier:@"unwindToSelection" sender:self];
 }
 
