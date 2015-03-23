@@ -28,6 +28,8 @@ extern NSString *const kCompleteResult;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *explanation;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 
+@property (nonatomic, assign) BOOL alternate;
+
 - (IBAction)start:(id)sender;
 - (void)setLabels;
 

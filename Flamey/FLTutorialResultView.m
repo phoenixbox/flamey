@@ -18,6 +18,9 @@
 
 NSString *const kCompleteResult = @"completeResult";
 
+NSString *const kDefaultFemaleImage = @"Selected-Female-3";
+NSString *const kDefaultMaleImage = @"Selected-Male-2";
+
 @implementation FLTutorialResultView
 
 - (IBAction)start:(id)sender {
@@ -124,6 +127,14 @@ NSString *const kCompleteResult = @"completeResult";
     // Need a placeholder
     [_firstProfile sd_setImageWithURL:[NSURL URLWithString:user.profileImage] placeholderImage:nil];
 
+    if (user.isMale){
+        [_secondProfile setImage:[UIImage imageNamed:kDefaultFemaleImage]];
+    } else if (user.isFemale) {
+        [_secondProfile setImage:[UIImage imageNamed:kDefaultMaleImage]];
+    } else {
+        NSLog(@"!WARN!: ResultView - no gender set");
+    }
+
     // TODO: Start second button toggle
     [_secondProfile setAnimation:@"wobble"];
     [_secondProfile setCurve:@"linear"];
@@ -147,6 +158,48 @@ NSString *const kCompleteResult = @"completeResult";
     _secondProfile.userInteractionEnabled = YES;
 }
 
+- (NSString *)randomFromArray:(NSArray *)imagesArray {
+    NSUInteger randomIndex = arc4random() % [imagesArray count];
+    return[imagesArray objectAtIndex:randomIndex];
+}
+
+- (void)toggleAlternate {
+    if (_alternate) {
+        _alternate = NO;
+    } else {
+        _alternate = YES;
+    }
+}
+
+- (UIImage *)getAlternateImage {
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = settings.user;
+    NSString *targetImage;
+
+    NSArray *maleImages = @[@"Selected-Male-1", @"Selected-Male-2", @"Selected-Male-3"];
+    NSArray *femaleImages = @[@"Selected-Female-1", @"Selected-Female-2", @"Selected-Female-3"];
+
+    [self toggleAlternate];
+
+    if (user.isMale) {
+        if (_alternate) {
+            targetImage = [self randomFromArray:maleImages];
+        } else {
+            targetImage = [self randomFromArray:femaleImages];
+        }
+    } else if (user.isFemale) {
+        if (_alternate) {
+            targetImage = [self randomFromArray:femaleImages];
+        } else {
+            targetImage = [self randomFromArray:maleImages];
+        }
+    } else {
+        NSLog(@"!WARN!: No gender set resultView");
+    }
+
+    return [UIImage imageNamed:targetImage];
+}
+
 - (void)flipMatch:(UITapGestureRecognizer *)sender {
     void(^heartDisappear)(void)=^(void){
         [_heartIcon setAnimation:@"fadeOut"];
@@ -165,8 +218,6 @@ NSString *const kCompleteResult = @"completeResult";
     };
 
     void(^updateImage)(void)=^(void) {
-        [_secondProfile setImage:[UIImage imageNamed:@"Selected-Male-2"]];
-
         [_secondProfile setAnimation:@"wobble"];
         [_secondProfile setCurve:@"easInOutQuad"];
         [_secondProfile setDuration:0.5];
@@ -191,6 +242,7 @@ NSString *const kCompleteResult = @"completeResult";
         [_secondProfile animateToNext:updateImage];
     };
 
+    [_secondProfile setImage:[self getAlternateImage]];
     [_secondProfile setAnimation:@"flipX"];
     [_secondProfile setCurve:@"spring"];
     [_secondProfile setDuration:0.7];
