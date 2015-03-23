@@ -9,11 +9,16 @@
 #import "FLFacebookAlbumTableViewController.h"
 #import "FLFacebookPhotoPickerViewController.h"
 
+// Libs
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <SIAlertView.h>
+
 @interface FLFacebookAlbumTableViewController ()
 
 @property (strong) NSMutableArray* datasource;
 @property (strong) NSMutableArray* albumCoverArray;
 @property (weak) id<FLPhotosCollectionViewController> delegate;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 @end
 
@@ -40,6 +45,13 @@
 
 - (void)doneSelectingPhotos:(id)paramSender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)setActivityScreen {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_hud setCenter:self.view.center];
+    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+    _hud.labelText = @"Loading";
 }
 
 - (void)viewDidLoad {
@@ -95,6 +107,8 @@
 
 - (void)sendRequests {
     // Retrieve the users photo album data
+    [_hud show:YES];
+
     NSString* graphPath = @"/me/albums";
     [FBRequestConnection startWithGraphPath:graphPath
                                  parameters:nil
@@ -130,18 +144,51 @@
                                                                                              HTTPMethod:@"GET"
                                                                                       completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                                                                                           NSDictionary* resultDict = (NSDictionary*)result;
-                                                                                          NSDictionary *singlePhotoObject = [resultDict objectForKey:@"data"][0];
-                                                                                          NSDictionary *singlePhoto = [singlePhotoObject objectForKey:@"images"][0];
+
+                                                                                          [_hud hide:YES];
                                                                                           
-                                                                                          NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:count], @"index" , [singlePhoto objectForKey:@"source"], @"URL", nil];
-                                                                                          [_albumCoverArray insertObject:dict atIndex:0];
-                                                                                          [self.tableView reloadData];
+                                                                                          if (!error) {
+                                                                                              NSDictionary *singlePhotoObject = [resultDict objectForKey:@"data"][0];
+                                                                                              NSDictionary *singlePhoto = [singlePhotoObject objectForKey:@"images"][0];
+
+                                                                                              NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:count], @"index" , [singlePhoto objectForKey:@"source"], @"URL", nil];
+                                                                                              [_albumCoverArray insertObject:dict atIndex:0];
+                                                                                              [self.tableView reloadData];
+                                                                                          } else {
+                                                                                              [self showAlert:error];
+                                                                                          }
                                                                                       }];
                                                             }
                                                         }];
                               }
                           }];
 
+}
+
+- (void)showAlert:(NSError *)error {
+    NSLog(@"Error when fetching album data from Facebook: %@", error);
+
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Uh Oh Facebook!" andMessage:@"Something went wrong when we tried to talk to Facebook"];
+
+    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+    [alertView addButtonWithTitle:@"Try Again"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alert) {
+                              [self sendRequests];
+                          }];
+
+    [alertView addButtonWithTitle:@"Try Later"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alert) {
+                              [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                          }];
+
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+    
+    [alertView show];
 }
 
 #pragma mark - UITableView Datasource

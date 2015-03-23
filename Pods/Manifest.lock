@@ -41,6 +41,7 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
+  - SIAlertView (1.3)
   - SwipeView (1.3.2)
   - TTTAttributedLabel (1.10.1)
   - UIImage+BlurredFrame (0.0.4)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - ObjectiveSugar (~> 1.1)
   - RTFacebookAlbum (~> 1.3)
   - SDWebImage (~> 3.7)
+  - SIAlertView (~> 1.3)
   - SwipeView (~> 1.3)
   - TTTAttributedLabel (~> 1.10.1)
 
@@ -76,6 +78,7 @@ SPEC CHECKSUMS:
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   RTFacebookAlbum: c1195f248fe0b30d9d5123b11ed32cfe6cd3917b
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SIAlertView: d00609a1faa9d82f17b9f0b4eede64e84a577b10
   SwipeView: 0093c212acf3d715b09334c50d568a4418404150
   TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
   UIImage+BlurredFrame: 0c38f5760d72125c47d16001a88faaac573bd35d

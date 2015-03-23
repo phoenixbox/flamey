@@ -16,6 +16,7 @@ pod 'MBProgressHUD', '~> 0.9'
 pod 'SwipeView', '~> 1.3'
 pod 'Canvas', '~> 0.1'
 pod 'TTTAttributedLabel', '~> 1.10.1'
+pod 'SIAlertView', '~> 1.3'
 end
 
 target "FlameyTests" do
