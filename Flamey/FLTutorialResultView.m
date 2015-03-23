@@ -125,7 +125,7 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
     FLUser *user = settings.user;
 
     // Need a placeholder
-    [_firstProfile sd_setImageWithURL:[NSURL URLWithString:user.profileImage] placeholderImage:nil];
+    [_firstProfile sd_setImageWithURL:[NSURL URLWithString:user.profileImage] placeholderImage:[UIImage imageNamed:@"Persona"]];
 
     if (user.isMale){
         [_secondProfile setImage:[UIImage imageNamed:kDefaultFemaleImage]];

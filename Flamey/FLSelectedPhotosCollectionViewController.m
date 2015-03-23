@@ -142,7 +142,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     FLPhoto *photo = [[FLSelectedPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
 
     cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
-    [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:nil];
+    [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:[UIImage imageNamed:@"Persona"]];
 
     return cell;
 }
