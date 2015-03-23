@@ -129,7 +129,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
                                                                                         forIndexPath:indexPath];
     NSString *remoteURL = [_datasource[indexPath.row] objectForKey:@"URL"];
     cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
-    [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:remoteURL] placeholderImage:nil];
+    [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:remoteURL] placeholderImage:[UIImage imageNamed:@"Persona"]];
 
     // Has that photo been added to the store already
     NSString *facebookId = [_datasource[indexPath.row] objectForKey:@"id"];
