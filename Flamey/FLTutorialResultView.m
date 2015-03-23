@@ -114,6 +114,7 @@ NSString *const kCompleteResult = @"completeResult";
     [self setupProfileImages];
     
     self.backgroundColor = [UIColor grayColor];
+
 }
 
 - (void)layoutSubviews {
@@ -129,8 +130,9 @@ NSString *const kCompleteResult = @"completeResult";
     [_secondProfile setDuration:1.0];
     [_secondProfile setDamping:1.0];
     [_secondProfile setVelocity:1];
-
     [_secondProfile performSelector:@selector(animate) withObject:nil afterDelay:1.0];
+
+    [_heartIcon setAutohide:YES];
 }
 
 - (void)setTapGestureOnMatchProfile {
@@ -146,26 +148,40 @@ NSString *const kCompleteResult = @"completeResult";
 }
 
 - (void)flipMatch:(UITapGestureRecognizer *)sender {
+    void(^heartDisappear)(void)=^(void){
+        [_heartIcon setAnimation:@"fadeOut"];
+        [_heartIcon setCurve:@"linear"];
+        [_heartIcon setDuration:0.5];
+        [_heartIcon animateTo];
+    };
+
+    void(^heartPop)(void)=^(void){
+        [_heartIcon setAnimation:@"pop"];
+        [_heartIcon setCurve:@"linear"];
+        [_heartIcon setDuration:1];
+        [_heartIcon setRepeatCount:2];
+
+        [_heartIcon animateToNext:heartDisappear];
+    };
+
     void(^updateImage)(void)=^(void) {
-      [_secondProfile setImage:[UIImage imageNamed:@"Selected-Male-2"]];
+        [_secondProfile setImage:[UIImage imageNamed:@"Selected-Male-2"]];
 
         [_secondProfile setAnimation:@"wobble"];
         [_secondProfile setCurve:@"easInOutQuad"];
-        [_secondProfile setDuration:0.7];
+        [_secondProfile setDuration:0.5];
         [_secondProfile setScaleX:1];
         [_secondProfile setScaleY:1];
         [_secondProfile setDamping:1];
         [_secondProfile setVelocity:0.5];
-        [_secondProfile animateTo];
+        [_secondProfile animate];
+    };
 
-        [_firstProfile setAnimation:@"wobble"];
-        [_firstProfile setCurve:@"linear"];
-        [_firstProfile setDuration:1.0];
-        [_firstProfile setDamping:1.0];
-        [_firstProfile setVelocity:1];
-        [_firstProfile setDelay:0.7];
-        [_firstProfile setX:0.1];
-        [_firstProfile animate];
+    void(^heartFadein)(void)=^(void) {
+        [_heartIcon setAnimation:@"fadeIn"];
+        [_heartIcon setCurve:@"spring"];
+        [_heartIcon setDuration:0.5];
+        [_heartIcon animateToNext:heartPop];
     };
 
     void(^completionBlock)(void)=^(void) {
@@ -180,6 +196,12 @@ NSString *const kCompleteResult = @"completeResult";
     [_secondProfile setDuration:0.7];
     [_secondProfile setRotate:1];
     [_secondProfile animateToNext:completionBlock];
+
+    [_heartIcon setAnimation:@"fadeIn"];
+    [_heartIcon setCurve:@"spring"];
+    [_heartIcon setDuration:0.5];
+    [_heartIcon setDelay:0.7];
+    [_heartIcon animateToNext:heartFadein];
 }
 
 - (void)setupProfileImages {
