@@ -84,11 +84,11 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     NSMutableAttributedString *trashIcon = [FLViewHelpers createIcon:trash withColor:[UIColor redColor]];
     [FLViewHelpers formatButton:_removeSelectedPhoto forIcon:trashIcon withCopy:@"Remove  " withColor:[UIColor redColor]];
 
-    [FLViewHelpers setBaseButtonStyle:_uploadButton withColor:[UIColor blackColor]];
-    [_removeSelectedPhoto setContentMode:UIViewContentModeScaleAspectFit];
-    FAKFontAwesome *cloud = [FAKFontAwesome cloudUploadIconWithSize:18];
-    NSMutableAttributedString *cloudIcon = [FLViewHelpers createIcon:cloud withColor:[UIColor blackColor]];
-    [FLViewHelpers formatButton:_removeSelectedPhoto forIcon:cloudIcon withCopy:@"Save  " withColor:[UIColor blackColor]];
+//    [FLViewHelpers setBaseButtonStyle:_uploadButton withColor:[UIColor blackColor]];
+//    [_removeSelectedPhoto setContentMode:UIViewContentModeScaleAspectFit];
+//    FAKFontAwesome *cloud = [FAKFontAwesome cloudUploadIconWithSize:18];
+//    NSMutableAttributedString *cloudIcon = [FLViewHelpers createIcon:cloud withColor:[UIColor blackColor]];
+//    [FLViewHelpers formatButton:_uploadButton forIcon:cloudIcon withCopy:@"Save  " withColor:[UIColor blackColor]];
 }
 
 - (void)addMorePhotos {
@@ -102,17 +102,21 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
         [self setUploadInactive];
     } else {
         [_uploadButton setUserInteractionEnabled:YES];
-        [_uploadButton setBackgroundColor:[UIColor grayColor]];
-        [_uploadButton setAlpha:0.5];
+        [FLViewHelpers setBaseButtonStyle:_uploadButton withColor:[UIColor blackColor]];
         NSString *buttonTitle = [NSString stringWithFormat:@"Upload %lu Private Photos", (unsigned long)count];
+
+//        FAKFontAwesome *cloud = [FAKFontAwesome cloudUploadIconWithSize:18];
+//        NSMutableAttributedString *cloudIcon = [FLViewHelpers createIcon:cloud withColor:[UIColor blackColor]];
+//
+//        [FLViewHelpers formatButton:_uploadButton forIcon:cloudIcon withCopy:buttonTitle withColor:[UIColor blackColor]];
         [_uploadButton setTitle:buttonTitle forState:UIControlStateNormal];
+        [_uploadButton.titleLabel setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
     }
 }
 
 - (void)setUploadInactive {
     [_uploadButton setUserInteractionEnabled:NO];
-    [_uploadButton setBackgroundColor:[UIColor grayColor]];
-    [_uploadButton setAlpha:0.5];
+    [FLViewHelpers setBaseButtonStyle:_uploadButton withColor:[UIColor grayColor]];
     [_uploadButton setTitle:@"No Photos Marked" forState:UIControlStateNormal];
 }
 
