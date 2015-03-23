@@ -49,7 +49,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self updateUploadButtonState];
-
+    [self setHeaderLogo];
     [self renderLateralTable];
     [self updateButtonElements];
 
@@ -57,6 +57,15 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [_addFiltersButton setHidden:YES];
     [self updateAnnotationStore];
     [self addAddMorePhotosListener];
+}
+
+- (void)setHeaderLogo {
+    [[self navigationItem] setTitleView:nil];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 44.0f)];
+    logoView.contentMode = UIViewContentModeScaleAspectFit;
+    UIImage *logoImage = [UIImage imageNamed:@"newTitlebar.png"];
+    [logoView setImage:logoImage];
+    self.navigationItem.titleView = logoView;
 }
 
 - (void)addAddMorePhotosListener {
@@ -149,7 +158,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     NSLog(@"handleTap X Point %f, Y Point %f", annotationPoint.x, annotationPoint.y);
     [targetCell.photo setAnnotationPoint:annotationPoint];
 
-    [self setFlameIconOnCell:targetCell];
+    [self setImagesOnCell:targetCell];
 
     [self updateUploadButtonState];
 }
@@ -197,10 +206,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
         targetCell.photo.annotationPoint = annotationPoint;
 
         // Set the new beginning and end points of the line
-        [self setFlameIconOnCell:targetCell];
+        [self setImagesOnCell:targetCell];
     }
 }
 
+#pragma Set Image on Photo
 - (void)setFlameIconOnCell:(FLAnnotationTableViewCell *)targetCell {
     UIImageView *imageView = targetCell.selectedImageViewBackground;
     // 1. Create the image
@@ -235,6 +245,88 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
     [processedImagesStore addUniquePhoto:processedPhoto];
 
     [imageView setImage:processedImage];
+
+}
+
+- (void)setLogoImageOnCell:(FLAnnotationTableViewCell *)targetCell {
+    UIImageView *imageView = targetCell.selectedImageViewBackground;
+
+    // 1. Create the image from the actual image view
+    GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:imageView.image];
+
+    // NOTE: OverlayImage must be the same size as the imageOverlaySize
+    CGSize imageOverlaySize = CGSizeMake(imageView.image.size.width, imageView.image.size.height);
+
+    UIImage *overlayImage = [self createLogoForSize:imageOverlaySize usingImageOrigin:imageView];
+
+    GPUImagePicture *flameyGPUImage = [[GPUImagePicture alloc] initWithImage:overlayImage];
+
+    // 2. Set up the filter chain
+    GPUImageAlphaBlendFilter * alphaBlendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+    alphaBlendFilter.mix = 1.0;
+
+    [inputGPUImage addTarget:alphaBlendFilter atTextureLocation:0];
+    [flameyGPUImage addTarget:alphaBlendFilter atTextureLocation:1];
+
+    [alphaBlendFilter useNextFrameForImageCapture];
+    [inputGPUImage processImage];
+    [flameyGPUImage processImage];
+
+    UIImage *processedImage = [alphaBlendFilter imageFromCurrentFramebuffer];
+
+    // 3. Annotate the new photo model with the id of the target cell's photo
+    FLPhoto *processedPhoto = [[FLPhoto alloc] init];
+    processedPhoto.id = targetCell.photo.id;
+    processedPhoto.image = processedImage;
+    FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
+    [processedImagesStore addUniquePhoto:processedPhoto];
+
+    [imageView setImage:processedImage];
+}
+
+
+- (UIImage *)createLogoForSize:(CGSize)cellFrameSize usingImageOrigin:(UIImageView *)imageView {
+    UIImage *logoImage = [UIImage imageNamed:@"annotationLogo.png"];
+
+    // InternalImageRect
+    CGRect imageRect = [self getAnImageViewsImageFrame:imageView];
+
+    CGSize logoSize = CGSizeMake(_tableContainer.frame.size.width * (0.34375), _tableContainer.frame.size.width * (0.15));
+
+    float xOrigin = 10;
+    // waht does 50 rep as a total of the height
+    float yOrigin = CGRectGetMaxY(imageRect) - 40;
+
+    CGPoint logoOrigin = CGPointMake(xOrigin,yOrigin);
+
+    CGRect logoRect = {logoOrigin, logoSize};
+
+    UIGraphicsBeginImageContext(cellFrameSize);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGRect inputRect = {CGPointZero, cellFrameSize};
+    CGContextClearRect(context, inputRect);
+
+    CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
+    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip, 0, -cellFrameSize.height);
+    CGContextConcatCTM(context, flipThenShift);
+    CGRect transformedLogoRect = CGRectApplyAffineTransform(logoRect, flipThenShift);
+
+    CGContextDrawImage(context, transformedLogoRect, [logoImage CGImage]);
+
+    UIImage *logoOverlay = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return logoOverlay;
+}
+
+- (CGRect)getAnImageViewsImageFrame:(UIImageView *)iv {
+    CGSize imageSize = iv.image.size;
+    CGFloat imageScale = fminf(CGRectGetWidth(iv.bounds)/imageSize.width, CGRectGetHeight(iv.bounds)/imageSize.height);
+    CGSize scaledImageSize = CGSizeMake(imageSize.width*imageScale, imageSize.height*imageScale);
+    CGRect imageFrame = CGRectMake(roundf(0.5f*(CGRectGetWidth(iv.bounds)-scaledImageSize.width)), roundf(0.5f*(CGRectGetHeight(iv.bounds)-scaledImageSize.height)), roundf(scaledImageSize.width), roundf(scaledImageSize.height));
+
+    return imageFrame;
 }
 
 - (UIImage *)createFlameForSize:(CGSize)cellImageSize atTouchPoint:(CGPoint)touchPoint {
@@ -295,16 +387,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
     [_selectedPhotosTable setSeparatorColor:[UIColor clearColor]];
     [_selectedPhotosTable setTransform:rotate];
 
-    // Table Background View Informative or a button??
-    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kAnnotationTableEmptyMessageView owner:nil options:nil];
-    UIView *view = [nibContents lastObject];
-    [view setFrame:tableRect];
-    [view setCenter:_selectedPhotosTable.center];
-    [_selectedPhotosTable setBackgroundView:view];
-    CGAffineTransform clockwiseRotate = CGAffineTransformMakeRotation(M_PI_2);
+    [self setTableViewBackgroundView:tableRect];
 
-    [_selectedPhotosTable.backgroundView setTransform:clockwiseRotate];
-    [_selectedPhotosTable.backgroundView setHidden:YES];
     _selectedPhotosTable.allowsSelection = NO;
 }
 
@@ -314,6 +398,30 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
     } else {
         [_selectedPhotosTable.backgroundView setHidden:YES];
     }
+}
+
+// TODO: Refactor common logic/component for empty message view
+- (void)setTableViewBackgroundView:(CGRect)tableRect {
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kAnnotationTableEmptyMessageView owner:nil options:nil];
+    FLAnnotationTableEmptyMessageView *emptyMessage = [nibContents lastObject];
+    [emptyMessage setFrame:tableRect];
+    [emptyMessage setCenter:_selectedPhotosTable.center];
+    [_selectedPhotosTable setBackgroundView:emptyMessage];
+    CGAffineTransform clockwiseRotate = CGAffineTransformMakeRotation(M_PI_2);
+    [_selectedPhotosTable.backgroundView setTransform:clockwiseRotate];
+    [_selectedPhotosTable.backgroundView setHidden:YES];
+
+    emptyMessage.contentView.layer.cornerRadius = 4;
+    emptyMessage.contentView.layer.borderWidth = 1;
+    emptyMessage.contentView.layer.borderColor = [UIColor blackColor].CGColor;
+    [emptyMessage setBackgroundColor:[UIColor whiteColor]];
+
+    [FLViewHelpers setBaseButtonStyle:emptyMessage.addPhotosButton withColor:[UIColor blackColor]];
+
+    [_selectedPhotosTable.backgroundView setTransform:clockwiseRotate];
+
+    [_selectedPhotosTable.backgroundView setHidden:YES];
+
 }
 
 #pragma UITableViewDelgate
@@ -348,7 +456,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
                 CGPoint point = photo.annotationPoint;
                 NSLog(@"handleTap X Point %f, Y Point %f", point.x, point.y);
 
-                [self setFlameIconOnCell:cell];
+                [self setImagesOnCell:cell];
             }
 
             [self addTapGestureRecognizerToCell:cell];
@@ -356,6 +464,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
         }];
     }
     return cell;
+}
+
+- (void)setImagesOnCell:(FLAnnotationTableViewCell *)cell {
+    [self setFlameIconOnCell:cell];
+    [self setLogoImageOnCell:cell];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
