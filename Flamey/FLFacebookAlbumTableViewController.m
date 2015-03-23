@@ -67,15 +67,24 @@
     [_albumTable.tableFooterView setBackgroundColor:[UIColor whiteColor]];
 }
 
+- (void)setHeaderLogo {
+    [[self navigationItem] setTitleView:nil];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 44.0f)];
+    logoView.contentMode = UIViewContentModeScaleAspectFit;
+    UIImage *logoImage = [UIImage imageNamed:@"newTitlebar.png"];
+    [logoView setImage:logoImage];
+    self.navigationItem.titleView = logoView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self styleTableEmptyContent];
     [self setActivityScreen];
+    [self setHeaderLogo];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneSelectingPhotos:)];
 
-    self.title = @"Albums";
     NSArray* permissions = [NSArray arrayWithObjects:@"user_friends", @"user_photos", nil];
     BOOL hasPermissions = YES;
     for (NSString *permission in permissions) {
@@ -242,6 +251,8 @@
     @finally {
     }
 
+    [cell.textLabel setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+
     return cell;
 }
 
@@ -259,7 +270,7 @@
     }
     @finally {
     }
-    
+
     [self.navigationController pushViewController:vc animated:YES];
 }
 

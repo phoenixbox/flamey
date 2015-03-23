@@ -58,7 +58,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 }
 
 - (void)setHeaderLogo {
-    [[self navigationItem]setTitleView:nil];
+    [[self navigationItem] setTitleView:nil];
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 44.0f)];
     logoView.contentMode = UIViewContentModeScaleAspectFit;
     UIImage *logoImage = [UIImage imageNamed:@"newTitlebar.png"];

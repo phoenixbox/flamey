@@ -33,11 +33,24 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self updateTitleStyle];
 
     _datasource = [[NSMutableArray alloc] init];
 
     [self buildPhotoCollection];
     [self sendRequest];
+}
+
+- (void)updateTitleStyle {
+    NSString *title = self.navigationItem.title;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont fontWithName:@"AvenirNext-Regular" size:18.0];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor blackColor];
+    self.navigationItem.titleView = label;
+    label.text = title;
+    [label sizeToFit];
 }
 
 - (void)buildPhotoCollection {
