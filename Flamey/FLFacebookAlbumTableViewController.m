@@ -40,6 +40,11 @@
     }
 
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:albumTableView];
+
+    // Solution
+    navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+
     [top presentViewController:navigationController animated:YES completion:nil];
 }
 
@@ -49,13 +54,24 @@
 
 - (void)setActivityScreen {
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.view bringSubviewToFront:_hud];
+    [_hud setLabelFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
     [_hud setCenter:self.view.center];
-    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+    _hud.mode = MBProgressHUDModeIndeterminate;
     _hud.labelText = @"Loading";
+}
+
+- (void)styleTableEmptyContent {
+    [_albumTable setBackgroundColor:[UIColor whiteColor]];
+    _albumTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 10.0f)];
+    [_albumTable.tableFooterView setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self styleTableEmptyContent];
+    [self setActivityScreen];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneSelectingPhotos:)];
 
@@ -153,6 +169,7 @@
 
                                                                                               NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:count], @"index" , [singlePhoto objectForKey:@"source"], @"URL", nil];
                                                                                               [_albumCoverArray insertObject:dict atIndex:0];
+
                                                                                               [self.tableView reloadData];
                                                                                           } else {
                                                                                               [self showAlert:error];
