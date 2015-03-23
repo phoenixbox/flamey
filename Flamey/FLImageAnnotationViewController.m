@@ -51,7 +51,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [self updateUploadButtonState];
     [self setHeaderLogo];
     [self renderLateralTable];
-    [self updateButtonElements];
+    [self setRemoveButtonActive];
 
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
@@ -77,20 +77,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                  object:nil];
 }
 
-- (void)updateButtonElements {
-    [FLViewHelpers setBaseButtonStyle:_removeSelectedPhoto withColor:[UIColor redColor]];
-    [_removeSelectedPhoto setContentMode:UIViewContentModeScaleAspectFit];
-    FAKFontAwesome *trash = [FAKFontAwesome trashOIconWithSize:18];
-    NSMutableAttributedString *trashIcon = [FLViewHelpers createIcon:trash withColor:[UIColor redColor]];
-    [FLViewHelpers formatButton:_removeSelectedPhoto forIcon:trashIcon withCopy:@"Remove  " withColor:[UIColor redColor]];
-
-//    [FLViewHelpers setBaseButtonStyle:_uploadButton withColor:[UIColor blackColor]];
-//    [_removeSelectedPhoto setContentMode:UIViewContentModeScaleAspectFit];
-//    FAKFontAwesome *cloud = [FAKFontAwesome cloudUploadIconWithSize:18];
-//    NSMutableAttributedString *cloudIcon = [FLViewHelpers createIcon:cloud withColor:[UIColor blackColor]];
-//    [FLViewHelpers formatButton:_uploadButton forIcon:cloudIcon withCopy:@"Save  " withColor:[UIColor blackColor]];
-}
-
 - (void)addMorePhotos {
     [self performSegueWithIdentifier:kAddMorePhotosSegueIdentifier sender:self];
 }
@@ -98,26 +84,41 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 - (void)updateUploadButtonState {
     NSUInteger count = [[FLProcessedImagesStore sharedStore].photos count];
 
-    if ( count == 0) {
-        [self setUploadInactive];
+    if (count == 0) {
+        [self setUploadButtonsInactive];
     } else {
         [_uploadButton setUserInteractionEnabled:YES];
         [FLViewHelpers setBaseButtonStyle:_uploadButton withColor:[UIColor blackColor]];
         NSString *buttonTitle = [NSString stringWithFormat:@"Upload %lu Private Photos", (unsigned long)count];
 
-//        FAKFontAwesome *cloud = [FAKFontAwesome cloudUploadIconWithSize:18];
-//        NSMutableAttributedString *cloudIcon = [FLViewHelpers createIcon:cloud withColor:[UIColor blackColor]];
-//
-//        [FLViewHelpers formatButton:_uploadButton forIcon:cloudIcon withCopy:buttonTitle withColor:[UIColor blackColor]];
         [_uploadButton setTitle:buttonTitle forState:UIControlStateNormal];
         [_uploadButton.titleLabel setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
     }
 }
 
-- (void)setUploadInactive {
+// Update style setting on initial load for removal button
+// Decouple style state setting functions
+
+- (void)setRemoveButtonActive {
+    [_removeSelectedPhoto setUserInteractionEnabled:YES];
+    [FLViewHelpers setBaseButtonStyle:_removeSelectedPhoto withColor:[UIColor redColor]];
+    [_removeSelectedPhoto setImage:[UIImage imageNamed:@"Trash"] forState:UIControlStateNormal];
+    [_removeSelectedPhoto setTitle:@"" forState:UIControlStateNormal];
+}
+
+- (void)setRemoveButtonInactive {
+    [_removeSelectedPhoto setUserInteractionEnabled:NO];
+    [FLViewHelpers setBaseButtonStyle:_removeSelectedPhoto withColor:[UIColor grayColor]];
+    [_removeSelectedPhoto setBackgroundColor:[UIColor whiteColor]];
+    [_removeSelectedPhoto setImage:nil forState:UIControlStateNormal];
+    [_removeSelectedPhoto setTitle:@"" forState:UIControlStateNormal];
+}
+
+- (void)setUploadButtonsInactive {
     [_uploadButton setUserInteractionEnabled:NO];
     [FLViewHelpers setBaseButtonStyle:_uploadButton withColor:[UIColor grayColor]];
     [_uploadButton setTitle:@"No Photos Marked" forState:UIControlStateNormal];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -504,6 +505,9 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
 
     if ([annotationStore.photos count] == 0) {
         [_selectedPhotosTable.backgroundView setHidden:NO];
+        [self setRemoveButtonInactive];
+        [_scrollRightButton setEnabled:NO];
+        [_scrollLeftButton setEnabled:NO];
     }
 
     [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexpath]
@@ -516,28 +520,28 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
 
 - (void)checkToDisableRemovalButton {
     if ([[FLAnnotationStore sharedStore].photos count] == 0) {
-        [_removeSelectedPhoto setBackgroundColor:[UIColor lightGrayColor]];
+        [_removeSelectedPhoto setEnabled:NO];
         [_removeSelectedPhoto setUserInteractionEnabled:NO];
     }
 }
 // TODO: Setup the buttons with UI for enabled and disabled state so that it can just be toggled
 - (void)disableLeftScrollButton {
-    [_scrollLeftButton setBackgroundColor:[UIColor redColor]];
+    [_scrollLeftButton setEnabled:NO];
     [_scrollLeftButton setUserInteractionEnabled:NO];
 }
 
 - (void)enableLeftScrollButton {
-    [_scrollLeftButton setBackgroundColor:[UIColor lightGrayColor]];
+    [_scrollLeftButton setEnabled:YES];
     [_scrollLeftButton setUserInteractionEnabled:YES];
 }
 
 - (void)disableRightScrollButton {
-    [_scrollRightButton setBackgroundColor:[UIColor redColor]];
+    [_scrollRightButton setEnabled:NO];
     [_scrollRightButton setUserInteractionEnabled:NO];
 }
 
 - (void)enableRightScrollButton {
-    [_scrollRightButton setBackgroundColor:[UIColor lightGrayColor]];
+    [_scrollRightButton setEnabled:YES];
     [_scrollRightButton setUserInteractionEnabled:YES];
 }
 

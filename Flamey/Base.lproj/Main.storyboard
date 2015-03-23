@@ -226,7 +226,7 @@
                                                     <segue destination="rnT-34-xS8" kind="show" identifier="addFilters" id="70R-lh-bLR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOG-Ix-zoT">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOG-Ix-zoT">
                                                 <rect key="frame" x="295" y="18" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="Y7D-5G-zKq"/>
@@ -234,9 +234,12 @@
                                                     <constraint firstAttribute="width" constant="40" id="xPY-Lf-KLu"/>
                                                 </constraints>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" backgroundImage="RightEnabled">
+                                                <state key="normal" image="RightEnabled">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="disabled" image="RightDisabled"/>
+                                                <state key="selected" image="RightActive"/>
+                                                <state key="highlighted" image="RightActive"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="Y7D-5G-zKq"/>
@@ -246,7 +249,7 @@
                                                     <action selector="scrollRight:" destination="8ig-Pf-cmu" eventType="touchUpInside" id="rV4-6C-TP6"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVK-8K-7YB">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVK-8K-7YB">
                                                 <rect key="frame" x="40" y="18" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="F0E-aY-VHB"/>
@@ -254,9 +257,12 @@
                                                     <constraint firstAttribute="width" constant="40" id="nMA-XD-LXM"/>
                                                 </constraints>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" backgroundImage="LeftEnabled">
+                                                <state key="normal" image="LeftEnabled">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="disabled" image="LeftDisabled"/>
+                                                <state key="selected" image="LeftActive"/>
+                                                <state key="highlighted" image="LeftActive"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="bwX-0Y-Tmh"/>
@@ -267,16 +273,22 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xx1-KD-fsu">
-                                                <rect key="frame" x="138" y="18" width="100" height="40"/>
+                                                <rect key="frame" x="95" y="18" width="185" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.40587128709999998" blue="0.42953196319999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="mLQ-fI-cZs"/>
                                                     <constraint firstAttribute="height" constant="40" id="uIO-DT-4dv"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" backgroundImage="Trash">
+                                                <state key="normal" title="Remove">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="mLQ-fI-cZs"/>
+                                                    </mask>
+                                                </variation>
                                                 <connections>
                                                     <action selector="removePhotoAction:" destination="8ig-Pf-cmu" eventType="touchUpInside" id="1fD-uV-BNd"/>
                                                 </connections>
@@ -306,11 +318,15 @@
                                             <constraint firstAttribute="centerX" secondItem="njH-a0-ONB" secondAttribute="centerX" id="Q7c-rk-CdO"/>
                                             <constraint firstItem="xx1-KD-fsu" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="18" id="QNd-gX-A7W"/>
                                             <constraint firstAttribute="centerX" secondItem="krm-Lt-YHn" secondAttribute="centerX" id="Rza-3I-yaO"/>
+                                            <constraint firstItem="xx1-KD-fsu" firstAttribute="leading" secondItem="zVK-8K-7YB" secondAttribute="trailing" constant="58" id="ay8-um-aiL"/>
+                                            <constraint firstItem="xx1-KD-fsu" firstAttribute="leading" secondItem="zVK-8K-7YB" secondAttribute="trailing" constant="15" id="bTJ-Kq-r88"/>
                                             <constraint firstItem="krm-Lt-YHn" firstAttribute="top" secondItem="njH-a0-ONB" secondAttribute="bottom" constant="20" id="d5p-eo-GfV"/>
                                             <constraint firstAttribute="trailing" secondItem="krm-Lt-YHn" secondAttribute="trailing" constant="40" id="eIK-oD-4M3"/>
+                                            <constraint firstItem="LOG-Ix-zoT" firstAttribute="leading" secondItem="xx1-KD-fsu" secondAttribute="trailing" constant="15" id="gFw-ja-zxf"/>
                                             <constraint firstItem="njH-a0-ONB" firstAttribute="top" secondItem="xx1-KD-fsu" secondAttribute="bottom" constant="40" id="gs8-gc-Pbc"/>
                                             <constraint firstItem="njH-a0-ONB" firstAttribute="trailing" secondItem="LOG-Ix-zoT" secondAttribute="trailing" id="hoJ-gt-nMJ"/>
                                             <constraint firstItem="zVK-8K-7YB" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="18" id="it0-ik-Nox"/>
+                                            <constraint firstItem="LOG-Ix-zoT" firstAttribute="leading" secondItem="xx1-KD-fsu" secondAttribute="trailing" constant="57" id="nX8-tS-3w1"/>
                                             <constraint firstItem="njH-a0-ONB" firstAttribute="leading" secondItem="zVK-8K-7YB" secondAttribute="leading" id="pk0-0s-2gb"/>
                                             <constraint firstItem="LOG-Ix-zoT" firstAttribute="top" secondItem="UWj-rh-Z8x" secondAttribute="top" constant="18" id="qBF-ZS-ucc"/>
                                             <constraint firstAttribute="trailing" secondItem="LOG-Ix-zoT" secondAttribute="trailing" constant="40" id="w0U-jV-ykb"/>
@@ -318,8 +334,10 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="BTq-tN-k1N"/>
                                                 <exclude reference="Pq0-2y-FcR"/>
+                                                <exclude reference="ay8-um-aiL"/>
+                                                <exclude reference="BTq-tN-k1N"/>
+                                                <exclude reference="nX8-tS-3w1"/>
                                                 <exclude reference="w0U-jV-ykb"/>
                                             </mask>
                                         </variation>
@@ -1092,14 +1110,17 @@
     <resources>
         <image name="FrameDeselected" width="40" height="40"/>
         <image name="FrameSelected" width="40" height="40"/>
+        <image name="LeftActive" width="40" height="40"/>
+        <image name="LeftDisabled" width="40" height="40"/>
         <image name="LeftEnabled" width="40" height="40"/>
         <image name="LogoLong" width="155" height="50"/>
+        <image name="RightActive" width="40" height="40"/>
+        <image name="RightDisabled" width="40" height="40"/>
         <image name="RightEnabled" width="40" height="40"/>
-        <image name="Trash" width="40" height="40"/>
         <image name="addIcon" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dj5-24-0YJ"/>
+        <segue reference="miO-BO-sYZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
