@@ -174,7 +174,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     UIImageView *imageView = targetCell.selectedImageViewBackground;
 
     // Adjustments translate to a 20/320 width && 50/320 height
-    [targetCell.photo setLogoPoint:CGPointMake(imageView.image.size.width*0.0625, 1-(imageView.image.size.height*0.15625)) ];
+    [targetCell.photo setLogoPoint:CGPointMake(imageView.image.size.width*0.04, (imageView.image.size.height*(1-0.1)) )];
 }
 
 //- (void)addPanGestureRecognizerToCell:(FLAnnotationTableViewCell *)cell {
@@ -302,10 +302,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 - (UIImage *)createLogoForSize:(CGSize)cellImageSize atTouchPoint:(CGPoint)touchPoint {
     UIImage * logoImage = [UIImage imageNamed:@"annotationLogo.png"];
 
-    CGPoint generatedOrigin = [self generateOriginWithPoint:touchPoint forImageSize:cellImageSize];
+//    CGPoint generatedOrigin = [self generateOriginWithPoint:touchPoint forImageSize:cellImageSize];
 
-    CGSize annotationSize = CGSizeMake(cellImageSize.width * 0.34375, cellImageSize.width * 0.15);
-    CGRect logoRect = {generatedOrigin, annotationSize};
+    CGSize annotationSize = CGSizeMake(cellImageSize.width * 0.34375, cellImageSize.height * 0.055);
+    CGRect logoRect = {touchPoint, annotationSize};
 
     UIGraphicsBeginImageContext(cellImageSize);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -325,41 +325,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     return paddedGhost;
 }
-
-//- (UIImage *)createLogoForSize:(CGSize)cellFrameSize usingImageOrigin:(UIImageView *)imageView {
-//    UIImage *logoImage = [UIImage imageNamed:@"annotationLogo.png"];
-//
-//    // InternalImageRect
-//    CGRect imageRect = [self getAnImageViewsImageFrame:imageView];
-//
-//    CGSize logoSize = CGSizeMake(_tableContainer.frame.size.width * (0.34375), _tableContainer.frame.size.width * (0.15));
-//
-//    float xOrigin = 10;
-//    // waht does 50 rep as a total of the height
-//    float yOrigin = CGRectGetMaxY(imageRect) - 40;
-//
-//    CGPoint logoOrigin = CGPointMake(xOrigin,yOrigin);
-//
-//    CGRect logoRect = {logoOrigin, logoSize};
-//
-//    UIGraphicsBeginImageContext(cellFrameSize);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//
-//    CGRect inputRect = {CGPointZero, cellFrameSize};
-//    CGContextClearRect(context, inputRect);
-//
-//    CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
-//    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip, 0, -cellFrameSize.height);
-//    CGContextConcatCTM(context, flipThenShift);
-//    CGRect transformedLogoRect = CGRectApplyAffineTransform(logoRect, flipThenShift);
-//
-//    CGContextDrawImage(context, transformedLogoRect, [logoImage CGImage]);
-//
-//    UIImage *logoOverlay = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    
-//    return logoOverlay;
-//}
 
 - (CGRect)getAnImageViewsImageFrame:(UIImageView *)iv {
     CGSize imageSize = iv.image.size;
