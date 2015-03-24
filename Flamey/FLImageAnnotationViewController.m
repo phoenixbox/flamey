@@ -52,6 +52,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [self setHeaderLogo];
     [self renderLateralTable];
     [self setRemoveButtonActive];
+    [self checkToDisableNavigationArrows];
 
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
@@ -302,8 +303,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 - (UIImage *)createLogoForSize:(CGSize)cellImageSize atTouchPoint:(CGPoint)touchPoint {
     UIImage * logoImage = [UIImage imageNamed:@"annotationLogo.png"];
 
-//    CGPoint generatedOrigin = [self generateOriginWithPoint:touchPoint forImageSize:cellImageSize];
-
     CGSize annotationSize = CGSizeMake(cellImageSize.width * 0.34375, cellImageSize.height * 0.055);
     CGRect logoRect = {touchPoint, annotationSize};
 
@@ -551,7 +550,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
         NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];
         NSInteger currentRowIndex = visibleCellIndexPath.row;
 
-        if (currentRowIndex == 0 & count == 2) {
+        if (count == 1) {
+            [self disableLeftScrollButton];
+            [self disableRightScrollButton];
+        } else if (currentRowIndex == 0 & count == 2) {
             [self disableLeftScrollButton];
             [self enableRightScrollButton];
         } else if (currentRowIndex == count-1 & count == 2) {
