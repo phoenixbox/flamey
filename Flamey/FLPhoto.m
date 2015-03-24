@@ -10,9 +10,13 @@
 
 @implementation FLPhoto
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    if ([propertyName isEqualToString: @"annotationPoint"]) return YES;
++(BOOL)propertyIsOptional:(NSString*)propertyName {
+    if ([propertyName isEqualToString: @"annotationPoint"]) {
+        return YES;
+    } else if ([propertyName isEqualToString: @"logoPoint"]) {
+        return YES;
+    }
+    
     return NO;
 }
 

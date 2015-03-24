@@ -58,7 +58,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [self updateAnnotationStore];
     [self addAddMorePhotosListener];
 }
-
+// RESTART: style the upload view
 - (void)setHeaderLogo {
     [[self navigationItem] setTitleView:nil];
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 44.0f)];
@@ -160,60 +160,69 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
     CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
 
-    NSLog(@"handleTap X Point %f, Y Point %f", annotationPoint.x, annotationPoint.y);
+    // Set annotation locations
     [targetCell.photo setAnnotationPoint:annotationPoint];
+    [self setLogoLocation:targetCell];
 
+    // Overlay images on media
     [self setImagesOnCell:targetCell];
 
     [self updateUploadButtonState];
 }
 
-- (void)addPanGestureRecognizerToCell:(FLAnnotationTableViewCell *)cell {
-    self.moveRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                  action:@selector(moveAnnotation:)];
-    [self.moveRecognizer setDelegate:self];
-    [self.moveRecognizer setCancelsTouchesInView:NO];
+- (void)setLogoLocation:(FLAnnotationTableViewCell *)targetCell {
+    UIImageView *imageView = targetCell.selectedImageViewBackground;
 
-    [cell addGestureRecognizer:self.moveRecognizer];
-
-    // NOTE: Must set interaction true so that the gesture can be triggered
-    // Dont have to have selector on the filter ImageView
-    cell.userInteractionEnabled = YES;
+    // Adjustments translate to a 20/320 width && 50/320 height
+    [targetCell.photo setLogoPoint:CGPointMake(imageView.image.size.width*0.0625, 1-(imageView.image.size.height*0.15625)) ];
 }
 
-#pragma PanGesture Protocol
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
-{
-    if (gestureRecognizer == self.moveRecognizer) {
-        return YES;
-    }
+//- (void)addPanGestureRecognizerToCell:(FLAnnotationTableViewCell *)cell {
+//    self.moveRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+//                                                                  action:@selector(moveAnnotation:)];
+//    [self.moveRecognizer setDelegate:self];
+//    [self.moveRecognizer setCancelsTouchesInView:NO];
+//
+//    [cell addGestureRecognizer:self.moveRecognizer];
+//
+//    // NOTE: Must set interaction true so that the gesture can be triggered
+//    // Dont have to have selector on the filter ImageView
+//    cell.userInteractionEnabled = YES;
+//}
 
-    return NO;
-}
-
-- (void)moveAnnotation:(UIPanGestureRecognizer *)sender {
-    FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
-    CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
-
-    if (CGPointEqualToPoint(targetCell.photo.annotationPoint, CGPointZero)) {
-        [targetCell.photo setAnnotationPoint:annotationPoint];
-    }
-
-    // When the pan recognizer changes its position...
-    if ([sender state] == UIGestureRecognizerStateChanged) {
-        // How far has the pan moved?
-        CGPoint translation = [sender translationInView:targetCell.contentView]; // right view of the cell??
-
-        annotationPoint.x += translation.y;
-        annotationPoint.y -= translation.x;
-
-        targetCell.photo.annotationPoint = annotationPoint;
-
-        // Set the new beginning and end points of the line
-        [self setImagesOnCell:targetCell];
-    }
-}
+//#pragma PanGesture Protocol
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+//shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
+//{
+//    if (gestureRecognizer == self.moveRecognizer) {
+//        return YES;
+//    }
+//
+//    return NO;
+//}
+//
+//- (void)moveAnnotation:(UIPanGestureRecognizer *)sender {
+//    FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
+//    CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
+//
+//    if (CGPointEqualToPoint(targetCell.photo.annotationPoint, CGPointZero)) {
+//        [targetCell.photo setAnnotationPoint:annotationPoint];
+//    }
+//
+//    // When the pan recognizer changes its position...
+//    if ([sender state] == UIGestureRecognizerStateChanged) {
+//        // How far has the pan moved?
+//        CGPoint translation = [sender translationInView:targetCell.contentView]; // right view of the cell??
+//
+//        annotationPoint.x += translation.y;
+//        annotationPoint.y -= translation.x;
+//
+//        targetCell.photo.annotationPoint = annotationPoint;
+//
+//        // Set the new beginning and end points of the line
+//        [self setImagesOnCell:targetCell];
+//    }
+//}
 
 #pragma Set Image on Photo
 - (void)setFlameIconOnCell:(FLAnnotationTableViewCell *)targetCell {
@@ -255,14 +264,13 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
 
 - (void)setLogoImageOnCell:(FLAnnotationTableViewCell *)targetCell {
     UIImageView *imageView = targetCell.selectedImageViewBackground;
-
     // 1. Create the image from the actual image view
     GPUImagePicture *inputGPUImage = [[GPUImagePicture alloc] initWithImage:imageView.image];
 
     // NOTE: OverlayImage must be the same size as the imageOverlaySize
     CGSize imageOverlaySize = CGSizeMake(imageView.image.size.width, imageView.image.size.height);
 
-    UIImage *overlayImage = [self createLogoForSize:imageOverlaySize usingImageOrigin:imageView];
+    UIImage *overlayImage = [self createLogoForSize:imageOverlaySize atTouchPoint:targetCell.photo.logoPoint];
 
     GPUImagePicture *flameyGPUImage = [[GPUImagePicture alloc] initWithImage:overlayImage];
 
@@ -284,46 +292,74 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
     processedPhoto.id = targetCell.photo.id;
     processedPhoto.image = processedImage;
     FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
+
+    // TODO: Will this allow an overwrite
     [processedImagesStore addUniquePhoto:processedPhoto];
 
     [imageView setImage:processedImage];
 }
 
+- (UIImage *)createLogoForSize:(CGSize)cellImageSize atTouchPoint:(CGPoint)touchPoint {
+    UIImage * logoImage = [UIImage imageNamed:@"annotationLogo.png"];
 
-- (UIImage *)createLogoForSize:(CGSize)cellFrameSize usingImageOrigin:(UIImageView *)imageView {
-    UIImage *logoImage = [UIImage imageNamed:@"annotationLogo.png"];
+    CGPoint generatedOrigin = [self generateOriginWithPoint:touchPoint forImageSize:cellImageSize];
 
-    // InternalImageRect
-    CGRect imageRect = [self getAnImageViewsImageFrame:imageView];
+    CGSize annotationSize = CGSizeMake(cellImageSize.width * 0.34375, cellImageSize.width * 0.15);
+    CGRect logoRect = {generatedOrigin, annotationSize};
 
-    CGSize logoSize = CGSizeMake(_tableContainer.frame.size.width * (0.34375), _tableContainer.frame.size.width * (0.15));
-
-    float xOrigin = 10;
-    // waht does 50 rep as a total of the height
-    float yOrigin = CGRectGetMaxY(imageRect) - 40;
-
-    CGPoint logoOrigin = CGPointMake(xOrigin,yOrigin);
-
-    CGRect logoRect = {logoOrigin, logoSize};
-
-    UIGraphicsBeginImageContext(cellFrameSize);
+    UIGraphicsBeginImageContext(cellImageSize);
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    CGRect inputRect = {CGPointZero, cellFrameSize};
+    CGRect inputRect = {CGPointZero, cellImageSize};
     CGContextClearRect(context, inputRect);
 
     CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
-    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip, 0, -cellFrameSize.height);
+    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip,0,-cellImageSize.height);
     CGContextConcatCTM(context, flipThenShift);
     CGRect transformedLogoRect = CGRectApplyAffineTransform(logoRect, flipThenShift);
 
     CGContextDrawImage(context, transformedLogoRect, [logoImage CGImage]);
 
-    UIImage *logoOverlay = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage * paddedGhost = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
-    return logoOverlay;
+
+    return paddedGhost;
 }
+
+//- (UIImage *)createLogoForSize:(CGSize)cellFrameSize usingImageOrigin:(UIImageView *)imageView {
+//    UIImage *logoImage = [UIImage imageNamed:@"annotationLogo.png"];
+//
+//    // InternalImageRect
+//    CGRect imageRect = [self getAnImageViewsImageFrame:imageView];
+//
+//    CGSize logoSize = CGSizeMake(_tableContainer.frame.size.width * (0.34375), _tableContainer.frame.size.width * (0.15));
+//
+//    float xOrigin = 10;
+//    // waht does 50 rep as a total of the height
+//    float yOrigin = CGRectGetMaxY(imageRect) - 40;
+//
+//    CGPoint logoOrigin = CGPointMake(xOrigin,yOrigin);
+//
+//    CGRect logoRect = {logoOrigin, logoSize};
+//
+//    UIGraphicsBeginImageContext(cellFrameSize);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//
+//    CGRect inputRect = {CGPointZero, cellFrameSize};
+//    CGContextClearRect(context, inputRect);
+//
+//    CGAffineTransform flip = CGAffineTransformMakeScale(1.0, -1.0);
+//    CGAffineTransform flipThenShift = CGAffineTransformTranslate(flip, 0, -cellFrameSize.height);
+//    CGContextConcatCTM(context, flipThenShift);
+//    CGRect transformedLogoRect = CGRectApplyAffineTransform(logoRect, flipThenShift);
+//
+//    CGContextDrawImage(context, transformedLogoRect, [logoImage CGImage]);
+//
+//    UIImage *logoOverlay = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    return logoOverlay;
+//}
 
 - (CGRect)getAnImageViewsImageFrame:(UIImageView *)iv {
     CGSize imageSize = iv.image.size;
@@ -458,14 +494,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
 
             // CGPoint is scalar so comparison to nil wont work - this does :)
             if (!CGPointEqualToPoint(photo.annotationPoint, CGPointZero)) {
-                CGPoint point = photo.annotationPoint;
-                NSLog(@"handleTap X Point %f, Y Point %f", point.x, point.y);
-
                 [self setImagesOnCell:cell];
             }
 
             [self addTapGestureRecognizerToCell:cell];
-            [self addPanGestureRecognizerToCell:cell];
+//            [self addPanGestureRecognizerToCell:cell];
         }];
     }
     return cell;

@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSString* URL;
 @property (nonatomic, strong) UIImage<Optional>* image;
 @property (nonatomic, assign) CGPoint annotationPoint;
+@property (nonatomic, assign) CGPoint logoPoint;
 
 @end
