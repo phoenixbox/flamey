@@ -19,6 +19,8 @@
 @property (strong) NSMutableArray* albumCoverArray;
 @property (weak) id<FLPhotosCollectionViewController> delegate;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) NSArray* permissions;
+
 
 @end
 
@@ -85,49 +87,38 @@
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneSelectingPhotos:)];
 
-    NSArray* permissions = [NSArray arrayWithObjects:@"user_friends", @"user_photos", nil];
+    _permissions = [NSArray arrayWithObjects:@"user_friends", @"user_photos", nil];
     BOOL hasPermissions = YES;
-    for (NSString *permission in permissions) {
+    for (NSString *permission in _permissions) {
         hasPermissions = (hasPermissions && [FBSession.activeSession hasGranted:permission]);
     }
     if (FBSession.activeSession.isOpen && hasPermissions) {
-        // login is integrated with the send button -- so if open, we send
         [self sendRequests];
     } else {
-        [FBSession openActiveSessionWithReadPermissions:permissions
-                                           allowLoginUI:YES
-                                      completionHandler:^(FBSession *session,
-                                                          FBSessionState status,
-                                                          NSError *error) {
-                                          // if login fails for any reason, we alert
-                                          if (error) {
-                                              NSLog(@"%@", error.localizedDescription);
-                                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not connect to Facebook."
-                                                                                              message:@"Please try again."
-                                                                                             delegate:self
-                                                                                    cancelButtonTitle:@"OK"
-                                                                                    otherButtonTitles:nil];
-                                              [alert show];
-                                              // if otherwise we check to see if the session is open, an alternative to
-                                              // to the FB_ISSESSIONOPENWITHSTATE helper-macro would be to check the isOpen
-                                              // property of the session object; the macros are useful, however, for more
-                                              // detailed state checking for FBSession objects
-                                          } else if (FB_ISSESSIONOPENWITHSTATE(status)) {
-                                              // send our requests if we successfully logged in
-                                              [self sendRequests];
-                                          }
-                                      }];
+        [self askFacebookPermission];
     }
 
-
-
     _datasource = [[NSMutableArray alloc] init];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)askFacebookPermission {
+    [FBSession openActiveSessionWithReadPermissions:_permissions
+                                       allowLoginUI:YES
+                                  completionHandler:^(FBSession *session,
+                                                      FBSessionState status,
+                                                      NSError *error) {
+                                      // if login fails for any reason, we alert
+                                      if (error) {
+                                          [self showAlert:error withSelectorName:@"askFacebookPermission"];
+                                          // if otherwise we check to see if the session is open, an alternative to
+                                          // to the FB_ISSESSIONOPENWITHSTATE helper-macro would be to check the isOpen
+                                          // property of the session object; the macros are useful, however, for more
+                                          // detailed state checking for FBSession objects
+                                      } else if (FB_ISSESSIONOPENWITHSTATE(status)) {
+                                          // send our requests if we successfully logged in
+                                          [self sendRequests];
+                                      }
+                                  }];
 }
 
 - (void)sendRequests {
@@ -171,7 +162,7 @@
                                                                                           NSDictionary* resultDict = (NSDictionary*)result;
 
                                                                                           [_hud hide:YES];
-                                                                                          
+
                                                                                           if (!error) {
                                                                                               NSDictionary *singlePhotoObject = [resultDict objectForKey:@"data"][0];
                                                                                               NSDictionary *singlePhoto = [singlePhotoObject objectForKey:@"images"][0];
@@ -181,7 +172,7 @@
 
                                                                                               [self.tableView reloadData];
                                                                                           } else {
-                                                                                              [self showAlert:error];
+//                                                                                              [self showAlert:error withSelectorName:@"sendRequests"];
                                                                                           }
                                                                                       }];
                                                             }
@@ -191,7 +182,11 @@
 
 }
 
-- (void)showAlert:(NSError *)error {
+- (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
+    SEL selector = NSSelectorFromString(selectorName);
+    IMP imp = [self methodForSelector:selector];
+    void (*func)(id, SEL) = (void *)imp;
+
     NSLog(@"Error when fetching album data from Facebook: %@", error);
 
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Uh Oh Facebook!" andMessage:@"Something went wrong when we tried to talk to Facebook"];
@@ -203,7 +198,7 @@
     [alertView addButtonWithTitle:@"Try Again"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
-                              [self sendRequests];
+                              func(self, selector);
                           }];
 
     [alertView addButtonWithTitle:@"Try Later"
