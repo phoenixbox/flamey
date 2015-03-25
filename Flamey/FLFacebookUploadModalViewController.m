@@ -10,9 +10,11 @@
 
 // Libs
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <SIAlertView.h>
 
 // Data Layer
 #import "FLProcessedImagesStore.h"
+#import "FLSettings.h"
 
 @interface FLFacebookUploadModalViewController ()
 
@@ -27,18 +29,52 @@
     // Do any additional setup after loading the view.
     [_readyButton setUserInteractionEnabled:NO];
     [_readyButton setBackgroundColor:[UIColor redColor]];
+    FLSettings *settings = [FLSettings defaultSettings];
 
-    [self uploadPhotos];
+    if ([settings uploadPermission]) {
+        NSLog(@"***** GOOD TO UPLOAD *****");
+//        [self uploadPhotos];
+    } else {
+        [self askPermissionTo:@"uploadPhotos"];
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)askPermissionTo:(NSString *)selectorName {
+    FLSettings *settings = [FLSettings defaultSettings];
+
+    SEL selector = NSSelectorFromString(selectorName);
+    IMP imp = [self methodForSelector:selector];
+    void (*func)(id, SEL) = (void *)imp;
+
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Ready To Go!" andMessage:@"Facebook will now ask you for permission to privately upload the photos you have just marked"];
+
+    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+    [alertView addButtonWithTitle:@"Lets Go!"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alert) {
+                              [settings setUploadPermission:YES];
+                              NSLog(@"NOW UPLOAD");
+//                              func(self, selector);
+                          }];
+
+    [alertView addButtonWithTitle:@"I'll ask later"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alert) {
+                              [settings setUploadPermission:NO];
+                              [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                          }];
+    
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+    
+    [alertView show];
 }
+
 
 // TODO: Be aware of iOS version upload restrictions
 - (void)uploadPhotos {
-
     FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
     FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
     UIImage *img = processedPhoto.image;
@@ -103,8 +139,13 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
     } else {
         action();
     }
-
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 /*
 #pragma mark - Navigation
