@@ -252,16 +252,18 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     UIImage *processedImage = [alphaBlendFilter imageFromCurrentFramebuffer];
 
-    // 3. Annotate the new photo model with the id of the target cell's photo
-    FLPhoto *processedPhoto = [[FLPhoto alloc] init];
-    processedPhoto.id = targetCell.photo.id;
-    processedPhoto.image = processedImage;
-    FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
-    [processedImagesStore addUniquePhoto:processedPhoto];
+// 3. Annotate the new photo model with the id of the target cell's photo
+
+//    FLPhoto *processedPhoto = [[FLPhoto alloc] init];
+//    processedPhoto.id = targetCell.photo.id;
+//    processedPhoto.image = processedImage;
+//    FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
+//    [processedImagesStore addUniquePhoto:processedPhoto];
 
     [imageView setImage:processedImage];
-
 }
+
+// RESTART: Confirmation upload page
 
 - (void)setLogoImageOnCell:(FLAnnotationTableViewCell *)targetCell {
     UIImageView *imageView = targetCell.selectedImageViewBackground;
