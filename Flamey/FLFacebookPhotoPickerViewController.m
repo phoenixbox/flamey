@@ -8,8 +8,11 @@
 
 #import "FLFacebookPhotoPickerViewController.h"
 
+// Libs
+#import <MBProgressHUD/MBProgressHUD.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SIAlertView.h>
 
 #import "FLFacebookPhotoCollectionViewCell.h"
 
@@ -23,6 +26,7 @@
 @property (strong) NSMutableArray* datasource;
 @property (strong) UICollectionView* collectionView;
 @property (nonatomic, assign) CGFloat cellSize;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 @end
 
@@ -77,7 +81,13 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 }
 
 -(void)sendRequest {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_hud setCenter:self.view.center];
+    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+    _hud.labelText = @"Loading";
+
     // TODO: Update to a less brittle interface
+    [_hud show:YES];
     if(_albumId){
         NSString* graphPath = [NSString stringWithFormat:@"/%@?fields=photos", _albumId];
 
@@ -85,25 +95,64 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
                                      parameters:nil
                                      HTTPMethod:@"GET"
                               completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                  [_hud hide:YES];
 
-                                  NSDictionary* resultDict = (NSDictionary*)result;
-                                  NSDictionary* dict  = [resultDict objectForKey:@"photos"];
-                                  NSArray* array = [dict objectForKey:@"data"];
+                                  if (error) {
+                                      [self showAlert:error withSelectorName:@"sendRequest"];
+                                  } else {
+                                      NSDictionary* resultDict = (NSDictionary*)result;
+                                      NSDictionary* dict  = [resultDict objectForKey:@"photos"];
+                                      NSArray* array = [dict objectForKey:@"data"];
 
-                                  [self addImagesToDataSource:array];
+                                      [self addImagesToDataSource:array];
+                                  }
         }];
     } else {
         [FBRequestConnection startWithGraphPath:@"/me/photos"
                                      parameters:nil
                                      HTTPMethod:@"GET"
                               completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-
-                                  NSDictionary* resultDict = (NSDictionary*)result;
-                                  NSArray* array = [resultDict objectForKey:@"data"];
-                                  [self addImagesToDataSource:array];
+                                  [_hud hide:YES];
+                                  
+                                  if (error) {
+                                      [self showAlert:error withSelectorName:@"sendRequest"];
+                                  } else {
+                                      NSDictionary* resultDict = (NSDictionary*)result;
+                                      NSArray* array = [resultDict objectForKey:@"data"];
+                                      [self addImagesToDataSource:array];
+                                  }
                               }];
     }
 }
+
+- (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
+    SEL selector = NSSelectorFromString(selectorName);
+    IMP imp = [self methodForSelector:selector];
+    void (*func)(id, SEL) = (void *)imp;
+
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Uh Oh Facebook!" andMessage:@"Something went wrong when we tried to talk to Facebook"];
+
+    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+    [alertView addButtonWithTitle:@"Try Again"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alert) {
+                              func(self, selector);
+                          }];
+
+    [alertView addButtonWithTitle:@"Try Later"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alert) {
+                              NSLog(@"Cancelled Facebook photo fetch: %@", [self class]);
+                          }];
+
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+
+    [alertView show];
+}
+
 
 - (void)addImagesToDataSource:(NSArray *)images {
     for (NSDictionary* innerDict in images) {
