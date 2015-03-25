@@ -29,6 +29,7 @@ static NSString *const kNeedToLogin = @"needToLogin";
 static NSString *const kSeenTutorial = @"seenTutorial";
 static NSString *const kSelectedPersonaKey = @"selectedPersona";
 static NSString *const kUserKey = @"user";
+static NSString *const kUploadPermission = @"uploadPermission";
 
 - (BOOL)shouldSkipLogin
 {
@@ -43,6 +44,10 @@ static NSString *const kUserKey = @"user";
 - (BOOL)seenTutorial
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kSeenTutorial];
+}
+
+- (BOOL)uploadPermission {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kUploadPermission];
 }
 
 - (NSString *)selectedPersona
@@ -74,6 +79,12 @@ static NSString *const kUserKey = @"user";
 - (void)setSeenTutorial:(BOOL)seenTutorial {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:seenTutorial forKey:kSeenTutorial];
+    [defaults synchronize];
+}
+
+- (void)setUploadPermission:(BOOL)uploadPermission {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:uploadPermission forKey:kUploadPermission];
     [defaults synchronize];
 }
 
