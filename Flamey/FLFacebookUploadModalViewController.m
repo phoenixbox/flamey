@@ -172,8 +172,6 @@
     [alertView show];
 }
 
-// RESTART: Style the custom modal view
-
 // TODO: Be aware of iOS version upload restrictions
 - (void)uploadPhotos {
     FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
@@ -195,16 +193,45 @@
 
         [connection addRequest:[FBRequest requestForUploadPhoto:img]
 
-             completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
-                 [_hud hide:YES];
-                 if (!error) {
-                     [self setReadyState];
-                   } else {
-                       NSLog(@"Error %@", error.localizedDescription);
-                   }             }];
+         completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
+             [_hud hide:YES];
+             if (!error) {
+                 [self setReadyState];
+               } else {
+                   [self showAlert:error withSelectorName:@"uploadPhotos"];
+               }
+         }];
 
         [connection start];
     }];
+}
+
+- (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
+    SEL selector = NSSelectorFromString(selectorName);
+    IMP imp = [self methodForSelector:selector];
+    void (*func)(id, SEL) = (void *)imp;
+
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Uh Oh Facebook!" andMessage:@"Something went wrong when we tried to upload to Facebook"];
+
+    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+    [alertView addButtonWithTitle:@"Try Again"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alert) {
+                              func(self, selector);
+                          }];
+
+    [alertView addButtonWithTitle:@"Try Later"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alert) {
+                              [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                          }];
+
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+
+    [alertView show];
 }
 
 - (void)requestConnection:(FBRequestConnection *)connection
