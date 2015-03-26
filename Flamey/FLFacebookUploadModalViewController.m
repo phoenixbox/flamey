@@ -16,6 +16,9 @@
 #import "FLProcessedImagesStore.h"
 #import "FLSettings.h"
 
+// Helpers
+#import "FLViewHelpers.h"
+
 @interface FLFacebookUploadModalViewController ()
 
 @property (nonatomic, strong) MBProgressHUD *hud;
@@ -31,12 +34,109 @@
     [_readyButton setBackgroundColor:[UIColor redColor]];
     FLSettings *settings = [FLSettings defaultSettings];
 
+    [self styleModal];
+
     if ([settings uploadPermission]) {
         NSLog(@"***** GOOD TO UPLOAD *****");
 //        [self uploadPhotos];
     } else {
         [self askPermissionTo:@"uploadPhotos"];
     }
+}
+
+- (void)viewDidLayoutSubviews {
+    [NSTimer scheduledTimerWithTimeInterval:1.0
+                                     target:self selector:@selector(animateSpringLogo)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+- (void)styleModal {
+    [self roundModal];
+    [self setModalTitleCopy];
+    [self setBodyLabelCopy];
+    [self setSpringLogo];
+    [self styleReadyButton];
+}
+
+- (void)roundModal {
+    _modalView.layer.cornerRadius = 10;
+    _modalView.clipsToBounds = YES;
+}
+
+- (void)setModalTitleCopy {
+    _modalTitle.font = [UIFont fontWithName:@"Rochester" size:[FLViewHelpers titleCopyForScreenSize]];
+}
+
+- (void)setSpringLogo {
+    [_springLogo setImage:[UIImage imageNamed:@"BigMarker"]];
+    [_springLogo setContentMode:UIViewContentModeScaleAspectFit];
+}
+
+- (void)animateSpringLogo {
+    [_springLogo setAnimation:@"pop"];
+    [_springLogo setCurve:@"linear"];
+    [_springLogo setForce:1];
+    [_springLogo setDuration:0.5];
+    [_springLogo animate];
+}
+
+- (void)setBodyLabelCopy {
+    NSString *copy = @"Working to help you stndout!";
+    float bodyCopySize = [FLViewHelpers bodyCopyForScreenSize];
+
+    _bodyLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:bodyCopySize];
+    _bodyLabel.textColor = [UIColor whiteColor];
+    _bodyLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _bodyLabel.numberOfLines = 2;
+
+    [_bodyLabel setText:copy afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"stndout" options:NSCaseInsensitiveSearch];
+
+        UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:bodyCopySize];
+        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+        if (font) {
+            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+            CFRelease(font);
+        }
+
+        return mutableAttributedString;
+    }];
+}
+
+- (void)styleReadyButton {
+    [FLViewHelpers setBaseButtonStyle:_readyButton withColor:[UIColor grayColor]];
+    [_readyButton setBackgroundColor:[UIColor clearColor]];
+
+    float fontSize = [FLViewHelpers buttonCopyForScreenSize];
+    _readyButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:fontSize];
+    [_readyButton setTitle:@"Not Finished Yet" forState:UIControlStateDisabled];
+    [_readyButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+
+    [_readyButton setTitle:@"Finished!" forState:UIControlStateNormal];
+    [_readyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
+    [_readyButton setEnabled:NO];
+}
+
+- (void)setReadyState {
+    [_readyButton setEnabled:YES];
+
+    [FLViewHelpers setBaseButtonStyle:_readyButton withColor:[UIColor whiteColor]];
+    float fontSize = [FLViewHelpers buttonCopyForScreenSize];
+    _readyButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:fontSize];
+
+    [_bodyLabel setText:@"Finished!" afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"Finished!" options:NSCaseInsensitiveSearch];
+
+        UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:[FLViewHelpers buttonCopyForScreenSize]];
+        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+        if (font) {
+            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+            CFRelease(font);
+        }
+
+        return mutableAttributedString;
+    }];
 }
 
 - (void)askPermissionTo:(NSString *)selectorName {
@@ -72,6 +172,7 @@
     [alertView show];
 }
 
+// RESTART: Style the custom modal view
 
 // TODO: Be aware of iOS version upload restrictions
 - (void)uploadPhotos {
@@ -97,9 +198,7 @@
              completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
                  [_hud hide:YES];
                  if (!error) {
-                       [_readyButton setTitle:@"Finished" forState:UIControlStateNormal];
-                       [_readyButton setUserInteractionEnabled:YES];
-                       [_readyButton setBackgroundColor:[UIColor greenColor]];
+                     [self setReadyState];
                    } else {
                        NSLog(@"Error %@", error.localizedDescription);
                    }             }];
