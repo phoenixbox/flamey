@@ -213,7 +213,7 @@
         NSString *selectorName = [animationFunctions objectAtIndex:i];
         SEL selector = NSSelectorFromString(selectorName);
 
-        [NSTimer scheduledTimerWithTimeInterval:2
+        [NSTimer scheduledTimerWithTimeInterval:1.5
                                          target:self
                                        selector:selector
                                        userInfo:nil
@@ -245,10 +245,11 @@
     [self setHeartInImageView:_heartTwo];
 
     [_heartTwo setAnimation:@"shake"];
-    [_heartTwo setCurve:@"easeOutQuad"];
-    [_heartTwo setDuration:2];
+    [_heartTwo setCurve:@"linear"];
+    [_heartTwo setDuration:1.5];
     [_heartTwo setDamping:0.7];
-    [_heartTwo setY:128.3];
+    [_heartTwo setVelocity:1.0];
+    [_heartTwo setY:100];
     [_heartTwo animate];
 }
 
