@@ -11,6 +11,7 @@
 // Libs
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SIAlertView.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 // Data Layer
 #import "FLProcessedImagesStore.h"
@@ -140,16 +141,52 @@
         return mutableAttributedString;
     }];
 
-    [self setSpringLogoFinishedView];
+    [self setFinishLogoAndTriggerProfileVIew];
 }
 
-- (void)setSpringLogoFinishedView {
+- (void)setFinishLogoAndTriggerProfileVIew {
     [_springLogo stopAnimating];
+
+    [NSTimer scheduledTimerWithTimeInterval:0.5
+                                     target:self
+                                   selector:@selector(blurOutSpringLogo)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+- (void)blurOutSpringLogo {
+    FLSettings *sharedSettings = [FLSettings defaultSettings];
+    FLUser *user = sharedSettings.user;
+
+    void(^completionBlock)(void)=^(void) {
+        if (user.image) {
+            [_springLogo setImage:user.image];
+            [self setFinishedLogo];
+        } else {
+            UIImage *persona =[UIImage imageNamed:@"Persona"];
+
+            [_springLogo sd_setImageWithURL:user.profileURL
+                           placeholderImage:persona
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                      [self setFinishedLogo];
+                                  }
+             ];
+        }
+    };
+
     [_springLogo setAnimation:@"zoomOut"];
     [_springLogo setCurve:@"easeInQuad"];
     [_springLogo setForce:1];
     [_springLogo setDuration:1.0];
-    [_springLogo performSelector:@selector(animate) withObject:nil afterDelay:0.5];
+    [_springLogo animateToNext:completionBlock];
+}
+
+-(void)setFinishedLogo {
+    [_springLogo setAnimation:@"zoomIn"];
+    [_springLogo setCurve:@"easeInQuad"];
+    [_springLogo setForce:1];
+    [_springLogo setDuration:1.0];
+    [_springLogo animateTo];
 }
 
 - (void)askPermissionTo:(NSString *)selectorName {
