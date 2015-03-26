@@ -26,4 +26,8 @@
     return [_gender isEqualToString:@"female"];
 }
 
+- (NSURL *)profileURL {
+    return [NSURL URLWithString:_profileImage];
+}
+
 @end

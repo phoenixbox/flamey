@@ -25,9 +25,12 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString<Optional> *profileImage;
+@property (nonatomic, strong) UIImage<Optional> *image;
 
 - (BOOL)isMale;
 
 - (BOOL)isFemale;
+
+- (NSURL *)profileURL;
 
 @end
