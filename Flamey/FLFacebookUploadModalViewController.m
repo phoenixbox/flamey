@@ -31,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [_readyButton setUserInteractionEnabled:NO];
     [_readyButton setBackgroundColor:[UIColor redColor]];
     FLSettings *settings = [FLSettings defaultSettings];
 
