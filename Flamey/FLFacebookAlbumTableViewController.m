@@ -172,7 +172,7 @@
 
                                                                                               [self.tableView reloadData];
                                                                                           } else {
-//                                                                                              [self showAlert:error withSelectorName:@"sendRequests"];
+                                                                                              [self showAlert:error withSelectorName:@"sendRequests"];
                                                                                           }
                                                                                       }];
                                                             }
