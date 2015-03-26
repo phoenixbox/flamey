@@ -37,8 +37,7 @@
     [self styleModal];
 
     if ([settings uploadPermission]) {
-        NSLog(@"***** GOOD TO UPLOAD *****");
-//        [self uploadPhotos];
+        [self uploadPhotos];
     } else {
         [self askPermissionTo:@"uploadPhotos"];
     }
@@ -77,8 +76,11 @@
     [_springLogo setCurve:@"linear"];
     [_springLogo setForce:1];
     [_springLogo setDuration:0.5];
-    [_springLogo animate];
 }
+
+// RESTART
+// Mock an upload finished timer - then animate in another profile image view
+// Drop down some hearts and pulsate them
 
 - (void)setBodyLabelCopy {
     NSString *copy = @"Working to help you stndout!";
@@ -118,7 +120,7 @@
     [_readyButton setEnabled:NO];
 }
 
-- (void)setReadyState {
+- (void)setFinishedState {
     [_readyButton setEnabled:YES];
 
     [FLViewHelpers setBaseButtonStyle:_readyButton withColor:[UIColor whiteColor]];
@@ -137,6 +139,17 @@
 
         return mutableAttributedString;
     }];
+
+    [self setSpringLogoFinishedView];
+}
+
+- (void)setSpringLogoFinishedView {
+    [_springLogo stopAnimating];
+    [_springLogo setAnimation:@"zoomOut"];
+    [_springLogo setCurve:@"easeInQuad"];
+    [_springLogo setForce:1];
+    [_springLogo setDuration:1.0];
+    [_springLogo performSelector:@selector(animate) withObject:nil afterDelay:0.5];
 }
 
 - (void)askPermissionTo:(NSString *)selectorName {
@@ -156,8 +169,7 @@
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
                               [settings setUploadPermission:YES];
-                              NSLog(@"NOW UPLOAD");
-//                              func(self, selector);
+                              func(self, selector);
                           }];
 
     [alertView addButtonWithTitle:@"I'll ask later"
@@ -174,36 +186,37 @@
 
 // TODO: Be aware of iOS version upload restrictions
 - (void)uploadPhotos {
-    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
-    FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
-    UIImage *img = processedPhoto.image;
-
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [_hud setCenter:self.view.center];
-    _hud.mode = MBProgressHUDModeAnnularDeterminate;
-    _hud.labelText = @"Loading";
-
-    [self performPublishAction:^{
-        FBRequestConnection *connection = [[FBRequestConnection alloc] init];
-        connection.errorBehavior = FBRequestConnectionErrorBehaviorReconnectSession
-        | FBRequestConnectionErrorBehaviorAlertUser
-        | FBRequestConnectionErrorBehaviorRetry;
-
-        [_hud show:YES];
-
-        [connection addRequest:[FBRequest requestForUploadPhoto:img]
-
-         completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
-             [_hud hide:YES];
-             if (!error) {
-                 [self setReadyState];
-               } else {
-                   [self showAlert:error withSelectorName:@"uploadPhotos"];
-               }
-         }];
-
-        [connection start];
-    }];
+     [self setFinishedState];
+//    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
+//    FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
+//    UIImage *img = processedPhoto.image;
+//
+//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [_hud setCenter:self.view.center];
+//    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+//    _hud.labelText = @"Loading";
+//
+//    [self performPublishAction:^{
+//        FBRequestConnection *connection = [[FBRequestConnection alloc] init];
+//        connection.errorBehavior = FBRequestConnectionErrorBehaviorReconnectSession
+//        | FBRequestConnectionErrorBehaviorAlertUser
+//        | FBRequestConnectionErrorBehaviorRetry;
+//
+//        [_hud show:YES];
+//
+//        [connection addRequest:[FBRequest requestForUploadPhoto:img]
+//
+//         completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
+//             [_hud hide:YES];
+//             if (!error) {
+//                 [self setFinishedState];
+//               } else {
+//                   [self showAlert:error withSelectorName:@"uploadPhotos"];
+//               }
+//         }];
+//
+//        [connection start];
+//    }];
 }
 
 - (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
