@@ -51,6 +51,8 @@
 
 + (float)bodyCopyForScreenSize;
 
++ (float)titleCopyForScreenSize;
+
 + (float)buttonCopyForScreenSize;
 
 @end
