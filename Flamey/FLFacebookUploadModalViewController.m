@@ -67,6 +67,17 @@
     _modalTitle.font = [UIFont fontWithName:@"Rochester" size:[FLViewHelpers titleCopyForScreenSize]];
 }
 
+- (void)setModalTitleFinished {
+    CATransition *transitionAnimation = [CATransition animation];
+    [transitionAnimation setType:kCATransitionFade];
+    [transitionAnimation setDuration:0.3f];
+    [transitionAnimation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [transitionAnimation setFillMode:kCAFillModeBoth];
+    [_modalTitle.layer addAnimation:transitionAnimation forKey:@"fadeAnimation"];
+
+    [_modalTitle setText:@"Finished!"];
+}
+
 - (void)setSpringLogo {
     [_springLogo setImage:[UIImage imageNamed:@"BigMarker"]];
     [_springLogo setContentMode:UIViewContentModeScaleAspectFit];
@@ -115,21 +126,23 @@
     [_readyButton setTitle:@"Not Finished Yet" forState:UIControlStateDisabled];
     [_readyButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
 
-    [_readyButton setTitle:@"Finished!" forState:UIControlStateNormal];
+    [_readyButton setTitle:@"Continue" forState:UIControlStateNormal];
     [_readyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
     [_readyButton setEnabled:NO];
 }
 
 - (void)setFinishedState {
+    [self setModalTitleFinished];
     [_readyButton setEnabled:YES];
 
     [FLViewHelpers setBaseButtonStyle:_readyButton withColor:[UIColor whiteColor]];
     float fontSize = [FLViewHelpers buttonCopyForScreenSize];
     _readyButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:fontSize];
+    [_readyButton setBackgroundColor:[UIColor clearColor]];
 
-    [_bodyLabel setText:@"Finished!" afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"Finished!" options:NSCaseInsensitiveSearch];
+    [_bodyLabel setText:@"Now you stndout!" afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"stndout" options:NSCaseInsensitiveSearch];
 
         UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:[FLViewHelpers buttonCopyForScreenSize]];
         CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
@@ -158,7 +171,8 @@
     FLSettings *sharedSettings = [FLSettings defaultSettings];
     FLUser *user = sharedSettings.user;
 
-    void(^completionBlock)(void)=^(void) {
+    void(^fadeInProfileImage)(void)=^(void) {
+
         if (user.image) {
             [_springLogo setImage:user.image];
             [self setFinishedLogo];
@@ -178,7 +192,7 @@
     [_springLogo setCurve:@"easeInQuad"];
     [_springLogo setForce:1];
     [_springLogo setDuration:1.0];
-    [_springLogo animateToNext:completionBlock];
+    [_springLogo animateToNext:fadeInProfileImage];
 }
 
 -(void)setFinishedLogo {
@@ -186,8 +200,65 @@
     [_springLogo setCurve:@"easeInQuad"];
     [_springLogo setForce:1];
     [_springLogo setDuration:1.0];
-    [_springLogo animateTo];
+    [_springLogo animate];
+
+    [self triggerHearts];
 }
+
+- (void)triggerHearts {
+    NSArray *animationFunctions = @[@"animateHeartOne",
+                             @"animateHeartTwo"];
+
+    for (int i=0; i < [animationFunctions count]; i++) {
+        NSString *selectorName = [animationFunctions objectAtIndex:i];
+        SEL selector = NSSelectorFromString(selectorName);
+
+        [NSTimer scheduledTimerWithTimeInterval:2
+                                         target:self
+                                       selector:selector
+                                       userInfo:nil
+                                        repeats:YES];
+    }
+
+}
+
+-(void)animateHeartOne {
+// TODO: Figure out better chaining of animations
+//    void(^fadeBlock)(void)=^(void) {
+//        [_heartOne setAnimation:@"zoomOut"];
+//        [_heartOne setCurve:@"spring"];
+//        [_heartOne setDuration:0.5];
+//        [_heartOne animate];
+//    };
+
+    [self setHeartInImageView:_heartOne];
+
+    [_heartOne setAnimation:@"shake"];
+    [_heartOne setCurve:@"easeOutQuad"];
+    [_heartOne setDuration:2];
+    [_heartOne setDamping:0.7];
+    [_heartOne setY:128.3];
+    [_heartOne animate];
+}
+
+-(void)animateHeartTwo {
+    [self setHeartInImageView:_heartTwo];
+
+    [_heartTwo setAnimation:@"shake"];
+    [_heartTwo setCurve:@"easeOutQuad"];
+    [_heartTwo setDuration:2];
+    [_heartTwo setDamping:0.7];
+    [_heartTwo setY:128.3];
+    [_heartTwo animate];
+}
+
+- (void)setHeartInImageView:(SpringImageView *)imageView {
+    [imageView setImage:[UIImage imageNamed:@"heartIcon"]];
+    imageView.layer.cornerRadius = _heartOne.bounds.size.width / 2;
+    imageView.clipsToBounds = YES;
+}
+
+// TODO: Remove the animations when the view is destoryed || investigate garbage collection more
 
 - (void)askPermissionTo:(NSString *)selectorName {
     FLSettings *settings = [FLSettings defaultSettings];

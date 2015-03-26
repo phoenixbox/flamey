@@ -425,7 +425,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="r2H-lK-YdF" kind="unwind" unwindAction="unwindToSelection:" id="JPx-60-Jrr"/>
+                                            <segue destination="r2H-lK-YdF" kind="unwind" unwindAction="unwindToSelection:" id="6e7-M0-cUe"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuZ-rO-TtY">
@@ -448,7 +448,21 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="working on helping you stndout!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw6-k1-VeV" userLabel="body" customClass="TTTAttributedLabel">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uh2-ux-mwM" userLabel="HeartOne" customClass="SpringImageView" customModule="Flamey" customModuleProvider="target">
+                                        <rect key="frame" x="225" y="109" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Ac9-XJ-7d7"/>
+                                            <constraint firstAttribute="height" constant="20" id="aXd-mQ-BTb"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ge9-wd-zBd" userLabel="HeartTwo" customClass="SpringImageView" customModule="Flamey" customModuleProvider="target">
+                                        <rect key="frame" x="60" y="109" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Lra-h1-HeR"/>
+                                            <constraint firstAttribute="width" constant="30" id="fpm-mE-Zab"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw6-k1-VeV" userLabel="body" customClass="TTTAttributedLabel">
                                         <rect key="frame" x="30" y="339" width="255" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="XF5-Bf-vvw"/>
@@ -460,18 +474,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Uh2-ux-mwM" secondAttribute="trailing" constant="70" id="09M-fx-MWR"/>
+                                    <constraint firstItem="Ge9-wd-zBd" firstAttribute="top" secondItem="tuZ-rO-TtY" secondAttribute="bottom" constant="5" id="3O2-W9-kFn"/>
                                     <constraint firstAttribute="trailing" secondItem="tuZ-rO-TtY" secondAttribute="trailing" id="4NM-PO-7l4"/>
                                     <constraint firstItem="D5N-Iu-iVu" firstAttribute="top" secondItem="tuZ-rO-TtY" secondAttribute="bottom" constant="20" id="Ak4-DD-Kbb"/>
                                     <constraint firstAttribute="width" secondItem="hvY-u3-RWS" secondAttribute="height" multiplier="1:1" id="D5a-D9-4Vd"/>
                                     <constraint firstAttribute="trailing" secondItem="uw6-k1-VeV" secondAttribute="trailing" constant="30" id="EXc-uJ-Ijz"/>
                                     <constraint firstItem="uw6-k1-VeV" firstAttribute="top" secondItem="D5N-Iu-iVu" secondAttribute="bottom" constant="20" id="FmD-aR-Heh"/>
                                     <constraint firstItem="D5N-Iu-iVu" firstAttribute="centerX" secondItem="tuZ-rO-TtY" secondAttribute="centerX" id="Fv8-aP-Q30"/>
+                                    <constraint firstItem="Ge9-wd-zBd" firstAttribute="leading" secondItem="hvY-u3-RWS" secondAttribute="leading" constant="60" id="I4G-FW-tMg"/>
                                     <constraint firstAttribute="centerY" secondItem="Qwv-u6-Jzc" secondAttribute="centerY" id="Itg-ps-eV5"/>
                                     <constraint firstAttribute="centerX" secondItem="Qwv-u6-Jzc" secondAttribute="centerX" id="JzY-aQ-N9X"/>
                                     <constraint firstAttribute="trailing" secondItem="D5N-Iu-iVu" secondAttribute="trailing" constant="60" id="MZ9-WY-XgI"/>
                                     <constraint firstItem="tuZ-rO-TtY" firstAttribute="leading" secondItem="hvY-u3-RWS" secondAttribute="leading" id="Oxp-eB-k4V"/>
                                     <constraint firstItem="Qwv-u6-Jzc" firstAttribute="top" secondItem="D5N-Iu-iVu" secondAttribute="bottom" constant="50" id="TJY-Mc-8ew"/>
                                     <constraint firstItem="tuZ-rO-TtY" firstAttribute="top" secondItem="hvY-u3-RWS" secondAttribute="top" constant="30" id="UBv-Dl-trx"/>
+                                    <constraint firstItem="Uh2-ux-mwM" firstAttribute="top" secondItem="tuZ-rO-TtY" secondAttribute="bottom" constant="5" id="Vyh-jp-ZQn"/>
                                     <constraint firstItem="D5N-Iu-iVu" firstAttribute="leading" secondItem="hvY-u3-RWS" secondAttribute="leading" constant="60" id="h2Z-i8-pxc"/>
                                     <constraint firstItem="uw6-k1-VeV" firstAttribute="centerX" secondItem="D5N-Iu-iVu" secondAttribute="centerX" id="lO5-9P-ghR"/>
                                     <constraint firstItem="uw6-k1-VeV" firstAttribute="leading" secondItem="hvY-u3-RWS" secondAttribute="leading" constant="30" id="owS-QW-9oy"/>
@@ -513,6 +531,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bodyLabel" destination="uw6-k1-VeV" id="Vrb-NZ-W7a"/>
+                        <outlet property="heartOne" destination="Uh2-ux-mwM" id="FHF-5w-xpe"/>
+                        <outlet property="heartTwo" destination="Ge9-wd-zBd" id="MPg-6h-9Lr"/>
                         <outlet property="modalTitle" destination="tuZ-rO-TtY" id="Ydn-xZ-zc4"/>
                         <outlet property="modalView" destination="hvY-u3-RWS" id="dKD-Uf-Z6I"/>
                         <outlet property="readyButton" destination="Qwv-u6-Jzc" id="D59-Sj-Xcg"/>

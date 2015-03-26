@@ -694,11 +694,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookUploadModalViewController.m"
-            timestampString = "449045791.736659"
+            timestampString = "449052339.834295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "-showAlert:withSelectorName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1592,6 +1592,22 @@
             startingLineNumber = "121"
             endingLineNumber = "121"
             landmarkName = "-sendRequest"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flamey/FLFacebookUploadModalViewController.m"
+            timestampString = "449052208.096047"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-setFinishedLogo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
