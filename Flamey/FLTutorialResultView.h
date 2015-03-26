@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
-// TODO: Change when using
+// TODO: When updating product name - update this header
 #import "Flamey-Swift.h"
 
 extern NSString *const kCompleteResult;

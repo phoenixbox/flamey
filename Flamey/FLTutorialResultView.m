@@ -217,6 +217,10 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
         [_heartIcon animateToNext:heartDisappear];
     };
 
+    void(^swapImage)(void)=^(void) {
+        [_secondProfile setImage:[self getAlternateImage]];
+    };
+
     void(^updateImage)(void)=^(void) {
         [_secondProfile setAnimation:@"wobble"];
         [_secondProfile setCurve:@"easInOutQuad"];
@@ -225,7 +229,8 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
         [_secondProfile setScaleY:1];
         [_secondProfile setDamping:1];
         [_secondProfile setVelocity:0.5];
-        [_secondProfile animate];
+
+        [_secondProfile animateToNext:swapImage];
     };
 
     void(^heartFadein)(void)=^(void) {
@@ -242,11 +247,10 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
         [_secondProfile animateToNext:updateImage];
     };
 
-    [_secondProfile setImage:[self getAlternateImage]];
     [_secondProfile setAnimation:@"flipX"];
     [_secondProfile setCurve:@"spring"];
     [_secondProfile setDuration:0.7];
-    [_secondProfile setRotate:1];
+    [_secondProfile setRotate:2];
     [_secondProfile animateToNext:completionBlock];
 
     [_heartIcon setAnimation:@"fadeIn"];
@@ -268,24 +272,7 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
 }
 
 - (NSDictionary *)copySizes {
-    float matchTitleFontSize;
-
-    if ([UIScreen mainScreen].bounds.size.height == 480) {
-        // iPhone 4 - 3.5
-        matchTitleFontSize = 52.0f;
-    } else if ([UIScreen mainScreen].bounds.size.height == 568) {
-        // iPhone 5 - 4in
-        matchTitleFontSize = 57.0f;
-    } else if ([UIScreen mainScreen].bounds.size.width == 375) {
-        // iPhone 6 - 4.7in
-        matchTitleFontSize = 62.0f;
-    } else if ([UIScreen mainScreen].bounds.size.width == 414) {
-        // iPhone 6+ - 5.5in
-        matchTitleFontSize = 74.0f;
-    } else if ([UIScreen mainScreen].bounds.size.width == 768) {
-        // iPad - WARN
-        matchTitleFontSize = 80.0f;
-    }
+    float matchTitleFontSize = [FLViewHelpers titleCopyForScreenSize];
 
     float bodyCopySize = [FLViewHelpers bodyCopyForScreenSize];
     // TODO: Design Button Sizes
