@@ -27,6 +27,7 @@
 @property (strong) UICollectionView* collectionView;
 @property (nonatomic, assign) CGFloat cellSize;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UITapGestureRecognizer *cellTap;
 
 @end
 
@@ -197,9 +198,31 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     NSString *facebookId = [_datasource[indexPath.row] objectForKey:@"id"];
     if ([[FLSelectedPhotoStore sharedStore] isPhotoPresent:facebookId]) {
         [cell setSelected:YES];
+
+        _cellTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                action:@selector(handleTap:)];
+        _cellTap.numberOfTouchesRequired = 1;
+        _cellTap.numberOfTapsRequired = 1;
+
+        [cell addGestureRecognizer:_cellTap];
+        cell.userInteractionEnabled = YES;
+
     }
 
     return cell;
+}
+
+- (void)handleTap:(UIGestureRecognizer *)sender  {
+    // use and remove
+    FLFacebookPhotoCollectionViewCell *targetCell = (FLFacebookPhotoCollectionViewCell *)sender.view;
+
+    NSIndexPath *indexPath = [_collectionView indexPathForCell:targetCell];
+
+    NSDictionary *selectedPhoto = _datasource[indexPath.row];
+    [[FLSelectedPhotoStore sharedStore] removePhotoById:[selectedPhoto objectForKey:@"id"]];
+
+    [targetCell setSelected:NO];
+    [targetCell removeGestureRecognizer:sender];
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
