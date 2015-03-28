@@ -41,16 +41,24 @@
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture {
+    [self simulateTouchAnimation];
+    [self performSelector:@selector(simulateTouchResponse) withObject:nil afterDelay:0.2];
+}
+
+- (void)simulateTouchAnimation {
     [_handIcon setAnimation:@"pop"];
     [_handIcon setCurve:@"linear"];
     [_handIcon setForce:1];
     [_handIcon setDuration:0.5];
     [_handIcon animateTo];
+}
 
+- (void)simulateTouchResponse {
     [_markerLogo setAnimation:@"pop"];
     [_markerLogo setCurve:@"linear"];
     [_markerLogo setForce:1];
-    [_markerLogo setDuration:0.5];
+    [_markerLogo setContentScaleFactor:0.5];
+    [_markerLogo setDuration:0.2];
     [_markerLogo animateTo];
 }
 
