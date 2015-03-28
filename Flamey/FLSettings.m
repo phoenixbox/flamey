@@ -30,6 +30,7 @@ static NSString *const kSeenTutorial = @"seenTutorial";
 static NSString *const kSelectedPersonaKey = @"selectedPersona";
 static NSString *const kUserKey = @"user";
 static NSString *const kUploadPermission = @"uploadPermission";
+static NSString *const kUnderstandAnnotation = @"understandAnnotation";
 
 - (BOOL)shouldSkipLogin
 {
@@ -47,6 +48,10 @@ static NSString *const kUploadPermission = @"uploadPermission";
 }
 
 - (BOOL)uploadPermission {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kUploadPermission];
+}
+
+- (BOOL)understandAnnotation {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kUploadPermission];
 }
 
@@ -85,6 +90,12 @@ static NSString *const kUploadPermission = @"uploadPermission";
 - (void)setUploadPermission:(BOOL)uploadPermission {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:uploadPermission forKey:kUploadPermission];
+    [defaults synchronize];
+}
+
+- (void)setUnderstandAnnotation:(BOOL)understandAnnotation {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:understandAnnotation forKey:kUnderstandAnnotation];
     [defaults synchronize];
 }
 

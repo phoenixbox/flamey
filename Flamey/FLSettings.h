@@ -18,6 +18,7 @@
 @property (nonatomic, assign) BOOL needToLogin;
 @property (nonatomic, assign) BOOL seenTutorial;
 @property (nonatomic, assign) BOOL uploadPermission;
+@property (nonatomic, assign) BOOL understandAnnotation;
 @property (nonatomic, strong) NSString *selectedPersona;
 @property (nonatomic, strong) FLUser *user;
 
