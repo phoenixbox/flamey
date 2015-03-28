@@ -17,20 +17,26 @@
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "BlurryModalSegue.h"
+#import <SIAlertView.h>
 
 // Components
 #import "FLSelectedPhotosCollectionViewController.h"
-#import "FLPhotoCollectionViewCell.h"
+#import "FLFacebookPhotoCollectionViewCell.h"
+
 #import "FLFacebookAlbumTableViewController.h"
 #import "FLImageAnnotationViewController.h"
 #import "FLSelectionCollectionEmptyMessageView.h"
 
-NSString *const kPhotoCellIdentifier = @"FLPhotoCollectionViewCell";
+NSString *const kPhotoCellIdentifier = @"FLFacebookPhotoCollectionViewCell";
 NSString *const kSeguePushToImageAnnotation = @"pushToImageAnnotation";
 NSString *const kSegueShowUserTutorial = @"showUserTutorial";
 NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEmptyMessageView";
+NSString *const kDoneEditingTitle = @"Done";
+NSString *const kStartEditingTitle = @"Edit";
 
 @interface FLSelectedPhotosCollectionViewController ()
+
+@property (nonatomic, assign) BOOL inEditMode;
 
 @end
 
@@ -84,7 +90,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     [_selectionCollection setCollectionViewLayout:[CollectionViewHelpers buildLayoutWithWidth:viewFrame.size.width]];
 
     // Fetch the nib by the class name
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLPhotoCollectionViewCell class])
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([FLFacebookPhotoCollectionViewCell class])
                                 bundle:[NSBundle mainBundle]];
     // Register the nib
     [_selectionCollection registerNib:nib forCellWithReuseIdentifier:kPhotoCellIdentifier];
@@ -107,7 +113,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 }
 
 - (void)updateEditButtonVisibility {
-    NSUInteger count = [[FLSelectedPhotoStore sharedStore].allPhotos count];
+    NSUInteger count = [[FLSelectedPhotoStore sharedStore].photos count];
     if (count == 0) {
         [_editPhotosButton setHidden:YES];
     } else {
@@ -115,17 +121,10 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     }
 }
 
-// TODO: Allow to show the tutorial again?
-//- (void)presentTutorial {
-//    [self performSegueWithIdentifier:kSegueShowUserTutorial sender:self];
-//}
-
 #pragma UICollectionView Protocol Methods
 
-#pragma UITableViewDelgate
-
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSUInteger count = [[FLSelectedPhotoStore sharedStore].allPhotos count];
+    NSUInteger count = [[FLSelectedPhotoStore sharedStore].photos count];
 
     if (count > 0) {
         [_selectionCollection.backgroundView setHidden:YES];
@@ -137,9 +136,9 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    FLPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
+    FLFacebookPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
-    FLPhoto *photo = [[FLSelectedPhotoStore sharedStore].allPhotos objectAtIndex:[indexPath row]];
+    FLPhoto *photo = [[FLSelectedPhotoStore sharedStore].photos objectAtIndex:[indexPath row]];
 
     cell.imageViewBackgroundImage.contentMode = UIViewContentModeScaleAspectFill;
     [cell.imageViewBackgroundImage sd_setImageWithURL:[NSURL URLWithString:photo.URL] placeholderImage:[UIImage imageNamed:@"Persona"]];
@@ -148,9 +147,21 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:kSeguePushToImageAnnotation sender:self];
+    if (_inEditMode) {
+        // Remove the photo from the selection store
+        FLSelectedPhotoStore *selectedStore = [FLSelectedPhotoStore sharedStore];
+        [selectedStore.photos removeObjectAtIndex:[indexPath row]];
 
-    NSLog(@"Push to image annotation with cell %lu", (long)[indexPath row]);
+        [_selectionCollection deleteItemsAtIndexPaths:@[indexPath]];
+        if ([selectedStore.photos count] == 0) {
+            [_editPhotosButton setHidden:YES];
+            [self turnOffEditing];
+        }
+    } else {
+        [self performSegueWithIdentifier:kSeguePushToImageAnnotation sender:self];
+
+        NSLog(@"Push to image annotation with cell %lu", (long)[indexPath row]);
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -163,7 +174,7 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 //      Retrieve its child view controller
         FLImageAnnotationViewController *annotationView = [vc.viewControllers objectAtIndex:0];
 //      Attribute it
-        annotationView.selectedPhoto = [photoStore.allPhotos objectAtIndex:[indexPath row]];
+        annotationView.selectedPhoto = [photoStore.photos objectAtIndex:[indexPath row]];
         annotationView.targetRow = [indexPath row];
     } else if ([segue isKindOfClass:[BlurryModalSegue class]]) {
         BlurryModalSegue* bms = (BlurryModalSegue*)segue;
@@ -171,6 +182,18 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
         bms.backingImageBlurRadius = @(20);
         bms.backingImageSaturationDeltaFactor = @(.45);
         bms.backingImageTintColor = [[UIColor greenColor] colorWithAlphaComponent:.1];
+    }
+}
+
+- (void)toggleCollectionEditMode {
+    if (_inEditMode) {
+        for (FLFacebookPhotoCollectionViewCell *cell in     _selectionCollection.visibleCells) {
+            [cell setEditable:YES];
+        }
+    } else {
+        for (FLFacebookPhotoCollectionViewCell *cell in     _selectionCollection.visibleCells) {
+            [cell setEditable:NO];
+        }
     }
 }
 
@@ -182,7 +205,6 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
     [_selectionCollection reloadData];
     [self updateEditButtonVisibility];
 }
-
 
 #pragma RFFacebookProtocol
 
@@ -207,4 +229,54 @@ NSString *const kSelectionCollectionEmptyMessageView = @"FLSelectionCollectionEm
 - (IBAction)editPhotos:(id)sender {
     [self performSegueWithIdentifier:kSeguePushToImageAnnotation sender:self];
 }
+
+- (void)turnOnEditing {
+    _inEditMode = YES;
+    [_editCollectionButton setTitle:kDoneEditingTitle];
+}
+
+- (void)turnOffEditing {
+    _inEditMode = NO;
+    [_editCollectionButton setTitle:kStartEditingTitle];
+}
+
+- (IBAction)editCollection:(id)sender {
+    FLSelectedPhotoStore *selectedStore = [FLSelectedPhotoStore sharedStore];
+    if ([selectedStore photosPresent]) {
+        if ([_editCollectionButton.title isEqualToString:kStartEditingTitle]) {
+            [self turnOnEditing];
+        } else {
+            [self turnOffEditing];
+        }
+        [self toggleCollectionEditMode];
+    } else {
+        [self promptToAddPhotos];
+    }
+}
+
+- (void)promptToAddPhotos {
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Oops no Photos!" andMessage:@"Get some Facebook photos"];
+
+    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+    [alertView addButtonWithTitle:@"Lets Go!"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alert) {
+                            [self performSegueWithIdentifier:kGetFacebookPhotos sender:self];
+                          }];
+
+    [alertView addButtonWithTitle:@"Not Now"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alert) {
+                              NSLog(@"Hide Selected Collection Alert");
+                          }];
+
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+
+    [alertView show];
+}
+
+
 @end

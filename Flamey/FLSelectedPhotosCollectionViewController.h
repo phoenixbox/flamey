@@ -14,5 +14,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *selectionCollection;
 @property (weak, nonatomic) IBOutlet UIButton *editPhotosButton;
 - (IBAction)editPhotos:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editCollectionButton;
+- (IBAction)editCollection:(id)sender;
+
 
 @end
