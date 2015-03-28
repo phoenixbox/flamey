@@ -15,6 +15,9 @@
 #import "FLContactViewController.h"
 #import "FLTOSViewController.h"
 
+// Helpers
+#import "FLViewHelpers.h"
+
 @interface FLSettingsViewController ()
 
 @property (nonatomic, strong) UITableView *settingsTable;
@@ -47,7 +50,7 @@ static NSString * const kDeleteAccountActionTitle = @"Delete your account?";
 }
 
 - (void)setLogoAndVersion {
-    [_logoImageView setImage:[UIImage imageNamed:@"test_image"]];
+    [_logoImageView setImage:[UIImage imageNamed:@"LogoLong"]];
     // TODO: Pull the specified app version from the app plist
     [_versionNumber setText:[NSString stringWithFormat:@"Version: %@", @"0.0.1"]];
     [_versionNumber sizeToFit];
@@ -62,7 +65,7 @@ static NSString * const kDeleteAccountActionTitle = @"Delete your account?";
     _settingsTable.dataSource = self;
     _settingsTable.alwaysBounceVertical = NO;
     _settingsTable.scrollEnabled = NO;
-    [_settingsTable setBackgroundColor:[UIColor grayColor]];
+    [_settingsTable setBackgroundColor:[UIColor whiteColor]];
     _settingsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth |
     UIViewAutoresizingFlexibleHeight;
 
@@ -103,7 +106,7 @@ final sections footer view
                                     label.frame.size.width + 10.0f,
                                     label.frame.size.height);
     headerView = [[UIView alloc] initWithFrame:resultFrame];
-
+    [headerView setBackgroundColor:[UIColor lightGrayColor]];
     [headerView addSubview:label];
 
     return headerView;
@@ -117,6 +120,8 @@ final sections footer view
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.text = paramTitle;
     label.backgroundColor = [UIColor clearColor];
+    float copySize = [FLViewHelpers bodyCopyForScreenSize];
+    label.font = [UIFont fontWithName:@"AvenirNext-Regular" size:copySize];
     [label sizeToFit];
 
     return label;
@@ -166,6 +171,8 @@ final sections footer view
     NSMutableArray *sectionArray = self.arrayOfSections[indexPath.section];
 
     cell.textLabel.text = sectionArray[indexPath.row];
+    float copySize = [FLViewHelpers bodyCopyForScreenSize];
+    cell.textLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:copySize];
 
     return cell;
 }
@@ -225,7 +232,6 @@ final sections footer view
         actionSheet = nil;
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

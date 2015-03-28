@@ -1087,18 +1087,26 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW" userLabel="Content">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WR9-MV-lPy" userLabel="LogoVersion">
                                 <rect key="frame" x="0.0" y="518" width="375" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rqE-HU-MwU" userLabel="Logo">
-                                        <rect key="frame" x="158" y="8" width="60" height="60"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoLong" translatesAutoresizingMaskIntoConstraints="NO" id="rqE-HU-MwU" userLabel="Logo">
+                                        <rect key="frame" x="118" y="8" width="140" height="60"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="ALL-bF-2mj"/>
+                                            <constraint firstAttribute="width" secondItem="rqE-HU-MwU" secondAttribute="height" multiplier="35:15" id="CGZ-aU-nwB"/>
                                             <constraint firstAttribute="height" constant="60" id="cKI-qF-qs6"/>
                                             <constraint firstAttribute="width" constant="60" id="iZb-oh-ZHs"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="cKI-qF-qs6"/>
+                                                <exclude reference="iZb-oh-ZHs"/>
+                                            </mask>
+                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLj-bS-h6i" userLabel="VersionNumber">
                                         <rect key="frame" x="87" y="76" width="200" height="16"/>
@@ -1110,17 +1118,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.40587128709999998" blue="0.42953196319999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="rqE-HU-MwU" firstAttribute="leading" secondItem="WR9-MV-lPy" secondAttribute="leading" constant="80" id="0fr-j8-IKO"/>
                                     <constraint firstItem="gLj-bS-h6i" firstAttribute="top" secondItem="rqE-HU-MwU" secondAttribute="bottom" constant="8" id="Bhi-D7-it3"/>
                                     <constraint firstAttribute="centerY" secondItem="rqE-HU-MwU" secondAttribute="centerY" id="Hy1-W2-XfU"/>
+                                    <constraint firstAttribute="trailing" secondItem="rqE-HU-MwU" secondAttribute="trailing" constant="80" id="OBL-Tp-LEs"/>
                                     <constraint firstAttribute="centerX" secondItem="rqE-HU-MwU" secondAttribute="centerX" id="UJe-fh-RAz"/>
                                     <constraint firstAttribute="centerX" secondItem="gLj-bS-h6i" secondAttribute="centerX" constant="0.5" id="cSo-r2-dMk"/>
                                     <constraint firstItem="rqE-HU-MwU" firstAttribute="top" secondItem="WR9-MV-lPy" secondAttribute="top" constant="8" id="mGU-kH-MjT"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="0fr-j8-IKO"/>
                                         <exclude reference="Hy1-W2-XfU"/>
+                                        <exclude reference="OBL-Tp-LEs"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1160,7 +1172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1498.5" y="536.5"/>
+            <point key="canvasLocation" x="1498.5" y="532.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="gQL-09-ooN">
