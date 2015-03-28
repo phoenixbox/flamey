@@ -9,6 +9,7 @@
 #import "FLAnnotationTableEmptyMessageView.h"
 
 NSString *const kAddMorePhotos = @"addMorePhotos";
+NSString *const kRefreshCollection = @"refreshCollection";
 
 @implementation FLAnnotationTableEmptyMessageView
 
@@ -22,6 +23,13 @@ NSString *const kAddMorePhotos = @"addMorePhotos";
 
 - (IBAction)addPhotos:(id)sender {
     NSNotification *notification = [NSNotification notificationWithName:kAddMorePhotos
+                                                                 object:self];
+
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+- (IBAction)refreshCollection:(id)sender {
+    NSNotification *notification = [NSNotification notificationWithName:kRefreshCollection
                                                                  object:self];
 
     [[NSNotificationCenter defaultCenter] postNotification:notification];

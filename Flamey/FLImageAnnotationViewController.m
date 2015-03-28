@@ -54,22 +54,26 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     // Do any additional setup after loading the view.
     FLSettings *settings = [FLSettings defaultSettings];
 
-    [self updateUploadButtonState];
     [self setHeaderLogo];
     [self renderLateralTable];
-    [self setRemoveButtonActive];
-    [self updateNavArrowState];
+    [self setViewElStates];
 
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
     [self updateAnnotationStore];
-    [self addAddMorePhotosListener];
+    [self addViewListeners];
 
     if (!settings.understandAnnotation) {
         [self performSegueWithIdentifier:kShowAnnotationInstructions sender:self];
     }
 }
-// RESTART: style the upload view
+
+- (void)setViewElStates {
+    [self updateUploadButtonState];
+    [self setRemoveButtonActive];
+    [self updateNavArrowState];
+}
+
 - (void)setHeaderLogo {
     [[self navigationItem] setTitleView:nil];
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 44.0f)];
@@ -77,6 +81,11 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     UIImage *logoImage = [UIImage imageNamed:@"newTitlebar.png"];
     [logoView setImage:logoImage];
     self.navigationItem.titleView = logoView;
+}
+
+- (void)addViewListeners {
+    [self addAddMorePhotosListener];
+    [self addCollectionRefreshListener];
 }
 
 - (void)addAddMorePhotosListener {
@@ -88,8 +97,31 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                  object:nil];
 }
 
+- (void)addCollectionRefreshListener {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(refreshCollection)
+                   name:kRefreshCollection
+                 object:nil];
+}
+
 - (void)addMorePhotos {
     [self performSegueWithIdentifier:kAddMorePhotosSegueIdentifier sender:self];
+}
+
+- (void)refreshCollection {
+    [self updateAnnotationStore];
+
+    // Animate the table reload
+    NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:_selectedPhotosTable]);
+    NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
+    [_selectedPhotosTable reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+
+    [self setViewElStates];
+    // TODO: This interaction setter should be part of the setViewElState flow
+    [_removeSelectedPhoto setEnabled:YES];
+    [_removeSelectedPhoto setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
 - (void)updateUploadButtonState {
@@ -432,6 +464,9 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [emptyMessage setBackgroundColor:[UIColor whiteColor]];
 
     [FLViewHelpers setBaseButtonStyle:emptyMessage.addPhotosButton withColor:[UIColor blackColor]];
+    [FLViewHelpers setBaseButtonStyle:emptyMessage.refreshCollectionButton withColor:[UIColor darkGrayColor]];
+    [emptyMessage.refreshCollectionButton setBackgroundColor:[UIColor darkGrayColor]];
+    [emptyMessage.refreshCollectionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
     [_selectedPhotosTable.backgroundView setTransform:clockwiseRotate];
 
@@ -571,8 +606,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
             [self disableRightScrollButton];
         } else if (currentRowIndex == 0) {
             [self disableLeftScrollButton];
+            [self enableRightScrollButton];
         } else if (currentRowIndex == count-1) {
             [self disableRightScrollButton];
+            [self enableLeftScrollButton];
         } else {
             [self enableLeftScrollButton];
             [self enableRightScrollButton];
