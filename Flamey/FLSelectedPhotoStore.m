@@ -21,14 +21,18 @@
     return photoStore;
 }
 
+- (BOOL)photosPresent {
+    return [_photos count] > 0;
+}
+
 - (void)addUniquePhoto:(FLPhoto *)photo {
-    if(!self.allPhotos){
-        self.allPhotos = [NSMutableArray new];
+    if(!_photos){
+        _photos = [NSMutableArray new];
     }
 
     BOOL exists = NO;
 
-    for (FLPhoto* object in self.allPhotos) {
+    for (FLPhoto* object in _photos) {
 
         if (object.id == photo.id) {
             exists = YES;
@@ -36,19 +40,19 @@
     }
 
     if (!exists) {
-        [self.allPhotos addObject:photo];
+        [_photos addObject:photo];
     }
 }
 
 - (BOOL)isPhotoPresent:(NSString *)stringId {
-    if(!self.allPhotos){
-        self.allPhotos = [NSMutableArray new];
+    if(!_photos){
+        _photos = [NSMutableArray new];
         return NO;
     }
 
     BOOL exists = NO;
 
-    for (FLPhoto* object in self.allPhotos) {
+    for (FLPhoto* object in _photos) {
         if([stringId floatValue] == [object.id floatValue]) {
             exists = YES;
         }
@@ -58,15 +62,15 @@
 }
 
 - (void)removePhotoById:(NSString *)stringId {
-    if(!self.allPhotos){
-        self.allPhotos = [NSMutableArray new];
+    if(!_photos){
+        _photos = [NSMutableArray new];
     }
 
-    NSMutableArray *copy = [self.allPhotos mutableCopy];
+    NSMutableArray *copy = [_photos mutableCopy];
 
     [copy enumerateObjectsUsingBlock:^(FLPhoto* object, NSUInteger index, BOOL *stop) {
         if([stringId floatValue] == [object.id floatValue]) {
-            [self.allPhotos removeObject:object];
+            [_photos removeObject:object];
         }
     }];
 }

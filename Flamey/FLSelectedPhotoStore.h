@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "FLPhoto.h"
 
-@interface FLSelectedPhotoStore : NSObject {
-    NSMutableArray *photos;
-}
+@interface FLSelectedPhotoStore : NSObject
 
-@property (nonatomic, strong) NSMutableArray *allPhotos;
+@property (nonatomic, strong) NSMutableArray *photos;
 
 + (FLSelectedPhotoStore *)sharedStore;
+
+- (BOOL)photosPresent;
 
 - (void)addUniquePhoto:(FLPhoto *)photo;
 
@@ -23,6 +23,5 @@
 
 - (BOOL)isPhotoPresent:(NSString *)stringId;
 
-- (NSMutableArray *)allPhotos;
 
 @end
