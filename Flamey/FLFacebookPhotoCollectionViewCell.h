@@ -11,6 +11,9 @@
 @interface FLFacebookPhotoCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBackgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *selectedView;
+@property (weak, nonatomic) IBOutlet UIImageView *editUnderlay;
 
+- (void)setEditable:(BOOL)selected;
+- (BOOL)inEditMode;
 
 @end

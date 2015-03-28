@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     // Initialization code
     [_selectedView setHidden:YES];
+    [_editUnderlay setHidden:YES];
 }
 
 - (void)setSelected:(BOOL)selected
@@ -24,6 +25,18 @@
     }
 
     [super setSelected:selected];
+}
+
+- (void)setEditable:(BOOL)selected {
+    if (selected) {
+        [_editUnderlay setHidden:NO];
+    } else {
+        [_editUnderlay setHidden:YES];
+    }
+}
+
+- (BOOL)inEditMode {
+    return _editUnderlay.hidden;
 }
 
 

@@ -15,6 +15,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bKm-Gz-T2V" userLabel="facebookImageView">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editUnderlay" translatesAutoresizingMaskIntoConstraints="NO" id="6IP-Rb-Ve0" userLabel="editUnderlay">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectedFacebookPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="S8F-H7-O8V" userLabel="selectedView">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
@@ -27,18 +30,24 @@
                 <constraint firstAttribute="trailing" secondItem="bKm-Gz-T2V" secondAttribute="trailing" id="9ff-OH-ORD"/>
                 <constraint firstItem="S8F-H7-O8V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BN1-OK-fzS"/>
                 <constraint firstItem="S8F-H7-O8V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EC0-Ct-CG5"/>
+                <constraint firstItem="6IP-Rb-Ve0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ExU-gT-2iK"/>
+                <constraint firstItem="6IP-Rb-Ve0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FE3-ef-e7T"/>
                 <constraint firstAttribute="bottom" secondItem="S8F-H7-O8V" secondAttribute="bottom" id="Kwj-c7-nyA"/>
+                <constraint firstAttribute="bottom" secondItem="6IP-Rb-Ve0" secondAttribute="bottom" id="VKU-ft-B0U"/>
                 <constraint firstItem="bKm-Gz-T2V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aLt-fb-HqS"/>
                 <constraint firstAttribute="bottom" secondItem="bKm-Gz-T2V" secondAttribute="bottom" id="cYb-4d-kQY"/>
                 <constraint firstAttribute="trailing" secondItem="S8F-H7-O8V" secondAttribute="trailing" id="erq-Sh-JUA"/>
+                <constraint firstAttribute="trailing" secondItem="6IP-Rb-Ve0" secondAttribute="trailing" id="lhv-Y4-Eg2"/>
             </constraints>
             <connections>
+                <outlet property="editUnderlay" destination="6IP-Rb-Ve0" id="awL-tT-Sv4"/>
                 <outlet property="imageViewBackgroundImage" destination="bKm-Gz-T2V" id="mxT-pa-pRH"/>
                 <outlet property="selectedView" destination="S8F-H7-O8V" id="c5c-d2-mgL"/>
             </connections>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="editUnderlay" width="100" height="100"/>
         <image name="selectedFacebookPhoto" width="120" height="120"/>
     </resources>
 </document>
