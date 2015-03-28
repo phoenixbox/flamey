@@ -52,7 +52,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [self setHeaderLogo];
     [self renderLateralTable];
     [self setRemoveButtonActive];
-    [self checkToDisableNavigationArrows];
+    [self updateNavArrowState];
 
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
@@ -129,9 +129,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
         [_selectedPhotosTable scrollToRowAtIndexPath:indexPath
                                     atScrollPosition:UITableViewScrollPositionTop
                                             animated:YES];
-    } else {
-        [self checkToDisableNavigationArrows];
+
     }
+
+    [self updateNavArrowState];
 }
 
 
@@ -483,7 +484,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
 #pragma UIScrollViewDelgate
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    [self checkToDisableNavigationArrows];
+    [self updateNavArrowState];
 }
 #pragma end
 
@@ -513,7 +514,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                                 withRowAnimation:UITableViewRowAnimationLeft];
 
     [self updateUploadButtonState];
-    [self checkToDisableNavigationArrows];
+    [self updateNavArrowState];
     [self checkToDisableRemovalButton];
 }
 
@@ -544,7 +545,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [_scrollRightButton setUserInteractionEnabled:YES];
 }
 
-- (void)checkToDisableNavigationArrows {
+- (void)updateNavArrowState {
     NSInteger count = [[FLAnnotationStore sharedStore].photos count];
 
     if (count != 0) {
