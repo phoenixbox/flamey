@@ -46,6 +46,7 @@ NSString *const kStartEditingTitle = @"Edit";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     FLSettings *settings = [FLSettings defaultSettings];
+    // TODO: Remove the hard set here
     settings.seenTutorial = NO;
 
     self.navigationController.navigationBar.translucent = NO;
@@ -198,12 +199,15 @@ NSString *const kStartEditingTitle = @"Edit";
 }
 
 - (IBAction)unwindToSelection:(UIStoryboardSegue *)unwindSegue {
-    [_selectionCollection reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [_selectionCollection reloadData];
+    // TODO: Update the name of this to be marker button
+    // compose all state handlers to one branching function
+    [self turnOffEditing];
+    [self toggleCollectionEditMode];
     [self updateEditButtonVisibility];
+    [_selectionCollection reloadData];
 }
 
 #pragma RFFacebookProtocol
