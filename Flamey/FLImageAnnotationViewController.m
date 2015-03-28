@@ -140,7 +140,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
     FLSelectedPhotoStore *photoStore = [FLSelectedPhotoStore sharedStore];
 
-    for (FLPhoto* photo in photoStore.allPhotos) {
+    for (FLPhoto* photo in photoStore.photos) {
         [annotationStore addUniquePhoto:photo];
     }
 }
@@ -489,15 +489,15 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
 - (void)deletePhotoFromStoreAndSlideTable {
     NSArray *visible       = [self.selectedPhotosTable indexPathsForVisibleRows];
-    NSIndexPath *indexpath = (NSIndexPath*)[visible objectAtIndex:0];
+    NSIndexPath *indexPath = (NSIndexPath*)[visible objectAtIndex:0];
 
-    FLAnnotationTableViewCell *cell = (FLAnnotationTableViewCell *)[_selectedPhotosTable cellForRowAtIndexPath:indexpath];
+    FLAnnotationTableViewCell *cell = (FLAnnotationTableViewCell *)[_selectedPhotosTable cellForRowAtIndexPath:indexPath];
     // Remove any annotation point associated with the cells photo
     cell.photo.annotationPoint = CGPointZero;
 
     // Remove the photo from the annotation store
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
-    [annotationStore.photos removeObjectAtIndex:[indexpath row]];
+    [annotationStore.photos removeObjectAtIndex:[indexPath row]];
 
     FLProcessedImagesStore *processedPhotoStore = [FLProcessedImagesStore sharedStore];
     [processedPhotoStore removePhotoById:(NSString *)cell.photo.id];
@@ -509,7 +509,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
         [_scrollLeftButton setEnabled:NO];
     }
 
-    [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexpath]
+    [_selectedPhotosTable deleteRowsAtIndexPaths:@[indexPath]
                                 withRowAnimation:UITableViewRowAnimationLeft];
 
     [self updateUploadButtonState];
