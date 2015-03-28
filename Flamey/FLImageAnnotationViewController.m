@@ -15,11 +15,13 @@
 
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <BlurryModalSegue/BlurryModalSegue.h>
 
 // Data Layer
 #import "FLSelectedPhotoStore.h"
 #import "FLProcessedImagesStore.h"
 #import "FLAnnotationStore.h"
+#import "FLSettings.h"
 
 // Pods
 #import "GPUImageLookupFilter.h"
@@ -29,6 +31,8 @@
 
 // Helpers
 #import "FLViewHelpers.h"
+
+NSString *const kShowAnnotationInstructions = @"pushToAnnotationInstructions";
 
 @interface FLImageAnnotationViewController ()
 
@@ -48,6 +52,8 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    FLSettings *settings = [FLSettings defaultSettings];
+
     [self updateUploadButtonState];
     [self setHeaderLogo];
     [self renderLateralTable];
@@ -58,6 +64,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [_addFiltersButton setHidden:YES];
     [self updateAnnotationStore];
     [self addAddMorePhotosListener];
+
+    if (!settings.understandAnnotation) {
+        [self performSegueWithIdentifier:kShowAnnotationInstructions sender:self];
+    }
 }
 // RESTART: style the upload view
 - (void)setHeaderLogo {
@@ -134,7 +144,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     [self updateNavArrowState];
 }
-
 
 - (void)updateAnnotationStore {
     // Update the annotation store with any recently selected photos
@@ -264,8 +273,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [imageView setImage:processedImage];
 }
 
-// RESTART: Confirmation upload page
-
 - (void)setLogoImageOnCell:(FLAnnotationTableViewCell *)targetCell {
     UIImageView *imageView = targetCell.selectedImageViewBackground;
     // 1. Create the image from the actual image view
@@ -322,10 +329,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     CGContextDrawImage(context, transformedLogoRect, [logoImage CGImage]);
 
-    UIImage * paddedGhost = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *compositeImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 
-    return paddedGhost;
+    return compositeImage;
 }
 
 - (CGRect)getAnImageViewsImageFrame:(UIImageView *)iv {
@@ -358,10 +365,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     CGContextDrawImage(context, transformedLogoRect, [logoImage CGImage]);
 
-    UIImage * paddedGhost = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage * compositeImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    return paddedGhost;
+    return compositeImage;
 }
 
 - (CGPoint)generateOriginWithPoint:(CGPoint)touchPoint forImageSize:(CGSize)imageSize {
@@ -611,6 +618,9 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                                     atScrollPosition:UITableViewScrollPositionTop
                                             animated:YES];
     }
+}
+
+- (IBAction)unwindToAnnotation:(UIStoryboardSegue *)unwindSegue {
 }
 
 - (void)didReceiveMemoryWarning {
