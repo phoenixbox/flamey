@@ -1,4 +1,5 @@
 PODS:
+  - AFBlurSegue (1.2)
   - AFNetworking (2.5.0):
     - AFNetworking/NSURLConnection (= 2.5.0)
     - AFNetworking/NSURLSession (= 2.5.0)
@@ -47,6 +48,7 @@ PODS:
   - UIImage+BlurredFrame (0.0.4)
 
 DEPENDENCIES:
+  - AFBlurSegue (~> 1.2)
   - AFNetworking (~> 2.5)
   - BlurryModalSegue (~> 1.1)
   - Canvas (~> 0.1)
@@ -64,6 +66,7 @@ DEPENDENCIES:
   - TTTAttributedLabel (~> 1.10.1)
 
 SPEC CHECKSUMS:
+  AFBlurSegue: 317204561facdb45be823773c0fefe918c192243
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   BlurryModalSegue: 5775612771e4b6a162043a535d157b9503b0031e
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
