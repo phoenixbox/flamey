@@ -186,28 +186,13 @@ NSString *const kStartEditingTitle = @"Edit";
     }
 }
 
-- (void)toggleCollectionEditMode {
-    if (_inEditMode) {
-        for (FLFacebookPhotoCollectionViewCell *cell in     _selectionCollection.visibleCells) {
-            [cell setEditable:YES];
-        }
-    } else {
-        for (FLFacebookPhotoCollectionViewCell *cell in     _selectionCollection.visibleCells) {
-            [cell setEditable:NO];
-        }
-    }
-}
-
 - (IBAction)unwindToSelection:(UIStoryboardSegue *)unwindSegue {
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    // TODO: Update the name of this to be marker button
-    // compose all state handlers to one branching function
-    [self turnOffEditing];
-    [self toggleCollectionEditMode];
-    [self updateEditButtonVisibility];
     [_selectionCollection reloadData];
+    [self turnOffEditing];
+    [self updateEditButtonVisibility];
 }
 
 #pragma RFFacebookProtocol
@@ -237,22 +222,28 @@ NSString *const kStartEditingTitle = @"Edit";
 - (void)turnOnEditing {
     _inEditMode = YES;
     [_editCollectionButton setTitle:kDoneEditingTitle];
+    for (FLFacebookPhotoCollectionViewCell *cell in _selectionCollection.visibleCells) {
+        [cell setEditable:YES];
+    }
 }
 
 - (void)turnOffEditing {
     _inEditMode = NO;
     [_editCollectionButton setTitle:kStartEditingTitle];
+    for (FLFacebookPhotoCollectionViewCell *cell in _selectionCollection.visibleCells) {
+        [cell setEditable:NO];
+    }
 }
 
 - (IBAction)editCollection:(id)sender {
     FLSelectedPhotoStore *selectedStore = [FLSelectedPhotoStore sharedStore];
+
     if ([selectedStore photosPresent]) {
-        if ([_editCollectionButton.title isEqualToString:kStartEditingTitle]) {
-            [self turnOnEditing];
-        } else {
+        if (_inEditMode) {
             [self turnOffEditing];
+        } else {
+            [self turnOnEditing];
         }
-        [self toggleCollectionEditMode];
     } else {
         [self promptToAddPhotos];
     }

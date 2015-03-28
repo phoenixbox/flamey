@@ -37,11 +37,14 @@
         if (object.id == photo.id) {
             exists = YES;
         }
+        NSLog(@"ID ********* %@", photo.id);
     }
 
     if (!exists) {
         [_photos addObject:photo];
     }
+
+    NSLog(@"********** PHOTOS COUNT: %lu", (unsigned long)[_photos count]);
 }
 
 - (BOOL)isPhotoPresent:(NSString *)stringId {
@@ -73,6 +76,8 @@
             [_photos removeObject:object];
         }
     }];
+
+    NSLog(@"********** PHOTOS COUNT: %lu", (unsigned long)[_photos count]);
 }
 
 @end
