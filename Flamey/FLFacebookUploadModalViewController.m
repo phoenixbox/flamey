@@ -40,7 +40,7 @@
     // Track Upload Screen Loaded
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Navigation" properties:@{
-                                           @"controller": @"uploadModal",
+                                           @"controller": [self class],
                                            @"state": @"loaded"
                                            }];
 
@@ -289,7 +289,7 @@
                           handler:^(SIAlertView *alert) {
                               [settings setUploadPermission:YES];
                               [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                         @"controller": @"uploadModal",
+                                                                         @"controller": [self class],
                                                                          @"state": @"pre:default",
                                                                          @"result": @"success",
                                                                          }];
@@ -300,7 +300,7 @@
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                     @"controller": @"uploadModal",
+                                                                                     @"controller": [self class],
                                                                                      @"state": @"pre:default",
                                                                                      @"result": @"failure",
                                                                                      }];
@@ -317,9 +317,6 @@
 - (void)uploadPhotos {
     // Track attempt to upload & how many photos being uploaded (ProcessedImagesCount)
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
-
-
 
     [self setFinishedState];
     // TODO: Ensure all images are being uploaded
@@ -347,7 +344,7 @@
 //             if (!error) {
 //    NSNumber *count = [NSNumber numberWithInteger:[processedImageStore.photos count]];
 //    [mixpanel track:@"FBUpload" properties:@{
-//                                                           @"controller": @"uploadModal",
+//                                                           @"controller": [self class],
 //                                                           @"state": @"initial",
 //                                                           @"result": @"success",
 //                                                           @"count": count
@@ -355,7 +352,7 @@
 //                 [self setFinishedState];
 //               } else {
 //    [mixpanel track:@"FBUpload" properties:@{
-//                                                           @"controller": @"uploadModal",
+//                                                           @"controller": [self class],
 //                                                           @"state": @"initial",
 //                                                           @"result": @"failure"
 //                                                           }];
@@ -386,7 +383,7 @@
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                  @"controller": @"uploadModal",
+                                                                                  @"controller": [self class],
                                                                                   @"state": @"pre:retry",
                                                                                   @"result": @"success"
                                                                                   }];
@@ -397,7 +394,7 @@
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                     @"controller": @"uploadModal",
+                                                                                     @"controller": [self class],
                                                                                      @"state": @"pre:retry",
                                                                                      @"result": @"failure"
                                                                                      }];
@@ -429,14 +426,14 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                                             completionHandler:^(FBSession *session, NSError *error) {
                                                 if (!error) {
                                                     [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                                        @"controller": @"uploadModal",
+                                                                                                        @"controller": [self class],
                                                                                                         @"state": @"default",
                                                                                                         @"result": @"success"
                                                                                                         }];
                                                     action();
                                                 } else if (error.fberrorCategory != FBErrorCategoryUserCancelled) {
                                                     [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                                        @"controller": @"uploadModal",
+                                                                                                        @"controller": [self class],
                                                                                                         @"state": @"default",
                                                                                                         @"result": @"failure"
                                                                                                         }];
@@ -460,7 +457,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                @"controller": @"uploadModal",
+                                                                                @"controller": [self class],
                                                                                 @"state": @"retry",
                                                                                 @"result": @"success"
                                                                                 }];
@@ -471,7 +468,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                  @"controller": @"uploadModal",
+                                                                                  @"controller": [self class],
                                                                                   @"state": @"retry",
                                                                                   @"result": @"failure"
                                                                                   }];
