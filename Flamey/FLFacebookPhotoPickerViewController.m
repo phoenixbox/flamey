@@ -84,7 +84,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 -(void)sendRequest {
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [_hud setCenter:self.view.center];
-    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+    _hud.mode = MBProgressHUDModeIndeterminate;
     _hud.labelText = @"Loading";
 
     // TODO: Update to a less brittle interface
