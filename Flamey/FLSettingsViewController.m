@@ -99,7 +99,7 @@ final sections footer view
             label = [self newLabelWithTitle:@"Personal Info"];
             break;
           case 1:
-            label = [self newLabelWithTitle:@"Flamey Info"];
+            label = [self newLabelWithTitle:@"Stndout Info"];
             break;
           case 2:
             label = [self newLabelWithTitle:@"Account Actions"];
