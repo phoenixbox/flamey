@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FLTOSViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *termsTitle;
+@property (weak, nonatomic) IBOutlet UITextView *body;
 - (IBAction)back:(id)sender;
 
 @end

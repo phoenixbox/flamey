@@ -6,19 +6,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLTOSViewController">
             <connections>
+                <outlet property="body" destination="oky-Vn-lih" id="2CI-ka-MDg"/>
+                <outlet property="termsTitle" destination="AHf-Jo-Qdc" id="4HB-B8-Jvt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-7b-4zf" userLabel="Container">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH3-30-A6Z" userLabel="Content">
-                            <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            <rect key="frame" x="0.0" y="44" width="375" height="559"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHf-Jo-Qdc">
                                     <rect key="frame" x="88" y="30" width="200" height="21"/>
@@ -30,12 +32,174 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oky-Vn-lih">
-                                    <rect key="frame" x="0.0" y="71" width="375" height="552"/>
+                                    <rect key="frame" x="0.0" y="71" width="375" height="488"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" id="Rvy-3U-xvw"/>
                                     </constraints>
-                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <mutableString key="text">Last revised on March 28, 2015
+
+Welcome to Stndout, created by REPL labs (the "Creator").
+
+By accessing the Stndout application or its website found at www.repllabs.com, whether through a mobile device, mobile application or computer (collectively, the “Service”) you agree to be bound by these Terms of Use (this “Agreement”), whether or not you create a Stndout account. If you wish to create a Stndout account and make use of the Service, please read these Terms of Use.
+
+You should also read the Stndout Privacy Policy. If you do not accept and agree to be bound by all of the terms of this Agreement, including the Stndout Privacy Policy, do not use the Service. Please contact us with any questions regarding this Agreement.
+
+Acceptance of Terms of Use Agreement.
+
+This Agreement is an electronic contract that establishes the legally binding terms you must accept to use the Service. This Agreement includes the Creator’s (i) Privacy Policy and (ii) terms disclosed and agreed to by you if you purchase or accept additional features, products or services we offer on the Service, such as terms governing features, billing, free trials, discounts and promotions.
+
+By accessing or using the Service, you accept this Agreement and agree to the terms, conditions and notices contained or referenced herein and consent to have this Agreement and all notices provided to you in electronic form. To withdraw this consent, you must cease using the Service and terminate your account. This Agreement may be modified by the Creator from time to time, such modifications to be effective upon posting by the Creator in the Service.
+
+Eligibility. If you create an account, you represent and warrant that you have never been convicted of a felony and that you are not required to register as a sex offender with any government entity. Using the Service may be prohibited or restricted in certain countries. If you use the Service from outside of the United States, you are responsible for complying with the laws and regulations of the territory from which you access or use the Service.
+
+Creating an Account. In order to use Stndout, you must sign in using your Facebook login. If you do so, you authorize us to access and use certain Facebook account information, including but not limited to your public Facebook profile and information about Facebook friends you might share in common with other Stndout users. For more information regarding the information we collect from you and how we use it, please consult our Privacy Policy.
+
+Term and Termination. This Agreement will remain in full force and effect while you use the Service and/or have a Stndout account. You may disable your account at any time, for any reason, by following the instructions in “Settings” in the Service. The Creator may terminate or suspend your account at any time without notice if the Creator believes that you have breached this Agreement, or for any other reason, with or without cause, in its sole discretion. Upon such termination or suspension, you will not be entitled to any refund of unused fees for in app purchases. The Creator is not required to disclose, and may be prohibited by law from disclosing, the reason for the termination or suspension of your account. After your account is terminated for any reason, all terms of this Agreement survive such termination, and continue in full force and effect, except for any terms that by their nature expire or are fully satisfied.
+
+Non-commercial Use by Users. The Service is for personal use only. Users may not use the Service or any content contained in the Service (including, but not limited to, content of other users, designs, text, graphics, images, video, information, logos, software, audio files and computer code) in connection with any commercial endeavors, such as (i) advertising or soliciting any user to buy or sell any products or services not offered by the Creator or (ii) soliciting others to attend parties or other social functions, or networking, for commercial purposes. Users of the Service may not use any information obtained from the Service to contact, advertise to, solicit, or sell to any other user without his or her prior explicit consent. Organizations, companies, and/or businesses may not use the Service or the Service for any purpose. The Creator may investigate and take any available legal action in response to illegal and/or unauthorized uses of the Service, including collecting usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email and unauthorized framing of or linking to the Service.
+
+Account Security. You are responsible for maintaining the confidentiality of the username and password you designate during the registration process, and you are solely responsible for all activities that occur under your username and password. You agree to immediately notify the Creator of any disclosure or unauthorized use of your username or password or any other breach of security at hi@repllabs.com and ensure that you log out from your account at the end of each session.
+
+Proprietary Rights. The Creator owns and retains all proprietary rights in the Service, and in all content, trademarks, trade names, service marks and other intellectual property rights related thereto. The Service contains the copyrighted material, trademarks, and other proprietary information of the Creator and its licensors. You agree to not copy, modify, transmit, create any derivative works from, make use of, or reproduce in any way any copyrighted material, trademarks, trade names, service marks, or other intellectual property or proprietary information accessible through the Service, without first obtaining the prior written consent of the Creator or, if such property is not owned by the Creator, the owner of such intellectual property or proprietary rights. You agree to not remove, obscure or otherwise alter any proprietary notices appearing on any content, including copyright, trademark and other intellectual property notices.
+
+Content Posted by You in the Service.
+
+You are solely responsible for the content and information that you post, upload, publish, link to, transmit, record, display or otherwise make available (hereinafter, “post”) on the Service. You may not post as part of the Service, or transmit to the Creator or any other user (either on or off the Service), any offensive, inaccurate, incomplete, abusive, obscene, profane, threatening, intimidating, harassing, racially offensive, or illegal material, or any material that infringes or violates another person’s rights (including intellectual property rights, and rights of privacy and publicity). You represent and warrant that (i) all information that you submit upon creation of your account, including information submitted from your Facebook account, is accurate and truthful and that you will promptly update any information provided by you that subsequently becomes inaccurate, incomplete, misleading or false and (ii) you have the right to post the Content on the Service and grant the licenses set forth below.
+
+You understand and agree that the Creator may, but is not obligated to, monitor or review any Content you post as part of a Service. The Creator may delete any Content, in whole or in part, that in the sole judgment of the Creator violates this Agreement or may harm the reputation of the Service or the Creator.
+
+By posting Content as part of the Service, you automatically grant to the Creator, its affiliates, licensees and successors, an irrevocable, perpetual, non- exclusive, transferable, sub-licensable, fully paid-up, worldwide right and license to (i) use, copy, store, perform, display, reproduce, record, play, adapt, modify and distribute the Content, (ii) prepare derivative works of the Content or incorporate the Content into other works, and (iii) grant and authorize sublicenses of the foregoing in any media now known or hereafter created. You represent and warrant that any posting and use of your Content by the Creator will not infringe or violate the rights of any third party.
+
+In addition to the types of Content described in Section 9(a) above, the following is a partial list of the kind of Content that is prohibited in the Service. You may not post, upload, display or otherwise make available Content that:
+
+that promotes racism, bigotry, hatred or physical harm of any kind against any group or individual;
+
+advocates harassment or intimidation of another person;
+
+requests money from, or is intended to otherwise defraud, other users of the Service;
+
+involves the transmission of “junk mail”, “chain letters,” or unsolicited mass mailing or “spamming” (or “spimming”, “phishing”, “trolling” or similar activities);
+
+promotes information that is false or misleading, or promotes illegal activities or conduct that is defamatory, libelous or otherwise objectionable;
+
+promotes an illegal or unauthorized copy of another person’s copyrighted work, such as providing pirated computer programs or links to them, providing information to circumvent manufacture- installed copy-protect devices, or providing pirated images, audio or video, or links to pirated images, audio or video files;
+
+contains video, audio photographs, or images of another person without his or her permission (or in the case of a minor, the minor’s legal guardian);
+
+contains restricted or password only access pages, or hidden pages or images (those not linked to or from another accessible page);
+
+provides material that exploits people in a sexual, violent or other illegal manner, or solicits personal information from anyone under the age of 18;
+
+provides instructional information about illegal activities such as making or buying illegal weapons or drugs, violating someone’s privacy, or providing, disseminating or creating computer viruses;
+
+contains viruses, time bombs, trojan horses, cancelbots, worms or other harmful, or disruptive codes, components or devices;
+
+impersonates, or otherwise misrepresents affiliation, connection or association with, any person or entity;
+
+provides information or data you do not have a right to make available under law or under contractual or fiduciary relationships (such as inside information, proprietary and confidential information);
+
+disrupts the normal flow of dialogue, causes a screen to “scroll” faster than other users are able to type, or otherwise negatively affects other users’ ability to engage in real time exchanges;
+
+solicits passwords or personal identifying information for commercial or unlawful purposes from other users or disseminates another person’s personal information without his or her permission; and
+
+publicizes or promotes commercial activities and/or sales without our prior written consent such as contests, sweepstakes, barter, advertising, and pyramid schemes.
+
+The Creator reserves the right, in its sole discretion, to investigate and take any legal action against anyone who violates this provision, including removing the offending communication from the Service and terminating or suspending the account of such violators.
+
+Your use of the Service, including all Content you post through the Service, must comply with all applicable laws and regulations. You agree that the Creator may access, preserve and disclose your account information and Content if required to do so by law or in a good faith belief that such access, preservation or disclosure is reasonably necessary, such as to: (i) comply with legal process; (ii) enforce this Agreement; (iii) respond to claims that any Content violates the rights of third parties; (iv) respond to your requests for customer service or allow you to use the Service in the future; or (v) protect the rights, property or personal safety of the Creator or any other person.
+
+You agree that any Content you place on the Service may be viewed by other users and may be viewed by any person visiting or participating in the Service.
+
+Prohibited Activities. The Creator reserves the right to investigate, suspend and/or terminate your account if you have misused the Service or behaved in a way the Creator regards as inappropriate or unlawful, including actions or communications the occur off the Service but involve users you meet through the Service. The following is a partial list of the type of actions that you may not engage in with respect to the Service. You will not:
+
+impersonate any person or entity.
+
+solicit money from any users.
+
+post any Content that is prohibited by Section 9.
+
+express or imply that any statements you make are endorsed by the Creator without our specific prior written consent.
+
+use the Service in an illegal manner or to commit an illegal act;
+
+access the Service in a jurisdiction in which it is illegal or unauthorized;
+
+ask or use users to conceal the identity, source, or destination of any illegally gained money or products.
+
+use any robot, spider, site search/retrieval application, or other manual or automatic device or process to retrieve, index, “data mine”, or in any way reproduce or circumvent the navigational structure or presentation of the Service or its contents.
+
+collect usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email or unauthorized framing of or linking to the Service.
+
+interfere with or disrupt the Service or the servers or networks connected to the Service.
+
+email or otherwise transmit any material that contains software viruses or any other computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer software or hardware or telecommunications equipment.
+
+forge headers or otherwise manipulate identifiers in order to disguise the origin of any information transmitted to or through the Service (either directly or indirectly through use of third party software).
+
+“frame” or “mirror” any part of the Service, without the Creator's prior written authorization.
+
+use meta tags or code or other devices containing any reference to the Creator or the Service (or any trademark, trade name, service mark, logo or slogan of the Creator) to direct any person to any other website for any purpose.
+
+modify, adapt, sublicense, translate, sell, reverse engineer, decipher, decompile or otherwise disassemble any portion of the Service any software used on or for the Service, or cause others to do so.
+
+post, use, transmit or distribute, directly or indirectly, (e.g. screen scrape) in any manner or media any content or information obtained from the Service other than solely in connection with your use of the Service in accordance with this Agreement.
+
+Customer Service. The Creator provides assistance and guidance through its customer care representatives. When communicating with our customer care representatives, you agree to not be abusive, obscene, profane, offensive, sexist, threatening, harassing, racially offensive, or to not otherwise behave inappropriately. If we feel that your behavior towards any of our customer care representatives or other employees is at any time threatening or offensive, we reserve the right to immediately terminate your account.
+
+In App Purchases. From time to time, Stndout may offer additional products and services for purchase through the App Store ℠, Google Play or other application platforms (“in app purchases”). If you choose to make an in app purchase, you will be prompted to enter details for your account with the mobile platform you are using (e.g., Apple, Android, etc.) (“your IAP Account”), and your IAP Account will be charged for the in app purchase in accordance with the terms disclosed to you at the time of purchase as well as the general terms for in app purchases that apply to your IAP Account. In app purchases may include a free trial period. At the end of the free trial period, you will be charged the price of the subscription and will continue to be charged until you cancel your subscription. To avoid any charges, you must cancel before the end of the trial period. If you purchase an auto-recurring periodic subscription through an in app purchase, your IAP Account will be billed continuously for the subscription until you cancel in accordance with the platform terms. In call cases, please refer to the terms of your application platform which apply to your in app purchases.
+
+Modifications to Service. The Creator reserves the right at any time to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice. You agree that the Creator shall not be liable to you or to any third party for any modification, suspension or discontinuance of the Service. To protect the integrity of the Service, the Creator reserves the right at any time in its sole discretion to block users from certain IP addresses from accessing the Service.
+
+Copyright Policy; Notice and Procedure for Making Claims of Copyright Infringement. You may not post, distribute, or reproduce in any way any copyrighted material, trademarks, or other proprietary information without obtaining the prior written consent of the owner of such proprietary rights. Without limiting the foregoing, if you believe that your work has been copied and posted on the Service in a way that constitutes copyright infringement, please provide our Copyright Agent with the following information:
+
+an electronic or physical signature of the person authorized to act on behalf of the owner of the copyright interest;
+
+a description of the copyrighted work that you claim has been infringed;
+
+a description of where the material that you claim is infringing is located on the Service (and such description must be reasonably sufficient to enable the Creator to find the alleged infringing material, such as a url);
+
+your address, telephone number and email address;
+
+a written statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law; and
+
+a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner's behalf.
+
+Notice of claims of copyright infringement should be sent to hi@repllabs.com.
+
+The Creator will terminate the accounts of repeat infringers.
+
+Disclaimers.
+
+You acknowledge and agree that neither the Creator nor its affiliates and third party partners are responsible for and shall not have any liability, directly or indirectly, for any loss or damage, including personal injury or death, as a result of or alleged to be the result of (i) any incorrect or inaccurate Content posted in the Service, whether caused by users or any of the equipment or programming associated with or utilized in the Service; (ii) the timeliness, deletion or removal, incorrect delivery or failure to store any Content, communications or personalization settings; (iii) the conduct, whether online or offline, of any user; (iv) any error, omission or defect in, interruption, deletion, alteration, delay in operation or transmission, theft or destruction of, or unauthorized access to, any user or user communications; or (v) any problems, failure or technical malfunction of any telephone network or lines, computer online systems, servers or providers, computer equipment, software, failure of email or players on account of technical problems or traffic congestion on the Internet or at any website or combination thereof, including injury or damage to users or to any other person’s computer or device related to or resulting from participating or downloading materials in connection with the Internet and/or in connection with the Service. TO THE MAXIMUM EXTENT ALLOWED BY APPLICABLE LAW, THE Creator PROVIDES THE SERVICE ON AN “AS IS” AND “AS AVAILABLE” BASIS AND GRANTS NO WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE WITH RESPECT TO THE SERVICE (INCLUDING ALL CONTENT CONTAINED THEREIN), INCLUDING (WITHOUT LIMITATION) ANY IMPLIED WARRANTIES OF SATISFACTORY QUALITY, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT. THE Creator DOES NOT REPRESENT OR WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR FREE, SECURE OR THAT ANY DEFECTS OR ERRORS IN THE SERVICE WILL BE CORRECTED.
+
+ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SERVICE IS ACCESSED AT YOUR OWN DISCRETION AND RISK, AND YOU WILL BE SOLELY RESPONSIBLE FOR AND HEREBY WAIVE ANY AND ALL CLAIMS AND CAUSES OF ACTION WITH RESPECT TO ANY DAMAGE TO YOUR DEVICE, COMPUTER SYSTEM, INTERNET ACCESS, DOWNLOAD OR DISPLAY DEVICE, OR LOSS OR CORRUPTION OF DATA THAT RESULTS OR MAY RESULT FROM THE DOWNLOAD OF ANY SUCH MATERIAL. IF YOU DO NOT ACCEPT THIS LIMITATION OF LIABILITY, YOU ARE NOT AUTHORIZED TO DOWNLOAD OR OBTAIN ANY MATERIAL THROUGH THE SERVICE.
+
+From time to time, the Creator may make third party opinions, advice, statements, offers, or other third party information or content available through the Service. All third party content is the responsibility of the respective authors thereof and should not necessarily be relied upon. Such third party authors are solely responsible for such content. THE Creator DOES NOT: (I) GUARANTEE THE ACCURACY, COMPLETENESS, OR USEFULNESS OF ANY THIRD PARTY CONTENT PROVIDED THROUGH THE SERVICE, OR (II) ADOPT, ENDORSE OR ACCEPT RESPONSIBILITY FOR THE ACCURACY OR RELIABILITY OF ANY OPINION, ADVICE, OR STATEMENT MADE BY ANY PARTY THAT APPEARS IN THE SERVICE. UNDER NO CIRCUMSTANCES WILL THE Creator OR ITS AFFILIATES BE RESPONSIBLE OR LIABLE FOR ANY LOSS OR DAMAGE RESULTING FROM YOUR RELIANCE ON INFORMATION OR OTHER CONTENT POSTED IN THE SERVICE, OR TRANSMITTED TO OR BY ANY USERS.
+
+In addition to the preceding paragraph and other provisions of this Agreement, any advice that may be posted in the Service is for informational and entertainment purposes only and is not intended to replace or substitute for any professional financial, medical, legal, or other advice. The Creator makes no representations or warranties and expressly disclaims any and all liability concerning any treatment, action by, or effect on any person following the information offered or provided within or through the Service. If you have specific concerns or a situation arises in which you require professional or medical advice, you should consult with an appropriately trained and qualified specialist.
+
+Links. The Service may contain, and the Service or third parties may provide, advertisements and promotions offered by third parties and links to other web sites or resources. You acknowledge and agree that the Creator is not responsible for the availability of such external websites or resources, and does not endorse and is not responsible or liable for any content, information, statements, advertising, goods or services, or other materials on or available from such websites or resources. Your correspondence or business dealings with, or participation in promotions of, third parties found in or through the Service, including payment and delivery of related goods or services, and any other terms, conditions, warranties or representations associated with such dealings, are solely between you and such third party. You further acknowledge and agree that the Creator shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of, or reliance upon, any such content, information, statements, advertising, goods or services or other materials available on or through any such website or resource.
+
+Limitation on Liability. TO THE FULLEST EXTENT ALLOWED BY APPLICABLE LAW, IN NO EVENT WILL THE Creator, ITS AFFILIATES, BUSINESS PARTNERS, LICENSORS OR SERVICE PROVIDERS BE LIABLE TO YOU OR ANY THIRD PERSON FOR ANY INDIRECT, RELIANCE, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL OR PUNITIVE DAMAGES, INCLUDING, WITHOUT LIMITATION, LOSS OF PROFITS, LOSS OF GOODWILL, DAMAGES FOR LOSS, CORRUPTION OR BREACHES OF DATA OR PROGRAMS, SERVICE INTERRUPTIONS AND PROCUREMENT OF SUBSTITUTE SERVICES, EVEN IF THE Creator HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, THE Creator'S LIABILITY TO YOU FOR ANY CAUSE WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF ANY, BY YOU TO THE Creator FOR THE SERVICE WHILE YOU HAVE AN ACCOUNT. YOU AGREE THAT REGARDLESS OF ANY STATUTE OR LAW TO THE CONTRARY, ANY CLAIM OR CAUSE OF ACTION ARISING OUT OF OR RELATED TO USE OF THE SERVICE OR THE TERMS OF THIS AGREEMENT MUST BE FILED WITHIN ONE YEAR AFTER SUCH CLAIM OR CAUSE OF ACTION AROSE OR BE FOREVER BARRED.
+
+Arbitration and Governing Law.
+
+The exclusive means of resolving any dispute or claim arising out of or relating to this Agreement (including any alleged breach thereof) or the Service shall be BINDING ARBITRATION administered by the American Arbitration Association. The one exception to the exclusivity of arbitration is that you have the right to bring an individual claim against the Creator in a small-claims court of competent jurisdiction. But whether you choose arbitration or small-claims court, you may not under any circumstances commence or maintain against the Creator any class action, class arbitration, or other representative action or proceeding.
+
+By using the Service in any manner, you agree to the above arbitration agreement. In doing so, YOU GIVE UP YOUR RIGHT TO GO TO COURT to assert or defend any claims between you and the Creator (except for matters that may be taken to small-claims court). YOU ALSO GIVE UP YOUR RIGHT TO PARTICIPATE IN A CLASS ACTION OR OTHER CLASS PROCEEDING. Your rights will be determined by a NEUTRAL ARBITRATOR, NOT A JUDGE OR JURY. You are entitled to a fair hearing before the arbitrator. The arbitrator can grant any relief that a court can, but you should note that arbitration proceedings are usually simpler and more streamlined than trials and other judicial proceedings. Decisions by the arbitrator are enforceable in court and may be overturned by a court only for very limited reasons. For details on the arbitration process, see our Arbitration Procedures.
+
+Any proceeding to enforce this arbitration agreement, including any proceeding to confirm, modify, or vacate an arbitration award, may be commenced in any court of competent jurisdiction. In the event that this arbitration agreement is for any reason held to be unenforceable, any litigation against the Creator (except for small-claims court actions) may be commenced only in the federal or state courts located in Dallas County, Texas. You hereby irrevocably consent to the jurisdiction of those courts for such purposes.
+
+This Agreement, and any dispute between you and the Creator, shall be governed by the laws of the state of Texas without regard to principles of conflicts of law, provided that this arbitration agreement shall be governed by the Federal Arbitration Act.
+
+Indemnity by You. You agree to indemnify and hold the Creator, its subsidiaries, and affiliates, and its and their officers, agents, partners and employees, harmless from any loss, liability, claim, or demand, including reasonable attorney's fees, made by any third party due to or arising out of your breach of or failure to comply with this Agreement (including any breach of your representations and warranties contained herein), any postings or Content you post in the Service, and the violation of any law or regulation by you. The Creator reserves the right to assume the exclusive defense and control of any matter otherwise subject to indemnification by you, in which event you will fully cooperate with the Creator in connection therewith.
+
+Notice. The Creator may provide you with notices, including those regarding changes to this Agreement, using any reasonable means now known or hereafter developed, including by email, regular mail, SMS, MMS, text message or postings in the Service. Such notices may not be received if you violate this Agreement by accessing the Service in an unauthorized manner. You agree that you are deemed to have received any and all notices that would have been delivered had you accessed the Service in an authorized manner.
+
+Entire Agreement; Other. This Agreement, with the Privacy Policy and any specific guidelines or rules that are separately posted for particular services or offers in the Service, contains the entire agreement between you and the Creator regarding the use of the Service. If any provision of this Agreement is held invalid, the remainder of this Agreement shall continue in full force and effect. The failure of the Creator to exercise or enforce any right or provision of this Agreement shall not constitute a waiver of such right or provision. You agree that your online account is non-transferable and all of your rights to your profile or contents within your account terminate upon your death. No agency, partnership, joint venture or employment is created as a result of this Agreement and you may not make any representations or bind the Creator in any manner.
+
+Amendment. This Agreement is subject to change by the Creator at any time.</mutableString>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     <variation key="default">
@@ -87,6 +251,7 @@
                 <constraint firstAttribute="trailing" secondItem="GhB-7b-4zf" secondAttribute="trailing" id="t1R-pe-Xal"/>
                 <constraint firstAttribute="bottom" secondItem="GhB-7b-4zf" secondAttribute="bottom" id="x9m-Yg-gEV"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>

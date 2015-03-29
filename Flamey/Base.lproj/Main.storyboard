@@ -1078,11 +1078,11 @@
             </objects>
             <point key="canvasLocation" x="2535.5" y="413.5"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="hoY-sA-llh">
             <objects>
                 <navigationController id="kPg-eO-kBM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="edS-ar-1ZX"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="edS-ar-1ZX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PGR-7X-wEE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
