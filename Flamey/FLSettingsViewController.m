@@ -228,7 +228,11 @@ final sections footer view
     [[FLAnnotationStore sharedStore] flushStore];
     [[FLProcessedImagesStore sharedStore] flushStore];
 
-    [self performSegueWithIdentifier:@"logOut" sender:self];
+    void(^completionBlock)(void)=^(void) {
+        [self performSegueWithIdentifier:@"logOut" sender:self];
+    };
+
+    [self dismissViewControllerAnimated:YES completion:completionBlock];
 }
 
 - (void)presentAccountDeleteOptions {
