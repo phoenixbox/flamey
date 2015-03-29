@@ -205,8 +205,9 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     // Set annotation locations
     [targetCell.photo setAnnotationPoint:annotationPoint];
-    [self setLogoLocation:targetCell];
 
+    // Logo Location
+    [self setLogoLocation:targetCell];
     // Overlay images on media
     [self setImagesOnCell:targetCell];
 
@@ -296,11 +297,11 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
 // 3. Annotate the new photo model with the id of the target cell's photo
 
-//    FLPhoto *processedPhoto = [[FLPhoto alloc] init];
-//    processedPhoto.id = targetCell.photo.id;
-//    processedPhoto.image = processedImage;
-//    FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
-//    [processedImagesStore addUniquePhoto:processedPhoto];
+    FLPhoto *processedPhoto = [[FLPhoto alloc] init];
+    processedPhoto.id = targetCell.photo.id;
+    processedPhoto.image = processedImage;
+    FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
+    [processedImagesStore addUniquePhoto:processedPhoto];
 
     [imageView setImage:processedImage];
 }
@@ -331,13 +332,12 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     UIImage *processedImage = [alphaBlendFilter imageFromCurrentFramebuffer];
 
     // 3. Annotate the new photo model with the id of the target cell's photo
-    FLPhoto *processedPhoto = [[FLPhoto alloc] init];
-    processedPhoto.id = targetCell.photo.id;
-    processedPhoto.image = processedImage;
-    FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
-
-    // TODO: Will this allow an overwrite
-    [processedImagesStore addUniquePhoto:processedPhoto];
+//    FLPhoto *processedPhoto = [[FLPhoto alloc] init];
+//    processedPhoto.id = targetCell.photo.id;
+//    processedPhoto.image = processedImage;
+//    FLProcessedImagesStore *processedImagesStore = [FLProcessedImagesStore sharedStore];
+//    // TODO: Will this allow an overwrite
+//    [processedImagesStore addUniquePhoto:processedPhoto];
 
     [imageView setImage:processedImage];
 }
@@ -515,7 +515,8 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
 - (void)setImagesOnCell:(FLAnnotationTableViewCell *)cell {
     [self setFlameIconOnCell:cell];
-    [self setLogoImageOnCell:cell];
+// HOLD: Image logo annotation
+// [self setLogoImageOnCell:cell];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -93,9 +93,7 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
 
 #pragma MailComposer
 - (void)mailComposeController:(MFMailComposeViewController*)controller
-          didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
-{
-    // Notifies users about errors associated with the interface
+          didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     switch (result)
     {
         case MFMailComposeResultCancelled:
