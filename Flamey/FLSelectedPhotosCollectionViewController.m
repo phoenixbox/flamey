@@ -18,6 +18,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "BlurryModalSegue.h"
 #import <SIAlertView.h>
+#import "Mixpanel.h"
 
 // Components
 #import "FLSelectedPhotosCollectionViewController.h"
@@ -83,6 +84,7 @@ NSString *const kStartEditingTitle = @"Edit";
 }
 
 - (void)getFacebookPhotos {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [self performSegueWithIdentifier:kGetFacebookPhotos sender:self];
 }
 
@@ -166,6 +168,8 @@ NSString *const kStartEditingTitle = @"Edit";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     if ([segue.identifier isEqualToString:kSeguePushToImageAnnotation]) {
         NSIndexPath *indexPath = [[_selectionCollection indexPathsForSelectedItems] lastObject];
         FLSelectedPhotoStore *photoStore = [FLSelectedPhotoStore sharedStore];
@@ -187,6 +191,7 @@ NSString *const kStartEditingTitle = @"Edit";
 }
 
 - (IBAction)unwindToSelection:(UIStoryboardSegue *)unwindSegue {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -250,6 +255,9 @@ NSString *const kStartEditingTitle = @"Edit";
 }
 
 - (void)promptToAddPhotos {
+    // Tried to edit with no photos
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Oops no Photos!" andMessage:@"Get some Facebook photos"];
 
     [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
@@ -272,6 +280,5 @@ NSString *const kStartEditingTitle = @"Edit";
 
     [alertView show];
 }
-
 
 @end

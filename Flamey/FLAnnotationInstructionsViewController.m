@@ -13,6 +13,7 @@
 
 // Libs
 #import "FLViewHelpers.h"
+#import "Mixpanel.h"
 
 @interface FLAnnotationInstructionsViewController ()
 
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"AnnotationInstruct: Load" properties:@{}];
     [self styleModal];
     [self styleContinueButton];
     [self setupTouchViewTapRecognizer];
@@ -41,6 +44,8 @@
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"AnnotationInstruct: Hand Tap" properties:@{}];
     [self simulateTouchAnimation];
     [self performSelector:@selector(simulateTouchResponse) withObject:nil afterDelay:0.2];
 }
@@ -87,10 +92,14 @@
 }
 
 - (IBAction)continue:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"AnnotationInstruct: Continue" properties:@{}];
     [self understandAndMove];
 }
 
 - (IBAction)closeModal:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"AnnotationInstruct: Close" properties:@{}];
     [self understandAndMove];
 }
 

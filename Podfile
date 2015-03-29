@@ -18,6 +18,7 @@ pod 'Canvas', '~> 0.1'
 pod 'TTTAttributedLabel', '~> 1.10.1'
 pod 'SIAlertView', '~> 1.3'
 pod 'AFBlurSegue', '~> 1.2'
+pod 'Mixpanel', '~> 2.7'
 end
 
 target "FlameyTests" do

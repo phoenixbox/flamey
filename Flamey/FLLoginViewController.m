@@ -10,6 +10,7 @@
 
 // Libs
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "Mixpanel.h"
 
 // Components
 #import "FLLoginSlide.h"
@@ -171,25 +172,42 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
     // TODO:Retrieve required user details and persist to external server
     NSLog(@"%@", [NSString stringWithFormat:@"continue as %@", [user name]]);
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:user options:NSJSONWritingPrettyPrinted error:nil];
     NSString *result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     FLUser *newUser = [[FLUser alloc] initWithString:result error:nil];
 
+    [self setTrackingSuperProperties:newUser];
+
     NSString *graphPath = @"me/picture?type=large&redirect=false";
 
     [FBRequestConnection startWithGraphPath:graphPath parameters:nil HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+
         if (!error) {
+            // This event should have the superProperties attached
+            [mixpanel track:@"Login Success" properties:@{}];
             NSString *profileImage = [[result objectForKey:@"data"] objectForKey:@"url"];
             [newUser setProfileImage:profileImage];
 
             [[FLSettings defaultSettings] setUser:newUser];
         } else {
-            NSLog(@"FBLogin user image error: %@", error);
+            [mixpanel track:@"Login Failed" properties:@{@"error": error.localizedFailureReason}];
         }
         [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
     }];
+}
+
+#pragma EventTracking
+- (void)setTrackingSuperProperties:(FLUser *)user {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel registerSuperProperties:@{
+                                        @"email": user.email,
+                                        @"gender": user.gender,
+                                        @"name": user.name,
+                                        @"id": user.id,
+                                        }];
 }
 
 - (void)didReceiveMemoryWarning {

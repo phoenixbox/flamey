@@ -16,6 +16,7 @@
 // Pods
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <BlurryModalSegue/BlurryModalSegue.h>
+#import "Mixpanel.h"
 
 // Data Layer
 #import "FLSelectedPhotoStore.h"
@@ -200,6 +201,10 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (void)handleTap:(UIGestureRecognizer *)sender {
+    // Tap the number of times a user taps the cell PER image
+    // Less taps means more success - goal of 3
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
     CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
 
@@ -440,6 +445,8 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (void)setTableViewEmptyMessage:(BOOL)show {
+    // User removed all the images from the store
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
     if (show) {
         [_selectedPhotosTable.backgroundView setHidden:NO];
     } else {
@@ -480,6 +487,8 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Track the number if images the user is annotating
+    // Mixpanel *mixpanel = [Mixpanel sharedInstance];
     return  [[FLAnnotationStore sharedStore].photos count];
 }
 
@@ -625,6 +634,9 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (IBAction)scrollLeft:(id)sender {
+    // Track back scrolling
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     NSArray *visible = [self.selectedPhotosTable indexPathsForVisibleRows];
     NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];
     NSInteger targetRowIndex = visibleCellIndexPath.row - 1;
@@ -641,6 +653,9 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (IBAction)scrollRight:(id)sender {
+    // Track right scrolling
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
     NSArray *visible  = [self.selectedPhotosTable indexPathsForVisibleRows];
     NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];

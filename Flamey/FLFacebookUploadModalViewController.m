@@ -12,6 +12,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SIAlertView.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "Mixpanel.h"
 
 // Data Layer
 #import "FLProcessedImagesStore.h"
@@ -36,6 +37,10 @@
 
     [self styleModal];
 
+    // Track Upload Screen Loaded
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Upload: Loaded" properties:@{}];
+
     if ([settings uploadPermission]) {
         [self uploadPhotos];
     } else {
@@ -49,6 +54,7 @@
                                    userInfo:nil
                                     repeats:YES];
 }
+
 - (void)styleModal {
     [self roundModal];
     [self setModalTitleCopy];
@@ -261,6 +267,8 @@
 // TODO: Remove the animations when the view is destoryed || investigate garbage collection more
 
 - (void)askPermissionTo:(NSString *)selectorName {
+    // Track Pre-Permission Request
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
     FLSettings *settings = [FLSettings defaultSettings];
 
     SEL selector = NSSelectorFromString(selectorName);
@@ -277,12 +285,22 @@
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
                               [settings setUploadPermission:YES];
+                              [mixpanel track:@"FBPrePermissionRequest" properties:@{
+                                                                         @"controller": @"upload",
+                                                                         @"state": @"initial",
+                                                                         @"result": @"success",
+                                                                         }];
                               func(self, selector);
                           }];
 
     [alertView addButtonWithTitle:@"I'll ask later"
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
+                              [mixpanel track:@"FBPrePermissionRequest" properties:@{
+                                                                                     @"controller": @"upload",
+                                                                                     @"state": @"initial",
+                                                                                     @"result": @"failure",
+                                                                                     }];
                               [settings setUploadPermission:NO];
                               [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                           }];
@@ -294,14 +312,21 @@
 
 // TODO: Be aware of iOS version upload restrictions
 - (void)uploadPhotos {
-     [self setFinishedState];
+    // Track attempt to upload & how many photos being uploaded (ProcessedImagesCount)
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
+
+
+
+    [self setFinishedState];
+    // TODO: Ensure all images are being uploaded
 //    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
 //    FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
 //    UIImage *img = processedPhoto.image;
 //
 //    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    [_hud setCenter:self.view.center];
-//    _hud.mode = MBProgressHUDModeIndeterminate;
+//    _hud.mode = MBProgressHUDModeAnnularDeterminate;
 //    _hud.labelText = @"Loading";
 //
 //    [self performPublishAction:^{
@@ -317,8 +342,21 @@
 //         completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
 //             [_hud hide:YES];
 //             if (!error) {
+//    NSNumber *count = [NSNumber numberWithInteger:[processedImageStore.photos count]];
+//    [mixpanel track:@"FBUpload" properties:@{
+//                                                           @"controller": @"upload",
+//                                                           @"state": @"initial",
+//                                                           @"result": @"success",
+//                                                           @"count": count
+//                                                           }];
 //                 [self setFinishedState];
 //               } else {
+//    [mixpanel track:@"FBUpload" properties:@{
+//                                                           @"controller": @"upload",
+//                                                           @"state": @"initial",
+//                                                           @"result": @"failure"
+//                                                           }];
+
 //                   [self showAlert:error withSelectorName:@"uploadPhotos"];
 //               }
 //         }];
@@ -328,6 +366,9 @@
 }
 
 - (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
+    // Track Error Occurence
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     SEL selector = NSSelectorFromString(selectorName);
     IMP imp = [self methodForSelector:selector];
     void (*func)(id, SEL) = (void *)imp;
@@ -341,12 +382,22 @@
     [alertView addButtonWithTitle:@"Try Again"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
+                              [mixpanel track:@"FBPrePermissionRequest" properties:@{
+                                                                                  @"controller": @"upload",
+                                                                                  @"state": @"retry",
+                                                                                  @"result": @"success"
+                                                                                  }];
                               func(self, selector);
                           }];
 
     [alertView addButtonWithTitle:@"Try Later"
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
+                              [mixpanel track:@"FBPrePermissionRequest" properties:@{
+                                                                                     @"controller": @"upload",
+                                                                                     @"state": @"retry",
+                                                                                     @"result": @"failure"
+                                                                                     }];
                               [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                           }];
 
@@ -366,6 +417,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
 
 
 - (void)performPublishAction:(void(^)(void))action {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
     // we defer request for permission to post to the moment of post, then we check for the permission
     if ([FBSession.activeSession.permissions indexOfObject:@"publish_actions"] == NSNotFound) {
         // if we don't already have the permission, then we request it now
@@ -373,14 +425,19 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                                               defaultAudience:FBSessionDefaultAudienceOnlyMe
                                             completionHandler:^(FBSession *session, NSError *error) {
                                                 if (!error) {
+                                                    [mixpanel track:@"FBPermissionRequest" properties:@{
+                                                                                                        @"controller": @"upload",
+                                                                                                        @"state": @"initial",
+                                                                                                        @"result": @"success"
+                                                                                                        }];
                                                     action();
                                                 } else if (error.fberrorCategory != FBErrorCategoryUserCancelled) {
-                                                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Permission denied"
-                                                                                                        message:@"Unable to get permission to post"
-                                                                                                       delegate:nil
-                                                                                              cancelButtonTitle:@"OK"
-                                                                                              otherButtonTitles:nil];
-                                                    [alertView show];
+                                                    [mixpanel track:@"FBPermissionRequest" properties:@{
+                                                                                                        @"controller": @"upload",
+                                                                                                        @"state": @"initial",
+                                                                                                        @"result": @"failure"
+                                                                                                        }];
+                                                    [self facebookPermissionsDeniedAlert];
                                                 }
                                             }];
     } else {
@@ -388,11 +445,45 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
     }
 }
 
+- (void)facebookPermissionsDeniedAlert {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Permission Denied" andMessage:@"We can't help you stndout without permission to upload to Facebook"];
+
+    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+    [alertView addButtonWithTitle:@"Try Again"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alert) {
+                              [mixpanel track:@"FBPermissionRequest" properties:@{
+                                                                                @"controller": @"upload",
+                                                                                @"state": @"retry",
+                                                                                @"result": @"success"
+                                                                                }];
+                              [self uploadPhotos];
+                          }];
+
+    [alertView addButtonWithTitle:@"Try Later"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alert) {
+                              [mixpanel track:@"FBPermissionRequest" properties:@{
+                                                                                  @"controller": @"upload",
+                                                                                  @"state": @"retry",
+                                                                                  @"result": @"failure"
+                                                                                  }];
+                              [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                          }];
+
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+
+    [alertView show];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation

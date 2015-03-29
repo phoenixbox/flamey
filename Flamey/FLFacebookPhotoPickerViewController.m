@@ -13,12 +13,16 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SIAlertView.h>
+#import "Mixpanel.h"
 
+// Components
 #import "FLFacebookPhotoCollectionViewCell.h"
 
+// DataLayer
 #import "FLSelectedPhotoStore.h"
 #import "FLPhoto.h"
 
+// Helpers
 #import "CollectionViewHelpers.h"
 
 @interface FLFacebookPhotoPickerViewController ()
@@ -44,6 +48,10 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 
     [self buildPhotoCollection];
     [self sendRequest];
+
+    // Track the user loading this page
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"PhotoPicker: Load" properties:@{}];
 }
 
 - (void)updateTitleStyle {
@@ -127,6 +135,11 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 }
 
 - (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"PhotoPicker: Error" properties:@{
+                                                       @"error": error.localizedFailureReason
+                                                       }];
+
     SEL selector = NSSelectorFromString(selectorName);
     IMP imp = [self methodForSelector:selector];
     void (*func)(id, SEL) = (void *)imp;
@@ -140,13 +153,15 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     [alertView addButtonWithTitle:@"Try Again"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
+                            [mixpanel track:@"PhotoPicker: AcceptTryAgain" properties:@{}];
                               func(self, selector);
                           }];
 
     [alertView addButtonWithTitle:@"Try Later"
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
-                              NSLog(@"Cancelled Facebook photo fetch: %@", [self class]);
+                              Mixpanel *mixpanel = [Mixpanel sharedInstance];
+                              [mixpanel track:@"PhotoPicker: RejectTryAgain" properties:@{}];
                           }];
 
     alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
@@ -238,6 +253,8 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"PhotoPicker: Deselect" properties:@{}];
     FLFacebookPhotoCollectionViewCell *cell = (FLFacebookPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
 
 

@@ -7,14 +7,19 @@
 //
 
 #import "FLSettingsViewController.h"
-#import "FLSettings.h"
 
+// Data Layer
+#import "FLSettings.h"
 #import "FLAnnotationStore.h"
 #import "FLProcessedImagesStore.h"
 
+// Components
 #import "FLContactViewController.h"
 #import "FLTOSViewController.h"
 #import "FLPrivacyViewController.h"
+
+// Pods
+#import "Mixpanel.h"
 
 // Helpers
 #import "FLViewHelpers.h"
@@ -45,6 +50,10 @@ static NSString * const kDeleteAccountActionTitle = @"Delete your account?";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    // Track settings loaded
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     [self setHeaderLogo];
     [self buildArrayOfSections];
     [self renderSettingsTable];
@@ -194,6 +203,9 @@ final sections footer view
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *cellName = cell.textLabel.text;
 
+    // Track pages loaded
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     // Enum pattern would be better here
     if ([cellName isEqualToString:kContactCell]) {
         FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
@@ -247,13 +259,17 @@ final sections footer view
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // Track account deletions
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
 
     if  ([buttonTitle isEqualToString:kConfirmDeleteAccount]) {
-        NSLog(@"Imlement account destroy"); // On successcallback logout
+        // Track deletion
         [self logOut];
     }
     if ([buttonTitle isEqualToString:kCancelDeleteAccount]) {
+        // Track close to deletion
         [actionSheet dismissWithClickedButtonIndex:[actionSheet cancelButtonIndex] animated:YES];
         actionSheet = nil;
     }
