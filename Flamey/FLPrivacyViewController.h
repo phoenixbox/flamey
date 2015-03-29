@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *privacyTitle;
 @property (weak, nonatomic) IBOutlet UITextView *privacyPolicyBody;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleBar;
 
 - (IBAction)back:(id)sender;
 @end
