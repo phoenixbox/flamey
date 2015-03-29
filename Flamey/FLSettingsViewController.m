@@ -44,15 +44,27 @@ static NSString * const kDeleteAccountActionTitle = @"Delete your account?";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self setHeaderLogo];
     [self buildArrayOfSections];
     [self renderSettingsTable];
     [self setLogoAndVersion];
 }
 
+- (void)setHeaderLogo {
+    [[self navigationItem] setTitleView:nil];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 44.0f)];
+    logoView.contentMode = UIViewContentModeScaleAspectFit;
+    UIImage *logoImage = [UIImage imageNamed:@"newTitlebar.png"];
+    [logoView setImage:logoImage];
+    self.navigationItem.titleView = logoView;
+}
+
 - (void)setLogoAndVersion {
     [_logoImageView setImage:[UIImage imageNamed:@"LogoLong"]];
     // TODO: Pull the specified app version from the app plist
-    [_versionNumber setText:[NSString stringWithFormat:@"Version: %@", @"0.0.1"]];
+    NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    [_versionNumber setText:[NSString stringWithFormat:@"Version: %@", appVersion]];
+    _versionNumber.font = [UIFont fontWithName:@"AvenirNext-Regular" size:10.0f];
     [_versionNumber sizeToFit];
 }
 
