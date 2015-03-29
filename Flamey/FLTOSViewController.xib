@@ -7,32 +7,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLTOSViewController">
             <connections>
                 <outlet property="body" destination="oky-Vn-lih" id="2CI-ka-MDg"/>
+                <outlet property="containerView" destination="GhB-7b-4zf" id="8CK-ao-b8O"/>
+                <outlet property="contentView" destination="oH3-30-A6Z" id="H1G-8W-AhW"/>
+                <outlet property="navBar" destination="Y3q-6x-tIP" id="3SF-vO-SuI"/>
+                <outlet property="navTitle" destination="c7s-LU-ORB" id="jPw-S9-Zvu"/>
                 <outlet property="termsTitle" destination="AHf-Jo-Qdc" id="4HB-B8-Jvt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+            <rect key="frame" x="0.0" y="64" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-7b-4zf" userLabel="Container">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH3-30-A6Z" userLabel="Content">
-                            <rect key="frame" x="0.0" y="44" width="375" height="559"/>
+                            <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHf-Jo-Qdc">
-                                    <rect key="frame" x="88" y="30" width="200" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="200" id="c19-tj-bTE"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oky-Vn-lih">
-                                    <rect key="frame" x="10" y="85" width="355" height="474"/>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oky-Vn-lih">
+                                    <rect key="frame" x="10" y="75" width="355" height="522"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" id="Rvy-3U-xvw"/>
@@ -200,7 +195,7 @@ Notice. The Creator may provide you with notices, including those regarding chan
 Entire Agreement; Other. This Agreement, with the Privacy Policy and any specific guidelines or rules that are separately posted for particular services or offers in the Service, contains the entire agreement between you and the Creator regarding the use of the Service. If any provision of this Agreement is held invalid, the remainder of this Agreement shall continue in full force and effect. The failure of the Creator to exercise or enforce any right or provision of this Agreement shall not constitute a waiver of such right or provision. You agree that your online account is non-transferable and all of your rights to your profile or contents within your account terminate upon your death. No agency, partnership, joint venture or employment is created as a result of this Agreement and you may not make any representations or bind the Creator in any manner.
 
 Amendment. This Agreement is subject to change by the Creator at any time.</mutableString>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -208,6 +203,15 @@ Amendment. This Agreement is subject to change by the Creator at any time.</muta
                                         </mask>
                                     </variation>
                                 </textView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHf-Jo-Qdc">
+                                    <rect key="frame" x="87" y="20" width="200" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="c19-tj-bTE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -216,11 +220,20 @@ Amendment. This Agreement is subject to change by the Creator at any time.</muta
                                 <constraint firstItem="oky-Vn-lih" firstAttribute="top" secondItem="AHf-Jo-Qdc" secondAttribute="bottom" constant="20" id="FNW-rN-gRM"/>
                                 <constraint firstAttribute="bottom" secondItem="oky-Vn-lih" secondAttribute="bottom" id="GNP-mA-fTJ"/>
                                 <constraint firstAttribute="centerX" secondItem="AHf-Jo-Qdc" secondAttribute="centerX" id="PQE-W4-VBQ"/>
+                                <constraint firstItem="AHf-Jo-Qdc" firstAttribute="top" secondItem="oH3-30-A6Z" secondAttribute="top" constant="20" id="eU1-zR-jru"/>
                                 <constraint firstItem="AHf-Jo-Qdc" firstAttribute="top" secondItem="oH3-30-A6Z" secondAttribute="top" constant="30" id="ftu-91-2n4"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="ftu-91-2n4"/>
+                                </mask>
+                            </variation>
                         </view>
                         <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3q-6x-tIP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="70" id="Wez-bE-uqA"/>
+                            </constraints>
                             <items>
                                 <navigationItem title="Title" id="c7s-LU-ORB">
                                     <barButtonItem key="leftBarButtonItem" title="Back" id="8fB-lL-lqc">
@@ -238,10 +251,18 @@ Amendment. This Agreement is subject to change by the Creator at any time.</muta
                         <constraint firstItem="oH3-30-A6Z" firstAttribute="top" secondItem="Y3q-6x-tIP" secondAttribute="bottom" id="VtV-KM-Ezq"/>
                         <constraint firstAttribute="trailing" secondItem="oH3-30-A6Z" secondAttribute="trailing" id="gOh-cB-60v"/>
                         <constraint firstAttribute="trailing" secondItem="Y3q-6x-tIP" secondAttribute="trailing" id="hVw-o1-4E1"/>
+                        <constraint firstItem="AHf-Jo-Qdc" firstAttribute="top" secondItem="Y3q-6x-tIP" secondAttribute="bottom" constant="20" id="iqi-2T-WwJ"/>
+                        <constraint firstItem="oH3-30-A6Z" firstAttribute="top" secondItem="Y3q-6x-tIP" secondAttribute="bottom" id="rTD-Sm-wi3"/>
                         <constraint firstItem="Y3q-6x-tIP" firstAttribute="leading" secondItem="GhB-7b-4zf" secondAttribute="leading" id="v18-JM-Jjd"/>
                         <constraint firstAttribute="bottom" secondItem="oH3-30-A6Z" secondAttribute="bottom" id="ybI-A3-I3b"/>
                         <constraint firstItem="oH3-30-A6Z" firstAttribute="leading" secondItem="GhB-7b-4zf" secondAttribute="leading" id="zf0-Z2-Hc3"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="VtV-KM-Ezq"/>
+                            <exclude reference="iqi-2T-WwJ"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -251,7 +272,7 @@ Amendment. This Agreement is subject to change by the Creator at any time.</muta
                 <constraint firstAttribute="trailing" secondItem="GhB-7b-4zf" secondAttribute="trailing" id="t1R-pe-Xal"/>
                 <constraint firstAttribute="bottom" secondItem="GhB-7b-4zf" secondAttribute="bottom" id="x9m-Yg-gEV"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>

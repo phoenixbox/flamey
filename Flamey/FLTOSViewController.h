@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface FLTOSViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *termsTitle;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextView *body;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navTitle;
 - (IBAction)back:(id)sender;
 
 @end
