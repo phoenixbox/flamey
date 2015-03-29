@@ -210,6 +210,13 @@ final sections footer view
     }
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 10.0f)];
+    [footer setBackgroundColor:[UIColor whiteColor]];
+
+    return footer;
+}
+
 - (void)logOut {
     [FBSession.activeSession closeAndClearTokenInformation];
     [FLSettings defaultSettings].shouldSkipLogin = NO;
