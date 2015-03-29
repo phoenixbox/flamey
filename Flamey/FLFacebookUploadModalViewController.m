@@ -39,7 +39,10 @@
 
     // Track Upload Screen Loaded
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"Upload: Loaded" properties:@{}];
+    [mixpanel track:@"Navigation" properties:@{
+                                           @"controller": @"uploadModal",
+                                           @"state": @"loaded"
+                                           }];
 
     if ([settings uploadPermission]) {
         [self uploadPhotos];
@@ -285,9 +288,9 @@
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
                               [settings setUploadPermission:YES];
-                              [mixpanel track:@"FBPrePermissionRequest" properties:@{
-                                                                         @"controller": @"upload",
-                                                                         @"state": @"initial",
+                              [mixpanel track:@"FBPermissionRequest" properties:@{
+                                                                         @"controller": @"uploadModal",
+                                                                         @"state": @"pre:default",
                                                                          @"result": @"success",
                                                                          }];
                               func(self, selector);
@@ -296,9 +299,9 @@
     [alertView addButtonWithTitle:@"I'll ask later"
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
-                              [mixpanel track:@"FBPrePermissionRequest" properties:@{
-                                                                                     @"controller": @"upload",
-                                                                                     @"state": @"initial",
+                              [mixpanel track:@"FBPermissionRequest" properties:@{
+                                                                                     @"controller": @"uploadModal",
+                                                                                     @"state": @"pre:default",
                                                                                      @"result": @"failure",
                                                                                      }];
                               [settings setUploadPermission:NO];
@@ -344,7 +347,7 @@
 //             if (!error) {
 //    NSNumber *count = [NSNumber numberWithInteger:[processedImageStore.photos count]];
 //    [mixpanel track:@"FBUpload" properties:@{
-//                                                           @"controller": @"upload",
+//                                                           @"controller": @"uploadModal",
 //                                                           @"state": @"initial",
 //                                                           @"result": @"success",
 //                                                           @"count": count
@@ -352,7 +355,7 @@
 //                 [self setFinishedState];
 //               } else {
 //    [mixpanel track:@"FBUpload" properties:@{
-//                                                           @"controller": @"upload",
+//                                                           @"controller": @"uploadModal",
 //                                                           @"state": @"initial",
 //                                                           @"result": @"failure"
 //                                                           }];
@@ -382,9 +385,9 @@
     [alertView addButtonWithTitle:@"Try Again"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
-                              [mixpanel track:@"FBPrePermissionRequest" properties:@{
-                                                                                  @"controller": @"upload",
-                                                                                  @"state": @"retry",
+                              [mixpanel track:@"FBPermissionRequest" properties:@{
+                                                                                  @"controller": @"uploadModal",
+                                                                                  @"state": @"pre:retry",
                                                                                   @"result": @"success"
                                                                                   }];
                               func(self, selector);
@@ -393,9 +396,9 @@
     [alertView addButtonWithTitle:@"Try Later"
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
-                              [mixpanel track:@"FBPrePermissionRequest" properties:@{
-                                                                                     @"controller": @"upload",
-                                                                                     @"state": @"retry",
+                              [mixpanel track:@"FBPermissionRequest" properties:@{
+                                                                                     @"controller": @"uploadModal",
+                                                                                     @"state": @"pre:retry",
                                                                                      @"result": @"failure"
                                                                                      }];
                               [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -426,15 +429,15 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                                             completionHandler:^(FBSession *session, NSError *error) {
                                                 if (!error) {
                                                     [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                                        @"controller": @"upload",
-                                                                                                        @"state": @"initial",
+                                                                                                        @"controller": @"uploadModal",
+                                                                                                        @"state": @"default",
                                                                                                         @"result": @"success"
                                                                                                         }];
                                                     action();
                                                 } else if (error.fberrorCategory != FBErrorCategoryUserCancelled) {
                                                     [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                                        @"controller": @"upload",
-                                                                                                        @"state": @"initial",
+                                                                                                        @"controller": @"uploadModal",
+                                                                                                        @"state": @"default",
                                                                                                         @"result": @"failure"
                                                                                                         }];
                                                     [self facebookPermissionsDeniedAlert];
@@ -457,7 +460,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                @"controller": @"upload",
+                                                                                @"controller": @"uploadModal",
                                                                                 @"state": @"retry",
                                                                                 @"result": @"success"
                                                                                 }];
@@ -468,7 +471,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
-                                                                                  @"controller": @"upload",
+                                                                                  @"controller": @"uploadModal",
                                                                                   @"state": @"retry",
                                                                                   @"result": @"failure"
                                                                                   }];
