@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLPrivacyViewController">
+            <connections>
+                <outlet property="backButton" destination="aDn-cL-rYo" id="ixh-W4-oYC"/>
+                <outlet property="containerView" destination="NT8-f5-AQS" id="OKK-e7-ZUV"/>
+                <outlet property="contentView" destination="v5D-TU-ahT" id="ee1-cX-DFr"/>
+                <outlet property="navBar" destination="j5I-QM-JVx" id="XOs-Br-oPV"/>
+                <outlet property="privacyPolicyBody" destination="ldx-ws-SNi" id="YN0-mz-bza"/>
+                <outlet property="privacyTitle" destination="622-ok-d0D" id="11Z-t4-OlR"/>
+                <outlet property="view" destination="iN0-l3-epB" id="7Hq-eQ-g4v"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NT8-f5-AQS" userLabel="Container">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5I-QM-JVx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <items>
+                                <navigationItem title="Title" id="Pdz-hL-ufw">
+                                    <barButtonItem key="leftBarButtonItem" title="Back" id="aDn-cL-rYo">
+                                        <connections>
+                                            <action selector="back:" destination="-1" id="5hW-mZ-VTO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5D-TU-ahT" userLabel="Content">
+                            <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="622-ok-d0D" userLabel="privacyPolicyTitle">
+                                    <rect key="frame" x="87" y="30" width="200" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="NWE-3V-bk6"/>
+                                        <constraint firstAttribute="height" constant="21" id="Pgi-T2-HIA"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldx-ws-SNi" userLabel="privacyPolicyBody">
+                                    <rect key="frame" x="10" y="71" width="355" height="552"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <mutableString key="text">Last Updated: March 28, 2015
+
+Stndout (“Stndout,” “we,” and “us”). This Privacy Policy describes the information we collect, how that information may be used, with whom it may be shared, and your choices about such uses and disclosures. By using our website or application (our “Service”), you are accepting the practices described in this Privacy Policy.
+
+If you have any questions about our privacy practices, please refer to the end of this Privacy Policy for information on how to contact us.
+
+Information we collect about you
+In General. We may collect information that can identify you such as your name and email address ("personal information") and other information that does not identify you. We may collect this information through a website or a mobile application. By using the Service, you are authorizing us to gather, parse and retain data related to the provision of the Service.
+
+Information you provide. In order to register as a user with Stndout, you will be asked to sign in using your Facebook login. If you do so, you authorize us to access certain Facebook account information, such as your public Facebook profile (consistent with your privacy settings in Facebook), your email address, interests, likes, gender, birthday, education history, relationship interests, current city, photos, personal description, friend list, and information about and photos of your Facebook friends who might be common Facebook friends with other Stndout users. You will also be asked to allow Stndout to collect your location information from your device when you download or use the Service. In addition, we may collect and store any personal information you provide while using our Service or in some other manner. This may include identifying information, such as your name, address, email address and telephone number, and, if you transact business with us, financial information. You may also provide us photos, a personal description and information about your gender and preferences for recommendations, such as search distance, age range and gender.
+
+Use of technologies to collect information. We use various technologies to collect information from your device and about your activities on our Service.
+
+Information collected automatically. We automatically collect information from your browser or device when you visit our Service. This information could include your IP address, device ID and type, your browser type and language, the operating system used by your device, access times, your mobile device’s geographic location while our application is actively running, and the referring website address.
+
+Cookies and Use of Cookie Data. When you visit our Service, we may assign your device one or more cookies to facilitate access to our Service and to personalize your experience. Through the use of a cookie, we also may automatically collect information about your activity on our Service, such as the pages you visit, the time and date of your visits and the links you click. If we advertise, we (or third parties) may use certain data collected on our Service to show you Stndout advertisements on other sites or applications.
+
+Other Technologies. We may use standard Internet technology, such as web beacons and other similar technologies, to track your use of our Service and to deliver or communicate with cookies. We also may include web beacons in advertisements or email messages to determine whether messages have been opened and acted upon. The information we obtain in this manner enables us to customize the services we offer users, to deliver targeted advertisements and to measure the overall effectiveness of our online advertising, content, programming or other activities.
+
+Information collected by third-parties for advertising purposes. We may allow service providers, advertising companies and ad networks, and other third parties to display advertisements on our Service. These companies may use tracking technologies, such as cookies or web beacons, to collect information about users who view or interact with their advertisements. We do not provide any non-anonymized personal information to third parties. Some of these third- party advertising companies may be advertising networks that are members of the Network Advertising Initiative, which offers a single location to opt out of ad targeting from member companies (www.networkadvertising.org). Opting out will not decrease the number of advertisements you see.
+
+How we use the information we collect
+In General. We may use information that we collect about you to:
+
+deliver and improve our products and services, and manage our business;
+
+manage your account and provide you with customer support;
+
+perform research and analysis about your use of, or interest in, our or others’ products, services, or content;
+
+communicate with you by email, postal mail, telephone and/or mobile devices about products or services that may be of interest to you either from us or other third parties;
+
+develop, display, and track content and advertising tailored to your interests on our Service and other sites, including providing our advertisements to you when you visit other sites;
+
+website or mobile application analytics;
+
+verify your eligibility and deliver prizes in connection with contests and sweepstakes;
+
+enforce or exercise any rights in our Terms of Use; and
+
+perform functions or services as otherwise described to you at the time of collection.
+
+In all circumstances, we may perform these functions directly or use a third party vendor to perform these functions on our behalf who will be obligated to use your personal information only to perform services for us. Also, if you access our Service from a third party social platform, such as Facebook, we may share non-personal information with that platform to the extent permitted by your agreement with it and its privacy settings.
+
+With whom we share your information
+
+Personal information. We do not share your personal information with others except as indicated in this Privacy Policy or when we inform you and give you an opportunity to opt out of having your personal information shared. We may share personal information with:
+
+Service providers: We may share information, including personal and financial information, with third parties that perform certain services on our behalf. These services may include fulfilling orders, providing customer service and marketing assistance, performing business and sales analysis, ad tracking and analytics, member screenings, supporting our Service functionality, and supporting contests, sweepstakes, surveys and other features offered through our Service. These service providers may have access to personal information needed to perform their functions but are not permitted to share or use such information for any other purposes.
+
+Other Situations. We may disclose your information, including personal information:
+
+In response to a subpoena or similar investigative demand, a court order, or a request for cooperation from a law enforcement or other government agency; to establish or exercise our legal rights; to defend against legal claims; or as otherwise required by law. In such cases, we may raise or waive any legal objection or right available to us.
+
+When we believe disclosure is appropriate in connection with efforts to investigate, prevent, or take other action regarding illegal activity, suspected fraud or other wrongdoing; to protect and defend the rights, property or safety of our company, our users, our employees, or others; to comply with applicable law or cooperate with law enforcement; or to enforce our Terms of Use or other agreements or policies.
+
+In connection with a substantial corporate transaction, such as the sale of our business, a divestiture, merger, consolidation, or asset sale, or in the unlikely event of bankruptcy.
+
+Aggregated and/or non-personal information. We may use and share non-personal information we collect under any of the above circumstances. We may also share it with third parties to develop and deliver targeted advertising on our Service and on websites or applications of third parties, and to analyze and report on advertising you see. We may combine non-personal information we collect with additional non- personal information collected from other sources. We also may share aggregated, non-personal information, or personal information in hashed, non-human readable form, with third parties, including advisors, advertisers and investors, for the purpose of conducting general business analysis or other business purposes. For example, we may engage a data provider who may collect web log data from you (including IP address and information about your browser or operating system), or place or recognize a unique cookie on your browser to enable you to receive customized ads or content. The cookies may reflect de-identified demographic or other data linked to data you voluntarily have submitted to us (such as your email address), that we may share with a data provider solely in hashed, non-human readable form. To opt-out of cookies that may be set by third party data or advertising partners, please go to http:// www.aboutads.info/choices/.
+
+How you can access your information
+If you have a Stndout account, you have the ability to review and update your personal information within the Service by opening your account and going to settings. More information about how to contact us is provided below. You also may close your account at any time by visiting the "Settings" page for your account. If you close your account, we will retain certain information associated with your account for analytical purposes and recordkeeping integrity, as well as to prevent fraud, enforce our Terms of Use, take actions we deem necessary to protect the integrity of our Service or our users, or take other actions otherwise permitted by law. In addition, if certain information has already been provided to third parties as described in this Privacy Policy, retention of that information will be subject to those third parties' policies.
+
+Your choices about collection and use of your information
+You can choose not to provide us with certain information, but that may result in you being unable to use certain features of our Service because such information may be required in order for you to register as user; purchase products or services; participate in a contest, promotion, survey, or sweepstakes; ask a question; or initiate other transactions.
+
+Our Service may also deliver notifications to your phone or mobile device. You can disable these notifications by deleting the relevant Service or by changing the settings on your mobile device.
+
+You can also control information collected by cookies. You can delete or decline cookies by changing your browser settings. Click “help” in the toolbar of most browsers for instructions.
+
+How we protect your personal information
+We take security measures to help safeguard your personal information from unauthorized access and disclosure. However, no system can be completely secure. Therefore, although we take steps to secure your information, we do not promise, and you should not expect, that your personal information, chats, or other communications will always remain secure. Users should also take care with how they handle and disclose their personal information and should avoid sending personal information through insecure email. Please refer to the Federal Trade Commission's website at http://www.ftc.gov/bcp/menus/consumer/data.shtm for information about how to protect yourself against identity theft.
+
+Information you provide about yourself while using our Service
+We provide areas on our Service where you can post information about yourself and others and communicate with others. Such postings are governed by our Terms of Use . Also, whenever you voluntarily disclose personal information on publicly-viewable pages, that information will be publicly available and can be collected and used by others. For example, if you post your email address, you may receive unsolicited messages. We cannot control who reads your posting or what other users may do with the information you voluntarily post, so we encourage you to exercise discretion and caution with respect to your personal information.
+
+Children's privacy
+Although our Service is a general audience Service, we restrict the use of our service to individuals age 13 and above. We do not knowingly collect, maintain, or use personal information from children under the age of 13.
+
+Visiting our Service from outside the United States
+If you are visiting our Service from outside the United States, please be aware that your information may be transferred to, stored, and processed in the United States and globally where our servers are located and our central database is operated. By using our services, you understand and agree that your information may be transferred to our facilities and those third parties with whom we share it as described in this privacy policy.
+
+No Rights of Third Parties
+This Privacy Policy does not create rights enforceable by third parties or require disclosure of any personal information relating to users of the website.
+
+Changes to this Privacy Policy
+We will occasionally update this Privacy Policy. When we post changes to this Privacy Policy, we will revise the "last updated" date at the top of this Privacy Policy. We recommend that you check our Service from time to time to inform yourself of any changes in this Privacy Policy or any of our other policies.
+
+How to contact us
+If you have any questions about this Privacy Policy, please contact us by email at hi@repllabs.com.</mutableString>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="centerX" secondItem="622-ok-d0D" secondAttribute="centerX" id="GuG-Wc-fF5"/>
+                                <constraint firstItem="ldx-ws-SNi" firstAttribute="top" secondItem="622-ok-d0D" secondAttribute="bottom" constant="20" id="Gyi-pD-FpA"/>
+                                <constraint firstAttribute="trailing" secondItem="ldx-ws-SNi" secondAttribute="trailing" constant="10" id="LW3-tC-crT"/>
+                                <constraint firstAttribute="bottom" secondItem="ldx-ws-SNi" secondAttribute="bottom" id="aGv-VW-dZM"/>
+                                <constraint firstItem="ldx-ws-SNi" firstAttribute="leading" secondItem="v5D-TU-ahT" secondAttribute="leading" constant="10" id="pvz-5T-xHZ"/>
+                                <constraint firstItem="622-ok-d0D" firstAttribute="top" secondItem="v5D-TU-ahT" secondAttribute="top" constant="30" id="q5Z-3x-8eR"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="v5D-TU-ahT" firstAttribute="top" secondItem="j5I-QM-JVx" secondAttribute="bottom" id="Edv-jG-DXH"/>
+                        <constraint firstAttribute="trailing" secondItem="j5I-QM-JVx" secondAttribute="trailing" id="OIv-tD-FfS"/>
+                        <constraint firstItem="j5I-QM-JVx" firstAttribute="leading" secondItem="NT8-f5-AQS" secondAttribute="leading" id="PXH-dJ-ERz"/>
+                        <constraint firstItem="j5I-QM-JVx" firstAttribute="top" secondItem="NT8-f5-AQS" secondAttribute="top" id="cKD-IO-tII"/>
+                        <constraint firstAttribute="trailing" secondItem="v5D-TU-ahT" secondAttribute="trailing" id="ebk-C9-kzx"/>
+                        <constraint firstItem="v5D-TU-ahT" firstAttribute="leading" secondItem="NT8-f5-AQS" secondAttribute="leading" id="nlH-wh-E2V"/>
+                        <constraint firstAttribute="bottom" secondItem="v5D-TU-ahT" secondAttribute="bottom" id="oMU-sG-ZJt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="NT8-f5-AQS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Yl-82-ik3"/>
+                <constraint firstAttribute="trailing" secondItem="NT8-f5-AQS" secondAttribute="trailing" id="LfJ-Zo-ebG"/>
+                <constraint firstAttribute="bottom" secondItem="NT8-f5-AQS" secondAttribute="bottom" id="djR-wf-3pa"/>
+                <constraint firstItem="NT8-f5-AQS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nlQ-sN-aR3"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="399.5" y="389.5"/>
+        </view>
+    </objects>
+</document>

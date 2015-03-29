@@ -45,6 +45,8 @@
 		CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8CFE1A6B538000429133 /* FLFacebookPhotoPickerViewController.m */; };
 		CB6F8D081A6C83B700429133 /* FLSelectedPhotoStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8D071A6C83B700429133 /* FLSelectedPhotoStore.m */; };
 		CB7BD84E1AC6729E0088F22D /* FLAnnotationInstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7BD84D1AC6729E0088F22D /* FLAnnotationInstructionsViewController.m */; };
+		CB7BD8531AC78A590088F22D /* FLPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7BD8521AC78A590088F22D /* FLPrivacyViewController.m */; };
+		CB7BD8551AC78A700088F22D /* FLPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB7BD8541AC78A700088F22D /* FLPrivacyViewController.xib */; };
 		CB7EF47D1A807BA20084666E /* FLFiltersStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7EF47C1A807BA20084666E /* FLFiltersStore.m */; };
 		CB902F9C1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB902F9B1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m */; };
 		CB902F9F1A8DC836003D2950 /* FLProcessedImagesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB902F9E1A8DC836003D2950 /* FLProcessedImagesStore.m */; };
@@ -179,6 +181,9 @@
 		CB6F8D071A6C83B700429133 /* FLSelectedPhotoStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectedPhotoStore.m; sourceTree = "<group>"; };
 		CB7BD84C1AC6729E0088F22D /* FLAnnotationInstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationInstructionsViewController.h; sourceTree = "<group>"; };
 		CB7BD84D1AC6729E0088F22D /* FLAnnotationInstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationInstructionsViewController.m; sourceTree = "<group>"; };
+		CB7BD8511AC78A590088F22D /* FLPrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrivacyViewController.h; sourceTree = "<group>"; };
+		CB7BD8521AC78A590088F22D /* FLPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrivacyViewController.m; sourceTree = "<group>"; };
+		CB7BD8541AC78A700088F22D /* FLPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLPrivacyViewController.xib; sourceTree = "<group>"; };
 		CB7EF47B1A807BA20084666E /* FLFiltersStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFiltersStore.h; sourceTree = "<group>"; };
 		CB7EF47C1A807BA20084666E /* FLFiltersStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFiltersStore.m; sourceTree = "<group>"; };
 		CB7EF4951A8087110084666E /* Walkway_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Black.ttf; sourceTree = "<group>"; };
@@ -473,6 +478,16 @@
 			name = Stores;
 			sourceTree = "<group>";
 		};
+		CB7BD8501AC78A3F0088F22D /* Privacy */ = {
+			isa = PBXGroup;
+			children = (
+				CB7BD8511AC78A590088F22D /* FLPrivacyViewController.h */,
+				CB7BD8521AC78A590088F22D /* FLPrivacyViewController.m */,
+				CB7BD8541AC78A700088F22D /* FLPrivacyViewController.xib */,
+			);
+			name = Privacy;
+			sourceTree = "<group>";
+		};
 		CB7EF4931A8086FF0084666E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +646,7 @@
 		CBF5B6511A7CA293000F07AF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				CB7BD8501AC78A3F0088F22D /* Privacy */,
 				CB1EE0771A98B4B800400611 /* TOS */,
 				CB1EE06F1A98647A00400611 /* Contact */,
 				CB3B7D061A58374B005F6402 /* FLSettingsViewController.h */,
@@ -760,6 +776,7 @@
 				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
 				CB5519671ABD548900CD0C5E /* FLTutorialProcessView.xib in Resources */,
 				CB9C1D141ABBCBA5002C7FF9 /* FLTutorialResultView.xib in Resources */,
+				CB7BD8551AC78A700088F22D /* FLPrivacyViewController.xib in Resources */,
 				CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */,
 				CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */,
 				CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */,
@@ -867,6 +884,7 @@
 				CB9324BF1ABF4B8B00DB05D5 /* SpringLabel.swift in Sources */,
 				CB3B7CFF1A58374B005F6402 /* main.m in Sources */,
 				CB4ABFE71AB4C29D00ABD784 /* FLTabBarViewController.m in Sources */,
+				CB7BD8531AC78A590088F22D /* FLPrivacyViewController.m in Sources */,
 				CB4268C71A7D596A00745A9F /* FLViewHelpers.m in Sources */,
 				CB9324B01ABF4B8B00DB05D5 /* DesignableTabBarController.swift in Sources */,
 				CB9324C31ABF4B8B00DB05D5 /* TransitionManager.swift in Sources */,

@@ -14,6 +14,7 @@
 
 #import "FLContactViewController.h"
 #import "FLTOSViewController.h"
+#import "FLPrivacyViewController.h"
 
 // Helpers
 #import "FLViewHelpers.h"
@@ -198,6 +199,8 @@ final sections footer view
         FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
         [self presentViewController:contactViewController animated:YES completion:nil];
     } else if ([cellName isEqualToString:kPrivacyCell]) {
+        FLPrivacyViewController *privacyViewController = [[FLPrivacyViewController alloc] initWithNibName:kPrivacyViewController bundle:nil];
+        [self presentViewController:privacyViewController animated:YES completion:nil];
     } else if ([cellName isEqualToString:kTOSCell]) {
         FLTOSViewController *TOSViewController = [[FLTOSViewController alloc] initWithNibName:kTOSViewController bundle:nil];
         [self presentViewController:TOSViewController animated:YES completion:nil];
