@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLPrivacyViewController : UIViewController
+#import "Mixpanel.h"
+
+@interface FLPrivacyViewController : UIViewController <UITextViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;

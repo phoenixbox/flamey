@@ -55,7 +55,7 @@
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldx-ws-SNi" userLabel="privacyPolicyBody">
                                     <rect key="frame" x="10" y="60" width="355" height="537"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <mutableString key="text">Last Updated: March 28, 2015
+                                    <string key="text">Last Updated: March 28, 2015
 
 Stndout (“Stndout,” “we,” and “us”). This Privacy Policy describes the information we collect, how that information may be used, with whom it may be shared, and your choices about such uses and disclosures. By using our website or application (our “Service”), you are accepting the practices described in this Privacy Policy.
 
@@ -144,9 +144,12 @@ Changes to this Privacy Policy
 We will occasionally update this Privacy Policy. When we post changes to this Privacy Policy, we will revise the "last updated" date at the top of this Privacy Policy. We recommend that you check our Service from time to time to inform yourself of any changes in this Privacy Policy or any of our other policies.
 
 How to contact us
-If you have any questions about this Privacy Policy, please contact us by email at hi@repllabs.com.</mutableString>
+If you have any questions about this Privacy Policy, please contact us by email at hi@repllabs.com.</string>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="X5o-lG-2jJ"/>
+                                    </connections>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
