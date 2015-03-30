@@ -50,6 +50,12 @@ NSString *const kStartEditingTitle = @"Edit";
     // TODO: Remove the hard set here
     settings.seenTutorial = NO;
 
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": [self class],
+                                               @"state": @"loaded"
+                                               }];
+
     self.navigationController.navigationBar.translucent = NO;
     [self updateCollection];
 
@@ -85,6 +91,12 @@ NSString *const kStartEditingTitle = @"Edit";
 
 - (void)getFacebookPhotos {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"GetPhotos" properties:@{
+                                                @"controller": [self class],
+                                                @"state": @"default",
+                                                @"result": @"success",
+                                                }];
+
     [self performSegueWithIdentifier:kGetFacebookPhotos sender:self];
 }
 
@@ -168,8 +180,6 @@ NSString *const kStartEditingTitle = @"Edit";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-
     if ([segue.identifier isEqualToString:kSeguePushToImageAnnotation]) {
         NSIndexPath *indexPath = [[_selectionCollection indexPathsForSelectedItems] lastObject];
         FLSelectedPhotoStore *photoStore = [FLSelectedPhotoStore sharedStore];
@@ -191,7 +201,6 @@ NSString *const kStartEditingTitle = @"Edit";
 }
 
 - (IBAction)unwindToSelection:(UIStoryboardSegue *)unwindSegue {
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -242,14 +251,26 @@ NSString *const kStartEditingTitle = @"Edit";
 
 - (IBAction)editCollection:(id)sender {
     FLSelectedPhotoStore *selectedStore = [FLSelectedPhotoStore sharedStore];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
 
     if ([selectedStore photosPresent]) {
+        [mixpanel track:@"EditPhotos" properties:@{
+                                                   @"controller": [self class],
+                                                   @"state": @"default",
+                                                   @"result": @"success",
+                                                   }];
+
         if (_inEditMode) {
             [self turnOffEditing];
         } else {
             [self turnOnEditing];
         }
     } else {
+        [mixpanel track:@"EditPhotos" properties:@{
+                                                   @"controller": [self class],
+                                                   @"state": @"default",
+                                                   @"result": @"error",
+                                                   }];
         [self promptToAddPhotos];
     }
 }
@@ -267,13 +288,23 @@ NSString *const kStartEditingTitle = @"Edit";
     [alertView addButtonWithTitle:@"Lets Go!"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
+                              [mixpanel track:@"GetPhotos" properties:@{
+                                                                         @"controller": [self class],
+                                                                         @"state": @"prompt",
+                                                                         @"result": @"confirm",
+                                                                         }];
+
                             [self performSegueWithIdentifier:kGetFacebookPhotos sender:self];
                           }];
 
     [alertView addButtonWithTitle:@"Not Now"
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
-                              NSLog(@"Hide Selected Collection Alert");
+                              [mixpanel track:@"GetPhotos" properties:@{
+                                                                        @"controller": [self class],
+                                                                        @"state": @"prompt",
+                                                                        @"result": @"reject",
+                                                                        }];
                           }];
 
     alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
