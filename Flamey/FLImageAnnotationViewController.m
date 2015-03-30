@@ -59,14 +59,31 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [self renderLateralTable];
     [self setViewElStates];
 
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": [self class],
+                                               @"state": @"loaded"
+                                               }];
     // TODO: Update filters flow
     [_addFiltersButton setHidden:YES];
     [self updateAnnotationStore];
     [self addViewListeners];
+    [self trackSelectedPhotosCount];
 
     if (!settings.understandAnnotation) {
         [self performSegueWithIdentifier:kShowAnnotationInstructions sender:self];
     }
+}
+
+- (void)trackSelectedPhotosCount {
+    NSInteger count = [[FLSelectedPhotoStore sharedStore].photos count];
+
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    NSNumber *annotationsCount = [NSNumber numberWithInteger:count];
+    [mixpanel track:@"PhotosToMark" properties:@{
+                                                     @"controller": [self class],
+                                                     @"count": annotationsCount
+                                                     }];
 }
 
 - (void)setViewElStates {
@@ -114,6 +131,12 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 - (void)refreshCollection {
     [self updateAnnotationStore];
 
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"PhotosRefresh" properties:@{
+                                                @"controller": [self class],
+                                                @"state": @"default",
+                                                @"result": @"success",
+                                                }];
     // Animate the table reload
     NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:_selectedPhotosTable]);
     NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
@@ -172,7 +195,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
         [_selectedPhotosTable scrollToRowAtIndexPath:indexPath
                                     atScrollPosition:UITableViewScrollPositionTop
                                             animated:YES];
-
     }
 
     [self updateNavArrowState];
@@ -201,12 +223,16 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (void)handleTap:(UIGestureRecognizer *)sender {
-    // Tap the number of times a user taps the cell PER image
-    // Less taps means more success - goal of 3
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-
     FLAnnotationTableViewCell *targetCell = (FLAnnotationTableViewCell *)sender.view;
     CGPoint annotationPoint = [sender locationInView:targetCell.selectedImageViewBackground];
+
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"MarkPhoto" properties:@{
+                                              @"controller": [self class],
+                                              @"state": @"default",
+                                              @"result": @"success",
+                                              @"photoId": targetCell.photo.id
+                                              }];
 
     // Set annotation locations
     [targetCell.photo setAnnotationPoint:annotationPoint];
@@ -419,7 +445,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (void)renderLateralTable {
-    NSLog(@"Render annotation table");
     CGRect tableRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.width);
     _selectedPhotosTable = [[UITableView alloc] initWithFrame:tableRect style:UITableViewStylePlain];;
     [self.tableContainer addSubview:_selectedPhotosTable];
@@ -447,6 +472,11 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 - (void)setTableViewEmptyMessage:(BOOL)show {
     // User removed all the images from the store
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"EmptyCollection" properties:@{
+                                              @"controller": [self class],
+                                              @"state": @"default",
+                                              @"result": @"success",
+                                              }];
     if (show) {
         [_selectedPhotosTable.backgroundView setHidden:NO];
     } else {
@@ -487,9 +517,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Track the number if images the user is annotating
-    // Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    return  [[FLAnnotationStore sharedStore].photos count];
+    return [[FLAnnotationStore sharedStore].photos count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -625,7 +653,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
             [self enableRightScrollButton];
         }
     } else {
-        NSLog(@"There are no annotations left");
+        NSLog(@"There are no selections left");
     }
 }
 
@@ -634,9 +662,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (IBAction)scrollLeft:(id)sender {
-    // Track back scrolling
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-
     NSArray *visible = [self.selectedPhotosTable indexPathsForVisibleRows];
     NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];
     NSInteger targetRowIndex = visibleCellIndexPath.row - 1;
@@ -653,9 +678,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 }
 
 - (IBAction)scrollRight:(id)sender {
-    // Track right scrolling
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-
     FLAnnotationStore *annotationStore = [FLAnnotationStore sharedStore];
     NSArray *visible  = [self.selectedPhotosTable indexPathsForVisibleRows];
     NSIndexPath *visibleCellIndexPath = (NSIndexPath*)[visible objectAtIndex:0];

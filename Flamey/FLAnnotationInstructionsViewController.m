@@ -27,7 +27,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"AnnotationInstruct: Load" properties:@{}];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": [self class],
+                                               @"state": @"loaded"
+                                               }];
+
     [self styleModal];
     [self styleContinueButton];
     [self setupTouchViewTapRecognizer];
@@ -45,7 +49,12 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"AnnotationInstruct: Hand Tap" properties:@{}];
+    [mixpanel track:@"Gesture" properties:@{
+                                               @"controller": [self class],
+                                               @"category": @"aesthetic",
+                                               @"type": @"tap"
+                                               }];
+
     [self simulateTouchAnimation];
     [self performSelector:@selector(simulateTouchResponse) withObject:nil afterDelay:0.2];
 }
@@ -93,13 +102,19 @@
 
 - (IBAction)continue:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"AnnotationInstruct: Continue" properties:@{}];
+    [mixpanel track:@"Education" properties:@{
+                                              @"controller": [self class],
+                                              @"type": @"accept"
+                                              }];
     [self understandAndMove];
 }
 
 - (IBAction)closeModal:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"AnnotationInstruct: Close" properties:@{}];
+    [mixpanel track:@"Education" properties:@{
+                                              @"controller": [self class],
+                                              @"type": @"cancel"
+                                              }];
     [self understandAndMove];
 }
 
