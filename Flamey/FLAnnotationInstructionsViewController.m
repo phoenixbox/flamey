@@ -13,7 +13,6 @@
 
 // Libs
 #import "FLViewHelpers.h"
-#import "Mixpanel.h"
 
 @interface FLAnnotationInstructionsViewController ()
 

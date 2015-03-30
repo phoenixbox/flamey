@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-pageControlled:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLAppDelegate.m"
-            timestampString = "449356333.736376"
+            timestampString = "449370357.815778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-application:openURL:sourceApplication:annotation:"
             landmarkType = "5">
             <Locations>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-loginView:handleError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -312,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookPhotoPickerViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "-handleTap:"
             landmarkType = "5">
          </BreakpointContent>
@@ -424,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSelectedPhotosCollectionViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -440,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSelectedPhotosCollectionViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -456,27 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSelectedPhotosCollectionViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "-prepareForSegue:sender:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Flamey/FLSelectedPhotosCollectionViewController.m"
-            timestampString = "449356333.736376"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -694,11 +678,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookUploadModalViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "-uploadPhotos"
             landmarkType = "5">
          </BreakpointContent>
@@ -758,11 +742,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "425"
-            endingLineNumber = "425"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
             landmarkName = "-renderLateralTable"
             landmarkType = "5">
          </BreakpointContent>
@@ -774,23 +758,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSettingsViewController.m"
-            timestampString = "449356333.736376"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Flamey/FLSettingsViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
@@ -805,12 +773,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            filePath = "Flamey/FLSettingsViewController.m"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "499"
-            endingLineNumber = "499"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flamey/FLImageAnnotationViewController.m"
+            timestampString = "449369691.797896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -838,11 +822,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "558"
-            endingLineNumber = "558"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
             landmarkName = "-deletePhotoFromStoreAndSlideTable"
             landmarkType = "5">
          </BreakpointContent>
@@ -854,11 +838,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-addTapGestureRecognizerToCell:"
             landmarkType = "5">
          </BreakpointContent>
@@ -870,11 +854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "661"
-            endingLineNumber = "661"
+            startingLineNumber = "683"
+            endingLineNumber = "683"
             landmarkName = "-scrollRight:"
             landmarkType = "5">
          </BreakpointContent>
@@ -886,11 +870,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "644"
-            endingLineNumber = "644"
+            startingLineNumber = "669"
+            endingLineNumber = "669"
             landmarkName = "-scrollLeft:"
             landmarkType = "5">
          </BreakpointContent>
@@ -902,11 +886,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "646"
-            endingLineNumber = "646"
+            startingLineNumber = "671"
+            endingLineNumber = "671"
             landmarkName = "-scrollLeft:"
             landmarkType = "5">
          </BreakpointContent>
@@ -934,11 +918,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSelectedPhotosCollectionViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -950,11 +934,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
             landmarkName = "-scrollViewDidEndScrollingAnimation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -966,11 +950,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
             landmarkName = "-createFlameForSize:atTouchPoint:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1028,11 +1012,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookPhotoPickerViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "-collectionView:didDeselectItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1092,11 +1076,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-swipeView:viewForItemAtIndex:reusingView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1234,11 +1218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1250,11 +1234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1266,11 +1250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1282,11 +1266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1298,11 +1282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-loginViewFetchedUserInfo:user:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1362,11 +1346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLTutorialSolutionView.m"
-            timestampString = "448701175.111906"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "-setSelectedPersona"
             landmarkType = "5">
          </BreakpointContent>
@@ -1378,11 +1362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-loginViewFetchedUserInfo:user:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1394,11 +1378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-loginViewFetchedUserInfo:user:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1426,11 +1410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSelectedPhotosCollectionViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1442,11 +1426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "-setLogoImageOnCell:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1458,11 +1442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "602"
-            endingLineNumber = "602"
+            startingLineNumber = "630"
+            endingLineNumber = "630"
             landmarkName = "-updateNavArrowState"
             landmarkType = "5">
          </BreakpointContent>
@@ -1474,11 +1458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "636"
+            endingLineNumber = "636"
             landmarkName = "-updateNavArrowState"
             landmarkType = "5">
          </BreakpointContent>
@@ -1522,11 +1506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookPhotoPickerViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "-sendRequest"
             landmarkType = "5">
          </BreakpointContent>
@@ -1538,11 +1522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookPhotoPickerViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "-sendRequest"
             landmarkType = "5">
          </BreakpointContent>
@@ -1570,11 +1554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1586,11 +1570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1602,11 +1586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookPhotoPickerViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1618,11 +1602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookPhotoPickerViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1634,11 +1618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookPhotoPickerViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1650,11 +1634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSelectedPhotosCollectionViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-editCollection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1666,11 +1650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSelectedPhotosCollectionViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "-turnOnEditing"
             landmarkType = "5">
          </BreakpointContent>
@@ -1682,11 +1666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-updateAnnotationStore"
             landmarkType = "5">
          </BreakpointContent>
@@ -1698,11 +1682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-refreshCollection"
             landmarkType = "5">
          </BreakpointContent>
@@ -1714,11 +1698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-updateAnnotationStore"
             landmarkType = "5">
          </BreakpointContent>
@@ -1730,11 +1714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-updateAnnotationStore"
             landmarkType = "5">
          </BreakpointContent>
@@ -1746,11 +1730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "-updateAnnotationStore"
             landmarkType = "5">
          </BreakpointContent>
@@ -1762,11 +1746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "625"
-            endingLineNumber = "625"
+            startingLineNumber = "653"
+            endingLineNumber = "653"
             landmarkName = "-updateNavArrowState"
             landmarkType = "5">
          </BreakpointContent>
@@ -1778,11 +1762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "618"
-            endingLineNumber = "618"
+            startingLineNumber = "646"
+            endingLineNumber = "646"
             landmarkName = "-updateNavArrowState"
             landmarkType = "5">
          </BreakpointContent>
@@ -1794,11 +1778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLImageAnnotationViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-setRemoveButtonInactive"
             landmarkType = "5">
          </BreakpointContent>
@@ -1810,11 +1794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSettingsViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "-setLogoAndVersion"
             landmarkType = "5">
          </BreakpointContent>
@@ -1826,11 +1810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLSettingsViewController.m"
-            timestampString = "449356333.736376"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-tableView:viewForFooterInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1842,11 +1826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLContactViewController.m"
-            timestampString = "449345190.224795"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-attributedLabel:didSelectLinkWithURL:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1858,11 +1842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLAppDelegate.m"
-            timestampString = "449351691.586328"
+            timestampString = "449370357.815778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-application:openURL:sourceApplication:annotation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1874,11 +1858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLAppDelegate.m"
-            timestampString = "449356333.736376"
+            timestampString = "449370357.815778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "-_handleOpenURLWithAccessToken:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1890,11 +1874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449355835.915607"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "-loginViewFetchedUserInfo:user:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1906,11 +1890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLLoginViewController.m"
-            timestampString = "449356418.704757"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "-setTrackingSuperProperties:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1922,12 +1906,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flamey/FLFacebookPhotoPickerViewController.m"
-            timestampString = "449361180.401035"
+            timestampString = "449369691.797896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flamey/FLPrivacyViewController.m"
+            timestampString = "449370476.849122"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-scrollViewDidScroll:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flamey/FLPrivacyViewController.m"
+            timestampString = "449370496.300694"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-scrollViewDidScroll:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

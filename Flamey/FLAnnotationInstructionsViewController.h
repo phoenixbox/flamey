@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Flamey-Swift.h"
 
+// Libs
+#import "Mixpanel.h"
+
 @interface FLAnnotationInstructionsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *modalView;
 @property (weak, nonatomic) IBOutlet UILabel *tapTitle;
