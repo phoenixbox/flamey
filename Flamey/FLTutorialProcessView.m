@@ -48,9 +48,21 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 - (void)layoutSubviews {
     _contentView.layer.cornerRadius = 10;
     _contentView.clipsToBounds = YES;
+
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": NSStringFromClass([self class]),
+                                               @"state": @"loaded"
+                                               }];
 }
 
 - (IBAction)next:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Tutorial" properties:@{
+                                             @"controller": NSStringFromClass([self class]),
+                                             @"state": @"complete",
+                                             @"persona": [[FLSettings defaultSettings] selectedPersona]
+                                             }];
     NSNotification *notification = [NSNotification notificationWithName:kCompleteProcess
                                                                  object:self];
 
@@ -58,6 +70,12 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 }
 
 - (IBAction)completeTutorial:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Tutorial" properties:@{
+                                             @"controller": [self class],
+                                             @"state": @"exit",
+                                             @"persona": [[FLSettings defaultSettings] selectedPersona]
+                                             }];
     NSNotification *notification = [NSNotification notificationWithName:@"completeTutorial"
                                                                  object:self];
 

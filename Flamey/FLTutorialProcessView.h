@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
 
+#import "Mixpanel.h"
+
 extern NSString *const kCompleteProcess;
 
 @interface FLTutorialProcessView : UIView
