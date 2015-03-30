@@ -12,6 +12,9 @@
 // Data Layer
 #import "FLSettings.h"
 
+// Pods
+#import "Mixpanel.h"
+
 NSString *const kCompleteSolutionTutorial = @"completeSolution";
 
 // Male Image Constants
@@ -41,6 +44,12 @@ NSString *const kFemale = @"female";
     [self setDefaultZeroSelectedImage];
 
     [self setSelectedPersona];
+
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": NSStringFromClass([self class]),
+                                               @"state": @"loaded"
+                                               }];
 }
 
 - (void)setSelectedPersona {
@@ -177,7 +186,13 @@ NSString *const kFemale = @"female";
 }
 
 - (IBAction)completeSolution:(id)sender {
-    // Update to trigger a slide to next step notification
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Tutorial" properties:@{
+                                                @"controller": [self class],
+                                                @"state": @"complete",
+                                                @"persona": [[FLSettings defaultSettings] selectedPersona]
+                                                }];
+
     NSNotification *notification = [NSNotification notificationWithName:kCompleteSolutionTutorial
                                                                  object:self];
 
@@ -190,6 +205,12 @@ NSString *const kFemale = @"female";
  */
 
 - (IBAction)completeTutorial:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Tutorial" properties:@{
+                                                @"controller": [self class],
+                                                @"state": @"exit",
+                                                @"persona": [[FLSettings defaultSettings] selectedPersona]
+                                                }];
     NSNotification *notification = [NSNotification notificationWithName:@"completeTutorial"
                                                                  object:self];
 
