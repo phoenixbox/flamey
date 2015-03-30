@@ -438,8 +438,12 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     float viewWidth = _tableContainer.frame.size.width; // 320
     float viewHeight = _tableContainer.frame.size.height; // 320
 
-    float newX = imageSize.width/viewWidth * touchPoint.x;
-    float newY = imageSize.height/viewHeight * touchPoint.y;
+    CGSize annotationSize = CGSizeMake(imageSize.width * 0.085, imageSize.width * 0.085);
+    float widthScaleFactor = imageSize.width/viewWidth;
+    float heightScaleFactor = imageSize.height/viewHeight;
+
+    float newX = (widthScaleFactor * touchPoint.x) - ((widthScaleFactor * annotationSize.width)/2);
+    float newY = (heightScaleFactor * touchPoint.y) - ((heightScaleFactor * annotationSize.height)/4);
 
     return CGPointMake(newX, newY);
 }
