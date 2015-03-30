@@ -52,7 +52,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     // Track the user loading this page
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Navigation" properties:@{
-                                               @"controller": [self class],
+                                               @"controller": NSStringFromClass([self class]),
                                                @"state": @"loaded"
                                                }];
 }
@@ -113,7 +113,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
 
                                   if (error) {
                                       [mixpanel track:@"PhotosFetch" properties:@{
-                                                                                  @"controller": [self class],
+                                                                                  @"controller": NSStringFromClass([self class]),
                                                                                   @"result": @"failure",
                                                                                   @"state": @"default",
                                                                                   @"error'": error.localizedFailureReason
@@ -125,7 +125,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
                                       NSArray* array = [dict objectForKey:@"data"];
                                       // Can events be tracked with property schemas that dont match
                                       [mixpanel track:@"PhotosFetch" properties:@{
-                                                                                  @"controller": [self class],
+                                                                                  @"controller": NSStringFromClass([self class]),
                                                                                   @"state": @"default",
                                                                                   @"result": @"success"
                                                                                   }];
@@ -142,7 +142,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
                                   if (error) {
                                       [self showAlert:error withSelectorName:@"sendRequest"];
                                       [mixpanel track:@"PhotosFetch" properties:@{
-                                                                                  @"controller": [self class],
+                                                                                  @"controller": NSStringFromClass([self class]),
                                                                                   @"result": @"failure",
                                                                                   @"state": @"default",
                                                                                   @"error'": error.localizedFailureReason
@@ -152,7 +152,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
                                       NSArray* array = [resultDict objectForKey:@"data"];
                                       [self addImagesToDataSource:array];
                                       [mixpanel track:@"PhotosFetch" properties:@{
-                                                                                  @"controller": [self class],
+                                                                                  @"controller": NSStringFromClass([self class]),
                                                                                   @"state": @"default",
                                                                                   @"result": @"success"
                                                                                   }];
@@ -178,7 +178,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"PhotosFetch" properties:@{
-                                                                  @"controller": [self class],
+                                                                  @"controller": NSStringFromClass([self class]),
                                                                   @"state": @"retry",
                                                                   @"result": @"confirmed",
                                                                   }];
@@ -190,7 +190,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
                           handler:^(SIAlertView *alert) {
                               Mixpanel *mixpanel = [Mixpanel sharedInstance];
                               [mixpanel track:@"PhotosFetch" properties:@{
-                                                                          @"controller": [self class],
+                                                                          @"controller": NSStringFromClass([self class]),
                                                                           @"state": @"retry",
                                                                           @"result": @"rejected",
                                                                           }];

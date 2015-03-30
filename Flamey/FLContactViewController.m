@@ -69,7 +69,7 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
 
     if ([url.absoluteString isEqualToString:@"http://repllabs.com"]) {
-        [mixpanel track:@"VisitREPL" properties:@{@"controller": [self class]}];
+        [mixpanel track:@"VisitREPL" properties:@{@"controller": NSStringFromClass([self class])}];
 
        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kREPLWebsiteURL]];
     } else {
@@ -83,7 +83,7 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
 
 - (void)displayMailComposerSheet {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"ComposeEmail" properties:@{@"controller": [self class],
+    [mixpanel track:@"ComposeEmail" properties:@{@"controller": NSStringFromClass([self class]),
                                                  @"state": @"default" }];
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
@@ -109,14 +109,14 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
     switch (result)
     {
         case MFMailComposeResultCancelled:
-            [mixpanel track:@"ComposeEmail" properties:@{@"controller": [self class],
+            [mixpanel track:@"ComposeEmail" properties:@{@"controller": NSStringFromClass([self class]),
                                                          @"state": @"cancelled" }];
             break;
         case MFMailComposeResultSaved:
             NSLog(@"Result: Mail saved");
             break;
         case MFMailComposeResultSent:
-            [mixpanel track:@"ComposeEmail" properties:@{@"controller": [self class],
+            [mixpanel track:@"ComposeEmail" properties:@{@"controller": NSStringFromClass([self class]),
                                                          @"state": @"sent" }];
             break;
         case MFMailComposeResultFailed:

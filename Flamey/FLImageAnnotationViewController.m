@@ -61,7 +61,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Navigation" properties:@{
-                                               @"controller": [self class],
+                                               @"controller": NSStringFromClass([self class]),
                                                @"state": @"loaded"
                                                }];
     // TODO: Update filters flow
@@ -81,7 +81,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     NSNumber *annotationsCount = [NSNumber numberWithInteger:count];
     [mixpanel track:@"PhotosToMark" properties:@{
-                                                     @"controller": [self class],
+                                                     @"controller": NSStringFromClass([self class]),
                                                      @"count": annotationsCount
                                                      }];
 }
@@ -133,7 +133,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"PhotosRefresh" properties:@{
-                                                @"controller": [self class],
+                                                @"controller": NSStringFromClass([self class]),
                                                 @"state": @"default",
                                                 @"result": @"success",
                                                 }];
@@ -228,7 +228,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"MarkPhoto" properties:@{
-                                              @"controller": [self class],
+                                              @"controller": NSStringFromClass([self class]),
                                               @"state": @"default",
                                               @"result": @"success",
                                               @"photoId": targetCell.photo.id
@@ -473,7 +473,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     // User removed all the images from the store
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"EmptyCollection" properties:@{
-                                              @"controller": [self class],
+                                              @"controller": NSStringFromClass([self class]),
                                               @"state": @"default",
                                               @"result": @"success",
                                               }];

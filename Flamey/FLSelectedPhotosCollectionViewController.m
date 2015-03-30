@@ -52,7 +52,7 @@ NSString *const kStartEditingTitle = @"Edit";
 
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Navigation" properties:@{
-                                               @"controller": [self class],
+                                               @"controller": NSStringFromClass([self class]),
                                                @"state": @"loaded"
                                                }];
 
@@ -92,7 +92,7 @@ NSString *const kStartEditingTitle = @"Edit";
 - (void)getFacebookPhotos {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"GetPhotos" properties:@{
-                                                @"controller": [self class],
+                                                @"controller": NSStringFromClass([self class]),
                                                 @"state": @"default",
                                                 @"result": @"success",
                                                 }];
@@ -255,7 +255,7 @@ NSString *const kStartEditingTitle = @"Edit";
 
     if ([selectedStore photosPresent]) {
         [mixpanel track:@"EditPhotos" properties:@{
-                                                   @"controller": [self class],
+                                                   @"controller": NSStringFromClass([self class]),
                                                    @"state": @"default",
                                                    @"result": @"success",
                                                    }];
@@ -267,7 +267,7 @@ NSString *const kStartEditingTitle = @"Edit";
         }
     } else {
         [mixpanel track:@"EditPhotos" properties:@{
-                                                   @"controller": [self class],
+                                                   @"controller": NSStringFromClass([self class]),
                                                    @"state": @"default",
                                                    @"result": @"error",
                                                    }];
@@ -289,7 +289,7 @@ NSString *const kStartEditingTitle = @"Edit";
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"GetPhotos" properties:@{
-                                                                         @"controller": [self class],
+                                                                         @"controller": NSStringFromClass([self class]),
                                                                          @"state": @"prompt",
                                                                          @"result": @"confirm",
                                                                          }];
@@ -301,7 +301,7 @@ NSString *const kStartEditingTitle = @"Edit";
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"GetPhotos" properties:@{
-                                                                        @"controller": [self class],
+                                                                        @"controller": NSStringFromClass([self class]),
                                                                         @"state": @"prompt",
                                                                         @"result": @"reject",
                                                                         }];

@@ -54,7 +54,7 @@ static NSString * const kDeleteAccountActionTitle = @"Delete your account?";
     // Track settings loaded
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Navigation" properties:@{
-                                               @"controller": [self class],
+                                               @"controller": NSStringFromClass([self class]),
                                                @"state": @"loaded"
                                                }];
     [self setHeaderLogo];
@@ -246,7 +246,7 @@ final sections footer view
     void(^completionBlock)(void)=^(void) {
         Mixpanel *mixpanel = [Mixpanel sharedInstance];
         [mixpanel track:@"Logout" properties:@{
-                                                @"controller": [self class],
+                                                @"controller": NSStringFromClass([self class]),
                                                 @"state": @"default",
                                                 @"result": @"success",
                                                 }];
@@ -275,7 +275,7 @@ final sections footer view
 
     if  ([buttonTitle isEqualToString:kConfirmDeleteAccount]) {
         [mixpanel track:@"DeleteAccount" properties:@{
-                                               @"controller": [self class],
+                                               @"controller": NSStringFromClass([self class]),
                                                @"state": @"default",
                                                @"result": @"success",
                                                }];
@@ -284,7 +284,7 @@ final sections footer view
     }
     if ([buttonTitle isEqualToString:kCancelDeleteAccount]) {
         [mixpanel track:@"DeleteAccount" properties:@{
-                                                      @"controller": [self class],
+                                                      @"controller": NSStringFromClass([self class]),
                                                       @"state": @"default",
                                                       @"result": @"failure",
                                                       }];

@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view.
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Navigation" properties:@{
-                                               @"controller": [self class],
+                                               @"controller": NSStringFromClass([self class]),
                                                @"state": @"loaded"
                                                }];
 
@@ -50,7 +50,7 @@
 - (void)handleTap:(UITapGestureRecognizer *)gesture {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Gesture" properties:@{
-                                               @"controller": [self class],
+                                               @"controller": NSStringFromClass([self class]),
                                                @"category": @"aesthetic",
                                                @"type": @"tap"
                                                }];
@@ -103,7 +103,7 @@
 - (IBAction)continue:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Education" properties:@{
-                                              @"controller": [self class],
+                                              @"controller": NSStringFromClass([self class]),
                                               @"type": @"accept"
                                               }];
     [self understandAndMove];
@@ -112,7 +112,7 @@
 - (IBAction)closeModal:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Education" properties:@{
-                                              @"controller": [self class],
+                                              @"controller": NSStringFromClass([self class]),
                                               @"type": @"cancel"
                                               }];
     [self understandAndMove];
