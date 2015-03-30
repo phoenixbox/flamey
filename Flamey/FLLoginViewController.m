@@ -43,6 +43,11 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": [self class],
+                                               @"state": @"loaded"
+                                               }];
 
     // TODO: Remove these assignments when not in development
     FLSettings *settings = [FLSettings defaultSettings];
@@ -97,12 +102,15 @@ NSString *const kLoginSlide = @"FLLoginSlide";
     
     switch (index) {
         case 0:
+            [self trackSlideViewing:@"First"];
             [_titleLabel setText:@"Its hard to stand out"];
             break;
         case 1:
+            [self trackSlideViewing:@"Second"];
             [_titleLabel setText:@"We let you standout"];
             break;
         case 2:
+            [self trackSlideViewing:@"Third"];
             [(FLLoginSlide *)swipeView.currentItemView startAnimationLayers];
             [_titleLabel setText:@"So people can like you!"];
             break;
@@ -110,6 +118,16 @@ NSString *const kLoginSlide = @"FLLoginSlide";
             NSLog(@"There is no title for that index");
             break;
     }
+}
+
+- (void)trackSlideViewing:(NSString *)controller {
+    NSString *slideType = [NSString stringWithFormat:@"loginSlide%@",controller];
+
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": slideType,
+                                               @"state": @"loaded"
+                                               }];
 }
 
 #pragma mark - Paging
@@ -187,13 +205,22 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 
         if (!error) {
             // This event should have the superProperties attached
-            [mixpanel track:@"Login Success" properties:@{}];
+            [mixpanel track:@"Login" properties:@{
+                                                    @"controller": [self class],
+                                                    @"state": @"default",
+                                                    @"result": @"success",
+                                                    }];
             NSString *profileImage = [[result objectForKey:@"data"] objectForKey:@"url"];
             [newUser setProfileImage:profileImage];
 
             [[FLSettings defaultSettings] setUser:newUser];
         } else {
-            [mixpanel track:@"Login Failed" properties:@{@"error": error.localizedFailureReason}];
+            [mixpanel track:@"Login" properties:@{
+                                                  @"controller": [self class],
+                                                  @"state": @"default",
+                                                  @"result": @"failure",
+                                                  @"error": error.localizedFailureReason
+                                                  }];
         }
         [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
     }];
