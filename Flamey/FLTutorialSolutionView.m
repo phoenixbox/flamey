@@ -188,7 +188,7 @@ NSString *const kFemale = @"female";
 - (IBAction)completeSolution:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Education" properties:@{
-                                                @"controller": [self class],
+                                                @"controller": NSStringFromClass([self class]),
                                                 @"state": @"complete",
                                                 @"persona": [[FLSettings defaultSettings] selectedPersona]
                                                 }];
@@ -207,7 +207,7 @@ NSString *const kFemale = @"female";
 - (IBAction)completeTutorial:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Education" properties:@{
-                                                @"controller": [self class],
+                                                @"controller": NSStringFromClass([self class]),
                                                 @"state": @"exit",
                                                 @"persona": [[FLSettings defaultSettings] selectedPersona]
                                                 }];
