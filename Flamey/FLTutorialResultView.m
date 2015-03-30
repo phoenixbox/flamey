@@ -25,7 +25,7 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
 
 - (IBAction)start:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"Tutorial" properties:@{
+    [mixpanel track:@"Education" properties:@{
                                              @"controller": NSStringFromClass([self class]),
                                              @"state": @"complete",
                                              @"persona": [[FLSettings defaultSettings] selectedPersona],

@@ -58,7 +58,7 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 
 - (IBAction)next:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"Tutorial" properties:@{
+    [mixpanel track:@"Education" properties:@{
                                              @"controller": NSStringFromClass([self class]),
                                              @"state": @"complete",
                                              @"persona": [[FLSettings defaultSettings] selectedPersona]
@@ -71,7 +71,7 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 
 - (IBAction)completeTutorial:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"Tutorial" properties:@{
+    [mixpanel track:@"Education" properties:@{
                                              @"controller": [self class],
                                              @"state": @"exit",
                                              @"persona": [[FLSettings defaultSettings] selectedPersona]
