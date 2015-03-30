@@ -25,11 +25,15 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
     // Do any additional setup after loading the view.
     [self formatEmailLabel];
     [self formatWebsiteLink];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": @"uploadModal",
+                                               @"state": @"loaded"
+                                               }];
 }
 
 - (void)viewDidLayoutSubviews {
     [self setHeaderLogo];
-
 }
 
 - (void)setHeaderLogo {
@@ -62,7 +66,11 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+
     if ([url.absoluteString isEqualToString:@"http://repllabs.com"]) {
+        [mixpanel track:@"VisitREPL" properties:@{@"controller": [self class]}];
+
        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kREPLWebsiteURL]];
     } else {
         [self displayMailComposerSheet];
@@ -74,6 +82,9 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
 }
 
 - (void)displayMailComposerSheet {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"ComposeEmail" properties:@{@"controller": [self class],
+                                                 @"state": @"default" }];
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
 
@@ -94,16 +105,19 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
 #pragma MailComposer
 - (void)mailComposeController:(MFMailComposeViewController*)controller
           didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
     switch (result)
     {
         case MFMailComposeResultCancelled:
-            NSLog(@"Result: Mail sending canceled");
+            [mixpanel track:@"ComposeEmail" properties:@{@"controller": [self class],
+                                                         @"state": @"cancelled" }];
             break;
         case MFMailComposeResultSaved:
             NSLog(@"Result: Mail saved");
             break;
         case MFMailComposeResultSent:
-            [self showAlertPrimary:@"Message Sent" secondary:@"We will get back to you soon" withError:NO];
+            [mixpanel track:@"ComposeEmail" properties:@{@"controller": [self class],
+                                                         @"state": @"sent" }];
             break;
         case MFMailComposeResultFailed:
             [self showAlertPrimary:@"Uh Oh!" secondary:@"There was an error" withError:YES];
