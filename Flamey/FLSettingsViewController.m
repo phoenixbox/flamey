@@ -53,7 +53,10 @@ static NSString * const kDeleteAccountActionTitle = @"Delete your account?";
 
     // Track settings loaded
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": [self class],
+                                               @"state": @"loaded"
+                                               }];
     [self setHeaderLogo];
     [self buildArrayOfSections];
     [self renderSettingsTable];
@@ -241,6 +244,12 @@ final sections footer view
     [[FLProcessedImagesStore sharedStore] flushStore];
 
     void(^completionBlock)(void)=^(void) {
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        [mixpanel track:@"Logout" properties:@{
+                                                @"controller": [self class],
+                                                @"state": @"default",
+                                                @"result": @"success",
+                                                }];
         [self performSegueWithIdentifier:@"logOut" sender:self];
     };
 
@@ -265,11 +274,20 @@ final sections footer view
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
 
     if  ([buttonTitle isEqualToString:kConfirmDeleteAccount]) {
-        // Track deletion
+        [mixpanel track:@"DeleteAccount" properties:@{
+                                               @"controller": [self class],
+                                               @"state": @"default",
+                                               @"result": @"success",
+                                               }];
+        // TODO: Delete server side account
         [self logOut];
     }
     if ([buttonTitle isEqualToString:kCancelDeleteAccount]) {
-        // Track close to deletion
+        [mixpanel track:@"DeleteAccount" properties:@{
+                                                      @"controller": [self class],
+                                                      @"state": @"default",
+                                                      @"result": @"failure",
+                                                      }];
         [actionSheet dismissWithClickedButtonIndex:[actionSheet cancelButtonIndex] animated:YES];
         actionSheet = nil;
     }
