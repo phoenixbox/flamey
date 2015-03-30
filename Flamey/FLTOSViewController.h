@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLTOSViewController : UIViewController
+#import "Mixpanel.h"
+
+@interface FLTOSViewController : UIViewController <UITextViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *termsTitle;
 @property (weak, nonatomic) IBOutlet UIView *contentView;

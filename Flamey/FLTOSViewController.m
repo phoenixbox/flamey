@@ -17,11 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": [self class],
+                                               @"state": @"loaded"
+                                               }];
 }
 
 - (void)viewDidLayoutSubviews {
     [self setHeaderLogo];
     [self setScrollPosition];
+    [_body setEditable:NO];
+    [_body setSelectable:NO];
 }
 
 - (void)setScrollPosition {
@@ -44,6 +51,19 @@
 
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView*)scrollView {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    float scrollViewHeight = scrollView.frame.size.height;
+    float scrollContentSizeHeight = scrollView.contentSize.height;
+    float scrollOffset = scrollView.contentOffset.y;
+
+    if (scrollOffset == 0) {
+        // then we are at the top
+    } else if (scrollOffset + scrollViewHeight == scrollContentSizeHeight) {
+        [mixpanel track:@"TOSRead" properties:@{@"controller":NSStringFromClass([self class])}];
+    }
 }
 
 /*
