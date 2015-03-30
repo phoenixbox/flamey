@@ -385,7 +385,7 @@
                               [mixpanel track:@"FBPermissionRequest" properties:@{
                                                                                   @"controller": [self class],
                                                                                   @"state": @"pre:retry",
-                                                                                  @"result": @"success"
+                                                                                  @"result": @"confirmed"
                                                                                   }];
                               func(self, selector);
                           }];
@@ -396,7 +396,7 @@
                               [mixpanel track:@"FBPermissionRequest" properties:@{
                                                                                      @"controller": [self class],
                                                                                      @"state": @"pre:retry",
-                                                                                     @"result": @"failure"
+                                                                                     @"result": @"rejected"
                                                                                      }];
                               [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                           }];
@@ -459,7 +459,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
                                                                                 @"controller": [self class],
                                                                                 @"state": @"retry",
-                                                                                @"result": @"success"
+                                                                                @"result": @"confirmed"
                                                                                 }];
                               [self uploadPhotos];
                           }];
@@ -470,7 +470,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
                                                                                   @"controller": [self class],
                                                                                   @"state": @"retry",
-                                                                                  @"result": @"failure"
+                                                                                  @"result": @"rejected"
                                                                                   }];
                               [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                           }];
