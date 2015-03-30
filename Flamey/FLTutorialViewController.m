@@ -18,6 +18,9 @@
 // Data Layer
 #import "FLSettings.h"
 
+// Libs
+#import "Mixpanel.h"
+
 static NSString * const kTutorialSolutionView = @"FLTutorialSolutionView";
 static NSString * const kTutorialProcessView = @"FLTutorialProcessView";
 static NSString * const kTutorialResultView = @"FLTutorialResultView";
@@ -33,6 +36,12 @@ static NSString * const kCompleteTutorial = @"completeTutorial";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": NSStringFromClass([self class]),
+                                               @"state": @"loaded"
+                                               }];
+
     [self listenForCompleteTrigger];
     [self listenForSolutionTrigger];
     [self listenForContinueTrigger];
