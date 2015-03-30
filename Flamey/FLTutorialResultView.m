@@ -24,6 +24,14 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
 @implementation FLTutorialResultView
 
 - (IBAction)start:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Tutorial" properties:@{
+                                             @"controller": NSStringFromClass([self class]),
+                                             @"state": @"complete",
+                                             @"persona": [[FLSettings defaultSettings] selectedPersona],
+                                             @"matchPersona": _targetMatch
+                                             }];
+
     NSNotification *notification = [NSNotification notificationWithName:kCompleteResult
                                                                  object:self];
 
@@ -124,6 +132,12 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
     FLSettings *settings = [FLSettings defaultSettings];
     FLUser *user = settings.user;
 
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Navigation" properties:@{
+                                               @"controller": NSStringFromClass([self class]),
+                                               @"state": @"loaded"
+                                               }];
+
     // Need a placeholder
     [_firstProfile sd_setImageWithURL:user.profileURL placeholderImage:[UIImage imageNamed:@"Persona"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [user setImage:image];
@@ -176,7 +190,6 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
 - (UIImage *)getAlternateImage {
     FLSettings *settings = [FLSettings defaultSettings];
     FLUser *user = settings.user;
-    NSString *targetImage;
 
     NSArray *maleImages = @[@"Selected-Male-1", @"Selected-Male-2", @"Selected-Male-3"];
     NSArray *femaleImages = @[@"Selected-Female-1", @"Selected-Female-2", @"Selected-Female-3"];
@@ -185,24 +198,31 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
 
     if (user.isMale) {
         if (_alternate) {
-            targetImage = [self randomFromArray:maleImages];
+            _targetMatch = [self randomFromArray:maleImages];
         } else {
-            targetImage = [self randomFromArray:femaleImages];
+            _targetMatch = [self randomFromArray:femaleImages];
         }
     } else if (user.isFemale) {
         if (_alternate) {
-            targetImage = [self randomFromArray:femaleImages];
+            _targetMatch = [self randomFromArray:femaleImages];
         } else {
-            targetImage = [self randomFromArray:maleImages];
+            _targetMatch = [self randomFromArray:maleImages];
         }
     } else {
         NSLog(@"!WARN!: No gender set resultView");
     }
 
-    return [UIImage imageNamed:targetImage];
+    return [UIImage imageNamed:_targetMatch];
 }
 
 - (void)flipMatch:(UITapGestureRecognizer *)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Gesture" properties:@{
+                                            @"controller": NSStringFromClass([self class]),
+                                            @"category": @"aesthetic",
+                                            @"type": @"tap"
+                                            }];
+
     void(^heartDisappear)(void)=^(void){
         [_heartIcon setAnimation:@"fadeOut"];
         [_heartIcon setCurve:@"linear"];

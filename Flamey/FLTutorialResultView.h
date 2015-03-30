@@ -11,6 +11,9 @@
 // TODO: When updating product name - update this header
 #import "Flamey-Swift.h"
 
+// Libs
+#import "Mixpanel.h"
+
 extern NSString *const kCompleteResult;
 
 @interface FLTutorialResultView : UIView
@@ -29,7 +32,7 @@ extern NSString *const kCompleteResult;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 
 @property (nonatomic, assign) BOOL alternate;
-
+@property (nonatomic, strong) NSString *targetMatch;
 - (IBAction)start:(id)sender;
 - (void)setLabels;
 
