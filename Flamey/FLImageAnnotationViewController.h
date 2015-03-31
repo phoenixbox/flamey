@@ -12,7 +12,6 @@
 @interface FLImageAnnotationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
-@property (weak, nonatomic) IBOutlet UIButton *addFiltersButton;
 @property (weak, nonatomic) IBOutlet UIView *tableContainer;
 @property (assign, nonatomic) NSInteger targetRow;
 @property (weak, nonatomic) IBOutlet UIButton *uploadButton;
@@ -25,4 +24,5 @@
 - (IBAction)scrollLeft:(id)sender;
 
 @property (strong, nonatomic) FLPhoto *selectedPhoto;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addFiltersButton;
 @end

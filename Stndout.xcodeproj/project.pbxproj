@@ -14,6 +14,7 @@
 		CB1EE0711A98649300400611 /* FLContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1EE0701A98649300400611 /* FLContactViewController.xib */; };
 		CB1EE07B1A98B56500400611 /* FLTOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1EE0791A98B56500400611 /* FLTOSViewController.m */; };
 		CB1EE07C1A98B56500400611 /* FLTOSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1EE07A1A98B56500400611 /* FLTOSViewController.xib */; };
+		CB1F7E9F1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1F7E9E1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m */; };
 		CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2A90B71A812027005AFB08 /* FLFilterViewHeader.xib */; };
 		CB2EBE6E1A7DCB6800D76528 /* FLImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */; };
 		CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */; };
@@ -122,6 +123,8 @@
 		CB1EE0781A98B56500400611 /* FLTOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTOSViewController.h; sourceTree = "<group>"; };
 		CB1EE0791A98B56500400611 /* FLTOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTOSViewController.m; sourceTree = "<group>"; };
 		CB1EE07A1A98B56500400611 /* FLTOSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTOSViewController.xib; sourceTree = "<group>"; };
+		CB1F7E9D1ACA6F6E0063F4EB /* FLFiltersPromptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFiltersPromptViewController.h; sourceTree = "<group>"; };
+		CB1F7E9E1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFiltersPromptViewController.m; sourceTree = "<group>"; };
 		CB2A90B71A812027005AFB08 /* FLFilterViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFilterViewHeader.xib; sourceTree = "<group>"; };
 		CB2EBE6B1A7DCB6800D76528 /* FLImageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageFilterViewController.h; sourceTree = "<group>"; };
 		CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageFilterViewController.m; sourceTree = "<group>"; };
@@ -328,9 +331,19 @@
 			name = TOS;
 			sourceTree = "<group>";
 		};
+		CB1F7E9C1ACA6E900063F4EB /* Prompt */ = {
+			isa = PBXGroup;
+			children = (
+				CB1F7E9D1ACA6F6E0063F4EB /* FLFiltersPromptViewController.h */,
+				CB1F7E9E1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m */,
+			);
+			name = Prompt;
+			sourceTree = "<group>";
+		};
 		CB2EBE6A1A7DCB2300D76528 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				CB1F7E9C1ACA6E900063F4EB /* Prompt */,
 				CB2EBE6B1A7DCB6800D76528 /* FLImageFilterViewController.h */,
 				CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */,
 				CB2EBE701A7DCE0E00D76528 /* FLFilterTableViewCell.h */,
@@ -897,6 +910,7 @@
 				CB3B7D321A5860C7005F6402 /* FLLoginViewController.m in Sources */,
 				CB9324B41ABF4B8B00DB05D5 /* ImageLoader.swift in Sources */,
 				CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */,
+				CB1F7E9F1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m in Sources */,
 				CB6F8D081A6C83B700429133 /* FLSelectedPhotoStore.m in Sources */,
 				CB902F9C1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m in Sources */,
 				CB93248B1ABE97E800DB05D5 /* FLUser.m in Sources */,

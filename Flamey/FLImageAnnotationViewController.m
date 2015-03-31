@@ -64,8 +64,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                                                @"controller": NSStringFromClass([self class]),
                                                @"state": @"loaded"
                                                }];
-    // TODO: Update filters flow
-    [_addFiltersButton setHidden:YES];
     [self updateAnnotationStore];
     [self addViewListeners];
     [self trackSelectedPhotosCount];
@@ -707,4 +705,6 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)addFilters:(id)sender {
+}
 @end
