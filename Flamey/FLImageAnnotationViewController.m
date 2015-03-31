@@ -441,7 +441,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     CGSize annotationSize = CGSizeMake(imageSize.width * 0.085, imageSize.width * 0.085);
     float widthScaleFactor = imageSize.width/viewWidth;
     float heightScaleFactor = imageSize.height/viewHeight;
-
+	
     float newX = (widthScaleFactor * touchPoint.x) - ((widthScaleFactor * annotationSize.width)/2);
     float newY = (heightScaleFactor * touchPoint.y) - ((heightScaleFactor * annotationSize.height)/4);
 

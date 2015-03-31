@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
-// TODO: When updating product name - update this header
-#import "Flamey-Swift.h"
+
+#import "Stndout-Swift.h"
 
 // Libs
 #import "Mixpanel.h"

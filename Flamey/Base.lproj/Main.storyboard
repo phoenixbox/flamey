@@ -428,7 +428,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigMarker" translatesAutoresizingMaskIntoConstraints="NO" id="ERS-dx-Clh" userLabel="markerLogo" customClass="SpringImageView" customModule="Flamey" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigMarker" translatesAutoresizingMaskIntoConstraints="NO" id="ERS-dx-Clh" userLabel="markerLogo" customClass="SpringImageView" customModule="Stndout" customModuleProvider="target">
                                         <rect key="frame" x="110" y="219" width="95" height="95"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="3Zq-pv-JKA"/>
@@ -442,7 +442,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Touch" translatesAutoresizingMaskIntoConstraints="NO" id="cTc-tl-1kl" userLabel="hand" customClass="SpringImageView" customModule="Flamey" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Touch" translatesAutoresizingMaskIntoConstraints="NO" id="cTc-tl-1kl" userLabel="hand" customClass="SpringImageView" customModule="Stndout" customModuleProvider="target">
                                         <rect key="frame" x="132" y="304" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="HgR-OY-eEr"/>
@@ -588,7 +588,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigMarker" translatesAutoresizingMaskIntoConstraints="NO" id="D5N-Iu-iVu" customClass="SpringImageView" customModule="Flamey" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigMarker" translatesAutoresizingMaskIntoConstraints="NO" id="D5N-Iu-iVu" customClass="SpringImageView" customModule="Stndout" customModuleProvider="target">
                                         <rect key="frame" x="60" y="124" width="195" height="195"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="Bjb-zu-fHr"/>
@@ -611,14 +611,14 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uh2-ux-mwM" userLabel="HeartOne" customClass="SpringImageView" customModule="Flamey" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uh2-ux-mwM" userLabel="HeartOne" customClass="SpringImageView" customModule="Stndout" customModuleProvider="target">
                                         <rect key="frame" x="225" y="109" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Ac9-XJ-7d7"/>
                                             <constraint firstAttribute="height" constant="20" id="aXd-mQ-BTb"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ge9-wd-zBd" userLabel="HeartTwo" customClass="SpringImageView" customModule="Flamey" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ge9-wd-zBd" userLabel="HeartTwo" customClass="SpringImageView" customModule="Stndout" customModuleProvider="target">
                                         <rect key="frame" x="60" y="109" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Lra-h1-HeR"/>

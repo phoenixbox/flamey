@@ -939,8 +939,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "573"
             endingLineNumber = "573"
-            landmarkName = "-scrollViewDidEndScrollingAnimation:"
-            landmarkType = "5">
+            landmarkName = "@implementation FLImageAnnotationViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

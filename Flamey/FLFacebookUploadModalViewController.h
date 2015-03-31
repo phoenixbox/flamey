@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "TTTAttributedLabel.h"
-#import "Flamey-Swift.h"
+#import "Stndout-Swift.h"
 
 @interface FLFacebookUploadModalViewController : UIViewController <FBRequestConnectionDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *readyButton;

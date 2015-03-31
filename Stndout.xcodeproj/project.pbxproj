@@ -135,7 +135,7 @@
 		CB2EBE7A1A7DD98100D76528 /* FLToolsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLToolsStore.m; sourceTree = "<group>"; };
 		CB2EBE811A7DDB5400D76528 /* FLStyleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLStyleConstants.h; sourceTree = "<group>"; };
 		CB2EBE821A7DDB9400D76528 /* FLComponentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLComponentConstants.h; sourceTree = "<group>"; };
-		CB3B7CF91A58374B005F6402 /* Flamey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamey.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3B7CF91A58374B005F6402 /* Stndout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stndout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7CFD1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3B7CFE1A58374B005F6402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB3B7D001A58374B005F6402 /* FLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLAppDelegate.h; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		CB3B7D0A1A58374B005F6402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB3B7D0C1A58374B005F6402 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB3B7D0F1A58374B005F6402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CB3B7D151A58374B005F6402 /* FlameyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlameyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3B7D151A58374B005F6402 /* StndoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StndoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7D1A1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3B7D1B1A58374B005F6402 /* FlameyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlameyTests.m; sourceTree = "<group>"; };
 		CB3B7D301A5860C7005F6402 /* FLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginViewController.h; sourceTree = "<group>"; };
@@ -357,8 +357,8 @@
 		CB3B7CFA1A58374B005F6402 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB3B7CF91A58374B005F6402 /* Flamey.app */,
-				CB3B7D151A58374B005F6402 /* FlameyTests.xctest */,
+				CB3B7CF91A58374B005F6402 /* Stndout.app */,
+				CB3B7D151A58374B005F6402 /* StndoutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -687,9 +687,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CB3B7CF81A58374B005F6402 /* Flamey */ = {
+		CB3B7CF81A58374B005F6402 /* Stndout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB3B7D1F1A58374B005F6402 /* Build configuration list for PBXNativeTarget "Flamey" */;
+			buildConfigurationList = CB3B7D1F1A58374B005F6402 /* Build configuration list for PBXNativeTarget "Stndout" */;
 			buildPhases = (
 				76BD728EBF3041788079E323 /* Check Pods Manifest.lock */,
 				CB3B7CF51A58374B005F6402 /* Sources */,
@@ -701,14 +701,14 @@
 			);
 			dependencies = (
 			);
-			name = Flamey;
+			name = Stndout;
 			productName = Flamey;
-			productReference = CB3B7CF91A58374B005F6402 /* Flamey.app */;
+			productReference = CB3B7CF91A58374B005F6402 /* Stndout.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CB3B7D141A58374B005F6402 /* FlameyTests */ = {
+		CB3B7D141A58374B005F6402 /* StndoutTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB3B7D221A58374B005F6402 /* Build configuration list for PBXNativeTarget "FlameyTests" */;
+			buildConfigurationList = CB3B7D221A58374B005F6402 /* Build configuration list for PBXNativeTarget "StndoutTests" */;
 			buildPhases = (
 				CB3B7D111A58374B005F6402 /* Sources */,
 				CB3B7D121A58374B005F6402 /* Frameworks */,
@@ -719,9 +719,9 @@
 			dependencies = (
 				CB3B7D171A58374B005F6402 /* PBXTargetDependency */,
 			);
-			name = FlameyTests;
+			name = StndoutTests;
 			productName = FlameyTests;
-			productReference = CB3B7D151A58374B005F6402 /* FlameyTests.xctest */;
+			productReference = CB3B7D151A58374B005F6402 /* StndoutTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -742,7 +742,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CB3B7CF41A58374B005F6402 /* Build configuration list for PBXProject "Flamey" */;
+			buildConfigurationList = CB3B7CF41A58374B005F6402 /* Build configuration list for PBXProject "Stndout" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -755,8 +755,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CB3B7CF81A58374B005F6402 /* Flamey */,
-				CB3B7D141A58374B005F6402 /* FlameyTests */,
+				CB3B7CF81A58374B005F6402 /* Stndout */,
+				CB3B7D141A58374B005F6402 /* StndoutTests */,
 			);
 		};
 /* End PBXProject section */
@@ -920,7 +920,7 @@
 /* Begin PBXTargetDependency section */
 		CB3B7D171A58374B005F6402 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CB3B7CF81A58374B005F6402 /* Flamey */;
+			target = CB3B7CF81A58374B005F6402 /* Stndout */;
 			targetProxy = CB3B7D161A58374B005F6402 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1033,7 +1033,7 @@
 				INFOPLIST_FILE = Flamey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Stndout;
 			};
 			name = Debug;
 		};
@@ -1049,7 +1049,7 @@
 				INFOPLIST_FILE = Flamey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Stndout;
 			};
 			name = Release;
 		};
@@ -1067,7 +1067,7 @@
 				);
 				INFOPLIST_FILE = FlameyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = StndoutTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flamey.app/Flamey";
 			};
 			name = Debug;
@@ -1082,7 +1082,7 @@
 				);
 				INFOPLIST_FILE = FlameyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = StndoutTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flamey.app/Flamey";
 			};
 			name = Release;
@@ -1090,7 +1090,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CB3B7CF41A58374B005F6402 /* Build configuration list for PBXProject "Flamey" */ = {
+		CB3B7CF41A58374B005F6402 /* Build configuration list for PBXProject "Stndout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB3B7D1D1A58374B005F6402 /* Debug */,
@@ -1099,7 +1099,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB3B7D1F1A58374B005F6402 /* Build configuration list for PBXNativeTarget "Flamey" */ = {
+		CB3B7D1F1A58374B005F6402 /* Build configuration list for PBXNativeTarget "Stndout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB3B7D201A58374B005F6402 /* Debug */,
@@ -1108,7 +1108,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB3B7D221A58374B005F6402 /* Build configuration list for PBXNativeTarget "FlameyTests" */ = {
+		CB3B7D221A58374B005F6402 /* Build configuration list for PBXNativeTarget "StndoutTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB3B7D231A58374B005F6402 /* Debug */,

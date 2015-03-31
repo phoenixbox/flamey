@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Flamey-Swift.h"
+#import "Stndout-Swift.h"
 
 // Libs
 #import "Mixpanel.h"
