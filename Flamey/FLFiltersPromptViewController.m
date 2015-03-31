@@ -7,7 +7,14 @@
 //
 
 #import "FLFiltersPromptViewController.h"
+#import "FLTutorialProcessView.h"
+#import "FLTutorialSolutionView.h"
+
+// Pods
 #import "Mixpanel.h"
+
+// DataLayer
+#import "FLSettings.h"
 
 // Helpers
 #import "FLViewHelpers.h"
@@ -29,6 +36,13 @@
 
     [self styleModal];
     [self setReadyTitleCopy];
+    [self setFirstLabelCopy];
+
+    NSDictionary *imagesForView = [self imagesForSelectedPersona];
+    NSString *imageName = [imagesForView objectForKey:kUploadImage];
+    [_photoImageView setImage:[UIImage imageNamed:imageName]];
+    [_photoImageView setContentMode:UIViewContentModeScaleAspectFill];
+
     [self styleLetMeKnowButton];
 }
 
@@ -38,7 +52,106 @@
 }
 
 - (void)setReadyTitleCopy {
-    _readyTitle.font = [UIFont fontWithName:@"Rochester" size:[FLViewHelpers titleCopyForScreenSize]];
+    _readyTitle.font = [UIFont fontWithName:@"Rochester" size:45.0];
+}
+
+- (void)setFirstLabelCopy {
+    NSString *copy = @"We are still working on that!";
+    float copySize = [FLViewHelpers bodyCopyForScreenSize];
+
+    _firstLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:copySize];
+    _firstLabel.textColor = [UIColor whiteColor];
+    _firstLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _firstLabel.numberOfLines = 2;
+
+    // If you're using a simple `NSString` for your text,
+    // assign to the `text` property last so it can inherit other label properties.
+    [_firstLabel setText:copy afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"stndout" options:NSCaseInsensitiveSearch];
+
+        // Core Text APIs use C functions without a direct bridge to UIFont. See Apple's "Core Text Programming Guide" to learn how to configure string attributes.
+        UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:copySize];
+        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+        if (font) {
+            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+            CFRelease(font);
+        }
+
+        return mutableAttributedString;
+    }];
+}
+
+- (void)setSecondLabelCopy {
+    NSString *copy = @"Soon you will be able to filter and upload your photos privately!";
+    float copySize = [FLViewHelpers bodyCopyForScreenSize];
+
+    _secondLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:copySize];
+    _secondLabel.textColor = [UIColor whiteColor];
+    _secondLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _secondLabel.numberOfLines = 3;
+
+    // If you're using a simple `NSString` for your text,
+    // assign to the `text` property last so it can inherit other label properties.
+    [_secondLabel setText:copy afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"privately!" options:NSCaseInsensitiveSearch];
+
+        // Core Text APIs use C functions without a direct bridge to UIFont. See Apple's "Core Text Programming Guide" to learn how to configure string attributes.
+        UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:copySize];
+        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+        if (font) {
+            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+            CFRelease(font);
+        }
+
+        return mutableAttributedString;
+    }];
+}
+
+// TODO: Refactor out duplicated code
+- (NSDictionary *)imagesForSelectedPersona {
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = settings.user;
+
+    NSString *personaImage;
+    NSString *uploadImage;
+
+    NSString *selectedPersona = [[FLSettings defaultSettings] selectedPersona];
+
+    if (user.isMale) {
+        if ([selectedPersona isEqualToString:kMaleOneSelected]) {
+            personaImage = kMaleImageOne;
+            uploadImage = kMaleUploadOne;
+        } else if ([selectedPersona isEqualToString:kMaleTwoSelected]) {
+            personaImage = kMaleImageTwo;
+            uploadImage = kMaleUploadTwo;
+        } else if ([selectedPersona isEqualToString:kMaleThreeSelected]) {
+            personaImage = kMaleImageThree;
+            uploadImage = kMaleUploadThree;
+        } else {
+            NSLog(@"!WARN! no persona set in the settings");
+            personaImage = kMaleImageOne;
+            uploadImage = kMaleUploadOne;
+        }
+    } else if (user.isFemale) {
+        if ([selectedPersona isEqualToString:kFemaleOneSelected]) {
+            personaImage = kFemaleImageOne;
+            uploadImage = kFemaleUploadOne;
+        } else if ([selectedPersona isEqualToString:kFemaleTwoSelected]) {
+            personaImage = kFemaleImageTwo;
+            uploadImage = kFemaleUploadTwo;
+        } else if ([selectedPersona isEqualToString:kFemaleThreeSelected]) {
+            personaImage = kFemaleImageThree;
+            uploadImage = kFemaleUploadThree;
+        } else {
+            NSLog(@"!WARN! no persona set in the settings");
+            personaImage = kFemaleImageOne;
+            uploadImage = kFemaleUploadOne;
+        }
+    } else {
+        NSLog(@"!WARN! No gender is defined");
+    }
+
+    return @{ @"personaImage": personaImage, @"uploadImage": uploadImage };
 }
 
 - (void)styleLetMeKnowButton {
@@ -61,9 +174,30 @@
 }
 */
 
+- (void)understandAndMove {
+    FLSettings *settings = [FLSettings defaultSettings];
+    [settings setUnderstandAnnotation:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)close:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Education" properties:@{
+                                              @"controller": NSStringFromClass([self class]),
+                                              @"type": @"cancel"
+                                              }];
+    [self understandAndMove];
+
 }
 
 - (IBAction)letMeKnow:(id)sender {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Education" properties:@{
+                                              @"controller": NSStringFromClass([self class]),
+                                              @"type": @"accept"
+                                              }];
+    [self understandAndMove];
+
 }
+
 @end

@@ -12,6 +12,26 @@
 #import "Mixpanel.h"
 
 extern NSString *const kCompleteProcess;
+// Image Type Constants
+extern NSString *const kPersonaImage;
+extern NSString *const kUploadImage;
+
+// Asset Image Consts
+// Male
+extern NSString *const kMaleImageOne;
+extern NSString *const kMaleImageTwo;
+extern NSString *const kMaleImageThree;
+extern NSString *const kMaleUploadOne;
+extern NSString *const kMaleUploadTwo;
+extern NSString *const kMaleUploadThree;
+
+// Male
+extern NSString *const kFemaleImageOne;
+extern NSString *const kFemaleImageTwo;
+extern NSString *const kFemaleImageThree;
+extern NSString *const kFemaleUploadOne;
+extern NSString *const kFemaleUploadTwo;
+extern NSString *const kFemaleUploadThree;
 
 @interface FLTutorialProcessView : UIView
 @property (weak, nonatomic) IBOutlet UIView *contentView;

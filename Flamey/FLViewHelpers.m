@@ -220,19 +220,19 @@
 + (float)titleCopyForScreenSize {
     if ([UIScreen mainScreen].bounds.size.height == 480) {
         // iPhone 4 - 3.5
-        return 52.0f;
+        return 48.0f;
     } else if ([UIScreen mainScreen].bounds.size.height == 568) {
         // iPhone 5 - 4in
-        return 57.0f;
+        return 52.0f;
     } else if ([UIScreen mainScreen].bounds.size.width == 375) {
         // iPhone 6 - 4.7in
-        return 62.0f;
+        return 60.0f;
     } else if ([UIScreen mainScreen].bounds.size.width == 414) {
         // iPhone 6+ - 5.5in
-        return 74.0f;
+        return 70.0f;
     } else if ([UIScreen mainScreen].bounds.size.width == 768) {
         // iPad - WARN
-        return 80.0f;
+        return 70.0f;
     }
 
     return 0;
