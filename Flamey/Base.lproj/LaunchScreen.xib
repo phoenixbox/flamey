@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,22 +11,62 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 REPL. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="626" width="336" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="PVu-Sl-yhx">
+                    <rect key="frame" x="20" y="155" width="335" height="252"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigMarker" translatesAutoresizingMaskIntoConstraints="NO" id="cwu-Mp-Ory">
+                    <rect key="frame" x="109" y="75" width="156" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="cwu-Mp-Ory" secondAttribute="height" multiplier="26:25" id="Ld0-j3-C0f"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Z7N-wa-C4g"/>
+                        <constraint firstAttribute="width" constant="240" id="Zao-Gt-dse"/>
+                        <constraint firstAttribute="height" constant="100" id="haP-SF-QbV"/>
+                        <constraint firstAttribute="height" constant="150" id="jya-9A-SAr"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Z7N-wa-C4g"/>
+                            <exclude reference="Zao-Gt-dse"/>
+                            <exclude reference="haP-SF-QbV"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadEvalPrintLoop" translatesAutoresizingMaskIntoConstraints="NO" id="uLZ-t4-kuh">
+                    <rect key="frame" x="75" y="647" width="225" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="IOy-SS-vXz"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="REPLLogo-1" translatesAutoresizingMaskIntoConstraints="NO" id="fL7-tv-MeX">
+                    <rect key="frame" x="117" y="577" width="140" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="fL7-tv-MeX" secondAttribute="height" multiplier="15:8" id="Nfd-KP-Ryb"/>
+                        <constraint firstAttribute="height" constant="75" id="i39-jl-MuI"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
-                <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
+                <constraint firstAttribute="centerX" secondItem="fL7-tv-MeX" secondAttribute="centerX" constant="0.5" id="3qX-Vp-Z4p"/>
+                <constraint firstAttribute="bottom" secondItem="fL7-tv-MeX" secondAttribute="bottom" constant="15" id="9cv-Rf-JeE"/>
+                <constraint firstAttribute="bottom" secondItem="uLZ-t4-kuh" secondAttribute="bottom" constant="10" id="EQq-5e-QqQ"/>
+                <constraint firstItem="cwu-Mp-Ory" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="75" id="FNZ-Eo-Ncm"/>
+                <constraint firstItem="uLZ-t4-kuh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="75" id="G2J-3K-KOP"/>
+                <constraint firstItem="PVu-Sl-yhx" firstAttribute="top" secondItem="cwu-Mp-Ory" secondAttribute="bottom" constant="-70" id="MTY-aw-Omx"/>
+                <constraint firstAttribute="centerX" secondItem="cwu-Mp-Ory" secondAttribute="centerX" constant="0.5" id="Txj-a5-kpJ"/>
+                <constraint firstItem="PVu-Sl-yhx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="WCd-n3-hi0"/>
+                <constraint firstAttribute="trailing" secondItem="PVu-Sl-yhx" secondAttribute="trailing" constant="20" id="YiU-5k-AxL"/>
+                <constraint firstAttribute="trailing" secondItem="uLZ-t4-kuh" secondAttribute="trailing" constant="75" id="aHH-Y3-zKX"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="620.5" y="920.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="BigMarker" width="270" height="270"/>
+        <image name="REPLLogo-1" width="705" height="252"/>
+        <image name="ReadEvalPrintLoop" width="891" height="80"/>
+        <image name="launchLogo" width="1196" height="252"/>
+    </resources>
 </document>

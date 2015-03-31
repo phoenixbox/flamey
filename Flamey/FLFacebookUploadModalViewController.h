@@ -18,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet SpringImageView *springLogo;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *bodyLabel;
 @property (weak, nonatomic) IBOutlet SpringImageView *heartTwo;
-
 @property (weak, nonatomic) IBOutlet SpringImageView *heartOne;
+
 @end

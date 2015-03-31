@@ -346,8 +346,8 @@
 		CB3B7CF01A58374B005F6402 = {
 			isa = PBXGroup;
 			children = (
-				CB3B7CFB1A58374B005F6402 /* Flamey */,
-				CB3B7D181A58374B005F6402 /* FlameyTests */,
+				CB3B7CFB1A58374B005F6402 /* Stndout */,
+				CB3B7D181A58374B005F6402 /* StndoutTests */,
 				CB3B7CFA1A58374B005F6402 /* Products */,
 				8653CABC8D15495390A3E34D /* Frameworks */,
 				103802F0C21E42BBE560C8C2 /* Pods */,
@@ -363,7 +363,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CB3B7CFB1A58374B005F6402 /* Flamey */ = {
+		CB3B7CFB1A58374B005F6402 /* Stndout */ = {
 			isa = PBXGroup;
 			children = (
 				CB93248C1ABF4B8B00DB05D5 /* Spring */,
@@ -390,6 +390,7 @@
 				CB4ABFE51AB4C29D00ABD784 /* FLTabBarViewController.h */,
 				CB4ABFE61AB4C29D00ABD784 /* FLTabBarViewController.m */,
 			);
+			name = Stndout;
 			path = Flamey;
 			sourceTree = "<group>";
 		};
@@ -402,12 +403,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CB3B7D181A58374B005F6402 /* FlameyTests */ = {
+		CB3B7D181A58374B005F6402 /* StndoutTests */ = {
 			isa = PBXGroup;
 			children = (
 				CB3B7D1B1A58374B005F6402 /* FlameyTests.m */,
 				CB3B7D191A58374B005F6402 /* Supporting Files */,
 			);
+			name = StndoutTests;
 			path = FlameyTests;
 			sourceTree = "<group>";
 		};
