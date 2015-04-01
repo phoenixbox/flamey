@@ -45,15 +45,15 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>FacebookAppID</key>
-	<string>648273935276922</string>
+	<string>937947802923194</string>
 	<key>FacebookDisplayName</key>
-	<string>flamey</string>
+	<string>stndout</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb648273935276922</string>
+				<string>fb937947802923194</string>
 			</array>
 		</dict>
 	</array>
