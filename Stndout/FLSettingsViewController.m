@@ -237,8 +237,6 @@ final sections footer view
 
 - (void)logOut {
     [FBSession.activeSession closeAndClearTokenInformation];
-    [FLSettings defaultSettings].shouldSkipLogin = NO;
-    [FLSettings defaultSettings].needToLogin = YES;
 
     [[FLAnnotationStore sharedStore] flushStore];
     [[FLProcessedImagesStore sharedStore] flushStore];

@@ -7,98 +7,107 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		72FF89A7FAD04AAEA02678DF /* libPods-Flamey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */; };
-		CB0744981AAD6DC800DB722E /* FLTutorialHowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0744971AAD6DC800DB722E /* FLTutorialHowView.m */; };
-		CB07449C1AAD6DF100DB722E /* FLTutorialHowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB07449B1AAD6DF100DB722E /* FLTutorialHowView.xib */; };
-		CB1EE06E1A98639F00400611 /* FLContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1EE06D1A98639F00400611 /* FLContactViewController.m */; };
-		CB1EE0711A98649300400611 /* FLContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1EE0701A98649300400611 /* FLContactViewController.xib */; };
-		CB1EE07B1A98B56500400611 /* FLTOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1EE0791A98B56500400611 /* FLTOSViewController.m */; };
-		CB1EE07C1A98B56500400611 /* FLTOSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1EE07A1A98B56500400611 /* FLTOSViewController.xib */; };
-		CB1F7E9F1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1F7E9E1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m */; };
-		CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2A90B71A812027005AFB08 /* FLFilterViewHeader.xib */; };
-		CB2EBE6E1A7DCB6800D76528 /* FLImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */; };
-		CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */; };
-		CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */; };
-		CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */; };
-		CB2EBE7B1A7DD98100D76528 /* FLToolsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2EBE7A1A7DD98100D76528 /* FLToolsStore.m */; };
-		CB3B7CFF1A58374B005F6402 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7CFE1A58374B005F6402 /* main.m */; };
-		CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D011A58374B005F6402 /* FLAppDelegate.m */; };
-		CB3B7D051A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D041A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m */; };
-		CB3B7D081A58374B005F6402 /* FLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D071A58374B005F6402 /* FLSettingsViewController.m */; };
-		CB3B7D0B1A58374B005F6402 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB3B7D091A58374B005F6402 /* Main.storyboard */; };
-		CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3B7D0C1A58374B005F6402 /* Images.xcassets */; };
-		CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB3B7D0E1A58374B005F6402 /* LaunchScreen.xib */; };
+		105AA3A97C62B42D69A97607 /* libPods-Stndout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B38E8EDA9FCF7C3A0052D93 /* libPods-Stndout.a */; };
 		CB3B7D1C1A58374B005F6402 /* FlameyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D1B1A58374B005F6402 /* FlameyTests.m */; };
-		CB3B7D321A5860C7005F6402 /* FLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */; };
-		CB3B7D351A586674005F6402 /* FLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D341A586674005F6402 /* FLSettings.m */; };
-		CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */; };
-		CB3C344B1AB7BB83006C8C60 /* FLLoginSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3C344A1AB7BB83006C8C60 /* FLLoginSlide.m */; };
-		CB4268C71A7D596A00745A9F /* FLViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4268C61A7D596900745A9F /* FLViewHelpers.m */; };
-		CB4ABFE41AB4BF2D00ABD784 /* FLAnnotationNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABFE31AB4BF2D00ABD784 /* FLAnnotationNavViewController.m */; };
-		CB4ABFE71AB4C29D00ABD784 /* FLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4ABFE61AB4C29D00ABD784 /* FLTabBarViewController.m */; };
-		CB524F711AB69848000C6228 /* FLLoginSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB524F701AB69848000C6228 /* FLLoginSlide.xib */; };
-		CB5519651ABD547B00CD0C5E /* FLTutorialProcessView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5519641ABD547B00CD0C5E /* FLTutorialProcessView.m */; };
-		CB5519671ABD548900CD0C5E /* FLTutorialProcessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5519661ABD548900CD0C5E /* FLTutorialProcessView.xib */; };
-		CB6BC4BF1AA57720006D34EF /* FLLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BC4BE1AA57720006D34EF /* FLLoginView.m */; };
-		CB6BC4C31AA59467006D34EF /* FLTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */; };
-		CB6CFF281A6C858C00ACD39A /* FLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFF271A6C858C00ACD39A /* FLPhoto.m */; };
-		CB6F8CFC1A6B478F00429133 /* FLFacebookAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8CFB1A6B478F00429133 /* FLFacebookAlbumTableViewController.m */; };
-		CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8CFE1A6B538000429133 /* FLFacebookPhotoPickerViewController.m */; };
-		CB6F8D081A6C83B700429133 /* FLSelectedPhotoStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6F8D071A6C83B700429133 /* FLSelectedPhotoStore.m */; };
-		CB7BD84E1AC6729E0088F22D /* FLAnnotationInstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7BD84D1AC6729E0088F22D /* FLAnnotationInstructionsViewController.m */; };
-		CB7BD8531AC78A590088F22D /* FLPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7BD8521AC78A590088F22D /* FLPrivacyViewController.m */; };
-		CB7BD8551AC78A700088F22D /* FLPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB7BD8541AC78A700088F22D /* FLPrivacyViewController.xib */; };
+		CB6FE8B91AD0B7FF00AD0BD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */; };
+		CB6FE8BA1AD0B7FF00AD0BD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8281AD0B7FF00AD0BD2 /* Main.storyboard */; };
+		CB6FE8BB1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE82B1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m */; };
+		CB6FE8BC1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE82D1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.m */; };
+		CB6FE8BD1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE82F1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.m */; };
+		CB6FE8BE1AD0B7FF00AD0BD2 /* FLAnnotationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8311AD0B7FF00AD0BD2 /* FLAnnotationStore.m */; };
+		CB6FE8BF1AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8331AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m */; };
+		CB6FE8C01AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8341AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.xib */; };
+		CB6FE8C11AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8361AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m */; };
+		CB6FE8C21AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8371AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.xib */; };
+		CB6FE8C31AD0B7FF00AD0BD2 /* FLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8391AD0B7FF00AD0BD2 /* FLAppDelegate.m */; };
+		CB6FE8C41AD0B7FF00AD0BD2 /* FLContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE83C1AD0B7FF00AD0BD2 /* FLContactViewController.m */; };
+		CB6FE8C51AD0B7FF00AD0BD2 /* FLContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE83D1AD0B7FF00AD0BD2 /* FLContactViewController.xib */; };
+		CB6FE8C61AD0B7FF00AD0BD2 /* FLErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE83F1AD0B7FF00AD0BD2 /* FLErrorHandler.m */; };
+		CB6FE8C71AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8411AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m */; };
+		CB6FE8C81AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8431AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.m */; };
+		CB6FE8C91AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8441AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.xib */; };
+		CB6FE8CA1AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8461AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.m */; };
+		CB6FE8CB1AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8481AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.m */; };
+		CB6FE8CC1AD0B7FF00AD0BD2 /* FLFilterSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE84B1AD0B7FF00AD0BD2 /* FLFilterSlider.m */; };
+		CB6FE8CD1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE84D1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.m */; };
+		CB6FE8CE1AD0B7FF00AD0BD2 /* FLFiltersStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE84F1AD0B7FF00AD0BD2 /* FLFiltersStore.m */; };
+		CB6FE8CF1AD0B7FF00AD0BD2 /* FLFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8511AD0B7FF00AD0BD2 /* FLFilterTableViewCell.m */; };
+		CB6FE8D01AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8521AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib */; };
+		CB6FE8D11AD0B7FF00AD0BD2 /* FLFilterViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8531AD0B7FF00AD0BD2 /* FLFilterViewHeader.xib */; };
+		CB6FE8D21AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8551AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.m */; };
+		CB6FE8D31AD0B7FF00AD0BD2 /* FLImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8571AD0B7FF00AD0BD2 /* FLImageFilterViewController.m */; };
+		CB6FE8D41AD0B7FF00AD0BD2 /* FLLoginSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8591AD0B7FF00AD0BD2 /* FLLoginSlide.m */; };
+		CB6FE8D51AD0B7FF00AD0BD2 /* FLLoginSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE85A1AD0B7FF00AD0BD2 /* FLLoginSlide.xib */; };
+		CB6FE8D61AD0B7FF00AD0BD2 /* FLLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE85C1AD0B7FF00AD0BD2 /* FLLoginView.m */; };
+		CB6FE8D71AD0B7FF00AD0BD2 /* FLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE85E1AD0B7FF00AD0BD2 /* FLLoginViewController.m */; };
+		CB6FE8D81AD0B7FF00AD0BD2 /* FLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8601AD0B7FF00AD0BD2 /* FLPhoto.m */; };
+		CB6FE8D91AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8621AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.m */; };
+		CB6FE8DA1AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8631AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.xib */; };
+		CB6FE8DB1AD0B7FF00AD0BD2 /* FLPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8651AD0B7FF00AD0BD2 /* FLPrivacyViewController.m */; };
+		CB6FE8DC1AD0B7FF00AD0BD2 /* FLPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8661AD0B7FF00AD0BD2 /* FLPrivacyViewController.xib */; };
+		CB6FE8DD1AD0B7FF00AD0BD2 /* FLProcessedImagesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8681AD0B7FF00AD0BD2 /* FLProcessedImagesStore.m */; };
+		CB6FE8DE1AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE86A1AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.m */; };
+		CB6FE8DF1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE86C1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.m */; };
+		CB6FE8E01AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE86E1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m */; };
+		CB6FE8E11AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE86F1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.xib */; };
+		CB6FE8E21AD0B7FF00AD0BD2 /* FLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8711AD0B7FF00AD0BD2 /* FLSettings.m */; };
+		CB6FE8E31AD0B7FF00AD0BD2 /* FLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8731AD0B7FF00AD0BD2 /* FLSettingsViewController.m */; };
+		CB6FE8E41AD0B7FF00AD0BD2 /* FLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8761AD0B7FF00AD0BD2 /* FLTabBarViewController.m */; };
+		CB6FE8E51AD0B7FF00AD0BD2 /* FLToolsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8781AD0B7FF00AD0BD2 /* FLToolsStore.m */; };
+		CB6FE8E61AD0B7FF00AD0BD2 /* FLTOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE87A1AD0B7FF00AD0BD2 /* FLTOSViewController.m */; };
+		CB6FE8E71AD0B7FF00AD0BD2 /* FLTOSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE87B1AD0B7FF00AD0BD2 /* FLTOSViewController.xib */; };
+		CB6FE8E81AD0B7FF00AD0BD2 /* FLTutorialHowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE87D1AD0B7FF00AD0BD2 /* FLTutorialHowView.m */; };
+		CB6FE8E91AD0B7FF00AD0BD2 /* FLTutorialHowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE87E1AD0B7FF00AD0BD2 /* FLTutorialHowView.xib */; };
+		CB6FE8EA1AD0B7FF00AD0BD2 /* FLTutorialProcessView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8801AD0B7FF00AD0BD2 /* FLTutorialProcessView.m */; };
+		CB6FE8EB1AD0B7FF00AD0BD2 /* FLTutorialProcessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8811AD0B7FF00AD0BD2 /* FLTutorialProcessView.xib */; };
+		CB6FE8EC1AD0B7FF00AD0BD2 /* FLTutorialResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8831AD0B7FF00AD0BD2 /* FLTutorialResultView.m */; };
+		CB6FE8ED1AD0B7FF00AD0BD2 /* FLTutorialResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8841AD0B7FF00AD0BD2 /* FLTutorialResultView.xib */; };
+		CB6FE8EE1AD0B7FF00AD0BD2 /* FLTutorialSolutionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8861AD0B7FF00AD0BD2 /* FLTutorialSolutionView.m */; };
+		CB6FE8EF1AD0B7FF00AD0BD2 /* FLTutorialSolutionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8871AD0B7FF00AD0BD2 /* FLTutorialSolutionView.xib */; };
+		CB6FE8F01AD0B7FF00AD0BD2 /* FLTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8891AD0B7FF00AD0BD2 /* FLTutorialViewController.m */; };
+		CB6FE8F11AD0B7FF00AD0BD2 /* FLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE88B1AD0B7FF00AD0BD2 /* FLUser.m */; };
+		CB6FE8F21AD0B7FF00AD0BD2 /* FLViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE88D1AD0B7FF00AD0BD2 /* FLViewHelpers.m */; };
+		CB6FE8F31AD0B7FF00AD0BD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE88E1AD0B7FF00AD0BD2 /* Images.xcassets */; };
+		CB6FE8F51AD0B7FF00AD0BD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8901AD0B7FF00AD0BD2 /* main.m */; };
+		CB6FE8F61AD0B7FF00AD0BD2 /* Rochester-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8911AD0B7FF00AD0BD2 /* Rochester-Regular.ttf */; };
+		CB6FE8F71AD0B7FF00AD0BD2 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8931AD0B7FF00AD0BD2 /* AsyncButton.swift */; };
+		CB6FE8F81AD0B7FF00AD0BD2 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8941AD0B7FF00AD0BD2 /* AsyncImageView.swift */; };
+		CB6FE8F91AD0B7FF00AD0BD2 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8951AD0B7FF00AD0BD2 /* BlurView.swift */; };
+		CB6FE8FA1AD0B7FF00AD0BD2 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8961AD0B7FF00AD0BD2 /* DesignableButton.swift */; };
+		CB6FE8FB1AD0B7FF00AD0BD2 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8971AD0B7FF00AD0BD2 /* DesignableImageView.swift */; };
+		CB6FE8FC1AD0B7FF00AD0BD2 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8981AD0B7FF00AD0BD2 /* DesignableLabel.swift */; };
+		CB6FE8FD1AD0B7FF00AD0BD2 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8991AD0B7FF00AD0BD2 /* DesignableTabBarController.swift */; };
+		CB6FE8FE1AD0B7FF00AD0BD2 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE89A1AD0B7FF00AD0BD2 /* DesignableTextField.swift */; };
+		CB6FE8FF1AD0B7FF00AD0BD2 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE89B1AD0B7FF00AD0BD2 /* DesignableTextView.swift */; };
+		CB6FE9001AD0B7FF00AD0BD2 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE89C1AD0B7FF00AD0BD2 /* DesignableView.swift */; };
+		CB6FE9011AD0B7FF00AD0BD2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE89D1AD0B7FF00AD0BD2 /* ImageLoader.swift */; };
+		CB6FE9021AD0B7FF00AD0BD2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE89E1AD0B7FF00AD0BD2 /* Info.plist */; };
+		CB6FE9031AD0B7FF00AD0BD2 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE89F1AD0B7FF00AD0BD2 /* KeyboardLayoutConstraint.swift */; };
+		CB6FE9041AD0B7FF00AD0BD2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8A01AD0B7FF00AD0BD2 /* LoadingView.swift */; };
+		CB6FE9051AD0B7FF00AD0BD2 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8A11AD0B7FF00AD0BD2 /* LoadingView.xib */; };
+		CB6FE9061AD0B7FF00AD0BD2 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8A21AD0B7FF00AD0BD2 /* Misc.swift */; };
+		CB6FE9071AD0B7FF00AD0BD2 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8A31AD0B7FF00AD0BD2 /* SoundPlayer.swift */; };
+		CB6FE9081AD0B7FF00AD0BD2 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8A51AD0B7FF00AD0BD2 /* Spring.swift */; };
+		CB6FE9091AD0B7FF00AD0BD2 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8A61AD0B7FF00AD0BD2 /* SpringAnimation.swift */; };
+		CB6FE90A1AD0B7FF00AD0BD2 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8A71AD0B7FF00AD0BD2 /* SpringButton.swift */; };
+		CB6FE90B1AD0B7FF00AD0BD2 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8A81AD0B7FF00AD0BD2 /* SpringImageView.swift */; };
+		CB6FE90C1AD0B7FF00AD0BD2 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8A91AD0B7FF00AD0BD2 /* SpringLabel.swift */; };
+		CB6FE90D1AD0B7FF00AD0BD2 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8AA1AD0B7FF00AD0BD2 /* SpringTextField.swift */; };
+		CB6FE90E1AD0B7FF00AD0BD2 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8AB1AD0B7FF00AD0BD2 /* SpringTextView.swift */; };
+		CB6FE90F1AD0B7FF00AD0BD2 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8AC1AD0B7FF00AD0BD2 /* SpringView.swift */; };
+		CB6FE9101AD0B7FF00AD0BD2 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8AD1AD0B7FF00AD0BD2 /* TransitionManager.swift */; };
+		CB6FE9111AD0B7FF00AD0BD2 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8AE1AD0B7FF00AD0BD2 /* TransitionZoom.swift */; };
+		CB6FE9121AD0B7FF00AD0BD2 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE8AF1AD0B7FF00AD0BD2 /* UnwindSegue.swift */; };
+		CB6FE9131AD0B7FF00AD0BD2 /* Walkway_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B01AD0B7FF00AD0BD2 /* Walkway_Black.ttf */; };
+		CB6FE9141AD0B7FF00AD0BD2 /* Walkway_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B11AD0B7FF00AD0BD2 /* Walkway_Bold.ttf */; };
+		CB6FE9151AD0B7FF00AD0BD2 /* Walkway_Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B21AD0B7FF00AD0BD2 /* Walkway_Oblique.ttf */; };
+		CB6FE9161AD0B7FF00AD0BD2 /* Walkway_Oblique_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B31AD0B7FF00AD0BD2 /* Walkway_Oblique_Black.ttf */; };
+		CB6FE9171AD0B7FF00AD0BD2 /* Walkway_Oblique_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B41AD0B7FF00AD0BD2 /* Walkway_Oblique_Bold.ttf */; };
+		CB6FE9181AD0B7FF00AD0BD2 /* Walkway_Oblique_SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B51AD0B7FF00AD0BD2 /* Walkway_Oblique_SemiBold.ttf */; };
+		CB6FE9191AD0B7FF00AD0BD2 /* Walkway_Oblique_UltraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B61AD0B7FF00AD0BD2 /* Walkway_Oblique_UltraBold.ttf */; };
+		CB6FE91A1AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B71AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf */; };
+		CB6FE91B1AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B81AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf */; };
 		CB7BD8571AC86BB90088F22D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7BD8561AC86BB90088F22D /* MessageUI.framework */; };
-		CB7EF47D1A807BA20084666E /* FLFiltersStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7EF47C1A807BA20084666E /* FLFiltersStore.m */; };
-		CB902F9C1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB902F9B1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m */; };
-		CB902F9F1A8DC836003D2950 /* FLProcessedImagesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB902F9E1A8DC836003D2950 /* FLProcessedImagesStore.m */; };
-		CB93248B1ABE97E800DB05D5 /* FLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CB93248A1ABE97E800DB05D5 /* FLUser.m */; };
-		CB9324AA1ABF4B8B00DB05D5 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93248D1ABF4B8B00DB05D5 /* AsyncButton.swift */; };
-		CB9324AB1ABF4B8B00DB05D5 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93248E1ABF4B8B00DB05D5 /* AsyncImageView.swift */; };
-		CB9324AC1ABF4B8B00DB05D5 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93248F1ABF4B8B00DB05D5 /* BlurView.swift */; };
-		CB9324AD1ABF4B8B00DB05D5 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324901ABF4B8B00DB05D5 /* DesignableButton.swift */; };
-		CB9324AE1ABF4B8B00DB05D5 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324911ABF4B8B00DB05D5 /* DesignableImageView.swift */; };
-		CB9324AF1ABF4B8B00DB05D5 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324921ABF4B8B00DB05D5 /* DesignableLabel.swift */; };
-		CB9324B01ABF4B8B00DB05D5 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324931ABF4B8B00DB05D5 /* DesignableTabBarController.swift */; };
-		CB9324B11ABF4B8B00DB05D5 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324941ABF4B8B00DB05D5 /* DesignableTextField.swift */; };
-		CB9324B21ABF4B8B00DB05D5 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324951ABF4B8B00DB05D5 /* DesignableTextView.swift */; };
-		CB9324B31ABF4B8B00DB05D5 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324961ABF4B8B00DB05D5 /* DesignableView.swift */; };
-		CB9324B41ABF4B8B00DB05D5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324971ABF4B8B00DB05D5 /* ImageLoader.swift */; };
-		CB9324B51ABF4B8B00DB05D5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB9324981ABF4B8B00DB05D5 /* Info.plist */; };
-		CB9324B61ABF4B8B00DB05D5 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324991ABF4B8B00DB05D5 /* KeyboardLayoutConstraint.swift */; };
-		CB9324B71ABF4B8B00DB05D5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93249A1ABF4B8B00DB05D5 /* LoadingView.swift */; };
-		CB9324B81ABF4B8B00DB05D5 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB93249B1ABF4B8B00DB05D5 /* LoadingView.xib */; };
-		CB9324B91ABF4B8B00DB05D5 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93249C1ABF4B8B00DB05D5 /* Misc.swift */; };
-		CB9324BA1ABF4B8B00DB05D5 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93249D1ABF4B8B00DB05D5 /* SoundPlayer.swift */; };
-		CB9324BB1ABF4B8B00DB05D5 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93249F1ABF4B8B00DB05D5 /* Spring.swift */; };
-		CB9324BC1ABF4B8B00DB05D5 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A01ABF4B8B00DB05D5 /* SpringAnimation.swift */; };
-		CB9324BD1ABF4B8B00DB05D5 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A11ABF4B8B00DB05D5 /* SpringButton.swift */; };
-		CB9324BE1ABF4B8B00DB05D5 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A21ABF4B8B00DB05D5 /* SpringImageView.swift */; };
-		CB9324BF1ABF4B8B00DB05D5 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A31ABF4B8B00DB05D5 /* SpringLabel.swift */; };
-		CB9324C01ABF4B8B00DB05D5 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A41ABF4B8B00DB05D5 /* SpringTextField.swift */; };
-		CB9324C11ABF4B8B00DB05D5 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A51ABF4B8B00DB05D5 /* SpringTextView.swift */; };
-		CB9324C21ABF4B8B00DB05D5 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A61ABF4B8B00DB05D5 /* SpringView.swift */; };
-		CB9324C31ABF4B8B00DB05D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A71ABF4B8B00DB05D5 /* TransitionManager.swift */; };
-		CB9324C41ABF4B8B00DB05D5 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A81ABF4B8B00DB05D5 /* TransitionZoom.swift */; };
-		CB9324C51ABF4B8B00DB05D5 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9324A91ABF4B8B00DB05D5 /* UnwindSegue.swift */; };
-		CB9C1D121ABBCB6A002C7FF9 /* FLTutorialResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C1D111ABBCB6A002C7FF9 /* FLTutorialResultView.m */; };
-		CB9C1D141ABBCBA5002C7FF9 /* FLTutorialResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9C1D131ABBCBA5002C7FF9 /* FLTutorialResultView.xib */; };
-		CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA10D9F1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m */; };
-		CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA10DA01A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib */; };
-		CBA780E51A911E8500CE9D84 /* FLAnnotationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA780E31A911E8500CE9D84 /* FLAnnotationTableViewCell.m */; };
-		CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */; };
-		CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */; };
-		CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */; };
-		CBDDEF7F1AA8242700FF4E8D /* FLTutorialSolutionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF7E1AA8242700FF4E8D /* FLTutorialSolutionView.xib */; };
-		CBDDEF821AA825C400FF4E8D /* FLTutorialSolutionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDDEF811AA825C400FF4E8D /* FLTutorialSolutionView.m */; };
-		CBDDEF851AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDDEF841AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m */; };
-		CBDDEF871AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDDEF861AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib */; };
-		CBDF2CAF1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDF2CAE1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.m */; };
-		CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */; };
-		CBEE45DE1ABBEE1100C42FE2 /* Rochester-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBEE45DD1ABBEE1100C42FE2 /* Rochester-Regular.ttf */; };
-		CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */; };
-		CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */; };
-		CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,157 +121,158 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		74538D7B189EE09795B7515B /* Pods-Flamey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flamey/Pods-Flamey.release.xcconfig"; sourceTree = "<group>"; };
-		B972D952EEE5CAB86BF19038 /* Pods-Flamey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flamey/Pods-Flamey.debug.xcconfig"; sourceTree = "<group>"; };
-		CB0744961AAD6DC800DB722E /* FLTutorialHowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialHowView.h; sourceTree = "<group>"; };
-		CB0744971AAD6DC800DB722E /* FLTutorialHowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialHowView.m; sourceTree = "<group>"; };
-		CB07449B1AAD6DF100DB722E /* FLTutorialHowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialHowView.xib; sourceTree = "<group>"; };
-		CB1EE06C1A98639F00400611 /* FLContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLContactViewController.h; sourceTree = "<group>"; };
-		CB1EE06D1A98639F00400611 /* FLContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLContactViewController.m; sourceTree = "<group>"; };
-		CB1EE0701A98649300400611 /* FLContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLContactViewController.xib; sourceTree = "<group>"; };
-		CB1EE0781A98B56500400611 /* FLTOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTOSViewController.h; sourceTree = "<group>"; };
-		CB1EE0791A98B56500400611 /* FLTOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTOSViewController.m; sourceTree = "<group>"; };
-		CB1EE07A1A98B56500400611 /* FLTOSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTOSViewController.xib; sourceTree = "<group>"; };
-		CB1F7E9D1ACA6F6E0063F4EB /* FLFiltersPromptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFiltersPromptViewController.h; sourceTree = "<group>"; };
-		CB1F7E9E1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFiltersPromptViewController.m; sourceTree = "<group>"; };
-		CB2A90B71A812027005AFB08 /* FLFilterViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFilterViewHeader.xib; sourceTree = "<group>"; };
-		CB2EBE6B1A7DCB6800D76528 /* FLImageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageFilterViewController.h; sourceTree = "<group>"; };
-		CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageFilterViewController.m; sourceTree = "<group>"; };
-		CB2EBE701A7DCE0E00D76528 /* FLFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterTableViewCell.h; sourceTree = "<group>"; };
-		CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFilterTableViewCell.m; sourceTree = "<group>"; };
-		CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFilterTableViewCell.xib; sourceTree = "<group>"; };
-		CB2EBE751A7DCED900D76528 /* FLFilterSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterSlider.h; sourceTree = "<group>"; };
-		CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFilterSlider.m; sourceTree = "<group>"; };
-		CB2EBE781A7DD93600D76528 /* FLFilterHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLFilterHelpers.h; sourceTree = "<group>"; };
-		CB2EBE791A7DD98100D76528 /* FLToolsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLToolsStore.h; sourceTree = "<group>"; };
-		CB2EBE7A1A7DD98100D76528 /* FLToolsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLToolsStore.m; sourceTree = "<group>"; };
-		CB2EBE811A7DDB5400D76528 /* FLStyleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLStyleConstants.h; sourceTree = "<group>"; };
-		CB2EBE821A7DDB9400D76528 /* FLComponentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLComponentConstants.h; sourceTree = "<group>"; };
+		067A9FC38B3101CE4C8B6339 /* Pods-Stndout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stndout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stndout/Pods-Stndout.debug.xcconfig"; sourceTree = "<group>"; };
+		3B003C3C13253F1D84B7E4B2 /* Pods-Stndout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stndout.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stndout/Pods-Stndout.release.xcconfig"; sourceTree = "<group>"; };
+		5B38E8EDA9FCF7C3A0052D93 /* libPods-Stndout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stndout.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7CF91A58374B005F6402 /* Stndout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stndout.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB3B7CFD1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB3B7CFE1A58374B005F6402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CB3B7D001A58374B005F6402 /* FLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLAppDelegate.h; sourceTree = "<group>"; };
-		CB3B7D011A58374B005F6402 /* FLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLAppDelegate.m; sourceTree = "<group>"; };
-		CB3B7D031A58374B005F6402 /* FLSelectedPhotosCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLSelectedPhotosCollectionViewController.h; sourceTree = "<group>"; };
-		CB3B7D041A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLSelectedPhotosCollectionViewController.m; sourceTree = "<group>"; };
-		CB3B7D061A58374B005F6402 /* FLSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLSettingsViewController.h; sourceTree = "<group>"; };
-		CB3B7D071A58374B005F6402 /* FLSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLSettingsViewController.m; sourceTree = "<group>"; };
-		CB3B7D0A1A58374B005F6402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CB3B7D0C1A58374B005F6402 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CB3B7D0F1A58374B005F6402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CB3B7D151A58374B005F6402 /* StndoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StndoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3B7D1A1A58374B005F6402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3B7D1B1A58374B005F6402 /* FlameyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlameyTests.m; sourceTree = "<group>"; };
-		CB3B7D301A5860C7005F6402 /* FLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginViewController.h; sourceTree = "<group>"; };
-		CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginViewController.m; sourceTree = "<group>"; };
-		CB3B7D331A586674005F6402 /* FLSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSettings.h; sourceTree = "<group>"; };
-		CB3B7D341A586674005F6402 /* FLSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSettings.m; sourceTree = "<group>"; };
-		CB3B7D361A5867F7005F6402 /* FLErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrorHandler.h; sourceTree = "<group>"; };
-		CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorHandler.m; sourceTree = "<group>"; };
-		CB3C34491AB7BB83006C8C60 /* FLLoginSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginSlide.h; sourceTree = "<group>"; };
-		CB3C344A1AB7BB83006C8C60 /* FLLoginSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginSlide.m; sourceTree = "<group>"; };
-		CB4268C51A7D596900745A9F /* FLViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLViewHelpers.h; sourceTree = "<group>"; };
-		CB4268C61A7D596900745A9F /* FLViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLViewHelpers.m; sourceTree = "<group>"; };
-		CB4ABFE21AB4BF2D00ABD784 /* FLAnnotationNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationNavViewController.h; sourceTree = "<group>"; };
-		CB4ABFE31AB4BF2D00ABD784 /* FLAnnotationNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationNavViewController.m; sourceTree = "<group>"; };
-		CB4ABFE51AB4C29D00ABD784 /* FLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTabBarViewController.h; sourceTree = "<group>"; };
-		CB4ABFE61AB4C29D00ABD784 /* FLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTabBarViewController.m; sourceTree = "<group>"; };
-		CB524F701AB69848000C6228 /* FLLoginSlide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLLoginSlide.xib; sourceTree = "<group>"; };
-		CB5519631ABD547B00CD0C5E /* FLTutorialProcessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialProcessView.h; sourceTree = "<group>"; };
-		CB5519641ABD547B00CD0C5E /* FLTutorialProcessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialProcessView.m; sourceTree = "<group>"; };
-		CB5519661ABD548900CD0C5E /* FLTutorialProcessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialProcessView.xib; sourceTree = "<group>"; };
-		CB6BC4BD1AA57720006D34EF /* FLLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginView.h; sourceTree = "<group>"; };
-		CB6BC4BE1AA57720006D34EF /* FLLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginView.m; sourceTree = "<group>"; };
-		CB6BC4C11AA59467006D34EF /* FLTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialViewController.h; sourceTree = "<group>"; };
-		CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialViewController.m; sourceTree = "<group>"; };
-		CB6CFF261A6C858C00ACD39A /* FLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhoto.h; sourceTree = "<group>"; };
-		CB6CFF271A6C858C00ACD39A /* FLPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhoto.m; sourceTree = "<group>"; };
-		CB6F8CFA1A6B478F00429133 /* FLFacebookAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookAlbumTableViewController.h; sourceTree = "<group>"; };
-		CB6F8CFB1A6B478F00429133 /* FLFacebookAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookAlbumTableViewController.m; sourceTree = "<group>"; };
-		CB6F8CFD1A6B538000429133 /* FLFacebookPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoPickerViewController.h; sourceTree = "<group>"; };
-		CB6F8CFE1A6B538000429133 /* FLFacebookPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoPickerViewController.m; sourceTree = "<group>"; };
-		CB6F8D061A6C83B700429133 /* FLSelectedPhotoStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelectedPhotoStore.h; sourceTree = "<group>"; };
-		CB6F8D071A6C83B700429133 /* FLSelectedPhotoStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectedPhotoStore.m; sourceTree = "<group>"; };
-		CB7BD84C1AC6729E0088F22D /* FLAnnotationInstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationInstructionsViewController.h; sourceTree = "<group>"; };
-		CB7BD84D1AC6729E0088F22D /* FLAnnotationInstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationInstructionsViewController.m; sourceTree = "<group>"; };
-		CB7BD8511AC78A590088F22D /* FLPrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrivacyViewController.h; sourceTree = "<group>"; };
-		CB7BD8521AC78A590088F22D /* FLPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrivacyViewController.m; sourceTree = "<group>"; };
-		CB7BD8541AC78A700088F22D /* FLPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLPrivacyViewController.xib; sourceTree = "<group>"; };
+		CB6FE8271AD0B7FF00AD0BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CB6FE8291AD0B7FF00AD0BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CB6FE82A1AD0B7FF00AD0BD2 /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
+		CB6FE82B1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHelpers.m; sourceTree = "<group>"; };
+		CB6FE82C1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationInstructionsViewController.h; sourceTree = "<group>"; };
+		CB6FE82D1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationInstructionsViewController.m; sourceTree = "<group>"; };
+		CB6FE82E1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationNavViewController.h; sourceTree = "<group>"; };
+		CB6FE82F1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationNavViewController.m; sourceTree = "<group>"; };
+		CB6FE8301AD0B7FF00AD0BD2 /* FLAnnotationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationStore.h; sourceTree = "<group>"; };
+		CB6FE8311AD0B7FF00AD0BD2 /* FLAnnotationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationStore.m; sourceTree = "<group>"; };
+		CB6FE8321AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationTableEmptyMessageView.h; sourceTree = "<group>"; };
+		CB6FE8331AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationTableEmptyMessageView.m; sourceTree = "<group>"; };
+		CB6FE8341AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableEmptyMessageView.xib; sourceTree = "<group>"; };
+		CB6FE8351AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationTableViewCell.h; sourceTree = "<group>"; };
+		CB6FE8361AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationTableViewCell.m; sourceTree = "<group>"; };
+		CB6FE8371AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableViewCell.xib; sourceTree = "<group>"; };
+		CB6FE8381AD0B7FF00AD0BD2 /* FLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAppDelegate.h; sourceTree = "<group>"; };
+		CB6FE8391AD0B7FF00AD0BD2 /* FLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAppDelegate.m; sourceTree = "<group>"; };
+		CB6FE83A1AD0B7FF00AD0BD2 /* FLComponentConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLComponentConstants.h; sourceTree = "<group>"; };
+		CB6FE83B1AD0B7FF00AD0BD2 /* FLContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLContactViewController.h; sourceTree = "<group>"; };
+		CB6FE83C1AD0B7FF00AD0BD2 /* FLContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLContactViewController.m; sourceTree = "<group>"; };
+		CB6FE83D1AD0B7FF00AD0BD2 /* FLContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLContactViewController.xib; sourceTree = "<group>"; };
+		CB6FE83E1AD0B7FF00AD0BD2 /* FLErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrorHandler.h; sourceTree = "<group>"; };
+		CB6FE83F1AD0B7FF00AD0BD2 /* FLErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorHandler.m; sourceTree = "<group>"; };
+		CB6FE8401AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookAlbumTableViewController.h; sourceTree = "<group>"; };
+		CB6FE8411AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookAlbumTableViewController.m; sourceTree = "<group>"; };
+		CB6FE8421AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		CB6FE8431AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		CB6FE8441AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFacebookPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		CB6FE8451AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoPickerViewController.h; sourceTree = "<group>"; };
+		CB6FE8461AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoPickerViewController.m; sourceTree = "<group>"; };
+		CB6FE8471AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookUploadModalViewController.h; sourceTree = "<group>"; };
+		CB6FE8481AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookUploadModalViewController.m; sourceTree = "<group>"; };
+		CB6FE8491AD0B7FF00AD0BD2 /* FLFilterHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterHelpers.h; sourceTree = "<group>"; };
+		CB6FE84A1AD0B7FF00AD0BD2 /* FLFilterSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterSlider.h; sourceTree = "<group>"; };
+		CB6FE84B1AD0B7FF00AD0BD2 /* FLFilterSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFilterSlider.m; sourceTree = "<group>"; };
+		CB6FE84C1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFiltersPromptViewController.h; sourceTree = "<group>"; };
+		CB6FE84D1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFiltersPromptViewController.m; sourceTree = "<group>"; };
+		CB6FE84E1AD0B7FF00AD0BD2 /* FLFiltersStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFiltersStore.h; sourceTree = "<group>"; };
+		CB6FE84F1AD0B7FF00AD0BD2 /* FLFiltersStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFiltersStore.m; sourceTree = "<group>"; };
+		CB6FE8501AD0B7FF00AD0BD2 /* FLFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFilterTableViewCell.h; sourceTree = "<group>"; };
+		CB6FE8511AD0B7FF00AD0BD2 /* FLFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFilterTableViewCell.m; sourceTree = "<group>"; };
+		CB6FE8521AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFilterTableViewCell.xib; sourceTree = "<group>"; };
+		CB6FE8531AD0B7FF00AD0BD2 /* FLFilterViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFilterViewHeader.xib; sourceTree = "<group>"; };
+		CB6FE8541AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageAnnotationViewController.h; sourceTree = "<group>"; };
+		CB6FE8551AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageAnnotationViewController.m; sourceTree = "<group>"; };
+		CB6FE8561AD0B7FF00AD0BD2 /* FLImageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageFilterViewController.h; sourceTree = "<group>"; };
+		CB6FE8571AD0B7FF00AD0BD2 /* FLImageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageFilterViewController.m; sourceTree = "<group>"; };
+		CB6FE8581AD0B7FF00AD0BD2 /* FLLoginSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginSlide.h; sourceTree = "<group>"; };
+		CB6FE8591AD0B7FF00AD0BD2 /* FLLoginSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginSlide.m; sourceTree = "<group>"; };
+		CB6FE85A1AD0B7FF00AD0BD2 /* FLLoginSlide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLLoginSlide.xib; sourceTree = "<group>"; };
+		CB6FE85B1AD0B7FF00AD0BD2 /* FLLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginView.h; sourceTree = "<group>"; };
+		CB6FE85C1AD0B7FF00AD0BD2 /* FLLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginView.m; sourceTree = "<group>"; };
+		CB6FE85D1AD0B7FF00AD0BD2 /* FLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLoginViewController.h; sourceTree = "<group>"; };
+		CB6FE85E1AD0B7FF00AD0BD2 /* FLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLoginViewController.m; sourceTree = "<group>"; };
+		CB6FE85F1AD0B7FF00AD0BD2 /* FLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhoto.h; sourceTree = "<group>"; };
+		CB6FE8601AD0B7FF00AD0BD2 /* FLPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhoto.m; sourceTree = "<group>"; };
+		CB6FE8611AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		CB6FE8621AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		CB6FE8631AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		CB6FE8641AD0B7FF00AD0BD2 /* FLPrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrivacyViewController.h; sourceTree = "<group>"; };
+		CB6FE8651AD0B7FF00AD0BD2 /* FLPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrivacyViewController.m; sourceTree = "<group>"; };
+		CB6FE8661AD0B7FF00AD0BD2 /* FLPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLPrivacyViewController.xib; sourceTree = "<group>"; };
+		CB6FE8671AD0B7FF00AD0BD2 /* FLProcessedImagesStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLProcessedImagesStore.h; sourceTree = "<group>"; };
+		CB6FE8681AD0B7FF00AD0BD2 /* FLProcessedImagesStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLProcessedImagesStore.m; sourceTree = "<group>"; };
+		CB6FE8691AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelectedPhotosCollectionViewController.h; sourceTree = "<group>"; };
+		CB6FE86A1AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectedPhotosCollectionViewController.m; sourceTree = "<group>"; };
+		CB6FE86B1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelectedPhotoStore.h; sourceTree = "<group>"; };
+		CB6FE86C1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectedPhotoStore.m; sourceTree = "<group>"; };
+		CB6FE86D1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelectionCollectionEmptyMessageView.h; sourceTree = "<group>"; };
+		CB6FE86E1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectionCollectionEmptyMessageView.m; sourceTree = "<group>"; };
+		CB6FE86F1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLSelectionCollectionEmptyMessageView.xib; sourceTree = "<group>"; };
+		CB6FE8701AD0B7FF00AD0BD2 /* FLSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSettings.h; sourceTree = "<group>"; };
+		CB6FE8711AD0B7FF00AD0BD2 /* FLSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSettings.m; sourceTree = "<group>"; };
+		CB6FE8721AD0B7FF00AD0BD2 /* FLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSettingsViewController.h; sourceTree = "<group>"; };
+		CB6FE8731AD0B7FF00AD0BD2 /* FLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSettingsViewController.m; sourceTree = "<group>"; };
+		CB6FE8741AD0B7FF00AD0BD2 /* FLStyleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStyleConstants.h; sourceTree = "<group>"; };
+		CB6FE8751AD0B7FF00AD0BD2 /* FLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTabBarViewController.h; sourceTree = "<group>"; };
+		CB6FE8761AD0B7FF00AD0BD2 /* FLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTabBarViewController.m; sourceTree = "<group>"; };
+		CB6FE8771AD0B7FF00AD0BD2 /* FLToolsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLToolsStore.h; sourceTree = "<group>"; };
+		CB6FE8781AD0B7FF00AD0BD2 /* FLToolsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLToolsStore.m; sourceTree = "<group>"; };
+		CB6FE8791AD0B7FF00AD0BD2 /* FLTOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTOSViewController.h; sourceTree = "<group>"; };
+		CB6FE87A1AD0B7FF00AD0BD2 /* FLTOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTOSViewController.m; sourceTree = "<group>"; };
+		CB6FE87B1AD0B7FF00AD0BD2 /* FLTOSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTOSViewController.xib; sourceTree = "<group>"; };
+		CB6FE87C1AD0B7FF00AD0BD2 /* FLTutorialHowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialHowView.h; sourceTree = "<group>"; };
+		CB6FE87D1AD0B7FF00AD0BD2 /* FLTutorialHowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialHowView.m; sourceTree = "<group>"; };
+		CB6FE87E1AD0B7FF00AD0BD2 /* FLTutorialHowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialHowView.xib; sourceTree = "<group>"; };
+		CB6FE87F1AD0B7FF00AD0BD2 /* FLTutorialProcessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialProcessView.h; sourceTree = "<group>"; };
+		CB6FE8801AD0B7FF00AD0BD2 /* FLTutorialProcessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialProcessView.m; sourceTree = "<group>"; };
+		CB6FE8811AD0B7FF00AD0BD2 /* FLTutorialProcessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialProcessView.xib; sourceTree = "<group>"; };
+		CB6FE8821AD0B7FF00AD0BD2 /* FLTutorialResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialResultView.h; sourceTree = "<group>"; };
+		CB6FE8831AD0B7FF00AD0BD2 /* FLTutorialResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialResultView.m; sourceTree = "<group>"; };
+		CB6FE8841AD0B7FF00AD0BD2 /* FLTutorialResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialResultView.xib; sourceTree = "<group>"; };
+		CB6FE8851AD0B7FF00AD0BD2 /* FLTutorialSolutionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialSolutionView.h; sourceTree = "<group>"; };
+		CB6FE8861AD0B7FF00AD0BD2 /* FLTutorialSolutionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialSolutionView.m; sourceTree = "<group>"; };
+		CB6FE8871AD0B7FF00AD0BD2 /* FLTutorialSolutionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialSolutionView.xib; sourceTree = "<group>"; };
+		CB6FE8881AD0B7FF00AD0BD2 /* FLTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialViewController.h; sourceTree = "<group>"; };
+		CB6FE8891AD0B7FF00AD0BD2 /* FLTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialViewController.m; sourceTree = "<group>"; };
+		CB6FE88A1AD0B7FF00AD0BD2 /* FLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUser.h; sourceTree = "<group>"; };
+		CB6FE88B1AD0B7FF00AD0BD2 /* FLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUser.m; sourceTree = "<group>"; };
+		CB6FE88C1AD0B7FF00AD0BD2 /* FLViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLViewHelpers.h; sourceTree = "<group>"; };
+		CB6FE88D1AD0B7FF00AD0BD2 /* FLViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLViewHelpers.m; sourceTree = "<group>"; };
+		CB6FE88E1AD0B7FF00AD0BD2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CB6FE88F1AD0B7FF00AD0BD2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB6FE8901AD0B7FF00AD0BD2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CB6FE8911AD0B7FF00AD0BD2 /* Rochester-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rochester-Regular.ttf"; sourceTree = "<group>"; };
+		CB6FE8931AD0B7FF00AD0BD2 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
+		CB6FE8941AD0B7FF00AD0BD2 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		CB6FE8951AD0B7FF00AD0BD2 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		CB6FE8961AD0B7FF00AD0BD2 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
+		CB6FE8971AD0B7FF00AD0BD2 /* DesignableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableImageView.swift; sourceTree = "<group>"; };
+		CB6FE8981AD0B7FF00AD0BD2 /* DesignableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableLabel.swift; sourceTree = "<group>"; };
+		CB6FE8991AD0B7FF00AD0BD2 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTabBarController.swift; sourceTree = "<group>"; };
+		CB6FE89A1AD0B7FF00AD0BD2 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
+		CB6FE89B1AD0B7FF00AD0BD2 /* DesignableTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextView.swift; sourceTree = "<group>"; };
+		CB6FE89C1AD0B7FF00AD0BD2 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		CB6FE89D1AD0B7FF00AD0BD2 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		CB6FE89E1AD0B7FF00AD0BD2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB6FE89F1AD0B7FF00AD0BD2 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		CB6FE8A01AD0B7FF00AD0BD2 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CB6FE8A11AD0B7FF00AD0BD2 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		CB6FE8A21AD0B7FF00AD0BD2 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		CB6FE8A31AD0B7FF00AD0BD2 /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		CB6FE8A41AD0B7FF00AD0BD2 /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
+		CB6FE8A51AD0B7FF00AD0BD2 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
+		CB6FE8A61AD0B7FF00AD0BD2 /* SpringAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringAnimation.swift; sourceTree = "<group>"; };
+		CB6FE8A71AD0B7FF00AD0BD2 /* SpringButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringButton.swift; sourceTree = "<group>"; };
+		CB6FE8A81AD0B7FF00AD0BD2 /* SpringImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringImageView.swift; sourceTree = "<group>"; };
+		CB6FE8A91AD0B7FF00AD0BD2 /* SpringLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringLabel.swift; sourceTree = "<group>"; };
+		CB6FE8AA1AD0B7FF00AD0BD2 /* SpringTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringTextField.swift; sourceTree = "<group>"; };
+		CB6FE8AB1AD0B7FF00AD0BD2 /* SpringTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringTextView.swift; sourceTree = "<group>"; };
+		CB6FE8AC1AD0B7FF00AD0BD2 /* SpringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringView.swift; sourceTree = "<group>"; };
+		CB6FE8AD1AD0B7FF00AD0BD2 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		CB6FE8AE1AD0B7FF00AD0BD2 /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
+		CB6FE8AF1AD0B7FF00AD0BD2 /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
+		CB6FE8B01AD0B7FF00AD0BD2 /* Walkway_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Black.ttf; sourceTree = "<group>"; };
+		CB6FE8B11AD0B7FF00AD0BD2 /* Walkway_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Bold.ttf; sourceTree = "<group>"; };
+		CB6FE8B21AD0B7FF00AD0BD2 /* Walkway_Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique.ttf; sourceTree = "<group>"; };
+		CB6FE8B31AD0B7FF00AD0BD2 /* Walkway_Oblique_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique_Black.ttf; sourceTree = "<group>"; };
+		CB6FE8B41AD0B7FF00AD0BD2 /* Walkway_Oblique_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique_Bold.ttf; sourceTree = "<group>"; };
+		CB6FE8B51AD0B7FF00AD0BD2 /* Walkway_Oblique_SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique_SemiBold.ttf; sourceTree = "<group>"; };
+		CB6FE8B61AD0B7FF00AD0BD2 /* Walkway_Oblique_UltraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique_UltraBold.ttf; sourceTree = "<group>"; };
+		CB6FE8B71AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_SemiBold.ttf; sourceTree = "<group>"; };
+		CB6FE8B81AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_UltraBold.ttf; sourceTree = "<group>"; };
 		CB7BD8561AC86BB90088F22D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		CB7EF47B1A807BA20084666E /* FLFiltersStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFiltersStore.h; sourceTree = "<group>"; };
-		CB7EF47C1A807BA20084666E /* FLFiltersStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFiltersStore.m; sourceTree = "<group>"; };
-		CB7EF4951A8087110084666E /* Walkway_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Black.ttf; sourceTree = "<group>"; };
-		CB7EF4961A8087110084666E /* Walkway_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Bold.ttf; sourceTree = "<group>"; };
-		CB7EF4971A8087110084666E /* Walkway_Oblique_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique_Black.ttf; sourceTree = "<group>"; };
-		CB7EF4981A8087110084666E /* Walkway_Oblique_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique_Bold.ttf; sourceTree = "<group>"; };
-		CB7EF4991A8087110084666E /* Walkway_Oblique_SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique_SemiBold.ttf; sourceTree = "<group>"; };
-		CB7EF49A1A8087120084666E /* Walkway_Oblique_UltraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique_UltraBold.ttf; sourceTree = "<group>"; };
-		CB7EF49B1A8087120084666E /* Walkway_Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_Oblique.ttf; sourceTree = "<group>"; };
-		CB7EF49C1A8087120084666E /* Walkway_SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_SemiBold.ttf; sourceTree = "<group>"; };
-		CB7EF49D1A8087120084666E /* Walkway_UltraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_UltraBold.ttf; sourceTree = "<group>"; };
-		CB902F9A1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookUploadModalViewController.h; sourceTree = "<group>"; };
-		CB902F9B1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookUploadModalViewController.m; sourceTree = "<group>"; };
-		CB902F9D1A8DC836003D2950 /* FLProcessedImagesStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLProcessedImagesStore.h; sourceTree = "<group>"; };
-		CB902F9E1A8DC836003D2950 /* FLProcessedImagesStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLProcessedImagesStore.m; sourceTree = "<group>"; };
-		CB9324891ABE97E800DB05D5 /* FLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUser.h; sourceTree = "<group>"; };
-		CB93248A1ABE97E800DB05D5 /* FLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUser.m; sourceTree = "<group>"; };
-		CB93248D1ABF4B8B00DB05D5 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
-		CB93248E1ABF4B8B00DB05D5 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
-		CB93248F1ABF4B8B00DB05D5 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		CB9324901ABF4B8B00DB05D5 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
-		CB9324911ABF4B8B00DB05D5 /* DesignableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableImageView.swift; sourceTree = "<group>"; };
-		CB9324921ABF4B8B00DB05D5 /* DesignableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableLabel.swift; sourceTree = "<group>"; };
-		CB9324931ABF4B8B00DB05D5 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTabBarController.swift; sourceTree = "<group>"; };
-		CB9324941ABF4B8B00DB05D5 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
-		CB9324951ABF4B8B00DB05D5 /* DesignableTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextView.swift; sourceTree = "<group>"; };
-		CB9324961ABF4B8B00DB05D5 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
-		CB9324971ABF4B8B00DB05D5 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		CB9324981ABF4B8B00DB05D5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB9324991ABF4B8B00DB05D5 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
-		CB93249A1ABF4B8B00DB05D5 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		CB93249B1ABF4B8B00DB05D5 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
-		CB93249C1ABF4B8B00DB05D5 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
-		CB93249D1ABF4B8B00DB05D5 /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
-		CB93249E1ABF4B8B00DB05D5 /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
-		CB93249F1ABF4B8B00DB05D5 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
-		CB9324A01ABF4B8B00DB05D5 /* SpringAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringAnimation.swift; sourceTree = "<group>"; };
-		CB9324A11ABF4B8B00DB05D5 /* SpringButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringButton.swift; sourceTree = "<group>"; };
-		CB9324A21ABF4B8B00DB05D5 /* SpringImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringImageView.swift; sourceTree = "<group>"; };
-		CB9324A31ABF4B8B00DB05D5 /* SpringLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringLabel.swift; sourceTree = "<group>"; };
-		CB9324A41ABF4B8B00DB05D5 /* SpringTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringTextField.swift; sourceTree = "<group>"; };
-		CB9324A51ABF4B8B00DB05D5 /* SpringTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringTextView.swift; sourceTree = "<group>"; };
-		CB9324A61ABF4B8B00DB05D5 /* SpringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringView.swift; sourceTree = "<group>"; };
-		CB9324A71ABF4B8B00DB05D5 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
-		CB9324A81ABF4B8B00DB05D5 /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
-		CB9324A91ABF4B8B00DB05D5 /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
-		CB9C1D101ABBCB6A002C7FF9 /* FLTutorialResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialResultView.h; sourceTree = "<group>"; };
-		CB9C1D111ABBCB6A002C7FF9 /* FLTutorialResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialResultView.m; sourceTree = "<group>"; };
-		CB9C1D131ABBCBA5002C7FF9 /* FLTutorialResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialResultView.xib; sourceTree = "<group>"; };
-		CBA10D9E1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFacebookPhotoCollectionViewCell.h; sourceTree = "<group>"; };
-		CBA10D9F1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFacebookPhotoCollectionViewCell.m; sourceTree = "<group>"; };
-		CBA10DA01A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFacebookPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
-		CBA780E21A911E8500CE9D84 /* FLAnnotationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationTableViewCell.h; sourceTree = "<group>"; };
-		CBA780E31A911E8500CE9D84 /* FLAnnotationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationTableViewCell.m; sourceTree = "<group>"; };
-		CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableViewCell.xib; sourceTree = "<group>"; };
-		CBA780E81A9123C200CE9D84 /* FLAnnotationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationStore.h; sourceTree = "<group>"; };
-		CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationStore.m; sourceTree = "<group>"; };
-		CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageAnnotationViewController.h; sourceTree = "<group>"; };
-		CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageAnnotationViewController.m; sourceTree = "<group>"; };
-		CBDDEF7E1AA8242700FF4E8D /* FLTutorialSolutionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTutorialSolutionView.xib; sourceTree = "<group>"; };
-		CBDDEF801AA825C400FF4E8D /* FLTutorialSolutionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTutorialSolutionView.h; sourceTree = "<group>"; };
-		CBDDEF811AA825C400FF4E8D /* FLTutorialSolutionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTutorialSolutionView.m; sourceTree = "<group>"; };
-		CBDDEF831AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelectionCollectionEmptyMessageView.h; sourceTree = "<group>"; };
-		CBDDEF841AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectionCollectionEmptyMessageView.m; sourceTree = "<group>"; };
-		CBDDEF861AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLSelectionCollectionEmptyMessageView.xib; sourceTree = "<group>"; };
-		CBDF2CAD1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnnotationTableEmptyMessageView.h; sourceTree = "<group>"; };
-		CBDF2CAE1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnnotationTableEmptyMessageView.m; sourceTree = "<group>"; };
-		CBEC72F61A7D494100F8D0AE /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
-		CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHelpers.m; sourceTree = "<group>"; };
-		CBEE45DD1ABBEE1100C42FE2 /* Rochester-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rochester-Regular.ttf"; sourceTree = "<group>"; };
-		CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAnnotationTableEmptyMessageView.xib; sourceTree = "<group>"; };
-		CBFB80D41A59B3E8001982A6 /* FLPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoCollectionViewCell.h; sourceTree = "<group>"; };
-		CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhotoCollectionViewCell.m; sourceTree = "<group>"; };
-		CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -278,7 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB7BD8571AC86BB90088F22D /* MessageUI.framework in Frameworks */,
-				72FF89A7FAD04AAEA02678DF /* libPods-Flamey.a in Frameworks */,
+				105AA3A97C62B42D69A97607 /* libPods-Stndout.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,8 +305,8 @@
 		103802F0C21E42BBE560C8C2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B972D952EEE5CAB86BF19038 /* Pods-Flamey.debug.xcconfig */,
-				74538D7B189EE09795B7515B /* Pods-Flamey.release.xcconfig */,
+				067A9FC38B3101CE4C8B6339 /* Pods-Stndout.debug.xcconfig */,
+				3B003C3C13253F1D84B7E4B2 /* Pods-Stndout.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -307,59 +317,15 @@
 				CB7BD8561AC86BB90088F22D /* MessageUI.framework */,
 				CBFBFE801A58826B006657CD /* FacebookSDK */,
 				FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */,
+				5B38E8EDA9FCF7C3A0052D93 /* libPods-Stndout.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CB1EE06F1A98647A00400611 /* Contact */ = {
-			isa = PBXGroup;
-			children = (
-				CB1EE06C1A98639F00400611 /* FLContactViewController.h */,
-				CB1EE0701A98649300400611 /* FLContactViewController.xib */,
-				CB1EE06D1A98639F00400611 /* FLContactViewController.m */,
-			);
-			name = Contact;
-			sourceTree = "<group>";
-		};
-		CB1EE0771A98B4B800400611 /* TOS */ = {
-			isa = PBXGroup;
-			children = (
-				CB1EE0781A98B56500400611 /* FLTOSViewController.h */,
-				CB1EE0791A98B56500400611 /* FLTOSViewController.m */,
-				CB1EE07A1A98B56500400611 /* FLTOSViewController.xib */,
-			);
-			name = TOS;
-			sourceTree = "<group>";
-		};
-		CB1F7E9C1ACA6E900063F4EB /* Prompt */ = {
-			isa = PBXGroup;
-			children = (
-				CB1F7E9D1ACA6F6E0063F4EB /* FLFiltersPromptViewController.h */,
-				CB1F7E9E1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m */,
-			);
-			name = Prompt;
-			sourceTree = "<group>";
-		};
-		CB2EBE6A1A7DCB2300D76528 /* Filters */ = {
-			isa = PBXGroup;
-			children = (
-				CB1F7E9C1ACA6E900063F4EB /* Prompt */,
-				CB2EBE6B1A7DCB6800D76528 /* FLImageFilterViewController.h */,
-				CB2EBE6C1A7DCB6800D76528 /* FLImageFilterViewController.m */,
-				CB2EBE701A7DCE0E00D76528 /* FLFilterTableViewCell.h */,
-				CB2EBE711A7DCE0E00D76528 /* FLFilterTableViewCell.m */,
-				CB2EBE721A7DCE0E00D76528 /* FLFilterTableViewCell.xib */,
-				CB2EBE751A7DCED900D76528 /* FLFilterSlider.h */,
-				CB2EBE761A7DCED900D76528 /* FLFilterSlider.m */,
-				CB2A90B71A812027005AFB08 /* FLFilterViewHeader.xib */,
-			);
-			name = Filters;
 			sourceTree = "<group>";
 		};
 		CB3B7CF01A58374B005F6402 = {
 			isa = PBXGroup;
 			children = (
-				CB3B7CFB1A58374B005F6402 /* Stndout */,
+				CB6FE8251AD0B7FF00AD0BD2 /* Stndout */,
 				CB3B7D181A58374B005F6402 /* StndoutTests */,
 				CB3B7CFA1A58374B005F6402 /* Products */,
 				8653CABC8D15495390A3E34D /* Frameworks */,
@@ -374,46 +340,6 @@
 				CB3B7D151A58374B005F6402 /* StndoutTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CB3B7CFB1A58374B005F6402 /* Stndout */ = {
-			isa = PBXGroup;
-			children = (
-				CB93248C1ABF4B8B00DB05D5 /* Spring */,
-				CB6BC4C01AA5943B006D34EF /* Tutorial */,
-				CB902FA01A8DCB28003D2950 /* UploadImages */,
-				CB7EF4931A8086FF0084666E /* Assets */,
-				CB2EBE6A1A7DCB2300D76528 /* Filters */,
-				CBEC72F51A7D492800F8D0AE /* Helpers */,
-				CB6CFF251A6C852800ACD39A /* Models */,
-				CB6F8D051A6C837200429133 /* Stores */,
-				CB3B7D2F1A5860A5005F6402 /* Login */,
-				CB3B7D001A58374B005F6402 /* FLAppDelegate.h */,
-				CBF5B64E1A7CA234000F07AF /* FLSelectedPhotos */,
-				CBF5B64D1A7CA1AB000F07AF /* FacebookAlbumTable */,
-				CBF5B64C1A7CA195000F07AF /* FacebookPhotoPicker */,
-				CB3B7D011A58374B005F6402 /* FLAppDelegate.m */,
-				CBF5B6511A7CA293000F07AF /* Settings */,
-				CB3B7D091A58374B005F6402 /* Main.storyboard */,
-				CB3B7D0C1A58374B005F6402 /* Images.xcassets */,
-				CB3B7D0E1A58374B005F6402 /* LaunchScreen.xib */,
-				CB3B7CFC1A58374B005F6402 /* Supporting Files */,
-				CBF5B6521A7CA2B5000F07AF /* Utils */,
-				CBD126BD1A8BCF0C00BED835 /* AnnotateImage */,
-				CB4ABFE51AB4C29D00ABD784 /* FLTabBarViewController.h */,
-				CB4ABFE61AB4C29D00ABD784 /* FLTabBarViewController.m */,
-			);
-			name = Stndout;
-			path = Flamey;
-			sourceTree = "<group>";
-		};
-		CB3B7CFC1A58374B005F6402 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CB3B7CFD1A58374B005F6402 /* Info.plist */,
-				CB3B7CFE1A58374B005F6402 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CB3B7D181A58374B005F6402 /* StndoutTests */ = {
@@ -434,255 +360,163 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CB3B7D2F1A5860A5005F6402 /* Login */ = {
+		CB6FE8251AD0B7FF00AD0BD2 /* Stndout */ = {
 			isa = PBXGroup;
 			children = (
-				CB3B7D301A5860C7005F6402 /* FLLoginViewController.h */,
-				CB3B7D311A5860C7005F6402 /* FLLoginViewController.m */,
-				CB6BC4BD1AA57720006D34EF /* FLLoginView.h */,
-				CB6BC4BE1AA57720006D34EF /* FLLoginView.m */,
-				CB524F701AB69848000C6228 /* FLLoginSlide.xib */,
-				CB3C34491AB7BB83006C8C60 /* FLLoginSlide.h */,
-				CB3C344A1AB7BB83006C8C60 /* FLLoginSlide.m */,
+				CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */,
+				CB6FE8281AD0B7FF00AD0BD2 /* Main.storyboard */,
+				CB6FE82A1AD0B7FF00AD0BD2 /* CollectionViewHelpers.h */,
+				CB6FE82B1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m */,
+				CB6FE82C1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.h */,
+				CB6FE82D1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.m */,
+				CB6FE82E1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.h */,
+				CB6FE82F1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.m */,
+				CB6FE8301AD0B7FF00AD0BD2 /* FLAnnotationStore.h */,
+				CB6FE8311AD0B7FF00AD0BD2 /* FLAnnotationStore.m */,
+				CB6FE8321AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.h */,
+				CB6FE8331AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m */,
+				CB6FE8341AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.xib */,
+				CB6FE8351AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.h */,
+				CB6FE8361AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m */,
+				CB6FE8371AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.xib */,
+				CB6FE8381AD0B7FF00AD0BD2 /* FLAppDelegate.h */,
+				CB6FE8391AD0B7FF00AD0BD2 /* FLAppDelegate.m */,
+				CB6FE83A1AD0B7FF00AD0BD2 /* FLComponentConstants.h */,
+				CB6FE83B1AD0B7FF00AD0BD2 /* FLContactViewController.h */,
+				CB6FE83C1AD0B7FF00AD0BD2 /* FLContactViewController.m */,
+				CB6FE83D1AD0B7FF00AD0BD2 /* FLContactViewController.xib */,
+				CB6FE83E1AD0B7FF00AD0BD2 /* FLErrorHandler.h */,
+				CB6FE83F1AD0B7FF00AD0BD2 /* FLErrorHandler.m */,
+				CB6FE8401AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.h */,
+				CB6FE8411AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m */,
+				CB6FE8421AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.h */,
+				CB6FE8431AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.m */,
+				CB6FE8441AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.xib */,
+				CB6FE8451AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.h */,
+				CB6FE8461AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.m */,
+				CB6FE8471AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.h */,
+				CB6FE8481AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.m */,
+				CB6FE8491AD0B7FF00AD0BD2 /* FLFilterHelpers.h */,
+				CB6FE84A1AD0B7FF00AD0BD2 /* FLFilterSlider.h */,
+				CB6FE84B1AD0B7FF00AD0BD2 /* FLFilterSlider.m */,
+				CB6FE84C1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.h */,
+				CB6FE84D1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.m */,
+				CB6FE84E1AD0B7FF00AD0BD2 /* FLFiltersStore.h */,
+				CB6FE84F1AD0B7FF00AD0BD2 /* FLFiltersStore.m */,
+				CB6FE8501AD0B7FF00AD0BD2 /* FLFilterTableViewCell.h */,
+				CB6FE8511AD0B7FF00AD0BD2 /* FLFilterTableViewCell.m */,
+				CB6FE8521AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib */,
+				CB6FE8531AD0B7FF00AD0BD2 /* FLFilterViewHeader.xib */,
+				CB6FE8541AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.h */,
+				CB6FE8551AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.m */,
+				CB6FE8561AD0B7FF00AD0BD2 /* FLImageFilterViewController.h */,
+				CB6FE8571AD0B7FF00AD0BD2 /* FLImageFilterViewController.m */,
+				CB6FE8581AD0B7FF00AD0BD2 /* FLLoginSlide.h */,
+				CB6FE8591AD0B7FF00AD0BD2 /* FLLoginSlide.m */,
+				CB6FE85A1AD0B7FF00AD0BD2 /* FLLoginSlide.xib */,
+				CB6FE85B1AD0B7FF00AD0BD2 /* FLLoginView.h */,
+				CB6FE85C1AD0B7FF00AD0BD2 /* FLLoginView.m */,
+				CB6FE85D1AD0B7FF00AD0BD2 /* FLLoginViewController.h */,
+				CB6FE85E1AD0B7FF00AD0BD2 /* FLLoginViewController.m */,
+				CB6FE85F1AD0B7FF00AD0BD2 /* FLPhoto.h */,
+				CB6FE8601AD0B7FF00AD0BD2 /* FLPhoto.m */,
+				CB6FE8611AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.h */,
+				CB6FE8621AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.m */,
+				CB6FE8631AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.xib */,
+				CB6FE8641AD0B7FF00AD0BD2 /* FLPrivacyViewController.h */,
+				CB6FE8651AD0B7FF00AD0BD2 /* FLPrivacyViewController.m */,
+				CB6FE8661AD0B7FF00AD0BD2 /* FLPrivacyViewController.xib */,
+				CB6FE8671AD0B7FF00AD0BD2 /* FLProcessedImagesStore.h */,
+				CB6FE8681AD0B7FF00AD0BD2 /* FLProcessedImagesStore.m */,
+				CB6FE8691AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.h */,
+				CB6FE86A1AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.m */,
+				CB6FE86B1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.h */,
+				CB6FE86C1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.m */,
+				CB6FE86D1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.h */,
+				CB6FE86E1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m */,
+				CB6FE86F1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.xib */,
+				CB6FE8701AD0B7FF00AD0BD2 /* FLSettings.h */,
+				CB6FE8711AD0B7FF00AD0BD2 /* FLSettings.m */,
+				CB6FE8721AD0B7FF00AD0BD2 /* FLSettingsViewController.h */,
+				CB6FE8731AD0B7FF00AD0BD2 /* FLSettingsViewController.m */,
+				CB6FE8741AD0B7FF00AD0BD2 /* FLStyleConstants.h */,
+				CB6FE8751AD0B7FF00AD0BD2 /* FLTabBarViewController.h */,
+				CB6FE8761AD0B7FF00AD0BD2 /* FLTabBarViewController.m */,
+				CB6FE8771AD0B7FF00AD0BD2 /* FLToolsStore.h */,
+				CB6FE8781AD0B7FF00AD0BD2 /* FLToolsStore.m */,
+				CB6FE8791AD0B7FF00AD0BD2 /* FLTOSViewController.h */,
+				CB6FE87A1AD0B7FF00AD0BD2 /* FLTOSViewController.m */,
+				CB6FE87B1AD0B7FF00AD0BD2 /* FLTOSViewController.xib */,
+				CB6FE87C1AD0B7FF00AD0BD2 /* FLTutorialHowView.h */,
+				CB6FE87D1AD0B7FF00AD0BD2 /* FLTutorialHowView.m */,
+				CB6FE87E1AD0B7FF00AD0BD2 /* FLTutorialHowView.xib */,
+				CB6FE87F1AD0B7FF00AD0BD2 /* FLTutorialProcessView.h */,
+				CB6FE8801AD0B7FF00AD0BD2 /* FLTutorialProcessView.m */,
+				CB6FE8811AD0B7FF00AD0BD2 /* FLTutorialProcessView.xib */,
+				CB6FE8821AD0B7FF00AD0BD2 /* FLTutorialResultView.h */,
+				CB6FE8831AD0B7FF00AD0BD2 /* FLTutorialResultView.m */,
+				CB6FE8841AD0B7FF00AD0BD2 /* FLTutorialResultView.xib */,
+				CB6FE8851AD0B7FF00AD0BD2 /* FLTutorialSolutionView.h */,
+				CB6FE8861AD0B7FF00AD0BD2 /* FLTutorialSolutionView.m */,
+				CB6FE8871AD0B7FF00AD0BD2 /* FLTutorialSolutionView.xib */,
+				CB6FE8881AD0B7FF00AD0BD2 /* FLTutorialViewController.h */,
+				CB6FE8891AD0B7FF00AD0BD2 /* FLTutorialViewController.m */,
+				CB6FE88A1AD0B7FF00AD0BD2 /* FLUser.h */,
+				CB6FE88B1AD0B7FF00AD0BD2 /* FLUser.m */,
+				CB6FE88C1AD0B7FF00AD0BD2 /* FLViewHelpers.h */,
+				CB6FE88D1AD0B7FF00AD0BD2 /* FLViewHelpers.m */,
+				CB6FE88E1AD0B7FF00AD0BD2 /* Images.xcassets */,
+				CB6FE88F1AD0B7FF00AD0BD2 /* Info.plist */,
+				CB6FE8901AD0B7FF00AD0BD2 /* main.m */,
+				CB6FE8911AD0B7FF00AD0BD2 /* Rochester-Regular.ttf */,
+				CB6FE8921AD0B7FF00AD0BD2 /* Spring */,
+				CB6FE8B01AD0B7FF00AD0BD2 /* Walkway_Black.ttf */,
+				CB6FE8B11AD0B7FF00AD0BD2 /* Walkway_Bold.ttf */,
+				CB6FE8B21AD0B7FF00AD0BD2 /* Walkway_Oblique.ttf */,
+				CB6FE8B31AD0B7FF00AD0BD2 /* Walkway_Oblique_Black.ttf */,
+				CB6FE8B41AD0B7FF00AD0BD2 /* Walkway_Oblique_Bold.ttf */,
+				CB6FE8B51AD0B7FF00AD0BD2 /* Walkway_Oblique_SemiBold.ttf */,
+				CB6FE8B61AD0B7FF00AD0BD2 /* Walkway_Oblique_UltraBold.ttf */,
+				CB6FE8B71AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf */,
+				CB6FE8B81AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf */,
 			);
-			name = Login;
-			sourceTree = "<group>";
+			path = Stndout;
+			sourceTree = SOURCE_ROOT;
 		};
-		CB6BC4C01AA5943B006D34EF /* Tutorial */ = {
+		CB6FE8921AD0B7FF00AD0BD2 /* Spring */ = {
 			isa = PBXGroup;
 			children = (
-				CB6BC4C11AA59467006D34EF /* FLTutorialViewController.h */,
-				CB6BC4C21AA59467006D34EF /* FLTutorialViewController.m */,
-				CBDDEF7E1AA8242700FF4E8D /* FLTutorialSolutionView.xib */,
-				CBDDEF801AA825C400FF4E8D /* FLTutorialSolutionView.h */,
-				CBDDEF811AA825C400FF4E8D /* FLTutorialSolutionView.m */,
-				CB0744961AAD6DC800DB722E /* FLTutorialHowView.h */,
-				CB07449B1AAD6DF100DB722E /* FLTutorialHowView.xib */,
-				CB0744971AAD6DC800DB722E /* FLTutorialHowView.m */,
-				CB9C1D101ABBCB6A002C7FF9 /* FLTutorialResultView.h */,
-				CB9C1D111ABBCB6A002C7FF9 /* FLTutorialResultView.m */,
-				CB9C1D131ABBCBA5002C7FF9 /* FLTutorialResultView.xib */,
-				CB5519631ABD547B00CD0C5E /* FLTutorialProcessView.h */,
-				CB5519641ABD547B00CD0C5E /* FLTutorialProcessView.m */,
-				CB5519661ABD548900CD0C5E /* FLTutorialProcessView.xib */,
-			);
-			name = Tutorial;
-			sourceTree = "<group>";
-		};
-		CB6CFF251A6C852800ACD39A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CB6CFF261A6C858C00ACD39A /* FLPhoto.h */,
-				CB6CFF271A6C858C00ACD39A /* FLPhoto.m */,
-				CB9324891ABE97E800DB05D5 /* FLUser.h */,
-				CB93248A1ABE97E800DB05D5 /* FLUser.m */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		CB6F8D051A6C837200429133 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				CB6F8D061A6C83B700429133 /* FLSelectedPhotoStore.h */,
-				CB6F8D071A6C83B700429133 /* FLSelectedPhotoStore.m */,
-				CB2EBE791A7DD98100D76528 /* FLToolsStore.h */,
-				CB2EBE7A1A7DD98100D76528 /* FLToolsStore.m */,
-				CB7EF47B1A807BA20084666E /* FLFiltersStore.h */,
-				CB7EF47C1A807BA20084666E /* FLFiltersStore.m */,
-				CB902F9D1A8DC836003D2950 /* FLProcessedImagesStore.h */,
-				CB902F9E1A8DC836003D2950 /* FLProcessedImagesStore.m */,
-				CBA780E81A9123C200CE9D84 /* FLAnnotationStore.h */,
-				CBA780E91A9123C200CE9D84 /* FLAnnotationStore.m */,
-			);
-			name = Stores;
-			sourceTree = "<group>";
-		};
-		CB7BD8501AC78A3F0088F22D /* Privacy */ = {
-			isa = PBXGroup;
-			children = (
-				CB7BD8511AC78A590088F22D /* FLPrivacyViewController.h */,
-				CB7BD8521AC78A590088F22D /* FLPrivacyViewController.m */,
-				CB7BD8541AC78A700088F22D /* FLPrivacyViewController.xib */,
-			);
-			name = Privacy;
-			sourceTree = "<group>";
-		};
-		CB7EF4931A8086FF0084666E /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				CB7EF4941A8087050084666E /* Fonts */,
-			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
-		CB7EF4941A8087050084666E /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				CBEE45DD1ABBEE1100C42FE2 /* Rochester-Regular.ttf */,
-				CB7EF4951A8087110084666E /* Walkway_Black.ttf */,
-				CB7EF4961A8087110084666E /* Walkway_Bold.ttf */,
-				CB7EF4971A8087110084666E /* Walkway_Oblique_Black.ttf */,
-				CB7EF4981A8087110084666E /* Walkway_Oblique_Bold.ttf */,
-				CB7EF4991A8087110084666E /* Walkway_Oblique_SemiBold.ttf */,
-				CB7EF49A1A8087120084666E /* Walkway_Oblique_UltraBold.ttf */,
-				CB7EF49B1A8087120084666E /* Walkway_Oblique.ttf */,
-				CB7EF49C1A8087120084666E /* Walkway_SemiBold.ttf */,
-				CB7EF49D1A8087120084666E /* Walkway_UltraBold.ttf */,
-			);
-			name = Fonts;
-			sourceTree = "<group>";
-		};
-		CB902FA01A8DCB28003D2950 /* UploadImages */ = {
-			isa = PBXGroup;
-			children = (
-				CB902F9A1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.h */,
-				CB902F9B1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m */,
-			);
-			name = UploadImages;
-			sourceTree = "<group>";
-		};
-		CB93248C1ABF4B8B00DB05D5 /* Spring */ = {
-			isa = PBXGroup;
-			children = (
-				CB93248D1ABF4B8B00DB05D5 /* AsyncButton.swift */,
-				CB93248E1ABF4B8B00DB05D5 /* AsyncImageView.swift */,
-				CB93248F1ABF4B8B00DB05D5 /* BlurView.swift */,
-				CB9324901ABF4B8B00DB05D5 /* DesignableButton.swift */,
-				CB9324911ABF4B8B00DB05D5 /* DesignableImageView.swift */,
-				CB9324921ABF4B8B00DB05D5 /* DesignableLabel.swift */,
-				CB9324931ABF4B8B00DB05D5 /* DesignableTabBarController.swift */,
-				CB9324941ABF4B8B00DB05D5 /* DesignableTextField.swift */,
-				CB9324951ABF4B8B00DB05D5 /* DesignableTextView.swift */,
-				CB9324961ABF4B8B00DB05D5 /* DesignableView.swift */,
-				CB9324971ABF4B8B00DB05D5 /* ImageLoader.swift */,
-				CB9324981ABF4B8B00DB05D5 /* Info.plist */,
-				CB9324991ABF4B8B00DB05D5 /* KeyboardLayoutConstraint.swift */,
-				CB93249A1ABF4B8B00DB05D5 /* LoadingView.swift */,
-				CB93249B1ABF4B8B00DB05D5 /* LoadingView.xib */,
-				CB93249C1ABF4B8B00DB05D5 /* Misc.swift */,
-				CB93249D1ABF4B8B00DB05D5 /* SoundPlayer.swift */,
-				CB93249E1ABF4B8B00DB05D5 /* Spring.h */,
-				CB93249F1ABF4B8B00DB05D5 /* Spring.swift */,
-				CB9324A01ABF4B8B00DB05D5 /* SpringAnimation.swift */,
-				CB9324A11ABF4B8B00DB05D5 /* SpringButton.swift */,
-				CB9324A21ABF4B8B00DB05D5 /* SpringImageView.swift */,
-				CB9324A31ABF4B8B00DB05D5 /* SpringLabel.swift */,
-				CB9324A41ABF4B8B00DB05D5 /* SpringTextField.swift */,
-				CB9324A51ABF4B8B00DB05D5 /* SpringTextView.swift */,
-				CB9324A61ABF4B8B00DB05D5 /* SpringView.swift */,
-				CB9324A71ABF4B8B00DB05D5 /* TransitionManager.swift */,
-				CB9324A81ABF4B8B00DB05D5 /* TransitionZoom.swift */,
-				CB9324A91ABF4B8B00DB05D5 /* UnwindSegue.swift */,
+				CB6FE8931AD0B7FF00AD0BD2 /* AsyncButton.swift */,
+				CB6FE8941AD0B7FF00AD0BD2 /* AsyncImageView.swift */,
+				CB6FE8951AD0B7FF00AD0BD2 /* BlurView.swift */,
+				CB6FE8961AD0B7FF00AD0BD2 /* DesignableButton.swift */,
+				CB6FE8971AD0B7FF00AD0BD2 /* DesignableImageView.swift */,
+				CB6FE8981AD0B7FF00AD0BD2 /* DesignableLabel.swift */,
+				CB6FE8991AD0B7FF00AD0BD2 /* DesignableTabBarController.swift */,
+				CB6FE89A1AD0B7FF00AD0BD2 /* DesignableTextField.swift */,
+				CB6FE89B1AD0B7FF00AD0BD2 /* DesignableTextView.swift */,
+				CB6FE89C1AD0B7FF00AD0BD2 /* DesignableView.swift */,
+				CB6FE89D1AD0B7FF00AD0BD2 /* ImageLoader.swift */,
+				CB6FE89E1AD0B7FF00AD0BD2 /* Info.plist */,
+				CB6FE89F1AD0B7FF00AD0BD2 /* KeyboardLayoutConstraint.swift */,
+				CB6FE8A01AD0B7FF00AD0BD2 /* LoadingView.swift */,
+				CB6FE8A11AD0B7FF00AD0BD2 /* LoadingView.xib */,
+				CB6FE8A21AD0B7FF00AD0BD2 /* Misc.swift */,
+				CB6FE8A31AD0B7FF00AD0BD2 /* SoundPlayer.swift */,
+				CB6FE8A41AD0B7FF00AD0BD2 /* Spring.h */,
+				CB6FE8A51AD0B7FF00AD0BD2 /* Spring.swift */,
+				CB6FE8A61AD0B7FF00AD0BD2 /* SpringAnimation.swift */,
+				CB6FE8A71AD0B7FF00AD0BD2 /* SpringButton.swift */,
+				CB6FE8A81AD0B7FF00AD0BD2 /* SpringImageView.swift */,
+				CB6FE8A91AD0B7FF00AD0BD2 /* SpringLabel.swift */,
+				CB6FE8AA1AD0B7FF00AD0BD2 /* SpringTextField.swift */,
+				CB6FE8AB1AD0B7FF00AD0BD2 /* SpringTextView.swift */,
+				CB6FE8AC1AD0B7FF00AD0BD2 /* SpringView.swift */,
+				CB6FE8AD1AD0B7FF00AD0BD2 /* TransitionManager.swift */,
+				CB6FE8AE1AD0B7FF00AD0BD2 /* TransitionZoom.swift */,
+				CB6FE8AF1AD0B7FF00AD0BD2 /* UnwindSegue.swift */,
 			);
 			path = Spring;
-			sourceTree = "<group>";
-		};
-		CBD126BD1A8BCF0C00BED835 /* AnnotateImage */ = {
-			isa = PBXGroup;
-			children = (
-				CBD126BA1A8BCEFD00BED835 /* FLImageAnnotationViewController.h */,
-				CBD126BB1A8BCEFD00BED835 /* FLImageAnnotationViewController.m */,
-				CBA780E21A911E8500CE9D84 /* FLAnnotationTableViewCell.h */,
-				CBA780E31A911E8500CE9D84 /* FLAnnotationTableViewCell.m */,
-				CBA780E41A911E8500CE9D84 /* FLAnnotationTableViewCell.xib */,
-				CBEE93361AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib */,
-				CBDF2CAD1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.h */,
-				CBDF2CAE1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.m */,
-				CB4ABFE21AB4BF2D00ABD784 /* FLAnnotationNavViewController.h */,
-				CB4ABFE31AB4BF2D00ABD784 /* FLAnnotationNavViewController.m */,
-				CB7BD84C1AC6729E0088F22D /* FLAnnotationInstructionsViewController.h */,
-				CB7BD84D1AC6729E0088F22D /* FLAnnotationInstructionsViewController.m */,
-			);
-			name = AnnotateImage;
-			sourceTree = "<group>";
-		};
-		CBEC72F51A7D492800F8D0AE /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				CBEC72F61A7D494100F8D0AE /* CollectionViewHelpers.h */,
-				CBEC72F71A7D494100F8D0AE /* CollectionViewHelpers.m */,
-				CB4268C51A7D596900745A9F /* FLViewHelpers.h */,
-				CB4268C61A7D596900745A9F /* FLViewHelpers.m */,
-				CB2EBE781A7DD93600D76528 /* FLFilterHelpers.h */,
-				CB2EBE811A7DDB5400D76528 /* FLStyleConstants.h */,
-				CB2EBE821A7DDB9400D76528 /* FLComponentConstants.h */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
-		CBF5B64C1A7CA195000F07AF /* FacebookPhotoPicker */ = {
-			isa = PBXGroup;
-			children = (
-				CB6F8CFD1A6B538000429133 /* FLFacebookPhotoPickerViewController.h */,
-				CB6F8CFE1A6B538000429133 /* FLFacebookPhotoPickerViewController.m */,
-				CBF5B6501A7CA288000F07AF /* Cell */,
-			);
-			name = FacebookPhotoPicker;
-			sourceTree = "<group>";
-		};
-		CBF5B64D1A7CA1AB000F07AF /* FacebookAlbumTable */ = {
-			isa = PBXGroup;
-			children = (
-				CB6F8CFA1A6B478F00429133 /* FLFacebookAlbumTableViewController.h */,
-				CB6F8CFB1A6B478F00429133 /* FLFacebookAlbumTableViewController.m */,
-			);
-			name = FacebookAlbumTable;
-			sourceTree = "<group>";
-		};
-		CBF5B64E1A7CA234000F07AF /* FLSelectedPhotos */ = {
-			isa = PBXGroup;
-			children = (
-				CB3B7D031A58374B005F6402 /* FLSelectedPhotosCollectionViewController.h */,
-				CB3B7D041A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m */,
-				CBF5B64F1A7CA26A000F07AF /* Cell */,
-				CBDDEF831AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.h */,
-				CBDDEF841AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m */,
-				CBDDEF861AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib */,
-			);
-			name = FLSelectedPhotos;
-			sourceTree = "<group>";
-		};
-		CBF5B64F1A7CA26A000F07AF /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				CBFB80D61A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib */,
-				CBFB80D41A59B3E8001982A6 /* FLPhotoCollectionViewCell.h */,
-				CBFB80D51A59B3E8001982A6 /* FLPhotoCollectionViewCell.m */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		CBF5B6501A7CA288000F07AF /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				CBA10D9E1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.h */,
-				CBA10D9F1A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m */,
-				CBA10DA01A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		CBF5B6511A7CA293000F07AF /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				CB7BD8501AC78A3F0088F22D /* Privacy */,
-				CB1EE0771A98B4B800400611 /* TOS */,
-				CB1EE06F1A98647A00400611 /* Contact */,
-				CB3B7D061A58374B005F6402 /* FLSettingsViewController.h */,
-				CB3B7D071A58374B005F6402 /* FLSettingsViewController.m */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
-		CBF5B6521A7CA2B5000F07AF /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				CB3B7D361A5867F7005F6402 /* FLErrorHandler.h */,
-				CB3B7D371A5867F7005F6402 /* FLErrorHandler.m */,
-				CB3B7D331A586674005F6402 /* FLSettings.h */,
-				CB3B7D341A586674005F6402 /* FLSettings.m */,
-			);
-			name = Utils;
 			sourceTree = "<group>";
 		};
 		CBFBFE801A58826B006657CD /* FacebookSDK */ = {
@@ -781,27 +615,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3B7D0B1A58374B005F6402 /* Main.storyboard in Resources */,
-				CBFB80D81A59B3E8001982A6 /* FLPhotoCollectionViewCell.xib in Resources */,
-				CBDDEF7F1AA8242700FF4E8D /* FLTutorialSolutionView.xib in Resources */,
-				CB3B7D101A58374B005F6402 /* LaunchScreen.xib in Resources */,
-				CB3B7D0D1A58374B005F6402 /* Images.xcassets in Resources */,
-				CB524F711AB69848000C6228 /* FLLoginSlide.xib in Resources */,
-				CB07449C1AAD6DF100DB722E /* FLTutorialHowView.xib in Resources */,
-				CBEE45DE1ABBEE1100C42FE2 /* Rochester-Regular.ttf in Resources */,
-				CB2EBE741A7DCE0E00D76528 /* FLFilterTableViewCell.xib in Resources */,
-				CB9324B81ABF4B8B00DB05D5 /* LoadingView.xib in Resources */,
-				CB9324B51ABF4B8B00DB05D5 /* Info.plist in Resources */,
-				CBA10DA21A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
-				CB5519671ABD548900CD0C5E /* FLTutorialProcessView.xib in Resources */,
-				CB9C1D141ABBCBA5002C7FF9 /* FLTutorialResultView.xib in Resources */,
-				CB7BD8551AC78A700088F22D /* FLPrivacyViewController.xib in Resources */,
-				CBA780E61A911E8500CE9D84 /* FLAnnotationTableViewCell.xib in Resources */,
-				CB2A90B81A812027005AFB08 /* FLFilterViewHeader.xib in Resources */,
-				CBEE93371AA2B98E00BA44FD /* FLAnnotationTableEmptyMessageView.xib in Resources */,
-				CB1EE0711A98649300400611 /* FLContactViewController.xib in Resources */,
-				CBDDEF871AABB73200FF4E8D /* FLSelectionCollectionEmptyMessageView.xib in Resources */,
-				CB1EE07C1A98B56500400611 /* FLTOSViewController.xib in Resources */,
+				CB6FE8C91AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.xib in Resources */,
+				CB6FE8F31AD0B7FF00AD0BD2 /* Images.xcassets in Resources */,
+				CB6FE9171AD0B7FF00AD0BD2 /* Walkway_Oblique_Bold.ttf in Resources */,
+				CB6FE8C21AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.xib in Resources */,
+				CB6FE8E91AD0B7FF00AD0BD2 /* FLTutorialHowView.xib in Resources */,
+				CB6FE8D51AD0B7FF00AD0BD2 /* FLLoginSlide.xib in Resources */,
+				CB6FE8D01AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib in Resources */,
+				CB6FE8ED1AD0B7FF00AD0BD2 /* FLTutorialResultView.xib in Resources */,
+				CB6FE91A1AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf in Resources */,
+				CB6FE8EB1AD0B7FF00AD0BD2 /* FLTutorialProcessView.xib in Resources */,
+				CB6FE9191AD0B7FF00AD0BD2 /* Walkway_Oblique_UltraBold.ttf in Resources */,
+				CB6FE8E71AD0B7FF00AD0BD2 /* FLTOSViewController.xib in Resources */,
+				CB6FE8E11AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.xib in Resources */,
+				CB6FE9021AD0B7FF00AD0BD2 /* Info.plist in Resources */,
+				CB6FE8D11AD0B7FF00AD0BD2 /* FLFilterViewHeader.xib in Resources */,
+				CB6FE91B1AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf in Resources */,
+				CB6FE8C01AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.xib in Resources */,
+				CB6FE9161AD0B7FF00AD0BD2 /* Walkway_Oblique_Black.ttf in Resources */,
+				CB6FE8DA1AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.xib in Resources */,
+				CB6FE8BA1AD0B7FF00AD0BD2 /* Main.storyboard in Resources */,
+				CB6FE9151AD0B7FF00AD0BD2 /* Walkway_Oblique.ttf in Resources */,
+				CB6FE9131AD0B7FF00AD0BD2 /* Walkway_Black.ttf in Resources */,
+				CB6FE8F61AD0B7FF00AD0BD2 /* Rochester-Regular.ttf in Resources */,
+				CB6FE9141AD0B7FF00AD0BD2 /* Walkway_Bold.ttf in Resources */,
+				CB6FE8EF1AD0B7FF00AD0BD2 /* FLTutorialSolutionView.xib in Resources */,
+				CB6FE8DC1AD0B7FF00AD0BD2 /* FLPrivacyViewController.xib in Resources */,
+				CB6FE9181AD0B7FF00AD0BD2 /* Walkway_Oblique_SemiBold.ttf in Resources */,
+				CB6FE8C51AD0B7FF00AD0BD2 /* FLContactViewController.xib in Resources */,
+				CB6FE8B91AD0B7FF00AD0BD2 /* LaunchScreen.xib in Resources */,
+				CB6FE9051AD0B7FF00AD0BD2 /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,7 +685,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flamey/Pods-Flamey-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stndout/Pods-Stndout-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -852,74 +695,74 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB9C1D121ABBCB6A002C7FF9 /* FLTutorialResultView.m in Sources */,
-				CB6CFF281A6C858C00ACD39A /* FLPhoto.m in Sources */,
-				CB9324BD1ABF4B8B00DB05D5 /* SpringButton.swift in Sources */,
-				CB9324B61ABF4B8B00DB05D5 /* KeyboardLayoutConstraint.swift in Sources */,
-				CB3C344B1AB7BB83006C8C60 /* FLLoginSlide.m in Sources */,
-				CB0744981AAD6DC800DB722E /* FLTutorialHowView.m in Sources */,
-				CB9324B31ABF4B8B00DB05D5 /* DesignableView.swift in Sources */,
-				CB3B7D081A58374B005F6402 /* FLSettingsViewController.m in Sources */,
-				CB2EBE6E1A7DCB6800D76528 /* FLImageFilterViewController.m in Sources */,
-				CB9324AA1ABF4B8B00DB05D5 /* AsyncButton.swift in Sources */,
-				CB7EF47D1A807BA20084666E /* FLFiltersStore.m in Sources */,
-				CB6F8CFC1A6B478F00429133 /* FLFacebookAlbumTableViewController.m in Sources */,
-				CB9324C01ABF4B8B00DB05D5 /* SpringTextField.swift in Sources */,
-				CB9324BC1ABF4B8B00DB05D5 /* SpringAnimation.swift in Sources */,
-				CBFB80D71A59B3E8001982A6 /* FLPhotoCollectionViewCell.m in Sources */,
-				CB9324C11ABF4B8B00DB05D5 /* SpringTextView.swift in Sources */,
-				CB4ABFE41AB4BF2D00ABD784 /* FLAnnotationNavViewController.m in Sources */,
-				CBA780E51A911E8500CE9D84 /* FLAnnotationTableViewCell.m in Sources */,
-				CB9324AE1ABF4B8B00DB05D5 /* DesignableImageView.swift in Sources */,
-				CB1EE06E1A98639F00400611 /* FLContactViewController.m in Sources */,
-				CB3B7D021A58374B005F6402 /* FLAppDelegate.m in Sources */,
-				CB9324C51ABF4B8B00DB05D5 /* UnwindSegue.swift in Sources */,
-				CB902F9F1A8DC836003D2950 /* FLProcessedImagesStore.m in Sources */,
-				CB2EBE7B1A7DD98100D76528 /* FLToolsStore.m in Sources */,
-				CB6BC4C31AA59467006D34EF /* FLTutorialViewController.m in Sources */,
-				CBDDEF821AA825C400FF4E8D /* FLTutorialSolutionView.m in Sources */,
-				CB7BD84E1AC6729E0088F22D /* FLAnnotationInstructionsViewController.m in Sources */,
-				CB9324AD1ABF4B8B00DB05D5 /* DesignableButton.swift in Sources */,
-				CB9324BA1ABF4B8B00DB05D5 /* SoundPlayer.swift in Sources */,
-				CB3B7D351A586674005F6402 /* FLSettings.m in Sources */,
-				CB6F8CFF1A6B538000429133 /* FLFacebookPhotoPickerViewController.m in Sources */,
-				CBDDEF851AABB71F00FF4E8D /* FLSelectionCollectionEmptyMessageView.m in Sources */,
-				CB2EBE771A7DCED900D76528 /* FLFilterSlider.m in Sources */,
-				CB3B7D381A5867F7005F6402 /* FLErrorHandler.m in Sources */,
-				CB9324AF1ABF4B8B00DB05D5 /* DesignableLabel.swift in Sources */,
-				CB5519651ABD547B00CD0C5E /* FLTutorialProcessView.m in Sources */,
-				CBDF2CAF1AAC1CA100151BD5 /* FLAnnotationTableEmptyMessageView.m in Sources */,
-				CB3B7D051A58374B005F6402 /* FLSelectedPhotosCollectionViewController.m in Sources */,
-				CBA10DA11A7CABD3001DF13B /* FLFacebookPhotoCollectionViewCell.m in Sources */,
-				CB1EE07B1A98B56500400611 /* FLTOSViewController.m in Sources */,
-				CB6BC4BF1AA57720006D34EF /* FLLoginView.m in Sources */,
-				CB9324AC1ABF4B8B00DB05D5 /* BlurView.swift in Sources */,
-				CB9324B21ABF4B8B00DB05D5 /* DesignableTextView.swift in Sources */,
-				CB9324C21ABF4B8B00DB05D5 /* SpringView.swift in Sources */,
-				CBEC72F81A7D494100F8D0AE /* CollectionViewHelpers.m in Sources */,
-				CB9324B91ABF4B8B00DB05D5 /* Misc.swift in Sources */,
-				CB9324B71ABF4B8B00DB05D5 /* LoadingView.swift in Sources */,
-				CBD126BC1A8BCEFD00BED835 /* FLImageAnnotationViewController.m in Sources */,
-				CB9324BF1ABF4B8B00DB05D5 /* SpringLabel.swift in Sources */,
-				CB3B7CFF1A58374B005F6402 /* main.m in Sources */,
-				CB4ABFE71AB4C29D00ABD784 /* FLTabBarViewController.m in Sources */,
-				CB7BD8531AC78A590088F22D /* FLPrivacyViewController.m in Sources */,
-				CB4268C71A7D596A00745A9F /* FLViewHelpers.m in Sources */,
-				CB9324B01ABF4B8B00DB05D5 /* DesignableTabBarController.swift in Sources */,
-				CB9324C31ABF4B8B00DB05D5 /* TransitionManager.swift in Sources */,
-				CB3B7D321A5860C7005F6402 /* FLLoginViewController.m in Sources */,
-				CB9324B41ABF4B8B00DB05D5 /* ImageLoader.swift in Sources */,
-				CB2EBE731A7DCE0E00D76528 /* FLFilterTableViewCell.m in Sources */,
-				CB1F7E9F1ACA6F6E0063F4EB /* FLFiltersPromptViewController.m in Sources */,
-				CB6F8D081A6C83B700429133 /* FLSelectedPhotoStore.m in Sources */,
-				CB902F9C1A8DC5D0003D2950 /* FLFacebookUploadModalViewController.m in Sources */,
-				CB93248B1ABE97E800DB05D5 /* FLUser.m in Sources */,
-				CB9324BB1ABF4B8B00DB05D5 /* Spring.swift in Sources */,
-				CB9324AB1ABF4B8B00DB05D5 /* AsyncImageView.swift in Sources */,
-				CB9324B11ABF4B8B00DB05D5 /* DesignableTextField.swift in Sources */,
-				CBA780EA1A9123C200CE9D84 /* FLAnnotationStore.m in Sources */,
-				CB9324BE1ABF4B8B00DB05D5 /* SpringImageView.swift in Sources */,
-				CB9324C41ABF4B8B00DB05D5 /* TransitionZoom.swift in Sources */,
+				CB6FE9071AD0B7FF00AD0BD2 /* SoundPlayer.swift in Sources */,
+				CB6FE8E21AD0B7FF00AD0BD2 /* FLSettings.m in Sources */,
+				CB6FE8FF1AD0B7FF00AD0BD2 /* DesignableTextView.swift in Sources */,
+				CB6FE8BC1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.m in Sources */,
+				CB6FE90E1AD0B7FF00AD0BD2 /* SpringTextView.swift in Sources */,
+				CB6FE8CE1AD0B7FF00AD0BD2 /* FLFiltersStore.m in Sources */,
+				CB6FE8E61AD0B7FF00AD0BD2 /* FLTOSViewController.m in Sources */,
+				CB6FE9001AD0B7FF00AD0BD2 /* DesignableView.swift in Sources */,
+				CB6FE8C81AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.m in Sources */,
+				CB6FE90C1AD0B7FF00AD0BD2 /* SpringLabel.swift in Sources */,
+				CB6FE8DE1AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.m in Sources */,
+				CB6FE8F11AD0B7FF00AD0BD2 /* FLUser.m in Sources */,
+				CB6FE8D81AD0B7FF00AD0BD2 /* FLPhoto.m in Sources */,
+				CB6FE8EE1AD0B7FF00AD0BD2 /* FLTutorialSolutionView.m in Sources */,
+				CB6FE8F51AD0B7FF00AD0BD2 /* main.m in Sources */,
+				CB6FE8EC1AD0B7FF00AD0BD2 /* FLTutorialResultView.m in Sources */,
+				CB6FE9041AD0B7FF00AD0BD2 /* LoadingView.swift in Sources */,
+				CB6FE8C31AD0B7FF00AD0BD2 /* FLAppDelegate.m in Sources */,
+				CB6FE8D71AD0B7FF00AD0BD2 /* FLLoginViewController.m in Sources */,
+				CB6FE8F81AD0B7FF00AD0BD2 /* AsyncImageView.swift in Sources */,
+				CB6FE90B1AD0B7FF00AD0BD2 /* SpringImageView.swift in Sources */,
+				CB6FE8E81AD0B7FF00AD0BD2 /* FLTutorialHowView.m in Sources */,
+				CB6FE8E51AD0B7FF00AD0BD2 /* FLToolsStore.m in Sources */,
+				CB6FE8FE1AD0B7FF00AD0BD2 /* DesignableTextField.swift in Sources */,
+				CB6FE8CA1AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.m in Sources */,
+				CB6FE8FA1AD0B7FF00AD0BD2 /* DesignableButton.swift in Sources */,
+				CB6FE8D61AD0B7FF00AD0BD2 /* FLLoginView.m in Sources */,
+				CB6FE8D91AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.m in Sources */,
+				CB6FE8CB1AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.m in Sources */,
+				CB6FE8DF1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.m in Sources */,
+				CB6FE8FC1AD0B7FF00AD0BD2 /* DesignableLabel.swift in Sources */,
+				CB6FE9081AD0B7FF00AD0BD2 /* Spring.swift in Sources */,
+				CB6FE9011AD0B7FF00AD0BD2 /* ImageLoader.swift in Sources */,
+				CB6FE8DD1AD0B7FF00AD0BD2 /* FLProcessedImagesStore.m in Sources */,
+				CB6FE8FD1AD0B7FF00AD0BD2 /* DesignableTabBarController.swift in Sources */,
+				CB6FE9031AD0B7FF00AD0BD2 /* KeyboardLayoutConstraint.swift in Sources */,
+				CB6FE8F71AD0B7FF00AD0BD2 /* AsyncButton.swift in Sources */,
+				CB6FE8BF1AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m in Sources */,
+				CB6FE8F21AD0B7FF00AD0BD2 /* FLViewHelpers.m in Sources */,
+				CB6FE8FB1AD0B7FF00AD0BD2 /* DesignableImageView.swift in Sources */,
+				CB6FE8C11AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m in Sources */,
+				CB6FE9111AD0B7FF00AD0BD2 /* TransitionZoom.swift in Sources */,
+				CB6FE8CC1AD0B7FF00AD0BD2 /* FLFilterSlider.m in Sources */,
+				CB6FE8D21AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.m in Sources */,
+				CB6FE90D1AD0B7FF00AD0BD2 /* SpringTextField.swift in Sources */,
+				CB6FE9091AD0B7FF00AD0BD2 /* SpringAnimation.swift in Sources */,
+				CB6FE8BE1AD0B7FF00AD0BD2 /* FLAnnotationStore.m in Sources */,
+				CB6FE8F91AD0B7FF00AD0BD2 /* BlurView.swift in Sources */,
+				CB6FE90A1AD0B7FF00AD0BD2 /* SpringButton.swift in Sources */,
+				CB6FE8E41AD0B7FF00AD0BD2 /* FLTabBarViewController.m in Sources */,
+				CB6FE8D31AD0B7FF00AD0BD2 /* FLImageFilterViewController.m in Sources */,
+				CB6FE8EA1AD0B7FF00AD0BD2 /* FLTutorialProcessView.m in Sources */,
+				CB6FE9061AD0B7FF00AD0BD2 /* Misc.swift in Sources */,
+				CB6FE8E01AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m in Sources */,
+				CB6FE8C71AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m in Sources */,
+				CB6FE8C41AD0B7FF00AD0BD2 /* FLContactViewController.m in Sources */,
+				CB6FE8E31AD0B7FF00AD0BD2 /* FLSettingsViewController.m in Sources */,
+				CB6FE90F1AD0B7FF00AD0BD2 /* SpringView.swift in Sources */,
+				CB6FE9101AD0B7FF00AD0BD2 /* TransitionManager.swift in Sources */,
+				CB6FE8BB1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m in Sources */,
+				CB6FE8F01AD0B7FF00AD0BD2 /* FLTutorialViewController.m in Sources */,
+				CB6FE9121AD0B7FF00AD0BD2 /* UnwindSegue.swift in Sources */,
+				CB6FE8DB1AD0B7FF00AD0BD2 /* FLPrivacyViewController.m in Sources */,
+				CB6FE8D41AD0B7FF00AD0BD2 /* FLLoginSlide.m in Sources */,
+				CB6FE8CD1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.m in Sources */,
+				CB6FE8C61AD0B7FF00AD0BD2 /* FLErrorHandler.m in Sources */,
+				CB6FE8BD1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.m in Sources */,
+				CB6FE8CF1AD0B7FF00AD0BD2 /* FLFilterTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,20 +785,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CB3B7D091A58374B005F6402 /* Main.storyboard */ = {
+		CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CB3B7D0A1A58374B005F6402 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CB3B7D0E1A58374B005F6402 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB3B7D0F1A58374B005F6402 /* Base */,
+				CB6FE8271AD0B7FF00AD0BD2 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		CB6FE8281AD0B7FF00AD0BD2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB6FE8291AD0B7FF00AD0BD2 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1039,14 +882,14 @@
 		};
 		CB3B7D201A58374B005F6402 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B972D952EEE5CAB86BF19038 /* Pods-Flamey.debug.xcconfig */;
+			baseConfigurationReference = 067A9FC38B3101CE4C8B6339 /* Pods-Stndout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/shanerogers/Documents/FacebookSDK,
 				);
-				INFOPLIST_FILE = Flamey/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Stndout/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Stndout;
@@ -1055,14 +898,14 @@
 		};
 		CB3B7D211A58374B005F6402 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74538D7B189EE09795B7515B /* Pods-Flamey.release.xcconfig */;
+			baseConfigurationReference = 3B003C3C13253F1D84B7E4B2 /* Pods-Stndout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/shanerogers/Documents/FacebookSDK,
 				);
-				INFOPLIST_FILE = Flamey/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Stndout/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Stndout;

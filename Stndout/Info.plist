@@ -18,10 +18,36 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb937947802923194</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>937947802923194</string>
+	<key>FacebookDisplayName</key>
+	<string>stndout</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Rochester-Regular.ttf</string>
+		<string>Walkway_UltraBold.ttf</string>
+		<string>Walkway_SemiBold.ttf</string>
+		<string>Walkway_Oblique.ttf</string>
+		<string>Walkway_Oblique_UltraBold.ttf</string>
+		<string>Walkway_Oblique_SemiBold.ttf</string>
+		<string>Walkway_Oblique_Bold.ttf</string>
+		<string>Walkway_Oblique_Black.ttf</string>
+		<string>Walkway_Bold.ttf</string>
+		<string>Walkway_Black.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -43,32 +69,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>FacebookAppID</key>
-	<string>937947802923194</string>
-	<key>FacebookDisplayName</key>
-	<string>stndout</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb937947802923194</string>
-			</array>
-		</dict>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Rochester-Regular.ttf</string>
-		<string>Walkway_UltraBold.ttf</string>
-		<string>Walkway_SemiBold.ttf</string>
-		<string>Walkway_Oblique.ttf</string>
-		<string>Walkway_Oblique_UltraBold.ttf</string>
-		<string>Walkway_Oblique_SemiBold.ttf</string>
-		<string>Walkway_Oblique_Bold.ttf</string>
-		<string>Walkway_Oblique_Black.ttf</string>
-		<string>Walkway_Bold.ttf</string>
-		<string>Walkway_Black.ttf</string>
 	</array>
 </dict>
 </plist>

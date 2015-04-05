@@ -204,7 +204,7 @@ NSString *const kFemale = @"female";
  // An empty implementation adversely affects performance during animation.
  */
 
-- (IBAction)completeTutorial:(id)sender {
+- (IBAction)exitTutorial:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Education" properties:@{
                                                 @"controller": NSStringFromClass([self class]),

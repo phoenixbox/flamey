@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RTFacebookAlbumViewController.h"
 
-@interface FLSelectedPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, RTFacebookViewDelegate>
+@interface FLSelectedPhotosCollectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *selectionCollection;
 @property (weak, nonatomic) IBOutlet UIButton *editPhotosButton;

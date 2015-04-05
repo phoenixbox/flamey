@@ -11,11 +11,11 @@
 // Libs
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "Mixpanel.h"
+#import <SIAlertView/SIAlertView.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 // Components
 #import "FLLoginSlide.h"
-
-#import <FacebookSDK/FacebookSDK.h>
 #import "FLErrorHandler.h"
 #import "FLSettings.h"
 #import "FLLoginView.h"
@@ -35,8 +35,6 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 
 @implementation FLLoginViewController
 {
-    BOOL _viewDidAppear;
-    BOOL _viewIsVisible;
     NSArray *_photos;
 }
 
@@ -50,8 +48,6 @@ NSString *const kLoginSlide = @"FLLoginSlide";
                                                }];
 
     // TODO: Remove these assignments when not in development
-    FLSettings *settings = [FLSettings defaultSettings];
-    settings.shouldSkipLogin = NO;
     [_titleLabel setText:@"Its hard to stand out"];
 //    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    [_hud setCenter:self.view.center];
@@ -138,48 +134,31 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 
 
 - (void)viewDidAppear:(BOOL)animated {
-    _viewDidAppear = YES;
 
     FLSettings *settings = [FLSettings defaultSettings];
     NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
-//    _viewIsVisible = YES;
-    // TODO: Remove the hardcoded segue
 
-//    TODO Implement server side login persistence record
-//    void(^completionBlock)(FLUser *user, NSError *err)=^(FLUser user*, NSError *err) {
-//        if(!err){
-//             Let the server tell us if the user has seen the tutorial
-//             settings.seenTutorial = user.seenTutorial;
-//            [self performSegueWithIdentifier:@"loggedIn" sender:nil];
-//        } else {
-//            NSLog(@"Problem with logging in on the server");
-//        }
-//    };
-
-    if (_viewDidAppear && settings.needToLogin) {
-
-        settings.shouldSkipLogin = NO;
-    } else {
+//    if (!settings.sesssion) {
+//        [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
+//    } else {
         [FBSession openActiveSessionWithReadPermissions:readPermissions
                                            allowLoginUI:YES
                                       completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
                                           if (!error && status == FBSessionStateOpen) {
+                                              [settings setSession:session];
                                               [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
-                                              // TODO: Future Server persistence
+//                                              TODO: Future Server persistence
 //                                              [_hud show:YES];
 //                                              [FLSessionStore loginUser:session withCompletionBlock:completionBlock];
                                           } else {
-                                              _viewIsVisible = YES;
+                                              FLErrorHandler(error);
                                           }
                                       }];
-    }
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-
-    [FLSettings defaultSettings].shouldSkipLogin = YES;
-    _viewIsVisible = NO;
 }
 
 #pragma mark - FBLoginViewDelegate
@@ -221,8 +200,8 @@ NSString *const kLoginSlide = @"FLLoginSlide";
                                                   @"result": @"failure",
                                                   @"error": error.localizedFailureReason
                                                   }];
+            [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
         }
-        [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
     }];
 }
 
@@ -235,6 +214,10 @@ NSString *const kLoginSlide = @"FLLoginSlide";
                                         @"name": user.name,
                                         @"id": user.id,
                                         }];
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+// Get the logged out callback
 }
 
 - (void)didReceiveMemoryWarning {

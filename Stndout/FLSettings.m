@@ -17,30 +17,18 @@
 
     dispatch_once(&onceToken, ^{
         settings = [[self alloc] init];
-        [settings setNeedToLogin:YES];
     });
     return settings;
 }
 
 #pragma mark - Properties
 
-static NSString *const kShouldSkipLoginKey = @"shouldSkipLogin";
-static NSString *const kNeedToLogin = @"needToLogin";
+static NSString *const kSession = @"session";
 static NSString *const kSeenTutorial = @"seenTutorial";
 static NSString *const kSelectedPersonaKey = @"selectedPersona";
 static NSString *const kUserKey = @"user";
 static NSString *const kUploadPermission = @"uploadPermission";
 static NSString *const kUnderstandAnnotation = @"understandAnnotation";
-
-- (BOOL)shouldSkipLogin
-{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kShouldSkipLoginKey];
-}
-
-- (BOOL)needToLogin
-{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kNeedToLogin];
-}
 
 - (BOOL)seenTutorial
 {
@@ -65,21 +53,12 @@ static NSString *const kUnderstandAnnotation = @"understandAnnotation";
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserKey];
 }
 
+- (FBSession *)getSession
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSession];
+}
+
 #pragma Override Property Setter
-
-- (void)setShouldSkipLogin:(BOOL)shouldSkipLogin
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:shouldSkipLogin forKey:kShouldSkipLoginKey];
-    [defaults synchronize];
-}
-
-- (void)setNeedToLogin:(BOOL)needToLogin
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:needToLogin forKey:kNeedToLogin];
-    [defaults synchronize];
-}
 
 - (void)setSeenTutorial:(BOOL)seenTutorial {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -108,6 +87,13 @@ static NSString *const kUnderstandAnnotation = @"understandAnnotation";
 - (void)setuser:(FLUser *)user {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:user forKey:kUserKey];
+    [defaults synchronize];
+}
+
+- (void)setSession:(FBSession *)session
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:session forKey:kSession];
     [defaults synchronize];
 }
 

@@ -11,9 +11,10 @@
 #import <UIKit/UIKit.h>
 
 #import <FacebookSDK/FacebookSDK.h>
+#import <SIAlertView/SIAlertView.h>
+#import "Mixpanel.h"
 
-void FLErrorHandler(NSError *error)
-{
+void FLErrorHandler(NSError *error) {
     if (error != nil) {
         NSString *alertMessage;
         NSString *alertTitle;
@@ -30,24 +31,34 @@ void FLErrorHandler(NSError *error)
                     break;
                 }
                 case FBErrorCategoryUserCancelled:{
-                    NSLog(@"user cancelled login");
+                    alertTitle = @"Ooops";
+                    alertMessage = @"You cancelled login, please try again :)";
                     break;
                 }
                 default:{
                     alertTitle = @"Ooops";
                     alertMessage = @"Something went wrong, please try again :)";
-                    NSLog(@"Unexpected error:%@", error);
                     break;
                 }
             }
         }
 
         if (alertMessage) {
-            [[[UIAlertView alloc] initWithTitle:alertTitle
-                                        message:alertMessage
-                                       delegate:nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil] show];
+            SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:alertTitle andMessage:alertMessage];
+
+            [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+            [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+            [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+            [alertView addButtonWithTitle:@"Ok"
+                                     type:SIAlertViewButtonTypeDefault
+                                  handler:^(SIAlertView *alert) {
+                                  }];
+
+
+            alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+            
+            [alertView show];
         }
     }
 }

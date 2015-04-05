@@ -33,7 +33,7 @@ extern NSString *const kFemaleThreeSelected;
 - (IBAction)completeSolution:(id)sender;
 - (void)setLabels;
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
-- (IBAction)completeTutorial:(id)sender;
+- (IBAction)exitTutorial:(id)sender;
 
 
 @end
