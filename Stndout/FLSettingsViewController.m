@@ -166,7 +166,11 @@ final sections footer view
 }
 
 - (NSMutableArray *)buildArrayOfSections {
-    NSMutableArray *personalSection = [self newSectionWithCellNames:@[@"Number of uploads: "]];
+    // TODO: Add uploads counter
+//    NSMutableArray *personalSection = [self newSectionWithCellNames:@[@"Number of uploads: "]];
+    FLSettings *settings = [FLSettings defaultSettings];
+    NSMutableArray *personalSection = [self newSectionWithCellNames:@[settings.user.name]];
+
     NSMutableArray *tosSection = [self newSectionWithCellNames:@[kContactCell, kPrivacyCell, kTOSCell]];
     NSMutableArray *actionSection = [self newSectionWithCellNames:@[kLogoutCell, kDeleteAccountCell]];
 
