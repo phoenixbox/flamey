@@ -17,6 +17,7 @@
 
     dispatch_once(&onceToken, ^{
         settings = [[self alloc] init];
+        [settings setSeenTutorial:NO];
     });
     return settings;
 }
