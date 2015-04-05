@@ -360,57 +360,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CB6FE8251AD0B7FF00AD0BD2 /* Stndout */ = {
+		CB60BF1D1AD0DB10006D4EB7 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */,
-				CB6FE8281AD0B7FF00AD0BD2 /* Main.storyboard */,
-				CB6FE82A1AD0B7FF00AD0BD2 /* CollectionViewHelpers.h */,
-				CB6FE82B1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m */,
-				CB6FE82C1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.h */,
-				CB6FE82D1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.m */,
-				CB6FE82E1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.h */,
-				CB6FE82F1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.m */,
-				CB6FE8301AD0B7FF00AD0BD2 /* FLAnnotationStore.h */,
-				CB6FE8311AD0B7FF00AD0BD2 /* FLAnnotationStore.m */,
-				CB6FE8321AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.h */,
-				CB6FE8331AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m */,
-				CB6FE8341AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.xib */,
-				CB6FE8351AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.h */,
-				CB6FE8361AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m */,
-				CB6FE8371AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.xib */,
-				CB6FE8381AD0B7FF00AD0BD2 /* FLAppDelegate.h */,
-				CB6FE8391AD0B7FF00AD0BD2 /* FLAppDelegate.m */,
-				CB6FE83A1AD0B7FF00AD0BD2 /* FLComponentConstants.h */,
-				CB6FE83B1AD0B7FF00AD0BD2 /* FLContactViewController.h */,
-				CB6FE83C1AD0B7FF00AD0BD2 /* FLContactViewController.m */,
-				CB6FE83D1AD0B7FF00AD0BD2 /* FLContactViewController.xib */,
-				CB6FE83E1AD0B7FF00AD0BD2 /* FLErrorHandler.h */,
-				CB6FE83F1AD0B7FF00AD0BD2 /* FLErrorHandler.m */,
-				CB6FE8401AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.h */,
-				CB6FE8411AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m */,
-				CB6FE8421AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.h */,
-				CB6FE8431AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.m */,
-				CB6FE8441AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.xib */,
-				CB6FE8451AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.h */,
-				CB6FE8461AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.m */,
-				CB6FE8471AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.h */,
-				CB6FE8481AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.m */,
-				CB6FE8491AD0B7FF00AD0BD2 /* FLFilterHelpers.h */,
-				CB6FE84A1AD0B7FF00AD0BD2 /* FLFilterSlider.h */,
-				CB6FE84B1AD0B7FF00AD0BD2 /* FLFilterSlider.m */,
-				CB6FE84C1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.h */,
-				CB6FE84D1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.m */,
-				CB6FE84E1AD0B7FF00AD0BD2 /* FLFiltersStore.h */,
-				CB6FE84F1AD0B7FF00AD0BD2 /* FLFiltersStore.m */,
-				CB6FE8501AD0B7FF00AD0BD2 /* FLFilterTableViewCell.h */,
-				CB6FE8511AD0B7FF00AD0BD2 /* FLFilterTableViewCell.m */,
-				CB6FE8521AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib */,
-				CB6FE8531AD0B7FF00AD0BD2 /* FLFilterViewHeader.xib */,
-				CB6FE8541AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.h */,
-				CB6FE8551AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.m */,
-				CB6FE8561AD0B7FF00AD0BD2 /* FLImageFilterViewController.h */,
-				CB6FE8571AD0B7FF00AD0BD2 /* FLImageFilterViewController.m */,
 				CB6FE8581AD0B7FF00AD0BD2 /* FLLoginSlide.h */,
 				CB6FE8591AD0B7FF00AD0BD2 /* FLLoginSlide.m */,
 				CB6FE85A1AD0B7FF00AD0BD2 /* FLLoginSlide.xib */,
@@ -418,35 +370,166 @@
 				CB6FE85C1AD0B7FF00AD0BD2 /* FLLoginView.m */,
 				CB6FE85D1AD0B7FF00AD0BD2 /* FLLoginViewController.h */,
 				CB6FE85E1AD0B7FF00AD0BD2 /* FLLoginViewController.m */,
-				CB6FE85F1AD0B7FF00AD0BD2 /* FLPhoto.h */,
-				CB6FE8601AD0B7FF00AD0BD2 /* FLPhoto.m */,
-				CB6FE8611AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.h */,
-				CB6FE8621AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.m */,
-				CB6FE8631AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.xib */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF1E1AD0DB36006D4EB7 /* AnnotationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8541AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.h */,
+				CB6FE8551AD0B7FF00AD0BD2 /* FLImageAnnotationViewController.m */,
+				CB6FE8321AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.h */,
+				CB6FE8331AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m */,
+				CB6FE8341AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.xib */,
+				CB6FE8351AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.h */,
+				CB6FE8361AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m */,
+				CB6FE8371AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.xib */,
+				CB6FE82C1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.h */,
+				CB6FE82D1AD0B7FF00AD0BD2 /* FLAnnotationInstructionsViewController.m */,
+				CB6FE82E1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.h */,
+				CB6FE82F1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.m */,
+			);
+			name = AnnotationViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF1F1AD0DB51006D4EB7 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8771AD0B7FF00AD0BD2 /* FLToolsStore.h */,
+				CB6FE8781AD0B7FF00AD0BD2 /* FLToolsStore.m */,
+				CB6FE86B1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.h */,
+				CB6FE86C1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.m */,
+				CB6FE8671AD0B7FF00AD0BD2 /* FLProcessedImagesStore.h */,
+				CB6FE8681AD0B7FF00AD0BD2 /* FLProcessedImagesStore.m */,
+				CB6FE84E1AD0B7FF00AD0BD2 /* FLFiltersStore.h */,
+				CB6FE84F1AD0B7FF00AD0BD2 /* FLFiltersStore.m */,
+				CB6FE8301AD0B7FF00AD0BD2 /* FLAnnotationStore.h */,
+				CB6FE8311AD0B7FF00AD0BD2 /* FLAnnotationStore.m */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		CB60BF201AD0DB62006D4EB7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE88C1AD0B7FF00AD0BD2 /* FLViewHelpers.h */,
+				CB6FE88D1AD0B7FF00AD0BD2 /* FLViewHelpers.m */,
+				CB6FE8491AD0B7FF00AD0BD2 /* FLFilterHelpers.h */,
+				CB6FE83E1AD0B7FF00AD0BD2 /* FLErrorHandler.h */,
+				CB6FE83F1AD0B7FF00AD0BD2 /* FLErrorHandler.m */,
+				CB6FE82A1AD0B7FF00AD0BD2 /* CollectionViewHelpers.h */,
+				CB6FE82B1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		CB60BF211AD0DB7D006D4EB7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8741AD0B7FF00AD0BD2 /* FLStyleConstants.h */,
+				CB6FE83A1AD0B7FF00AD0BD2 /* FLComponentConstants.h */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		CB60BF221AD0DB8C006D4EB7 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8721AD0B7FF00AD0BD2 /* FLSettingsViewController.h */,
+				CB6FE8731AD0B7FF00AD0BD2 /* FLSettingsViewController.m */,
 				CB6FE8641AD0B7FF00AD0BD2 /* FLPrivacyViewController.h */,
 				CB6FE8651AD0B7FF00AD0BD2 /* FLPrivacyViewController.m */,
 				CB6FE8661AD0B7FF00AD0BD2 /* FLPrivacyViewController.xib */,
-				CB6FE8671AD0B7FF00AD0BD2 /* FLProcessedImagesStore.h */,
-				CB6FE8681AD0B7FF00AD0BD2 /* FLProcessedImagesStore.m */,
-				CB6FE8691AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.h */,
-				CB6FE86A1AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.m */,
-				CB6FE86B1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.h */,
-				CB6FE86C1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.m */,
-				CB6FE86D1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.h */,
-				CB6FE86E1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m */,
-				CB6FE86F1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.xib */,
-				CB6FE8701AD0B7FF00AD0BD2 /* FLSettings.h */,
-				CB6FE8711AD0B7FF00AD0BD2 /* FLSettings.m */,
-				CB6FE8721AD0B7FF00AD0BD2 /* FLSettingsViewController.h */,
-				CB6FE8731AD0B7FF00AD0BD2 /* FLSettingsViewController.m */,
-				CB6FE8741AD0B7FF00AD0BD2 /* FLStyleConstants.h */,
-				CB6FE8751AD0B7FF00AD0BD2 /* FLTabBarViewController.h */,
-				CB6FE8761AD0B7FF00AD0BD2 /* FLTabBarViewController.m */,
-				CB6FE8771AD0B7FF00AD0BD2 /* FLToolsStore.h */,
-				CB6FE8781AD0B7FF00AD0BD2 /* FLToolsStore.m */,
+				CB6FE83B1AD0B7FF00AD0BD2 /* FLContactViewController.h */,
+				CB6FE83C1AD0B7FF00AD0BD2 /* FLContactViewController.m */,
 				CB6FE8791AD0B7FF00AD0BD2 /* FLTOSViewController.h */,
 				CB6FE87A1AD0B7FF00AD0BD2 /* FLTOSViewController.m */,
 				CB6FE87B1AD0B7FF00AD0BD2 /* FLTOSViewController.xib */,
+				CB6FE83D1AD0B7FF00AD0BD2 /* FLContactViewController.xib */,
+			);
+			name = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF231AD0DBA0006D4EB7 /* FBAlbumViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8401AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.h */,
+				CB6FE8411AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m */,
+			);
+			name = FBAlbumViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF241AD0DBB3006D4EB7 /* FBPhotoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8611AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.h */,
+				CB6FE8621AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.m */,
+				CB6FE8631AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.xib */,
+				CB6FE8421AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.h */,
+				CB6FE8431AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.m */,
+				CB6FE8441AD0B7FF00AD0BD2 /* FLFacebookPhotoCollectionViewCell.xib */,
+				CB6FE8451AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.h */,
+				CB6FE8461AD0B7FF00AD0BD2 /* FLFacebookPhotoPickerViewController.m */,
+			);
+			name = FBPhotoViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF251AD0DBD3006D4EB7 /* UploadViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8471AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.h */,
+				CB6FE8481AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.m */,
+			);
+			name = UploadViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF261AD0DBE5006D4EB7 /* FiltersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8501AD0B7FF00AD0BD2 /* FLFilterTableViewCell.h */,
+				CB6FE8511AD0B7FF00AD0BD2 /* FLFilterTableViewCell.m */,
+				CB6FE8521AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib */,
+				CB6FE8531AD0B7FF00AD0BD2 /* FLFilterViewHeader.xib */,
+				CB6FE8561AD0B7FF00AD0BD2 /* FLImageFilterViewController.h */,
+				CB6FE8571AD0B7FF00AD0BD2 /* FLImageFilterViewController.m */,
+				CB6FE84A1AD0B7FF00AD0BD2 /* FLFilterSlider.h */,
+				CB6FE84B1AD0B7FF00AD0BD2 /* FLFilterSlider.m */,
+				CB6FE84C1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.h */,
+				CB6FE84D1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.m */,
+			);
+			name = FiltersViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF271AD0DC31006D4EB7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE88A1AD0B7FF00AD0BD2 /* FLUser.h */,
+				CB6FE88B1AD0B7FF00AD0BD2 /* FLUser.m */,
+				CB6FE8701AD0B7FF00AD0BD2 /* FLSettings.h */,
+				CB6FE8711AD0B7FF00AD0BD2 /* FLSettings.m */,
+				CB6FE85F1AD0B7FF00AD0BD2 /* FLPhoto.h */,
+				CB6FE8601AD0B7FF00AD0BD2 /* FLPhoto.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CB60BF281AD0DC4A006D4EB7 /* SelectedPhotosViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8691AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.h */,
+				CB6FE86A1AD0B7FF00AD0BD2 /* FLSelectedPhotosCollectionViewController.m */,
+				CB6FE86D1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.h */,
+				CB6FE86E1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m */,
+				CB6FE86F1AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.xib */,
+			);
+			name = SelectedPhotosViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF291AD0DC8F006D4EB7 /* TutorialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8891AD0B7FF00AD0BD2 /* FLTutorialViewController.m */,
 				CB6FE87C1AD0B7FF00AD0BD2 /* FLTutorialHowView.h */,
 				CB6FE87D1AD0B7FF00AD0BD2 /* FLTutorialHowView.m */,
 				CB6FE87E1AD0B7FF00AD0BD2 /* FLTutorialHowView.xib */,
@@ -460,16 +543,23 @@
 				CB6FE8861AD0B7FF00AD0BD2 /* FLTutorialSolutionView.m */,
 				CB6FE8871AD0B7FF00AD0BD2 /* FLTutorialSolutionView.xib */,
 				CB6FE8881AD0B7FF00AD0BD2 /* FLTutorialViewController.h */,
-				CB6FE8891AD0B7FF00AD0BD2 /* FLTutorialViewController.m */,
-				CB6FE88A1AD0B7FF00AD0BD2 /* FLUser.h */,
-				CB6FE88B1AD0B7FF00AD0BD2 /* FLUser.m */,
-				CB6FE88C1AD0B7FF00AD0BD2 /* FLViewHelpers.h */,
-				CB6FE88D1AD0B7FF00AD0BD2 /* FLViewHelpers.m */,
-				CB6FE88E1AD0B7FF00AD0BD2 /* Images.xcassets */,
-				CB6FE88F1AD0B7FF00AD0BD2 /* Info.plist */,
-				CB6FE8901AD0B7FF00AD0BD2 /* main.m */,
+			);
+			name = TutorialViewController;
+			sourceTree = "<group>";
+		};
+		CB60BF2A1AD0DCD3006D4EB7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CB6FE8751AD0B7FF00AD0BD2 /* FLTabBarViewController.h */,
+				CB6FE8761AD0B7FF00AD0BD2 /* FLTabBarViewController.m */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		CB60BF2B1AD0DCF0006D4EB7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
 				CB6FE8911AD0B7FF00AD0BD2 /* Rochester-Regular.ttf */,
-				CB6FE8921AD0B7FF00AD0BD2 /* Spring */,
 				CB6FE8B01AD0B7FF00AD0BD2 /* Walkway_Black.ttf */,
 				CB6FE8B11AD0B7FF00AD0BD2 /* Walkway_Bold.ttf */,
 				CB6FE8B21AD0B7FF00AD0BD2 /* Walkway_Oblique.ttf */,
@@ -479,6 +569,36 @@
 				CB6FE8B61AD0B7FF00AD0BD2 /* Walkway_Oblique_UltraBold.ttf */,
 				CB6FE8B71AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf */,
 				CB6FE8B81AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		CB6FE8251AD0B7FF00AD0BD2 /* Stndout */ = {
+			isa = PBXGroup;
+			children = (
+				CB60BF2B1AD0DCF0006D4EB7 /* Assets */,
+				CB60BF2A1AD0DCD3006D4EB7 /* Components */,
+				CB60BF291AD0DC8F006D4EB7 /* TutorialViewController */,
+				CB60BF281AD0DC4A006D4EB7 /* SelectedPhotosViewController */,
+				CB60BF271AD0DC31006D4EB7 /* Models */,
+				CB60BF261AD0DBE5006D4EB7 /* FiltersViewController */,
+				CB60BF251AD0DBD3006D4EB7 /* UploadViewController */,
+				CB60BF241AD0DBB3006D4EB7 /* FBPhotoViewController */,
+				CB60BF231AD0DBA0006D4EB7 /* FBAlbumViewController */,
+				CB60BF221AD0DB8C006D4EB7 /* SettingsViewController */,
+				CB60BF211AD0DB7D006D4EB7 /* Constants */,
+				CB60BF201AD0DB62006D4EB7 /* Helpers */,
+				CB60BF1F1AD0DB51006D4EB7 /* Stores */,
+				CB60BF1E1AD0DB36006D4EB7 /* AnnotationViewController */,
+				CB60BF1D1AD0DB10006D4EB7 /* LoginViewController */,
+				CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */,
+				CB6FE8281AD0B7FF00AD0BD2 /* Main.storyboard */,
+				CB6FE8381AD0B7FF00AD0BD2 /* FLAppDelegate.h */,
+				CB6FE8391AD0B7FF00AD0BD2 /* FLAppDelegate.m */,
+				CB6FE88E1AD0B7FF00AD0BD2 /* Images.xcassets */,
+				CB6FE88F1AD0B7FF00AD0BD2 /* Info.plist */,
+				CB6FE8901AD0B7FF00AD0BD2 /* main.m */,
+				CB6FE8921AD0B7FF00AD0BD2 /* Spring */,
 			);
 			path = Stndout;
 			sourceTree = SOURCE_ROOT;
