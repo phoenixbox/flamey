@@ -167,7 +167,7 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 
 
 - (void)setSecondSectionContent {
-    NSString *copy = @"We upload these photos\n privately to facebook where\n only you can see them\nGuaranteed";
+    NSString *copy = @"We upload these photos\n privately to facebook where\n only you can see them\nGuaranteed!";
     float bodyCopySize = [FLViewHelpers bodyCopyForScreenSize];;
 
     _secondCopy.font = [UIFont fontWithName:@"AvenirNext-Regular" size:bodyCopySize];
@@ -177,7 +177,7 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 
     [_secondCopy setText:copy afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         NSRange boldRangeOne = [[mutableAttributedString string] rangeOfString:@"privately" options:NSCaseInsensitiveSearch];
-        NSRange boldRangeTwo = [[mutableAttributedString string] rangeOfString:@"Guaranteed" options:NSCaseInsensitiveSearch];
+        NSRange boldRangeTwo = [[mutableAttributedString string] rangeOfString:@"Guaranteed!" options:NSCaseInsensitiveSearch];
 
         UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:bodyCopySize];
         CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
