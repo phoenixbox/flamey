@@ -14,8 +14,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leg-AO-eFW" userLabel="Content">
                     <rect key="frame" x="10" y="50" width="355" height="567"/>
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yrT-Dv-IvV" userLabel="interactiveContainer">
-                            <rect key="frame" x="5" y="146" width="345" height="235"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrT-Dv-IvV" userLabel="interactiveContainer">
+                            <rect key="frame" x="5" y="173" width="345" height="235"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Male-0-Selected" translatesAutoresizingMaskIntoConstraints="NO" id="8Xh-HO-Jwz" userLabel="ImageView">
                                     <rect key="frame" x="0.0" y="0.0" width="345" height="235"/>
@@ -100,8 +100,8 @@
                                 </mask>
                             </variation>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap someone to help them stand out" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWR-kp-z4t">
-                            <rect key="frame" x="15" y="401" width="325" height="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap someone to help them stand out" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWR-kp-z4t">
+                            <rect key="frame" x="15" y="428" width="325" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="dgi-Mi-lrV"/>
                             </constraints>
@@ -123,8 +123,8 @@
                                 <action selector="completeSolution:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gq0-kY-sCH"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stand out from the crowd with us!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-vq-LsE">
-                            <rect key="frame" x="15" y="80" width="325" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stand out from the crowd with us!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-vq-LsE">
+                            <rect key="frame" x="15" y="80" width="325" height="63"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vpZ-q5-4cj"/>
