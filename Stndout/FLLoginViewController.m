@@ -51,10 +51,6 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 
     // TODO: Remove these assignments when not in development
     [_titleLabel setText:@"Its hard to stand out"];
-//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    [_hud setCenter:self.view.center];
-//    _hud.mode = MBProgressHUDModeIndeterminate;
-//    _hud.labelText = @"Loading";
 }
 
 #pragma mark SwipeView methods
@@ -136,38 +132,13 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 
 
 - (void)viewDidAppear:(BOOL)animated {
-
-//    FLSettings *settings = [FLSettings defaultSettings];
-//    NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
-
-//    if (settings.session) { // Logged in
-//        [FBSession openActiveSessionWithReadPermissions:readPermissions
-//                                           allowLoginUI:YES
-//                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-//                                          if (!error && status == FBSessionStateOpen) {
-//                                              [settings setSession:session];
-//                                              [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
-//                                              //                                              TODO: Future Server persistence
-//                                              //                                              [_hud show:YES];
-//                                              //                                              [FLSessionStore loginUser:session withCompletionBlock:completionBlock];
-//                                          } else {
-//                                              FLErrorHandler(error);
-//                                          }
-//                                      }];
-//    }
-
-//    if (!settings.sesssion) {
-//        [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
-//    } else {
-
-//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     FLSettings *settings = [FLSettings defaultSettings];
 
-    if (settings.session) {
-
+    if (settings.user) {
+        [self performSegueWithIdentifier:kSegueLoggedIn sender:nil];
     }
 }
 

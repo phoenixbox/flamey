@@ -235,14 +235,18 @@ final sections footer view
     return footer;
 }
 
-- (void)logOut {
+- (void)flushStoresAndSessions {
     [FBSession.activeSession closeAndClearTokenInformation];
     FLSettings *settings = [FLSettings defaultSettings];
-    settings.session = nil;
-
+    [settings setSession:nil];
+    [settings setUser:nil];
     [[FLAnnotationStore sharedStore] flushStore];
     [[FLProcessedImagesStore sharedStore] flushStore];
+}
 
+- (void)logOut {
+    [self flushStoresAndSessions];
+    
     void(^completionBlock)(void)=^(void) {
         Mixpanel *mixpanel = [Mixpanel sharedInstance];
         [mixpanel track:@"Logout" properties:@{
