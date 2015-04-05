@@ -37,6 +37,7 @@
     [self styleModal];
     [self setReadyTitleCopy];
     [self setFirstLabelCopy];
+    [self setSecondLabelCopy];
 
     NSDictionary *imagesForView = [self imagesForSelectedPersona];
     NSString *imageName = [imagesForView objectForKey:kUploadImage];
@@ -93,7 +94,7 @@
     // If you're using a simple `NSString` for your text,
     // assign to the `text` property last so it can inherit other label properties.
     [_secondLabel setText:copy afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"privately!" options:NSCaseInsensitiveSearch];
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"filter" options:NSCaseInsensitiveSearch];
 
         // Core Text APIs use C functions without a direct bridge to UIFont. See Apple's "Core Text Programming Guide" to learn how to configure string attributes.
         UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:copySize];
