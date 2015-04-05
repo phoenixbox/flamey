@@ -82,7 +82,7 @@
 }
 
 - (void)setSecondLabelCopy {
-    NSString *copy = @"Soon you will be able to filter and upload your photos privately!";
+    NSString *copy = @"Soon you will be able to filter your facebook photos!";
     float copySize = [FLViewHelpers bodyCopyForScreenSize];
 
     _secondLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:copySize];
