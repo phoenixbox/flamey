@@ -45,7 +45,7 @@ NSString *const kShowAnnotationInstructions = @"pushToAnnotationInstructions";
 
 static NSString * const kAnnotationTableViewCellIdentifier = @"FLAnnotationTableViewCell";
 static NSString * const kAnnotationTableEmptyMessageView = @"FLAnnotationTableEmptyMessageView";
-// TODO: these segue identifiers should be composed to a common level of abstraction
+// TODO: Segue identifiers should be composed to a common level of abstraction
 static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
 
 @implementation FLImageAnnotationViewController
@@ -250,6 +250,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [targetCell.photo setLogoPoint:CGPointMake(imageView.image.size.width*0.04, (imageView.image.size.height*(1-0.1)) )];
 }
 
+#pragma mark - Image Panning
 //- (void)addPanGestureRecognizerToCell:(FLAnnotationTableViewCell *)cell {
 //    self.moveRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
 //                                                                  action:@selector(moveAnnotation:)];
@@ -335,6 +336,7 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     [imageView setImage:processedImage];
 }
 
+// WARN: Not in use yet
 - (void)setLogoImageOnCell:(FLAnnotationTableViewCell *)targetCell {
     UIImageView *imageView = targetCell.selectedImageViewBackground;
     // 1. Create the image from the actual image view
