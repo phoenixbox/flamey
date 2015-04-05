@@ -24,11 +24,12 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
 @implementation FLTutorialResultView
 
 - (IBAction)start:(id)sender {
+    NSString *selectedPersona = [[FLSettings defaultSettings] selectedPersona];
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Education" properties:@{
                                              @"controller": NSStringFromClass([self class]),
                                              @"state": @"complete",
-                                             @"persona": [[FLSettings defaultSettings] selectedPersona],
+                                             @"persona": selectedPersona,
                                              @"matchPersona": _targetMatch
                                              }];
 
@@ -145,10 +146,13 @@ NSString *const kDefaultMaleImage = @"Selected-Male-2";
 
     if (user.isMale){
         [_secondProfile setImage:[UIImage imageNamed:kDefaultFemaleImage]];
+        _targetMatch = kDefaultFemaleImage;
     } else if (user.isFemale) {
         [_secondProfile setImage:[UIImage imageNamed:kDefaultMaleImage]];
+        _targetMatch = kDefaultMaleImage;
     } else {
-        NSLog(@"!WARN!: ResultView - no gender set");
+        NSLog(@"!WARN!: ResultView - no gender set - setting to female");
+        _targetMatch = kDefaultFemaleImage;
     }
 
     // TODO: Start second button toggle

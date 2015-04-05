@@ -72,7 +72,7 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
 - (IBAction)completeTutorial:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Education" properties:@{
-                                             @"controller": [self class],
+                                             @"controller": NSStringFromClass([self class]),
                                              @"state": @"exit",
                                              @"persona": [[FLSettings defaultSettings] selectedPersona]
                                              }];

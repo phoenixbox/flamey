@@ -237,6 +237,8 @@ final sections footer view
 
 - (void)logOut {
     [FBSession.activeSession closeAndClearTokenInformation];
+    FLSettings *settings = [FLSettings defaultSettings];
+    settings.session = nil;
 
     [[FLAnnotationStore sharedStore] flushStore];
     [[FLProcessedImagesStore sharedStore] flushStore];
