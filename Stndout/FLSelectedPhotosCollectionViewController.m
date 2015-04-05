@@ -47,8 +47,9 @@ NSString *const kStartEditingTitle = @"Edit";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     FLSettings *settings = [FLSettings defaultSettings];
-    // TODO: Remove the hard set here
-    settings.seenTutorial = NO;
+
+    //      WARN: Test the tutorial here
+    //      settings.seenTutorial = NO;
 
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Navigation" properties:@{
