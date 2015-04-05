@@ -98,10 +98,6 @@
     [_springLogo setDuration:0.5];
 }
 
-// RESTART
-// Mock an upload finished timer - then animate in another profile image view
-// Drop down some hearts and pulsate them
-
 - (void)setBodyLabelCopy {
     NSString *copy = @"Working to help you stndout!";
     float bodyCopySize = [FLViewHelpers bodyCopyForScreenSize];
@@ -318,51 +314,53 @@
     // Track attempt to upload & how many photos being uploaded (ProcessedImagesCount)
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
 
-    [self setFinishedState];
     // TODO: Ensure all images are being uploaded
-//    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
-//    FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
-//    UIImage *img = processedPhoto.image;
-//
-//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    [_hud setCenter:self.view.center];
-//    _hud.mode = MBProgressHUDModeAnnularDeterminate;
-//    _hud.labelText = @"Loading";
-//
-//    [self performPublishAction:^{
-//        FBRequestConnection *connection = [[FBRequestConnection alloc] init];
-//        connection.errorBehavior = FBRequestConnectionErrorBehaviorReconnectSession
-//        | FBRequestConnectionErrorBehaviorAlertUser
-//        | FBRequestConnectionErrorBehaviorRetry;
-//
-//        [_hud show:YES];
-//
-//        [connection addRequest:[FBRequest requestForUploadPhoto:img]
-//
-//         completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
-//             [_hud hide:YES];
-//             if (!error) {
-//    NSNumber *count = [NSNumber numberWithInteger:[processedImageStore.photos count]];
-//    [mixpanel track:@"FBUpload" properties:@{
-//                                                           @"controller": NSStringFromClass([self class]),
-//                                                           @"state": @"initial",
-//                                                           @"result": @"success",
-//                                                           @"count": count
-//                                                           }];
-//                 [self setFinishedState];
-//               } else {
-//    [mixpanel track:@"FBUpload" properties:@{
-//                                                           @"controller": NSStringFromClass([self class]),
-//                                                           @"state": @"initial",
-//                                                           @"result": @"failure"
-//                                                           }];
+    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
+    FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
+    UIImage *img = processedPhoto.image;
 
-//                   [self showAlert:error withSelectorName:@"uploadPhotos"];
-//               }
-//         }];
-//
-//        [connection start];
-//    }];
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_hud setCenter:self.view.center];
+    _hud.mode = MBProgressHUDModeAnnularDeterminate;
+    _hud.labelText = @"Loading";
+
+    [self performPublishAction:^{
+        FBRequestConnection *connection = [[FBRequestConnection alloc] init];
+        connection.errorBehavior = FBRequestConnectionErrorBehaviorReconnectSession
+        | FBRequestConnectionErrorBehaviorAlertUser
+        | FBRequestConnectionErrorBehaviorRetry;
+
+        [_hud show:YES];
+
+        [connection addRequest:[FBRequest requestForUploadPhoto:img]
+
+         completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
+             [_hud hide:YES];
+             if (!error) {
+                 NSNumber *count = [NSNumber numberWithInteger:[processedImageStore.photos count]];
+                 if (count == nil) {
+                     count = 0;
+                 }
+                 [mixpanel track:@"FBUpload" properties:@{
+                                                           @"controller": NSStringFromClass([self class]),
+                                                           @"state": @"initial",
+                                                           @"result": @"success",
+                                                           @"count": count
+                                                           }];
+                 [self setFinishedState];
+               } else {
+                   [mixpanel track:@"FBUpload" properties:@{
+                                                           @"controller": NSStringFromClass([self class]),
+                                                           @"state": @"initial",
+                                                           @"result": @"failure"
+                                                           }];
+
+                   [self showAlert:error withSelectorName:@"uploadPhotos"];
+               }
+         }];
+
+        [connection start];
+    }];
 }
 
 - (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
@@ -415,10 +413,10 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
     _hud.progress = progress;
 }
 
-
+#pragma mark - Facebook Private Permission Upload Request
 - (void)performPublishAction:(void(^)(void))action {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    // we defer request for permission to post to the moment of post, then we check for the permission
+    // Defer request for permission to post to the moment of post, then we check for the permission
     if ([FBSession.activeSession.permissions indexOfObject:@"publish_actions"] == NSNotFound) {
         // if we don't already have the permission, then we request it now
         [FBSession.activeSession requestNewPublishPermissions:@[@"publish_actions"]
