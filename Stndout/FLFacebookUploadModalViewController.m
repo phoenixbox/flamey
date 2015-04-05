@@ -24,6 +24,7 @@
 @interface FLFacebookUploadModalViewController ()
 
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, assign) NSUInteger additionCounter;
 
 @end
 
@@ -36,6 +37,7 @@
     FLSettings *settings = [FLSettings defaultSettings];
 
     [self styleModal];
+    [self resetAdditionCounter];
 
     // Track Upload Screen Loaded
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
@@ -49,6 +51,10 @@
     } else {
         [self askPermissionTo:@"uploadPhotos"];
     }
+}
+
+- (void)resetAdditionCounter {
+    _additionCounter = 0;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -137,28 +143,33 @@
 }
 
 - (void)setFinishedState {
-    [self setModalTitleFinished];
-    [_readyButton setEnabled:YES];
+    NSUInteger processedCount = [FLProcessedImagesStore sharedStore].photos.count;
 
-    [FLViewHelpers setBaseButtonStyle:_readyButton withColor:[UIColor whiteColor]];
-    float fontSize = [FLViewHelpers buttonCopyForScreenSize];
-    _readyButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:fontSize];
-    [_readyButton setBackgroundColor:[UIColor clearColor]];
+    if (_additionCounter == processedCount) {
+        [self resetAdditionCounter];
+        [self setModalTitleFinished];
+        [_readyButton setEnabled:YES];
 
-    [_bodyLabel setText:@"Now you stndout!" afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"stndout" options:NSCaseInsensitiveSearch];
+        [FLViewHelpers setBaseButtonStyle:_readyButton withColor:[UIColor whiteColor]];
+        float fontSize = [FLViewHelpers buttonCopyForScreenSize];
+        _readyButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:fontSize];
+        [_readyButton setBackgroundColor:[UIColor clearColor]];
 
-        UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:[FLViewHelpers buttonCopyForScreenSize]];
-        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-        if (font) {
-            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
-            CFRelease(font);
-        }
+        [_bodyLabel setText:@"Now you stndout!" afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"stndout" options:NSCaseInsensitiveSearch];
 
-        return mutableAttributedString;
-    }];
+            UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:[FLViewHelpers buttonCopyForScreenSize]];
+            CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+            if (font) {
+                [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+                CFRelease(font);
+            }
 
-    [self setFinishLogoAndTriggerProfileVIew];
+            return mutableAttributedString;
+        }];
+        
+        [self setFinishLogoAndTriggerProfileVIew];
+    }
 }
 
 - (void)setFinishLogoAndTriggerProfileVIew {
@@ -311,56 +322,92 @@
 
 // TODO: Be aware of iOS version upload restrictions
 - (void)uploadPhotos {
+    FLSettings *settings = [FLSettings defaultSettings];
+    FLUser *user = settings.user;
     // Track attempt to upload & how many photos being uploaded (ProcessedImagesCount)
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
 
     // TODO: Ensure all images are being uploaded
     FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
-    FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
-    UIImage *img = processedPhoto.image;
+//    FLPhoto *processedPhoto = processedImageStore.photos.lastObject;
+//    UIImage *img = processedPhoto.image;
 
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [_hud setCenter:self.view.center];
     _hud.mode = MBProgressHUDModeAnnularDeterminate;
     _hud.labelText = @"Loading";
 
-    [self performPublishAction:^{
-        FBRequestConnection *connection = [[FBRequestConnection alloc] init];
-        connection.errorBehavior = FBRequestConnectionErrorBehaviorReconnectSession
-        | FBRequestConnectionErrorBehaviorAlertUser
-        | FBRequestConnectionErrorBehaviorRetry;
+    // Low fidelity tracking data
+    [self saveCountOfImages];
 
-        [_hud show:YES];
+    for (FLPhoto* processedPhoto in processedImageStore.photos) {
+        [self performPublishAction:^{
+            FBRequestConnection *connection = [[FBRequestConnection alloc] init];
+            connection.errorBehavior = FBRequestConnectionErrorBehaviorReconnectSession
+            | FBRequestConnectionErrorBehaviorAlertUser
+            | FBRequestConnectionErrorBehaviorRetry;
 
-        [connection addRequest:[FBRequest requestForUploadPhoto:img]
+            [_hud show:YES];
 
-         completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
-             [_hud hide:YES];
-             if (!error) {
-                 NSNumber *count = [NSNumber numberWithInteger:[processedImageStore.photos count]];
-                 if (count == nil) {
-                     count = 0;
-                 }
-                 [mixpanel track:@"FBUpload" properties:@{
-                                                           @"controller": NSStringFromClass([self class]),
-                                                           @"state": @"initial",
-                                                           @"result": @"success",
-                                                           @"count": count
-                                                           }];
-                 [self setFinishedState];
-               } else {
-                   [mixpanel track:@"FBUpload" properties:@{
-                                                           @"controller": NSStringFromClass([self class]),
-                                                           @"state": @"initial",
-                                                           @"result": @"failure"
-                                                           }];
+            [connection addRequest:[FBRequest requestForUploadPhoto:processedPhoto.image]
 
-                   [self showAlert:error withSelectorName:@"uploadPhotos"];
-               }
-         }];
+                 completionHandler:^(FBRequestConnection *innerConnection, id result, NSError *error) {
+                     [_hud hide:YES];
 
-        [connection start];
-    }];
+                     if (!error) {
+                         // NOTE: Tag the photo on completion
+                         _additionCounter++;
+                          NSLog(@"UPLOADED ANNOTATION #: %lu", _additionCounter);
+                         // RETRIEVE THE PHOTO ID
+                         NSString *tagPath = [NSString stringWithFormat:@"/%@/tags", [result objectForKey:@"id"]];
+                         NSString *userIDTag = [NSString stringWithFormat:@"[{'tag_uid': %@}]", user.id];
+                         NSDictionary *params = @{ @"tags": userIDTag };
+                         /* make the API call */
+                         [FBRequestConnection startWithGraphPath:tagPath
+                                                      parameters:params
+                                                      HTTPMethod:@"POST"
+                                               completionHandler:^(
+                                                                   FBRequestConnection *connection,
+                                                                   id result,
+                                                                   NSError *error
+                                                                   ) {
+                                                   if(!error) {
+                                                       NSLog(@"TAGGED ANNOTATION #: %lu", _additionCounter);
+                                                       [self setFinishedState];
+                                                   } else {
+                                                       // TODO: Implement Crashlytics
+                                                   }
+                                               }];
+                     } else {
+                         [mixpanel track:@"FBUpload" properties:@{
+                                                                  @"controller": NSStringFromClass([self class]),
+                                                                  @"state": @"initial",
+                                                                  @"result": @"failure"
+                                                                  }];
+                         
+                         [self showAlert:error withSelectorName:@"uploadPhotos"];
+                     }
+                 }];
+            
+            [connection start];
+        }];
+    }
+}
+
+- (void)saveCountOfImages {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    FLProcessedImagesStore *processedImageStore = [FLProcessedImagesStore sharedStore];
+    NSNumber *count = [NSNumber numberWithInteger:[processedImageStore.photos count]];
+    if (count == nil) {
+        count = 0;
+    }
+
+    [mixpanel track:@"FBUpload" properties:@{
+                                             @"controller": NSStringFromClass([self class]),
+                                             @"state": @"initial",
+                                             @"result": @"success",
+                                             @"count": count
+                                             }];
 }
 
 - (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {

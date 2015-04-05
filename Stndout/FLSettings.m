@@ -94,7 +94,7 @@ static NSString *const kUnderstandAnnotation = @"understandAnnotation";
 - (void)setSession:(FBSession *)session
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:session forKey:kSession];
+    [defaults setObject:session forKey:kSession];
     [defaults synchronize];
 }
 
