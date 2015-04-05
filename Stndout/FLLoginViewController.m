@@ -23,6 +23,10 @@
 // TODO: Server Persistence Data Layer
 #import "FLUser.h"
 
+NSString *const kFirstSlideTitle = @"Its hard to stand out";
+NSString *const kSecondSlideTitle = @"We make it easy!";
+NSString *const kThirdSlideTitle = @"Stndout more - Get Matched More!";
+
 NSString *const kSegueLoggedIn = @"loggedIn";
 NSString *const kLoginSlide = @"FLLoginSlide";
 
@@ -50,7 +54,7 @@ NSString *const kLoginSlide = @"FLLoginSlide";
     [_loginView setReadPermissions:readPermissions];
 
     // TODO: Remove these assignments when not in development
-    [_titleLabel setText:@"Its hard to stand out"];
+    [_titleLabel setText:kFirstSlideTitle];
 }
 
 #pragma mark SwipeView methods
@@ -97,16 +101,16 @@ NSString *const kLoginSlide = @"FLLoginSlide";
     switch (index) {
         case 0:
             [self trackSlideViewing:@"First"];
-            [_titleLabel setText:@"Its hard to stand out"];
+            [_titleLabel setText:kFirstSlideTitle];
             break;
         case 1:
             [self trackSlideViewing:@"Second"];
-            [_titleLabel setText:@"We let you standout"];
+            [_titleLabel setText:kSecondSlideTitle];
             break;
         case 2:
             [self trackSlideViewing:@"Third"];
             [(FLLoginSlide *)swipeView.currentItemView startAnimationLayers];
-            [_titleLabel setText:@"So people can like you!"];
+            [_titleLabel setText:kThirdSlideTitle];
             break;
         default:
             NSLog(@"There is no title for that index");
@@ -161,6 +165,7 @@ NSString *const kLoginSlide = @"FLLoginSlide";
     NSString *result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     FLUser *newUser = [[FLUser alloc] initWithString:result error:nil];
 
+    // Setup Mixpanel Super Properties
     [self setTrackingSuperProperties:newUser];
 
     NSString *graphPath = @"me/picture?type=large&redirect=false";
