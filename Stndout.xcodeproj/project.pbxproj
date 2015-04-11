@@ -964,8 +964,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: REPL.Stndout";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: REPL.Stndout";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shane Rogers (AAA27M4R82)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shane Rogers (AAA27M4R82)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -985,6 +985,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "1703d8b8-398f-4d80-bff9-e4d7db41ce11";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1006,8 +1007,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: REPL.Stndout";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: REPL.Stndout";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shane Rogers (AAA27M4R82)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shane Rogers (AAA27M4R82)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1020,6 +1021,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "1703d8b8-398f-4d80-bff9-e4d7db41ce11";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1030,8 +1032,8 @@
 			baseConfigurationReference = 067A9FC38B3101CE4C8B6339 /* Pods-Stndout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shane Rogers (AAA27M4R82)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shane Rogers (AAA27M4R82)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/shanerogers/Documents/FacebookSDK,
@@ -1041,7 +1043,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Stndout;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1703d8b8-398f-4d80-bff9-e4d7db41ce11";
 			};
 			name = Debug;
 		};
@@ -1050,8 +1052,8 @@
 			baseConfigurationReference = 3B003C3C13253F1D84B7E4B2 /* Pods-Stndout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shane Rogers (AAA27M4R82)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shane Rogers (AAA27M4R82)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/shanerogers/Documents/FacebookSDK,
@@ -1061,7 +1063,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Stndout;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1703d8b8-398f-4d80-bff9-e4d7db41ce11";
 			};
 			name = Release;
 		};
