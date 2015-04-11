@@ -18,6 +18,9 @@
 #import "FLTOSViewController.h"
 #import "FLPrivacyViewController.h"
 
+// FeedbackLoop
+#import "FBLFeedbackTabBarController.h"
+
 // Pods
 #import "Mixpanel.h"
 
@@ -35,6 +38,7 @@ static NSString * const kSettingsCellIdentifier = @"cell";
 
 static NSString * const kContactCell = @"Contact Us";
 static NSString * const kContactViewController = @"FLContactViewController";
+static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarController";
 static NSString * const kPrivacyCell = @"Privacy Policy";
 static NSString * const kPrivacyViewController = @"FLPrivacyViewController";
 static NSString * const kTOSCell = @"Terms of Service";
@@ -211,12 +215,16 @@ final sections footer view
     NSString *cellName = cell.textLabel.text;
 
     // Track pages loaded
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+//    Mixpanel *mixpanel = [Mixpanel sharedInstance];
 
     // Enum pattern would be better here
     if ([cellName isEqualToString:kContactCell]) {
-        FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
-        [self presentViewController:contactViewController animated:YES completion:nil];
+//      ******** FeedbackLoop Entry Point ***********
+        FBLFeedbackTabBarController *feedbackTabBarViewController = [[FBLFeedbackTabBarController alloc] initWithNibName:kFeedbackTabBarController bundle:nil];
+        [self presentViewController:feedbackTabBarViewController animated:YES completion:nil];
+
+//        FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
+//        [self presentViewController:contactViewController animated:YES completion:nil];
     } else if ([cellName isEqualToString:kPrivacyCell]) {
         FLPrivacyViewController *privacyViewController = [[FLPrivacyViewController alloc] initWithNibName:kPrivacyViewController bundle:nil];
         [self presentViewController:privacyViewController animated:YES completion:nil];

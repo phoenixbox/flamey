@@ -17,22 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.tabBar setBackgroundColor:[UIColor redColor]];
-    [self styleTabBar:self.tabBar];
+    [self styleTabBar];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)styleTabBar:(UITabBar *)tabBar {
+- (void)styleTabBar {
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor blackColor]];
 
     NSArray *tabBarImagesMap = @[@"Frame", @"Settings"];
 
-    [[tabBar items] enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger index, BOOL *stop){
+    [[self.tabBar items] enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger index, BOOL *stop){
         [self setTabItemImages:item forImageName:[tabBarImagesMap objectAtIndex:index]];
     }];
 }
@@ -40,10 +34,20 @@
 - (void)setTabItemImages:(UITabBarItem *)item forImageName:(NSString *)imageName {
     [item setImage:[[UIImage imageNamed:[imageName stringByAppendingString:@"Deselected.png"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [item setSelectedImage:[[UIImage imageNamed:[imageName stringByAppendingString:@"Selected.png"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [item setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor grayColor] } forState:UIControlStateNormal];
+    [item setTitleTextAttributes:@{
+                                   NSForegroundColorAttributeName : [UIColor grayColor],
+                                   NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Regular" size:12.0]
+                                   }
+                        forState:UIControlStateNormal];
+
     [item setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor] } forState:UIControlStateHighlighted];
-    [item setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor grayColor], NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Regular" size:12.0] } forState:UIControlStateNormal];
-};
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 /*
 #pragma mark - Navigation
