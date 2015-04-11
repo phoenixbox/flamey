@@ -50,6 +50,8 @@ PODS:
   - Mixpanel/MPCategoryHelpers (2.7.3)
   - MZAppearance (1.1.3)
   - ObjectiveSugar (1.1.0)
+  - Parse (1.7.1):
+    - Bolts (~> 1.1)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -69,6 +71,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9)
   - Mixpanel (~> 2.7)
   - ObjectiveSugar (~> 1.1)
+  - Parse (~> 1.7)
   - SDWebImage (~> 3.7)
   - SIAlertView (~> 1.3)
   - SwipeView (~> 1.3)
@@ -87,6 +90,7 @@ SPEC CHECKSUMS:
   Mixpanel: 1d387d76800e07e953958c62c97fea27f13632dd
   MZAppearance: c2937318234fd782e900fb178942278881ac5490
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
+  Parse: fa8ec29de6d82035635986c11946299fb1b38316
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SIAlertView: 20c794b55eaf44d888773ea51647cf8907723919
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
