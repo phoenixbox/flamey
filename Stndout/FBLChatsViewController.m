@@ -19,6 +19,10 @@
 #import "FBLChatCell.h"
 #import <Parse/Parse.h>
 
+#import "FBLLoginViewController.h"
+#import "AFBlurSegue.h"
+static NSString * const kFBLLoginViewController = @"FBLLoginViewController";
+
 NSString *const kChatCellIdentifier = @"FBLChatCell";
 NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
@@ -39,6 +43,20 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
     // Setup Listeners
     [self listenForCreateSingleChatNotification];
+
+    // If there is no currentUser - Prompt to login
+    if (![PFUser currentUser]) {
+        [self showContactDetailsModal];
+    }
+}
+
+- (void)showContactDetailsModal {
+    FBLLoginViewController *loginViewController = [[    FBLLoginViewController alloc] init];
+
+    loginViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
+    AFBlurSegue *segue = [[AFBlurSegue alloc] initWithIdentifier:@"FeedbackLoginSegue" source:self destination:loginViewController];
+    [segue perform];
 }
 
 - (void)setupTable {
