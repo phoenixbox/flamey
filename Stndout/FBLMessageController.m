@@ -7,11 +7,9 @@
 //
 
 #import "FBLAppConstants.h"
-
 #import "FBLMessageController.h"
 
-
-NSString* StartPrivateChat(PFUser *user1, PFUser *user2) {
+NSString *StartPrivateChat(PFUser *user1, PFUser *user2) {
     NSString *id1 = user1.objectId;
     NSString *id2 = user2.objectId;
 
@@ -20,38 +18,6 @@ NSString* StartPrivateChat(PFUser *user1, PFUser *user2) {
     CreateMessageItem(user1, groupId, user2[PF_USER_FULLNAME]);
     CreateMessageItem(user2, groupId, user1[PF_USER_FULLNAME]);
 
-    return groupId;
-}
-
-NSString* StartMultipleChat(NSMutableArray *users) {
-    NSString *groupId = @"";
-    NSString *description = @"";
-
-    NSMutableArray *userIds = [[NSMutableArray alloc] init];
-
-    for (PFUser *user in users)
-    {
-        [userIds addObject:user.objectId];
-    }
-
-    NSArray *sorted = [userIds sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-
-    for (NSString *userId in sorted)
-    {
-        groupId = [groupId stringByAppendingString:userId];
-    }
-    
-    for (PFUser *user in users)
-    {
-        if ([description length] != 0) description = [description stringByAppendingString:@" & "];
-        description = [description stringByAppendingString:user[PF_USER_FULLNAME]];
-    }
-    
-    for (PFUser *user in users)
-    {
-        CreateMessageItem(user, groupId, description);
-    }
-    
     return groupId;
 }
 
