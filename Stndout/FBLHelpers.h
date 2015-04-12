@@ -6,8 +6,7 @@
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
-#ifndef Stndout_FBLHelpers_h
-#define Stndout_FBLHelpers_h
+#import <Foundation/Foundation.h>
 
-
-#endif
+void    LoginUser(id target);
+void    PostNotification(NSString *notification);
