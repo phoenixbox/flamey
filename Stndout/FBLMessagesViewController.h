@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FBLMessagesViewController : UIViewController
+@interface FBLMessagesViewController : UITableViewController
 
 @end

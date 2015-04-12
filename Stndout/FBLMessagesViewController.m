@@ -10,6 +10,8 @@
 
 @interface FBLMessagesViewController ()
 
+@property (nonatomic, strong) NSMutableArray *messages;
+
 @end
 
 @implementation FBLMessagesViewController
@@ -18,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self styleNavigationBar];
+    [self styleTableView];
 }
 
 - (void)styleNavigationBar {
@@ -31,6 +34,10 @@
     UIImage *removeIcon = [UIImage imageNamed:@"removeIcon.png"];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:removeIcon landscapeImagePhone:removeIcon style:UIBarButtonItemStylePlain target:self action:@selector(closeFeedback)];
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
+}
+
+-(void)styleTableView {
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)closeFeedback {
