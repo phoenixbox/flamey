@@ -217,10 +217,6 @@ NSString *const kStartEditingTitle = @"Edit";
     NSLog(@"Callback");
 }
 
-- (void)removeEmptyCollectionMessage {
-    _selectionCollection.backgroundView = nil;
-}
-
 - (void)renderEmptyMessage {
     [CollectionViewHelpers renderEmptyMessage:@"Tap \"Add\" to select some of your Facebook photos to edit" forCollectionView:_selectionCollection];
 }
