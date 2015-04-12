@@ -8,14 +8,14 @@
 
 #import "FBLFeedbackTabBarController.h"
 
-#import "FBLMessagesViewController.h"
+#import "FBLChatsViewController.h"
 #import "FBLGroupsViewController.h"
 #import "FBLProfileViewController.h"
 
 @interface FBLFeedbackTabBarController ()
 
 @property (nonatomic, strong) FBLGroupsViewController *groupsViewController;
-@property (nonatomic, strong) FBLMessagesViewController *messagesViewController;
+@property (nonatomic, strong) FBLChatsViewController *messagesViewController;
 @property (nonatomic, strong) FBLProfileViewController *profileViewController;
 @property (nonatomic, strong) UINavigationBar *navigationBar;
 
@@ -42,7 +42,7 @@
 
 - (void)setFeedbackViewControllers {
     _groupsViewController = [[FBLGroupsViewController alloc] init];
-    _messagesViewController = [[FBLMessagesViewController alloc] init];
+    _messagesViewController = [[FBLChatsViewController alloc] init];
     _profileViewController = [[FBLProfileViewController alloc] init];
 
     UINavigationController *groupsNavController = [[UINavigationController alloc] initWithRootViewController:_groupsViewController];
@@ -59,7 +59,7 @@
     [[UITabBar appearance] setTintColor:[UIColor blackColor]];
 
     NSArray *tabBarImagesMap = @[@"Frame", @"Settings", @"Frame"];
-    NSArray *tabBarTitlesMap = @[@"Groups", @"Messages", @"Profile"];
+    NSArray *tabBarTitlesMap = @[@"Groups", @"Chats", @"Profile"];
 
     [[self.tabBar items] enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger index, BOOL *stop){
         [self setTabItemImages:item withTitle:[tabBarTitlesMap objectAtIndex:index] andImageName:[tabBarImagesMap objectAtIndex:index]];
