@@ -1,5 +1,5 @@
 //
-//  PushNotificationController.m
+//  FBLPushNotificationController.m
 //  Stndout
 //
 //  Created by Shane Rogers on 4/11/15.
@@ -7,3 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+
+void		ParsePushUserAssign		(void);
+void		ParsePushUserResign		(void);
+
+void		SendPushNotification	(NSString *groupId, NSString *text);
