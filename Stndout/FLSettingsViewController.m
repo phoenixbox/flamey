@@ -221,6 +221,7 @@ final sections footer view
     if ([cellName isEqualToString:kContactCell]) {
 //      ******** FeedbackLoop Entry Point ***********
         FBLFeedbackTabBarController *feedbackTabBarViewController = [[FBLFeedbackTabBarController alloc] initWithNibName:kFeedbackTabBarController bundle:nil];
+        feedbackTabBarViewController.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentViewController:feedbackTabBarViewController animated:YES completion:nil];
 
 //        FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
