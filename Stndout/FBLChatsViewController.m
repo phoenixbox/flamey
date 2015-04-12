@@ -7,7 +7,10 @@
 //
 
 #import "FBLChatsViewController.h"
+#import "FBLChatsEmptyMessageView.h"
+
 #import "FBLChatViewController.h"
+#import "FBLViewHelpers.h"
 
 #import "FBLSingleChatView.h"
 #import "FBLAppConstants.h"
@@ -17,6 +20,7 @@
 #import <Parse/Parse.h>
 
 NSString *const kChatCellIdentifier = @"FBLChatCell";
+NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
 @interface FBLChatsViewController ()
 
@@ -32,6 +36,9 @@ NSString *const kChatCellIdentifier = @"FBLChatCell";
     [self styleNavigationBar];
     [self setupTable];
     [self styleTableView];
+
+    // Setup Listeners
+    [self listenForCreateSingleChatNotification];
 }
 
 - (void)setupTable {
@@ -62,6 +69,19 @@ NSString *const kChatCellIdentifier = @"FBLChatCell";
 
 -(void)styleTableView {
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
+
+    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kChatsEmptyMessageView owner:nil options:nil];
+    FBLChatsEmptyMessageView *emptyMessage = [nibContents lastObject];
+
+    emptyMessage.contentView.layer.cornerRadius = 4;
+    emptyMessage.contentView.layer.borderWidth = 1;
+    emptyMessage.contentView.layer.borderColor = [UIColor blackColor].CGColor;
+    [emptyMessage.contentView setBackgroundColor:[UIColor whiteColor]];
+
+    [FBLViewHelpers setBaseButtonStyle:emptyMessage.startButton withColor:[UIColor blackColor]];
+    [self.tableView setBackgroundView:emptyMessage];
+    // Show empty message by default
+    [self.tableView.backgroundView setHidden:NO];
 }
 
 - (void)closeFeedback {
@@ -158,7 +178,15 @@ NSString *const kChatCellIdentifier = @"FBLChatCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_chats count];
+    NSUInteger count = [_chats count];
+
+    if (count > 0) {
+        [self.tableView.backgroundView setHidden:YES];
+    } else {
+        [self.tableView.backgroundView setHidden:NO];
+    }
+
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -191,6 +219,17 @@ NSString *const kChatCellIdentifier = @"FBLChatCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - listeners
+
+- (void)listenForCreateSingleChatNotification {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(createSingleChat)
+                   name:kCreateSingleChat
+                 object:nil];
 }
 
 /*
