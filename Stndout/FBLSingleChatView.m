@@ -47,12 +47,13 @@
 {
     PFUser *user = [PFUser currentUser];
 
+    // RESTART: Whats this data look like
     PFQuery *query = [PFQuery queryWithClassName:PF_USER_CLASS_NAME];
+
     [query whereKey:PF_USER_OBJECTID notEqualTo:user.objectId];
     [query orderByAscending:PF_USER_FULLNAME];
     [query setLimit:1000];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
          if (error == nil)
          {
              [users removeAllObjects];

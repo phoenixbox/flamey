@@ -27,6 +27,9 @@
 		CB687A131ADA2F2000FCADA1 /* FBLHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A121ADA2F2000FCADA1 /* FBLHelpers.m */; };
 		CB687A161ADA340000FCADA1 /* FBLSingleChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A151ADA340000FCADA1 /* FBLSingleChatView.m */; };
 		CB687A191ADA42CE00FCADA1 /* FBLChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A181ADA42CE00FCADA1 /* FBLChatCell.m */; };
+		CB687A1C1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A1B1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.m */; };
+		CB687A1E1ADA4E2700FCADA1 /* FBLChatsEmptyMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB687A1D1ADA4E2700FCADA1 /* FBLChatsEmptyMessageView.xib */; };
+		CB687A211ADA522700FCADA1 /* FBLViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A201ADA522700FCADA1 /* FBLViewHelpers.m */; };
 		CB6FE8B91AD0B7FF00AD0BD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */; };
 		CB6FE8BA1AD0B7FF00AD0BD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8281AD0B7FF00AD0BD2 /* Main.storyboard */; };
 		CB6FE8BB1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE82B1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m */; };
@@ -176,6 +179,11 @@
 		CB687A151ADA340000FCADA1 /* FBLSingleChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLSingleChatView.m; sourceTree = "<group>"; };
 		CB687A171ADA42CE00FCADA1 /* FBLChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChatCell.h; sourceTree = "<group>"; };
 		CB687A181ADA42CE00FCADA1 /* FBLChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChatCell.m; sourceTree = "<group>"; };
+		CB687A1A1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChatsEmptyMessageView.h; sourceTree = "<group>"; };
+		CB687A1B1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChatsEmptyMessageView.m; sourceTree = "<group>"; };
+		CB687A1D1ADA4E2700FCADA1 /* FBLChatsEmptyMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLChatsEmptyMessageView.xib; sourceTree = "<group>"; };
+		CB687A1F1ADA522700FCADA1 /* FBLViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLViewHelpers.h; sourceTree = "<group>"; };
+		CB687A201ADA522700FCADA1 /* FBLViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLViewHelpers.m; sourceTree = "<group>"; };
 		CB6FE8271AD0B7FF00AD0BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CB6FE8291AD0B7FF00AD0BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB6FE82A1AD0B7FF00AD0BD2 /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
@@ -653,6 +661,9 @@
 				CB6879ED1AD9DEC400FCADA1 /* FBLChatsViewController.xib */,
 				CB687A141ADA336100FCADA1 /* FBLSingleChatView.h */,
 				CB687A151ADA340000FCADA1 /* FBLSingleChatView.m */,
+				CB687A1A1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.h */,
+				CB687A1B1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.m */,
+				CB687A1D1ADA4E2700FCADA1 /* FBLChatsEmptyMessageView.xib */,
 			);
 			name = Chats;
 			sourceTree = "<group>";
@@ -706,6 +717,8 @@
 				CB687A0D1ADA0F2C00FCADA1 /* FBLCameraUtil.m */,
 				CB687A111ADA2F0D00FCADA1 /* FBLHelpers.h */,
 				CB687A121ADA2F2000FCADA1 /* FBLHelpers.m */,
+				CB687A1F1ADA522700FCADA1 /* FBLViewHelpers.h */,
+				CB687A201ADA522700FCADA1 /* FBLViewHelpers.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -885,6 +898,7 @@
 				CB6FE8D01AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib in Resources */,
 				CB6FE8ED1AD0B7FF00AD0BD2 /* FLTutorialResultView.xib in Resources */,
 				CB6FE91A1AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf in Resources */,
+				CB687A1E1ADA4E2700FCADA1 /* FBLChatsEmptyMessageView.xib in Resources */,
 				CB6FE8EB1AD0B7FF00AD0BD2 /* FLTutorialProcessView.xib in Resources */,
 				CB6FE9191AD0B7FF00AD0BD2 /* Walkway_Oblique_UltraBold.ttf in Resources */,
 				CB6FE8E71AD0B7FF00AD0BD2 /* FLTOSViewController.xib in Resources */,
@@ -996,6 +1010,7 @@
 				CB687A071ADA079700FCADA1 /* FBLMessageController.m in Sources */,
 				CB6FE8F81AD0B7FF00AD0BD2 /* AsyncImageView.swift in Sources */,
 				CB6FE90B1AD0B7FF00AD0BD2 /* SpringImageView.swift in Sources */,
+				CB687A211ADA522700FCADA1 /* FBLViewHelpers.m in Sources */,
 				CB6FE8E81AD0B7FF00AD0BD2 /* FLTutorialHowView.m in Sources */,
 				CB6FE8E51AD0B7FF00AD0BD2 /* FLToolsStore.m in Sources */,
 				CB6FE8FE1AD0B7FF00AD0BD2 /* DesignableTextField.swift in Sources */,
@@ -1046,6 +1061,7 @@
 				CB6FE9121AD0B7FF00AD0BD2 /* UnwindSegue.swift in Sources */,
 				CB6FE8DB1AD0B7FF00AD0BD2 /* FLPrivacyViewController.m in Sources */,
 				CB6FE8D41AD0B7FF00AD0BD2 /* FLLoginSlide.m in Sources */,
+				CB687A1C1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.m in Sources */,
 				CB6FE8CD1AD0B7FF00AD0BD2 /* FLFiltersPromptViewController.m in Sources */,
 				CB6FE8C61AD0B7FF00AD0BD2 /* FLErrorHandler.m in Sources */,
 				CB6FE8BD1AD0B7FF00AD0BD2 /* FLAnnotationNavViewController.m in Sources */,
