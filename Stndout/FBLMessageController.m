@@ -40,7 +40,9 @@ void CreateMessageItem(PFUser *user, NSString *groupId, NSString *description) {
                  message[PF_MESSAGES_COUNTER] = @0;
                  message[PF_MESSAGES_UPDATEDACTION] = [NSDate date];
                  [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                      if (error != nil) NSLog(@"CreateMessageItem save error.");
+                     if (error != nil) {
+                         NSLog(@"FBLMessageController: CreateMessageItem save error.");
+                     }
                   }];
              }
          }
@@ -51,7 +53,9 @@ void CreateMessageItem(PFUser *user, NSString *groupId, NSString *description) {
 void DeleteMessageItem(PFObject *message) {
     [message deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
-         if (error != nil) NSLog(@"DeleteMessageItem delete error.");
+         if (error != nil) {
+             NSLog(@"FBLMessageController: DeleteMessageItem delete error.");
+         }
      }];
 }
 
@@ -74,11 +78,15 @@ void UpdateMessageCounter(NSString *groupId, NSString *lastMessage) {
                  message[PF_MESSAGES_UPDATEDACTION] = [NSDate date];
                  [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                   {
-                      if (error != nil) NSLog(@"UpdateMessageCounter save error.");
+                      if (error != nil) {
+                          NSLog(@"FBLMessageController: UpdateMessageCounter save error.");
+                      }
                   }];
              }
          }
-         else NSLog(@"UpdateMessageCounter query error.");
+         else  {
+           NSLog(@"FBLMessageController: UpdateMessageCounter query error");
+         }
      }];
 }
 
@@ -95,10 +103,14 @@ void ClearMessageCounter(NSString *groupId) {
                  message[PF_MESSAGES_COUNTER] = @0;
                  [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                   {
-                      if (error != nil) NSLog(@"ClearMessageCounter save error.");
+                      if (error != nil) {
+                          NSLog(@"FBLMessageController: ClearMessageCounter save error.");
+                      }
                   }];
              }
          }
-         else NSLog(@"ClearMessageCounter query error.");
+         else {
+             NSLog(@"FBLMessageController: ClearMessageCounter query error.");
+         }
      }];
 }
