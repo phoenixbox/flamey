@@ -118,7 +118,6 @@
 		1D7AB5FF8CB24B19322B797C /* Pods-Stndout-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4010B993D6BCF006D1B85 /* Pods-Stndout-AFNetworking-dummy.m */; };
 		1D8440284FC91C0F6E1C18C1 /* BFAppLink.m in Sources */ = {isa = PBXBuildFile; fileRef = EE24BD61790925D2D230FB1F /* BFAppLink.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		1D9D5F1A6DBE79FEDB8CF97F /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 4304F34886537775CB9E620A /* MBProgressHUD.h */; };
-		1E48D1C83A720B65E87C1B43 /* SLKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BDF7829ED0EED6F0B61BD68 /* SLKTextView.h */; };
 		1E7D930D79E2F9DBA9B9ADD5 /* FBDialogsParams.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FDEEE07AD306CBA3C1FA20 /* FBDialogsParams.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1E81DC6F8F9E64D00A3A77B4 /* GPUImageTwoPassFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = A0EFBFA6E3F535D1E14AB386 /* GPUImageTwoPassFilter.h */; };
 		1EDCBC8431FFF86F38EB1C75 /* FBTestSession+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FF98266793580E2CE97BC9E /* FBTestSession+Internal.h */; };
@@ -4884,7 +4883,6 @@
 				C5050646100747DF57D06674 /* SLKTextInputbar.h in Headers */,
 				DE0B061A36A741453F8431E7 /* SLKTextView+SLKAdditions.h in Headers */,
 				7117273AF67F5CD858E0984E /* SLKTextView.h in Headers */,
-				1E48D1C83A720B65E87C1B43 /* SLKTextView.h in Headers */,
 				920460EF83263D4E90A7CE9B /* SLKTextViewController.h in Headers */,
 				DFDB87D393D6215272806FCD /* SLKTypingIndicatorView.h in Headers */,
 				D98D5E39629AB4DC490AB1C3 /* SLKUIConstants.h in Headers */,
@@ -5332,7 +5330,7 @@
 		9063716A184346E9F79FBC25 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 			};
 			buildConfigurationList = 0234134690D4EA87D6AA3C8C /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";

@@ -16,7 +16,7 @@
 #import "MBProgressHUD.h"
 //#import "ProgressHUD.h"
 
-//#import "camera.h"
+#import "FBLCameraUtil.h"
 #import "FBLMessageController.h"
 #import "FBLPushNotificationController.h"
 
@@ -106,14 +106,16 @@
 
         PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
         [query whereKey:PF_CHAT_GROUPID equalTo:_channelId];
-        if (message_last != nil) [query whereKey:PF_CHAT_CREATEDAT greaterThan:message_last.date];
+
+        if (message_last != nil) {
+            [query whereKey:PF_CHAT_CREATEDAT greaterThan:message_last.date];
+        }
+
         [query includeKey:PF_CHAT_USER];
         [query orderByDescending:PF_CHAT_CREATEDAT];
         [query setLimit:50];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-         {
-             if (error == nil)
-             {
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+             if (error == nil) {
                  BOOL incoming = NO;
                  self.automaticallyScrollsToMostRecentMessage = NO;
                  for (PFObject *object in [objects reverseObjectEnumerator])
@@ -132,7 +134,6 @@
                  _initialized = YES;
              }
              else {
-
                  _hud.labelText = @"Loading";
                  [_hud show:YES];
              }
