@@ -6,21 +6,34 @@
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
-#import "FBLMessagesViewController.h"
+#import "FBLChatsViewController.h"
 
-@interface FBLMessagesViewController ()
+#import "FBLChatView.h"
 
-@property (nonatomic, strong) NSMutableArray *messages;
+@interface FBLChatsViewController ()
+
+@property (nonatomic, strong) NSMutableArray *chats;
 
 @end
 
-@implementation FBLMessagesViewController
+@implementation FBLChatsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self styleNavigationBar];
+    [self setupTable];
     [self styleTableView];
+}
+
+- (void)setupTable {
+    [self.tableView registerNib:[UINib nibWithNibName:@"MessagesCell" bundle:nil] forCellReuseIdentifier:@"MessagesCell"];
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadMessages) forControlEvents:UIControlEventValueChanged];
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+    messages = [[NSMutableArray alloc] init];
+
 }
 
 - (void)styleNavigationBar {
@@ -34,10 +47,25 @@
     UIImage *removeIcon = [UIImage imageNamed:@"removeIcon.png"];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:removeIcon landscapeImagePhone:removeIcon style:UIBarButtonItemStylePlain target:self action:@selector(closeFeedback)];
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
+
+    UIImage *addIcon = [UIImage imageNamed:@"addIcon.png"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:addIcon landscapeImagePhone:removeIcon style:UIBarButtonItemStylePlain target:self action:@selector(createChat)];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self
+                                                                                           action:@selector(actionCompose)];
+
 }
 
 -(void)styleTableView {
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
+}
+
+- (void)createChat {
+    FBLChatView *chatView = [[FBLChatView alloc] init];
+    chatView.delegate = self;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:chatView];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)closeFeedback {
