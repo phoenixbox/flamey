@@ -44,6 +44,9 @@ PODS:
     - FontAwesomeKit/Core
   - GPUImage (0.1.6)
   - JSONModel (1.0.2)
+  - JSQMessagesViewController (7.0.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - MBProgressHUD (0.9.1)
   - Mixpanel (2.7.3):
     - Mixpanel/MPCategoryHelpers (= 2.7.3)
@@ -72,6 +75,7 @@ DEPENDENCIES:
   - FontAwesomeKit (~> 2.2)
   - GPUImage (~> 0.1)
   - JSONModel (~> 1.0)
+  - JSQMessagesViewController (~> 7.0)
   - MBProgressHUD (~> 0.9)
   - Mixpanel (~> 2.7)
   - ObjectiveSugar (~> 1.1)
@@ -92,6 +96,8 @@ SPEC CHECKSUMS:
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   GPUImage: 4675ce4a5370ca92fcea8623b2a08b8f0c51b940
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
+  JSQMessagesViewController: 9fd7e9ac96e9fc91f2deca86928e2cc916aeebaa
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Mixpanel: 1d387d76800e07e953958c62c97fea27f13632dd
   MZAppearance: c2937318234fd782e900fb178942278881ac5490
