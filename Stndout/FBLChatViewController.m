@@ -12,12 +12,13 @@
 #import <Parse/Parse.h>
 // Constants
 #import "FBLAppConstants.h"
+
+#import "MBProgressHUD.h"
 //#import "ProgressHUD.h"
 
-//#import "AppConstant.h"
 //#import "camera.h"
-//#import "messages.h"
-//#import "pushnotification.h"
+#import "FBLMessageController.h"
+#import "FBLPushNotificationController.h"
 
 @interface FBLChatViewController ()
 
@@ -31,6 +32,8 @@
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSMutableDictionary *avatars;
 
+@property (nonatomic, strong) MBProgressHUD *hud;
+
 @property (nonatomic, strong) JSQMessagesBubbleImage *bubbleImageOutgoing;
 @property (nonatomic, strong) JSQMessagesBubbleImage *bubbleImageIncoming;
 @property (nonatomic, strong) JSQMessagesAvatarImage *avatarImageBlank;
@@ -42,11 +45,14 @@
 - (id)initWithSlackChannel:(NSString *)channelId {
     self = [super init];
     self.channelId = channelId;
+
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupHUD];
+
     self.title = [NSString stringWithFormat:@"Chat with, %@", @"Blair" ];
 
     _users = [[NSMutableArray alloc] init];
@@ -71,6 +77,11 @@
     [self loadMessages];
 }
 
+- (void)setupHUD {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_hud setCenter:self.view.center];
+    _hud.mode = MBProgressHUDModeIndeterminate;
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -81,7 +92,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    ClearMessageCounter(_groupId);
+    ClearMessageCounter(_channelId);
     [_timer invalidate];
 }
 
@@ -90,11 +101,11 @@
 - (void)loadMessages {
     if (_isLoading == NO)
     {
-        isLoading = YES;
-        JSQMessage *message_last = [messages lastObject];
+        _isLoading = YES;
+        JSQMessage *message_last = [_messages lastObject];
 
         PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
-        [query whereKey:PF_CHAT_GROUPID equalTo:groupId];
+        [query whereKey:PF_CHAT_GROUPID equalTo:_channelId];
         if (message_last != nil) [query whereKey:PF_CHAT_CREATEDAT greaterThan:message_last.date];
         [query includeKey:PF_CHAT_USER];
         [query orderByDescending:PF_CHAT_CREATEDAT];
@@ -112,16 +123,21 @@
                  }
                  if ([objects count] != 0)
                  {
-                     if (initialized && incoming)
+                     if (_initialized && incoming)
                          [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
                      [self finishReceivingMessage];
                      [self scrollToBottomAnimated:NO];
                  }
                  self.automaticallyScrollsToMostRecentMessage = YES;
-                 initialized = YES;
+                 _initialized = YES;
              }
-             else [ProgressHUD showError:@"Network error."];
-             isLoading = NO;
+             else {
+
+                 _hud.labelText = @"Loading";
+                 [_hud show:YES];
+             }
+
+             _isLoading = NO;
          }];
     }
 }
@@ -163,8 +179,8 @@
          }];
     }
 
-    [users addObject:user];
-    [messages addObject:message];
+    [_users addObject:user];
+    [_messages addObject:message];
 
     return message;
 }
@@ -179,7 +195,9 @@
         fileVideo = [PFFile fileWithName:@"video.mp4" data:[[NSFileManager defaultManager] contentsAtPath:video.path]];
         [fileVideo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
          {
-             if (error != nil) [ProgressHUD showError:@"Network error."];
+             if (error != nil) {
+                 NSLog(@"Video save error: %@", error.localizedDescription);
+             }
          }];
     }
 
@@ -189,13 +207,15 @@
         filePicture = [PFFile fileWithName:@"picture.jpg" data:UIImageJPEGRepresentation(picture, 0.6)];
         [filePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
          {
-             if (error != nil) [ProgressHUD showError:@"Picture save error."];
+             if (error != nil) {
+                NSLog(@"Picture save error: %@", error.localizedDescription);
+             }
          }];
     }
 
     PFObject *object = [PFObject objectWithClassName:PF_CHAT_CLASS_NAME];
     object[PF_CHAT_USER] = [PFUser currentUser];
-    object[PF_CHAT_GROUPID] = groupId;
+    object[PF_CHAT_GROUPID] = _channelId;
     object[PF_CHAT_TEXT] = text;
     if (fileVideo != nil) object[PF_CHAT_VIDEO] = fileVideo;
     if (filePicture != nil) object[PF_CHAT_PICTURE] = filePicture;
@@ -206,11 +226,13 @@
              [JSQSystemSoundPlayer jsq_playMessageSentSound];
              [self loadMessages];
          }
-         else [ProgressHUD showError:@"Network error."];;
+         else {
+             NSLog(@"Sending Message Error: %@", error.localizedDescription);
+         };
      }];
 
-    SendPushNotification(groupId, text);
-    UpdateMessageCounter(groupId, text);
+    SendPushNotification(_channelId, text);
+    UpdateMessageCounter(_channelId, text);
 
     [self finishSendingMessage];
 }
@@ -223,60 +245,67 @@
 
 - (void)didPressAccessoryButton:(UIButton *)sender {
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
-                                               otherButtonTitles:@"Take photo or video", @"Choose existing photo", @"Choose existing video", nil];
+                                               otherButtonTitles:@"Share Photo", @"Share Video", nil];
     [action showInView:self.view];
 }
 
 #pragma mark - JSQMessages CollectionView DataSource
 
 - (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return messages[indexPath.item];
+    return _messages[indexPath.item];
 }
 
 - (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
              messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self outgoing:messages[indexPath.item]])
+    if ([self outgoing:_messages[indexPath.item]])
     {
-        return bubbleImageOutgoing;
+        return _bubbleImageOutgoing;
     }
-    else return bubbleImageIncoming;
+    else
+    {
+        return _bubbleImageIncoming;
+    }
 }
 
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
                     avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PFUser *user = users[indexPath.item];
-    if (avatars[user.objectId] == nil)
+    PFUser *user = _users[indexPath.item];
+
+    if (_avatars[user.objectId] == nil)
     {
         PFFile *file = user[PF_USER_THUMBNAIL];
         [file getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
          {
              if (error == nil)
              {
-                 avatars[user.objectId] = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData] diameter:30.0];
+                 _avatars[user.objectId] = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData] diameter:30.0];
                  [self.collectionView reloadData];
              }
          }];
-        return avatarImageBlank;
+        return _avatarImageBlank;
     }
-    else return avatars[user.objectId];
+    else {
+        return _avatars[user.objectId];
+    }
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item % 3 == 0)
     {
-        JSQMessage *message = messages[indexPath.item];
+        JSQMessage *message = _messages[indexPath.item];
         return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
     }
     else return nil;
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath {
-    JSQMessage *message = messages[indexPath.item];
+    JSQMessage *message = _messages[indexPath.item];
+
     if ([self incoming:message])
     {
         if (indexPath.item > 0)
         {
-            JSQMessage *previous = messages[indexPath.item-1];
+            JSQMessage *previous = _messages[indexPath.item-1];
             if ([previous.senderId isEqualToString:message.senderId])
             {
                 return nil;
@@ -294,13 +323,13 @@
 #pragma mark - UICollectionView DataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [messages count];
+    return [_messages count];
 }
 
 - (UICollectionViewCell *)collectionView:(JSQMessagesCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
 
-    if ([self outgoing:messages[indexPath.item]])
+    if ([self outgoing:_messages[indexPath.item]])
     {
         cell.textView.textColor = [UIColor blackColor];
     }
@@ -324,12 +353,12 @@
 
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath {
-    JSQMessage *message = messages[indexPath.item];
+    JSQMessage *message = _messages[indexPath.item];
     if ([self incoming:message])
     {
         if (indexPath.item > 0)
         {
-            JSQMessage *previous = messages[indexPath.item-1];
+            JSQMessage *previous = _messages[indexPath.item-1];
             if ([previous.senderId isEqualToString:message.senderId])
             {
                 return 0;
@@ -358,7 +387,7 @@
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath {
-    JSQMessage *message = messages[indexPath.item];
+    JSQMessage *message = _messages[indexPath.item];
     if (message.isMediaMessage)
     {
         if ([message.media isKindOfClass:[JSQVideoMediaItem class]])
@@ -380,9 +409,13 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != actionSheet.cancelButtonIndex)
     {
-        if (buttonIndex == 0)	ShouldStartMultiCamera(self, YES);
-        if (buttonIndex == 1)	ShouldStartPhotoLibrary(self, YES);
-        if (buttonIndex == 2)	ShouldStartVideoLibrary(self, YES);
+        if (buttonIndex == 0) {
+            ShouldStartPhotoLibrary(self, YES);
+        } else if (buttonIndex == 1) {
+            ShouldStartVideoLibrary(self, YES);
+        } else {
+            NSLog(@"Error: No Action for Button Index");
+        }
     }
 }
 

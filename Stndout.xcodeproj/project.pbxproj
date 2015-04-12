@@ -22,6 +22,8 @@
 		CB687A021AD9FDA800FCADA1 /* FBLChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */; };
 		CB687A071ADA079700FCADA1 /* FBLMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A061ADA079700FCADA1 /* FBLMessageController.m */; };
 		CB687A0A1ADA08D500FCADA1 /* FBLPushNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A091ADA08D500FCADA1 /* FBLPushNotificationController.m */; };
+		CB687A0E1ADA0F2C00FCADA1 /* FBLCameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A0D1ADA0F2C00FCADA1 /* FBLCameraUtil.m */; };
+		CB687A101ADA0FE800FCADA1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB687A0F1ADA0FE800FCADA1 /* MobileCoreServices.framework */; };
 		CB6FE8B91AD0B7FF00AD0BD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */; };
 		CB6FE8BA1AD0B7FF00AD0BD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8281AD0B7FF00AD0BD2 /* Main.storyboard */; };
 		CB6FE8BB1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE82B1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m */; };
@@ -162,6 +164,9 @@
 		CB687A061ADA079700FCADA1 /* FBLMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLMessageController.m; sourceTree = "<group>"; };
 		CB687A081ADA08A800FCADA1 /* FBLPushNotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBLPushNotificationController.h; sourceTree = "<group>"; };
 		CB687A091ADA08D500FCADA1 /* FBLPushNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLPushNotificationController.m; sourceTree = "<group>"; };
+		CB687A0C1ADA0F1E00FCADA1 /* FBLCameraUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBLCameraUtil.h; sourceTree = "<group>"; };
+		CB687A0D1ADA0F2C00FCADA1 /* FBLCameraUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLCameraUtil.m; sourceTree = "<group>"; };
+		CB687A0F1ADA0FE800FCADA1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CB6FE8271AD0B7FF00AD0BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CB6FE8291AD0B7FF00AD0BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB6FE82A1AD0B7FF00AD0BD2 /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
@@ -321,6 +326,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB687A101ADA0FE800FCADA1 /* MobileCoreServices.framework in Frameworks */,
 				CB7BD8571AC86BB90088F22D /* MessageUI.framework in Frameworks */,
 				CB5972AE1AD1C6FF00DAE5A1 /* Crashlytics.framework in Frameworks */,
 				105AA3A97C62B42D69A97607 /* libPods-Stndout.a in Frameworks */,
@@ -350,6 +356,7 @@
 		8653CABC8D15495390A3E34D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB687A0F1ADA0FE800FCADA1 /* MobileCoreServices.framework */,
 				CB7BD8561AC86BB90088F22D /* MessageUI.framework */,
 				CBFBFE801A58826B006657CD /* FacebookSDK */,
 				FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */,
@@ -615,6 +622,7 @@
 		CB6879DF1AD9D5A000FCADA1 /* FeedbackLoop */ = {
 			isa = PBXGroup;
 			children = (
+				CB687A0B1ADA0E1600FCADA1 /* Utils */,
 				CB687A041ADA070300FCADA1 /* Networking */,
 				CB6879F91AD9DF0200FCADA1 /* Profile */,
 				CB6879F01AD9DECA00FCADA1 /* Groups */,
@@ -676,6 +684,15 @@
 				CB687A091ADA08D500FCADA1 /* FBLPushNotificationController.m */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		CB687A0B1ADA0E1600FCADA1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CB687A0C1ADA0F1E00FCADA1 /* FBLCameraUtil.h */,
+				CB687A0D1ADA0F2C00FCADA1 /* FBLCameraUtil.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		CB6FE8251AD0B7FF00AD0BD2 /* Stndout */ = {
@@ -956,6 +973,7 @@
 				CB6FE8EE1AD0B7FF00AD0BD2 /* FLTutorialSolutionView.m in Sources */,
 				CB6FE8F51AD0B7FF00AD0BD2 /* main.m in Sources */,
 				CB6FE8EC1AD0B7FF00AD0BD2 /* FLTutorialResultView.m in Sources */,
+				CB687A0E1ADA0F2C00FCADA1 /* FBLCameraUtil.m in Sources */,
 				CB6FE9041AD0B7FF00AD0BD2 /* LoadingView.swift in Sources */,
 				CB6FE8C31AD0B7FF00AD0BD2 /* FLAppDelegate.m in Sources */,
 				CB6FE8D71AD0B7FF00AD0BD2 /* FLLoginViewController.m in Sources */,
