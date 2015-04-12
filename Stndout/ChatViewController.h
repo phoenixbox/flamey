@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatViewController : JSQMessagesViewController
+#import "JSQMessages.h"
+
+@interface ChatViewController : JSQMessagesViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
+
+- (id)initWithSlackChannel:(NSString *)channelId;
 
 @end
