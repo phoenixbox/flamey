@@ -1,5 +1,5 @@
 //
-//  FBLMessagesViewController.m
+//  FBLChatsViewController.m
 //  Stndout
 //
 //  Created by Shane Rogers on 4/11/15.
@@ -7,8 +7,13 @@
 //
 
 #import "FBLChatsViewController.h"
+#import "FBLChatViewController.h"
 
-#import "FBLChatView.h"
+#import "FBLSingleChatView.h"
+#import "FBLAppConstants.h"
+#import "FBLMessageController.h"
+#import "FBLHelpers.h"
+#import <Parse/Parse.h>
 
 @interface FBLChatsViewController ()
 
@@ -27,13 +32,12 @@
 }
 
 - (void)setupTable {
-    [self.tableView registerNib:[UINib nibWithNibName:@"MessagesCell" bundle:nil] forCellReuseIdentifier:@"MessagesCell"];
-    //---------------------------------------------------------------------------------------------------------------------------------------------
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(loadMessages) forControlEvents:UIControlEventValueChanged];
-    //---------------------------------------------------------------------------------------------------------------------------------------------
-    messages = [[NSMutableArray alloc] init];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ChatsCell" bundle:nil] forCellReuseIdentifier:@"ChatsCell"];
 
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadChats) forControlEvents:UIControlEventValueChanged];
+
+    _chats = [[NSMutableArray alloc] init];
 }
 
 - (void)styleNavigationBar {
@@ -49,28 +53,133 @@
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
 
     UIImage *addIcon = [UIImage imageNamed:@"addIcon.png"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:addIcon landscapeImagePhone:removeIcon style:UIBarButtonItemStylePlain target:self action:@selector(createChat)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:addIcon landscapeImagePhone:removeIcon style:UIBarButtonItemStylePlain target:self action:@selector(startChat)];
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self
-                                                                                           action:@selector(actionCompose)];
-
 }
 
 -(void)styleTableView {
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
 }
 
-- (void)createChat {
-    FBLChatView *chatView = [[FBLChatView alloc] init];
-    chatView.delegate = self;
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:chatView];
-    [self presentViewController:navController animated:YES completion:nil];
-}
-
 - (void)closeFeedback {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    // NEED SOME CONTEXT OF CURRENT USER
+    if ([PFUser currentUser] != nil)
+    {
+        [self loadChats];
+    }
+    else LoginUser(self);
+}
+
+#pragma mark - Backend methods
+
+- (void)loadChats
+{
+    PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGES_CLASS_NAME];
+    [query whereKey:PF_MESSAGES_USER equalTo:[PFUser currentUser]];
+    [query includeKey:PF_MESSAGES_LASTUSER];
+    [query orderByDescending:PF_MESSAGES_UPDATEDACTION];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (error == nil)
+         {
+             [_chats removeAllObjects];
+             [_chats addObjectsFromArray:objects];
+             [self.tableView reloadData];
+             [self updateTabCounter];
+         }
+         else {
+             NSLog(@"%@: Loading Chats Error", NSStringFromClass([self class]));
+         }
+         [self.refreshControl endRefreshing];
+     }];
+}
+
+#pragma mark - Helper methods
+
+- (void)updateTabCounter
+{
+    int total = 0;
+    for (PFObject *message in _chats)
+    {
+        total += [message[PF_MESSAGES_COUNTER] intValue];
+    }
+    UITabBarItem *item = self.tabBarController.tabBar.items[1];
+    item.badgeValue = (total == 0) ? nil : [NSString stringWithFormat:@"%d", total];
+}
+
+#pragma mark - User actions
+
+- (void)createSingleChat:(NSString *)groupId {
+    FBLSingleChatView *singleChatView = [[FBLSingleChatView alloc] init];
+    singleChatView.delegate = self;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:singleChatView];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)startChat:(NSString *)channelId {
+    FBLChatViewController *chatViewController = [[FBLChatViewController alloc] initWithSlackChannel:channelId];
+    chatViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:chatViewController animated:YES];
+}
+
+- (void)actionCleanup
+{
+    [_chats removeAllObjects];
+    [self.tableView reloadData];
+    [self updateTabCounter];
+}
+
+
+#pragma mark - FBLSingleChatDelegate
+
+- (void)didSelectSingleUser:(PFUser *)user2 {
+    PFUser *user1 = [PFUser currentUser];
+    NSString *groupId = StartPrivateChat(user1, user2);
+    [self startChat:groupId];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_chats count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MessagesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessagesCell" forIndexPath:indexPath];
+    [cell bindData:messages[indexPath.row]];
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    DeleteMessageItem(messages[indexPath.row]);
+    [messages removeObjectAtIndex:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self updateTabCounter];
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    PFObject *message = messages[indexPath.row];
+    [self startChat:message[PF_MESSAGES_GROUPID]];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

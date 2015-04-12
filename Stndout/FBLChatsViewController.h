@@ -1,5 +1,5 @@
 //
-//  FBLMessagesViewController.h
+//  FBLChatsViewController.h
 //  Stndout
 //
 //  Created by Shane Rogers on 4/11/15.
@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FBLChatsViewController : UITableViewController
+#import "FBLSingleChatView.h"
+
+@interface FBLChatsViewController : UITableViewController <FBLSingleChatDelegate>
+
+- (void)loadChats;
 
 @end
