@@ -357,7 +357,7 @@
                      if (!error) {
                          // NOTE: Tag the photo on completion
                          _additionCounter++;
-                          NSLog(@"UPLOADED ANNOTATION #: %lu", _additionCounter);
+                          NSLog(@"UPLOADED ANNOTATION #: %lu", (unsigned long)_additionCounter);
                          // RETRIEVE THE PHOTO ID
                          NSString *tagPath = [NSString stringWithFormat:@"/%@/tags", [result objectForKey:@"id"]];
                          NSString *userIDTag = [NSString stringWithFormat:@"[{'tag_uid': %@}]", user.id];
@@ -372,7 +372,7 @@
                                                                    NSError *error
                                                                    ) {
                                                    if(!error) {
-                                                       NSLog(@"TAGGED ANNOTATION #: %lu", _additionCounter);
+                                                       NSLog(@"TAGGED ANNOTATION #: %lu", (unsigned long)_additionCounter);
                                                        [self setFinishedState];
                                                    } else {
                                                        // TODO: Implement Crashlytics
