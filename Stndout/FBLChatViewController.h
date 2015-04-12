@@ -10,7 +10,7 @@
 
 #import "JSQMessages.h"
 
-@interface ChatViewController : JSQMessagesViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
+@interface FBLChatViewController : JSQMessagesViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
 
 - (id)initWithSlackChannel:(NSString *)channelId;
 

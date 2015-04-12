@@ -19,7 +19,7 @@
 		CB6879F51AD9DEDF00FCADA1 /* FBLGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6879F31AD9DEDF00FCADA1 /* FBLGroupsViewController.xib */; };
 		CB6879FD1AD9DF1300FCADA1 /* FBLProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6879FB1AD9DF1300FCADA1 /* FBLProfileViewController.m */; };
 		CB6879FE1AD9DF1300FCADA1 /* FBLProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6879FC1AD9DF1300FCADA1 /* FBLProfileViewController.xib */; };
-		CB687A021AD9FDA800FCADA1 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A011AD9FDA800FCADA1 /* ChatViewController.m */; };
+		CB687A021AD9FDA800FCADA1 /* FBLChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */; };
 		CB687A071ADA079700FCADA1 /* FBLMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A061ADA079700FCADA1 /* FBLMessageController.m */; };
 		CB687A0A1ADA08D500FCADA1 /* FBLPushNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A091ADA08D500FCADA1 /* FBLPushNotificationController.m */; };
 		CB6FE8B91AD0B7FF00AD0BD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */; };
@@ -155,8 +155,8 @@
 		CB6879FA1AD9DF1300FCADA1 /* FBLProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLProfileViewController.h; sourceTree = "<group>"; };
 		CB6879FB1AD9DF1300FCADA1 /* FBLProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLProfileViewController.m; sourceTree = "<group>"; };
 		CB6879FC1AD9DF1300FCADA1 /* FBLProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLProfileViewController.xib; sourceTree = "<group>"; };
-		CB687A001AD9FDA800FCADA1 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
-		CB687A011AD9FDA800FCADA1 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		CB687A001AD9FDA800FCADA1 /* FBLChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChatViewController.h; sourceTree = "<group>"; };
+		CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChatViewController.m; sourceTree = "<group>"; };
 		CB687A031ADA051600FCADA1 /* FBLAppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBLAppConstants.h; sourceTree = "<group>"; };
 		CB687A051ADA076B00FCADA1 /* FBLMessageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBLMessageController.h; sourceTree = "<group>"; };
 		CB687A061ADA079700FCADA1 /* FBLMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLMessageController.m; sourceTree = "<group>"; };
@@ -661,8 +661,8 @@
 		CB6879FF1AD9FD7300FCADA1 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				CB687A001AD9FDA800FCADA1 /* ChatViewController.h */,
-				CB687A011AD9FDA800FCADA1 /* ChatViewController.m */,
+				CB687A001AD9FDA800FCADA1 /* FBLChatViewController.h */,
+				CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -995,7 +995,7 @@
 				CB6FE8E41AD0B7FF00AD0BD2 /* FLTabBarViewController.m in Sources */,
 				CB6FE8D31AD0B7FF00AD0BD2 /* FLImageFilterViewController.m in Sources */,
 				CB6FE8EA1AD0B7FF00AD0BD2 /* FLTutorialProcessView.m in Sources */,
-				CB687A021AD9FDA800FCADA1 /* ChatViewController.m in Sources */,
+				CB687A021AD9FDA800FCADA1 /* FBLChatViewController.m in Sources */,
 				CB6FE9061AD0B7FF00AD0BD2 /* Misc.swift in Sources */,
 				CB6FE8E01AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m in Sources */,
 				CB6FE8C71AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m in Sources */,

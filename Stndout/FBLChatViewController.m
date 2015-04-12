@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
-#import "ChatViewController.h"
+#import "FBLChatViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 #import <Parse/Parse.h>
@@ -19,7 +19,7 @@
 //#import "messages.h"
 //#import "pushnotification.h"
 
-@interface ChatViewController ()
+@interface FBLChatViewController ()
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) BOOL isLoading;
@@ -37,7 +37,7 @@
 
 @end
 
-@implementation ChatViewController
+@implementation FBLChatViewController
 
 - (id)initWithSlackChannel:(NSString *)channelId {
     self = [super init];
