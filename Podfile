@@ -21,6 +21,7 @@ pod 'SlackTextViewController', '~> 1.5'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'JSQMessagesViewController', '~> 7.0'
 pod 'ParseUI', '~> 1.1'
+pod 'ParseFacebookUtils', '~> 1.7'
 end
 
 target 'StndoutTests' do
