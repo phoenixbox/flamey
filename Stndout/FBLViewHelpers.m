@@ -20,4 +20,23 @@
     [button setTintColor:color];
 }
 
++ (SIAlertView *)createAlertForError:(NSError *)error
+        withTitle:(NSString *)title
+       andMessage:(NSString *)message {
+
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:title andMessage:message];
+
+    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+    [alertView addButtonWithTitle:@"Ok"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alert) {
+                          }];
+
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+    return alertView;
+}
+
 @end

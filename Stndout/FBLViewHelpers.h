@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <SIAlertView.h>
 
 @interface FBLViewHelpers : NSObject
 
 + (void)setBaseButtonStyle:(UIButton *)button withColor:(UIColor *)color;
 
++ (SIAlertView *)createAlertForError:(NSError *)error
+                           withTitle:(NSString *)title
+                          andMessage:(NSString *)message;
 @end
