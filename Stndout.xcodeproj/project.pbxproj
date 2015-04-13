@@ -32,6 +32,7 @@
 		CB687A211ADA522700FCADA1 /* FBLViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A201ADA522700FCADA1 /* FBLViewHelpers.m */; };
 		CB6E10F31ADB072F001D750F /* FBLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6E10F11ADB072F001D750F /* FBLLoginViewController.m */; };
 		CB6E10F41ADB072F001D750F /* FBLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6E10F21ADB072F001D750F /* FBLLoginViewController.xib */; };
+		CB6E10F61ADB35BF001D750F /* FBLChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6E10F51ADB35BF001D750F /* FBLChatCell.xib */; };
 		CB6FE8B91AD0B7FF00AD0BD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8261AD0B7FF00AD0BD2 /* LaunchScreen.xib */; };
 		CB6FE8BA1AD0B7FF00AD0BD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8281AD0B7FF00AD0BD2 /* Main.storyboard */; };
 		CB6FE8BB1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6FE82B1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m */; };
@@ -189,6 +190,7 @@
 		CB6E10F01ADB072F001D750F /* FBLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLLoginViewController.h; sourceTree = "<group>"; };
 		CB6E10F11ADB072F001D750F /* FBLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLLoginViewController.m; sourceTree = "<group>"; };
 		CB6E10F21ADB072F001D750F /* FBLLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLLoginViewController.xib; sourceTree = "<group>"; };
+		CB6E10F51ADB35BF001D750F /* FBLChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLChatCell.xib; sourceTree = "<group>"; };
 		CB6FE8271AD0B7FF00AD0BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CB6FE8291AD0B7FF00AD0BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB6FE82A1AD0B7FF00AD0BD2 /* CollectionViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHelpers.h; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */,
 				CB687A171ADA42CE00FCADA1 /* FBLChatCell.h */,
 				CB687A181ADA42CE00FCADA1 /* FBLChatCell.m */,
+				CB6E10F51ADB35BF001D750F /* FBLChatCell.xib */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -917,6 +920,7 @@
 				CB687A1E1ADA4E2700FCADA1 /* FBLChatsEmptyMessageView.xib in Resources */,
 				CB6FE8EB1AD0B7FF00AD0BD2 /* FLTutorialProcessView.xib in Resources */,
 				CB6FE9191AD0B7FF00AD0BD2 /* Walkway_Oblique_UltraBold.ttf in Resources */,
+				CB6E10F61ADB35BF001D750F /* FBLChatCell.xib in Resources */,
 				CB6FE8E71AD0B7FF00AD0BD2 /* FLTOSViewController.xib in Resources */,
 				CB6FE8E11AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.xib in Resources */,
 				CB6FE9021AD0B7FF00AD0BD2 /* Info.plist in Resources */,

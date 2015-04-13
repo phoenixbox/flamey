@@ -14,7 +14,7 @@
 #import "FBLAppConstants.h"
 
 #import "MBProgressHUD.h"
-//#import "ProgressHUD.h"
+#import "FBLViewhelpers.h"
 
 #import "FBLCameraUtil.h"
 #import "FBLMessageController.h"
@@ -70,7 +70,7 @@
     _bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
     _bubbleImageIncoming = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleGreenColor]];
 
-    _avatarImageBlank = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:@"persona"] diameter:30.0];
+    _avatarImageBlank = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:BLANK_AVATAR_IMG] diameter:30.0];
 
     _isLoading = NO;
     _initialized = NO;
@@ -132,10 +132,12 @@
                  }
                  self.automaticallyScrollsToMostRecentMessage = YES;
                  _initialized = YES;
+                 [_hud hide:YES];
              }
              else {
-                 _hud.labelText = @"Loading";
-                 [_hud show:YES];
+                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
+                                           withTitle:@"Ooops!" andMessage:@"We had trouble loading messages"];
+                 [alert show];
              }
 
              _isLoading = NO;
@@ -197,7 +199,9 @@
         [fileVideo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
          {
              if (error != nil) {
-                 NSLog(@"Video save error: %@", error.localizedDescription);
+                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
+                                                                withTitle:@"Ooops!" andMessage:@"We had trouble saving that video"];
+                 [alert show];
              }
          }];
     }
@@ -209,7 +213,9 @@
         [filePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
          {
              if (error != nil) {
-                NSLog(@"Picture save error: %@", error.localizedDescription);
+                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
+                                                                withTitle:@"Ooops!" andMessage:@"We had trouble saving picture"];
+                 [alert show];
              }
          }];
     }
@@ -228,7 +234,9 @@
              [self loadMessages];
          }
          else {
-             NSLog(@"Sending Message Error: %@", error.localizedDescription);
+             SIAlertView *alert = [FBLViewHelpers createAlertForError:error
+                                                        withTitle:@"Ooops!" andMessage:@"We had trouble saving that message"];
+             [alert show];
          };
      }];
 
