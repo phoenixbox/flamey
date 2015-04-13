@@ -51,4 +51,6 @@
 #define		NOTIFICATION_USER_LOGGED_IN			@"NCUserLoggedIn"
 #define		NOTIFICATION_USER_LOGGED_OUT		@"NCUserLoggedOut"
 
+#define     BLANK_AVATAR_IMG @"Persona"
+
 #endif
