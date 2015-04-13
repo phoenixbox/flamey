@@ -11,10 +11,11 @@
 #import "FBLAppConstants.h"
 #import "FBLSingleChatView.h"
 
+// Data Layer
+#import "FBLMember.h"
+#import "FBLMembersStore.h"
+
 @interface FBLSingleChatView()
-{
-    NSMutableArray *users;
-}
 
 @property (strong, nonatomic) IBOutlet UIView *viewHeader;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -36,42 +37,32 @@
 
     self.tableView.tableHeaderView = viewHeader;
 
-    users = [[NSMutableArray alloc] init];
-
-    [self loadUsers];
+    [self loadMembers];
 }
 
 #pragma mark - Backend methods
 
-- (void)loadUsers
+- (void)loadMembers
 {
-    PFUser *user = [PFUser currentUser];
+//    PFUser *user = [PFUser currentUser];
+    // TODO: Set a spinner active
+    void(^completionBlock)(NSError *err)=^(NSError *error){
+        if (error == nil) {
+            // TODO: Turn off the spinner
+            [self.tableView reloadData];
+        }
+        else {
+            NSLog(@"%@: Loading Users Error", NSStringFromClass([self class]));
+        }
+    };
 
-    // TODO: Use the Users from the Slack store
-
-    PFQuery *query = [PFQuery queryWithClassName:PF_USER_CLASS_NAME];
-
-    [query whereKey:PF_USER_OBJECTID notEqualTo:user.objectId];
-    [query orderByAscending:PF_USER_FULLNAME];
-    [query setLimit:1000];
-
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-         if (error == nil)
-         {
-             [users removeAllObjects];
-             [users addObjectsFromArray:objects];
-             [self.tableView reloadData];
-         }
-         else {
-             // TODO
-             NSLog(@"%@: Loading Users Error", NSStringFromClass([self class]));
-         }
-     }];
+    [[FBLMembersStore sharedStore] fetchMembersWithCompletion:completionBlock];
 }
 
 - (void)searchUsers:(NSString *)search_lower
 {
     PFUser *user = [PFUser currentUser];
+    FBLMembersStore *membersStore = [FBLMembersStore sharedStore];
 
     PFQuery *query = [PFQuery queryWithClassName:PF_USER_CLASS_NAME];
     [query whereKey:PF_USER_OBJECTID notEqualTo:user.objectId];
@@ -82,8 +73,8 @@
      {
          if (error == nil)
          {
-             [users removeAllObjects];
-             [users addObjectsFromArray:objects];
+             [membersStore.members removeAllObjects];
+             [membersStore.members addObjectsFromArray:objects];
              [self.tableView reloadData];
          }
          else {
@@ -105,31 +96,42 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [users count];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    FBLMembersStore *membersStore = [FBLMembersStore sharedStore];
+    NSUInteger count = [membersStore.members count];
+
+    if (count > 0) {
+        [self.tableView.backgroundView setHidden:YES];
+    } else {
+        [self.tableView.backgroundView setHidden:NO];
+    }
+
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    FBLMembersStore *membersStore = [FBLMembersStore sharedStore];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
 
-    PFUser *user = users[indexPath.row];
-    cell.textLabel.text = user[PF_USER_FULLNAME];
+
+    FBLMember *member = membersStore.members[indexPath.row];
+    cell.textLabel.text = member.realName;
 
     return cell;
 }
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FBLMembersStore *membersStore = [FBLMembersStore sharedStore];
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     [self dismissViewControllerAnimated:YES completion:^{
         if (delegate != nil) {
-            [delegate didSelectSingleUser:users[indexPath.row]];
+            [delegate didSelectSingleUser:membersStore.members[indexPath.row]];
         }
     }];
 }
@@ -142,7 +144,8 @@
     {
         [self searchUsers:[searchText lowercaseString]];
     }
-    else [self loadUsers];
+
+    else [self loadMembers];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar_
@@ -170,7 +173,7 @@
     searchBar.text = @"";
     [searchBar resignFirstResponder];
     
-    [self loadUsers];
+    [self loadMembers];
 }
 
 @end

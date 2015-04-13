@@ -10,6 +10,11 @@
 
 @implementation FBLMember
 
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+
 +(JSONKeyMapper*)keyMapper {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
                                                        @"id": @"id",
@@ -19,6 +24,7 @@
                                                        @"profile.first_name": @"firstName",
                                                        @"profile.last_name": @"lastName",
                                                        @"profile.real_name": @"realName",
+                                                       @"profile.real_name_normalized": @"realNameNormalized",
                                                        @"profile.email": @"email",
                                                        @"profile.skype": @"skype",
                                                        @"profile.phone": @"phone",

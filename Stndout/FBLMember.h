@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *realName;
+@property (nonatomic, strong) NSString *realNameNormalized;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *skype;
 @property (nonatomic, strong) NSString *phone;
