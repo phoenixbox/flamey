@@ -47,12 +47,14 @@
 {
     PFUser *user = [PFUser currentUser];
 
-    // RESTART: Whats this data look like
+    // TODO: Use the Users from the Slack store
+
     PFQuery *query = [PFQuery queryWithClassName:PF_USER_CLASS_NAME];
 
     [query whereKey:PF_USER_OBJECTID notEqualTo:user.objectId];
     [query orderByAscending:PF_USER_FULLNAME];
     [query setLimit:1000];
+
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
          if (error == nil)
          {
@@ -126,7 +128,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     [self dismissViewControllerAnimated:YES completion:^{
-        if (delegate != nil) [delegate didSelectSingleUser:users[indexPath.row]];
+        if (delegate != nil) {
+            [delegate didSelectSingleUser:users[indexPath.row]];
+        }
     }];
 }
 
