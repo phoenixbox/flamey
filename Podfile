@@ -22,6 +22,7 @@ pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'JSQMessagesViewController', '~> 7.0'
 pod 'ParseUI', '~> 1.1'
 pod 'ParseFacebookUtils', '~> 1.7'
+pod 'JSONModel', '~> 1.0'
 end
 
 target 'StndoutTests' do

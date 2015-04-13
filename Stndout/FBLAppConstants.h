@@ -53,4 +53,12 @@
 
 #define     BLANK_AVATAR_IMG @"Persona"
 
+// Slack Base API Info
+#define     SLACK_API_KEY @"xoxp-4363020674-4363020680-4429695137-cdb875"
+#define     SLACK_API_BASE_URL @"https://slack.com/api"
+
+// Slack Methods
+#define     SLACK_MEMBERS_URI @"/users.list"
+
+
 #endif
