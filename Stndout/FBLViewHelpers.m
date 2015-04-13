@@ -23,7 +23,9 @@
 + (SIAlertView *)createAlertForError:(NSError *)error
         withTitle:(NSString *)title
        andMessage:(NSString *)message {
-
+    // TODO: Should receive the class name for more instructive logging
+    
+    NSLog(@"Error: %@", error.localizedDescription);
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:title andMessage:message];
 
     [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
@@ -36,6 +38,7 @@
                           }];
 
     alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+
     return alertView;
 }
 
