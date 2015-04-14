@@ -35,12 +35,6 @@
     NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_MEMBERS_URI);
 
     [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSMutableDictionary *membersResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-//
-//        NSArray *membersJSONArray = [membersResponse objectForKey:@"members"];
-//
-//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:membersJSONArray options:0 error:nil];
-
         NSString *rawJSON = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 
         FBLMemberCollection *memberCollection = [[FBLMemberCollection alloc] initWithString:rawJSON error:nil];
