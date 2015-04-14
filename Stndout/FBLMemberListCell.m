@@ -20,12 +20,17 @@
     [_email setText:member.email];
     [_title setText:member.title];
 
-    if ([member.status isEqualToString:@"null"]) {
-        [_status setText:@"Unknown"];
+    if (!member.status) {
+        [_status setText:@"Away"];
     } else {
         [_status setText:member.status];
     }
     [_timezone setText:member.tzLabel];
+}
+
+- (void)layoutSubviews {
+    _profileImage.layer.cornerRadius = _profileImage.frame.size.width/2;
+    _profileImage.layer.masksToBounds = YES;
 }
 
 @end
