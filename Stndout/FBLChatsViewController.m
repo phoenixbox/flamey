@@ -122,12 +122,11 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
 - (void)loadChats
 {
-    PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGES_CLASS_NAME];
-    [query whereKey:PF_MESSAGES_USER equalTo:[PFUser currentUser]];
-    [query includeKey:PF_MESSAGES_LASTUSER];
-    [query orderByDescending:PF_MESSAGES_UPDATEDACTION];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
+    PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
+    [query whereKey:PF_CHAT_USER equalTo:[PFUser currentUser]];
+    [query includeKey:PF_CHAT_LASTUSER];
+    [query orderByDescending:PF_CHAT_UPDATEDACTION];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
          if (error == nil)
          {
              // Add models to the table view collection
@@ -151,7 +150,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     int total = 0;
     for (PFObject *message in _chats)
     {
-        total += [message[PF_MESSAGES_COUNTER] intValue];
+        total += [message[PF_CHAT_COUNTER] intValue];
     }
     UITabBarItem *item = self.tabBarController.tabBar.items[1];
     item.badgeValue = (total == 0) ? nil : [NSString stringWithFormat:@"%d", total];
@@ -180,8 +179,8 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 }
 
 #pragma mark - FBLSingleChatDelegate
-
-- (void)didSelectSingleUser:(PFUser *)user2 {
+// Triggered from member list view - alternate to a messaging pattern?
+- (void)didSelectMember:(PFUser *)user2 {
 
     PFUser *user1 = [PFUser currentUser];
     NSString *groupId = StartPrivateChat(user1, user2);
@@ -231,7 +230,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     PFObject *message = _chats[indexPath.row];
-    [self startChat:message[PF_MESSAGES_GROUPID]];
+    [self startChat:message[PF_CHAT_GROUPID]];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,10 +7,11 @@
 //
 
 #import <Parse/Parse.h>
+#import "FBLMember.h"
 
 @protocol FBLMemberListDelegate
 
-- (void)didSelectSingleUser:(PFUser *)user;
+- (void)didSelectMember:(FBLMember *)user;
 
 @end
 

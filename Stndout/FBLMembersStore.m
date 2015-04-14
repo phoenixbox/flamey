@@ -40,6 +40,8 @@
         FBLMemberCollection *memberCollection = [[FBLMemberCollection alloc] initWithString:rawJSON error:nil];
         self.members = memberCollection.members;
 
+        // create unique member records
+
         block(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         block(error);

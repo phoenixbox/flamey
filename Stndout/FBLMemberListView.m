@@ -136,7 +136,7 @@ NSString *const kMemberCellIdentifier = @"FBLMemberListCell";
 
     [self dismissViewControllerAnimated:YES completion:^{
         if (delegate != nil) {
-            [delegate didSelectSingleUser:membersStore.members[indexPath.row]];
+            [delegate didSelectMember:membersStore.members[indexPath.row]];
         }
     }];
 }

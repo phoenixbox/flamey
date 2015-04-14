@@ -38,14 +38,14 @@ void SendPushNotification(NSString *groupId, NSString *text) {
     PFUser *user = [PFUser currentUser];
     NSString *message = [NSString stringWithFormat:@"%@: %@", user[PF_USER_FULLNAME], text];
 
-    PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGES_CLASS_NAME];
-    [query whereKey:PF_MESSAGES_GROUPID equalTo:groupId];
-    [query whereKey:PF_MESSAGES_USER notEqualTo:user];
-    [query includeKey:PF_MESSAGES_USER];
+    PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
+    [query whereKey:PF_CHAT_GROUPID equalTo:groupId];
+    [query whereKey:PF_CHAT_USER notEqualTo:user];
+    [query includeKey:PF_CHAT_USER];
     [query setLimit:1000];
 
     PFQuery *queryInstallation = [PFInstallation query];
-    [queryInstallation whereKey:PF_INSTALLATION_USER matchesKey:PF_MESSAGES_USER inQuery:query];
+    [queryInstallation whereKey:PF_INSTALLATION_USER matchesKey:PF_CHAT_USER inQuery:query];
 
     PFPush *push = [[PFPush alloc] init];
     [push setQuery:queryInstallation];

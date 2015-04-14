@@ -663,6 +663,7 @@
 		CB6879DF1AD9D5A000FCADA1 /* FeedbackLoop */ = {
 			isa = PBXGroup;
 			children = (
+				CBF402051ADCFC7D000DFB98 /* Controllers */,
 				CB6E11021ADB5F98001D750F /* Collections */,
 				CB6E10FE1ADB519C001D750F /* Models */,
 				CB6E10F71ADB47F5001D750F /* Stores */,
@@ -687,6 +688,8 @@
 				CB6879FF1AD9FD7300FCADA1 /* Chat */,
 				CB6879EB1AD9DEC400FCADA1 /* FBLChatsViewController.h */,
 				CB6879EC1AD9DEC400FCADA1 /* FBLChatsViewController.m */,
+				CB687A001AD9FDA800FCADA1 /* FBLChatViewController.h */,
+				CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */,
 				CB6879ED1AD9DEC400FCADA1 /* FBLChatsViewController.xib */,
 				CB687A1A1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.h */,
 				CB687A1B1ADA4DB400FCADA1 /* FBLChatsEmptyMessageView.m */,
@@ -718,8 +721,6 @@
 		CB6879FF1AD9FD7300FCADA1 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				CB687A001AD9FDA800FCADA1 /* FBLChatViewController.h */,
-				CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */,
 				CB687A171ADA42CE00FCADA1 /* FBLChatCell.h */,
 				CB687A181ADA42CE00FCADA1 /* FBLChatCell.m */,
 				CB6E10F51ADB35BF001D750F /* FBLChatCell.xib */,
@@ -866,6 +867,13 @@
 				CBF402031ADCBD64000DFB98 /* FBLMemberListCell.xib */,
 			);
 			name = MemberListView;
+			sourceTree = "<group>";
+		};
+		CBF402051ADCFC7D000DFB98 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		CBFBFE801A58826B006657CD /* FacebookSDK */ = {

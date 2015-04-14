@@ -27,25 +27,25 @@
 #define		PF_USER_PICTURE						@"picture"				//	File
 #define		PF_USER_THUMBNAIL					@"thumbnail"			//	File
 //-----------------------------------------------------------------------
-#define		PF_CHAT_CLASS_NAME					@"Chat"					//	Class name
-#define		PF_CHAT_USER						@"user"					//	Pointer to User Class
-#define		PF_CHAT_GROUPID						@"groupId"				//	String
-#define		PF_CHAT_TEXT						@"text"					//	String
-#define		PF_CHAT_PICTURE						@"picture"				//	File
-#define		PF_CHAT_VIDEO						@"video"				//	File
-#define		PF_CHAT_CREATEDAT					@"createdAt"			//	Date
+#define		PF_MESSAGE_CLASS_NAME				@"Message"				//	Class name
+#define		PF_MESSAGE_USER						@"user"					//	Pointer to User Class
+#define		PF_MESSAGE_GROUPID					@"groupId"				//	String
+#define		PF_MESSAGE_TEXT						@"text"					//	String
+#define		PF_MESSAGE_PICTURE					@"picture"				//	File
+#define		PF_MESSAGE_VIDEO					@"video"				//	File
+#define		PF_MESSAGE_CREATEDAT				@"createdAt"			//	Date
 //-----------------------------------------------------------------------
 #define		PF_GROUPS_CLASS_NAME				@"Groups"				//	Class name
 #define		PF_GROUPS_NAME						@"name"					//	String
 //-----------------------------------------------------------------------
-#define		PF_MESSAGES_CLASS_NAME				@"Messages"				//	Class name
-#define		PF_MESSAGES_USER					@"user"					//	Pointer to User Class
-#define		PF_MESSAGES_GROUPID					@"groupId"				//	String
-#define		PF_MESSAGES_DESCRIPTION				@"description"			//	String
-#define		PF_MESSAGES_LASTUSER				@"lastUser"				//	Pointer to User Class
-#define		PF_MESSAGES_LASTMESSAGE				@"lastMessage"			//	String
-#define		PF_MESSAGES_COUNTER					@"counter"				//	Number
-#define		PF_MESSAGES_UPDATEDACTION			@"updatedAction"		//	Date
+#define		PF_CHAT_CLASS_NAME                  @"Chat"                 //	Class name
+#define		PF_CHAT_USER                        @"user"					//	Pointer to User Class
+#define		PF_CHAT_GROUPID                     @"groupId"				//	String
+#define		PF_CHAT_DESCRIPTION                 @"description"			//	String
+#define		PF_CHAT_LASTUSER                    @"lastUser"				//	Pointer to User Class
+#define		PF_CHAT_LASTMESSAGE                 @"lastMessage"			//	String
+#define		PF_CHAT_COUNTER					    @"counter"				//	Number
+#define		PF_CHAT_UPDATEDACTION			    @"updatedAction"		//	Date
 
 #define		NOTIFICATION_APP_STARTED			@"NCAppStarted"
 #define		NOTIFICATION_USER_LOGGED_IN			@"NCUserLoggedIn"
@@ -59,6 +59,5 @@
 
 // Slack Methods
 #define     SLACK_MEMBERS_URI @"/users.list"
-
 
 #endif

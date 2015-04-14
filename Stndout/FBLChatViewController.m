@@ -104,15 +104,15 @@
         _isLoading = YES;
         JSQMessage *message_last = [_messages lastObject];
 
-        PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
-        [query whereKey:PF_CHAT_GROUPID equalTo:_channelId];
+        PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGE_CLASS_NAME];
+        [query whereKey:PF_MESSAGE_GROUPID equalTo:_channelId];
 
         if (message_last != nil) {
-            [query whereKey:PF_CHAT_CREATEDAT greaterThan:message_last.date];
+            [query whereKey:PF_MESSAGE_CREATEDAT greaterThan:message_last.date];
         }
 
-        [query includeKey:PF_CHAT_USER];
-        [query orderByDescending:PF_CHAT_CREATEDAT];
+        [query includeKey:PF_MESSAGE_USER];
+        [query orderByDescending:PF_MESSAGE_CREATEDAT];
         [query setLimit:50];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
              if (error == nil) {
@@ -148,15 +148,15 @@
 - (JSQMessage *)addMessage:(PFObject *)object {
     JSQMessage *message;
 
-    PFUser *user = object[PF_CHAT_USER];
+    PFUser *user = object[PF_MESSAGE_USER];
     NSString *name = user[PF_USER_FULLNAME];
 
-    PFFile *fileVideo = object[PF_CHAT_VIDEO];
-    PFFile *filePicture = object[PF_CHAT_PICTURE];
+    PFFile *fileVideo = object[PF_MESSAGE_VIDEO];
+    PFFile *filePicture = object[PF_MESSAGE_PICTURE];
 
     if ((filePicture == nil) && (fileVideo == nil))
     {
-        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt text:object[PF_CHAT_TEXT]];
+        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt text:object[PF_MESSAGE_TEXT]];
     }
 
     if (fileVideo != nil)
@@ -220,12 +220,12 @@
          }];
     }
 
-    PFObject *object = [PFObject objectWithClassName:PF_CHAT_CLASS_NAME];
-    object[PF_CHAT_USER] = [PFUser currentUser];
-    object[PF_CHAT_GROUPID] = _channelId;
-    object[PF_CHAT_TEXT] = text;
-    if (fileVideo != nil) object[PF_CHAT_VIDEO] = fileVideo;
-    if (filePicture != nil) object[PF_CHAT_PICTURE] = filePicture;
+    PFObject *object = [PFObject objectWithClassName:PF_MESSAGE_CLASS_NAME];
+    object[PF_MESSAGE_USER] = [PFUser currentUser];
+    object[PF_MESSAGE_GROUPID] = _channelId;
+    object[PF_MESSAGE_TEXT] = text;
+    if (fileVideo != nil) object[PF_MESSAGE_VIDEO] = fileVideo;
+    if (filePicture != nil) object[PF_MESSAGE_PICTURE] = filePicture;
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (error == nil)

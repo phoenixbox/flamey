@@ -9,6 +9,9 @@
 #import "FBLAppConstants.h"
 #import "FBLMessageController.h"
 
+// Data Layer
+#import "FBLMember.h"
+
 NSString *StartPrivateChat(PFUser *user1, PFUser *user2) {
     NSString *id1 = user1.objectId;
     NSString *id2 = user2.objectId;
@@ -22,23 +25,25 @@ NSString *StartPrivateChat(PFUser *user1, PFUser *user2) {
 }
 
 void CreateMessageItem(PFUser *user, NSString *groupId, NSString *description) {
-    PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGES_CLASS_NAME];
-    [query whereKey:PF_MESSAGES_USER equalTo:user];
-    [query whereKey:PF_MESSAGES_GROUPID equalTo:groupId];
+    // Persist to Parse the
+    PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
+    [query whereKey:PF_CHAT_USER equalTo:user];
+    [query whereKey:PF_CHAT_GROUPID equalTo:groupId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+
      {
          if (error == nil)
          {
              if ([objects count] == 0)
              {
-                 PFObject *message = [PFObject objectWithClassName:PF_MESSAGES_CLASS_NAME];
-                 message[PF_MESSAGES_USER] = user;
-                 message[PF_MESSAGES_GROUPID] = groupId;
-                 message[PF_MESSAGES_DESCRIPTION] = description;
-                 message[PF_MESSAGES_LASTUSER] = [PFUser currentUser];
-                 message[PF_MESSAGES_LASTMESSAGE] = @"";
-                 message[PF_MESSAGES_COUNTER] = @0;
-                 message[PF_MESSAGES_UPDATEDACTION] = [NSDate date];
+                 PFObject *message = [PFObject objectWithClassName:PF_CHAT_CLASS_NAME];
+                 message[PF_CHAT_USER] = user;
+                 message[PF_CHAT_GROUPID] = groupId;
+                 message[PF_CHAT_DESCRIPTION] = description;
+                 message[PF_CHAT_LASTUSER] = [PFUser currentUser];
+                 message[PF_CHAT_LASTMESSAGE] = @"";
+                 message[PF_CHAT_COUNTER] = @0;
+                 message[PF_CHAT_UPDATEDACTION] = [NSDate date];
                  [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                      if (error != nil) {
                          NSLog(@"FBLMessageController: CreateMessageItem save error.");
@@ -60,8 +65,8 @@ void DeleteMessageItem(PFObject *message) {
 }
 
 void UpdateMessageCounter(NSString *groupId, NSString *lastMessage) {
-    PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGES_CLASS_NAME];
-    [query whereKey:PF_MESSAGES_GROUPID equalTo:groupId];
+    PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
+    [query whereKey:PF_CHAT_GROUPID equalTo:groupId];
     [query setLimit:1000];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
@@ -69,13 +74,13 @@ void UpdateMessageCounter(NSString *groupId, NSString *lastMessage) {
          {
              for (PFObject *message in objects)
              {
-                 PFUser *user = message[PF_MESSAGES_USER];
+                 PFUser *user = message[PF_CHAT_USER];
                  if ([user.objectId isEqualToString:[PFUser currentUser].objectId] == NO)
-                     [message incrementKey:PF_MESSAGES_COUNTER byAmount:@1];
+                     [message incrementKey:PF_CHAT_COUNTER byAmount:@1];
 
-                 message[PF_MESSAGES_LASTUSER] = [PFUser currentUser];
-                 message[PF_MESSAGES_LASTMESSAGE] = lastMessage;
-                 message[PF_MESSAGES_UPDATEDACTION] = [NSDate date];
+                 message[PF_CHAT_LASTUSER] = [PFUser currentUser];
+                 message[PF_CHAT_LASTMESSAGE] = lastMessage;
+                 message[PF_CHAT_UPDATEDACTION] = [NSDate date];
                  [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                   {
                       if (error != nil) {
@@ -91,16 +96,16 @@ void UpdateMessageCounter(NSString *groupId, NSString *lastMessage) {
 }
 
 void ClearMessageCounter(NSString *groupId) {
-    PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGES_CLASS_NAME];
-    [query whereKey:PF_MESSAGES_GROUPID equalTo:groupId];
-    [query whereKey:PF_MESSAGES_USER equalTo:[PFUser currentUser]];
+    PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
+    [query whereKey:PF_CHAT_GROUPID equalTo:groupId];
+    [query whereKey:PF_CHAT_USER equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          if (error == nil)
          {
              for (PFObject *message in objects)
              {
-                 message[PF_MESSAGES_COUNTER] = @0;
+                 message[PF_CHAT_COUNTER] = @0;
                  [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                   {
                       if (error != nil) {

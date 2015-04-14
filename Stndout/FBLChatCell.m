@@ -39,13 +39,13 @@
     [imageUser setFile:lastUser[PF_USER_PICTURE]];
     [imageUser loadInBackground];
 
-    labelDescription.text = chat[PF_MESSAGES_DESCRIPTION];
-    labelLastMessage.text = chat[PF_MESSAGES_LASTMESSAGE];
+    labelDescription.text = chat[PF_CHAT_DESCRIPTION];
+    labelLastMessage.text = chat[PF_CHAT_LASTMESSAGE];
 
-    NSTimeInterval seconds = [[NSDate date] timeIntervalSinceDate:chat[PF_MESSAGES_UPDATEDACTION]];
+    NSTimeInterval seconds = [[NSDate date] timeIntervalSinceDate:chat[PF_CHAT_UPDATEDACTION]];
     labelElapsed.text = TimeElapsed(seconds);
 
-    int counter = [chat[PF_MESSAGES_COUNTER] intValue];
+    int counter = [chat[PF_CHAT_COUNTER] intValue];
     labelCounter.text = (counter == 0) ? @"" : [NSString stringWithFormat:@"%d new", counter];
 }
 
