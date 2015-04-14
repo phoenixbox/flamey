@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBLSingleChatView.h"
+#import "FBLMemberListView.h"
 
-@interface FBLChatsViewController : UITableViewController <FBLSingleChatDelegate>
+@interface FBLChatsViewController : UITableViewController <FBLMemberListDelegate>
 
 - (void)loadChats;
 

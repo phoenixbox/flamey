@@ -1,28 +1,36 @@
 //
-//  FBLSingleChatView.m
+//  FBLMemberListView.m
 //  Stndout
 //
 //  Created by Shane Rogers on 4/11/15.
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
+// Libs
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
+
+// Constants
 #import "FBLAppConstants.h"
-#import "FBLSingleChatView.h"
 
 // Data Layer
 #import "FBLMember.h"
 #import "FBLMembersStore.h"
 
-@interface FBLSingleChatView()
+// Components
+#import "FBLMemberListView.h"
+#import "FBLMemberListCell.h"
+
+NSString *const kMemberCellIdentifier = @"FBLMemberListCell";
+
+@interface FBLMemberListView()
 
 @property (strong, nonatomic) IBOutlet UIView *viewHeader;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
-@implementation FBLSingleChatView
+@implementation FBLMemberListView
 
 @synthesize delegate;
 @synthesize viewHeader, searchBar;
@@ -34,8 +42,9 @@
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self
                                                                                           action:@selector(dismissView)];
-
+    // Whats the craic here
     self.tableView.tableHeaderView = viewHeader;
+    [self.tableView registerNib:[UINib nibWithNibName:kMemberCellIdentifier bundle:nil] forCellReuseIdentifier:kMemberCellIdentifier];
 
     [self loadMembers];
 }
@@ -84,7 +93,6 @@
 }
 
 #pragma mark - User actions
-
 - (void)dismissView {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -112,12 +120,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FBLMembersStore *membersStore = [FBLMembersStore sharedStore];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-
-
+    FBLMemberListCell *cell = [tableView dequeueReusableCellWithIdentifier:kMemberCellIdentifier forIndexPath:indexPath];
     FBLMember *member = membersStore.members[indexPath.row];
-    cell.textLabel.text = member.realName;
+    [cell bindData:member];
 
     return cell;
 }

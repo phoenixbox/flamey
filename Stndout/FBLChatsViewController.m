@@ -12,7 +12,7 @@
 #import "FBLChatViewController.h"
 #import "FBLViewHelpers.h"
 
-#import "FBLSingleChatView.h"
+#import "FBLMemberListView.h"
 #import "FBLAppConstants.h"
 #import "FBLMessageController.h"
 #import "FBLHelpers.h"
@@ -160,7 +160,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 #pragma mark - User actions
 
 - (void)createSingleChat {
-    FBLSingleChatView *singleChatView = [[FBLSingleChatView alloc] init];
+    FBLMemberListView *singleChatView = [[FBLMemberListView alloc] init];
     singleChatView.delegate = self;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:singleChatView];
     [self presentViewController:navController animated:YES completion:nil];
@@ -208,7 +208,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FBLChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FBLChatCell" forIndexPath:indexPath];
+    FBLChatCell *cell = [tableView dequeueReusableCellWithIdentifier:kChatCellIdentifier forIndexPath:indexPath];
     [cell bindData:_chats[indexPath.row]];
 
     return cell;
