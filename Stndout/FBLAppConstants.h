@@ -14,7 +14,8 @@
 #define		PF_INSTALLATION_CLASS_NAME			@"_Installation"		//	Class name
 #define		PF_INSTALLATION_OBJECTID			@"objectId"				//	String
 #define		PF_INSTALLATION_USER				@"user"					//	Pointer to User Class
-//-----------------------------------------------------------------------
+
+//----------------------- CUSTOMERS ----------------------------
 #define		PF_USER_CLASS_NAME					@"_User"				//	Class name
 #define		PF_USER_OBJECTID					@"objectId"				//	String
 #define		PF_USER_USERNAME					@"username"				//	String
@@ -26,7 +27,16 @@
 #define		PF_USER_FACEBOOKID					@"facebookId"			//	String
 #define		PF_USER_PICTURE						@"picture"				//	File
 #define		PF_USER_THUMBNAIL					@"thumbnail"			//	File
-//-----------------------------------------------------------------------
+//----------------------- MEMBERS ----------------------------
+#define		PF_MEMBER_CLASS_NAME				@"_Member"				//	Class name
+#define		PF_MEMBER_OBJECTID					@"objectId"				//	String
+#define		PF_MEMBER_REALNAME					@"realname"				//	String
+#define		PF_MEMBER_EMAIL						@"email"				//	String
+#define		PF_MEMBER_TITLE						@"title"				//	String
+#define		PF_MEMBER_SLACKNAME					@"slackname"			//	String
+#define		PF_MEMBER_SLACKID					@"slackId"			    //	String
+#define		PF_MEMBER_PICTURE					@"picture"				//	String
+//------------------------------------------------------------
 #define		PF_MESSAGE_CLASS_NAME				@"Message"				//	Class name
 #define		PF_MESSAGE_USER						@"user"					//	Pointer to User Class
 #define		PF_MESSAGE_GROUPID					@"groupId"				//	String

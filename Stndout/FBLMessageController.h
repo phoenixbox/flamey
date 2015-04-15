@@ -9,7 +9,7 @@
 #import <Parse/Parse.h>
 #import "FBLMember.h"
 
-NSString*	StartPrivateChat			(PFUser *user1, FBLMember *member);
+NSString*	StartPrivateChat			(PFUser *user1, PFUser *user1);
 NSString*	StartMultipleChat			(NSMutableArray *users);
 
 void		CreateMessageItem			(PFUser *user, NSString *groupId, NSString *description);

@@ -14,6 +14,8 @@
 #import "FBLMemberCollection.h"
 #import "JSONModel.h"
 
+#import <Parse/Parse.h>
+
 @implementation FBLMembersStore
 
 + (FBLMembersStore *)sharedStore {
@@ -38,6 +40,8 @@
         NSString *rawJSON = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 
         FBLMemberCollection *memberCollection = [[FBLMemberCollection alloc] initWithString:rawJSON error:nil];
+
+        [self addUniqueMembersToParse:memberCollection.members];
         self.members = memberCollection.members;
 
         // create unique member records
@@ -46,6 +50,34 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         block(error);
     }];
+}
+
+- (void)addUniqueMembersToParse:(NSMutableArray *)members {
+    for(FBLMember *member in members) {
+
+        PFObject *parseMemmber = [[PFObject alloc] initWithClassName:PF_MEMBER_CLASS_NAME];
+
+        parseMemmber[PF_MEMBER_EMAIL] = member.email;
+        parseMemmber[PF_MEMBER_SLACKNAME] = member.slackName;
+        parseMemmber[PF_MEMBER_SLACKID] = member.id;
+        parseMemmber[PF_MEMBER_REALNAME] = member.realName;
+        parseMemmber[PF_USER_PICTURE] = member.image72;
+        parseMemmber[PF_MEMBER_TITLE] = member.title;
+
+        // TODO: Transform to cloudCould before hook or a query and if not found then create member
+        [parseMemmber saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             if (error == nil)
+             {
+                 NSLog(@"%@ ERROR: Created Member. %@", NSStringFromClass([self class]), member.slackName);
+             }
+             else
+             {
+                 NSLog(@"%@ ERROR: Network Error. %@",NSStringFromClass([self class]), error.localizedDescription);
+             }
+         }];
+
+    }
 }
 
 @end
