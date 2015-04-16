@@ -71,6 +71,16 @@
 #define     SLACK_API_KEY @"xoxp-4363020674-4363020680-4429695137-cdb875"
 #define     SLACK_API_BASE_URL @"https://slack.com/api"
 
+#define     SLACK_API_CHANNEL_CREATE @"/channels.create"
+
+
+#define     SLACK_API_CHANNEL_JOIN @"/channels.join"
+//PARAMS    "?token=#{token}&name=#{email}
+
+#define     SLACK_API_CHANNEL_HISTORY @"/channels.history"
+#define     SLACK_API_MESSAGE_POST @"/chat.postMessage"
+//PARAMS    "?token=#{token}  &  channel=#{email}"?token="
+
 //----------------- SLACK ENDPOINTS ------------------------------
 #define     SLACK_MEMBERS_URI @"/users.list"
 
