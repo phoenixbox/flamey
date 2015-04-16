@@ -45,7 +45,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     [self styleTableView];
 
     // Setup Listeners
-    [self setupListeners]
+    [self setupListeners];
 
     // If there is no currentUser - Prompt to login
     if (![PFUser currentUser]) {
