@@ -138,6 +138,7 @@
 		CB7BD8571AC86BB90088F22D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7BD8561AC86BB90088F22D /* MessageUI.framework */; };
 		CBF402021ADCBD07000DFB98 /* FBLMemberListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402011ADCBD07000DFB98 /* FBLMemberListCell.m */; };
 		CBF402041ADCBD64000DFB98 /* FBLMemberListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF402031ADCBD64000DFB98 /* FBLMemberListCell.xib */; };
+		CBF402081ADF5882000DFB98 /* FBLSlackStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402071ADF5882000DFB98 /* FBLSlackStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -353,6 +354,8 @@
 		CBF402001ADCBD07000DFB98 /* FBLMemberListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLMemberListCell.h; sourceTree = "<group>"; };
 		CBF402011ADCBD07000DFB98 /* FBLMemberListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLMemberListCell.m; sourceTree = "<group>"; };
 		CBF402031ADCBD64000DFB98 /* FBLMemberListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLMemberListCell.xib; sourceTree = "<group>"; };
+		CBF402061ADF5882000DFB98 /* FBLSlackStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLSlackStore.h; sourceTree = "<group>"; };
+		CBF402071ADF5882000DFB98 /* FBLSlackStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLSlackStore.m; sourceTree = "<group>"; };
 		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -769,6 +772,8 @@
 			children = (
 				CB6E10F81ADB49E7001D750F /* FBLMembersStore.h */,
 				CB6E10F91ADB49E7001D750F /* FBLMembersStore.m */,
+				CBF402061ADF5882000DFB98 /* FBLSlackStore.h */,
+				CBF402071ADF5882000DFB98 /* FBLSlackStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -1124,6 +1129,7 @@
 				CB6FE8BF1AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m in Sources */,
 				CB6FE8F21AD0B7FF00AD0BD2 /* FLViewHelpers.m in Sources */,
 				CB6FE8FB1AD0B7FF00AD0BD2 /* DesignableImageView.swift in Sources */,
+				CBF402081ADF5882000DFB98 /* FBLSlackStore.m in Sources */,
 				CB6879FD1AD9DF1300FCADA1 /* FBLProfileViewController.m in Sources */,
 				CB6FE8C11AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m in Sources */,
 				CB6E10FD1ADB4D7D001D750F /* FBLAuth.m in Sources */,

@@ -19,6 +19,9 @@
 #import "FBLChatCell.h"
 #import <Parse/Parse.h>
 
+// Data Layer
+#import "FBLSlackStore.h"
+
 #import "FBLLoginViewController.h"
 #import "AFBlurSegue.h"
 static NSString * const kFBLLoginViewController = @"FBLLoginViewController";
@@ -96,7 +99,10 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     emptyMessage.contentView.layer.borderColor = [UIColor blackColor].CGColor;
     [emptyMessage.contentView setBackgroundColor:[UIColor whiteColor]];
 
-    [FBLViewHelpers setBaseButtonStyle:emptyMessage.startButton withColor:[UIColor blackColor]];
+    [FBLViewHelpers setBaseButtonStyle:emptyMessage.startAnyChat withColor:[UIColor blackColor]];
+    [self.tableView setBackgroundView:emptyMessage];
+
+    [FBLViewHelpers setBaseButtonStyle:emptyMessage.startSpecificChat withColor:[UIColor blackColor]];
     [self.tableView setBackgroundView:emptyMessage];
     // Show empty message by default
     [self.tableView.backgroundView setHidden:NO];
@@ -163,6 +169,27 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     singleChatView.delegate = self;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:singleChatView];
     [self presentViewController:navController animated:YES completion:nil];
+}
+
+// create the slack channel
+// success then join with the id
+
+- (void)createAnyoneChat {
+    // TODO: Turn on the spinner
+
+    void(^completionBlock)(NSString *channelId, NSError *err)=^(NSString *channelId, NSError *error){
+        if (error == nil) {
+            // TODO: Turn off the spinner
+            FBLChatViewController *chatViewController = [[FBLChatViewController alloc] initWithSlackChannel:channelId];
+            chatViewController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:chatViewController animated:YES];
+        }
+        else {
+            NSLog(@"%@: Loading Users Error", NSStringFromClass([self class]));
+        }
+    };
+
+    [[FBLSlackStore sharedStore] createAnyoneSlackChannel:completionBlock];
 }
 
 - (void)startChat:(NSString *)channelId {
@@ -248,6 +275,16 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
                    name:kCreateSingleChat
                  object:nil];
 }
+
+- (void)listenForAnyoneChatNotification {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(createAnyoneChat)
+                   name:kChatToAnyone
+                 object:nil];
+}
+
 
 /*
 #pragma mark - Navigation
