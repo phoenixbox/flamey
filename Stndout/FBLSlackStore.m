@@ -34,26 +34,40 @@
 - (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSError *error))block {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-
     NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_API_CHANNEL_JOIN);
-
     PFUser *currentUser = [PFUser currentUser];
-
     NSString *queryStringParams = [NSString stringWithFormat:@"&name=%@",currentUser.email];
-
     [requestURL stringByAppendingString:queryStringParams];
 
+
+    void(^currentUserChannelBlock)(NSError *err)=^(NSError *error){
+        [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSString *string = [NSString new];
+
+            NSString *rawJSON = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+
+            NSMutableDictionary *createChannelResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+
+
+            block(string, nil);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            block(nil, error);
+        }];
+    };
+
+    [self _findOrCreateCurrentUserChannel:currentUserChannelBlock];
+}
+
+- (void)_findOrCreateCurrentUserChannel:(void (^)(NSError *error))block {
+    PFUser *currentUser = [PFUser currentUser];
+    // Find or create
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
     [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *string = [NSString new];
-
-        NSString *rawJSON = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-
-        NSMutableDictionary *createChannelResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-
-
-        block(string, nil);
+        block(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        block(error);
     }];
 
 }
