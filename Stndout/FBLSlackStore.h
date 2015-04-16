@@ -10,4 +10,8 @@
 
 @interface FBLSlackStore : NSObject
 
++ (FBLSlackStore *)sharedStore;
+
+- (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSError *error))block;
+
 @end
