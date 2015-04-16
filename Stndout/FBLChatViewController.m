@@ -64,7 +64,7 @@
 
     self.senderId = PF_STUB_USER_ID;
 
-    self.senderDisplayName = user[PF_USER_FULLNAME];
+    self.senderDisplayName = user[PF_CUSTOMER_FULLNAME];
 
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     _bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
@@ -149,7 +149,7 @@
     JSQMessage *message;
 
     PFUser *user = object[PF_MESSAGE_USER];
-    NSString *name = user[PF_USER_FULLNAME];
+    NSString *name = user[PF_CUSTOMER_FULLNAME];
 
     PFFile *fileVideo = object[PF_MESSAGE_VIDEO];
     PFFile *filePicture = object[PF_MESSAGE_PICTURE];
@@ -282,7 +282,7 @@
 
     if (_avatars[user.objectId] == nil)
     {
-        PFFile *file = user[PF_USER_THUMBNAIL];
+        PFFile *file = user[PF_CUSTOMER_THUMBNAIL];
         [file getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
          {
              if (error == nil)

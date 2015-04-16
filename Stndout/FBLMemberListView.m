@@ -73,10 +73,10 @@ NSString *const kMemberCellIdentifier = @"FBLMemberListCell";
     PFUser *user = [PFUser currentUser];
     FBLMembersStore *membersStore = [FBLMembersStore sharedStore];
 
-    PFQuery *query = [PFQuery queryWithClassName:PF_USER_CLASS_NAME];
-    [query whereKey:PF_USER_OBJECTID notEqualTo:user.objectId];
-    [query whereKey:PF_USER_FULLNAME_LOWER containsString:search_lower];
-    [query orderByAscending:PF_USER_FULLNAME];
+    PFQuery *query = [PFQuery queryWithClassName:PF_CUSTOMER_CLASS_NAME];
+    [query whereKey:PF_CUSTOMER_OBJECTID notEqualTo:user.objectId];
+    [query whereKey:PF_CUSTOMER_FULLNAME_LOWER containsString:search_lower];
+    [query orderByAscending:PF_CUSTOMER_FULLNAME];
     [query setLimit:1000];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {

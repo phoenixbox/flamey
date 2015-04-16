@@ -46,7 +46,7 @@
      {
          if (user != nil)
          {
-             if (user[PF_USER_FACEBOOKID] == nil)
+             if (user[PF_CUSTOMER_FACEBOOKID] == nil)
              {
                  [self requestFacebook:user];
              }
@@ -106,12 +106,12 @@
                   [alert show];
               }
           }];
-         user[PF_USER_EMAILCOPY] = userData[@"email"];
-         user[PF_USER_FULLNAME] = userData[@"name"];
-         user[PF_USER_FULLNAME_LOWER] = [userData[@"name"] lowercaseString];
-         user[PF_USER_FACEBOOKID] = userData[@"id"];
-         user[PF_USER_PICTURE] = filePicture;
-         user[PF_USER_THUMBNAIL] = fileThumbnail;
+         user[PF_CUSTOMER_EMAILCOPY] = userData[@"email"];
+         user[PF_CUSTOMER_FULLNAME] = userData[@"name"];
+         user[PF_CUSTOMER_FULLNAME_LOWER] = [userData[@"name"] lowercaseString];
+         user[PF_CUSTOMER_FACEBOOKID] = userData[@"id"];
+         user[PF_CUSTOMER_PICTURE] = filePicture;
+         user[PF_CUSTOMER_THUMBNAIL] = fileThumbnail;
          [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
           {
               if (error == nil)

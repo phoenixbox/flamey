@@ -35,8 +35,8 @@
     imageUser.layer.cornerRadius = imageUser.frame.size.width/2;
     imageUser.layer.masksToBounds = YES;
 
-    PFUser *lastUser = chat[PF_MESSAGES_LASTUSER];
-    [imageUser setFile:lastUser[PF_USER_PICTURE]];
+    PFUser *lastUser = chat[PF_CHAT_LASTUSER];
+    [imageUser setFile:lastUser[PF_CUSTOMER_PICTURE]];
     [imageUser loadInBackground];
 
     labelDescription.text = chat[PF_CHAT_DESCRIPTION];

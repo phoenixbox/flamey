@@ -36,7 +36,7 @@ void ParsePushUserResign(void) {
 
 void SendPushNotification(NSString *groupId, NSString *text) {
     PFUser *user = [PFUser currentUser];
-    NSString *message = [NSString stringWithFormat:@"%@: %@", user[PF_USER_FULLNAME], text];
+    NSString *message = [NSString stringWithFormat:@"%@: %@", user[PF_CUSTOMER_FULLNAME], text];
 
     PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
     [query whereKey:PF_CHAT_GROUPID equalTo:groupId];

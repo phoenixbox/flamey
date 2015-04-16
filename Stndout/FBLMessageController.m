@@ -18,8 +18,8 @@ NSString *StartPrivateChat(PFUser *user1, PFUser *user2) {
 
     NSString *groupId = ([id1 compare:id2] < 0) ? [NSString stringWithFormat:@"%@%@", id1, id2] : [NSString stringWithFormat:@"%@%@", id2, id1];
 
-    CreateMessageItem(user1, groupId, user2[PF_USER_FULLNAME]);
-    CreateMessageItem(user2, groupId, user1[PF_USER_FULLNAME]);
+    CreateMessageItem(user1, groupId, user2[PF_CUSTOMER_FULLNAME]);
+    CreateMessageItem(user2, groupId, user1[PF_CUSTOMER_FULLNAME]);
 
     return groupId;
 }
