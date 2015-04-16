@@ -55,28 +55,33 @@
 - (void)addUniqueMembersToParse:(NSMutableArray *)members {
     for(FBLMember *member in members) {
 
-        PFObject *parseMemmber = [[PFObject alloc] initWithClassName:PF_MEMBER_CLASS_NAME];
+        // Find or create a member
+        PFQuery *query = [PFQuery queryWithClassName:PF_MEMBER_CLASS_NAME];
+        [query whereKey:PF_MEMBER_SLACKID equalTo:member.id];
+        NSArray *ids = [query findObjects];
 
-        parseMemmber[PF_MEMBER_EMAIL] = member.email;
-        parseMemmber[PF_MEMBER_SLACKNAME] = member.slackName;
-        parseMemmber[PF_MEMBER_SLACKID] = member.id;
-        parseMemmber[PF_MEMBER_REALNAME] = member.realName;
-        parseMemmber[PF_USER_PICTURE] = member.image72;
-        parseMemmber[PF_MEMBER_TITLE] = member.title;
+        if ([ids count] == 0) {
+            PFObject *parseMemmber = [[PFObject alloc] initWithClassName:PF_MEMBER_CLASS_NAME];
 
-        // TODO: Transform to cloudCould before hook or a query and if not found then create member
-        [parseMemmber saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-         {
-             if (error == nil)
+            parseMemmber[PF_MEMBER_EMAIL] = member.email;
+            parseMemmber[PF_MEMBER_SLACKNAME] = member.slackName;
+            parseMemmber[PF_MEMBER_SLACKID] = member.id;
+            parseMemmber[PF_MEMBER_REALNAME] = member.realName;
+            parseMemmber[PF_CUSTOMER_PICTURE] = member.image72;
+            parseMemmber[PF_MEMBER_TITLE] = member.title;
+
+            [parseMemmber saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
              {
-                 NSLog(@"%@ ERROR: Created Member. %@", NSStringFromClass([self class]), member.slackName);
-             }
-             else
-             {
-                 NSLog(@"%@ ERROR: Network Error. %@",NSStringFromClass([self class]), error.localizedDescription);
-             }
-         }];
-
+                 if (error == nil)
+                 {
+                     NSLog(@"%@ ERROR: Created Member. %@", NSStringFromClass([self class]), member.slackName);
+                 }
+                 else
+                 {
+                     NSLog(@"%@ ERROR: Network Error. %@",NSStringFromClass([self class]), error.localizedDescription);
+                 }
+             }];
+        }
     }
 }
 
