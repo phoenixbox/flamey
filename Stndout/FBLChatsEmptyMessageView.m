@@ -8,11 +8,19 @@
 
 #import "FBLChatsEmptyMessageView.h"
 
+NSString *const kChatToAnyone = @"chatToAnyone";
 NSString *const kCreateSingleChat = @"createSingleChat";
 
 @implementation FBLChatsEmptyMessageView
 
-- (IBAction)createSingleChat:(id)sender {
+- (IBAction)createAnyoneChat:(id)sender {
+    NSNotification *notification = [NSNotification notificationWithName:kChatToAnyone object:self];
+
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+
+}
+
+- (IBAction)pickSomeoneToChatTo:(id)sender {
     NSNotification *notification = [NSNotification notificationWithName:kCreateSingleChat object:self];
 
     [[NSNotificationCenter defaultCenter] postNotification:notification];

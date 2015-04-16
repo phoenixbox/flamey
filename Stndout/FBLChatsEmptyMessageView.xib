@@ -14,7 +14,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1n-HS-6P5" userLabel="Content">
                     <rect key="frame" x="20" y="166" width="335" height="335"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no chats yet!  Enter your details to get started" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQe-Uj-aW1" userLabel="emptyTitle">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome! You have no chats yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQe-Uj-aW1" userLabel="emptyTitle">
                             <rect key="frame" x="20" y="41" width="295" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="dIP-IF-Bva"/>
@@ -23,18 +23,32 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkY-WJ-dY0" userLabel="startButton">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkY-WJ-dY0" userLabel="SpecificChat">
                             <rect key="frame" x="20" y="245" width="295" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="ghE-ok-qKa"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
-                            <state key="normal" title="Start A Chat">
+                            <state key="normal" title="Chat to a specific person">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="createSingleChat:" destination="iN0-l3-epB" eventType="touchUpInside" id="c6b-hA-wIe"/>
+                                <action selector="pickSomeoneToChatTo:" destination="iN0-l3-epB" eventType="touchUpInside" id="lrT-ko-6tU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xk-Sb-XWX" userLabel="AnyoneChat">
+                            <rect key="frame" x="20" y="181" width="295" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="9xW-5P-a9M"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                            <state key="normal" title="Ask anyone a Question">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="createAnyoneChat:" destination="iN0-l3-epB" eventType="touchUpInside" id="aYo-2j-soo"/>
                             </connections>
                         </button>
                     </subviews>
@@ -43,9 +57,13 @@
                         <constraint firstAttribute="trailing" secondItem="qQe-Uj-aW1" secondAttribute="trailing" constant="20" id="8Jn-vQ-HS1"/>
                         <constraint firstItem="qQe-Uj-aW1" firstAttribute="top" secondItem="H1n-HS-6P5" secondAttribute="top" constant="41" id="CIu-SO-2rq"/>
                         <constraint firstItem="XkY-WJ-dY0" firstAttribute="leading" secondItem="H1n-HS-6P5" secondAttribute="leading" constant="20" id="CZz-Wr-J6z"/>
+                        <constraint firstItem="8xk-Sb-XWX" firstAttribute="leading" secondItem="H1n-HS-6P5" secondAttribute="leading" constant="20" id="FxW-ab-D2W"/>
                         <constraint firstAttribute="trailing" secondItem="XkY-WJ-dY0" secondAttribute="trailing" constant="20" id="O8s-MM-Lb8"/>
+                        <constraint firstItem="XkY-WJ-dY0" firstAttribute="top" secondItem="8xk-Sb-XWX" secondAttribute="bottom" constant="24" id="Pcj-QQ-o7K"/>
+                        <constraint firstAttribute="trailing" secondItem="8xk-Sb-XWX" secondAttribute="trailing" constant="20" id="QkP-O4-4h8"/>
                         <constraint firstAttribute="bottom" secondItem="XkY-WJ-dY0" secondAttribute="bottom" constant="50" id="Z4D-sr-Zo5"/>
                         <constraint firstAttribute="width" secondItem="H1n-HS-6P5" secondAttribute="height" multiplier="1:1" id="Ztk-dr-kUn"/>
+                        <constraint firstItem="8xk-Sb-XWX" firstAttribute="top" secondItem="qQe-Uj-aW1" secondAttribute="bottom" constant="60" id="eg6-ic-vKd"/>
                         <constraint firstItem="qQe-Uj-aW1" firstAttribute="leading" secondItem="H1n-HS-6P5" secondAttribute="leading" constant="20" id="hGZ-Og-cCF"/>
                     </constraints>
                 </view>
@@ -61,7 +79,8 @@
             <connections>
                 <outlet property="contentView" destination="H1n-HS-6P5" id="sAV-ht-IQq"/>
                 <outlet property="emptyTitle" destination="qQe-Uj-aW1" id="MXf-CS-gNi"/>
-                <outlet property="startButton" destination="XkY-WJ-dY0" id="loD-rI-8gd"/>
+                <outlet property="startAnyChat" destination="8xk-Sb-XWX" id="Gqg-9H-Y2i"/>
+                <outlet property="startSpecificChat" destination="XkY-WJ-dY0" id="e3U-ie-1nU"/>
             </connections>
             <point key="canvasLocation" x="138.5" y="515.5"/>
         </view>
