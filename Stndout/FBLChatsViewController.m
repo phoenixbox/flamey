@@ -45,7 +45,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     [self styleTableView];
 
     // Setup Listeners
-    [self listenForCreateSingleChatNotification];
+    [self setupListeners]
 
     // If there is no currentUser - Prompt to login
     if (![PFUser currentUser]) {
@@ -266,6 +266,11 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 }
 
 #pragma mark - listeners
+
+- (void)setupListeners {
+    [self listenForCreateSingleChatNotification];
+    [self listenForAnyoneChatNotification];
+}
 
 - (void)listenForCreateSingleChatNotification {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
