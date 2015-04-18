@@ -20,7 +20,7 @@
 #import <Parse/Parse.h>
 
 // Data Layer
-#import "FBLSlackStore.h"
+#import "FBLChannelStore.h"
 
 #import "FBLLoginViewController.h"
 #import "AFBlurSegue.h"
@@ -173,13 +173,10 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
 // create the slack channel
 // success then join with the id
-
 - (void)createAnyoneChat {
-    // TODO: Turn on the spinner
 
     void(^completionBlock)(NSString *channelId, NSString *createAnyoneError)=^(NSString *channelId, NSString *createAnyoneError){
         if (createAnyoneError == nil) {
-            // TODO: Turn off the spinner
             FBLChatViewController *chatViewController = [[FBLChatViewController alloc] initWithSlackChannel:channelId];
             chatViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:chatViewController animated:YES];
@@ -190,7 +187,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
         }
     };
 
-    [[FBLSlackStore sharedStore] createAnyoneSlackChannel:completionBlock];
+    [[FBLChannelStore sharedStore] joinCurrentUserChannel:completionBlock];
 }
 
 - (void)startChat:(NSString *)channelId {
