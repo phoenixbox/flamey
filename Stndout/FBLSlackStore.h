@@ -12,6 +12,6 @@
 
 + (FBLSlackStore *)sharedStore;
 
-- (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSError *error))block;
+- (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block;
 
 @end

@@ -177,15 +177,16 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 - (void)createAnyoneChat {
     // TODO: Turn on the spinner
 
-    void(^completionBlock)(NSString *channelId, NSError *err)=^(NSString *channelId, NSError *error){
-        if (error == nil) {
+    void(^completionBlock)(NSString *channelId, NSString *createAnyoneError)=^(NSString *channelId, NSString *createAnyoneError){
+        if (createAnyoneError == nil) {
             // TODO: Turn off the spinner
             FBLChatViewController *chatViewController = [[FBLChatViewController alloc] initWithSlackChannel:channelId];
             chatViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:chatViewController animated:YES];
         }
         else {
-            NSLog(@"%@: Loading Users Error", NSStringFromClass([self class]));
+            // Trigger a selector based on the error type
+            NSLog(@"Trigger a selector based on the error type");
         }
     };
 
