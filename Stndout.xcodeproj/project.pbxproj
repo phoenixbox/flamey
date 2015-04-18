@@ -138,7 +138,9 @@
 		CB7BD8571AC86BB90088F22D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7BD8561AC86BB90088F22D /* MessageUI.framework */; };
 		CBF402021ADCBD07000DFB98 /* FBLMemberListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402011ADCBD07000DFB98 /* FBLMemberListCell.m */; };
 		CBF402041ADCBD64000DFB98 /* FBLMemberListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF402031ADCBD64000DFB98 /* FBLMemberListCell.xib */; };
-		CBF402081ADF5882000DFB98 /* FBLSlackStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402071ADF5882000DFB98 /* FBLSlackStore.m */; };
+		CBF402081ADF5882000DFB98 /* FBLChannelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402071ADF5882000DFB98 /* FBLChannelStore.m */; };
+		CBF4020B1AE2E267000DFB98 /* FBLChannelCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4020A1AE2E267000DFB98 /* FBLChannelCollection.m */; };
+		CBF4020E1AE2E316000DFB98 /* FBLChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4020D1AE2E316000DFB98 /* FBLChannel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,8 +356,12 @@
 		CBF402001ADCBD07000DFB98 /* FBLMemberListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLMemberListCell.h; sourceTree = "<group>"; };
 		CBF402011ADCBD07000DFB98 /* FBLMemberListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLMemberListCell.m; sourceTree = "<group>"; };
 		CBF402031ADCBD64000DFB98 /* FBLMemberListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLMemberListCell.xib; sourceTree = "<group>"; };
-		CBF402061ADF5882000DFB98 /* FBLSlackStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLSlackStore.h; sourceTree = "<group>"; };
-		CBF402071ADF5882000DFB98 /* FBLSlackStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLSlackStore.m; sourceTree = "<group>"; };
+		CBF402061ADF5882000DFB98 /* FBLChannelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChannelStore.h; sourceTree = "<group>"; };
+		CBF402071ADF5882000DFB98 /* FBLChannelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChannelStore.m; sourceTree = "<group>"; };
+		CBF402091AE2E267000DFB98 /* FBLChannelCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChannelCollection.h; sourceTree = "<group>"; };
+		CBF4020A1AE2E267000DFB98 /* FBLChannelCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChannelCollection.m; sourceTree = "<group>"; };
+		CBF4020C1AE2E316000DFB98 /* FBLChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChannel.h; sourceTree = "<group>"; };
+		CBF4020D1AE2E316000DFB98 /* FBLChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChannel.m; sourceTree = "<group>"; };
 		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -772,8 +778,8 @@
 			children = (
 				CB6E10F81ADB49E7001D750F /* FBLMembersStore.h */,
 				CB6E10F91ADB49E7001D750F /* FBLMembersStore.m */,
-				CBF402061ADF5882000DFB98 /* FBLSlackStore.h */,
-				CBF402071ADF5882000DFB98 /* FBLSlackStore.m */,
+				CBF402061ADF5882000DFB98 /* FBLChannelStore.h */,
+				CBF402071ADF5882000DFB98 /* FBLChannelStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -783,6 +789,8 @@
 			children = (
 				CB6E10FF1ADB51B0001D750F /* FBLMember.h */,
 				CB6E11001ADB51B0001D750F /* FBLMember.m */,
+				CBF4020C1AE2E316000DFB98 /* FBLChannel.h */,
+				CBF4020D1AE2E316000DFB98 /* FBLChannel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -792,6 +800,8 @@
 			children = (
 				CB6E11031ADB5FBB001D750F /* FBLMemberCollection.h */,
 				CB6E11041ADB5FBB001D750F /* FBLMemberCollection.m */,
+				CBF402091AE2E267000DFB98 /* FBLChannelCollection.h */,
+				CBF4020A1AE2E267000DFB98 /* FBLChannelCollection.m */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -1129,7 +1139,7 @@
 				CB6FE8BF1AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m in Sources */,
 				CB6FE8F21AD0B7FF00AD0BD2 /* FLViewHelpers.m in Sources */,
 				CB6FE8FB1AD0B7FF00AD0BD2 /* DesignableImageView.swift in Sources */,
-				CBF402081ADF5882000DFB98 /* FBLSlackStore.m in Sources */,
+				CBF402081ADF5882000DFB98 /* FBLChannelStore.m in Sources */,
 				CB6879FD1AD9DF1300FCADA1 /* FBLProfileViewController.m in Sources */,
 				CB6FE8C11AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m in Sources */,
 				CB6E10FD1ADB4D7D001D750F /* FBLAuth.m in Sources */,
@@ -1150,6 +1160,7 @@
 				CB687A131ADA2F2000FCADA1 /* FBLHelpers.m in Sources */,
 				CB6FE9061AD0B7FF00AD0BD2 /* Misc.swift in Sources */,
 				CB6FE8E01AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m in Sources */,
+				CBF4020B1AE2E267000DFB98 /* FBLChannelCollection.m in Sources */,
 				CB6FE8C71AD0B7FF00AD0BD2 /* FLFacebookAlbumTableViewController.m in Sources */,
 				CB6879EE1AD9DEC400FCADA1 /* FBLChatsViewController.m in Sources */,
 				CB6FE8C41AD0B7FF00AD0BD2 /* FLContactViewController.m in Sources */,
@@ -1157,6 +1168,7 @@
 				CB6FE8E31AD0B7FF00AD0BD2 /* FLSettingsViewController.m in Sources */,
 				CB6FE90F1AD0B7FF00AD0BD2 /* SpringView.swift in Sources */,
 				CB687A161ADA340000FCADA1 /* FBLMemberListView.m in Sources */,
+				CBF4020E1AE2E316000DFB98 /* FBLChannel.m in Sources */,
 				CB6FE9101AD0B7FF00AD0BD2 /* TransitionManager.swift in Sources */,
 				CB6FE8BB1AD0B7FF00AD0BD2 /* CollectionViewHelpers.m in Sources */,
 				CB6FE8F01AD0B7FF00AD0BD2 /* FLTutorialViewController.m in Sources */,

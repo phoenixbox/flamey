@@ -9,13 +9,19 @@
 #import "FBLChatViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-#import <Parse/Parse.h>
 // Constants
 #import "FBLAppConstants.h"
 
-#import "MBProgressHUD.h"
-#import "FBLViewhelpers.h"
+// Data Layer
+#import "FBLChannel.h"
+#import "FBLChannelStore.h"
 
+// Libs
+#import <Parse/Parse.h>
+#import "MBProgressHUD.h"
+
+// Utils
+#import "FBLViewhelpers.h"
 #import "FBLCameraUtil.h"
 #import "FBLMessageController.h"
 #import "FBLPushNotificationController.h"
@@ -27,6 +33,8 @@
 @property (nonatomic, assign) BOOL initialized;
 
 @property (nonatomic, strong) NSString *channelId;
+
+@property (nonatomic, strong) FBLChannel *channel;
 
 @property (nonatomic, strong) NSMutableArray *users;
 @property (nonatomic, strong) NSMutableArray *messages;
@@ -46,6 +54,15 @@
     self = [super init];
     self.channelId = channelId;
 
+    self.channel = [[FBLChannelStore sharedStore] find:channelId];
+
+    // TODO: A better error pattern would be to try to reconnect the user to an active room
+    if (!self.channel) {
+        SIAlertView *alert = [FBLViewHelpers createAlertForError:nil
+                                                       withTitle:@"Ooops!" andMessage:@"We had trouble connecting to that channel"];
+        [alert show];
+    }
+
     return self;
 }
 
@@ -53,7 +70,7 @@
     [super viewDidLoad];
     [self setupHUD];
 
-    self.title = [NSString stringWithFormat:@"Chat with, %@", @"Blair" ];
+    self.title = [NSString stringWithFormat:@"The %@ Channel", self.channelId ];
 
     _users = [[NSMutableArray alloc] init];
     _messages = [[NSMutableArray alloc] init];
