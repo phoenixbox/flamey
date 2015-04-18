@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FBLSlackStore : NSObject
+@interface FBLChannelStore : NSObject
 
-+ (FBLSlackStore *)sharedStore;
+@property (nonatomic, strong) NSMutableArray *channels;
 
-- (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block;
++ (FBLChannelStore *)sharedStore;
+
+- (void)joinCurrentUserChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block;
+
+- (FBLChannel *)find:(NSString *)channelId {
+
+//- (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block;
 
 @end

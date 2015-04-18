@@ -6,100 +6,47 @@
 //  Copyright (c) 2015 REPL. All rights reserved.
 //
 
-#import "FBLSlackStore.h"
-
-#import "FBLAuth.h"
+// Libs
+#import <Parse/Parse.h>
 #import "AFNetworking.h"
 
+// Auth Layer
+#import "FBLAuth.h"
+
 // Data Layer
-#import <Parse/Parse.h>
+#import "FBLChannelStore.h"
+#import "FBLChannelCollection.h"
 
 // Constants
 #import "FBLAppConstants.h"
 
-@implementation FBLSlackStore
+@implementation FBLChannelStore
 
-+ (FBLSlackStore *)sharedStore {
-    static FBLSlackStore *slackStore = nil;
++ (FBLChannelStore *)sharedStore {
+    static FBLChannelStore *slackStore = nil;
 
     static dispatch_once_t oncePredicate;
 
     dispatch_once(&oncePredicate, ^{
-        slackStore = [[FBLSlackStore alloc] init];
+        slackStore = [[FBLChannelStore alloc] init];
     });
 
     return slackStore;
 }
 
-- (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_API_CHANNEL_JOIN);
-    PFUser *currentUser = [PFUser currentUser];
-    NSString *queryStringParams = [NSString stringWithFormat:@"&name=%@",currentUser.email];
-    [requestURL stringByAppendingString:queryStringParams];
 
-
-    void(^currentUserChannelBlock)(NSString *findOrCreateError)=^(NSString *findOrCreateError) {
-        if(!findOrCreateError) {
-            [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSString *string = [NSString new];
-
-                block(string, nil);
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
-                block(nil, error.localizedDescription);
-            }];
-        } else {
-            block(nil, findOrCreateError);
-        }
-    };
-
-    [self _findOrCreateCurrentUserChannel:currentUserChannelBlock];
-}
-
-- (void)_findOrCreateCurrentUserChannel:(void (^)(NSString *error))block {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_API_CHANNEL_CREATE);
-    PFUser *currentUser = [PFUser currentUser];
-    NSString *queryStringParams = [NSString stringWithFormat:@"&name=%@",currentUser.email];
-    [requestURL stringByAppendingString:queryStringParams];
-
-    // Create the
-
-    [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-        NSString *rawJSON = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSMutableDictionary *createChannelResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-
-        if ([createChannelResponse objectForKey:@"error"]) {
-            NSString *errorType = [createChannelResponse objectForKey:@"error"];
-
-            block(errorType);
-        } else {
-            // create a channel model
-
-            // add it to the channel store
-
-            // Pass the channel back
-            block(nil);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        block(error.localizedDescription);
-    }];
-}
-
-//  Create Errors
-//  ----------------------------------------------------------------
-//  name_taken:           A channel cannot be created with the given name.
-//  restricted_action:    A team preference prevents the authenticated user from creating channels.
-//  no_channel;           Value passed for name was empty.
-//  not_authed:           No authentication token provided.
-//  invalid_auth:         Invalid authentication token.
-//  account_inactive:     Authentication token is for a deleted user or team.
-//  user_is_bot:          This method cannot be called by a bot user.
-//  user_is_restricted:   This method cannot be called by a restricted user or single c
+//    Channels Join Error Description
+//    --------------------------------------------------------------
+//    channel_not_found:    Value passed for channel was invalid.
+//    name_taken:           A channel cannot be created with the given name.
+//    restricted_action:    A team preference prevents the authenticated user from creating channels.
+//    no_channel:           Value passed for name was empty.
+//    is_archived:          Channel has been archived.
+//    not_authed:           No authentication token provided.
+//    invalid_auth:         Invalid authentication token.
+//    account_inactive:     Authentication token is for a deleted user or team.
+//    user_is_bot:          This method cannot be called by a bot user.
+//    user_is_restricted:   This method can
 
 // Channel Schema
 //{
@@ -122,5 +69,73 @@
 //    }
 //}
 
+- (void)joinCurrentUserChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_API_CHANNEL_JOIN);
+    PFUser *currentUser = [PFUser currentUser];
+
+    // TODO: FBLUser Helpers: Fallback for when there is no user email etc.
+    NSString *queryStringParams = [NSString stringWithFormat:@"&name=%@",[currentUser objectForKey:@"emailCopy"]];
+    requestURL = [requestURL stringByAppendingString:queryStringParams];
+
+    [manager POST:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSMutableDictionary *createChannelResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+
+        if ([createChannelResponse objectForKey:@"ok"]) {
+            FBLChannel *channel = [[FBLChannel alloc] initWithDictionary:            [createChannelResponse objectForKey:@"channel"] error:nil];
+            [self addUniqueChannel:channel];
+
+            block(channel.id, nil);
+        } else {
+            NSString *errorType = [createChannelResponse objectForKey:@"error"];
+
+            block(nil, errorType);
+        }
+
+        NSString *string = [NSString new];
+
+        block(string, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        block(nil, error.localizedDescription);
+    }];
+}
+
+
+- (void)addUniqueChannelsToStore:(NSMutableArray *)channels {
+    for (FBLChannel *channel in channels) {
+        [self addUniqueChannel:channel];
+    }
+}
+
+- (void)addUniqueChannel:(FBLChannel *)channel {
+    if(!_channels){
+        _channels = [NSMutableArray new];
+    }
+
+    BOOL exists = NO;
+
+    for (FBLChannel* model in _channels) {
+        if (model.id == channel.id) {
+            NSLog(@"Channel already exists");
+            exists = YES;
+        }
+    }
+
+    if (!exists) {
+        [_channels addObject:channel];
+    }
+}
+
+- (FBLChannel *)find:(NSString *)channelId {
+    for (FBLChannel* channel in _channels) {
+        if ([channel.id isEqualToString:channelId]) {
+            return channel;
+        }
+    }
+    
+    return nil;
+}
 
 @end
