@@ -76,7 +76,7 @@
     [super viewDidLoad];
     [self setupHUD];
 
-    self.title = [NSString stringWithFormat:@"The %@ Channel", self.channelId ];
+    self.title = [NSString stringWithFormat:@"The %@ Channel", self.channelId];
 
     _users = [[NSMutableArray alloc] init];
     _messages = [[NSMutableArray alloc] init];
@@ -139,10 +139,13 @@
             if (error == nil) {
 
                 BOOL incoming = NO;
+
                 self.automaticallyScrollsToMostRecentMessage = NO;
 
                 for (FBLChat *chat in [chatCollection.messages reverseObjectEnumerator])
                 {
+                    [self addSlackMessage:chat];
+
                     if (![chat.username isEqualToString:@"bot"]) {
                         incoming = YES;
                     }
@@ -167,9 +170,9 @@
                 [alert show];
             }
 
+            [self.collectionView reloadData];
             _isLoading = NO;
         };
-
 
         [[FBLChatStore sharedStore] fetchHistoryForChannel:_channelId withCompletion:completionBlock];
     }
@@ -320,8 +323,8 @@
 
     [[FBLChatStore sharedStore] sendSlackMessage:text toChannel:self.channel withCompletion:completionBlock];
 
-    SendPushNotification(_channelId, text);
-    UpdateMessageCounter(_channelId, text);
+//    SendPushNotification(_channelId, text);
+//    UpdateMessageCounter(_channelId, text);
 
     [self finishSendingMessage];
 }
@@ -409,7 +412,7 @@
 - (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
              messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    if ([self isOutgoingChat:_messages[indexPath.item]])
+    if ([self outgoing:_messages[indexPath.item]])
     {
         return _bubbleImageOutgoing;
     }
@@ -605,7 +608,8 @@
 }
 
 - (BOOL)isOutgoingChat:(FBLChat *)chat {
-    return [chat.username isEqualToString:@"bot"];
+    return ![chat respondsToSelector:@selector(username)]; // Janky
+//     [chat.username isEqualToString:@"bot"];
 }
 
 - (BOOL)incoming:(JSQMessage *)message {
