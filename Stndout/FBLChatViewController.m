@@ -121,7 +121,6 @@
     SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:websocketUrl]];
     newWebSocket.delegate = self;
 
-
     [newWebSocket open];
 }
 
@@ -464,27 +463,24 @@
 
 - (id<JSQMessageAvatarImageDataSource>)getFBLUserImage:(FBLMember *)member {
     if (_avatars[member.id] == nil) {
-//        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//        if (member.profileImage) {
-//            _avatars[member.id] = [JSQMessagesAvatarImageFactory avatarImageWithImage:member.profileImage diameter:30.0];
-//            [self.collectionView reloadData];
-//        }
+        PFQuery *query = [PFQuery queryWithClassName:PF_MEMBER_CLASS_NAME];
+        [query whereKey:PF_MEMBER_SLACKID equalTo:member.id];
+        NSArray *members = [query findObjects];
 
-
-//        [manager downloadImageWithURL:[NSURL URLWithString:member.image192]
-//                              options:0
-//                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//                                 // progression tracking code
-//                             }
-//                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-//                                
-//                                if (image) {
-//                                    _avatars[member.id] = [JSQMessagesAvatarImageFactory avatarImageWithImage:image diameter:30.0];
-//                                    [self.collectionView reloadData];
-//                                }
-//                            }];
-
-        return _avatarImageBlank;
+        if ([members count]>0) {
+            PFFile *file = members[0][PF_CUSTOMER_THUMBNAIL];
+            [file getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
+             {
+                 if (error == nil)
+                 {
+                     _avatars[member.id] = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData] diameter:30.0];
+                     [self.collectionView reloadData];
+                 }
+             }];
+            return _avatarImageBlank;
+        } else {
+            return _avatarImageBlank;
+        }
     } else {
         return _avatars[member.id];
     }
