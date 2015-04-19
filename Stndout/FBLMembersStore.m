@@ -14,7 +14,9 @@
 #import "FBLMemberCollection.h"
 #import "JSONModel.h"
 
+// Libs
 #import <Parse/Parse.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation FBLMembersStore
 
@@ -42,9 +44,8 @@
         FBLMemberCollection *memberCollection = [[FBLMemberCollection alloc] initWithString:rawJSON error:nil];
 
         [self addUniqueMembersToParse:memberCollection.members];
-        self.members = memberCollection.members;
 
-        // create unique member records
+        _members = memberCollection.members;
 
         block(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

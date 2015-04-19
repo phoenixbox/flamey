@@ -32,6 +32,8 @@
 @property (nonatomic, strong) NSString *image72;
 @property (nonatomic, strong) NSString *image192;
 
+@property (nonatomic, strong) UIImage *profileImage;
+
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *tz;
 @property (nonatomic, strong) NSString *tzLabel;

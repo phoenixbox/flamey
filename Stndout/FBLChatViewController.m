@@ -23,6 +23,7 @@
 // Libs
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 // Utils
 #import "FBLViewhelpers.h"
@@ -440,8 +441,28 @@
     }
 }
 
+
+
 - (id<JSQMessageAvatarImageDataSource>)getFBLUserImage:(FBLMember *)member {
-    return _avatarImageBlank;
+    if (_avatars[member.id] == nil) {
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+
+        [manager downloadImageWithURL:[NSURL URLWithString:member.image192]
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                if (image) {
+                                    _avatars[member.id] = [JSQMessagesAvatarImageFactory avatarImageWithImage:image diameter:30.0];
+                                    [self.collectionView reloadData];
+                                }
+                            }];
+
+        return _avatarImageBlank;
+    } else {
+        return _avatars[member.id];
+    }
 }
 
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
@@ -450,7 +471,7 @@
     id newObject = _users[indexPath.item];
     NSString *className = NSStringFromClass([newObject class]);
 
-    if ([className isEqualToString:@"PFObject"]) {
+    if ([className isEqualToString:@"PFUser"]) {
         PFObject *user = (PFObject *)newObject;
         return [self getParseUserImage:user];
     } else {
