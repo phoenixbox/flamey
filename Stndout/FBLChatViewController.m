@@ -15,6 +15,10 @@
 // Data Layer
 #import "FBLChannel.h"
 #import "FBLChannelStore.h"
+#import "FBLChat.h"
+#import "FBLChatCollection.h"
+#import "FBLChatStore.h"
+#import "FBLMembersStore.h"
 
 // Libs
 #import <Parse/Parse.h>
@@ -35,6 +39,8 @@
 @property (nonatomic, strong) NSString *channelId;
 
 @property (nonatomic, strong) FBLChannel *channel;
+
+@property (nonatomic, strong) FBLChatCollection *chatCollection;
 
 @property (nonatomic, strong) NSMutableArray *users;
 @property (nonatomic, strong) NSMutableArray *messages;
@@ -74,13 +80,12 @@
 
     _users = [[NSMutableArray alloc] init];
     _messages = [[NSMutableArray alloc] init];
+    _chatCollection = [[FBLChatCollection alloc] init];
     _avatars = [[NSMutableDictionary alloc] init];
 
     // TODO: Set real user information here
     PFUser *user = [PFUser currentUser];
-
     self.senderId = PF_STUB_USER_ID;
-
     self.senderDisplayName = user[PF_CUSTOMER_FULLNAME];
 
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
@@ -91,7 +96,14 @@
 
     _isLoading = NO;
     _initialized = NO;
-    [self loadMessages];
+
+    // TODO: Move members fetch to initialization - possibly with webhook url
+    void(^completionBlock)(NSError *err)=^(NSError *error) {
+        [self loadSlackMessages];
+    };
+
+    [[FBLMembersStore sharedStore] fetchMembersWithCompletion:completionBlock];
+//    [self loadParseMessages];
 }
 
 - (void)setupHUD {
@@ -103,7 +115,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.collectionView.collectionViewLayout.springinessEnabled = YES;
-    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadMessages) userInfo:nil repeats:YES];
+
+//    TODO: Setup the incoming webhook for slack to receive messages from the channel
+//    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadSlackMessages) userInfo:nil repeats:YES];
+
+//    Parse Polling for Messages
+//    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadParseMessages) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -115,7 +132,54 @@
 
 #pragma mark - Backend methods
 
-- (void)loadMessages {
+- (void)loadSlackMessages {
+    if (_isLoading == NO) {
+        _isLoading = YES;
+
+        void(^completionBlock)(FBLChatCollection *chatCollection, NSString *error)=^(FBLChatCollection *chatCollection, NSString *error) {
+
+            if (error == nil) {
+
+                BOOL incoming = NO;
+                self.automaticallyScrollsToMostRecentMessage = NO;
+
+                for (FBLChat *chat in [chatCollection.messages reverseObjectEnumerator])
+                {
+                    JSQMessage *message = [self addSlackMessage:chat];
+
+                    if ([self incoming:message]) {
+                        incoming = YES;
+                    }
+                }
+
+                if ([_messages count] != 0)
+                {
+                    if (_initialized && incoming) {
+                        [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+                    }
+
+                    [self finishReceivingMessage];
+                    [self scrollToBottomAnimated:NO];
+                }
+                self.automaticallyScrollsToMostRecentMessage = YES;
+                _initialized = YES;
+                [_hud hide:YES];
+            }
+            else {
+                SIAlertView *alert = [FBLViewHelpers createAlertForError:nil
+                                                               withTitle:@"Ooops!" andMessage:error];
+                [alert show];
+            }
+
+            _isLoading = NO;
+        };
+
+
+        [[FBLChatStore sharedStore] fetchHistoryForChannel:_channelId withCompletion:completionBlock];
+    }
+}
+
+- (void)loadParseMessages {
     if (_isLoading == NO)
     {
         _isLoading = YES;
@@ -137,7 +201,7 @@
                  self.automaticallyScrollsToMostRecentMessage = NO;
                  for (PFObject *object in [objects reverseObjectEnumerator])
                  {
-                     JSQMessage *message = [self addMessage:object];
+                     JSQMessage *message = [self addParseMessage:object];
                      if ([self incoming:message]) incoming = YES;
                  }
                  if ([objects count] != 0)
@@ -162,7 +226,40 @@
     }
 }
 
-- (JSQMessage *)addMessage:(PFObject *)object {
+- (JSQMessage *)addSlackMessage:(FBLChat *)chat {
+    JSQMessage *message;
+    NSString *senderId;
+    NSString *displayName;
+    NSString *username = chat.username;
+
+    if ([username isEqualToString:@"bot"]) {
+
+        // A user is added for every message - paired collection
+        PFUser *user = [PFUser currentUser];
+        [_users addObject:user];
+
+        senderId = [[PFUser currentUser] objectForKey:@"facebookId"];
+        displayName = [[PFUser currentUser] objectForKey:@"fullname"];
+    } else {
+        senderId = chat.user;
+        FBLMember *member = [[FBLMembersStore sharedStore] find:chat.user];
+        // Should the member attributes be transferred to an object with the same scheme as the PFUser?
+        [_users addObject:member];
+
+        displayName = member.realName;
+    }
+
+    NSDate *dateStamp = [NSDate dateWithTimeIntervalSince1970:
+                         [chat.ts doubleValue]];
+
+    message = [[JSQMessage alloc] initWithSenderId:senderId senderDisplayName:displayName date:dateStamp text:chat.text];
+
+    [_messages addObject:message];
+
+    return message;
+}
+
+- (JSQMessage *)addParseMessage:(PFObject *)object {
     JSQMessage *message;
 
     PFUser *user = object[PF_MESSAGE_USER];
@@ -205,7 +302,33 @@
     return message;
 }
 
-- (void)sendMessage:(NSString *)text Video:(NSURL *)video Picture:(UIImage *)picture {
+- (void)sendMessageToSlack:(NSString *)text Video:(NSURL *)video Picture:(UIImage *)picture {
+
+    void(^completionBlock)(FBLChat *chat, NSString *error)=^(FBLChat *chat, NSString *error) {
+        if (error == nil)
+        {
+            [JSQSystemSoundPlayer jsq_playMessageSentSound];
+
+            // Reload not necessary - optimize load feel
+            [self loadSlackMessages];
+        }
+        else {
+            // TODO: Add a retry send message helper - and flag the error in the UI
+            SIAlertView *alert = [FBLViewHelpers createAlertForError:nil
+                                                           withTitle:@"Ooops!" andMessage:error];
+            [alert show];
+        };
+    };
+
+    [[FBLChatStore sharedStore] sendSlackMessage:text toChannel:self.channel withCompletion:completionBlock];
+
+//    SendPushNotification(_channelId, text);
+//    UpdateMessageCounter(_channelId, text);
+
+    [self finishSendingMessage];
+}
+
+- (void)sendMessageToParse:(NSString *)text Video:(NSURL *)video Picture:(UIImage *)picture {
     PFFile *fileVideo = nil;
     PFFile *filePicture = nil;
 
@@ -248,7 +371,7 @@
          if (error == nil)
          {
              [JSQSystemSoundPlayer jsq_playMessageSentSound];
-             [self loadMessages];
+             [self loadParseMessages];
          }
          else {
              SIAlertView *alert = [FBLViewHelpers createAlertForError:error
@@ -263,10 +386,14 @@
     [self finishSendingMessage];
 }
 
-#pragma mark - JSQMessagesViewController method overrides
+#pragma mark - JSQMessagesViewController protocol methods
 
 - (void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date {
-    [self sendMessage:text Video:nil Picture:nil];
+
+    // Send to Slack
+    [self sendMessageToSlack:text Video:nil Picture:nil];
+    // Send to Parse
+//    [self sendMessageToParse:text Video:nil Picture:nil];
 }
 
 - (void)didPressAccessoryButton:(UIButton *)sender {
@@ -293,12 +420,9 @@
     }
 }
 
-- (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
-                    avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PFUser *user = _users[indexPath.item];
+- (id<JSQMessageAvatarImageDataSource>)getParseUserImage:(PFObject *)user {
+    if (_avatars[user.objectId] == nil) {
 
-    if (_avatars[user.objectId] == nil)
-    {
         PFFile *file = user[PF_CUSTOMER_THUMBNAIL];
         [file getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
          {
@@ -309,9 +433,27 @@
              }
          }];
         return _avatarImageBlank;
-    }
-    else {
+    } else {
         return _avatars[user.objectId];
+    }
+}
+
+- (id<JSQMessageAvatarImageDataSource>)getFBLUserImage:(FBLMember *)member {
+    return _avatarImageBlank;
+}
+
+- (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
+                    avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
+    // Meta FTW
+    id newObject = _users[indexPath.item];
+    NSString *className = NSStringFromClass([newObject class]);
+
+    if ([className isEqualToString:@"PFObject"]) {
+        PFObject *user = (PFObject *)newObject;
+        return [self getParseUserImage:user];
+    } else {
+        FBLMember *user = (FBLMember *)newObject;
+        return [self getFBLUserImage:user];
     }
 }
 
@@ -451,7 +593,7 @@
     NSURL *video = info[UIImagePickerControllerMediaURL];
     UIImage *picture = info[UIImagePickerControllerEditedImage];
 
-    [self sendMessage:nil Video:video Picture:picture];
+    [self sendMessageToParse:nil Video:video Picture:picture];
 
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

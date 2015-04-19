@@ -141,6 +141,9 @@
 		CBF402081ADF5882000DFB98 /* FBLChannelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402071ADF5882000DFB98 /* FBLChannelStore.m */; };
 		CBF4020B1AE2E267000DFB98 /* FBLChannelCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4020A1AE2E267000DFB98 /* FBLChannelCollection.m */; };
 		CBF4020E1AE2E316000DFB98 /* FBLChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4020D1AE2E316000DFB98 /* FBLChannel.m */; };
+		CBF402111AE2F552000DFB98 /* FBLChatStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402101AE2F552000DFB98 /* FBLChatStore.m */; };
+		CBF402141AE2F55F000DFB98 /* FBLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402131AE2F55F000DFB98 /* FBLChat.m */; };
+		CBF402171AE2FF23000DFB98 /* FBLChatCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402161AE2FF23000DFB98 /* FBLChatCollection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -362,6 +365,12 @@
 		CBF4020A1AE2E267000DFB98 /* FBLChannelCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChannelCollection.m; sourceTree = "<group>"; };
 		CBF4020C1AE2E316000DFB98 /* FBLChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChannel.h; sourceTree = "<group>"; };
 		CBF4020D1AE2E316000DFB98 /* FBLChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChannel.m; sourceTree = "<group>"; };
+		CBF4020F1AE2F552000DFB98 /* FBLChatStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChatStore.h; sourceTree = "<group>"; };
+		CBF402101AE2F552000DFB98 /* FBLChatStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChatStore.m; sourceTree = "<group>"; };
+		CBF402121AE2F55F000DFB98 /* FBLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChat.h; sourceTree = "<group>"; };
+		CBF402131AE2F55F000DFB98 /* FBLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChat.m; sourceTree = "<group>"; };
+		CBF402151AE2FF23000DFB98 /* FBLChatCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChatCollection.h; sourceTree = "<group>"; };
+		CBF402161AE2FF23000DFB98 /* FBLChatCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChatCollection.m; sourceTree = "<group>"; };
 		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -780,6 +789,8 @@
 				CB6E10F91ADB49E7001D750F /* FBLMembersStore.m */,
 				CBF402061ADF5882000DFB98 /* FBLChannelStore.h */,
 				CBF402071ADF5882000DFB98 /* FBLChannelStore.m */,
+				CBF4020F1AE2F552000DFB98 /* FBLChatStore.h */,
+				CBF402101AE2F552000DFB98 /* FBLChatStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -791,6 +802,8 @@
 				CB6E11001ADB51B0001D750F /* FBLMember.m */,
 				CBF4020C1AE2E316000DFB98 /* FBLChannel.h */,
 				CBF4020D1AE2E316000DFB98 /* FBLChannel.m */,
+				CBF402121AE2F55F000DFB98 /* FBLChat.h */,
+				CBF402131AE2F55F000DFB98 /* FBLChat.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -802,6 +815,8 @@
 				CB6E11041ADB5FBB001D750F /* FBLMemberCollection.m */,
 				CBF402091AE2E267000DFB98 /* FBLChannelCollection.h */,
 				CBF4020A1AE2E267000DFB98 /* FBLChannelCollection.m */,
+				CBF402151AE2FF23000DFB98 /* FBLChatCollection.h */,
+				CBF402161AE2FF23000DFB98 /* FBLChatCollection.m */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -1113,6 +1128,7 @@
 				CB6FE9041AD0B7FF00AD0BD2 /* LoadingView.swift in Sources */,
 				CB6FE8C31AD0B7FF00AD0BD2 /* FLAppDelegate.m in Sources */,
 				CB6E11011ADB51B0001D750F /* FBLMember.m in Sources */,
+				CBF402171AE2FF23000DFB98 /* FBLChatCollection.m in Sources */,
 				CB6FE8D71AD0B7FF00AD0BD2 /* FLLoginViewController.m in Sources */,
 				CB687A071ADA079700FCADA1 /* FBLMessageController.m in Sources */,
 				CB6FE8F81AD0B7FF00AD0BD2 /* AsyncImageView.swift in Sources */,
@@ -1125,6 +1141,7 @@
 				CB6FE8FA1AD0B7FF00AD0BD2 /* DesignableButton.swift in Sources */,
 				CB6FE8D61AD0B7FF00AD0BD2 /* FLLoginView.m in Sources */,
 				CB6FE8D91AD0B7FF00AD0BD2 /* FLPhotoCollectionViewCell.m in Sources */,
+				CBF402111AE2F552000DFB98 /* FBLChatStore.m in Sources */,
 				CB6FE8CB1AD0B7FF00AD0BD2 /* FLFacebookUploadModalViewController.m in Sources */,
 				CB6FE8DF1AD0B7FF00AD0BD2 /* FLSelectedPhotoStore.m in Sources */,
 				CB6FE8FC1AD0B7FF00AD0BD2 /* DesignableLabel.swift in Sources */,
@@ -1137,6 +1154,7 @@
 				CB6FE9031AD0B7FF00AD0BD2 /* KeyboardLayoutConstraint.swift in Sources */,
 				CB6FE8F71AD0B7FF00AD0BD2 /* AsyncButton.swift in Sources */,
 				CB6FE8BF1AD0B7FF00AD0BD2 /* FLAnnotationTableEmptyMessageView.m in Sources */,
+				CBF402141AE2F55F000DFB98 /* FBLChat.m in Sources */,
 				CB6FE8F21AD0B7FF00AD0BD2 /* FLViewHelpers.m in Sources */,
 				CB6FE8FB1AD0B7FF00AD0BD2 /* DesignableImageView.swift in Sources */,
 				CBF402081ADF5882000DFB98 /* FBLChannelStore.m in Sources */,
