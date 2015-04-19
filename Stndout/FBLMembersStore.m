@@ -14,6 +14,8 @@
 #import "FBLMemberCollection.h"
 #import "JSONModel.h"
 
+#import "FBLHelpers.h"
+
 // Libs
 #import <Parse/Parse.h>
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -46,6 +48,7 @@
         [self addUniqueMembersToParse:memberCollection.members];
 
         _members = memberCollection.members;
+        [self getDownloadAndProcessMembersImages];
 
         block(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -83,6 +86,24 @@
                  }
              }];
         }
+    }
+}
+
+- (void)getDownloadAndProcessMembersImages {
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+
+    for (FBLMember* member in _members) {
+        [manager downloadImageWithURL:[NSURL URLWithString:member.image192]
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+
+                                if (image) {
+                                    member.profileImage = ResizeImage(image, 60,60);
+                                }
+                            }];
     }
 }
 
