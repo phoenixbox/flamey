@@ -18,10 +18,10 @@
 @property (nonatomic, strong) NSString *slackName;
 @property (nonatomic, strong) NSString *color;
 // Profile
-@property (nonatomic, strong) NSString *firstName;
-@property (nonatomic, strong) NSString *lastName;
-@property (nonatomic, strong) NSString *realName;
-@property (nonatomic, strong) NSString *realNameNormalized;
+@property (nonatomic, strong) NSString *firstName; //Shane
+@property (nonatomic, strong) NSString *lastName; //Rogers
+@property (nonatomic, strong) NSString *realName; //Shane Rogers
+@property (nonatomic, strong) NSString *realNameNormalized; //Shane Rogers
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *skype;
 @property (nonatomic, strong) NSString *phone;
