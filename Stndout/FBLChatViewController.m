@@ -19,6 +19,7 @@
 #import "FBLChatCollection.h"
 #import "FBLChatStore.h"
 #import "FBLMembersStore.h"
+#import "FBLSlackStore.h"
 
 // Libs
 #import <Parse/Parse.h>
@@ -52,6 +53,8 @@
 @property (nonatomic, strong) JSQMessagesBubbleImage *bubbleImageOutgoing;
 @property (nonatomic, strong) JSQMessagesBubbleImage *bubbleImageIncoming;
 @property (nonatomic, strong) JSQMessagesAvatarImage *avatarImageBlank;
+
+@property (nonatomic, strong) SRWebSocket *webSocket;
 
 @end
 
@@ -96,13 +99,29 @@
     _isLoading = NO;
     _initialized = NO;
 
-    // TODO: Move members fetch to initialization - possibly with webhook url
+    // Need some sort of promise like chaining of completion blocks
     void(^completionBlock)(NSError *err)=^(NSError *error) {
         [self loadSlackMessages];
     };
 
-    [[FBLMembersStore sharedStore] fetchMembersWithCompletion:completionBlock];
+    void(^refreshWebhook)(NSError *err)=^(NSError *error) {
+        if (error == nil) {
+            [self setupWebsocket];
+            [[FBLMembersStore sharedStore] fetchMembersWithCompletion:completionBlock];
+        }
+    };
+
+    [[FBLSlackStore sharedStore] setupWebhook:refreshWebhook];
 //    [self loadParseMessages];
+}
+
+- (void)setupWebsocket {
+    NSString *websocketUrl = [FBLSlackStore sharedStore].webhookUrl;
+
+    SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:websocketUrl]];
+    newWebSocket.delegate = self;
+
+    [newWebSocket open];
 }
 
 - (void)setupHUD {
@@ -643,5 +662,26 @@
     return ([message.senderId isEqualToString:self.senderId] == YES);
 }
 
+#pragma mark - Socket Rocket
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
+    NSLog(@"WEBSOCKET MESSAGE RECEIVED");
+    NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                         options:NSJSONReadingMutableContainers
+                                                           error:nil];
+//    NSMutableDictionary *slackMessage = [NSJSONSerialization JSO
+}
+
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket {
+    NSLog(@"WEBSOCKET OPENED ");
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
+    NSLog(@"WEBSCOKET FAILED *** %@", error.localizedDescription);
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
+}
 
 @end

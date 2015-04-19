@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+// Libs
 #import "JSQMessages.h"
+#import <SocketRocket/SRWebSocket.h>
 
-@interface FBLChatViewController : JSQMessagesViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
+@interface FBLChatViewController : JSQMessagesViewController <SRWebSocketDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate>
 
 - (id)initWithSlackChannel:(NSString *)channelId;
 
