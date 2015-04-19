@@ -48,18 +48,26 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     // Setup Listeners
     [self setupListeners];
 
+    // Setup Websocket Regardless
+    [self setupWebsocket];
+
     // If there is no currentUser - Prompt to login
     if (![PFUser currentUser]) {
         [self showContactDetailsModal];
-    } else {
-        [self setupWebHookConnection];
     }
 }
 
-- (void)setupWebHookConnection {
+- (void)setupWebsocket {
     void(^completionBlock)(NSError *error)=^(NSError *error) {
         if (error == nil) {
-            NSLog(@"Renable whatever should have been disabled");
+            NSString *websocketUrl = [FBLSlackStore sharedStore].webhookUrl;
+
+            SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:websocketUrl]];
+            newWebSocket.delegate = self;
+
+            [newWebSocket open];
+
+            NSLog(@"TODO: enable/disabled UI elements based on local collection availability");
         } else {
             SIAlertView *alert = [FBLViewHelpers createAlertForError:nil
                                                            withTitle:@"Ooops!" andMessage:@"We had trouble connecting to that channel"];
@@ -304,6 +312,35 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
                    name:kChatToAnyone
                  object:nil];
 }
+
+#pragma mark - Socket Rocket
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
+    NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                         options:NSJSONReadingMutableContainers
+                                                           error:nil];
+    NSString *eventType = [json objectForKey:@"type"];
+
+    if ([eventType isEqualToString:@"hello"]) {
+        NSLog(@"WEBSOCKET PING RECEIVED");
+    } else {
+
+    }
+}
+
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket {
+    NSLog(@"WEBSOCKET initialization - setup collections");
+
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
+    NSLog(@"WEBSCOKET FAILED *** %@", error.localizedDescription);
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
+}
+
 
 
 /*

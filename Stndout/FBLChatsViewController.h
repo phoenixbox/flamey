@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "FBLMemberListView.h"
+#import <SocketRocket/SRWebSocket.h>
 
-@interface FBLChatsViewController : UITableViewController <FBLMemberListDelegate>
+@interface FBLChatsViewController : UITableViewController <FBLMemberListDelegate, SRWebSocketDelegate>
 
 - (void)loadChats;
 
