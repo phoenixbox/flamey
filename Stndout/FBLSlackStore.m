@@ -10,6 +10,7 @@
 
 // Data Layer
 #import "FBLAuth.h"
+#import "FBLMembersStore.h"
 
 // Constants
 #import "FBLAppConstants.h"
@@ -43,6 +44,8 @@
         if ([rtmResponse objectForKey:@"ok"]) {
             self.webhookUrl = [rtmResponse objectForKey:@"url"];
         }
+
+        [[FBLMembersStore sharedStore] refreshMembersWithCollection:[rtmResponse objectForKey:@"users"]];
 
         block(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
