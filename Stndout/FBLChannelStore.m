@@ -23,15 +23,15 @@
 @implementation FBLChannelStore
 
 + (FBLChannelStore *)sharedStore {
-    static FBLChannelStore *slackStore = nil;
+    static FBLChannelStore *channelStore = nil;
 
     static dispatch_once_t oncePredicate;
 
     dispatch_once(&oncePredicate, ^{
-        slackStore = [[FBLChannelStore alloc] init];
+        channelStore = [[FBLChannelStore alloc] init];
     });
 
-    return slackStore;
+    return channelStore;
 }
 
 
@@ -92,16 +92,11 @@
 
             block(nil, errorType);
         }
-
-        NSString *string = [NSString new];
-
-        block(string, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
         block(nil, error.localizedDescription);
     }];
 }
-
 
 - (void)addUniqueChannelsToStore:(NSMutableArray *)channels {
     for (FBLChannel *channel in channels) {

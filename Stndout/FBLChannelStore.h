@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FBLChannel.h"
 
 @interface FBLChannelStore : NSObject
 
@@ -16,7 +17,7 @@
 
 - (void)joinCurrentUserChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block;
 
-- (FBLChannel *)find:(NSString *)channelId {
+- (FBLChannel *)find:(NSString *)channelId;
 
 //- (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block;
 
