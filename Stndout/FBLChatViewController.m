@@ -121,6 +121,7 @@
     SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:websocketUrl]];
     newWebSocket.delegate = self;
 
+
     [newWebSocket open];
 }
 
@@ -461,22 +462,27 @@
 }
 
 
-
 - (id<JSQMessageAvatarImageDataSource>)getFBLUserImage:(FBLMember *)member {
     if (_avatars[member.id] == nil) {
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//        if (member.profileImage) {
+//            _avatars[member.id] = [JSQMessagesAvatarImageFactory avatarImageWithImage:member.profileImage diameter:30.0];
+//            [self.collectionView reloadData];
+//        }
 
-        [manager downloadImageWithURL:[NSURL URLWithString:member.image192]
-                              options:0
-                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                 // progression tracking code
-                             }
-                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                if (image) {
-                                    _avatars[member.id] = [JSQMessagesAvatarImageFactory avatarImageWithImage:image diameter:30.0];
-                                    [self.collectionView reloadData];
-                                }
-                            }];
+
+//        [manager downloadImageWithURL:[NSURL URLWithString:member.image192]
+//                              options:0
+//                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//                                 // progression tracking code
+//                             }
+//                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//                                
+//                                if (image) {
+//                                    _avatars[member.id] = [JSQMessagesAvatarImageFactory avatarImageWithImage:image diameter:30.0];
+//                                    [self.collectionView reloadData];
+//                                }
+//                            }];
 
         return _avatarImageBlank;
     } else {
@@ -665,12 +671,27 @@
 #pragma mark - Socket Rocket
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
-    NSLog(@"WEBSOCKET MESSAGE RECEIVED");
     NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
                                                          options:NSJSONReadingMutableContainers
                                                            error:nil];
-//    NSMutableDictionary *slackMessage = [NSJSONSerialization JSO
+    NSString *eventType = [json objectForKey:@"type"];
+
+    if ([eventType isEqualToString:@"hello"]) {
+        NSLog(@"WEBSOCKET PING RECEIVED");
+    } else if ([eventType isEqualToString:@"message"]) {
+        NSString *channelId = [json objectForKey:@"channel"];;
+
+        if ([channelId isEqualToString:self.channelId]) {
+            FBLChat *newMessage = [[FBLChat alloc] initWithDictionary:json error:nil];
+            [self addSlackMessage:newMessage];
+
+            [self.collectionView reloadData];
+            [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+            [self finishReceivingMessage];
+//            [self scrollToBottomAnimated:NO];
+        }
+    }
 }
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
