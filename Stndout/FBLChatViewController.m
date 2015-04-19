@@ -83,10 +83,8 @@
     _chatCollection = [[FBLChatCollection alloc] init];
     _avatars = [[NSMutableDictionary alloc] init];
 
-    // TODO: Set real user information here
-    PFUser *user = [PFUser currentUser];
-    self.senderId = PF_STUB_USER_ID;
-    self.senderDisplayName = user[PF_CUSTOMER_FULLNAME];
+    self.senderId = [[PFUser currentUser] objectForKey:@"facebookId"];
+    self.senderDisplayName = [[PFUser currentUser] objectForKey:@"fullname"];
 
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     _bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
@@ -145,9 +143,7 @@
 
                 for (FBLChat *chat in [chatCollection.messages reverseObjectEnumerator])
                 {
-                    JSQMessage *message = [self addSlackMessage:chat];
-
-                    if ([self incoming:message]) {
+                    if (![chat.username isEqualToString:@"bot"]) {
                         incoming = YES;
                     }
                 }
@@ -202,7 +198,9 @@
                  for (PFObject *object in [objects reverseObjectEnumerator])
                  {
                      JSQMessage *message = [self addParseMessage:object];
-                     if ([self incoming:message]) incoming = YES;
+                     if ([self incoming:message]) {
+                         incoming = YES;
+                     }
                  }
                  if ([objects count] != 0)
                  {
@@ -322,8 +320,8 @@
 
     [[FBLChatStore sharedStore] sendSlackMessage:text toChannel:self.channel withCompletion:completionBlock];
 
-//    SendPushNotification(_channelId, text);
-//    UpdateMessageCounter(_channelId, text);
+    SendPushNotification(_channelId, text);
+    UpdateMessageCounter(_channelId, text);
 
     [self finishSendingMessage];
 }
@@ -410,7 +408,8 @@
 
 - (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
              messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self outgoing:_messages[indexPath.item]])
+
+    if ([self isOutgoingChat:_messages[indexPath.item]])
     {
         return _bubbleImageOutgoing;
     }
@@ -462,8 +461,9 @@
     {
         JSQMessage *message = _messages[indexPath.item];
         return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
+    } else {
+        return nil;
     }
-    else return nil;
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath {
@@ -600,11 +600,21 @@
 
 #pragma mark - Helper methods
 
+- (BOOL)isIncomingChat:(FBLChat *)chat {
+    return ![chat.username isEqualToString:@"bot"];
+}
+
+- (BOOL)isOutgoingChat:(FBLChat *)chat {
+    return [chat.username isEqualToString:@"bot"];
+}
+
 - (BOOL)incoming:(JSQMessage *)message {
+
     return ([message.senderId isEqualToString:self.senderId] == NO);
 }
 
 - (BOOL)outgoing:(JSQMessage *)message {
+
     return ([message.senderId isEqualToString:self.senderId] == YES);
 }
 
