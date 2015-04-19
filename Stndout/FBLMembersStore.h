@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FBLMember.h"
 
 @interface FBLMembersStore : NSObject
 
@@ -15,5 +16,7 @@
 + (FBLMembersStore *)sharedStore;
 
 - (void)fetchMembersWithCompletion:(void (^)(NSError *error))block;
+
+- (FBLMember *)find:(NSString *)memberId;
 
 @end

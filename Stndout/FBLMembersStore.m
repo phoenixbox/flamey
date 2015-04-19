@@ -85,4 +85,14 @@
     }
 }
 
+- (FBLMember *)find:(NSString *)memberId {
+    for (FBLMember* member in _members) {
+        if ([member.id isEqualToString:memberId]) {
+            return member;
+        }
+    }
+
+    return nil;
+}
+
 @end
