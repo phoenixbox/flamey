@@ -48,12 +48,23 @@
         [self addUniqueMembersToParse:memberCollection.members];
 
         _members = memberCollection.members;
-        [self getDownloadAndProcessMembersImages];
 
         block(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         block(error);
     }];
+}
+
+- (void)refreshMembersWithCollection:(NSArray *)members {
+    NSDictionary *membersDict = @{@"members": members};
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:members options:NSJSONWritingPrettyPrinted error:nil];
+//    NSString *rawJSON = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    FBLMemberCollection *memberCollection = [[FBLMemberCollection alloc] initWithDictionary:membersDict error:nil];
+
+    [self addUniqueMembersToParse:memberCollection.members];
+
+    _members = memberCollection.members;
 }
 
 - (void)addUniqueMembersToParse:(NSMutableArray *)members {
@@ -62,48 +73,62 @@
         // Find or create a member
         PFQuery *query = [PFQuery queryWithClassName:PF_MEMBER_CLASS_NAME];
         [query whereKey:PF_MEMBER_SLACKID equalTo:member.id];
-        NSArray *ids = [query findObjects];
+        NSArray *members = [query findObjects];
 
-        if ([ids count] == 0) {
-            PFObject *parseMemmber = [[PFObject alloc] initWithClassName:PF_MEMBER_CLASS_NAME];
+        if ([members count] == 0) {
+            NSString *requestURL = member.image192;
 
-            parseMemmber[PF_MEMBER_EMAIL] = member.email;
-            parseMemmber[PF_MEMBER_SLACKNAME] = member.slackName;
-            parseMemmber[PF_MEMBER_SLACKID] = member.id;
-            parseMemmber[PF_MEMBER_REALNAME] = member.realName;
-            parseMemmber[PF_CUSTOMER_PICTURE] = member.image72;
-            parseMemmber[PF_MEMBER_TITLE] = member.title;
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadImageWithURL:[NSURL URLWithString:requestURL]
+                                  options:0
+                                 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                     // progression tracking code
+                                 }
+                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                    if (image) {
+                                        UIImage *picture = ResizeImage(image, 280, 280);
+                                        UIImage *thumbnail = ResizeImage(image, 60, 60);
 
-            [parseMemmber saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-             {
-                 if (error == nil)
-                 {
-                     NSLog(@"%@ ERROR: Created Member. %@", NSStringFromClass([self class]), member.slackName);
-                 }
-                 else
-                 {
-                     NSLog(@"%@ ERROR: Network Error. %@",NSStringFromClass([self class]), error.localizedDescription);
-                 }
-             }];
-        }
-    }
-}
+                                        PFObject *parseMemmber = [[PFObject alloc] initWithClassName:PF_MEMBER_CLASS_NAME];
 
-- (void)getDownloadAndProcessMembersImages {
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+                                        PFFile *filePicture = [PFFile fileWithName:@"picture.jpg" data:UIImageJPEGRepresentation(picture, 0.6)];
+                                        [filePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                                         {
+                                             if (error != nil) {
+                                                 NSLog(@"Something went wrong saving the members picture");
+                                             };
+                                         }];
+                                        PFFile *fileThumbnail = [PFFile fileWithName:@"thumbnail.jpg" data:UIImageJPEGRepresentation(thumbnail, 0.6)];
+                                        [fileThumbnail saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                                         {
+                                             if (error != nil) {
+                                                 NSLog(@"Something went wrong saving the members fileThumbnail");
+                                             }
+                                         }];
 
-    for (FBLMember* member in _members) {
-        [manager downloadImageWithURL:[NSURL URLWithString:member.image192]
-                              options:0
-                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                 // progression tracking code
-                             }
-                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-
-                                if (image) {
-                                    member.profileImage = ResizeImage(image, 60,60);
-                                }
-                            }];
+                                        parseMemmber[PF_MEMBER_EMAIL] = member.email ? : FBL_DEFAULT_EMAIL;
+                                        parseMemmber[PF_MEMBER_SLACKNAME] = member.slackName;
+                                        parseMemmber[PF_MEMBER_SLACKID] = member.id;
+                                        parseMemmber[PF_MEMBER_REALNAME] = member.realName;
+                                        parseMemmber[PF_MEMBER_IMAGE_URL] = member.image192;
+                                        parseMemmber[PF_MEMBER_TITLE] = member.title ? : FBL_DEFAULT_TITLE;
+                                        parseMemmber[PF_MEMBER_PICTURE] = filePicture;
+                                        parseMemmber[PF_MEMBER_THUMBNAIL] = fileThumbnail;
+                                        
+                                        [parseMemmber saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                                         {
+                                             if (error == nil)
+                                             {
+                                                 NSLog(@"%@ ERROR: Created Member. %@", NSStringFromClass([self class]), member.slackName);
+                                             }
+                                             else
+                                             {
+                                                 NSLog(@"%@ ERROR: Network Error. %@",NSStringFromClass([self class]), error.localizedDescription);
+                                             }
+                                         }];
+                                    }
+                                }];
+            }
     }
 }
 
