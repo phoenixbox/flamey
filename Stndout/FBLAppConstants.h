@@ -11,6 +11,8 @@
 
 //--------------------- APP HELPERS ----------------------------
 #define     BLANK_AVATAR_IMG @"Persona"
+#define     FBL_DEFAULT_EMAIL @"help@feedbackloop.com"
+#define     FBL_DEFAULT_TITLE @"bot"
 
 //--------------------- PARSE HELPERS ----------------------------
 #define		PF_STUB_USER_ID                     @"0000000000001"
@@ -43,7 +45,10 @@
 #define		PF_MEMBER_TITLE						@"title"				//	String
 #define		PF_MEMBER_SLACKNAME					@"slackname"			//	String
 #define		PF_MEMBER_SLACKID					@"slackId"			    //	String
-#define		PF_MEMBER_PICTURE					@"picture"				//	String
+#define		PF_MEMBER_IMAGE_URL					@"imageUrl"				//	String
+#define		PF_MEMBER_PICTURE					@"picture"				//	File
+#define		PF_MEMBER_THUMBNAIL                 @"thumbnail"			//	File
+
 
 //---------------------- MESSAGES ----------------------------
 #define		PF_MESSAGE_CLASS_NAME				@"Message"				//	Class name
