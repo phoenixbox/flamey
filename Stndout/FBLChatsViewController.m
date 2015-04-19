@@ -21,6 +21,7 @@
 
 // Data Layer
 #import "FBLChannelStore.h"
+#import "FBLSlackStore.h"
 
 #import "FBLLoginViewController.h"
 #import "AFBlurSegue.h"
@@ -50,11 +51,27 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     // If there is no currentUser - Prompt to login
     if (![PFUser currentUser]) {
         [self showContactDetailsModal];
+    } else {
+        [self setupWebHookConnection];
     }
 }
 
+- (void)setupWebHookConnection {
+    void(^completionBlock)(NSError *error)=^(NSError *error) {
+        if (error == nil) {
+            NSLog(@"Renable whatever should have been disabled");
+        } else {
+            SIAlertView *alert = [FBLViewHelpers createAlertForError:nil
+                                                           withTitle:@"Ooops!" andMessage:@"We had trouble connecting to that channel"];
+            [alert show];
+        }
+    };
+
+    [[FBLSlackStore sharedStore] setupWebhook:completionBlock];
+}
+
 - (void)showContactDetailsModal {
-    FBLLoginViewController *loginViewController = [[    FBLLoginViewController alloc] init];
+    FBLLoginViewController *loginViewController = [[FBLLoginViewController alloc] init];
 
     loginViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 

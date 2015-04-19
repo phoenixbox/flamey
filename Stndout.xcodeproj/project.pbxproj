@@ -144,6 +144,7 @@
 		CBF402111AE2F552000DFB98 /* FBLChatStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402101AE2F552000DFB98 /* FBLChatStore.m */; };
 		CBF402141AE2F55F000DFB98 /* FBLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402131AE2F55F000DFB98 /* FBLChat.m */; };
 		CBF402171AE2FF23000DFB98 /* FBLChatCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402161AE2FF23000DFB98 /* FBLChatCollection.m */; };
+		CBF4021A1AE38B1B000DFB98 /* FBLSlackStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402191AE38B1B000DFB98 /* FBLSlackStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -371,6 +372,8 @@
 		CBF402131AE2F55F000DFB98 /* FBLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChat.m; sourceTree = "<group>"; };
 		CBF402151AE2FF23000DFB98 /* FBLChatCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChatCollection.h; sourceTree = "<group>"; };
 		CBF402161AE2FF23000DFB98 /* FBLChatCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChatCollection.m; sourceTree = "<group>"; };
+		CBF402181AE38B1B000DFB98 /* FBLSlackStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLSlackStore.h; sourceTree = "<group>"; };
+		CBF402191AE38B1B000DFB98 /* FBLSlackStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLSlackStore.m; sourceTree = "<group>"; };
 		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -791,6 +794,8 @@
 				CBF402071ADF5882000DFB98 /* FBLChannelStore.m */,
 				CBF4020F1AE2F552000DFB98 /* FBLChatStore.h */,
 				CBF402101AE2F552000DFB98 /* FBLChatStore.m */,
+				CBF402181AE38B1B000DFB98 /* FBLSlackStore.h */,
+				CBF402191AE38B1B000DFB98 /* FBLSlackStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -1150,6 +1155,7 @@
 				CB6FE9011AD0B7FF00AD0BD2 /* ImageLoader.swift in Sources */,
 				CB6FE8DD1AD0B7FF00AD0BD2 /* FLProcessedImagesStore.m in Sources */,
 				CB687A0A1ADA08D500FCADA1 /* FBLPushNotificationController.m in Sources */,
+				CBF4021A1AE38B1B000DFB98 /* FBLSlackStore.m in Sources */,
 				CB6FE8FD1AD0B7FF00AD0BD2 /* DesignableTabBarController.swift in Sources */,
 				CB6FE9031AD0B7FF00AD0BD2 /* KeyboardLayoutConstraint.swift in Sources */,
 				CB6FE8F71AD0B7FF00AD0BD2 /* AsyncButton.swift in Sources */,

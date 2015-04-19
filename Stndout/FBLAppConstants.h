@@ -71,17 +71,19 @@
 #define     SLACK_API_KEY @"xoxp-4363020674-4363020680-4429695137-cdb875"
 #define     SLACK_API_BASE_URL @"https://slack.com/api"
 
+//----------------- SLACK ENDPOINTS ------------------------------
+//------- RTM
+#define     SLACK_API_RTM_START @"/rtm.start"
+//------- Channel
 #define     SLACK_API_CHANNEL_CREATE @"/channels.create"
 //PARAMS    "?token=#{token}&name=#{channelName}
-
 #define     SLACK_API_CHANNEL_JOIN @"/channels.join"
 //PARAMS    "?token=#{token}&name=#{channelName}
-
 #define     SLACK_API_CHANNEL_HISTORY @"/channels.history"
+//------- Message
 #define     SLACK_API_MESSAGE_POST @"/chat.postMessage"
 //PARAMS    "?token=#{token}  &  channel=#{channelName}"?token="
-
-//----------------- SLACK ENDPOINTS ------------------------------
+//------- Members
 #define     SLACK_MEMBERS_URI @"/users.list"
 
 #endif
