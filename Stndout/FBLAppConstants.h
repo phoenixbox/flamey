@@ -50,27 +50,22 @@
 #define		PF_MEMBER_THUMBNAIL                 @"thumbnail"			//	File
 
 
-//---------------------- MESSAGES ----------------------------
-#define		PF_MESSAGE_CLASS_NAME				@"Message"				//	Class name
-#define		PF_MESSAGE_USER						@"user"					//	Pointer to User Class
-#define		PF_MESSAGE_GROUPID					@"groupId"				//	String
-#define		PF_MESSAGE_TEXT						@"text"					//	String
-#define		PF_MESSAGE_PICTURE					@"picture"				//	File
-#define		PF_MESSAGE_VIDEO					@"video"				//	File
-#define		PF_MESSAGE_CREATEDAT				@"createdAt"			//	Date
-//----------------------- GROUPS -----------------------------
-#define		PF_GROUPS_CLASS_NAME				@"Groups"				//	Class name
-#define		PF_GROUPS_NAME						@"name"					//	String
+////---------------------- MESSAGES ----------------------------
+//#define		PF_MESSAGE_CLASS_NAME				@"Message"				//	Class name
+//#define		PF_MESSAGE_USER						@"user"					//	Pointer to User Class
+//#define		PF_MESSAGE_GROUPID					@"groupId"				//	String
+//#define		PF_MESSAGE_TEXT						@"text"					//	String
+//#define		PF_MESSAGE_PICTURE					@"picture"				//	File
+//#define		PF_MESSAGE_VIDEO					@"video"				//	File
+//#define		PF_MESSAGE_CREATEDAT				@"createdAt"			//	Date
 
-//----------------------- CHATS ------------------------------
-#define		PF_CHAT_CLASS_NAME                  @"Chat"                 //	Class name
-#define		PF_CHAT_USER                        @"user"					//	Pointer to User Class
-#define		PF_CHAT_GROUPID                     @"groupId"				//	String
-#define		PF_CHAT_DESCRIPTION                 @"description"			//	String
-#define		PF_CHAT_LASTUSER                    @"lastUser"				//	Pointer to User Class
-#define		PF_CHAT_LASTMESSAGE                 @"lastMessage"			//	String
-#define		PF_CHAT_COUNTER					    @"counter"				//	Number
-#define		PF_CHAT_UPDATEDACTION			    @"updatedAction"		//	Date
+//----------------------- CHANNELS ---------------------------
+#define		PF_CHANNEL_CLASS_NAME                  @"Channel"                 //	Class name
+#define		PF_CHANNEL_CUSTOMER                    @"customer"					//	Pointer to Customer Class
+#define		PF_CHANNEL_OBJECTID					@"objectId"				//	String
+#define		PF_CHANNEL_SLACKID					@"slackId"				//	String
+
+
 
 //--------------------- SLACK ------------------------------
 #define     SLACK_API_KEY @"xoxp-4363020674-4363020680-4429695137-cdb875"
