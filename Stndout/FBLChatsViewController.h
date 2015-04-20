@@ -13,6 +13,6 @@
 
 @interface FBLChatsViewController : UITableViewController <FBLMemberListDelegate, SRWebSocketDelegate>
 
-- (void)loadChats;
+- (void)loadChannels;
 
 @end

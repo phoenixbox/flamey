@@ -91,7 +91,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     [self.tableView registerNib:[UINib nibWithNibName:kChatCellIdentifier bundle:nil] forCellReuseIdentifier:kChatCellIdentifier];
 
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(loadChats) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(loadChannels) forControlEvents:UIControlEventValueChanged];
 
     _chats = [[NSMutableArray alloc] init];
 }
@@ -143,7 +143,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     // NEED SOME CONTEXT OF CURRENT USER
     if ([PFUser currentUser] != nil)
     {
-        [self loadChats];
+        [self loadChannels];
     }
 
     else LoginUser(self);
@@ -151,20 +151,26 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
 #pragma mark - Backend methods
 
-- (void)loadChats
+- (void)loadChannels
 {
-    PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
-    [query whereKey:PF_CHAT_USER equalTo:[PFUser currentUser]];
-    [query includeKey:PF_CHAT_LASTUSER];
-    [query orderByDescending:PF_CHAT_UPDATEDACTION];
+    PFQuery *query = [PFQuery queryWithClassName:PF_CHANNEL_CLASS_NAME];
+    [query whereKey:PF_CHANNEL_CUSTOMER equalTo:[PFUser currentUser]];
+
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
          if (error == nil)
          {
-             // Add models to the table view collection
-             [_chats removeAllObjects];
-             [_chats addObjectsFromArray:objects];
-             [self.tableView reloadData];
-             [self updateTabCounter];
+             if ([objects count] > 0) {
+                 // Add models to the table view collection
+
+                 // TODO: Chats should be _channels;
+                 // need a convenience on the Channels Store to fetch copy of channel collection objects
+
+//                 [_chats removeAllObjects];
+//                 [[FBLChannelStore sharedStore] getChannelsForIds:objects];
+//                 [_chats addObjectsFromArray:objects];
+//                 [self.tableView reloadData];
+                 //             [self updateTabCounter];
+             }
          }
          else {
              NSLog(@"%@: Loading Chats Error", NSStringFromClass([self class]));
@@ -175,17 +181,17 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 }
 
 #pragma mark - Helper methods
-
-- (void)updateTabCounter
-{
-    int total = 0;
-    for (PFObject *message in _chats)
-    {
-        total += [message[PF_CHAT_COUNTER] intValue];
-    }
-    UITabBarItem *item = self.tabBarController.tabBar.items[1];
-    item.badgeValue = (total == 0) ? nil : [NSString stringWithFormat:@"%d", total];
-}
+// TODO: Implement based on SlackMessages
+//- (void)updateTabCounter
+//{
+//    int total = 0;
+//    for (PFObject *message in _chats)
+//    {
+//        total += [message[PF_CHAT_COUNTER] intValue];
+//    }
+//    UITabBarItem *item = self.tabBarController.tabBar.items[1];
+//    item.badgeValue = (total == 0) ? nil : [NSString stringWithFormat:@"%d", total];
+//}
 
 #pragma mark - User actions
 
@@ -225,7 +231,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 {
     [_chats removeAllObjects];
     [self.tableView reloadData];
-    [self updateTabCounter];
+//    [self updateTabCounter];
 }
 
 #pragma mark - FBLSingleChatDelegate
@@ -271,7 +277,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     DeleteMessageItem(_chats[indexPath.row]);
     [_chats removeObjectAtIndex:indexPath.row];
     [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [self updateTabCounter];
+//    [self updateTabCounter];
 }
 
 #pragma mark - Table view delegate
@@ -279,8 +285,9 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    PFObject *message = _chats[indexPath.row];
-    [self startChat:message[PF_CHAT_GROUPID]];
+    NSLog(@"Implment jump into historical chat");
+//    PFObject *message = _chats[indexPath.row];
+//    [self startChat:message[PF_CHAT_GROUPID]];
 }
 
 - (void)didReceiveMemoryWarning {
