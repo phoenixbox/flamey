@@ -164,10 +164,9 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
                  // TODO: Chats should be _channels;
                  // need a convenience on the Channels Store to fetch copy of channel collection objects
-
                  [_channels removeAllObjects];
                  NSMutableArray *channels = [[FBLChannelStore sharedStore] getChannelsForParseObjects:objects];
-                 
+
                  [_channels addObjectsFromArray:channels];
                  [self.tableView reloadData];
                  //             [self updateTabCounter];
@@ -286,9 +285,8 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    NSLog(@"Implment jump into historical chat");
-//    PFObject *message = _channels[indexPath.row];
-//    [self startChat:message[PF_CHAT_GROUPID]];
+    FBLChannel *channel = _channels[indexPath.row];
+    [self startChat:channel.id];
 }
 
 - (void)didReceiveMemoryWarning {
