@@ -11,6 +11,7 @@
 // Data Layer
 #import "FBLAuth.h"
 #import "FBLMembersStore.h"
+#import "FBLChannelStore.h"
 
 // Constants
 #import "FBLAppConstants.h"
@@ -46,6 +47,7 @@
         }
 
         [[FBLMembersStore sharedStore] refreshMembersWithCollection:[rtmResponse objectForKey:@"users"]];
+        [[FBLChannelStore sharedStore] refreshChannelsWithCollection:[rtmResponse objectForKey:@"channels"]];
 
         block(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
