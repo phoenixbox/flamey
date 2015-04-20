@@ -12,6 +12,6 @@
 
 @interface FBLChannelCollection : JSONModel
 
-@property (strong, nonatomic) NSMutableArray<FBLChannnel> *channels;
+@property (strong, nonatomic) NSMutableArray<FBLChannel> *channels;
 
 @end

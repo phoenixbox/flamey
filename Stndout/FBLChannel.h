@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONModel.h"
 
-@protocol FBLChannnel @end
+@protocol FBLChannel @end
 
 @interface FBLChannel : JSONModel
 
