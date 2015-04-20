@@ -32,7 +32,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
 @interface FBLChatsViewController ()
 
-@property (nonatomic, strong) NSMutableArray *chats;
+@property (nonatomic, strong) NSMutableArray *channels;
 
 @end
 
@@ -93,7 +93,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadChannels) forControlEvents:UIControlEventValueChanged];
 
-    _chats = [[NSMutableArray alloc] init];
+    _channels = [[NSMutableArray alloc] init];
 }
 
 - (void)styleNavigationBar {
@@ -165,10 +165,11 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
                  // TODO: Chats should be _channels;
                  // need a convenience on the Channels Store to fetch copy of channel collection objects
 
-//                 [_chats removeAllObjects];
-//                 [[FBLChannelStore sharedStore] getChannelsForIds:objects];
-//                 [_chats addObjectsFromArray:objects];
-//                 [self.tableView reloadData];
+                 [_channels removeAllObjects];
+                 NSMutableArray *channels = [[FBLChannelStore sharedStore] getChannelsForParseObjects:objects];
+                 
+                 [_channels addObjectsFromArray:channels];
+                 [self.tableView reloadData];
                  //             [self updateTabCounter];
              }
          }
@@ -185,7 +186,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 //- (void)updateTabCounter
 //{
 //    int total = 0;
-//    for (PFObject *message in _chats)
+//    for (PFObject *message in _channels)
 //    {
 //        total += [message[PF_CHAT_COUNTER] intValue];
 //    }
@@ -229,7 +230,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
 - (void)actionCleanup
 {
-    [_chats removeAllObjects];
+    [_channels removeAllObjects];
     [self.tableView reloadData];
 //    [self updateTabCounter];
 }
@@ -251,7 +252,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSUInteger count = [_chats count];
+    NSUInteger count = [_channels count];
 
     if (count > 0) {
         [self.tableView.backgroundView setHidden:YES];
@@ -264,7 +265,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FBLChatCell *cell = [tableView dequeueReusableCellWithIdentifier:kChatCellIdentifier forIndexPath:indexPath];
-    [cell bindData:_chats[indexPath.row]];
+    [cell bindData:_channels[indexPath.row]];
 
     return cell;
 }
@@ -274,8 +275,8 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    DeleteMessageItem(_chats[indexPath.row]);
-    [_chats removeObjectAtIndex:indexPath.row];
+    DeleteMessageItem(_channels[indexPath.row]);
+    [_channels removeObjectAtIndex:indexPath.row];
     [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 //    [self updateTabCounter];
 }
@@ -286,7 +287,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     NSLog(@"Implment jump into historical chat");
-//    PFObject *message = _chats[indexPath.row];
+//    PFObject *message = _channels[indexPath.row];
 //    [self startChat:message[PF_CHAT_GROUPID]];
 }
 

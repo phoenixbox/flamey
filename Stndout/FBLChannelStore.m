@@ -9,6 +9,7 @@
 // Libs
 #import <Parse/Parse.h>
 #import "AFNetworking.h"
+#import <ObjectiveSugar/ObjectiveSugar.h>
 
 // Auth Layer
 #import "FBLAuth.h"
@@ -144,6 +145,20 @@
     }
     
     return nil;
+}
+
+- (NSMutableArray *)getChannelsForParseObjects:(NSArray *)objects {
+    NSMutableArray *channels = [[NSMutableArray alloc] init];
+
+    for (PFObject *object in objects) {
+        for (FBLChannel *channel in _channels) {
+            if ([channel.id isEqualToString:object[PF_CHANNEL_SLACKID]]) {
+                [channels addObject:channel];
+            }
+        }
+    }
+
+    return channels;
 }
 
 // ****
