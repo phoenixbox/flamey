@@ -65,8 +65,6 @@
 #define		PF_CHANNEL_OBJECTID					@"objectId"				//	String
 #define		PF_CHANNEL_SLACKID					@"slackId"				//	String
 
-
-
 //--------------------- SLACK ------------------------------
 #define     SLACK_API_KEY @"xoxp-4363020674-4363020680-4429695137-cdb875"
 #define     SLACK_API_BASE_URL @"https://slack.com/api"

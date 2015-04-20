@@ -9,10 +9,11 @@
 #import "FBLChatCell.h"
 #import "FBLHelpers.h"
 #import "FBLAppConstants.h"
+#import "FBLChannel.h"
 #import <ParseUI/ParseUI.h>
 
 @interface FBLChatCell() {
-    PFObject *chat;
+    FBLChannel *channel;
 }
 
 @property (strong, nonatomic) IBOutlet PFImageView *imageUser;
@@ -29,23 +30,25 @@
 @synthesize labelDescription, labelLastMessage;
 @synthesize labelElapsed, labelCounter;
 
-- (void)bindData:(PFObject *)chat_ {
-    chat = chat_;
+// TODO: Change the domain model of chat to channel
+// Leverage channel member id list to get images from parse
+- (void)bindData:(FBLChannel *)channel_ {
+    channel = channel_;
 
     imageUser.layer.cornerRadius = imageUser.frame.size.width/2;
     imageUser.layer.masksToBounds = YES;
 
-    PFUser *lastUser = chat[PF_CHAT_LASTUSER];
+    PFUser *lastUser = [PFUser currentUser];
     [imageUser setFile:lastUser[PF_CUSTOMER_PICTURE]];
     [imageUser loadInBackground];
 
-    labelDescription.text = chat[PF_CHAT_DESCRIPTION];
-    labelLastMessage.text = chat[PF_CHAT_LASTMESSAGE];
-
-    NSTimeInterval seconds = [[NSDate date] timeIntervalSinceDate:chat[PF_CHAT_UPDATEDACTION]];
+    labelDescription.text = channel.name;
+    NSDate *dateStamp = [NSDate dateWithTimeIntervalSince1970:
+                         [channel.lastRead doubleValue]];
+    NSTimeInterval seconds = [[NSDate date] timeIntervalSinceDate:dateStamp];
     labelElapsed.text = TimeElapsed(seconds);
 
-    int counter = [chat[PF_CHAT_COUNTER] intValue];
+    int counter = [channel.unreadCount intValue];
     labelCounter.text = (counter == 0) ? @"" : [NSString stringWithFormat:@"%d new", counter];
 }
 

@@ -126,7 +126,7 @@
     BOOL exists = NO;
 
     for (FBLChannel* model in _channels) {
-        if (model.id == channel.id) {
+        if ([model.id isEqualToString:channel.id]) {
             NSLog(@"Channel already exists");
             exists = YES;
         }
