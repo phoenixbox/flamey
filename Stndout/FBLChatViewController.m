@@ -198,54 +198,54 @@
     }
 }
 
-- (void)loadParseMessages {
-    if (_isLoading == NO)
-    {
-        _isLoading = YES;
-        JSQMessage *message_last = [_messages lastObject];
-
-        PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGE_CLASS_NAME];
-        [query whereKey:PF_MESSAGE_GROUPID equalTo:_channelId];
-
-        if (message_last != nil) {
-            [query whereKey:PF_MESSAGE_CREATEDAT greaterThan:message_last.date];
-        }
-
-        [query includeKey:PF_MESSAGE_USER];
-        [query orderByDescending:PF_MESSAGE_CREATEDAT];
-        [query setLimit:50];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-             if (error == nil) {
-                 BOOL incoming = NO;
-                 self.automaticallyScrollsToMostRecentMessage = NO;
-                 for (PFObject *object in [objects reverseObjectEnumerator])
-                 {
-                     JSQMessage *message = [self addParseMessage:object];
-                     if ([self incoming:message]) {
-                         incoming = YES;
-                     }
-                 }
-                 if ([objects count] != 0)
-                 {
-                     if (_initialized && incoming)
-                         [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-                     [self finishReceivingMessage];
-                     [self scrollToBottomAnimated:NO];
-                 }
-                 self.automaticallyScrollsToMostRecentMessage = YES;
-                 _initialized = YES;
-                 [_hud hide:YES];
-             }
-             else {
-                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
-                                           withTitle:@"Ooops!" andMessage:@"We had trouble loading messages"];
-                 [alert show];
-             }
-
-             _isLoading = NO;
-         }];
-    }
-}
+//- (void)loadParseMessages {
+//    if (_isLoading == NO)
+//    {
+//        _isLoading = YES;
+//        JSQMessage *message_last = [_messages lastObject];
+//
+//        PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGE_CLASS_NAME];
+//        [query whereKey:PF_MESSAGE_GROUPID equalTo:_channelId];
+//
+//        if (message_last != nil) {
+//            [query whereKey:PF_MESSAGE_CREATEDAT greaterThan:message_last.date];
+//        }
+//
+//        [query includeKey:PF_MESSAGE_USER];
+//        [query orderByDescending:PF_MESSAGE_CREATEDAT];
+//        [query setLimit:50];
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//             if (error == nil) {
+//                 BOOL incoming = NO;
+//                 self.automaticallyScrollsToMostRecentMessage = NO;
+//                 for (PFObject *object in [objects reverseObjectEnumerator])
+//                 {
+//                     JSQMessage *message = [self addParseMessage:object];
+//                     if ([self incoming:message]) {
+//                         incoming = YES;
+//                     }
+//                 }
+//                 if ([objects count] != 0)
+//                 {
+//                     if (_initialized && incoming)
+//                         [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+//                     [self finishReceivingMessage];
+//                     [self scrollToBottomAnimated:NO];
+//                 }
+//                 self.automaticallyScrollsToMostRecentMessage = YES;
+//                 _initialized = YES;
+//                 [_hud hide:YES];
+//             }
+//             else {
+//                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
+//                                           withTitle:@"Ooops!" andMessage:@"We had trouble loading messages"];
+//                 [alert show];
+//             }
+//
+//             _isLoading = NO;
+//         }];
+//    }
+//}
 
 - (JSQMessage *)addSlackMessage:(FBLChat *)chat {
     JSQMessage *message;
@@ -280,48 +280,48 @@
     return message;
 }
 
-- (JSQMessage *)addParseMessage:(PFObject *)object {
-    JSQMessage *message;
-
-    PFUser *user = object[PF_MESSAGE_USER];
-    NSString *name = user[PF_CUSTOMER_FULLNAME];
-
-    PFFile *fileVideo = object[PF_MESSAGE_VIDEO];
-    PFFile *filePicture = object[PF_MESSAGE_PICTURE];
-
-    if ((filePicture == nil) && (fileVideo == nil))
-    {
-        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt text:object[PF_MESSAGE_TEXT]];
-    }
-
-    if (fileVideo != nil)
-    {
-        JSQVideoMediaItem *mediaItem = [[JSQVideoMediaItem alloc] initWithFileURL:[NSURL URLWithString:fileVideo.url] isReadyToPlay:YES];
-        mediaItem.appliesMediaViewMaskAsOutgoing = [user.objectId isEqualToString:self.senderId];
-        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt media:mediaItem];
-    }
-
-    if (filePicture != nil)
-    {
-        JSQPhotoMediaItem *mediaItem = [[JSQPhotoMediaItem alloc] initWithImage:nil];
-        mediaItem.appliesMediaViewMaskAsOutgoing = [user.objectId isEqualToString:self.senderId];
-        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt media:mediaItem];
-
-        [filePicture getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
-         {
-             if (error == nil)
-             {
-                 mediaItem.image = [UIImage imageWithData:imageData];
-                 [self.collectionView reloadData];
-             }
-         }];
-    }
-
-    [_users addObject:user];
-    [_messages addObject:message];
-
-    return message;
-}
+//- (JSQMessage *)addParseMessage:(PFObject *)object {
+//    JSQMessage *message;
+//
+//    PFUser *user = object[PF_MESSAGE_USER];
+//    NSString *name = user[PF_CUSTOMER_FULLNAME];
+//
+//    PFFile *fileVideo = object[PF_MESSAGE_VIDEO];
+//    PFFile *filePicture = object[PF_MESSAGE_PICTURE];
+//
+//    if ((filePicture == nil) && (fileVideo == nil))
+//    {
+//        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt text:object[PF_MESSAGE_TEXT]];
+//    }
+//
+//    if (fileVideo != nil)
+//    {
+//        JSQVideoMediaItem *mediaItem = [[JSQVideoMediaItem alloc] initWithFileURL:[NSURL URLWithString:fileVideo.url] isReadyToPlay:YES];
+//        mediaItem.appliesMediaViewMaskAsOutgoing = [user.objectId isEqualToString:self.senderId];
+//        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt media:mediaItem];
+//    }
+//
+//    if (filePicture != nil)
+//    {
+//        JSQPhotoMediaItem *mediaItem = [[JSQPhotoMediaItem alloc] initWithImage:nil];
+//        mediaItem.appliesMediaViewMaskAsOutgoing = [user.objectId isEqualToString:self.senderId];
+//        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt media:mediaItem];
+//
+//        [filePicture getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
+//         {
+//             if (error == nil)
+//             {
+//                 mediaItem.image = [UIImage imageWithData:imageData];
+//                 [self.collectionView reloadData];
+//             }
+//         }];
+//    }
+//
+//    [_users addObject:user];
+//    [_messages addObject:message];
+//
+//    return message;
+//}
 
 - (void)sendMessageToSlack:(NSString *)text Video:(NSURL *)video Picture:(UIImage *)picture {
 
@@ -349,63 +349,63 @@
     [self finishSendingMessage];
 }
 
-- (void)sendMessageToParse:(NSString *)text Video:(NSURL *)video Picture:(UIImage *)picture {
-    PFFile *fileVideo = nil;
-    PFFile *filePicture = nil;
-
-    if (video != nil)
-    {
-        text = @"[Video message]";
-        fileVideo = [PFFile fileWithName:@"video.mp4" data:[[NSFileManager defaultManager] contentsAtPath:video.path]];
-        [fileVideo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-         {
-             if (error != nil) {
-                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
-                                                                withTitle:@"Ooops!" andMessage:@"We had trouble saving that video"];
-                 [alert show];
-             }
-         }];
-    }
-
-    if (picture != nil)
-    {
-        text = @"[Picture message]";
-        filePicture = [PFFile fileWithName:@"picture.jpg" data:UIImageJPEGRepresentation(picture, 0.6)];
-        [filePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-         {
-             if (error != nil) {
-                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
-                                                                withTitle:@"Ooops!" andMessage:@"We had trouble saving picture"];
-                 [alert show];
-             }
-         }];
-    }
-
-    PFObject *object = [PFObject objectWithClassName:PF_MESSAGE_CLASS_NAME];
-    object[PF_MESSAGE_USER] = [PFUser currentUser];
-    object[PF_MESSAGE_GROUPID] = _channelId;
-    object[PF_MESSAGE_TEXT] = text;
-    if (fileVideo != nil) object[PF_MESSAGE_VIDEO] = fileVideo;
-    if (filePicture != nil) object[PF_MESSAGE_PICTURE] = filePicture;
-    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-     {
-         if (error == nil)
-         {
-             [JSQSystemSoundPlayer jsq_playMessageSentSound];
-             [self loadParseMessages];
-         }
-         else {
-             SIAlertView *alert = [FBLViewHelpers createAlertForError:error
-                                                        withTitle:@"Ooops!" andMessage:@"We had trouble saving that message"];
-             [alert show];
-         };
-     }];
-
-    SendPushNotification(_channelId, text);
-    UpdateMessageCounter(_channelId, text);
-
-    [self finishSendingMessage];
-}
+//- (void)sendMessageToParse:(NSString *)text Video:(NSURL *)video Picture:(UIImage *)picture {
+//    PFFile *fileVideo = nil;
+//    PFFile *filePicture = nil;
+//
+//    if (video != nil)
+//    {
+//        text = @"[Video message]";
+//        fileVideo = [PFFile fileWithName:@"video.mp4" data:[[NSFileManager defaultManager] contentsAtPath:video.path]];
+//        [fileVideo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//         {
+//             if (error != nil) {
+//                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
+//                                                                withTitle:@"Ooops!" andMessage:@"We had trouble saving that video"];
+//                 [alert show];
+//             }
+//         }];
+//    }
+//
+//    if (picture != nil)
+//    {
+//        text = @"[Picture message]";
+//        filePicture = [PFFile fileWithName:@"picture.jpg" data:UIImageJPEGRepresentation(picture, 0.6)];
+//        [filePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//         {
+//             if (error != nil) {
+//                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
+//                                                                withTitle:@"Ooops!" andMessage:@"We had trouble saving picture"];
+//                 [alert show];
+//             }
+//         }];
+//    }
+//
+//    PFObject *object = [PFObject objectWithClassName:PF_MESSAGE_CLASS_NAME];
+//    object[PF_MESSAGE_USER] = [PFUser currentUser];
+//    object[PF_MESSAGE_GROUPID] = _channelId;
+//    object[PF_MESSAGE_TEXT] = text;
+//    if (fileVideo != nil) object[PF_MESSAGE_VIDEO] = fileVideo;
+//    if (filePicture != nil) object[PF_MESSAGE_PICTURE] = filePicture;
+//    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//     {
+//         if (error == nil)
+//         {
+//             [JSQSystemSoundPlayer jsq_playMessageSentSound];
+//             [self loadParseMessages];
+//         }
+//         else {
+//             SIAlertView *alert = [FBLViewHelpers createAlertForError:error
+//                                                        withTitle:@"Ooops!" andMessage:@"We had trouble saving that message"];
+//             [alert show];
+//         };
+//     }];
+//
+//    SendPushNotification(_channelId, text);
+//    UpdateMessageCounter(_channelId, text);
+//
+//    [self finishSendingMessage];
+//}
 
 #pragma mark - JSQMessagesViewController protocol methods
 
@@ -638,7 +638,8 @@
     NSURL *video = info[UIImagePickerControllerMediaURL];
     UIImage *picture = info[UIImagePickerControllerEditedImage];
 
-    [self sendMessageToParse:nil Video:video Picture:picture];
+    // TODO: Implement image picker transfer
+//    [self sendMessageToParse:nil Video:video Picture:picture];
 
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
