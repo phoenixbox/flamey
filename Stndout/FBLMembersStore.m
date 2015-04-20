@@ -57,8 +57,6 @@
 
 - (void)refreshMembersWithCollection:(NSArray *)members {
     NSDictionary *membersDict = @{@"members": members};
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:members options:NSJSONWritingPrettyPrinted error:nil];
-//    NSString *rawJSON = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 
     FBLMemberCollection *memberCollection = [[FBLMemberCollection alloc] initWithDictionary:membersDict error:nil];
 
