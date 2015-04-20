@@ -35,26 +35,26 @@ void ParsePushUserResign(void) {
 }
 
 void SendPushNotification(NSString *groupId, NSString *text) {
-    PFUser *user = [PFUser currentUser];
-    NSString *message = [NSString stringWithFormat:@"%@: %@", user[PF_CUSTOMER_FULLNAME], text];
-
-    PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
-    [query whereKey:PF_CHAT_GROUPID equalTo:groupId];
-    [query whereKey:PF_CHAT_USER notEqualTo:user];
-    [query includeKey:PF_CHAT_USER];
-    [query setLimit:1000];
-
-    PFQuery *queryInstallation = [PFInstallation query];
-    [queryInstallation whereKey:PF_INSTALLATION_USER matchesKey:PF_CHAT_USER inQuery:query];
-
-    PFPush *push = [[PFPush alloc] init];
-    [push setQuery:queryInstallation];
-    [push setMessage:message];
-
-    [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-         if (error != nil)
-         {
-             NSLog(@"SendPushNotification send error.");
-         }
-     }];
+//    PFUser *user = [PFUser currentUser];
+//    NSString *message = [NSString stringWithFormat:@"%@: %@", user[PF_CUSTOMER_FULLNAME], text];
+//
+//    PFQuery *query = [PFQuery queryWithClassName:PF_CHAT_CLASS_NAME];
+//    [query whereKey:PF_CHAT_GROUPID equalTo:groupId];
+//    [query whereKey:PF_CHAT_USER notEqualTo:user];
+//    [query includeKey:PF_CHAT_USER];
+//    [query setLimit:1000];
+//
+//    PFQuery *queryInstallation = [PFInstallation query];
+//    [queryInstallation whereKey:PF_INSTALLATION_USER matchesKey:PF_CHAT_USER inQuery:query];
+//
+//    PFPush *push = [[PFPush alloc] init];
+//    [push setQuery:queryInstallation];
+//    [push setMessage:message];
+//
+//    [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//         if (error != nil)
+//         {
+//             NSLog(@"SendPushNotification send error.");
+//         }
+//     }];
 }
