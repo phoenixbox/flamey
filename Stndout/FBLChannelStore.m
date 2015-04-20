@@ -83,7 +83,11 @@
         NSMutableDictionary *createChannelResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 
         if ([createChannelResponse objectForKey:@"ok"]) {
+
+
             FBLChannel *channel = [[FBLChannel alloc] initWithDictionary:            [createChannelResponse objectForKey:@"channel"] error:nil];
+
+            [self saveUniqueChannelForUser:channel.id];
             [self addUniqueChannel:channel];
 
             block(channel.id, nil);
@@ -98,6 +102,15 @@
     }];
 }
 
+- (void)refreshChannelsWithCollection:(NSArray *)channels {
+    NSDictionary *channelsDict = @{@"channels": channels};
+
+    FBLChannelCollection *channelCollection = [[FBLChannelCollection alloc] initWithDictionary:channelsDict error:nil];
+
+    [self addUniqueChannelsToStore:channelCollection.channels];
+}
+
+// TODO: Two operations predicated on unique should be merged?
 - (void)addUniqueChannelsToStore:(NSMutableArray *)channels {
     for (FBLChannel *channel in channels) {
         [self addUniqueChannel:channel];
@@ -132,5 +145,41 @@
     
     return nil;
 }
+
+// ****
+// Create unique channel association record for the user when they have joined one
+// ****
+
+// TODO: Extract this to a utility class where the user can be passed in
+// Hydrate the channel its members
+- (void)saveUniqueChannelForUser:(NSString *)channelId {
+    PFUser *user = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:PF_CHANNEL_CLASS_NAME];
+    [query whereKey:PF_CHANNEL_CUSTOMER equalTo:user];
+    [query whereKey:PF_CHANNEL_SLACKID equalTo:channelId];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (error == nil)
+         {
+             if ([objects count] == 0)
+             {
+                 PFObject *channel = [PFObject objectWithClassName:PF_CHANNEL_CLASS_NAME];
+                 channel[PF_CHANNEL_CUSTOMER] = user;
+                 channel[PF_CHANNEL_SLACKID] = channelId;
+
+                 [channel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                     if (error != nil) {
+                         NSLog(@"FBLChannelStore: Create channel error");
+                     }
+                 }];
+             }
+         }
+         else {
+             NSLog(@"CreateChannel query error.");
+         }
+     }];
+
+};
 
 @end
