@@ -289,11 +289,6 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     [self startChat:channel.id];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - listeners
 
 - (void)setupListeners {
@@ -347,7 +342,10 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
 }
 
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 /*
 #pragma mark - Navigation
