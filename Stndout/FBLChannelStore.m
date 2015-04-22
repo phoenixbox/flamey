@@ -86,7 +86,7 @@
         if ([createChannelResponse objectForKey:@"ok"]) {
 
 
-            FBLChannel *channel = [[FBLChannel alloc] initWithDictionary:            [createChannelResponse objectForKey:@"channel"] error:nil];
+            FBLChannel *channel = [[FBLChannel alloc] initWithDictionary:[createChannelResponse objectForKey:@"channel"] error:nil];
 
             [self saveUniqueChannelForUser:channel.id];
             [self addUniqueChannel:channel];

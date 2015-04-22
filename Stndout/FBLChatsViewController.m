@@ -54,6 +54,8 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     // If there is no currentUser - Prompt to login
     if (![PFUser currentUser]) {
         [self showContactDetailsModal];
+    } else {
+        [self joinAnyoneChatRoom];
     }
 }
 
@@ -204,8 +206,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
 
 // create the slack channel
 // success then join with the id
-- (void)createAnyoneChat {
-
+- (void)joinAnyoneChatRoom {
     void(^completionBlock)(NSString *channelId, NSString *createAnyoneError)=^(NSString *channelId, NSString *createAnyoneError){
         if (createAnyoneError == nil) {
             FBLChatViewController *chatViewController = [[FBLChatViewController alloc] initWithSlackChannel:channelId];
@@ -309,7 +310,7 @@ NSString *const kChatsEmptyMessageView = @"FBLChatsEmptyMessageView";
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
     [center addObserver:self
-               selector:@selector(createAnyoneChat)
+               selector:@selector(joinAnyoneChatRoom)
                    name:kChatToAnyone
                  object:nil];
 }
