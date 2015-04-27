@@ -380,7 +380,6 @@
 		CBFBFE841A58826B006657CD /* FBAudienceNetwork.README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FBAudienceNetwork.README.txt; sourceTree = "<group>"; };
 		CBFBFE851A58826B006657CD /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CBFBFE861A58826B006657CD /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Flamey.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,7 +420,6 @@
 				CB687A0F1ADA0FE800FCADA1 /* MobileCoreServices.framework */,
 				CB7BD8561AC86BB90088F22D /* MessageUI.framework */,
 				CBFBFE801A58826B006657CD /* FacebookSDK */,
-				FBE3E9771FF341C28DF3B968 /* libPods-Flamey.a */,
 				5B38E8EDA9FCF7C3A0052D93 /* libPods-Stndout.a */,
 			);
 			name = Frameworks;
