@@ -145,6 +145,8 @@
 		CBF402141AE2F55F000DFB98 /* FBLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402131AE2F55F000DFB98 /* FBLChat.m */; };
 		CBF402171AE2FF23000DFB98 /* FBLChatCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402161AE2FF23000DFB98 /* FBLChatCollection.m */; };
 		CBF4021A1AE38B1B000DFB98 /* FBLSlackStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF402191AE38B1B000DFB98 /* FBLSlackStore.m */; };
+		CBF759061AEF2DC000ABE378 /* FeedbackLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF759051AEF2DC000ABE378 /* FeedbackLoop.m */; };
+		CBF7590C1AEF371D00ABE378 /* FBLAuthenticationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF7590B1AEF371D00ABE378 /* FBLAuthenticationStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,6 +376,10 @@
 		CBF402161AE2FF23000DFB98 /* FBLChatCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChatCollection.m; sourceTree = "<group>"; };
 		CBF402181AE38B1B000DFB98 /* FBLSlackStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLSlackStore.h; sourceTree = "<group>"; };
 		CBF402191AE38B1B000DFB98 /* FBLSlackStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLSlackStore.m; sourceTree = "<group>"; };
+		CBF759041AEF2DC000ABE378 /* FeedbackLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackLoop.h; sourceTree = "<group>"; };
+		CBF759051AEF2DC000ABE378 /* FeedbackLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackLoop.m; sourceTree = "<group>"; };
+		CBF7590A1AEF371D00ABE378 /* FBLAuthenticationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLAuthenticationStore.h; sourceTree = "<group>"; };
+		CBF7590B1AEF371D00ABE378 /* FBLAuthenticationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLAuthenticationStore.m; sourceTree = "<group>"; };
 		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -682,6 +688,7 @@
 		CB6879DF1AD9D5A000FCADA1 /* FeedbackLoop */ = {
 			isa = PBXGroup;
 			children = (
+				CBF759031AEF2DA200ABE378 /* TabBar */,
 				CBF402051ADCFC7D000DFB98 /* Controllers */,
 				CB6E11021ADB5F98001D750F /* Collections */,
 				CB6E10FE1ADB519C001D750F /* Models */,
@@ -692,10 +699,10 @@
 				CB6879F91AD9DF0200FCADA1 /* Profile */,
 				CB6879F01AD9DECA00FCADA1 /* Groups */,
 				CB6879EA1AD9DEAD00FCADA1 /* Chats */,
-				CB6879E51AD9D6FD00FCADA1 /* FBLFeedbackTabBarController.h */,
-				CB6879E61AD9D6FD00FCADA1 /* FBLFeedbackTabBarController.m */,
 				CB6879E71AD9D6FD00FCADA1 /* FBLFeedbackTabBarController.xib */,
 				CB687A031ADA051600FCADA1 /* FBLAppConstants.h */,
+				CBF759041AEF2DC000ABE378 /* FeedbackLoop.h */,
+				CBF759051AEF2DC000ABE378 /* FeedbackLoop.m */,
 			);
 			name = FeedbackLoop;
 			sourceTree = "<group>";
@@ -794,6 +801,8 @@
 				CBF402101AE2F552000DFB98 /* FBLChatStore.m */,
 				CBF402181AE38B1B000DFB98 /* FBLSlackStore.h */,
 				CBF402191AE38B1B000DFB98 /* FBLSlackStore.m */,
+				CBF7590A1AEF371D00ABE378 /* FBLAuthenticationStore.h */,
+				CBF7590B1AEF371D00ABE378 /* FBLAuthenticationStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -907,6 +916,15 @@
 			children = (
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CBF759031AEF2DA200ABE378 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CB6879E51AD9D6FD00FCADA1 /* FBLFeedbackTabBarController.h */,
+				CB6879E61AD9D6FD00FCADA1 /* FBLFeedbackTabBarController.m */,
+			);
+			name = TabBar;
 			sourceTree = "<group>";
 		};
 		CBFBFE801A58826B006657CD /* FacebookSDK */ = {
@@ -1109,6 +1127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6FE9071AD0B7FF00AD0BD2 /* SoundPlayer.swift in Sources */,
+				CBF7590C1AEF371D00ABE378 /* FBLAuthenticationStore.m in Sources */,
 				CB6FE8E21AD0B7FF00AD0BD2 /* FLSettings.m in Sources */,
 				CB6FE8FF1AD0B7FF00AD0BD2 /* DesignableTextView.swift in Sources */,
 				CB6879F41AD9DEDF00FCADA1 /* FBLGroupsViewController.m in Sources */,
@@ -1180,6 +1199,7 @@
 				CB6FE8EA1AD0B7FF00AD0BD2 /* FLTutorialProcessView.m in Sources */,
 				CB687A021AD9FDA800FCADA1 /* FBLChatViewController.m in Sources */,
 				CB687A131ADA2F2000FCADA1 /* FBLHelpers.m in Sources */,
+				CBF759061AEF2DC000ABE378 /* FeedbackLoop.m in Sources */,
 				CB6FE9061AD0B7FF00AD0BD2 /* Misc.swift in Sources */,
 				CB6FE8E01AD0B7FF00AD0BD2 /* FLSelectionCollectionEmptyMessageView.m in Sources */,
 				CBF4020B1AE2E267000DFB98 /* FBLChannelCollection.m in Sources */,

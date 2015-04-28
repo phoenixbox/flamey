@@ -24,6 +24,8 @@
 // Pods
 #import "Mixpanel.h"
 
+#import "FeedbackLoop.h"
+
 // Helpers
 #import "FLViewHelpers.h"
 
@@ -38,7 +40,6 @@ static NSString * const kSettingsCellIdentifier = @"cell";
 
 static NSString * const kContactCell = @"Contact Us";
 static NSString * const kContactViewController = @"FLContactViewController";
-static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarController";
 static NSString * const kPrivacyCell = @"Privacy Policy";
 static NSString * const kPrivacyViewController = @"FLPrivacyViewController";
 static NSString * const kTOSCell = @"Terms of Service";
@@ -220,9 +221,10 @@ final sections footer view
     // Enum pattern would be better here
     if ([cellName isEqualToString:kContactCell]) {
 //      ******** FeedbackLoop Entry Point ***********
-        FBLFeedbackTabBarController *feedbackTabBarViewController = [[FBLFeedbackTabBarController alloc] initWithNibName:kFeedbackTabBarController bundle:nil];
-        feedbackTabBarViewController.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-        [self presentViewController:feedbackTabBarViewController animated:YES completion:nil];
+//        FBLFeedbackTabBarController *feedbackTabBarViewController = [[FBLFeedbackTabBarController alloc] initWithNibName:kFeedbackTabBarController bundle:nil];
+//        feedbackTabBarViewController.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
+//        [self presentViewController:feedbackTabBarViewController animated:YES completion:nil];
+        [FeedbackLoop presentChatChannel];
 
 //        FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
 //        [self presentViewController:contactViewController animated:YES completion:nil];
