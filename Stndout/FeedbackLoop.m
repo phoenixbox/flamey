@@ -45,15 +45,14 @@ static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarControlle
 
 + (void)presentChatChannel {
     FeedbackLoop *singleton = [self sharedInstance];
-    singleton.feedbackLoopWindow = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    singleton.feedbackLoopWindow = [[UIWindow alloc]initWithFrame:screenBounds];
     [singleton.feedbackLoopWindow setWindowLevel:UIWindowLevelAlert];
 
     FBLFeedbackTabBarController *tabBarController = [[FBLFeedbackTabBarController alloc] initWithNibName:kFeedbackTabBarController bundle:nil];
     tabBarController.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
 
-    // Can I just cast this to a UIView
-    [singleton.feedbackLoopWindow addSubview:(UIView *)tabBarController];
-
+    [singleton.feedbackLoopWindow setRootViewController:tabBarController];
     [singleton.feedbackLoopWindow makeKeyAndVisible];
 }
 
