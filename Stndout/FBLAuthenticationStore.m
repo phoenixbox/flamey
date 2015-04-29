@@ -8,6 +8,9 @@
 
 #import "FBLAuthenticationStore.h"
 
+// Constants
+#import "FBLAppConstants.h"
+
 @implementation FBLAuthenticationStore
 
 + (FBLAuthenticationStore *)sharedInstance {
@@ -36,5 +39,20 @@
 
     return [self authenticateRequest:requestURL];
 }
+
+- (NSString *)channelForEmailRegUser {
+    //    let url = `${teamUrl}${user.app_id}.json?email=${user.email}&user_id=${user.user_id}`;
+//    NSString *teamUrl = [NSString stringWithFormat:@"%@%@%@/%@%@", DEV_API_BASE_URL];
+
+    NSString *base = DEV_API_BASE_URL;
+    NSString *requestURL = [base stringByAppendingString:FBL_TEAMS_URI];
+    requestURL = [NSString stringWithFormat:@"%@/%@%@", requestURL, self.AppId,@".json?"];
+//    requestURL = [requestURL stringByAppendingString:@".json?"];
+
+    requestURL = [NSString stringWithFormat:@"%@email=%@", requestURL, self.userEmail];
+
+    return requestURL;
+}
+
 
 @end

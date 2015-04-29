@@ -12,11 +12,15 @@
 
 @property (nonatomic, strong) NSString *slackToken;
 @property (nonatomic, strong) NSString *feedbackLoopToken;
+@property (nonatomic, strong) NSString *AppId;
+@property (nonatomic, strong) NSString *userEmail;
+
 
 + (FBLAuthenticationStore *)sharedInstance;
 
 - (NSString *)authenticateRequest:(NSString *)requestURL;
 - (NSString *)authenticateRequest:(NSString *)requestURL withURLSegment:(NSString *)urlSegment;
 
+- (NSString *)channelForEmailRegUser;
 
 @end

@@ -84,4 +84,13 @@
 //------- Members
 #define     SLACK_MEMBERS_URI @"/users.list"
 
+//-------------------FEEDBACKLOOP ------------------------------
+#define     PROD_API_BASE_URL @"http://www.getfeedbackloop.com/api";
+
+#define     DEV_API_BASE_URL @"http://localhost:3000/api";
+
+//--------------FEEDBACKLOOP ENDPOINTS------------------------------
+
+#define     FBL_TEAMS_URI @"/teams"
+
 #endif
