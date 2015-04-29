@@ -9,9 +9,11 @@
 #import "FBLSlackStore.h"
 
 // Data Layer
-#import "FBLAuth.h"
+#import "FBLAuthenticationStore.h"
 #import "FBLMembersStore.h"
 #import "FBLChannelStore.h"
+#import "FBLTeam.h"
+#import "FBLTeamStore.h"
 
 // Constants
 #import "FBLAppConstants.h"
@@ -37,7 +39,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
-    NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_API_RTM_START);
+    NSString *requestURL = [[FBLAuthenticationStore sharedInstance ]authenticateRequest:SLACK_API_BASE_URL withURLSegment:SLACK_API_RTM_START];
 
     [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSMutableDictionary *rtmResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
@@ -53,7 +55,50 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         block(error);
     }];
+}
 
+- (void)requestWebhookFromServer:(void (^)(NSError *err))block {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+    NSString *requestURL = [[FBLAuthenticationStore sharedInstance] channelForEmailRegUser];
+
+    [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // Restart: make the local request and parse the necessary information
+        NSMutableDictionary *serverAuth = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+
+        if ([serverAuth objectForKey:@"ok"]) {
+
+            self.webhookUrl = [serverAuth objectForKey:@"url"];
+
+            // Set the team on the team store
+            FBLTeam *team = [FBLTeam alloc] initWithDictionary:serverAuth objectForKey:@"team"] error:nil];
+            [[FBLTeamStore sharedStore] setTeam:team]
+        }
+
+        // Once get the team token back then can handle my own networking layer
+
+
+//        setTeam(opts.team);
+//
+//        let {messages, channel_id} =  opts.channel;
+//        setChannel(channel_id);
+//        setItems(messages);
+//
+//        let {url, users, self} = opts.rtm;
+//        createConnection(url);
+//        setUsers(users);
+//        setSelf(self);
+//        MessageStore.emitChange();
+
+
+        [[FBLMembersStore sharedStore] refreshMembersWithCollection:[rtmResponse objectForKey:@"users"]];
+        [[FBLChannelStore sharedStore] refreshChannelsWithCollection:[rtmResponse objectForKey:@"channels"]];
+
+        block(nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        block(error);
+    }];
 }
 
 @end

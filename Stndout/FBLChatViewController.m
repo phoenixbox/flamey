@@ -76,19 +76,37 @@
     return self;
 }
 
+//- (void)joinAnyoneChatRoom {
+//    void(^completionBlock)(NSString *channelId, NSString *createAnyoneError)=^(NSString *channelId, NSString *createAnyoneError){
+//        if (createAnyoneError == nil) {
+//            FBLChatViewController *chatViewController = [[FBLChatViewController alloc] initWithSlackChannel:channelId];
+//            chatViewController.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:chatViewController animated:YES];
+//        }
+//        else {
+//            // Trigger a selector based on the error type
+//            NSLog(@"Trigger a selector based on the error type");
+//        }
+//    };
+//
+//    [[FBLChannelStore sharedStore] joinCurrentUserChannel:completionBlock];
+//}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupHUD];
 
-    self.title = [NSString stringWithFormat:@"The %@ Channel", self.channelId];
+    self.title = [NSString stringWithFormat:@"FeedbackLoop Chat"];
 
     _users = [[NSMutableArray alloc] init];
     _messages = [[NSMutableArray alloc] init];
     _chatCollection = [[FBLChatCollection alloc] init];
     _avatars = [[NSMutableDictionary alloc] init];
 
-    self.senderId = [[PFUser currentUser] objectForKey:@"facebookId"];
-    self.senderDisplayName = [[PFUser currentUser] objectForKey:@"fullname"];
+// Parse stuff needs
+//    self.senderId = [[PFUser currentUser] objectForKey:@"facebookId"];
+//    self.senderDisplayName = [[PFUser currentUser] objectForKey:@"fullname"];
 
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     _bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
@@ -111,7 +129,8 @@
         }
     };
 
-    [[FBLSlackStore sharedStore] setupWebhook:refreshWebhook];
+//    [[FBLSlackStore sharedStore] setupWebhook:refreshWebhook];
+    [[FBLSlackStore sharedStore] requestWebhookFromServer:refreshWebhook];
 //    [self loadParseMessages];
 }
 
