@@ -14,6 +14,10 @@
 
 + (void)setApiKey:(NSString *)apiKey forAppId:(NSString *)appId;
 
++ (void)registerUserWithEmail:(NSString *)userEmail;
+
++ (void)initWithAppId:(NSString *)appId;
+
 + (void)presentChatChannel;
 
 + (void)presentConversationList;

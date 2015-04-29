@@ -14,12 +14,12 @@
 
 // Components
 #import "FBLFeedbackTabBarController.h"
+#import "FBLChatViewController.h"
 
 static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarController";
 
 @interface FeedbackLoop ()
 @property (nonatomic, strong) UIWindow *feedbackLoopWindow;
-@property (nonatomic, strong) NSString *slackToken;
 @end
 
 @implementation FeedbackLoop
@@ -36,11 +36,21 @@ static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarControlle
 }
 
 + (void)configureWithSlackToken:(NSString *)slackToken {
-    FeedbackLoop *store = [FeedbackLoop sharedInstance];
+    FBLAuthenticationStore *store = [FBLAuthenticationStore sharedInstance];
     [store setSlackToken:slackToken];
 }
 
++ (void)initWithAppId:(NSString *)appId {
+    FBLAuthenticationStore *store = [FBLAuthenticationStore sharedInstance];
+    [store setAppId:appId];
+}
+
 + (void)setApiKey:(NSString *)apiKey forAppId:(NSString *)appId {
+}
+
++ (void)registerUserWithEmail:(NSString *)userEmail {
+    FBLAuthenticationStore *store = [FBLAuthenticationStore sharedInstance];
+    [store setUserEmail:userEmail];
 }
 
 + (void)presentChatChannel {
@@ -49,10 +59,9 @@ static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarControlle
     singleton.feedbackLoopWindow = [[UIWindow alloc]initWithFrame:screenBounds];
     [singleton.feedbackLoopWindow setWindowLevel:UIWindowLevelAlert];
 
-    FBLFeedbackTabBarController *tabBarController = [[FBLFeedbackTabBarController alloc] initWithNibName:kFeedbackTabBarController bundle:nil];
-    tabBarController.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
+    FBLChatViewController *chatViewController = [[FBLChatViewController alloc] init];
 
-    [singleton.feedbackLoopWindow setRootViewController:tabBarController];
+    [singleton.feedbackLoopWindow setRootViewController:chatViewController];
     [singleton.feedbackLoopWindow makeKeyAndVisible];
 }
 
