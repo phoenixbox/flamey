@@ -118,22 +118,15 @@
     _isLoading = NO;
     _initialized = NO;
 
-    // Need some sort of promise like chaining of completion blocks
-    void(^completionBlock)(NSError *err)=^(NSError *error) {
-        [self loadSlackMessages];
-    };
-
     void(^refreshWebhook)(NSError *err)=^(NSError *error) {
         if (error == nil) {
             [self setChannelDetails];
             [self setupWebsocket];
-            [[FBLMembersStore sharedStore] fetchMembersWithCompletion:completionBlock];
+            [self loadSlackMessages];
         }
     };
 
-//    [[FBLSlackStore sharedStore] setupWebhook:refreshWebhook];
     [[FBLSlackStore sharedStore] slackOAuth:refreshWebhook];
-//    [self loadParseMessages];
 }
 
 - (void)setChannelDetails {
