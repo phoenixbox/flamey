@@ -105,7 +105,7 @@
     _chatCollection = [[FBLChatCollection alloc] init];
     _avatars = [[NSMutableDictionary alloc] init];
 
-    // NOTE: We need to satisfy the JSQMEssages internal prop requirements
+    // NOTE: We need to satisfy the JSQMessages internal prop requirements
     self.senderId = [[FBLAuthenticationStore sharedInstance] AppId];
     self.senderDisplayName = [[FBLAuthenticationStore sharedInstance] userEmail];
 
@@ -152,12 +152,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.collectionView.collectionViewLayout.springinessEnabled = YES;
-
-//    TODO: Setup the incoming webhook for slack to receive messages from the channel
-//    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadSlackMessages) userInfo:nil repeats:YES];
-//
-//    Parse Polling for Messages
-//    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadParseMessages) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -275,11 +269,11 @@
     if ([username isEqualToString:@"bot"]) {
 
         // A user is added for every message - paired collection
-        PFUser *user = [PFUser currentUser];
-        [_users addObject:user];
+//        PFUser *user = [PFUser currentUser];
+//        [_users addObject:user];
 
-        senderId = [[PFUser currentUser] objectForKey:@"facebookId"];
-        displayName = [[PFUser currentUser] objectForKey:@"fullname"];
+        senderId = self.senderId;
+        displayName = self.senderDisplayName;
     } else {
         senderId = chat.user;
         FBLMember *member = [[FBLMembersStore sharedStore] find:chat.user];
@@ -348,9 +342,6 @@
         if (error == nil)
         {
             [JSQSystemSoundPlayer jsq_playMessageSentSound];
-
-            // Reload not necessary - optimize load feel
-            [self loadSlackMessages];
         }
         else {
             // TODO: Add a retry send message helper - and flag the error in the UI
@@ -362,7 +353,6 @@
 
     [[FBLChatStore sharedStore] sendSlackMessage:text toChannel:self.channel withCompletion:completionBlock];
 
-//    SendPushNotification(_userChannelId, text);
 //    UpdateMessageCounter(_userChannelId, text);
 
     [self finishSendingMessage];
@@ -682,7 +672,6 @@
 }
 
 - (BOOL)outgoing:(JSQMessage *)message {
-
     return ([message.senderId isEqualToString:self.senderId] == YES);
 }
 
