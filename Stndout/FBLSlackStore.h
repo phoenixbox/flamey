@@ -11,12 +11,12 @@
 @interface FBLSlackStore : NSObject
 
 @property (nonatomic, strong) NSString *webhookUrl;
-@property (nonatomic, strong) NSString *user_channel_id;
+@property (nonatomic, strong) NSString *userChannelId;
 
 + (FBLSlackStore *)sharedStore;
 
 - (void)setupWebhook:(void (^)(NSError *err))block;
 
-- (void)requestWebhookFromServer:(void (^)(NSError *err))block;
+- (void)slackOAuth:(void (^)(NSError *err))block;
 
 @end

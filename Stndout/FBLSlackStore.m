@@ -57,44 +57,40 @@
     }];
 }
 
-- (void)requestWebhookFromServer:(void (^)(NSError *err))block {
+- (void)slackOAuth:(void (^)(NSError *err))block {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
     NSString *requestURL = [[FBLAuthenticationStore sharedInstance] channelForEmailRegUser];
-
+    NSLog(@"Oauth request URL %@", requestURL);
+    
     [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         // Restart: make the local request and parse the necessary information
-        NSMutableDictionary *serverAuth = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSMutableDictionary *oauthRequest = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 
-        if ([serverAuth objectForKey:@"ok"]) {
+        // There must be a better accessor pattern here
+        NSDictionary *rtm = [oauthRequest objectForKey:@"rtm"];
 
-            self.webhookUrl = [serverAuth objectForKey:@"url"];
+        if (rtm && [rtm objectForKey:@"ok"]) {
+
+            self.webhookUrl = [rtm objectForKey:@"url"];
 
             // Set the team on the team store
-            FBLTeam *team = [FBLTeam alloc] initWithDictionary:serverAuth objectForKey:@"team"] error:nil];
-            [[FBLTeamStore sharedStore] setTeam:team]
+            NSDictionary *teamAttrs = [oauthRequest objectForKey:@"team"];
+            FBLTeam *team = [[FBLTeam alloc] initWithDictionary:teamAttrs error:nil];
+            [team buildToken];
+            NSString *teamImage = [[[rtm objectForKey:@"team"] objectForKey:@"icon"] objectForKey:@"image_132"];
+            [team setTeamImage:teamImage];
+            [[FBLTeamStore sharedStore] setTeam:team];
+
+            // Use the channel object
+            _userChannelId = [[oauthRequest objectForKey:@"channel"] objectForKey:@"channel_id"];
+
+            [[FBLMembersStore sharedStore] refreshMembersWithCollection:[rtm objectForKey:@"users"]];
+            [[FBLChannelStore sharedStore] refreshChannelsWithCollection:[rtm objectForKey:@"channels"]];
+        } else {
+            NSLog(@"RTM request error");
         }
-
-        // Once get the team token back then can handle my own networking layer
-
-
-//        setTeam(opts.team);
-//
-//        let {messages, channel_id} =  opts.channel;
-//        setChannel(channel_id);
-//        setItems(messages);
-//
-//        let {url, users, self} = opts.rtm;
-//        createConnection(url);
-//        setUsers(users);
-//        setSelf(self);
-//        MessageStore.emitChange();
-
-
-        [[FBLMembersStore sharedStore] refreshMembersWithCollection:[rtmResponse objectForKey:@"users"]];
-        [[FBLChannelStore sharedStore] refreshChannelsWithCollection:[rtmResponse objectForKey:@"channels"]];
-
         block(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         block(error);
