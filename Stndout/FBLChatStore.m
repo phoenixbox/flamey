@@ -9,7 +9,7 @@
 #import "FBLChatStore.h"
 
 #import "FBLAppConstants.h"
-#import "FBLAuth.h"
+#import "FBLAuthenticationStore.h"
 
 // Libs
 #import "AFNetworking.h"
@@ -55,7 +55,8 @@
 - (void)sendSlackMessage:(NSString *)message toChannel:(FBLChannel *)channel withCompletion:(void (^)(FBLChat *chat, NSString *error))block {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_API_MESSAGE_POST);
+        NSString *requestURL = [[FBLAuthenticationStore sharedInstance] oauthRequest:SLACK_API_BASE_URL withURLSegment:SLACK_API_MESSAGE_POST];
+//    NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_API_MESSAGE_POST);
 
     // TODO: FBLUser Helpers: Fallback for when there is no user email etc.
 //    NSString *messageParam = [NSString stringWithFormat:@"&text=%@",message];
@@ -87,9 +88,10 @@
 - (void)fetchHistoryForChannel:(NSString *)channelId withCompletion:(void (^)(FBLChatCollection *chatCollection, NSString *))block {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *requestURL = authenticateRequestWithURLSegment(SLACK_API_BASE_URL, SLACK_API_CHANNEL_HISTORY);
 
+    NSString *requestURL = [[FBLAuthenticationStore sharedInstance] oauthRequest:SLACK_API_BASE_URL withURLSegment:SLACK_API_CHANNEL_HISTORY];
     // TODO: FBLUser Helpers: Fallback for when there is no user email etc.
+
     NSString *channelIdParam = [NSString stringWithFormat:@"&channel=%@",channelId];
     requestURL = [requestURL stringByAppendingString:channelIdParam];
 
