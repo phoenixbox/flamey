@@ -45,7 +45,7 @@
 
         FBLMemberCollection *memberCollection = [[FBLMemberCollection alloc] initWithString:rawJSON error:nil];
 
-        [self addUniqueMembersToParse:memberCollection.members];
+//        [self addUniqueMembersToParse:memberCollection.members];
 
         _members = memberCollection.members;
 
@@ -60,7 +60,7 @@
 
     FBLMemberCollection *memberCollection = [[FBLMemberCollection alloc] initWithDictionary:membersDict error:nil];
 
-    [self addUniqueMembersToParse:memberCollection.members];
+//    [self addUniqueMembersToParse:memberCollection.members];
 
     _members = memberCollection.members;
 }
