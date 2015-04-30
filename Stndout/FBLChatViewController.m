@@ -20,6 +20,7 @@
 #import "FBLChatStore.h"
 #import "FBLMembersStore.h"
 #import "FBLSlackStore.h"
+#import "FBLAuthenticationStore.h"
 
 // Libs
 #import <Parse/Parse.h>
@@ -38,7 +39,7 @@
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) BOOL initialized;
 
-@property (nonatomic, strong) NSString *channelId;
+@property (nonatomic, strong) NSString *userChannelId;
 
 @property (nonatomic, strong) FBLChannel *channel;
 
@@ -62,7 +63,7 @@
 
 - (id)initWithSlackChannel:(NSString *)channelId {
     self = [super init];
-    self.channelId = channelId;
+    self.userChannelId = [[FBLSlackStore sharedStore] userChannelId];
 
     self.channel = [[FBLChannelStore sharedStore] find:channelId];
 
@@ -104,9 +105,9 @@
     _chatCollection = [[FBLChatCollection alloc] init];
     _avatars = [[NSMutableDictionary alloc] init];
 
-// Parse stuff needs
-//    self.senderId = [[PFUser currentUser] objectForKey:@"facebookId"];
-//    self.senderDisplayName = [[PFUser currentUser] objectForKey:@"fullname"];
+    // NOTE: We need to satisfy the JSQMEssages internal prop requirements
+    self.senderId = [[FBLAuthenticationStore sharedInstance] AppId];
+    self.senderDisplayName = [[FBLAuthenticationStore sharedInstance] userEmail];
 
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     _bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
@@ -124,13 +125,14 @@
 
     void(^refreshWebhook)(NSError *err)=^(NSError *error) {
         if (error == nil) {
+            self.userChannelId = [[FBLSlackStore sharedStore] userChannelId];
             [self setupWebsocket];
             [[FBLMembersStore sharedStore] fetchMembersWithCompletion:completionBlock];
         }
     };
 
 //    [[FBLSlackStore sharedStore] setupWebhook:refreshWebhook];
-    [[FBLSlackStore sharedStore] requestWebhookFromServer:refreshWebhook];
+    [[FBLSlackStore sharedStore] slackOAuth:refreshWebhook];
 //    [self loadParseMessages];
 }
 
@@ -155,7 +157,7 @@
 
 //    TODO: Setup the incoming webhook for slack to receive messages from the channel
 //    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadSlackMessages) userInfo:nil repeats:YES];
-
+//
 //    Parse Polling for Messages
 //    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(loadParseMessages) userInfo:nil repeats:YES];
 }
@@ -163,7 +165,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    ClearMessageCounter(_channelId);
+    ClearMessageCounter(_userChannelId);
     [_timer invalidate];
 }
 
@@ -213,7 +215,7 @@
             _isLoading = NO;
         };
 
-        [[FBLChatStore sharedStore] fetchHistoryForChannel:_channelId withCompletion:completionBlock];
+        [[FBLChatStore sharedStore] fetchHistoryForChannel:_userChannelId withCompletion:completionBlock];
     }
 }
 
@@ -224,7 +226,7 @@
 //        JSQMessage *message_last = [_messages lastObject];
 //
 //        PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGE_CLASS_NAME];
-//        [query whereKey:PF_MESSAGE_GROUPID equalTo:_channelId];
+//        [query whereKey:PF_MESSAGE_GROUPID equalTo:_userChannelId];
 //
 //        if (message_last != nil) {
 //            [query whereKey:PF_MESSAGE_CREATEDAT greaterThan:message_last.date];
@@ -362,8 +364,8 @@
 
     [[FBLChatStore sharedStore] sendSlackMessage:text toChannel:self.channel withCompletion:completionBlock];
 
-//    SendPushNotification(_channelId, text);
-//    UpdateMessageCounter(_channelId, text);
+//    SendPushNotification(_userChannelId, text);
+//    UpdateMessageCounter(_userChannelId, text);
 
     [self finishSendingMessage];
 }
@@ -402,7 +404,7 @@
 //
 //    PFObject *object = [PFObject objectWithClassName:PF_MESSAGE_CLASS_NAME];
 //    object[PF_MESSAGE_USER] = [PFUser currentUser];
-//    object[PF_MESSAGE_GROUPID] = _channelId;
+//    object[PF_MESSAGE_GROUPID] = _userChannelId;
 //    object[PF_MESSAGE_TEXT] = text;
 //    if (fileVideo != nil) object[PF_MESSAGE_VIDEO] = fileVideo;
 //    if (filePicture != nil) object[PF_MESSAGE_PICTURE] = filePicture;
@@ -420,8 +422,8 @@
 //         };
 //     }];
 //
-//    SendPushNotification(_channelId, text);
-//    UpdateMessageCounter(_channelId, text);
+//    SendPushNotification(_userChannelId, text);
+//    UpdateMessageCounter(_userChannelId, text);
 //
 //    [self finishSendingMessage];
 //}
@@ -508,16 +510,18 @@
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
                     avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
     // Meta FTW
-    id newObject = _users[indexPath.item];
-    NSString *className = NSStringFromClass([newObject class]);
+//    id newObject = _users[indexPath.item];
+//    NSString *className = NSStringFromClass([newObject class]);
+//
+//    if ([className isEqualToString:@"PFUser"]) {
+//        PFObject *user = (PFObject *)newObject;
+//        return [self getParseUserImage:user];
+//    } else {
+//        FBLMember *user = (FBLMember *)newObject;
+//        return [self getFBLUserImage:user];
+//    }
 
-    if ([className isEqualToString:@"PFUser"]) {
-        PFObject *user = (PFObject *)newObject;
-        return [self getParseUserImage:user];
-    } else {
-        FBLMember *user = (FBLMember *)newObject;
-        return [self getFBLUserImage:user];
-    }
+    return _avatarImageBlank;
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath {
@@ -698,7 +702,7 @@
     } else if ([eventType isEqualToString:@"message"]) {
         NSString *channelId = [json objectForKey:@"channel"];;
 
-        if ([channelId isEqualToString:self.channelId]) {
+        if ([channelId isEqualToString:self.userChannelId]) {
             FBLChat *newMessage = [[FBLChat alloc] initWithDictionary:json error:nil];
             [self addSlackMessage:newMessage];
 
