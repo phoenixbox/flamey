@@ -7,6 +7,8 @@
 //
 
 #import "FBLAuthenticationStore.h"
+#import "FBLTeamStore.h"
+#import "FBLTeam.h"
 
 // Constants
 #import "FBLAppConstants.h"
@@ -32,6 +34,23 @@
     return requestURL;
 }
 
+- (NSString *)oauthRequest:(NSString *)requestURL {
+    FBLTeam *team = [[FBLTeamStore sharedStore] team];
+
+    requestURL = [requestURL stringByAppendingString:(@"?token=")];
+    requestURL = [requestURL stringByAppendingString:team.slackToken];
+
+    return requestURL;
+}
+
+- (NSString *)oauthRequest:(NSString *)requestURL withURLSegment:(NSString *)urlSegment {
+    if (urlSegment) {
+        requestURL = [requestURL stringByAppendingString:urlSegment];
+    }
+
+    return [self oauthRequest:requestURL];
+}
+
 - (NSString *)authenticateRequest:(NSString *)requestURL withURLSegment:(NSString *)urlSegment {
     if (urlSegment) {
         requestURL = [requestURL stringByAppendingString:urlSegment];
@@ -41,14 +60,11 @@
 }
 
 - (NSString *)channelForEmailRegUser {
-    //    let url = `${teamUrl}${user.app_id}.json?email=${user.email}&user_id=${user.user_id}`;
-//    NSString *teamUrl = [NSString stringWithFormat:@"%@%@%@/%@%@", DEV_API_BASE_URL];
+    // http://localhost:3000/api/teams/64a702c6-d868-480a-aff1-1ec6ab90e267?email=shane@gmail.com
 
     NSString *base = DEV_API_BASE_URL;
     NSString *requestURL = [base stringByAppendingString:FBL_TEAMS_URI];
-    requestURL = [NSString stringWithFormat:@"%@/%@%@", requestURL, self.AppId,@".json?"];
-//    requestURL = [requestURL stringByAppendingString:@".json?"];
-
+    requestURL = [NSString stringWithFormat:@"%@/%@%@", requestURL, self.AppId,@"?"];
     requestURL = [NSString stringWithFormat:@"%@email=%@", requestURL, self.userEmail];
 
     return requestURL;

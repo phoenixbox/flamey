@@ -19,6 +19,9 @@
 + (FBLAuthenticationStore *)sharedInstance;
 
 - (NSString *)authenticateRequest:(NSString *)requestURL;
+- (NSString *)oauthRequest:(NSString *)requestURL;
+- (NSString *)oauthRequest:(NSString *)requestURL withURLSegment:(NSString *)urlSegment;
+
 - (NSString *)authenticateRequest:(NSString *)requestURL withURLSegment:(NSString *)urlSegment;
 
 - (NSString *)channelForEmailRegUser;
