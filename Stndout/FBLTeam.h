@@ -14,6 +14,20 @@
 
 @interface FBLTeam : JSONModel
 
-@property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *guid;
+@property (nonatomic, strong) NSString *tokenizer;
+@property (nonatomic, strong) NSString *slackName;
+@property (nonatomic, strong) NSString *slackTeamId;
+@property (nonatomic, strong) NSString *tokenS;
+@property (nonatomic, strong) NSString *tokenL;
+@property (nonatomic, strong) NSString *tokenA;
+@property (nonatomic, strong) NSString *tokenC;
+@property (nonatomic, strong) NSString *tokenK;
+
+@property (nonatomic, strong) NSString *teamImage;
+// Aggreagate Token - rethink the obfuscation into alpha-keys
+@property (nonatomic, strong) NSString *slackToken;
+
+- (void)buildToken;
 
 @end
