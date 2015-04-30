@@ -125,7 +125,7 @@
 
     void(^refreshWebhook)(NSError *err)=^(NSError *error) {
         if (error == nil) {
-            self.userChannelId = [[FBLSlackStore sharedStore] userChannelId];
+            [self setChannelDetails];
             [self setupWebsocket];
             [[FBLMembersStore sharedStore] fetchMembersWithCompletion:completionBlock];
         }
@@ -134,6 +134,11 @@
 //    [[FBLSlackStore sharedStore] setupWebhook:refreshWebhook];
     [[FBLSlackStore sharedStore] slackOAuth:refreshWebhook];
 //    [self loadParseMessages];
+}
+
+- (void)setChannelDetails {
+    self.userChannelId = [[FBLSlackStore sharedStore] userChannelId];
+    self.channel = [[FBLChannelStore sharedStore] find:self.userChannelId];
 }
 
 - (void)setupWebsocket {
