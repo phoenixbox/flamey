@@ -224,7 +224,7 @@ final sections footer view
 //        FBLFeedbackTabBarController *feedbackTabBarViewController = [[FBLFeedbackTabBarController alloc] initWithNibName:kFeedbackTabBarController bundle:nil];
 //        feedbackTabBarViewController.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
 //        [self presentViewController:feedbackTabBarViewController animated:YES completion:nil];
-        [FeedbackLoop registerUserWithEmail:@"supergreatcustomer12345678@gmail.com"];
+        [FeedbackLoop registerUserWithEmail:@"shane-banana@gmail.com"];
         [FeedbackLoop presentChatChannel];
 
 //        FLContactViewController *contactViewController = [[FLContactViewController alloc] initWithNibName:kContactViewController bundle:nil];
