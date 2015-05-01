@@ -45,6 +45,8 @@
 @property (nonatomic, strong) NSString *userChannelId;
 @property (nonatomic, strong) UIView *emptyMessage;
 
+@property (nonatomic, strong) UIView *navBar;
+
 @property (nonatomic, strong) FBLChannel *channel;
 
 @property (nonatomic, strong) FBLChatCollection *chatCollection;
@@ -100,6 +102,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addNavigationBar];
     [self setupHUD];
     [self initializeCollectionErrorView];
 
@@ -124,6 +127,25 @@
     _initialized = NO;
 
     [self slackOauth];
+}
+
+- (void)addNavigationBar {
+    UIView *navBar = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,50)];
+    [navBar setBackgroundColor:[UIColor whiteColor]];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 44.0f)];
+    logoView.contentMode = UIViewContentModeScaleAspectFit;
+    UIImage *logoImage = [UIImage imageNamed:@"newTitlebar.png"];
+    [logoView setImage:logoImage];
+    [logoView setCenter:navBar.center];
+    [navBar addSubview:logoView];
+
+    UIImage *removeIcon = [UIImage imageNamed:@"removeIcon.png"];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(5.0,5.0,40.0,40.0)];
+    [button setBackgroundImage:removeIcon forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(hideFeedbackLoopWindow) forControlEvents:UIControlEventTouchUpInside];
+    [navBar addSubview:button];
+
+    [self.view addSubview:navBar];
 }
 
 - (void)initializeCollectionErrorView {
@@ -200,12 +222,10 @@
     [alertView addButtonWithTitle:@"Try Later"
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alert) {
-                              [self popFeedbackLoopWindow];
+                              [self hideFeedbackLoopWindow];
                           }];
 
     alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
-
-
 
     UIWindow *topWindow = [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
         return win1.windowLevel - win2.windowLevel;
@@ -218,12 +238,12 @@
     [topWindow sendSubviewToBack:self.view];
 }
 
-- (void)popFeedbackLoopWindow {
+- (void)hideFeedbackLoopWindow {
     UIWindow *topWindow = [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
         return win1.windowLevel - win2.windowLevel;
     }] lastObject];
 
-    [topWindow removeFromSuperview];
+    [topWindow setHidden:YES];
 }
 
 - (void)setChannelDetails {

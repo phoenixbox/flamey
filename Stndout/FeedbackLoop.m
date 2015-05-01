@@ -55,7 +55,12 @@ static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarControlle
 
 + (void)presentChatChannel {
     FeedbackLoop *singleton = [self sharedInstance];
+    if (singleton.feedbackLoopWindow && singleton.feedbackLoopWindow.hidden) {
+        [singleton.feedbackLoopWindow setHidden:NO];
+    }
+
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
+
     singleton.feedbackLoopWindow = [[UIWindow alloc]initWithFrame:screenBounds];
     [singleton.feedbackLoopWindow setWindowLevel:UIWindowLevelAlert];
 
