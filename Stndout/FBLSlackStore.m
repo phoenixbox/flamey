@@ -49,6 +49,7 @@
         }
 
         [[FBLMembersStore sharedStore] refreshMembersWithCollection:[rtmResponse objectForKey:@"users"]];
+        [[FBLMembersStore sharedStore] processMemberPhotos];
         [[FBLChannelStore sharedStore] refreshChannelsWithCollection:[rtmResponse objectForKey:@"channels"]];
 
         block(nil);
@@ -87,6 +88,7 @@
             _userChannelId = [[oauthRequest objectForKey:@"channel"] objectForKey:@"channel_id"];
 
             [[FBLMembersStore sharedStore] refreshMembersWithCollection:[rtm objectForKey:@"users"]];
+            [[FBLMembersStore sharedStore] processMemberPhotos];
             [[FBLChannelStore sharedStore] refreshChannelsWithCollection:[rtm objectForKey:@"channels"]];
         } else {
             NSLog(@"RTM request error");
