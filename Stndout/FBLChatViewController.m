@@ -12,6 +12,9 @@
 // Constants
 #import "FBLAppConstants.h"
 
+// Helpers
+#import "FBLViewHelpers.h"
+
 // Data Layer
 #import "FBLChannel.h"
 #import "FBLChannelStore.h"
@@ -40,6 +43,7 @@
 @property (nonatomic, assign) BOOL initialized;
 
 @property (nonatomic, strong) NSString *userChannelId;
+@property (nonatomic, strong) UIView *emptyMessage;
 
 @property (nonatomic, strong) FBLChannel *channel;
 
@@ -97,6 +101,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupHUD];
+    [self initializeCollectionErrorView];
 
     self.title = [NSString stringWithFormat:@"FeedbackLoop Chat"];
 
@@ -118,15 +123,107 @@
     _isLoading = NO;
     _initialized = NO;
 
+    [self slackOauth];
+}
+
+- (void)initializeCollectionErrorView {
+    CGRect collectionViewBounds = [self.collectionView bounds];
+    _emptyMessage = [[UIView alloc] initWithFrame:collectionViewBounds];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,collectionViewBounds.size.width-20.0f, 50.0f)];
+    [label setText:@"Uh Oh! We had trouble connecting"];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setCenter:_emptyMessage.center];
+    [_emptyMessage addSubview:label];
+
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(collectionViewBounds.size.width/4,
+                                                                  label.frame.origin.y + label.frame.size.height + 10.0f,
+                                                                  collectionViewBounds.size.width/2,
+                                                                  40.0f)];
+    [button addTarget:self
+                 action:@selector(slackOauth)
+       forControlEvents:UIControlEventTouchUpInside];
+    [FBLViewHelpers setBaseButtonStyle:button withColor:[UIColor blackColor]];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    [_emptyMessage addSubview:button];
+    [self.collectionView setBackgroundView:_emptyMessage];
+    [self hideErrorView:YES];
+}
+
+- (void)hideErrorView:(BOOL)show {
+    if (show) {
+        [self.collectionView.backgroundView setHidden:YES];
+    } else {
+        [self.collectionView.backgroundView setHidden:NO];
+    }
+}
+
+- (void)slackOauth {
+    [_hud show:YES];
+    [self hideErrorView:YES];
+
     void(^refreshWebhook)(NSError *err)=^(NSError *error) {
+        [_hud hide:YES];
+
         if (error == nil) {
             [self setChannelDetails];
             [self setupWebsocket];
             [self loadSlackMessages];
+        } else {
+            [self hideErrorView:NO];
+//            [self showAlert:error withSelectorName:@"slackOauth"];
         }
     };
 
     [[FBLSlackStore sharedStore] slackOAuth:refreshWebhook];
+}
+
+- (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
+    // Have an issue with view hierarchy on the buttons within the alert
+    SEL selector = NSSelectorFromString(selectorName);
+    IMP imp = [self methodForSelector:selector];
+    void (*func)(id, SEL) = (void *)imp;
+
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Uh Oh!" andMessage:@"We had trouble connecting to our servers"];
+
+    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+    [alertView addButtonWithTitle:@"Try Again"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alert) {
+                              [_hud show:YES];
+                              func(self, selector);
+                          }];
+
+    [alertView addButtonWithTitle:@"Try Later"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alert) {
+                              [self popFeedbackLoopWindow];
+                          }];
+
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+
+
+
+    UIWindow *topWindow = [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
+        return win1.windowLevel - win2.windowLevel;
+    }] lastObject];
+
+    [self.view addSubview:alertView];
+    [self.view bringSubviewToFront:alertView];
+    [alertView setCenter:self.view.center];
+
+    [topWindow sendSubviewToBack:self.view];
+}
+
+- (void)popFeedbackLoopWindow {
+    UIWindow *topWindow = [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
+        return win1.windowLevel - win2.windowLevel;
+    }] lastObject];
+
+    [topWindow removeFromSuperview];
 }
 
 - (void)setChannelDetails {
@@ -268,9 +365,13 @@
 
     if ([username isEqualToString:@"bot"]) {
 
-        // A user is added for every message - paired collection
-//        PFUser *user = [PFUser currentUser];
-//        [_users addObject:user];
+        // Add a user which can be pulled on an
+        FBLMember *member = [[FBLMember alloc] init];
+        [member setId:self.senderId];
+        [member setEmail:self.senderDisplayName];
+        [member setProfileImage:nil];
+
+        [_users addObject:member];
 
         senderId = self.senderId;
         displayName = self.senderDisplayName;
@@ -497,19 +598,20 @@
 
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
                     avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
-    // Meta FTW
-//    id newObject = _users[indexPath.item];
-//    NSString *className = NSStringFromClass([newObject class]);
-//
-//    if ([className isEqualToString:@"PFUser"]) {
-//        PFObject *user = (PFObject *)newObject;
-//        return [self getParseUserImage:user];
-//    } else {
-//        FBLMember *user = (FBLMember *)newObject;
-//        return [self getFBLUserImage:user];
-//    }
 
-    return _avatarImageBlank;
+    FBLMember *member = _users[indexPath.item];
+
+    if (_avatars[member.id] == nil) {
+        if (member.profileImage) {
+            JSQMessagesAvatarImage *avatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:member.profileImage diameter:30.0];
+            _avatars[member.id] = avatar;
+            return avatar;
+        } else {
+            return _avatarImageBlank;
+        }
+    } else {
+        return _avatars[member.id];
+    }
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath {
