@@ -21,4 +21,6 @@
 
 - (FBLMember *)find:(NSString *)memberId;
 
+- (void)processMemberPhotos;
+
 @end
