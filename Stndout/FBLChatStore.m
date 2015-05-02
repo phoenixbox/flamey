@@ -13,7 +13,6 @@
 
 // Libs
 #import "AFNetworking.h"
-#import <Parse/Parse.h>
 
 @implementation FBLChatStore
 

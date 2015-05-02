@@ -11,7 +11,7 @@
 @interface FBLLoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *loginPromptTitle;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
-- (IBAction)facebookButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+- (IBAction)registerCustomerDetails:(id)sender;
 
 @end

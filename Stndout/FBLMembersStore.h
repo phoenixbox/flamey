@@ -15,8 +15,6 @@
 
 + (FBLMembersStore *)sharedStore;
 
-- (void)fetchMembersWithCompletion:(void (^)(NSError *error))block;
-
 - (void)refreshMembersWithCollection:(NSArray *)members;
 
 - (FBLMember *)find:(NSString *)memberId;

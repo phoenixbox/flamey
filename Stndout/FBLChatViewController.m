@@ -26,19 +26,15 @@
 #import "FBLAuthenticationStore.h"
 
 // Libs
-#import <Parse/Parse.h>
 #import "MBProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 // Utils
 #import "FBLViewhelpers.h"
 #import "FBLCameraUtil.h"
-#import "FBLMessageController.h"
-#import "FBLPushNotificationController.h"
 
 @interface FBLChatViewController ()
 
-@property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) BOOL initialized;
 
@@ -66,39 +62,6 @@
 @end
 
 @implementation FBLChatViewController
-
-- (id)initWithSlackChannel:(NSString *)channelId {
-    self = [super init];
-    self.userChannelId = [[FBLSlackStore sharedStore] userChannelId];
-
-    self.channel = [[FBLChannelStore sharedStore] find:channelId];
-
-    // TODO: A better error pattern would be to try to reconnect the user to an active room
-    if (!self.channel) {
-        SIAlertView *alert = [FBLViewHelpers createAlertForError:nil
-                                                       withTitle:@"Ooops!" andMessage:@"We had trouble connecting to that channel"];
-        [alert show];
-    }
-
-    return self;
-}
-
-//- (void)joinAnyoneChatRoom {
-//    void(^completionBlock)(NSString *channelId, NSString *createAnyoneError)=^(NSString *channelId, NSString *createAnyoneError){
-//        if (createAnyoneError == nil) {
-//            FBLChatViewController *chatViewController = [[FBLChatViewController alloc] initWithSlackChannel:channelId];
-//            chatViewController.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:chatViewController animated:YES];
-//        }
-//        else {
-//            // Trigger a selector based on the error type
-//            NSLog(@"Trigger a selector based on the error type");
-//        }
-//    };
-//
-//    [[FBLChannelStore sharedStore] joinCurrentUserChannel:completionBlock];
-//}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -193,49 +156,10 @@
             [self loadSlackMessages];
         } else {
             [self hideErrorView:NO];
-//            [self showAlert:error withSelectorName:@"slackOauth"];
         }
     };
 
     [[FBLSlackStore sharedStore] slackOAuth:refreshWebhook];
-}
-
-- (void)showAlert:(NSError *)error withSelectorName:(NSString *)selectorName {
-    // Have an issue with view hierarchy on the buttons within the alert
-    SEL selector = NSSelectorFromString(selectorName);
-    IMP imp = [self methodForSelector:selector];
-    void (*func)(id, SEL) = (void *)imp;
-
-    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Uh Oh!" andMessage:@"We had trouble connecting to our servers"];
-
-    [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
-    [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
-    [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
-
-    [alertView addButtonWithTitle:@"Try Again"
-                             type:SIAlertViewButtonTypeDefault
-                          handler:^(SIAlertView *alert) {
-                              [_hud show:YES];
-                              func(self, selector);
-                          }];
-
-    [alertView addButtonWithTitle:@"Try Later"
-                             type:SIAlertViewButtonTypeCancel
-                          handler:^(SIAlertView *alert) {
-                              [self hideFeedbackLoopWindow];
-                          }];
-
-    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
-
-    UIWindow *topWindow = [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
-        return win1.windowLevel - win2.windowLevel;
-    }] lastObject];
-
-    [self.view addSubview:alertView];
-    [self.view bringSubviewToFront:alertView];
-    [alertView setCenter:self.view.center];
-
-    [topWindow sendSubviewToBack:self.view];
 }
 
 - (void)hideFeedbackLoopWindow {
@@ -277,9 +201,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-
-    ClearMessageCounter(_userChannelId);
-    [_timer invalidate];
 }
 
 #pragma mark - Backend methods
@@ -332,55 +253,6 @@
     }
 }
 
-//- (void)loadParseMessages {
-//    if (_isLoading == NO)
-//    {
-//        _isLoading = YES;
-//        JSQMessage *message_last = [_messages lastObject];
-//
-//        PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGE_CLASS_NAME];
-//        [query whereKey:PF_MESSAGE_GROUPID equalTo:_userChannelId];
-//
-//        if (message_last != nil) {
-//            [query whereKey:PF_MESSAGE_CREATEDAT greaterThan:message_last.date];
-//        }
-//
-//        [query includeKey:PF_MESSAGE_USER];
-//        [query orderByDescending:PF_MESSAGE_CREATEDAT];
-//        [query setLimit:50];
-//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//             if (error == nil) {
-//                 BOOL incoming = NO;
-//                 self.automaticallyScrollsToMostRecentMessage = NO;
-//                 for (PFObject *object in [objects reverseObjectEnumerator])
-//                 {
-//                     JSQMessage *message = [self addParseMessage:object];
-//                     if ([self incoming:message]) {
-//                         incoming = YES;
-//                     }
-//                 }
-//                 if ([objects count] != 0)
-//                 {
-//                     if (_initialized && incoming)
-//                         [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-//                     [self finishReceivingMessage];
-//                     [self scrollToBottomAnimated:NO];
-//                 }
-//                 self.automaticallyScrollsToMostRecentMessage = YES;
-//                 _initialized = YES;
-//                 [_hud hide:YES];
-//             }
-//             else {
-//                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
-//                                           withTitle:@"Ooops!" andMessage:@"We had trouble loading messages"];
-//                 [alert show];
-//             }
-//
-//             _isLoading = NO;
-//         }];
-//    }
-//}
-
 - (JSQMessage *)addSlackMessage:(FBLChat *)chat {
     JSQMessage *message;
     NSString *senderId;
@@ -418,49 +290,6 @@
     return message;
 }
 
-//- (JSQMessage *)addParseMessage:(PFObject *)object {
-//    JSQMessage *message;
-//
-//    PFUser *user = object[PF_MESSAGE_USER];
-//    NSString *name = user[PF_CUSTOMER_FULLNAME];
-//
-//    PFFile *fileVideo = object[PF_MESSAGE_VIDEO];
-//    PFFile *filePicture = object[PF_MESSAGE_PICTURE];
-//
-//    if ((filePicture == nil) && (fileVideo == nil))
-//    {
-//        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt text:object[PF_MESSAGE_TEXT]];
-//    }
-//
-//    if (fileVideo != nil)
-//    {
-//        JSQVideoMediaItem *mediaItem = [[JSQVideoMediaItem alloc] initWithFileURL:[NSURL URLWithString:fileVideo.url] isReadyToPlay:YES];
-//        mediaItem.appliesMediaViewMaskAsOutgoing = [user.objectId isEqualToString:self.senderId];
-//        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt media:mediaItem];
-//    }
-//
-//    if (filePicture != nil)
-//    {
-//        JSQPhotoMediaItem *mediaItem = [[JSQPhotoMediaItem alloc] initWithImage:nil];
-//        mediaItem.appliesMediaViewMaskAsOutgoing = [user.objectId isEqualToString:self.senderId];
-//        message = [[JSQMessage alloc] initWithSenderId:user.objectId senderDisplayName:name date:object.createdAt media:mediaItem];
-//
-//        [filePicture getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
-//         {
-//             if (error == nil)
-//             {
-//                 mediaItem.image = [UIImage imageWithData:imageData];
-//                 [self.collectionView reloadData];
-//             }
-//         }];
-//    }
-//
-//    [_users addObject:user];
-//    [_messages addObject:message];
-//
-//    return message;
-//}
-
 - (void)sendMessageToSlack:(NSString *)text Video:(NSURL *)video Picture:(UIImage *)picture {
 
     void(^completionBlock)(FBLChat *chat, NSString *error)=^(FBLChat *chat, NSString *error) {
@@ -478,68 +307,8 @@
 
     [[FBLChatStore sharedStore] sendSlackMessage:text toChannel:self.channel withCompletion:completionBlock];
 
-//    UpdateMessageCounter(_userChannelId, text);
-
     [self finishSendingMessage];
 }
-
-//- (void)sendMessageToParse:(NSString *)text Video:(NSURL *)video Picture:(UIImage *)picture {
-//    PFFile *fileVideo = nil;
-//    PFFile *filePicture = nil;
-//
-//    if (video != nil)
-//    {
-//        text = @"[Video message]";
-//        fileVideo = [PFFile fileWithName:@"video.mp4" data:[[NSFileManager defaultManager] contentsAtPath:video.path]];
-//        [fileVideo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//         {
-//             if (error != nil) {
-//                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
-//                                                                withTitle:@"Ooops!" andMessage:@"We had trouble saving that video"];
-//                 [alert show];
-//             }
-//         }];
-//    }
-//
-//    if (picture != nil)
-//    {
-//        text = @"[Picture message]";
-//        filePicture = [PFFile fileWithName:@"picture.jpg" data:UIImageJPEGRepresentation(picture, 0.6)];
-//        [filePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//         {
-//             if (error != nil) {
-//                 SIAlertView *alert = [FBLViewHelpers createAlertForError:error
-//                                                                withTitle:@"Ooops!" andMessage:@"We had trouble saving picture"];
-//                 [alert show];
-//             }
-//         }];
-//    }
-//
-//    PFObject *object = [PFObject objectWithClassName:PF_MESSAGE_CLASS_NAME];
-//    object[PF_MESSAGE_USER] = [PFUser currentUser];
-//    object[PF_MESSAGE_GROUPID] = _userChannelId;
-//    object[PF_MESSAGE_TEXT] = text;
-//    if (fileVideo != nil) object[PF_MESSAGE_VIDEO] = fileVideo;
-//    if (filePicture != nil) object[PF_MESSAGE_PICTURE] = filePicture;
-//    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//     {
-//         if (error == nil)
-//         {
-//             [JSQSystemSoundPlayer jsq_playMessageSentSound];
-//             [self loadParseMessages];
-//         }
-//         else {
-//             SIAlertView *alert = [FBLViewHelpers createAlertForError:error
-//                                                        withTitle:@"Ooops!" andMessage:@"We had trouble saving that message"];
-//             [alert show];
-//         };
-//     }];
-//
-//    SendPushNotification(_userChannelId, text);
-//    UpdateMessageCounter(_userChannelId, text);
-//
-//    [self finishSendingMessage];
-//}
 
 #pragma mark - JSQMessagesViewController protocol methods
 
@@ -547,8 +316,6 @@
 
     // Send to Slack
     [self sendMessageToSlack:text Video:nil Picture:nil];
-    // Send to Parse
-//    [self sendMessageToParse:text Video:nil Picture:nil];
 }
 
 - (void)didPressAccessoryButton:(UIButton *)sender {
@@ -573,50 +340,6 @@
     else
     {
         return _bubbleImageIncoming;
-    }
-}
-
-- (id<JSQMessageAvatarImageDataSource>)getParseUserImage:(PFObject *)user {
-    if (_avatars[user.objectId] == nil) {
-
-        PFFile *file = user[PF_CUSTOMER_THUMBNAIL];
-        [file getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
-         {
-             if (error == nil)
-             {
-                 _avatars[user.objectId] = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData] diameter:30.0];
-                 [self.collectionView reloadData];
-             }
-         }];
-        return _avatarImageBlank;
-    } else {
-        return _avatars[user.objectId];
-    }
-}
-
-
-- (id<JSQMessageAvatarImageDataSource>)getFBLUserImage:(FBLMember *)member {
-    if (_avatars[member.id] == nil) {
-        PFQuery *query = [PFQuery queryWithClassName:PF_MEMBER_CLASS_NAME];
-        [query whereKey:PF_MEMBER_SLACKID equalTo:member.id];
-        NSArray *members = [query findObjects];
-
-        if ([members count]>0) {
-            PFFile *file = members[0][PF_CUSTOMER_THUMBNAIL];
-            [file getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
-             {
-                 if (error == nil)
-                 {
-                     _avatars[member.id] = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData] diameter:30.0];
-                     [self.collectionView reloadData];
-                 }
-             }];
-            return _avatarImageBlank;
-        } else {
-            return _avatarImageBlank;
-        }
-    } else {
-        return _avatars[member.id];
     }
 }
 
@@ -776,21 +499,11 @@
     UIImage *picture = info[UIImagePickerControllerEditedImage];
 
     // TODO: Implement image picker transfer
-//    [self sendMessageToParse:nil Video:video Picture:picture];
 
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Helper methods
-
-- (BOOL)isIncomingChat:(FBLChat *)chat {
-    return ![chat.username isEqualToString:@"bot"];
-}
-
-- (BOOL)isOutgoingChat:(FBLChat *)chat {
-    return ![chat respondsToSelector:@selector(username)]; // Janky
-//     [chat.username isEqualToString:@"bot"];
-}
 
 - (BOOL)incoming:(JSQMessage *)message {
 
@@ -811,7 +524,7 @@
     NSString *eventType = [json objectForKey:@"type"];
 
     if ([eventType isEqualToString:@"hello"]) {
-        NSLog(@"WEBSOCKET PING RECEIVED");
+        NSLog(@"WEBSOCKET RESPONSE RECEIVED");
     } else if ([eventType isEqualToString:@"message"]) {
         NSString *channelId = [json objectForKey:@"channel"];;
 
@@ -822,7 +535,7 @@
             [self.collectionView reloadData];
             [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
             [self finishReceivingMessage];
-//            [self scrollToBottomAnimated:NO];
+            [self scrollToBottomAnimated:NO];
         }
     }
 }

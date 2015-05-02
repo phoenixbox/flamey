@@ -15,16 +15,9 @@
 
 + (FBLChannelStore *)sharedStore;
 
-- (void)joinCurrentUserChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block;
-
 - (void)refreshChannelsWithCollection:(NSArray *)channels;
-
-- (void)saveUniqueChannelForUser:(NSString *)channelId;
-
-- (NSMutableArray *)getChannelsForParseObjects:(NSArray *)objects;
 
 - (FBLChannel *)find:(NSString *)channelId;
 
-//- (void)createAnyoneSlackChannel:(void (^)(NSString *channelId, NSString *createAnyoneError))block;
 
 @end

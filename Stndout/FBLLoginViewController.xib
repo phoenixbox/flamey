@@ -9,6 +9,7 @@
                 <outlet property="contentView" destination="arQ-gQ-Nne" id="wXx-JS-hxo"/>
                 <outlet property="facebookButton" destination="RKR-dE-0hc" id="feO-Y5-zzz"/>
                 <outlet property="loginPromptTitle" destination="iTZ-Ib-bf5" id="51t-bM-4pf"/>
+                <outlet property="registerButton" destination="RKR-dE-0hc" id="81E-N5-Lrx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,18 +30,18 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKR-dE-0hc">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKR-dE-0hc" userLabel="RegisterButton">
                             <rect key="frame" x="20" y="264" width="315" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="rsW-se-ryw"/>
                             </constraints>
-                            <state key="normal" title="Connect With Facebook">
+                            <state key="normal" title="Start Chatting">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="facebookButton:" destination="-1" eventType="touchUpInside" id="WcT-ZZ-wYY"/>
+                                <action selector="registerCustomerDetails:" destination="-1" eventType="touchUpInside" id="TjZ-l8-q6P"/>
                             </connections>
                         </button>
                     </subviews>

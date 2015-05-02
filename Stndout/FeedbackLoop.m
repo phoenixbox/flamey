@@ -13,7 +13,6 @@
 #import "FBLAppConstants.h"
 
 // Components
-#import "FBLFeedbackTabBarController.h"
 #import "FBLChatViewController.h"
 
 static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarController";
