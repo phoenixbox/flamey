@@ -12,9 +12,6 @@
 // Constants
 #import "FBLAppConstants.h"
 
-// Helpers
-#import "FBLViewHelpers.h"
-
 // Data Layer
 #import "FBLChannel.h"
 #import "FBLChannelStore.h"
@@ -27,10 +24,8 @@
 
 // Libs
 #import "MBProgressHUD.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 // Utils
-#import "FBLViewhelpers.h"
 #import "FBLCameraUtil.h"
 
 @interface FBLChatViewController ()
@@ -127,12 +122,24 @@
     [button addTarget:self
                  action:@selector(slackOauth)
        forControlEvents:UIControlEventTouchUpInside];
-    [FBLViewHelpers setBaseButtonStyle:button withColor:[UIColor blackColor]];
+
+    [self styleButton:button withColor:[UIColor blackColor]];
+
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 
     [_emptyMessage addSubview:button];
     [self.collectionView setBackgroundView:_emptyMessage];
     [self hideErrorView:YES];
+}
+
+- (void)styleButton:(UIButton *)button withColor:(UIColor *)color {
+    button.layer.cornerRadius = 4;
+    button.layer.borderWidth = 2;
+    button.layer.borderColor = color.CGColor;
+    [button setBackgroundColor:[UIColor whiteColor]];
+    [button setTitleColor:color forState:UIControlStateNormal];
+    [button setTintColor:color];
+
 }
 
 - (void)hideErrorView:(BOOL)show {
@@ -240,9 +247,7 @@
                 [_hud hide:YES];
             }
             else {
-                SIAlertView *alert = [FBLViewHelpers createAlertForError:nil
-                                                               withTitle:@"Ooops!" andMessage:error];
-                [alert show];
+                // Todo replace background view with the correct title
             }
 
             [self.collectionView reloadData];
@@ -298,10 +303,9 @@
             [JSQSystemSoundPlayer jsq_playMessageSentSound];
         }
         else {
-            // TODO: Add a retry send message helper - and flag the error in the UI
-            SIAlertView *alert = [FBLViewHelpers createAlertForError:nil
-                                                           withTitle:@"Ooops!" andMessage:error];
-            [alert show];
+            // Update the background view message
+            // Add the retry sending message helper to message button
+
         };
     };
 
@@ -319,8 +323,11 @@
 }
 
 - (void)didPressAccessoryButton:(UIButton *)sender {
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
-                                               otherButtonTitles:@"Share Photo", @"Share Video", nil];
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:nil
+                                                        delegate:self
+                                               cancelButtonTitle:@"Cancel"
+                                          destructiveButtonTitle:nil
+                                               otherButtonTitles:@"Share Photo", nil];
     [action showInView:self.view];
 }
 
@@ -484,8 +491,6 @@
     {
         if (buttonIndex == 0) {
             ShouldStartPhotoLibrary(self, YES);
-        } else if (buttonIndex == 1) {
-            ShouldStartVideoLibrary(self, YES);
         } else {
             NSLog(@"Error: No Action for Button Index");
         }
@@ -495,8 +500,8 @@
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSURL *video = info[UIImagePickerControllerMediaURL];
-    UIImage *picture = info[UIImagePickerControllerEditedImage];
+//    NSURL *video = info[UIImagePickerControllerMediaURL];
+//    UIImage *picture = info[UIImagePickerControllerEditedImage];
 
     // TODO: Implement image picker transfer
 

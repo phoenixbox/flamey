@@ -17,7 +17,6 @@ pod 'SIAlertView', '~> 1.3'
 pod 'AFBlurSegue', '~> 1.2'
 pod 'Mixpanel', '~> 2.7'
 pod 'Parse', '~> 1.7'
-pod 'SlackTextViewController', '~> 1.5'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'JSQMessagesViewController', '~> 7.0'
 pod 'ParseUI', '~> 1.1'

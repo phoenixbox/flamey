@@ -9,4 +9,3 @@
 #import <UIKit/UIKit.h>
 
 BOOL	ShouldStartPhotoLibrary		(id target, BOOL canEdit);
-BOOL	ShouldStartVideoLibrary		(id target, BOOL canEdit);

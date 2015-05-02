@@ -15,13 +15,10 @@
 		CB5972AF1AD1C6FF00DAE5A1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5972AD1AD1C6FF00DAE5A1 /* Fabric.framework */; };
 		CB6879F41AD9DEDF00FCADA1 /* FBLGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6879F21AD9DEDF00FCADA1 /* FBLGroupsViewController.m */; };
 		CB6879F51AD9DEDF00FCADA1 /* FBLGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6879F31AD9DEDF00FCADA1 /* FBLGroupsViewController.xib */; };
-		CB6879FD1AD9DF1300FCADA1 /* FBLProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6879FB1AD9DF1300FCADA1 /* FBLProfileViewController.m */; };
-		CB6879FE1AD9DF1300FCADA1 /* FBLProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6879FC1AD9DF1300FCADA1 /* FBLProfileViewController.xib */; };
 		CB687A021AD9FDA800FCADA1 /* FBLChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */; };
 		CB687A0E1ADA0F2C00FCADA1 /* FBLCameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A0D1ADA0F2C00FCADA1 /* FBLCameraUtil.m */; };
 		CB687A101ADA0FE800FCADA1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB687A0F1ADA0FE800FCADA1 /* MobileCoreServices.framework */; };
 		CB687A131ADA2F2000FCADA1 /* FBLHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A121ADA2F2000FCADA1 /* FBLHelpers.m */; };
-		CB687A211ADA522700FCADA1 /* FBLViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CB687A201ADA522700FCADA1 /* FBLViewHelpers.m */; };
 		CB6E10F31ADB072F001D750F /* FBLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6E10F11ADB072F001D750F /* FBLLoginViewController.m */; };
 		CB6E10F41ADB072F001D750F /* FBLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6E10F21ADB072F001D750F /* FBLLoginViewController.xib */; };
 		CB6E10FA1ADB49E7001D750F /* FBLMembersStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6E10F91ADB49E7001D750F /* FBLMembersStore.m */; };
@@ -164,9 +161,6 @@
 		CB6879F11AD9DEDF00FCADA1 /* FBLGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLGroupsViewController.h; sourceTree = "<group>"; };
 		CB6879F21AD9DEDF00FCADA1 /* FBLGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLGroupsViewController.m; sourceTree = "<group>"; };
 		CB6879F31AD9DEDF00FCADA1 /* FBLGroupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLGroupsViewController.xib; sourceTree = "<group>"; };
-		CB6879FA1AD9DF1300FCADA1 /* FBLProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLProfileViewController.h; sourceTree = "<group>"; };
-		CB6879FB1AD9DF1300FCADA1 /* FBLProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLProfileViewController.m; sourceTree = "<group>"; };
-		CB6879FC1AD9DF1300FCADA1 /* FBLProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLProfileViewController.xib; sourceTree = "<group>"; };
 		CB687A001AD9FDA800FCADA1 /* FBLChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLChatViewController.h; sourceTree = "<group>"; };
 		CB687A011AD9FDA800FCADA1 /* FBLChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLChatViewController.m; sourceTree = "<group>"; };
 		CB687A031ADA051600FCADA1 /* FBLAppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBLAppConstants.h; sourceTree = "<group>"; };
@@ -175,8 +169,6 @@
 		CB687A0F1ADA0FE800FCADA1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CB687A111ADA2F0D00FCADA1 /* FBLHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBLHelpers.h; sourceTree = "<group>"; };
 		CB687A121ADA2F2000FCADA1 /* FBLHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLHelpers.m; sourceTree = "<group>"; };
-		CB687A1F1ADA522700FCADA1 /* FBLViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLViewHelpers.h; sourceTree = "<group>"; };
-		CB687A201ADA522700FCADA1 /* FBLViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLViewHelpers.m; sourceTree = "<group>"; };
 		CB6E10F01ADB072F001D750F /* FBLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLLoginViewController.h; sourceTree = "<group>"; };
 		CB6E10F11ADB072F001D750F /* FBLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLLoginViewController.m; sourceTree = "<group>"; };
 		CB6E10F21ADB072F001D750F /* FBLLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBLLoginViewController.xib; sourceTree = "<group>"; };
@@ -662,7 +654,6 @@
 				CB6E10F71ADB47F5001D750F /* Stores */,
 				CB6E10ED1ADB06F5001D750F /* Login */,
 				CB687A0B1ADA0E1600FCADA1 /* Utils */,
-				CB6879F91AD9DF0200FCADA1 /* Profile */,
 				CB6879F01AD9DECA00FCADA1 /* Groups */,
 				CB6879EA1AD9DEAD00FCADA1 /* Chats */,
 				CB687A031ADA051600FCADA1 /* FBLAppConstants.h */,
@@ -691,16 +682,6 @@
 			name = Groups;
 			sourceTree = "<group>";
 		};
-		CB6879F91AD9DF0200FCADA1 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				CB6879FA1AD9DF1300FCADA1 /* FBLProfileViewController.h */,
-				CB6879FB1AD9DF1300FCADA1 /* FBLProfileViewController.m */,
-				CB6879FC1AD9DF1300FCADA1 /* FBLProfileViewController.xib */,
-			);
-			name = Profile;
-			sourceTree = "<group>";
-		};
 		CB687A0B1ADA0E1600FCADA1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,8 +689,6 @@
 				CB687A0D1ADA0F2C00FCADA1 /* FBLCameraUtil.m */,
 				CB687A111ADA2F0D00FCADA1 /* FBLHelpers.h */,
 				CB687A121ADA2F2000FCADA1 /* FBLHelpers.m */,
-				CB687A1F1ADA522700FCADA1 /* FBLViewHelpers.h */,
-				CB687A201ADA522700FCADA1 /* FBLViewHelpers.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -941,7 +920,6 @@
 				CB6FE8C21AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.xib in Resources */,
 				CB6FE8E91AD0B7FF00AD0BD2 /* FLTutorialHowView.xib in Resources */,
 				CB6FE8D51AD0B7FF00AD0BD2 /* FLLoginSlide.xib in Resources */,
-				CB6879FE1AD9DF1300FCADA1 /* FBLProfileViewController.xib in Resources */,
 				CB6FE8D01AD0B7FF00AD0BD2 /* FLFilterTableViewCell.xib in Resources */,
 				CB6FE8ED1AD0B7FF00AD0BD2 /* FLTutorialResultView.xib in Resources */,
 				CB6FE91A1AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf in Resources */,
@@ -1059,7 +1037,6 @@
 				CB6FE8D71AD0B7FF00AD0BD2 /* FLLoginViewController.m in Sources */,
 				CB6FE8F81AD0B7FF00AD0BD2 /* AsyncImageView.swift in Sources */,
 				CB6FE90B1AD0B7FF00AD0BD2 /* SpringImageView.swift in Sources */,
-				CB687A211ADA522700FCADA1 /* FBLViewHelpers.m in Sources */,
 				CB29EC661AF0A1DD00362F26 /* FBLTeamStore.m in Sources */,
 				CB6FE8E81AD0B7FF00AD0BD2 /* FLTutorialHowView.m in Sources */,
 				CB6FE8E51AD0B7FF00AD0BD2 /* FLToolsStore.m in Sources */,
@@ -1085,7 +1062,6 @@
 				CB6FE8F21AD0B7FF00AD0BD2 /* FLViewHelpers.m in Sources */,
 				CB6FE8FB1AD0B7FF00AD0BD2 /* DesignableImageView.swift in Sources */,
 				CBF402081ADF5882000DFB98 /* FBLChannelStore.m in Sources */,
-				CB6879FD1AD9DF1300FCADA1 /* FBLProfileViewController.m in Sources */,
 				CB6FE8C11AD0B7FF00AD0BD2 /* FLAnnotationTableViewCell.m in Sources */,
 				CB6FE9111AD0B7FF00AD0BD2 /* TransitionZoom.swift in Sources */,
 				CB6FE8CC1AD0B7FF00AD0BD2 /* FLFilterSlider.m in Sources */,
