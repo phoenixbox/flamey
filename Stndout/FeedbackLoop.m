@@ -20,6 +20,7 @@ static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarControlle
 
 @interface FeedbackLoop ()
 @property (nonatomic, strong) UIWindow *feedbackLoopWindow;
+@property (nonatomic, strong) FBLChatViewController *chatViewController;
 @end
 
 @implementation FeedbackLoop
@@ -64,15 +65,21 @@ static NSString * const kFeedbackTabBarController = @"FBLFeedbackTabBarControlle
     singleton.feedbackLoopWindow = [[UIWindow alloc]initWithFrame:screenBounds];
     [singleton.feedbackLoopWindow setWindowLevel:UIWindowLevelAlert];
 
-    FBLChatViewController *chatViewController = [[FBLChatViewController alloc] init];
+    void (^popWindow)() = ^void() {
+        [self popWindow];
+    };
 
-    [singleton.feedbackLoopWindow setRootViewController:chatViewController];
+    singleton.chatViewController = [[FBLChatViewController alloc] init];
+    singleton.chatViewController.popWindow = popWindow;
+
+    [singleton.feedbackLoopWindow setRootViewController:singleton.chatViewController];
     [singleton.feedbackLoopWindow makeKeyAndVisible];
 }
 
-+ (void)presentConversationList {
-    // Present the historical conversation thread
++ (void)popWindow {
+    FeedbackLoop *singleton = [self sharedInstance];
+    NSLog(@"Remove FeedbackLoop Window");
+    singleton.feedbackLoopWindow = nil;
 }
-
 
 @end

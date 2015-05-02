@@ -239,11 +239,15 @@
 }
 
 - (void)hideFeedbackLoopWindow {
-    UIWindow *topWindow = [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
-        return win1.windowLevel - win2.windowLevel;
-    }] lastObject];
+    [self flushWebSocket];
+    _popWindow();
+}
 
-    [topWindow setHidden:YES];
+- (void)flushWebSocket {
+    [_webSocket close];
+    [FBLSlackStore sharedStore].webhookUrl = nil;
+    _webSocket.delegate = nil;
+    _webSocket = nil;
 }
 
 - (void)setChannelDetails {
@@ -254,10 +258,10 @@
 - (void)setupWebsocket {
     NSString *websocketUrl = [FBLSlackStore sharedStore].webhookUrl;
 
-    SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:websocketUrl]];
-    newWebSocket.delegate = self;
+    _webSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:websocketUrl]];
+    _webSocket.delegate = self;
 
-    [newWebSocket open];
+    [_webSocket open];
 }
 
 - (void)setupHUD {
@@ -824,7 +828,7 @@
 }
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
-    NSLog(@"WEBSOCKET OPENED ");
+    NSLog(@"WEBSOCKET OPENED");
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
@@ -832,6 +836,7 @@
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
+    NSLog(@"WEBSOCKET CLOSED");
 }
 
 @end

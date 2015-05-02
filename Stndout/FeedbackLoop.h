@@ -20,6 +20,4 @@
 
 + (void)presentChatChannel;
 
-+ (void)presentConversationList;
-
 @end

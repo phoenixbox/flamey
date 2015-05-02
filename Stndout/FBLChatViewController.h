@@ -16,4 +16,6 @@
 
 - (id)initWithSlackChannel:(NSString *)channelId;
 
+@property (nonatomic, copy) void (^popWindow)();
+
 @end
