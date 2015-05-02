@@ -111,6 +111,7 @@
 		CB6FE91A1AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B71AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf */; };
 		CB6FE91B1AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6FE8B81AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf */; };
 		CB7BD8571AC86BB90088F22D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7BD8561AC86BB90088F22D /* MessageUI.framework */; };
+		CBE36FD11AF55B9B008579F8 /* libFeedbackLoop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE36FC51AF559C1008579F8 /* libFeedbackLoop.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = CB3B7CF81A58374B005F6402;
 			remoteInfo = Flamey;
+		};
+		CBE36FC41AF559C1008579F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBE36FBD1AF559C1008579F8 /* FeedbackLoop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CBC8F6601AEDB145001DDB07;
+			remoteInfo = FeedbackLoop;
+		};
+		CBE36FC61AF559C1008579F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBE36FBD1AF559C1008579F8 /* FeedbackLoop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CBC8F66B1AEDB145001DDB07;
+			remoteInfo = FeedbackLoopTests;
+		};
+		CBE36FC81AF559C1008579F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBE36FBD1AF559C1008579F8 /* FeedbackLoop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CBC8F68C1AEDB902001DDB07;
+			remoteInfo = FeedbackLoopResources;
+		};
+		CBE36FCB1AF55A83008579F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBE36FBD1AF559C1008579F8 /* FeedbackLoop.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CBC8F65F1AEDB145001DDB07;
+			remoteInfo = FeedbackLoop;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -279,6 +308,7 @@
 		CB6FE8B71AD0B7FF00AD0BD2 /* Walkway_SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_SemiBold.ttf; sourceTree = "<group>"; };
 		CB6FE8B81AD0B7FF00AD0BD2 /* Walkway_UltraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Walkway_UltraBold.ttf; sourceTree = "<group>"; };
 		CB7BD8561AC86BB90088F22D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CBE36FBD1AF559C1008579F8 /* FeedbackLoop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FeedbackLoop.xcodeproj; path = ../../../../../../feedbackLoop/ios/FeedbackLoop/FeedbackLoop.xcodeproj; sourceTree = "<group>"; };
 		CBFBFE811A58826B006657CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CBFBFE821A58826B006657CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CBFBFE831A58826B006657CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -292,6 +322,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE36FD11AF55B9B008579F8 /* libFeedbackLoop.a in Frameworks */,
 				CB687A101ADA0FE800FCADA1 /* MobileCoreServices.framework in Frameworks */,
 				CB7BD8571AC86BB90088F22D /* MessageUI.framework in Frameworks */,
 				CB5972AE1AD1C6FF00DAE5A1 /* Crashlytics.framework in Frameworks */,
@@ -586,6 +617,7 @@
 		CB6FE8251AD0B7FF00AD0BD2 /* Stndout */ = {
 			isa = PBXGroup;
 			children = (
+				CBE36FBD1AF559C1008579F8 /* FeedbackLoop.xcodeproj */,
 				CB60BF2B1AD0DCF0006D4EB7 /* Assets */,
 				CB60BF2A1AD0DCD3006D4EB7 /* Components */,
 				CB60BF291AD0DC8F006D4EB7 /* TutorialViewController */,
@@ -649,6 +681,16 @@
 			path = Spring;
 			sourceTree = "<group>";
 		};
+		CBE36FBE1AF559C1008579F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBE36FC51AF559C1008579F8 /* libFeedbackLoop.a */,
+				CBE36FC71AF559C1008579F8 /* FeedbackLoopTests.xctest */,
+				CBE36FC91AF559C1008579F8 /* FeedbackLoop.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CBFBFE801A58826B006657CD /* FacebookSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,6 +722,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CBE36FCC1AF55A83008579F8 /* PBXTargetDependency */,
 			);
 			name = Stndout;
 			productName = Flamey;
@@ -734,6 +777,12 @@
 			mainGroup = CB3B7CF01A58374B005F6402;
 			productRefGroup = CB3B7CFA1A58374B005F6402 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CBE36FBE1AF559C1008579F8 /* Products */;
+					ProjectRef = CBE36FBD1AF559C1008579F8 /* FeedbackLoop.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CB3B7CF81A58374B005F6402 /* Stndout */,
@@ -741,6 +790,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CBE36FC51AF559C1008579F8 /* libFeedbackLoop.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFeedbackLoop.a;
+			remoteRef = CBE36FC41AF559C1008579F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CBE36FC71AF559C1008579F8 /* FeedbackLoopTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FeedbackLoopTests.xctest;
+			remoteRef = CBE36FC61AF559C1008579F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CBE36FC91AF559C1008579F8 /* FeedbackLoop.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FeedbackLoop.bundle;
+			remoteRef = CBE36FC81AF559C1008579F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CB3B7CF71A58374B005F6402 /* Resources */ = {
@@ -926,6 +999,11 @@
 			isa = PBXTargetDependency;
 			target = CB3B7CF81A58374B005F6402 /* Stndout */;
 			targetProxy = CB3B7D161A58374B005F6402 /* PBXContainerItemProxy */;
+		};
+		CBE36FCC1AF55A83008579F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FeedbackLoop;
+			targetProxy = CBE36FCB1AF55A83008579F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
