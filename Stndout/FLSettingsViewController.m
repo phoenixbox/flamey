@@ -20,8 +20,7 @@
 
 // Pods
 #import "Mixpanel.h"
-
-#import "FeedbackLoop.h"
+#import <FeedbackLoop/FeedbackLoop.h>
 
 // Helpers
 #import "FLViewHelpers.h"
@@ -220,7 +219,7 @@ final sections footer view
 //      ******** FeedbackLoop Entry Point ***********
 //        FBLFeedbackTabBarController *feedbackTabBarViewController = [[FBLFeedbackTabBarController alloc] initWithNibName:kFeedbackTabBarController bundle:nil];
 //        feedbackTabBarViewController.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-//        [self presentViewController:feedbackTabBarViewController animated:YES completion:nil];
+////        [self presentViewController:feedbackTabBarViewController animated:YES completion:nil];
         [FeedbackLoop registerUserWithEmail:@"shane-banana@gmail.com"];
         [FeedbackLoop presentChatChannel];
 
