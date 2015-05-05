@@ -207,10 +207,16 @@ NSString *const kFemale = @"female";
 
 - (IBAction)exitTutorial:(id)sender {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    NSString *persona = [[FLSettings defaultSettings] selectedPersona];
+
+    if (!persona) {
+        persona = @"NO SELECTION";
+    }
+
     [mixpanel track:@"Education" properties:@{
                                                 @"controller": NSStringFromClass([self class]),
                                                 @"state": @"exit",
-                                                @"persona": [[FLSettings defaultSettings] selectedPersona]
+                                                @"persona": persona
                                                 }];
     NSNotification *notification = [NSNotification notificationWithName:@"completeTutorial"
                                                                  object:self];
