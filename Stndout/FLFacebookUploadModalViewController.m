@@ -111,7 +111,7 @@
     _bodyLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:bodyCopySize];
     _bodyLabel.textColor = [UIColor whiteColor];
     _bodyLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    _bodyLabel.numberOfLines = 2;
+    _bodyLabel.numberOfLines = 3;
 
     [_bodyLabel setText:copy afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"stndout" options:NSCaseInsensitiveSearch];
@@ -155,7 +155,7 @@
         _readyButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:fontSize];
         [_readyButton setBackgroundColor:[UIColor clearColor]];
 
-        [_bodyLabel setText:@"Now you stndout!" afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        [_bodyLabel setText:@"Now you stndout!\nOpen your dating apps and use your new photos!" afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
             NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"stndout" options:NSCaseInsensitiveSearch];
 
             UIFont *boldSystemFont = [UIFont fontWithName:@"AvenirNext-Bold" size:[FLViewHelpers buttonCopyForScreenSize]];
@@ -182,12 +182,16 @@
                                     repeats:NO];
 }
 
+- (void)roundSpringLogo {
+    _springLogo.layer.cornerRadius = _springLogo.bounds.size.width / 2;
+    _springLogo.clipsToBounds = YES;
+}
+
 - (void)blurOutSpringLogo {
     FLSettings *sharedSettings = [FLSettings defaultSettings];
     FLUser *user = sharedSettings.user;
 
     void(^fadeInProfileImage)(void)=^(void) {
-
         if (user.image) {
             [_springLogo setImage:user.image];
             [self setFinishedLogo];
@@ -211,6 +215,7 @@
 }
 
 -(void)setFinishedLogo {
+    [self roundSpringLogo];
     [_springLogo setAnimation:@"zoomIn"];
     [_springLogo setCurve:@"easeInQuad"];
     [_springLogo setForce:1];
