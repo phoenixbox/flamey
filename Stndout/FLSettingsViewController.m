@@ -217,7 +217,14 @@ final sections footer view
     // Enum pattern would be better here
     if ([cellName isEqualToString:kContactCell]) {
         NSString *email = [[[FLSettings defaultSettings] user] email];
-        
+
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        [mixpanel track:@"Chat" properties:@{
+                                                    @"controller": NSStringFromClass([self class]),
+                                                    @"state": @"loading",
+                                                    @"result": @"success",
+                                                    }];
+
         [FeedbackLoop registerUserWithEmail:email];
         [FeedbackLoop presentChatChannel];
     } else if ([cellName isEqualToString:kPrivacyCell]) {
