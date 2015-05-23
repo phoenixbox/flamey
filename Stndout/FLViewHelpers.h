@@ -55,4 +55,10 @@
 
 + (float)buttonCopyForScreenSize;
 
++ (void)shouldHide:(UIView *)view;
+
++ (void)shouldShow:(UIView *)view;
+
++ (BOOL)screenIsiPhone4;
+
 @end

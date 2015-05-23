@@ -13,6 +13,9 @@
 // Data Layer
 #import "FLSettings.h"
 
+// Helpers
+#import "FLViewHelpers.h"
+
 // Pods
 #import "Mixpanel.h"
 
@@ -61,6 +64,7 @@ NSString *const kFemale = @"female";
 
     if (selectedPersona) {
         [_finishButton setHidden:NO];
+        [FLViewHelpers shouldHide:_tapInstructions];
 
         if (user.isMale) {
             [self setMalePersonaImages:selectedPersona];

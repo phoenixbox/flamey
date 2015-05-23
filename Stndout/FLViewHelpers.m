@@ -261,6 +261,28 @@
     return 0;
 }
 
++ (void)shouldHide:(UIView *)view {
+    if ([UIScreen mainScreen].bounds.size.height == 480) {
+        // iPhone 4 screen size
+        [view setHidden:YES];
+    }
+}
+
++ (void)shouldShow:(UIView *)view {
+    if ([UIScreen mainScreen].bounds.size.height == 480) {
+        // iPhone 4 screen size
+        [view setHidden:NO];
+    }
+}
+
++ (BOOL)screenIsiPhone4 {
+    if ([UIScreen mainScreen].bounds.size.height == 480) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 @end
 
 // Avenir Font Family

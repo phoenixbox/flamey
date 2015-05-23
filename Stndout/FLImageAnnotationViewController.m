@@ -71,6 +71,22 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
     if (!settings.understandAnnotation) {
         [self performSegueWithIdentifier:kShowAnnotationInstructions sender:self];
     }
+
+    if (![FLViewHelpers screenIsiPhone4]) {
+        [FLViewHelpers setBaseButtonStyle:_alternateUploadButton withColor:[UIColor blackColor]];
+        [_alternateUploadButton setHidden:YES];
+    }
+}
+
+- (void)resetButtonsForSmallScreen {
+    CGRect removeFrame = _removeSelectedPhoto.frame;
+    removeFrame.origin.y = 0;
+    [_removeSelectedPhoto setFrame:removeFrame];
+
+    CGRect uploadFrame = removeFrame;
+    uploadFrame.origin.y = 58.0f;
+
+    [_uploadButton setFrame:uploadFrame];
 }
 
 - (void)trackSelectedPhotosCount {
@@ -679,6 +695,9 @@ static NSString * const kAddMorePhotosSegueIdentifier = @"getFacebookPhotos";
                                     atScrollPosition:UITableViewScrollPositionBottom
                                             animated:YES];
     }
+}
+
+- (IBAction)alternateUpload:(id)sender {
 }
 
 - (IBAction)scrollRight:(id)sender {

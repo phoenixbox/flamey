@@ -226,6 +226,8 @@ NSString *const kFemaleUploadThree = @"FemaleUploadThree";
     // Set the image view
     [_thirdImageView setImage:[UIImage imageNamed:@"DatingApps"]];
     [_thirdImageView setContentMode:UIViewContentModeScaleAspectFit];
+    // Conditionally hide if on iPhone 4
+    [FLViewHelpers shouldHide:_thirdImageView];
 }
 
 - (void)setStartButtonStyleAndCopy {

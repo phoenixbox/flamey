@@ -23,6 +23,9 @@
 - (IBAction)scrollRight:(id)sender;
 - (IBAction)scrollLeft:(id)sender;
 
+- (IBAction)alternateUpload:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *alternateUploadButton;
+
 @property (strong, nonatomic) FLPhoto *selectedPhoto;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addFiltersButton;
 @end

@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leg-AO-eFW" userLabel="Content">
-                    <rect key="frame" x="10" y="50" width="355" height="567"/>
+                    <rect key="frame" x="10" y="40" width="355" height="587"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrT-Dv-IvV" userLabel="interactiveContainer">
                             <rect key="frame" x="5" y="173" width="345" height="235"/>
@@ -110,7 +110,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3T-4T-XV8">
-                            <rect key="frame" x="20" y="507" width="315" height="40"/>
+                            <rect key="frame" x="20" y="527" width="315" height="40"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="xjO-hy-gjn"/>
@@ -181,9 +181,9 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="leg-AO-eFW" secondAttribute="trailing" constant="10" id="JtN-gU-mfe"/>
-                <constraint firstItem="leg-AO-eFW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="VdA-WV-pVY"/>
+                <constraint firstItem="leg-AO-eFW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="VdA-WV-pVY"/>
                 <constraint firstItem="leg-AO-eFW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="ZgX-T5-KB4"/>
-                <constraint firstAttribute="bottom" secondItem="leg-AO-eFW" secondAttribute="bottom" constant="50" id="lYq-E9-YrE"/>
+                <constraint firstAttribute="bottom" secondItem="leg-AO-eFW" secondAttribute="bottom" constant="40" id="lYq-E9-YrE"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
@@ -192,6 +192,7 @@
                 <outlet property="firstPersonaButton" destination="C91-Tp-wQT" id="mrk-Hs-3h8"/>
                 <outlet property="removeButton" destination="a9r-s0-PV0" id="qLb-VZ-BGa"/>
                 <outlet property="secondPersonaButton" destination="LNY-15-kkA" id="XxE-rw-YRX"/>
+                <outlet property="tapInstructions" destination="CWR-kp-z4t" id="Edq-zu-hNd"/>
                 <outlet property="thirdPersonaButton" destination="QNG-0G-1kj" id="Aw6-sn-ghV"/>
                 <outlet property="tutorialImageView" destination="8Xh-HO-Jwz" id="8dX-Xa-nqa"/>
                 <outlet property="tutorialTitle" destination="JqK-vq-LsE" id="TUv-Fw-Hcj"/>

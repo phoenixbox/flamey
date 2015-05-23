@@ -35,5 +35,6 @@ extern NSString *const kFemaleThreeSelected;
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
 - (IBAction)exitTutorial:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *tapInstructions;
 
 @end
