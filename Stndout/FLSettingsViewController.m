@@ -216,7 +216,7 @@ final sections footer view
 
     // Enum pattern would be better here
     if ([cellName isEqualToString:kContactCell]) {
-        NSString *email = [[[FLSettings defaultSettings] user] email];
+        FLUser *currentUser = [[FLSettings defaultSettings] user];
 
         Mixpanel *mixpanel = [Mixpanel sharedInstance];
         [mixpanel track:@"Chat" properties:@{
@@ -225,8 +225,27 @@ final sections footer view
                                                     @"result": @"success",
                                                     }];
 
-        [FeedbackLoop registerUserWithEmail:email];
+        NSString *fullname = [NSString stringWithFormat:@"%@ %@",currentUser.firstName, currentUser.lastName];
+        NSDictionary *user = @{
+                               @"email": currentUser.email,
+                               @"user_name": fullname,
+                               @"created_at": currentUser.updatedTime,
+                               @"links": @{
+                                       @"gender": currentUser.gender,
+                                       @"timezone": currentUser.timezone,
+                                       @"first_name": currentUser.firstName,
+                                       @"last_name": currentUser.lastName,
+                                       @"gender": currentUser.gender,
+                                       @"profile_image": currentUser.profileImage,
+                                       @"model": [UIDevice currentDevice].model,
+                                       @"systemName": [UIDevice currentDevice].systemName,
+                                       @"systemVersion": [UIDevice currentDevice].systemVersion
+                                   }
+                               };
+
+        [FeedbackLoop registerAuthenticatedUser:user];
         [FeedbackLoop presentChatChannel];
+
     } else if ([cellName isEqualToString:kPrivacyCell]) {
         FLPrivacyViewController *privacyViewController = [[FLPrivacyViewController alloc] initWithNibName:kPrivacyViewController bundle:nil];
         [self presentViewController:privacyViewController animated:YES completion:nil];

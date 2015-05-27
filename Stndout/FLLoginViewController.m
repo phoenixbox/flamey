@@ -52,6 +52,7 @@ NSString *const kLoginSlide = @"FLLoginSlide";
                                                }];
     NSArray *readPermissions = @[@"public_profile", @"user_friends", @"email", @"user_photos"];
     [_loginView setReadPermissions:readPermissions];
+    [_swipeView setBackgroundColor:[UIColor whiteColor]];
 
     // TODO: Remove these assignments when not in development
     [_titleLabel setText:kFirstSlideTitle];
@@ -66,10 +67,14 @@ NSString *const kLoginSlide = @"FLLoginSlide";
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:kLoginSlide owner:nil options:nil];
     FLLoginSlide *loginSlide = (FLLoginSlide *)[nibContents lastObject];
+    [loginSlide.tutorialImageView setContentMode:UIViewContentModeScaleAspectFit];
+    [loginSlide.topAnimationImageView setContentMode:UIViewContentModeScaleAspectFit];
+    [loginSlide.bottomAnimationImageView setContentMode:UIViewContentModeScaleAspectFit];
 
     switch (index) {
         case 0:
             [loginSlide.tutorialImageView setImage:[UIImage imageNamed:@"LoginViewFirstScreen"]];
+            [loginSlide.tutorialImageView setContentMode:UIViewContentModeScaleAspectFit];
             break;
         case 1:
             [loginSlide.tutorialImageView setImage:[UIImage imageNamed:@"LoginViewSecondScreen"]];

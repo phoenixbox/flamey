@@ -1034,7 +1034,7 @@
 			baseConfigurationReference = 067A9FC38B3101CE4C8B6339 /* Pods-Stndout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shane Rogers (AAA27M4R82)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shane Rogers (AAA27M4R82)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1054,7 +1054,7 @@
 			baseConfigurationReference = 3B003C3C13253F1D84B7E4B2 /* Pods-Stndout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shane Rogers (AAA27M4R82)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shane Rogers (AAA27M4R82)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
