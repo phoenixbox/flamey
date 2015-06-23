@@ -241,7 +241,7 @@ final sections footer view
                                        @"systemVersion": [UIDevice currentDevice].systemVersion
                                    }
                                };
-
+        //  https://www.getfeedbackloop.com/api/teams/30dc6a3e-77e6-4a8a-9e7d-35a7b2f442fc?email=any
         [FeedbackLoop registerAuthenticatedUser:user];
         [FeedbackLoop presentChatChannel];
 
