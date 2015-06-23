@@ -201,7 +201,7 @@
                           }];
 
     [alertView addButtonWithTitle:@"Try Later"
-                             type:SIAlertViewButtonTypeCancel
+                             type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alert) {
                               [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                           }];

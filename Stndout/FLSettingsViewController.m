@@ -33,7 +33,6 @@
 @end
 
 static NSString * const kSettingsCellIdentifier = @"cell";
-
 static NSString * const kContactCell = @"Contact Us";
 static NSString * const kContactViewController = @"FLContactViewController";
 static NSString * const kPrivacyCell = @"Privacy Policy";
@@ -212,7 +211,7 @@ final sections footer view
     NSString *cellName = cell.textLabel.text;
 
     // Track pages loaded
-//    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    // Mixpanel *mixpanel = [Mixpanel sharedInstance];
 
     // Enum pattern would be better here
     if ([cellName isEqualToString:kContactCell]) {

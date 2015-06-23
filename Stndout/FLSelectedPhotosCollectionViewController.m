@@ -295,7 +295,7 @@ NSString *const kStartEditingTitle = @"Edit";
                           }];
 
     [alertView addButtonWithTitle:@"Not Now"
-                             type:SIAlertViewButtonTypeCancel
+                             type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"GetPhotos" properties:@{
                                                                         @"controller": NSStringFromClass([self class]),

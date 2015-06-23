@@ -145,7 +145,7 @@ NSString *const kREPLWebsiteURL = @"http://www.repllabs.com";
                               }];
 
         [alertView addButtonWithTitle:@"Try Later"
-                                 type:SIAlertViewButtonTypeCancel
+                                 type:SIAlertViewButtonTypeDestructive
                               handler:^(SIAlertView *alert) {
                                   [self dismissViewControllerAnimated:YES completion:NULL];
                               }];

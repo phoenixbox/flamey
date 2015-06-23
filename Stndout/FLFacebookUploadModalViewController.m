@@ -309,7 +309,7 @@
                           }];
 
     [alertView addButtonWithTitle:@"I'll ask later"
-                             type:SIAlertViewButtonTypeCancel
+                             type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
                                                                                      @"controller": NSStringFromClass([self class]),
@@ -441,7 +441,7 @@
                           }];
 
     [alertView addButtonWithTitle:@"Try Later"
-                             type:SIAlertViewButtonTypeCancel
+                             type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
                                                                                      @"controller": NSStringFromClass([self class]),
@@ -515,7 +515,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
                           }];
 
     [alertView addButtonWithTitle:@"Try Later"
-                             type:SIAlertViewButtonTypeCancel
+                             type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alert) {
                               [mixpanel track:@"FBPermissionRequest" properties:@{
                                                                                   @"controller": NSStringFromClass([self class]),

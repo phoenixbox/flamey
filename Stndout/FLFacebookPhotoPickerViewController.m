@@ -186,7 +186,7 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
                           }];
 
     [alertView addButtonWithTitle:@"Try Later"
-                             type:SIAlertViewButtonTypeCancel
+                             type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alert) {
                               Mixpanel *mixpanel = [Mixpanel sharedInstance];
                               [mixpanel track:@"PhotosFetch" properties:@{
