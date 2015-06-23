@@ -21,7 +21,7 @@ pod 'JSQMessagesViewController', '~> 7.0'
 pod 'ParseUI', '~> 1.1'
 pod 'ParseFacebookUtils', '~> 1.7'
 pod 'JSONModel', '~> 1.0'
-pod 'FeedbackLoop', '~> 0.1.67'
+pod 'FeedbackLoop', '~> 0.1.68'
 end
 
 target 'StndoutTests' do

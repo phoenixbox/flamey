@@ -32,7 +32,7 @@ PODS:
   - Bolts/Tasks (1.1.5)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
-  - FeedbackLoop (0.1.67):
+  - FeedbackLoop (0.1.68):
     - AFNetworking
     - JSONModel
     - JSQMessagesViewController
@@ -56,7 +56,7 @@ PODS:
     - FontAwesomeKit/Core
   - GPUImage (0.1.6)
   - JSONModel (1.1.0)
-  - JSQMessagesViewController (7.0.2):
+  - JSQMessagesViewController (7.1.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - MBProgressHUD (0.9.1)
@@ -87,7 +87,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - BlurryModalSegue (~> 1.1)
   - Facebook-iOS-SDK (~> 3.21)
-  - FeedbackLoop (~> 0.1.67)
+  - FeedbackLoop (~> 0.1.68)
   - FontAwesomeKit (~> 2.2)
   - GPUImage (~> 0.1)
   - JSONModel (~> 1.0)
@@ -109,11 +109,11 @@ SPEC CHECKSUMS:
   BlurryModalSegue: 35cdad34eba31228e4d84073033a9ea7d6537aa4
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
-  FeedbackLoop: ddca329c878e69926194e8afd57cb88aa0d73e9e
+  FeedbackLoop: 92c95dc549576b53eababb6db7134f64abc240da
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   GPUImage: 4675ce4a5370ca92fcea8623b2a08b8f0c51b940
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
-  JSQMessagesViewController: bb6649691182b1899dc52b42266ad69efc473510
+  JSQMessagesViewController: ca11f86fa68ca70835f05e169df9244147c1dc40
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Mixpanel: 1d387d76800e07e953958c62c97fea27f13632dd
