@@ -377,10 +377,11 @@
                                                                    NSError *error
                                                                    ) {
                                                    if(!error) {
-                                                       NSLog(@"TAGGED ANNOTATION #: %lu", (unsigned long)_additionCounter);
+                                                       NSLog(@"TAGGED USER IN UPLOADED PHOTO #: %lu", (unsigned long)_additionCounter);
                                                        [self setFinishedState];
                                                    } else {
                                                        // TODO: Implement Crashlytics
+                                                       NSLog(@"ERROR TAGGING USER IN UPLOADED PHOTO #: %lu", (unsigned long)_additionCounter);
                                                    }
                                                }];
                      } else {
