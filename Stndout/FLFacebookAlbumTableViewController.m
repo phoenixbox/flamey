@@ -13,7 +13,6 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SIAlertView.h>
 #import "Mixpanel.h"
-#import "FLNotificationConstants.h"
 #import "Reachability.h"
 
 @interface FLFacebookAlbumTableViewController ()
@@ -56,7 +55,7 @@
     Reachability *reachability = (Reachability *)[notification object];
 
     if ([reachability isReachable]) {
-        NSLog(@"Facebook connected");
+        NSLog(@"AlbumPickerViewController: Facebook connected");
     } else {
         SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Uh Oh!" andMessage:@"Lost connection to Facebook!"];
 

@@ -227,8 +227,6 @@ static NSString * const kCollectionViewCellIdentifier = @"FLFacebookPhotoCollect
     return 1;
 }
 
-// RESTART: Easy have add button and empty well message
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return _datasource.count;
 }
