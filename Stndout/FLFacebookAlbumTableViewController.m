@@ -12,6 +12,9 @@
 // Libs
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SIAlertView.h>
+#import "Mixpanel.h"
+#import "FLNotificationConstants.h"
+#import "Reachability.h"
 
 @interface FLFacebookAlbumTableViewController ()
 
@@ -49,7 +52,37 @@
     [top presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)doneSelectingPhotos:(id)paramSender {
+- (void)showNetworkErrorModal:(NSNotification *)notification {
+    Reachability *reachability = (Reachability *)[notification object];
+
+    if ([reachability isReachable]) {
+        NSLog(@"Facebook connected");
+    } else {
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Uh Oh!" andMessage:@"Lost connection to Facebook!"];
+
+        [alertView setTitleFont:[UIFont fontWithName:@"AvenirNext-Regular" size:20.0]];
+        [alertView setMessageFont:[UIFont fontWithName:@"AvenirNext-Regular" size:14.0]];
+        [alertView setButtonFont:[UIFont fontWithName:@"AvenirNext-Regular" size:16.0]];
+
+        [alertView addButtonWithTitle:@"Try Again!"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alert) {
+                                  [self sendRequests];
+                              }];
+
+        [alertView addButtonWithTitle:@"Try Later"
+                                 type:SIAlertViewButtonTypeDestructive
+                              handler:^(SIAlertView *alert) {
+                                  [self doneSelectingPhotos];
+                              }];
+
+        alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+
+        [alertView show];
+    }
+}
+
+- (void)doneSelectingPhotos {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -84,7 +117,7 @@
     [self setActivityScreen];
     [self setHeaderLogo];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneSelectingPhotos:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneSelectingPhotos)];
 
     _permissions = [NSArray arrayWithObjects:@"user_friends", @"user_photos", nil];
     BOOL hasPermissions = YES;
@@ -98,6 +131,15 @@
     }
 
     _datasource = [[NSMutableArray alloc] init];
+
+    [self listenToNetworkReachability];
+}
+
+- (void)listenToNetworkReachability {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showNetworkErrorModal:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
 }
 
 - (void)askFacebookPermission {
@@ -131,52 +173,58 @@
                           completionHandler:^(FBRequestConnection *connection,
                                               id result, NSError *error) {
 
-                              NSDictionary* resultDict = (NSDictionary*)result;
-                              _datasource = [NSMutableArray arrayWithArray:[resultDict objectForKey:@"data"]];
-                              _albumCoverArray = [[NSMutableArray alloc] initWithCapacity:_datasource.count];
+                              if (error != nil) {
+                                  NSLog(@"ERROR TOWN");
+                                  [self showAlert:error withSelectorName:@"sendRequests"];
+                              } else {
+                                  NSDictionary* resultDict = (NSDictionary*)result;
+                                  _datasource = [NSMutableArray arrayWithArray:[resultDict objectForKey:@"data"]];
+                                  _albumCoverArray = [[NSMutableArray alloc] initWithCapacity:_datasource.count];
 
-                              __block int count = 0;
+                                  __block int count = 0;
 
-                              // Get art for albums
-                              for (int i = 0 ; i < _datasource.count; i++) {
-                                  NSString* graphPath = [NSString stringWithFormat:@"/%@/picture", [[_datasource objectAtIndex:i] objectForKey:@"id"]];
-                                  NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:@"album", @"type", nil];
+                                  // Get art for albums
+                                  for (int i = 0 ; i < _datasource.count; i++) {
+                                      NSString* graphPath = [NSString stringWithFormat:@"/%@/picture", [[_datasource objectAtIndex:i] objectForKey:@"id"]];
+                                      NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:@"album", @"type", nil];
 
-                                  [FBRequestConnection startWithGraphPath:graphPath
-                                                               parameters:params
-                                                               HTTPMethod:@"GET"
-                                                        completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                                            count++;
+                                      [FBRequestConnection startWithGraphPath:graphPath
+                                                                   parameters:params
+                                                                   HTTPMethod:@"GET"
+                                                            completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                                                count++;
 
-                                                            NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:i], @"index" , connection.urlResponse.URL, @"URL", nil];
+                                                                NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:i], @"index" , connection.urlResponse.URL, @"URL", nil];
 
-                                                            [_albumCoverArray addObject:dict];
+                                                                [_albumCoverArray addObject:dict];
 
 
-                                                            if (count ==_datasource.count) {
-                                                                [FBRequestConnection startWithGraphPath:@"/me/photos"
-                                                                                             parameters:nil
-                                                                                             HTTPMethod:@"GET"
-                                                                                      completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                                                                          NSDictionary* resultDict = (NSDictionary*)result;
+                                                                if (count ==_datasource.count) {
+                                                                    [FBRequestConnection startWithGraphPath:@"/me/photos"
+                                                                                                 parameters:nil
+                                                                                                 HTTPMethod:@"GET"
+                                                                                          completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                                                                              NSDictionary* resultDict = (NSDictionary*)result;
 
-                                                                                          [_hud hide:YES];
+                                                                                              [_hud hide:YES];
 
-                                                                                          if (!error) {
-                                                                                              NSDictionary *singlePhotoObject = [resultDict objectForKey:@"data"][0];
-                                                                                              NSDictionary *singlePhoto = [singlePhotoObject objectForKey:@"images"][0];
+                                                                                              if (!error) {
+                                                                                                  NSDictionary *singlePhotoObject = [resultDict objectForKey:@"data"][0];
+                                                                                                  NSDictionary *singlePhoto = [singlePhotoObject objectForKey:@"images"][0];
 
-                                                                                              NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:count], @"index" , [singlePhoto objectForKey:@"source"], @"URL", nil];
-                                                                                              [_albumCoverArray insertObject:dict atIndex:0];
-
-                                                                                              [self.tableView reloadData];
-                                                                                          } else {
-                                                                                              [self showAlert:error withSelectorName:@"sendRequests"];
-                                                                                          }
-                                                                                      }];
-                                                            }
-                                                        }];
+                                                                                                  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:count], @"index" , [singlePhoto objectForKey:@"source"], @"URL", nil];
+                                                                                                  [_albumCoverArray insertObject:dict atIndex:0];
+                                                                                                  
+                                                                                                  [self.tableView reloadData];
+                                                                                              } else {
+                                                                                                  [self showAlert:error withSelectorName:@"sendRequests"];
+                                                                                              }
+                                                                                          }];
+                                                                }
+                                                            }];
+                                  }
                               }
+
                           }];
 
 }
